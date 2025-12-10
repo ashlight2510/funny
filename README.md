@@ -5,8 +5,12 @@
 ## 📁 파일 구조
 
 - `index.html` - 포털 메인 페이지 (Tailwind CSS CDN 사용)
+- `privacy.html` - 개인정보처리방침 (AdSense 필수)
+- `terms.html` - 이용약관 (AdSense 필수)
+- `favicon.svg` - 사이트 파비콘
 - `sitemap.xml` - SEO용 사이트맵
 - `robots.txt` - 검색엔진 크롤러 설정
+- `ADSENSE_CHECKLIST.md` - AdSense 승인 체크리스트
 
 ## 🚀 배포 방법
 
@@ -28,15 +32,18 @@
 
 ## ⚙️ 설정 필요 사항
 
-### Google Analytics
+### Google Tag Manager
 
-`index.html`의 다음 부분을 실제 GA 추적 ID로 변경:
+현재 GTM ID: `GTM-M7M2HQVQ` (모든 페이지에 포함됨)
 
-```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-```
+Google Tag Manager에서 다음 태그를 설정하세요:
+- Google Analytics 4
+- Google AdSense (승인 후)
 
-`G-XXXXXXX`를 실제 추적 ID로 교체하세요.
+### 개인정보처리방침 연락처
+
+`privacy.html`의 개인정보 보호책임자 이메일을 실제 연락처로 변경하세요:
+- 현재: `contact@ashlight.store`
 
 ### sitemap.xml 업데이트
 
@@ -63,8 +70,21 @@
 
 - **반응형 디자인**: 모바일, 태블릿, 데스크톱 모두 지원
 - **Tailwind CSS**: CDN 버전 사용으로 별도 빌드 불필요
-- **SEO 최적화**: 메타 태그, Open Graph, Twitter Card 포함
+- **SEO 최적화**: 메타 태그, Open Graph, Twitter Card, Schema.org 포함
 - **카드 기반 레이아웃**: 그리드 시스템으로 서비스 카드 표시
+- **AdSense 준비**: 개인정보처리방침, 이용약관, 구조화된 데이터 포함
+
+## 🎯 Google AdSense 승인 준비
+
+AdSense 승인을 위한 필수 요소가 모두 포함되어 있습니다:
+
+✅ 개인정보처리방침 페이지  
+✅ 이용약관 페이지  
+✅ SEO 최적화 (sitemap, robots.txt, 메타 태그)  
+✅ 구조화된 데이터 (Schema.org)  
+✅ Google Tag Manager 연동  
+
+자세한 체크리스트는 `ADSENSE_CHECKLIST.md`를 참고하세요.
 
 ## 📝 향후 개선 사항
 

@@ -25,6 +25,27 @@
   
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "FunnyFunny Cloud",
+    "url": "https://funnyfunny.cloud",
+    "description": "세상에서 제일 웃기고 유익한 계산기 포털",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://funnyfunny.cloud/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AshLight",
+      "url": "https://ashlight.store"
+    }
+  }
+  </script>
+  
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -138,9 +159,16 @@
 
     </div>
     
-    <div class="mt-10 text-center text-xs text-gray-400 py-10">
-      © FunnyFunny Cloud by AshLight
-    </div>
+    <footer class="mt-20 bg-white border-t py-8">
+      <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-400">
+        <div class="space-x-4 mb-4">
+          <a href="/privacy.html" class="hover:text-gray-600">개인정보처리방침</a>
+          <span>|</span>
+          <a href="/terms.html" class="hover:text-gray-600">이용약관</a>
+        </div>
+        <p>© FunnyFunny Cloud by AshLight</p>
+      </div>
+    </footer>
   </section>
 </body>
 </html>
