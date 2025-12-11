@@ -53,10 +53,22 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-    window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
-    window.amplitude.init('e26892cbcb10d35acb0486cf0d0e9c55', window.ffAmplitudeUserId, {
-      autocapture: { elementInteractions: true }
-    });`
+    (function initAmplitude() {
+      if (window.__ffAmplitudeInitialized) return;
+      if (!window.amplitude || !window.sessionReplay || !window.sessionReplay.plugin) {
+        setTimeout(initAmplitude, 50);
+        return;
+      }
+      try {
+        window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+        window.amplitude.init('e26892cbcb10d35acb0486cf0d0e9c55', window.ffAmplitudeUserId, {
+          autocapture: { elementInteractions: true }
+        });
+        window.__ffAmplitudeInitialized = true;
+      } catch (error) {
+        console.error('Amplitude init failed', error);
+      }
+    })();`
           }}
         />
       </body>

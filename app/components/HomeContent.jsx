@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
 import { HeaderPortal } from "./HeaderPortal";
@@ -141,13 +141,7 @@ export function HomeContent() {
                     오늘의 한 줄 인사이트와 데일리 테스트
                   </p>
                 </div>
-                <div className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm">
-                  <span className="text-base">⏱️</span>
-                  <p className="text-sm text-slate-700" data-i18n="heroTitle">
-                    하루를 더 똑똑하게 만드는 서비스
-                  </p>
-                </div>
-                <div className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm sm:col-span-2">
+                <div className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm ">
                   <span className="text-base">🧠</span>
                   <p className="text-sm text-slate-700" data-i18n="badge3">
                     나를 이해하는 가장 쉬운 방법
@@ -481,7 +475,7 @@ export function HomeContent() {
                   "https://senseyear.funnyfunny.cloud",
                   "🎵",
                   "나는 몇 년생 감성인가",
-                  "음악 취향 연대기",
+                  "12가지 질문으로 알아보는 나의 감성 테스트",
                 ],
                 [
                   "https://alcohol.funnyfunny.cloud",
@@ -584,38 +578,38 @@ export function HomeContent() {
               {[
                 [
                   "https://time.ashlight.store",
-                  "⏰ AshLight Time",
-                  "타임스탬프, 타임존 변환, 시간 유틸리티",
+                  "⏰ 예매는타이밍",
+                  "정확한 서버시간 조회, 예매 도우미",
                   "시간 관련 모든 계산을 한 곳에서.",
                 ],
                 [
                   "https://news.ashlight.store",
-                  "📰 AshLight News",
-                  "IT/뉴스 애그리게이터",
+                  "📰 오늘의 IT 뉴스",
+                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
                   "최신 뉴스와 IT 정보를 한눈에.",
                 ],
                 [
                   "https://weather.ashlight.store",
-                  "🌤️ AshLight Weather",
-                  "날씨 조회 및 정보",
-                  "정확한 날씨 정보를 제공합니다.",
+                  "🌤️ 지금날씨",
+                  "내 근처와 주변 날씨 조회",
+                  "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
                 ],
                 [
                   "https://emojicon.site",
                   "🎨 EmojiCon Studio",
-                  "이모지 아이콘 스튜디오",
-                  "웹/앱용 이모지 아이콘을 커스텀하고 바로 다운로드.",
+                  "웹/앱용 이모지 아이콘 스튜디오",
+                  "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
                 ],
                 [
                   "https://snaptrail.ashlight.store",
                   "📍 SnapTrail",
-                  "이벤트/맵/시계열 유틸리티",
-                  "이벤트와 위치 정보를 추적합니다.",
+                  "추억 타임라인 생성기",
+                  "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
                 ],
                 [
                   "https://day.ashlight.store",
-                  "📅 AshLight Day Tools",
-                  "날짜 계산, D-Day, 기념일",
+                  "📅 D-day 계산기",
+                  "날짜 계산, D-Day, N일 후, 기념일, 위젯",
                   "중요한 날짜를 쉽게 관리하세요.",
                 ],
               ].map(([href, title, desc, detail]) => (
