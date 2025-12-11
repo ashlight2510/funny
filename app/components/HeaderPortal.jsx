@@ -11,7 +11,7 @@ export function HeaderPortal() {
               FunnyFunny Cloud
             </p>
             <h1 className="text-lg sm:text-xl font-bold" data-i18n="heroTitle">
-              오늘의 인사이트 · 데일리 테스트
+              하루를 더 똑똑하게 만드는 서비스 
             </h1>
           </div>
         </div>

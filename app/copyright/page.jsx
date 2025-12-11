@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 

@@ -3,7 +3,8 @@ import './globals.css';
 
 export const metadata = {
   title: 'FunnyFunny Cloud',
-  description: '세상에서 제일 웃기고 유익한 계산기 포털'
+  description: '하루를 더 똑똑하게 만드는 서비스',
+  metadataBase: new URL('https://funnyfunny.cloud')
 };
 
 export default function RootLayout({ children }) {
