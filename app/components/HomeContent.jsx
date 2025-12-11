@@ -137,9 +137,7 @@ export function HomeContent() {
                     현실 점검
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  집 못 산 죄
-                </h3>
+                <h3 className="font-bold text-lg leading-snug">집 못 산 죄</h3>
                 <p className="text-sm text-slate-600 mt-1">
                   놓친 집값, 몇 억 차이일까
                 </p>
@@ -167,25 +165,25 @@ export function HomeContent() {
             <div className="mt-6 sm:mt-8 grid gap-2 sm:grid-cols-3">
               <a
                 href="#insight"
-                className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
-                <span className="text-base">💡</span>
+                <span className="text-sm">💡</span>
                 <p className="text-sm text-slate-700">오늘의 한 줄 인사이트</p>
               </a>
               <a
                 href="#hub"
-                className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
-                <span className="text-base">🧠</span>
+                <span className="text-sm">🧠</span>
                 <p className="text-sm text-slate-700">
                   나를 이해하는 가장 쉬운 방법
                 </p>
               </a>
               <a
                 href="#utils"
-                className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
-                <span className="text-base">🛠️</span>
+                <span className="text-sm">🛠️</span>
                 <p className="text-sm text-slate-700">
                   유용할 수 있는 서비스들
                 </p>
@@ -194,7 +192,7 @@ export function HomeContent() {
 
             <a
               href="#tests"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 shadow hover:border-blue-300 hover:text-blue-700 hover:-translate-y-0.5 transition mt-16"
+              className="w-full sm:w-auto inline-block text-center flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 shadow hover:border-blue-300 hover:text-blue-700 hover:-translate-y-0.5 transition mt-16"
             >
               모든 서비스 보기
             </a>
@@ -299,7 +297,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🏠 집값 못 산 죄
+                    🏠 집 못 산 죄
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -582,7 +580,7 @@ export function HomeContent() {
                 [
                   "https://house.funnyfunny.cloud",
                   "🏠",
-                  "집값 못 산 죄",
+                  "집 못 산 죄",
                   "아… 몇 억 차이일까",
                 ],
                 [
