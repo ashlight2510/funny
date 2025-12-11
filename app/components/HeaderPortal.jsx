@@ -11,7 +11,7 @@ export function HeaderPortal() {
               FunnyFunny Cloud
             </p>
             <h1 className="text-lg sm:text-xl font-bold" data-i18n="heroTitle">
-              하루를 더 똑똑하게 만드는 서비스 
+              하루를 더 똑똑하게 만드는 서비스
             </h1>
           </div>
         </div>
@@ -35,7 +35,7 @@ export function HeaderPortal() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow-md hover:shadow-lg hover:bg-blue-700 transition-colors"
             data-i18n="ctaPrimary"
           >
-            테스트 시작
+            랜덤 테스트 시작
           </button>
         </div>
       </div>

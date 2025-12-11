@@ -58,43 +58,10 @@ export function HomeContent() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const lang =
-      navigator.language && navigator.language.toLowerCase().startsWith("ko")
-        ? "ko"
-        : "en";
-    const i18nMap = {
-      heroTitle: {
-        ko: "하루를 더 똑똑하게 만드는 서비스",
-        en: "Services that make your day smarter",
-      },
-      heroHeadline: {
-        ko: "매일의 생각을 만드는 작은 도구들",
-        en: "Small tools that shape your daily thoughts",
-      },
-      pill: { ko: "데일리 체크", en: "Daily Check" },
-      subTitle: {
-        ko: "가볍게 해보는 테스트와 도구들로 하루의 생각을 조금 더 깊게 만들어보세요.",
-        en: "Simple tests & tools that make your day smarter.",
-      },
-      ctaPrimary: { ko: "테스트 시작", en: "Start Test" },
-      ctaSecondary: { ko: "모든 서비스 보기", en: "All Services" },
-    };
-
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.dataset.i18n;
-      if (key && i18nMap[key]) {
-        el.textContent = i18nMap[key][lang] || i18nMap[key].ko;
-      }
-    });
-  }, []);
-
   return (
     <div className="bg-slate-50 text-gray-800 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal />
-
       <main>
-        {/* content identical to previous structure */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-amber-50"></div>
           <div className="absolute -left-10 -top-10 w-48 h-48 bg-blue-200/40 blur-3xl"></div>
@@ -102,52 +69,22 @@ export function HomeContent() {
 
           <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
             <div className="max-w-[440px] sm:max-w-2xl">
-              <p
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-blue-100"
-                data-i18n="pill"
-              >
-                Daily Check Tool
-              </p>
-              <h2
-                className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight"
-                data-i18n="heroHeadline"
-              >
+              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
                 매일의 생각을 만드는 작은 도구들
               </h2>
-              <p className="mt-3 text-base text-slate-700" data-i18n="subTitle">
-                재미와 인사이트를 동시에 주는 테스트·계산기 허브. 한 번 들어오면
-                다른 도구까지 자연스럽게 이어집니다.
+              <p className="mt-3 text-base text-slate-700">
+                가볍게 해보는 테스트와 도구들로 하루의 생각을 조금 더 깊게
+                만들어보세요.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 sm:items-center">
                 <button
                   data-random-btn
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-900 text-white text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
-                  data-i18n="ctaPrimary"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-slate-900 text-white text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
                 >
-                  테스트 시작
+                  랜덤 테스트 시작
                 </button>
-                <a
-                  href="#hub"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 shadow-sm hover:border-slate-400 transition"
-                  data-i18n="ctaSecondary"
-                >
-                  모든 서비스 보기
-                </a>
               </div>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                <div className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm">
-                  <span className="text-base">💡</span>
-                  <p className="text-sm text-slate-700" data-i18n="badge1">
-                    오늘의 한 줄 인사이트와 데일리 테스트
-                  </p>
-                </div>
-                <div className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm ">
-                  <span className="text-base">🧠</span>
-                  <p className="text-sm text-slate-700" data-i18n="badge3">
-                    나를 이해하는 가장 쉬운 방법
-                  </p>
-                </div>
-              </div>
+
               <div className="mt-3 flex sm:hidden items-center gap-2">
                 <a
                   href="https://funnyfunny.dothome.co.kr/"
@@ -165,25 +102,46 @@ export function HomeContent() {
                 </a>
               </div>
             </div>
-
+            <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-blue-100 mt-16">
+              Top 3
+            </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
-                href="https://energy.funnyfunny.cloud"
+                href="https://bit.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">⚡</span>
+                  <span className="text-xl">💸</span>
                   <span className="text-xs font-semibold text-blue-600">
-                    오늘의 추천
+                    지금 핫해요
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  인생 에너지 누수 진단기
+                  비트코인 안 산 죄
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  번아웃 포인트 찾아주는 인기 테스트
+                  그때 샀다면 지금 얼마?
+                </p>
+              </a>
+              <a
+                href="https://house.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🏠</span>
+                  <span className="text-xs font-semibold text-emerald-600">
+                    현실 점검
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  집 못 산 죄
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  놓친 집값, 몇 억 차이일까
                 </p>
               </a>
               <a
@@ -205,24 +163,41 @@ export function HomeContent() {
                   카페인 재정의 — 공유율 최고
                 </p>
               </a>
+            </div>
+            <div className="mt-6 sm:mt-8 grid gap-2 sm:grid-cols-3">
               <a
-                href="https://maldives.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                href="#insight"
+                className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🏝️</span>
-                  <span className="text-xs font-semibold text-emerald-600">
-                    신규
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">몰디브 매치</h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  나에게 맞는 여행 성향 찾기
+                <span className="text-base">💡</span>
+                <p className="text-sm text-slate-700">오늘의 한 줄 인사이트</p>
+              </a>
+              <a
+                href="#hub"
+                className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+              >
+                <span className="text-base">🧠</span>
+                <p className="text-sm text-slate-700">
+                  나를 이해하는 가장 쉬운 방법
+                </p>
+              </a>
+              <a
+                href="#utils"
+                className="flex items-start gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+              >
+                <span className="text-base">🛠️</span>
+                <p className="text-sm text-slate-700">
+                  유용할 수 있는 서비스들
                 </p>
               </a>
             </div>
+
+            <a
+              href="#tests"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 shadow hover:border-blue-300 hover:text-blue-700 hover:-translate-y-0.5 transition mt-16"
+            >
+              모든 서비스 보기
+            </a>
           </div>
         </section>
 
@@ -253,11 +228,10 @@ export function HomeContent() {
           <div>
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧭</span>
-              <h3 className="text-xl font-bold">도구 카테고리</h3>
+              <h3 className="text-xl font-bold">
+                나를 이해하는 가장 쉬운 방법
+              </h3>
             </div>
-            <p className="text-sm text-slate-600 -mt-3 mb-4" data-i18n="badge3">
-              나를 이해하는 가장 쉬운 방법
-            </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
                 <div className="flex items-center justify-between mb-3">
@@ -343,6 +317,22 @@ export function HomeContent() {
                   >
                     🎓 사교육 지옥도
                   </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://cafe.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ☕ 카페 지출 역전 계산
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://beauty.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    💄 꾸밈비 파산 테스트
+                  </a>
                 </div>
               </div>
               <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
@@ -351,7 +341,7 @@ export function HomeContent() {
                     <span className="text-xl">🌿</span>
                     <h4 className="font-semibold">건강 · 생활</h4>
                   </div>
-                  <span className="text-xs text-slate-500">체크인</span>
+                  <span className="text-xs text-slate-500">체크 해보기</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -360,7 +350,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ☕ 커피중독
+                    ☕ 커피중독 테스트
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -370,14 +360,7 @@ export function HomeContent() {
                   >
                     🩺 건강수명 & 노후 준비
                   </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://cafe.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ☕ 카페 지출 역전 계산
-                  </a>
+
                   <a
                     className="block hover:text-blue-600"
                     href="https://life.funnyfunny.cloud"
@@ -397,14 +380,6 @@ export function HomeContent() {
                   <span className="text-xs text-slate-500">1분 힐링</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://beauty.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    💄 꾸밈비 파산 테스트
-                  </a>
                   <a
                     className="block hover:text-blue-600"
                     href="https://joke.funnyfunny.cloud"
@@ -433,8 +408,105 @@ export function HomeContent() {
               </div>
             </div>
           </div>
-
-          <div>
+          <div id="utils" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="text-2xl">🛠️</span>
+              <h3 className="text-xl font-bold">유용할 수 있는 서비스들</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {[
+                [
+                  "https://time.ashlight.store",
+                  "⏰ 예매는타이밍",
+                  "정확한 서버시간 조회, 예매 도우미",
+                  "시간 관련 모든 계산을 한 곳에서.",
+                ],
+                [
+                  "https://news.ashlight.store",
+                  "📰 오늘의 IT 뉴스",
+                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
+                  "최신 뉴스와 IT 정보를 한눈에.",
+                ],
+                [
+                  "https://weather.ashlight.store",
+                  "🌤️ 지금날씨",
+                  "내 근처와 주변 날씨 조회",
+                  "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
+                ],
+                [
+                  "https://emojicon.site",
+                  "🎨 EmojiCon Studio",
+                  "웹/앱용 이모지 아이콘 스튜디오",
+                  "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
+                ],
+                [
+                  "https://snaptrail.ashlight.store",
+                  "📍 SnapTrail",
+                  "추억 타임라인 생성기",
+                  "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
+                ],
+                [
+                  "https://day.ashlight.store",
+                  "📅 D-day 계산기",
+                  "날짜 계산, D-Day, N일 후, 기념일, 위젯",
+                  "중요한 날짜를 쉽게 관리하세요.",
+                ],
+              ].map(([href, title, desc, detail]) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                >
+                  <h4 className="font-bold text-lg">{title}</h4>
+                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
+                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="text-2xl">💡</span>
+              <h3 className="text-xl font-bold">오늘의 한 줄 인사이트</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {[
+                [
+                  "https://news.ashlight.store",
+                  "📰 오늘의 IT 뉴스",
+                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
+                  "최신 뉴스와 IT 정보를 한눈에.",
+                ],
+                [
+                  "https://joke.funnyfunny.cloud",
+                  "😄 오늘의 아재개그",
+                  "공유각 터지는 개그 모음",
+                  "웃음은 건강에 최고",
+                ],
+                [
+                  "https://mind.funnyfunny.cloud",
+                  "🧠 오늘의 마음챙김",
+                  "오늘의 명언을 한 줄로 힐링",
+                  "마음을 가벼워지게",
+                ],
+              ].map(([href, title, desc, detail]) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                >
+                  <h4 className="font-bold text-lg">{title}</h4>
+                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
+                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧪</span>
               <h3 className="text-xl font-bold">전체 테스트 · 계산기</h3>
@@ -569,65 +641,6 @@ export function HomeContent() {
             </div>
           </div>
 
-          <div>
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">🛠️</span>
-              <h3 className="text-xl font-bold">제공 서비스</h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                [
-                  "https://time.ashlight.store",
-                  "⏰ 예매는타이밍",
-                  "정확한 서버시간 조회, 예매 도우미",
-                  "시간 관련 모든 계산을 한 곳에서.",
-                ],
-                [
-                  "https://news.ashlight.store",
-                  "📰 오늘의 IT 뉴스",
-                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
-                  "최신 뉴스와 IT 정보를 한눈에.",
-                ],
-                [
-                  "https://weather.ashlight.store",
-                  "🌤️ 지금날씨",
-                  "내 근처와 주변 날씨 조회",
-                  "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
-                ],
-                [
-                  "https://emojicon.site",
-                  "🎨 EmojiCon Studio",
-                  "웹/앱용 이모지 아이콘 스튜디오",
-                  "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
-                ],
-                [
-                  "https://snaptrail.ashlight.store",
-                  "📍 SnapTrail",
-                  "추억 타임라인 생성기",
-                  "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
-                ],
-                [
-                  "https://day.ashlight.store",
-                  "📅 D-day 계산기",
-                  "날짜 계산, D-Day, N일 후, 기념일, 위젯",
-                  "중요한 날짜를 쉽게 관리하세요.",
-                ],
-              ].map(([href, title, desc, detail]) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <h4 className="font-bold text-lg">{title}</h4>
-                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-
           <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white p-6 sm:p-8 shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -680,7 +693,7 @@ export function HomeContent() {
       >
         <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-slate-900 text-white rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
           <div className="text-sm font-semibold">
-            Back to Hub · 다른 테스트 더 보기
+            나를 이해하는 가장 쉬운 방법
           </div>
           <div className="flex items-center gap-2">
             <a
