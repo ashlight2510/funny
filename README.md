@@ -46,7 +46,7 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 
 새 서비스를 추가하거나 변경 시 `sitemap.xml`의 `<lastmod>` 날짜를 업데이트하세요.
 
-## 📋 포함된 서비스 (15개)
+## 📋 포함된 서비스 (16개)
 
 1. ☕ 커피 중독도 테스트 (`coffee.funnyfunny.cloud`)
 2. 💄 꾸밈비 파산 테스트 (`beauty.funnyfunny.cloud`)
@@ -59,10 +59,11 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 9. 🩺 건강수명 예측 & 노후 준비 대시보드 (`health.funnyfunny.cloud`)
 10. 🤣 오늘의 아재개그 (`joke.funnyfunny.cloud`)
 11. 🧠 오늘의 마음챙김 (`mind.funnyfunny.cloud`)
-12. ☕ 카페 지출 총자산 역전 계산기 (`cafe.funnyfunny.cloud`)
-13. 🥁 드럼 비트 연습기 (`beat.funnyfunny.cloud`)
-14. 📅 SenseYear (준비중) (`senseyear.funnyfunny.cloud`)
-15. 🎨 EmojiCon Studio (`emojicon.site`) — 이모지 아이콘 스튜디오
+12. 🧠 하루 정신 체력 지수 테스트 (`mental.funnyfunny.cloud`)
+13. ☕ 카페 지출 총자산 역전 계산기 (`cafe.funnyfunny.cloud`)
+14. 🥁 드럼 비트 연습기 (`beat.funnyfunny.cloud`)
+15. 📅 SenseYear (준비중) (`senseyear.funnyfunny.cloud`)
+16. 🎨 EmojiCon Studio (`emojicon.site`) — 이모지 아이콘 스튜디오
 
 ## 🎨 디자인 특징
 

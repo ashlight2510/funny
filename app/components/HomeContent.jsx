@@ -21,6 +21,7 @@ const randomTools = [
   "https://health.funnyfunny.cloud",
   "https://cafe.funnyfunny.cloud",
   "https://joke.funnyfunny.cloud",
+  "https://mental.funnyfunny.cloud",
   "https://mind.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
 ];
@@ -240,6 +241,14 @@ export function HomeContent() {
                   <span className="text-xs text-slate-500">3분 컷</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://mental.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🧠 하루 정신 체력 지수
+                  </a>
                   <a
                     className="block hover:text-blue-600"
                     href="https://energy.funnyfunny.cloud"
@@ -528,6 +537,12 @@ export function HomeContent() {
                   "⚡",
                   "내 삶의 에너지 배분",
                   "번아웃 포인트와 리커버리 가이드",
+                ],
+                [
+                  "https://mental.funnyfunny.cloud",
+                  "🧠",
+                  "하루 정신 체력 지수 테스트",
+                  "오늘의 뇌 에너지·집중력 상태 진단",
                 ],
                 [
                   "https://money.funnyfunny.cloud",
