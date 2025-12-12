@@ -59,6 +59,36 @@ export function HomeContent() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const widgetContainerId = "dablewidget_6Xgdpy6o_37Jam9xo";
+
+    if (window.dable) {
+      window.dable("setService", "funnyfunny.cloud");
+      window.dable("renderWidgetByWidth", widgetContainerId, {
+        ignore_items: true,
+      });
+      return;
+    }
+
+    (function (d, a, b, l, e, r) {
+      if (d[b] && d[b].q) return;
+      d[b] = function () {
+        (d[b].q = d[b].q || []).push(arguments);
+      };
+      e = a.createElement(l);
+      e.async = 1;
+      e.charset = "utf-8";
+      e.src = "//static.dable.io/dist/plugin.min.js";
+      r = a.getElementsByTagName(l)[0];
+      r.parentNode.insertBefore(e, r);
+    })(window, document, "dable", "script");
+
+    window.dable("setService", "funnyfunny.cloud");
+    window.dable("renderWidgetByWidth", widgetContainerId, {
+      ignore_items: true,
+    });
+  }, []);
+
   return (
     <div className="bg-slate-50 text-gray-800 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal />
@@ -197,6 +227,27 @@ export function HomeContent() {
             >
               모든 서비스 보기
             </a>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-slate-100">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <span className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
+                  AD
+                </span>
+                <span>추천 콘텐츠</span>
+              </div>
+              <span className="text-xs text-slate-400">Dable</span>
+            </div>
+            <div className="p-4 sm:p-5">
+              <div
+                id="dablewidget_6Xgdpy6o_37Jam9xo"
+                data-widget_id-pc="6Xgdpy6o"
+                data-widget_id-mo="37Jam9xo"
+              ></div>
+            </div>
           </div>
         </section>
 
