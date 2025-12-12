@@ -1,10 +1,10 @@
-import Script from 'next/script';
-import './globals.css';
+import Script from "next/script";
+import "./globals.css";
 
 export const metadata = {
-  title: 'FunnyFunny Cloud',
-  description: '하루를 더 똑똑하게 만드는 서비스',
-  metadataBase: new URL('https://funnyfunny.cloud')
+  title: "FunnyFunny Cloud",
+  description: "하루를 더 똑똑하게 만드는 서비스",
+  metadataBase: new URL("https://funnyfunny.cloud"),
 };
 
 export default function RootLayout({ children }) {
@@ -12,6 +12,10 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1204894220949193" />
+        <meta
+          property="og:image"
+          content="https://dummyimage.com/1200x630/000/fff&text=FunnyFunny+Cloud"
+        />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
@@ -21,7 +25,7 @@ export default function RootLayout({ children }) {
             src="https://www.googletagmanager.com/ns.html?id=GTM-M7M2HQVQ"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
 
@@ -35,7 +39,7 @@ export default function RootLayout({ children }) {
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M7M2HQVQ');`
+  })(window,document,'script','dataLayer','GTM-M7M2HQVQ');`,
           }}
         />
 
@@ -68,7 +72,7 @@ export default function RootLayout({ children }) {
       } catch (error) {
         console.error('Amplitude init failed', error);
       }
-    })();`
+    })();`,
           }}
         />
       </body>
