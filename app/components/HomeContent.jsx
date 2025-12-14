@@ -25,6 +25,7 @@ const randomTools = [
   "https://mental.funnyfunny.cloud",
   "https://mind.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
+  "https://cook.funnyfunny.cloud",
 ];
 
 export function HomeContent() {
@@ -386,9 +387,9 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
-                  href="https://drink.funnyfunny.cloud"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                    href="https://drink.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     🍺 그때 마신 술, 지금 얼마?
                   </a>
@@ -427,7 +428,14 @@ export function HomeContent() {
                   >
                     🩺 건강수명 & 노후 준비
                   </a>
-
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://cook.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🍱 오늘 뭐 먹지?
+                  </a>
                   <a
                     className="block hover:text-blue-600"
                     href="https://life.funnyfunny.cloud"
@@ -669,6 +677,12 @@ export function HomeContent() {
                   "🩺",
                   "건강수명 & 노후 준비",
                   "재미로 보는 건강수명",
+                ],
+                [
+                  "https://cook.funnyfunny.cloud",
+                  "🍱",
+                  "오늘 뭐 먹지?",
+                  "하루 메뉴 랜덤 추천",
                 ],
                 [
                   "https://cafe.funnyfunny.cloud",
