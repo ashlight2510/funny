@@ -20,6 +20,7 @@ const randomTools = [
   "https://edu.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
   "https://cafe.funnyfunny.cloud",
+  "https://drink.funnyfunny.cloud",
   "https://joke.funnyfunny.cloud",
   "https://mental.funnyfunny.cloud",
   "https://mind.funnyfunny.cloud",
@@ -385,6 +386,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                  href="https://drink.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >
+                    🍺 그때 마신 술, 지금 얼마?
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://beauty.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -666,6 +675,12 @@ export function HomeContent() {
                   "☕",
                   "카페 지출 역전 계산",
                   "30살까지 커피로 태운 돈?",
+                ],
+                [
+                  "https://drink.funnyfunny.cloud",
+                  "🍺",
+                  "그때 마신 술, 지금 얼마?",
+                  "한 달 술값 총액 vs 투자했을 때 금액",
                 ],
                 [
                   "https://joke.funnyfunny.cloud",
