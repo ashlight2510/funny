@@ -10,6 +10,7 @@ const randomTools = [
   "https://energy.funnyfunny.cloud",
   "https://money.funnyfunny.cloud",
   "https://life.funnyfunny.cloud",
+  "https://ego.funnyfunny.cloud",
   "https://senseyear.funnyfunny.cloud",
   "https://alcohol.funnyfunny.cloud",
   "https://lazy.funnyfunny.cloud",
@@ -629,6 +630,12 @@ export function HomeContent() {
                   "🧠",
                   "하루 정신 체력 지수 테스트",
                   "오늘의 뇌 에너지·집중력 상태 진단",
+                ],
+                [
+                  "https://ego.funnyfunny.cloud",
+                  "🧬",
+                  "EGO 반응 패턴 테스트",
+                  "성격 테스트 아님, 갈등·스트레스·선택 앞에서 튀어나오는 자아 반응 분석",
                 ],
                 [
                   "https://money.funnyfunny.cloud",
