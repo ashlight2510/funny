@@ -16,6 +16,8 @@ export const metadata = {
     "마음챙김",
     "오늘 뭐 먹지",
     "오늘의 안주",
+    "SoulPrint",
+    "출생 정보 성향 분석",
   ],
 };
 

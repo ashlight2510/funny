@@ -24,6 +24,7 @@ const randomTools = [
   "https://joke.funnyfunny.cloud",
   "https://mental.funnyfunny.cloud",
   "https://mind.funnyfunny.cloud",
+  "https://soulprint.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
   "https://anju.funnyfunny.cloud",
@@ -318,6 +319,14 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     😴 귀찮음 진단기
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://soulprint.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔮 SoulPrint — 출생 성향 분석
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -632,6 +641,12 @@ export function HomeContent() {
                   "⏰",
                   "인생 남은 시간 대시보드",
                   "자유시간, 수면, 커리어 남은 시간",
+                ],
+                [
+                  "https://soulprint.funnyfunny.cloud",
+                  "🔮",
+                  "SoulPrint",
+                  "출생 정보를 바탕으로 한 독자적인 성향 분석",
                 ],
                 [
                   "https://senseyear.funnyfunny.cloud",
