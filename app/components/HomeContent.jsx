@@ -24,7 +24,7 @@ const randomTools = [
   "https://joke.funnyfunny.cloud",
   "https://mental.funnyfunny.cloud",
   "https://mind.funnyfunny.cloud",
-  "https://soulprint.funnyfunny.cloud",
+  "https://soul.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
   "https://anju.funnyfunny.cloud",
@@ -643,7 +643,7 @@ export function HomeContent() {
                   "자유시간, 수면, 커리어 남은 시간",
                 ],
                 [
-                  "https://soulprint.funnyfunny.cloud",
+                  "https://soul.funnyfunny.cloud",
                   "🔮",
                   "SoulPrint",
                   "출생 정보를 바탕으로 한 독자적인 성향 분석",

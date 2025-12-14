@@ -21,6 +21,7 @@
 ### 커스텀 도메인 연결 (funnyfunny.cloud)
 
 1. DNS 설정에서 `funnyfunny.cloud`를 GitHub Pages IP로 연결
+
    - A 레코드: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - 또는 CNAME: `[username].github.io`
 
@@ -34,12 +35,14 @@
 현재 GTM ID: `GTM-M7M2HQVQ` (모든 페이지에 포함됨)
 
 Google Tag Manager에서 다음 태그를 설정하세요:
+
 - Google Analytics 4
 - Google AdSense (승인 후)
 
 ### 개인정보처리방침 연락처
 
 `privacy.html`의 개인정보 보호책임자 이메일을 실제 연락처로 변경하세요:
+
 - 현재: `contact@ashlight.store`
 
 ### sitemap.xml 업데이트
@@ -66,7 +69,7 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 16. 🎨 EmojiCon Studio (`emojicon.site`) — 이모지 아이콘 스튜디오
 17. 🍺 그때 마신 술, 지금 얼마? (`drink.funnyfunny.cloud`)
 18. 🍱 오늘 뭐 먹지? (`cook.funnyfunny.cloud`)
-19. 🔮 SoulPrint (`soulprint.funnyfunny.cloud`) — 출생 정보를 바탕으로 한 독자적인 성향 분석
+19. 🔮 SoulPrint (`soul.funnyfunny.cloud`) — 출생 정보를 바탕으로 한 독자적인 성향 분석
 
 ## 🎨 디자인 특징
 
@@ -84,7 +87,7 @@ AdSense 승인을 위한 필수 요소가 모두 포함되어 있습니다:
 ✅ 이용약관 페이지  
 ✅ SEO 최적화 (sitemap, robots.txt, 메타 태그)  
 ✅ 구조화된 데이터 (Schema.org)  
-✅ Google Tag Manager 연동  
+✅ Google Tag Manager 연동
 
 자세한 체크리스트는 `ADSENSE_CHECKLIST.md`를 참고하세요.
 
