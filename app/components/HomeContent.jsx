@@ -345,6 +345,14 @@ export function HomeContent() {
                   >
                     🍺 주량 MBTI
                   </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://ego.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🧬 EGO 테스트
+                  </a>
                 </div>
               </div>
               <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
@@ -634,8 +642,8 @@ export function HomeContent() {
                 [
                   "https://ego.funnyfunny.cloud",
                   "🧬",
-                  "EGO 반응 패턴 테스트",
-                  "성격 테스트 아님, 갈등·스트레스·선택 앞에서 튀어나오는 자아 반응 분석",
+                  "EGO 테스트",
+                  "성격 테스트 아님, 갈등·스트레스·선택 앞에서 튀어나오는 자아 분석",
                 ],
                 [
                   "https://money.funnyfunny.cloud",
