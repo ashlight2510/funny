@@ -32,6 +32,7 @@ const randomTools = [
   "https://cook.funnyfunny.cloud",
   "https://anju.funnyfunny.cloud",
   "https://product.funnyfunny.cloud",
+  "https://human.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -93,6 +94,12 @@ const seoApplications = [
     name: "꾸밈비 파산 테스트",
     url: "https://beauty.funnyfunny.cloud/",
     description: "뷰티 지출이 재정에 미치는 영향을 체감형으로 계산",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "나를 힘들게 하는 인간 유형 테스트",
+    url: "https://human.funnyfunny.cloud/",
+    description: "관계를 힘들게 만드는 사람 유형을 알아보는 테스트 (나 자신 평가 아님)",
     category: "LifestyleApplication",
   },
 ];
@@ -453,6 +460,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://human.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🙃 나를 힘들게 하는 인간 유형
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://soul.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -790,6 +805,12 @@ export function HomeContent() {
                   "🧠",
                   "하루 정신 체력 지수 테스트",
                   "오늘의 뇌 에너지·집중력 상태 진단",
+                ],
+                [
+                  "https://human.funnyfunny.cloud",
+                  "🙃",
+                  "나를 힘들게 하는 인간 유형",
+                  "이 테스트는 '나 자신'을 평가하지 않습니다.",
                 ],
                 [
                   "https://ego.funnyfunny.cloud",
