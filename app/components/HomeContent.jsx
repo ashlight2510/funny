@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { HeaderPortal } from "./HeaderPortal";
 import { FooterPortal } from "./FooterPortal";
 
@@ -111,7 +111,215 @@ const seoApplications = [
   },
 ];
 
+const allTests = [
+  {
+    href: "https://coffee.funnyfunny.cloud",
+    icon: "☕",
+    title: "커피중독 테스트",
+    desc: "카페인 의존도·부활 횟수 체크",
+    tags: ["카페인", "커피", "건강", "중독"],
+  },
+  {
+    href: "https://beauty.funnyfunny.cloud",
+    icon: "💄",
+    title: "꾸밈비 파산 테스트",
+    desc: "얼마나 태웠을까? 뷰티 지출 체감",
+    tags: ["뷰티", "지출", "소비"],
+  },
+  {
+    href: "https://energy.funnyfunny.cloud",
+    icon: "⚡",
+    title: "내 삶의 에너지 배분",
+    desc: "번아웃 포인트와 리커버리 가이드",
+    tags: ["에너지", "번아웃", "회복"],
+  },
+  {
+    href: "https://product.funnyfunny.cloud",
+    icon: "🚀",
+    title: "하루 생산성 체크 테스트",
+    desc: "오늘 내 집중·에너지·의사결정 상태 빠르게 체크",
+    tags: ["생산성", "집중력", "루틴"],
+  },
+  {
+    href: "https://mental.funnyfunny.cloud",
+    icon: "🧠",
+    title: "하루 정신 체력 지수 테스트",
+    desc: "오늘의 뇌 에너지·집중력 상태 진단",
+    tags: ["멘탈", "집중", "컨디션"],
+  },
+  {
+    href: "https://human.funnyfunny.cloud",
+    icon: "🙃",
+    title: "나를 힘들게 하는 인간 유형",
+    desc: "이 테스트는 '나 자신'을 평가하지 않습니다.",
+    tags: ["관계", "성향", "인간유형"],
+  },
+  {
+    href: "https://ego.funnyfunny.cloud",
+    icon: "🧬",
+    title: "EGO 테스트",
+    desc: "성격 테스트 아님, 갈등·스트레스·선택 앞에서 튀어나오는 자아 분석",
+    tags: ["자아", "스트레스", "갈등"],
+  },
+  {
+    href: "https://money.funnyfunny.cloud",
+    icon: "🛡️",
+    title: "자산 방탄 지수",
+    desc: "경제 위기 버티기 레벨 측정",
+    tags: ["재테크", "위기대응", "자산"],
+  },
+  {
+    href: "https://life.funnyfunny.cloud",
+    icon: "⏰",
+    title: "인생 남은 시간 대시보드",
+    desc: "자유시간, 수면, 커리어 남은 시간",
+    tags: ["시간", "대시보드", "라이프"],
+  },
+  {
+    href: "https://soul.funnyfunny.cloud",
+    icon: "🔮",
+    title: "SoulPrint",
+    desc: "출생 정보를 바탕으로 한 독자적인 성향 분석",
+    tags: ["성향", "출생", "분석"],
+  },
+  {
+    href: "https://senseyear.funnyfunny.cloud",
+    icon: "🎵",
+    title: "나는 몇 년생 감성인가",
+    desc: "12가지 질문으로 알아보는 나의 감성 테스트",
+    tags: ["감성", "테스트", "성향"],
+  },
+  {
+    href: "https://alcohol.funnyfunny.cloud",
+    icon: "🍺",
+    title: "주량 MBTI",
+    desc: "술자리 성향 MBTI",
+    tags: ["술자리", "주량", "성향"],
+  },
+  {
+    href: "https://lazy.funnyfunny.cloud",
+    icon: "😴",
+    title: "귀찮음 진단기",
+    desc: "7가지 요인으로 무기력 원인 찾기",
+    tags: ["무기력", "귀찮음", "진단"],
+  },
+  {
+    href: "https://average.funnyfunny.cloud",
+    icon: "📊",
+    title: "대한민국 평균 vs 나",
+    desc: "수입·지출·습관이 한국 평균과 얼마나 다른지 비교",
+    tags: ["평균", "통계", "비교"],
+  },
+  {
+    href: "https://drain.funnyfunny.cloud",
+    icon: "⚡",
+    title: "인생 에너지 누수 진단기",
+    desc: "지금 나는 어디로 새고 있는가",
+    tags: ["에너지", "피로", "누수"],
+  },
+  {
+    href: "https://maldives.funnyfunny.cloud",
+    icon: "🏝️",
+    title: "몰디브 매치",
+    desc: "나의 몰디브 여행 성향 찾기",
+    tags: ["여행", "휴양", "몰디브"],
+  },
+  {
+    href: "https://bit.funnyfunny.cloud",
+    icon: "💸",
+    title: "비트코인 안 산 죄",
+    desc: "그때 샀다면 지금 얼마?",
+    tags: ["비트코인", "투자", "기회비용"],
+  },
+  {
+    href: "https://house.funnyfunny.cloud",
+    icon: "🏠",
+    title: "집 못 산 죄",
+    desc: "아… 몇 억 차이일까",
+    tags: ["부동산", "투자", "시뮬레이터"],
+  },
+  {
+    href: "https://nospend.funnyfunny.cloud",
+    icon: "💸",
+    title: "내가 안 산 것들의 총자산",
+    desc: '"그때 그거만 안 샀어도..."를 숫자로',
+    tags: ["절약", "총자산", "기회비용"],
+  },
+  {
+    href: "https://edu.funnyfunny.cloud",
+    icon: "🎓",
+    title: "사교육 지옥도 계산기",
+    desc: "교육비 인생 시뮬레이터",
+    tags: ["교육비", "지출", "시뮬레이션"],
+  },
+  {
+    href: "https://health.funnyfunny.cloud",
+    icon: "🩺",
+    title: "건강수명 & 노후 준비",
+    desc: "재미로 보는 건강수명",
+    tags: ["건강", "노후", "수명"],
+  },
+  {
+    href: "https://cook.funnyfunny.cloud",
+    icon: "🍱",
+    title: "오늘 뭐 먹지?",
+    desc: "하루 메뉴 랜덤 추천",
+    tags: ["음식", "추천", "랜덤"],
+  },
+  {
+    href: "https://anju.funnyfunny.cloud",
+    icon: "🍢",
+    title: "오늘의 안주",
+    desc: "술안주 랜덤 추천",
+    tags: ["술", "안주", "랜덤"],
+  },
+  {
+    href: "https://cafe.funnyfunny.cloud",
+    icon: "☕",
+    title: "카페 지출 역전 계산",
+    desc: "30살까지 커피로 태운 돈?",
+    tags: ["카페", "지출", "소비"],
+  },
+  {
+    href: "https://drink.funnyfunny.cloud",
+    icon: "🍺",
+    title: "그때 마신 술, 지금 얼마?",
+    desc: "한 달 술값 총액 vs 투자했을 때 금액",
+    tags: ["술값", "투자", "비용"],
+  },
+  {
+    href: "https://waste.funnyfunny.cloud",
+    icon: "♻️",
+    title: "내 인생 낭비력 지수",
+    desc: "지금까지 쓴 돈, 낭비력으로 환산",
+    tags: ["낭비", "돈", "습관"],
+  },
+  {
+    href: "https://joke.funnyfunny.cloud",
+    icon: "🤣",
+    title: "오늘의 아재개그",
+    desc: "공유각 터지는 개그 모음",
+    tags: ["아재개그", "웃음", "밈"],
+  },
+  {
+    href: "https://mind.funnyfunny.cloud",
+    icon: "🧠",
+    title: "오늘의 마음챙김",
+    desc: "명언 한 줄 힐링",
+    tags: ["마음챙김", "명언", "힐링"],
+  },
+  {
+    href: "https://beat.funnyfunny.cloud",
+    icon: "🥁",
+    title: "드럼 비트 연습기",
+    desc: "메트로놈 + 기본 패턴 연습",
+    tags: ["드럼", "리듬", "연습"],
+  },
+];
+
 export function HomeContent() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
     function openRandomTool() {
       const url = randomTools[Math.floor(Math.random() * randomTools.length)];
@@ -229,6 +437,14 @@ export function HomeContent() {
       },
     })),
   ];
+
+  const filteredTests = allTests.filter((test) => {
+    if (!searchQuery.trim()) return true;
+    const haystack = [test.title, test.desc, ...(test.tags || [])]
+      .join(" ")
+      .toLowerCase();
+    return haystack.includes(searchQuery.trim().toLowerCase());
+  });
 
   return (
     <div className="bg-slate-50 text-gray-800 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
@@ -789,200 +1005,71 @@ export function HomeContent() {
               <span className="text-2xl">🧪</span>
               <h3 className="text-xl font-bold">전체 테스트 · 계산기</h3>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                [
-                  "https://coffee.funnyfunny.cloud",
-                  "☕",
-                  "커피중독 테스트",
-                  "카페인 의존도·부활 횟수 체크",
-                ],
-                [
-                  "https://beauty.funnyfunny.cloud",
-                  "💄",
-                  "꾸밈비 파산 테스트",
-                  "얼마나 태웠을까? 뷰티 지출 체감",
-                ],
-                [
-                  "https://energy.funnyfunny.cloud",
-                  "⚡",
-                  "내 삶의 에너지 배분",
-                  "번아웃 포인트와 리커버리 가이드",
-                ],
-                [
-                  "https://product.funnyfunny.cloud",
-                  "🚀",
-                  "하루 생산성 체크 테스트",
-                  "오늘 내 집중·에너지·의사결정 상태 빠르게 체크",
-                ],
-                [
-                  "https://mental.funnyfunny.cloud",
-                  "🧠",
-                  "하루 정신 체력 지수 테스트",
-                  "오늘의 뇌 에너지·집중력 상태 진단",
-                ],
-                [
-                  "https://human.funnyfunny.cloud",
-                  "🙃",
-                  "나를 힘들게 하는 인간 유형",
-                  "이 테스트는 '나 자신'을 평가하지 않습니다.",
-                ],
-                [
-                  "https://ego.funnyfunny.cloud",
-                  "🧬",
-                  "EGO 테스트",
-                  "성격 테스트 아님, 갈등·스트레스·선택 앞에서 튀어나오는 자아 분석",
-                ],
-                [
-                  "https://money.funnyfunny.cloud",
-                  "🛡️",
-                  "자산 방탄 지수",
-                  "경제 위기 버티기 레벨 측정",
-                ],
-                [
-                  "https://life.funnyfunny.cloud",
-                  "⏰",
-                  "인생 남은 시간 대시보드",
-                  "자유시간, 수면, 커리어 남은 시간",
-                ],
-                [
-                  "https://soul.funnyfunny.cloud",
-                  "🔮",
-                  "SoulPrint",
-                  "출생 정보를 바탕으로 한 독자적인 성향 분석",
-                ],
-                [
-                  "https://senseyear.funnyfunny.cloud",
-                  "🎵",
-                  "나는 몇 년생 감성인가",
-                  "12가지 질문으로 알아보는 나의 감성 테스트",
-                ],
-                [
-                  "https://alcohol.funnyfunny.cloud",
-                  "🍺",
-                  "주량 MBTI",
-                  "술자리 성향 MBTI",
-                ],
-                [
-                  "https://lazy.funnyfunny.cloud",
-                  "😴",
-                  "귀찮음 진단기",
-                  "7가지 요인으로 무기력 원인 찾기",
-                ],
-                [
-                  "https://average.funnyfunny.cloud",
-                  "📊",
-                  "대한민국 평균 vs 나",
-                  "수입·지출·습관이 한국 평균과 얼마나 다른지 비교",
-                ],
-                [
-                  "https://drain.funnyfunny.cloud",
-                  "⚡",
-                  "인생 에너지 누수 진단기",
-                  "지금 나는 어디로 새고 있는가",
-                ],
-                [
-                  "https://maldives.funnyfunny.cloud",
-                  "🏝️",
-                  "몰디브 매치",
-                  "나의 몰디브 여행 성향 찾기",
-                ],
-                [
-                  "https://bit.funnyfunny.cloud",
-                  "💸",
-                  "비트코인 안 산 죄",
-                  "그때 샀다면 지금 얼마?",
-                ],
-                [
-                  "https://house.funnyfunny.cloud",
-                  "🏠",
-                  "집 못 산 죄",
-                  "아… 몇 억 차이일까",
-                ],
-                [
-                  "https://nospend.funnyfunny.cloud",
-                  "💸",
-                  "내가 안 산 것들의 총자산",
-                  "\"그때 그거만 안 샀어도...\"를 숫자로",
-                ],
-                [
-                  "https://edu.funnyfunny.cloud",
-                  "🎓",
-                  "사교육 지옥도 계산기",
-                  "교육비 인생 시뮬레이터",
-                ],
-                [
-                  "https://health.funnyfunny.cloud",
-                  "🩺",
-                  "건강수명 & 노후 준비",
-                  "재미로 보는 건강수명",
-                ],
-                [
-                  "https://cook.funnyfunny.cloud",
-                  "🍱",
-                  "오늘 뭐 먹지?",
-                  "하루 메뉴 랜덤 추천",
-                ],
-                [
-                  "https://anju.funnyfunny.cloud",
-                  "🍢",
-                  "오늘의 안주",
-                  "술안주 랜덤 추천",
-                ],
-                [
-                  "https://cafe.funnyfunny.cloud",
-                  "☕",
-                  "카페 지출 역전 계산",
-                  "30살까지 커피로 태운 돈?",
-                ],
-                [
-                  "https://drink.funnyfunny.cloud",
-                  "🍺",
-                  "그때 마신 술, 지금 얼마?",
-                  "한 달 술값 총액 vs 투자했을 때 금액",
-                ],
-                [
-                  "https://waste.funnyfunny.cloud",
-                  "♻️",
-                  "내 인생 낭비력 지수",
-                  "지금까지 쓴 돈, 낭비력으로 환산",
-                ],
-                [
-                  "https://joke.funnyfunny.cloud",
-                  "🤣",
-                  "오늘의 아재개그",
-                  "공유각 터지는 개그 모음",
-                ],
-                [
-                  "https://mind.funnyfunny.cloud",
-                  "🧠",
-                  "오늘의 마음챙김",
-                  "명언 한 줄 힐링",
-                ],
-                [
-                  "https://beat.funnyfunny.cloud",
-                  "🥁",
-                  "드럼 비트 연습기",
-                  "메트로놈 + 기본 패턴 연습",
-                ],
-              ].map(([href, icon, title, desc]) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 p-4 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <div className="text-xl">{icon}</div>
-                  <div>
-                    <h4 className="font-semibold text-lg leading-snug">
-                      {title}
-                    </h4>
-                    <p className="text-sm text-slate-600">{desc}</p>
-                  </div>
-                </a>
-              ))}
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm text-slate-600">
+                  지금 {allTests.length}개의 테스트가 준비되어 있어요.
+                </p>
+                <p className="text-xs text-slate-400">
+                  키워드로 검색하거나 바로 클릭해보세요.
+                </p>
+              </div>
+              <label className="relative w-full sm:w-80">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+                  🔍
+                </span>
+                <input
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="예: 커피, 투자, 마음챙김"
+                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                />
+              </label>
             </div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
+              <span>
+                {searchQuery.trim()
+                  ? `검색 결과 ${filteredTests.length}개`
+                  : "새 테스트가 추가되면 여기서 바로 확인할 수 있어요"}
+              </span>
+              {searchQuery.trim() && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:text-blue-700 transition"
+                >
+                  초기화
+                </button>
+              )}
+            </div>
+            {filteredTests.length === 0 ? (
+              <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
+                <p>해당 키워드와 맞는 테스트가 없어요.</p>
+                <p className="text-xs text-slate-400 mt-1">
+                  철자나 다른 키워드를 입력해 보세요.
+                </p>
+              </div>
+            ) : (
+              <div className="grid gap-4 sm:grid-cols-2">
+                {filteredTests.map(({ href, icon, title, desc }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 p-4 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                  >
+                    <div className="text-xl">{icon}</div>
+                    <div>
+                      <h4 className="font-semibold text-lg leading-snug">
+                        {title}
+                      </h4>
+                      <p className="text-sm text-slate-600">{desc}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white p-6 sm:p-8 shadow-lg">
