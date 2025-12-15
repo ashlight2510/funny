@@ -323,7 +323,7 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
-                    href="https://soulprint.funnyfunny.cloud"
+                    href="https://soul.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
