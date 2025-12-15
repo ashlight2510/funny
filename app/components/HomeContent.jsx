@@ -19,6 +19,8 @@ const randomTools = [
   "https://bit.funnyfunny.cloud",
   "https://house.funnyfunny.cloud",
   "https://edu.funnyfunny.cloud",
+  "https://nospend.funnyfunny.cloud",
+  "https://waste.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
   "https://cafe.funnyfunny.cloud",
   "https://drink.funnyfunny.cloud",
@@ -506,6 +508,22 @@ export function HomeContent() {
                   >
                     🥁 드럼 비트 연습기
                   </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://nospend.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    💸 내가 안 산 것들의 총자산
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://waste.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ♻️ 내 인생 낭비력 지수
+                  </a>
                 </div>
               </div>
             </div>
@@ -706,6 +724,12 @@ export function HomeContent() {
                   "아… 몇 억 차이일까",
                 ],
                 [
+                  "https://nospend.funnyfunny.cloud",
+                  "💸",
+                  "내가 안 산 것들의 총자산",
+                  "\"그때 그거만 안 샀어도...\"를 숫자로",
+                ],
+                [
                   "https://edu.funnyfunny.cloud",
                   "🎓",
                   "사교육 지옥도 계산기",
@@ -740,6 +764,12 @@ export function HomeContent() {
                   "🍺",
                   "그때 마신 술, 지금 얼마?",
                   "한 달 술값 총액 vs 투자했을 때 금액",
+                ],
+                [
+                  "https://waste.funnyfunny.cloud",
+                  "♻️",
+                  "내 인생 낭비력 지수",
+                  "지금까지 쓴 돈, 낭비력으로 환산",
                 ],
                 [
                   "https://joke.funnyfunny.cloud",
