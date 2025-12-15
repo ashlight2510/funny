@@ -33,6 +33,24 @@ const randomTools = [
   "https://anju.funnyfunny.cloud",
 ];
 
+const seoTopItems = [
+  {
+    name: "비트코인 안 산 죄",
+    url: "https://bit.funnyfunny.cloud",
+    description: "비트코인 투자 기회비용 계산기",
+  },
+  {
+    name: "집 못 산 죄",
+    url: "https://house.funnyfunny.cloud",
+    description: "집값 상승 시뮬레이션 계산기",
+  },
+  {
+    name: "커피중독 테스트",
+    url: "https://coffee.funnyfunny.cloud",
+    description: "카페인 의존도 테스트 및 공유율 상위",
+  },
+];
+
 export function HomeContent() {
   useEffect(() => {
     function openRandomTool() {
@@ -95,6 +113,48 @@ export function HomeContent() {
       ignore_items: true,
     });
   }, []);
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "FunnyFunny Cloud",
+      url: "https://funnyfunny.cloud",
+      description:
+        "재미와 통찰을 주는 테스트, 계산기, 유용한 도구들을 한 곳에 모은 FunnyFunny Cloud",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://funnyfunny.cloud/?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "AshLight",
+        url: "https://ashlight.store",
+        logo: "https://funnyfunny.cloud/favicon.svg",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      url: "https://funnyfunny.cloud",
+      name: "FunnyFunny Cloud",
+      logo: "https://funnyfunny.cloud/favicon.svg",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "인기 테스트",
+      itemListOrder: "http://schema.org/ItemListOrderAscending",
+      itemListElement: seoTopItems.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+        description: item.description,
+      })),
+    },
+  ];
 
   return (
     <div className="bg-slate-50 text-gray-800 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
@@ -883,23 +943,7 @@ export function HomeContent() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: "FunnyFunny Cloud",
-            url: "https://funnyfunny.cloud",
-            description: "세상에서 제일 웃기고 유익한 계산기 포털",
-            potentialAction: {
-              "@type": "SearchAction",
-              target: "https://funnyfunny.cloud/?q={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "AshLight",
-              url: "https://ashlight.store",
-            },
-          }),
+          __html: JSON.stringify(structuredData),
         }}
       />
     </div>

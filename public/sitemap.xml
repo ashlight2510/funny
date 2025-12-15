@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://funnyfunny.cloud/</loc></url>
+  <url><loc>https://funnyfunny.cloud/privacy</loc></url>
+  <url><loc>https://funnyfunny.cloud/terms</loc></url>
+  <url><loc>https://funnyfunny.cloud/copyright</loc></url>
+  <url><loc>https://funnyfunny.cloud/policy</loc></url>
   <url><loc>https://coffee.funnyfunny.cloud/</loc></url>
   <url><loc>https://beauty.funnyfunny.cloud/</loc></url>
   <url><loc>https://money.funnyfunny.cloud/</loc></url>
@@ -23,8 +27,4 @@
   <url><loc>https://lazy.funnyfunny.cloud/</loc></url>
   <url><loc>https://drain.funnyfunny.cloud/</loc></url>
   <url><loc>https://cook.funnyfunny.cloud/</loc></url>
-  <url><loc>https://funnyfunny.cloud/privacy.html</loc></url>
-  <url><loc>https://funnyfunny.cloud/terms.html</loc></url>
-  <url><loc>https://funnyfunny.cloud/copyright.html</loc></url>
-  <url><loc>https://funnyfunny.cloud/policy.html</loc></url>
 </urlset>
