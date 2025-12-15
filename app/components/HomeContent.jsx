@@ -31,6 +31,7 @@ const randomTools = [
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
   "https://anju.funnyfunny.cloud",
+  "https://product.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -57,6 +58,12 @@ const seoApplications = [
     url: "https://waste.funnyfunny.cloud/",
     description: "지금까지 쓴 돈과 시간의 낭비도를 숫자로 확인하는 테스트",
     category: "LifestyleApplication",
+  },
+  {
+    name: "하루 생산성 체크 테스트",
+    url: "https://product.funnyfunny.cloud/",
+    description: "오늘 내 집중/에너지/의사결정 상태를 빠르게 확인하는 테스트",
+    category: "ProductivityApplication",
   },
   {
     name: "내가 안 산 것들의 총자산",
@@ -430,6 +437,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://product.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🚀 하루 생산성 체크 테스트
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://lazy.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -763,6 +778,12 @@ export function HomeContent() {
                   "⚡",
                   "내 삶의 에너지 배분",
                   "번아웃 포인트와 리커버리 가이드",
+                ],
+                [
+                  "https://product.funnyfunny.cloud",
+                  "🚀",
+                  "하루 생산성 체크 테스트",
+                  "오늘 내 집중·에너지·의사결정 상태 빠르게 체크",
                 ],
                 [
                   "https://mental.funnyfunny.cloud",

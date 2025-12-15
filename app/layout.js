@@ -11,6 +11,7 @@ export const metadata = {
   keywords: [
     "FunnyFunny",
     "테스트",
+    "생산성 테스트",
     "계산기",
     "재테크",
     "라이프스타일",

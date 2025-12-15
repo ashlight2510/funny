@@ -5,6 +5,7 @@ export const metadata = {
   description:
     "하루를 더 똑똑하게 만드는 서비스 FunnyFunny Cloud. 커피 중독, 꾸밈비, 집값, 비트코인, 건강수명, 사교육 등 모든 테스트 모음.",
   keywords: [
+    "하루 생산성 체크 테스트",
     "커피 중독 테스트",
     "꾸밈비 파산",
     "집값 계산기",
