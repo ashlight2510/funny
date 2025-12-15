@@ -51,6 +51,45 @@ const seoTopItems = [
   },
 ];
 
+const seoApplications = [
+  {
+    name: "내 인생 낭비력 지수",
+    url: "https://waste.funnyfunny.cloud/",
+    description: "지금까지 쓴 돈과 시간의 낭비도를 숫자로 확인하는 테스트",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "내가 안 산 것들의 총자산",
+    url: "https://nospend.funnyfunny.cloud/",
+    description: "안 샀다면 얼마를 모았을지 계산하는 총자산 시뮬레이터",
+    category: "FinanceApplication",
+  },
+  {
+    name: "비트코인 안 산 죄",
+    url: "https://bit.funnyfunny.cloud/",
+    description: "지난 비트코인 미구매분의 기회비용을 계산하는 도구",
+    category: "FinanceApplication",
+  },
+  {
+    name: "집 못 산 죄",
+    url: "https://house.funnyfunny.cloud/",
+    description: "집값 상승 시뮬레이션으로 놓친 금액을 계산",
+    category: "FinanceApplication",
+  },
+  {
+    name: "커피중독 테스트",
+    url: "https://coffee.funnyfunny.cloud/",
+    description: "카페인 의존도를 체크하고 공유할 수 있는 밈 테스트",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "꾸밈비 파산 테스트",
+    url: "https://beauty.funnyfunny.cloud/",
+    description: "뷰티 지출이 재정에 미치는 영향을 체감형으로 계산",
+    category: "LifestyleApplication",
+  },
+];
+
 export function HomeContent() {
   useEffect(() => {
     function openRandomTool() {
@@ -154,6 +193,20 @@ export function HomeContent() {
         description: item.description,
       })),
     },
+    ...seoApplications.map((app) => ({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: app.name,
+      url: app.url,
+      applicationCategory: app.category,
+      operatingSystem: "All",
+      description: app.description,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "KRW",
+      },
+    })),
   ];
 
   return (
