@@ -33,6 +33,7 @@ const randomTools = [
   "https://anju.funnyfunny.cloud",
   "https://product.funnyfunny.cloud",
   "https://human.funnyfunny.cloud",
+  "https://average.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -58,6 +59,12 @@ const seoApplications = [
     name: "내 인생 낭비력 지수",
     url: "https://waste.funnyfunny.cloud/",
     description: "지금까지 쓴 돈과 시간의 낭비도를 숫자로 확인하는 테스트",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "대한민국 평균 vs 나",
+    url: "https://average.funnyfunny.cloud/",
+    description: "내 지표가 한국 평균과 얼마나 다른지 확인하는 비교 테스터",
     category: "LifestyleApplication",
   },
   {
@@ -543,6 +550,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://average.funnyfunny.cloud"
+                    target="_blank"
+                  rel="noopener noreferrer"
+                  >
+                    📊 대한민국 평균 vs 나
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://cafe.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -853,6 +868,12 @@ export function HomeContent() {
                   "😴",
                   "귀찮음 진단기",
                   "7가지 요인으로 무기력 원인 찾기",
+                ],
+                [
+                  "https://average.funnyfunny.cloud",
+                  "📊",
+                  "대한민국 평균 vs 나",
+                  "수입·지출·습관이 한국 평균과 얼마나 다른지 비교",
                 ],
                 [
                   "https://drain.funnyfunny.cloud",

@@ -49,27 +49,28 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 
 새 서비스를 추가하거나 변경 시 `sitemap.xml`의 `<lastmod>` 날짜를 업데이트하세요.
 
-## 📋 포함된 서비스 (19개)
+## 📋 포함된 서비스 (20개)
 
 1. ☕ 커피 중독도 테스트 (`coffee.funnyfunny.cloud`)
 2. 💄 꾸밈비 파산 테스트 (`beauty.funnyfunny.cloud`)
 3. ⚡ 내 삶의 에너지 배분 테스트 (`energy.funnyfunny.cloud`)
 4. 🛡️ 내 자산 방탄 지수 테스트 (`money.funnyfunny.cloud`)
 5. 💸 비트코인 안 산 죄 계산기 (`bit.funnyfunny.cloud`)
-6. 🏠 집값 못 산 죄 계산기 (`house.funnyfunny.cloud`)
-7. ⏰ 인생 남은 시간 대시보드 (`life.funnyfunny.cloud`)
-8. 🎓 우리 집 사교육 지옥도 계산기 (`edu.funnyfunny.cloud`)
-9. 🩺 건강수명 예측 & 노후 준비 대시보드 (`health.funnyfunny.cloud`)
-10. 🤣 오늘의 아재개그 (`joke.funnyfunny.cloud`)
-11. 🧠 오늘의 마음챙김 (`mind.funnyfunny.cloud`)
-12. 🧠 하루 정신 체력 지수 테스트 (`mental.funnyfunny.cloud`)
-13. ☕ 카페 지출 총자산 역전 계산기 (`cafe.funnyfunny.cloud`)
-14. 🥁 드럼 비트 연습기 (`beat.funnyfunny.cloud`)
-15. 📅 SenseYear (준비중) (`senseyear.funnyfunny.cloud`)
-16. 🎨 EmojiCon Studio (`emojicon.site`) — 이모지 아이콘 스튜디오
-17. 🍺 그때 마신 술, 지금 얼마? (`drink.funnyfunny.cloud`)
-18. 🍱 오늘 뭐 먹지? (`cook.funnyfunny.cloud`)
-19. 🔮 SoulPrint (`soul.funnyfunny.cloud`) — 출생 정보를 바탕으로 한 독자적인 성향 분석
+6. 2️⃣ 대한민국 평균 vs 나 (`average.funnyfunny.cloud`)
+7. 🏠 집값 못 산 죄 계산기 (`house.funnyfunny.cloud`)
+8. ⏰ 인생 남은 시간 대시보드 (`life.funnyfunny.cloud`)
+9. 🎓 우리 집 사교육 지옥도 계산기 (`edu.funnyfunny.cloud`)
+10. 🩺 건강수명 예측 & 노후 준비 대시보드 (`health.funnyfunny.cloud`)
+11. 🤣 오늘의 아재개그 (`joke.funnyfunny.cloud`)
+12. 🧠 오늘의 마음챙김 (`mind.funnyfunny.cloud`)
+13. 🧠 하루 정신 체력 지수 테스트 (`mental.funnyfunny.cloud`)
+14. ☕ 카페 지출 총자산 역전 계산기 (`cafe.funnyfunny.cloud`)
+15. 🥁 드럼 비트 연습기 (`beat.funnyfunny.cloud`)
+16. 📅 SenseYear (준비중) (`senseyear.funnyfunny.cloud`)
+17. 🎨 EmojiCon Studio (`emojicon.site`) — 이모지 아이콘 스튜디오
+18. 🍺 그때 마신 술, 지금 얼마? (`drink.funnyfunny.cloud`)
+19. 🍱 오늘 뭐 먹지? (`cook.funnyfunny.cloud`)
+20. 🔮 SoulPrint (`soul.funnyfunny.cloud`) — 출생 정보를 바탕으로 한 독자적인 성향 분석
 
 ## 🎨 디자인 특징
 

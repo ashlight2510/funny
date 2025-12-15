@@ -20,6 +20,7 @@ export const metadata = {
     "나를 힘들게 하는 인간 유형 테스트",
     "SoulPrint",
     "출생 정보 성향 분석",
+    "대한민국 평균 vs 나",
   ],
 };
 
