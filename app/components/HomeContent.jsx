@@ -34,6 +34,7 @@ const randomTools = [
   "https://product.funnyfunny.cloud",
   "https://human.funnyfunny.cloud",
   "https://average.funnyfunny.cloud",
+  "https://pick.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -43,9 +44,10 @@ const seoTopItems = [
     description: "비트코인 투자 기회비용 계산기",
   },
   {
-    name: "집 못 산 죄",
-    url: "https://house.funnyfunny.cloud",
-    description: "집값 상승 시뮬레이션 계산기",
+    name: "오늘 뭐 볼까? (OTT 픽)",
+    url: "https://pick.funnyfunny.cloud",
+    description:
+      "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마 픽, 한국 OTT 전용",
   },
   {
     name: "커피중독 테스트",
@@ -78,6 +80,13 @@ const seoApplications = [
     url: "https://nospend.funnyfunny.cloud/",
     description: "안 샀다면 얼마를 모았을지 계산하는 총자산 시뮬레이터",
     category: "FinanceApplication",
+  },
+  {
+    name: "오늘 뭐 볼까? (OTT 픽)",
+    url: "https://pick.funnyfunny.cloud/",
+    description:
+      "검색 없이 버튼 몇 번으로 한국 OTT 영화·드라마를 바로 추천받는 픽",
+    category: "EntertainmentApplication",
   },
   {
     name: "비트코인 안 산 죄",
@@ -289,6 +298,13 @@ const allTests = [
     title: "오늘 뭐 먹지?",
     desc: "하루 메뉴 랜덤 추천",
     tags: ["음식", "추천", "랜덤"],
+  },
+  {
+    href: "https://pick.funnyfunny.cloud",
+    icon: "🍿",
+    title: "오늘 뭐 볼까? (OTT 픽)",
+    desc: "검색 없이 바로 영화·드라마 추천",
+    tags: ["영화", "드라마", "OTT", "추천"],
   },
   {
     href: "https://anju.funnyfunny.cloud",
@@ -550,20 +566,22 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://house.funnyfunny.cloud"
+                href="https://pick.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🏠</span>
+                  <span className="text-xl">🍿</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    현실 점검
+                    실패 없는 픽
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">집 못 산 죄</h3>
+                <h3 className="font-bold text-lg leading-snug">
+                  오늘 뭐 볼까? (OTT)
+                </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  놓친 집값, 몇 억 차이일까
+                  검색 없이 바로 영화·드라마 추천
                 </p>
               </a>
               <a
@@ -962,6 +980,12 @@ export function HomeContent() {
                   "🌤️ 지금날씨",
                   "내 근처와 주변 날씨 조회",
                   "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
+                ],
+                [
+                  "https://pick.funnyfunny.cloud",
+                  "🍿 오늘 뭐 볼까? (OTT 픽)",
+                  "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마",
+                  "한국 OTT만 모아 실패 없는 선택을 보여주는 픽 서비스",
                 ],
                 [
                   "https://emojicon.site",
