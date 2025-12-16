@@ -106,8 +106,32 @@ const seoApplications = [
   {
     name: "나를 힘들게 하는 인간 유형 테스트",
     url: "https://human.funnyfunny.cloud/",
-    description: "관계를 힘들게 만드는 사람 유형을 알아보는 테스트 (나 자신 평가 아님)",
+    description:
+      "관계를 힘들게 만드는 사람 유형을 알아보는 테스트 (나 자신 평가 아님)",
     category: "LifestyleApplication",
+  },
+];
+
+const seoFaq = [
+  {
+    question: "FunnyFunny Cloud는 어떤 테스트를 제공하나요?",
+    answer:
+      "커피중독, 투자 기회비용, 생산성, 건강 체크, 아재개그 등 라이프스타일·재테크·마음챙김을 아우르는 가벼운 테스트와 계산기를 제공합니다.",
+  },
+  {
+    question: "무료로 사용할 수 있나요?",
+    answer:
+      "모든 테스트와 계산기는 로그인 없이 무료로 이용 가능하며 공유 링크도 제한 없이 복사해 사용할 수 있습니다.",
+  },
+  {
+    question: "모바일에서도 편하게 쓸 수 있나요?",
+    answer:
+      "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있고, 랜덤 버튼으로 빠르게 테스트를 시작할 수 있습니다.",
+  },
+  {
+    question: "새로운 테스트가 업데이트되나요?",
+    answer:
+      "정기적으로 인기 주제와 사회 이슈에 맞춘 테스트를 추가하며, 전체 리스트와 검색에서 바로 확인할 수 있습니다.",
   },
 ];
 
@@ -436,6 +460,18 @@ export function HomeContent() {
         priceCurrency: "KRW",
       },
     })),
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: seoFaq.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
   ];
 
   const filteredTests = allTests.filter((test) => {
@@ -768,7 +804,7 @@ export function HomeContent() {
                     className="block hover:text-blue-600"
                     href="https://average.funnyfunny.cloud"
                     target="_blank"
-                  rel="noopener noreferrer"
+                    rel="noopener noreferrer"
                   >
                     📊 대한민국 평균 vs 나
                   </a>
@@ -1111,6 +1147,38 @@ export function HomeContent() {
                   커피 중독
                 </a>
               </div>
+            </div>
+          </div>
+
+          <div
+            id="faq"
+            className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 sm:p-8 space-y-4"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">❓</span>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-blue-600">
+                  FAQ
+                </p>
+                <h3 className="text-xl font-bold">자주 묻는 질문</h3>
+              </div>
+            </div>
+            <div className="divide-y divide-slate-100">
+              {seoFaq.map((item) => (
+                <details key={item.question} className="py-3 group">
+                  <summary className="flex items-center justify-between cursor-pointer">
+                    <span className="text-sm font-semibold text-slate-800 group-hover:text-blue-700">
+                      {item.question}
+                    </span>
+                    <span className="text-slate-400 text-lg group-open:rotate-45 transition">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
