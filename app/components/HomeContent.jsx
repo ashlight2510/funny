@@ -1084,7 +1084,7 @@ export function HomeContent() {
           <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧪</span>
-              <h3 className="text-xl font-bold">전체 테스트 · 계산기</h3>
+              <h3 className="text-xl font-bold">전체 서비스</h3>
             </div>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
