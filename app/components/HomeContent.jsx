@@ -131,28 +131,28 @@ const seoApplications = [
 
 const seoFaq = [
   {
-    question: "FunnyFunny Cloud는 어떤 테스트를 제공하나요?",
+    question: "FunnyFunny Cloud는 어떤 서비스를 제공하나요?",
     answer:
-      "커피중독, 투자 기회비용, 생산성, 건강 체크, 아재개그 등 라이프스타일·재테크·마음챙김을 아우르는 가벼운 테스트와 계산기를 제공합니다.",
+      "커피중독, 투자 기회비용, 생산성, 건강 체크, 아재개그 등 라이프스타일·재테크·마음챙김을 아우르는 가벼운 서비스를 제공합니다.",
   },
   {
     question: "무료로 사용할 수 있나요?",
     answer:
-      "모든 테스트와 계산기는 로그인 없이 무료로 이용 가능하며 공유 링크도 제한 없이 복사해 사용할 수 있습니다.",
+      "모든 서비스는 로그인 없이 무료로 이용 가능하며 공유 링크도 제한 없이 복사해 사용할 수 있습니다.",
   },
   {
     question: "모바일에서도 편하게 쓸 수 있나요?",
     answer:
-      "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있고, 랜덤 버튼으로 빠르게 테스트를 시작할 수 있습니다.",
+      "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있고, 랜덤 버튼으로 빠르게 서비스를 시작할 수 있습니다.",
   },
   {
-    question: "새로운 테스트가 업데이트되나요?",
+    question: "새로운 서비스가 업데이트되나요?",
     answer:
-      "정기적으로 인기 주제와 사회 이슈에 맞춘 테스트를 추가하며, 전체 리스트와 검색에서 바로 확인할 수 있습니다.",
+      "정기적으로 인기 주제와 사회 이슈에 맞춘 서비스를 추가하며, 전체 리스트와 검색에서 바로 확인할 수 있습니다.",
   },
 ];
 
-const allTests = [
+const allServices = [
   {
     href: "https://coffee.funnyfunny.cloud",
     icon: "☕",
@@ -369,6 +369,48 @@ const allTests = [
     title: "Simple Audio Editor",
     desc: "브라우저에서 바로 사용하는 오디오 편집 도구",
     tags: ["오디오", "편집", "도구"],
+  },
+  {
+    href: "https://time.ashlight.store",
+    icon: "⏰",
+    title: "예매는타이밍",
+    desc: "정확한 서버시간 조회, 예매 도우미",
+    tags: ["시간", "서버시간", "예매"],
+  },
+  {
+    href: "https://news.ashlight.store",
+    icon: "📰",
+    title: "오늘의 IT 뉴스",
+    desc: "국내 및 해외 IT 뉴스를 빠르게 요약",
+    tags: ["뉴스", "IT", "요약"],
+  },
+  {
+    href: "https://weather.ashlight.store",
+    icon: "🌤️",
+    title: "지금날씨",
+    desc: "내 근처와 주변 날씨 조회",
+    tags: ["날씨", "미세먼지", "자외선"],
+  },
+  {
+    href: "https://emojicon.site",
+    icon: "🎨",
+    title: "EmojiCon Studio",
+    desc: "이모지로 아이콘/파비콘을 한 번에 생성",
+    tags: ["아이콘", "파비콘", "이모지"],
+  },
+  {
+    href: "https://snaptrail.ashlight.store",
+    icon: "📍",
+    title: "SnapTrail",
+    desc: "사진을 자동 그룹화한 추억 타임라인 생성기",
+    tags: ["사진", "타임라인", "추억"],
+  },
+  {
+    href: "https://day.ashlight.store",
+    icon: "📅",
+    title: "D-day 계산기",
+    desc: "날짜 계산, D-Day, N일 후, 기념일, 위젯",
+    tags: ["날짜", "D-day", "기념일"],
   },
 ];
 
@@ -1089,7 +1131,7 @@ export function HomeContent() {
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm text-slate-600">
-                  지금 {allTests.length}개의 테스트가 준비되어 있어요.
+                  지금 {allServices.length}개의 서비스가 준비되어 있어요.
                 </p>
                 <p className="text-xs text-slate-400">
                   키워드로 검색하거나 바로 클릭해보세요.
@@ -1110,8 +1152,8 @@ export function HomeContent() {
             <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
               <span>
                 {searchQuery.trim()
-                  ? `검색 결과 ${filteredTests.length}개`
-                  : "새 테스트가 추가되면 여기서 바로 확인할 수 있어요"}
+                  ? `검색 결과 ${filteredServices.length}개`
+                  : "새 서비스가 추가되면 여기서 바로 확인할 수 있어요"}
               </span>
               {searchQuery.trim() && (
                 <button
