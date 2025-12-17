@@ -35,6 +35,7 @@ const randomTools = [
   "https://human.funnyfunny.cloud",
   "https://average.funnyfunny.cloud",
   "https://pick.funnyfunny.cloud",
+  "https://audio.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -50,9 +51,9 @@ const seoTopItems = [
       "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마 픽, 한국 OTT 전용",
   },
   {
-    name: "커피중독 테스트",
-    url: "https://coffee.funnyfunny.cloud",
-    description: "카페인 의존도 테스트 및 공유율 상위",
+    name: "Simple Audio Editor",
+    url: "https://audio.funnyfunny.cloud",
+    description: "브라우저에서 바로 사용하는 오디오 편집 도구",
   },
 ];
 
@@ -118,6 +119,13 @@ const seoApplications = [
     description:
       "관계를 힘들게 만드는 사람 유형을 알아보는 테스트 (나 자신 평가 아님)",
     category: "LifestyleApplication",
+  },
+  {
+    name: "Simple Audio Editor",
+    url: "https://audio.funnyfunny.cloud/",
+    description:
+      "브라우저에서 바로 사용하는 오디오 편집 도구 — 설치 없이 트림, 병합, 내보내기",
+    category: "UtilityApplication",
   },
 ];
 
@@ -355,6 +363,13 @@ const allTests = [
     desc: "메트로놈 + 기본 패턴 연습",
     tags: ["드럼", "리듬", "연습"],
   },
+  {
+    href: "https://audio.funnyfunny.cloud",
+    icon: "🎵",
+    title: "Simple Audio Editor",
+    desc: "브라우저에서 바로 사용하는 오디오 편집 도구",
+    tags: ["오디오", "편집", "도구"],
+  },
 ];
 
 export function HomeContent() {
@@ -585,22 +600,22 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://coffee.funnyfunny.cloud"
+                href="https://audio.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">☕</span>
+                  <span className="text-xl">🎵</span>
                   <span className="text-xs font-semibold text-amber-600">
                     최근 인기
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  커피중독 테스트
+                  Simple Audio Editor
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  카페인 재정의 — 공유율 최고
+                  브라우저에서 바로 사용하는 오디오 편집 도구
                 </p>
               </a>
             </div>
@@ -963,6 +978,12 @@ export function HomeContent() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
+                [
+                  "https://audio.funnyfunny.cloud",
+                  "🎵 Simple Audio Editor",
+                  "브라우저에서 바로 사용하는 오디오 편집 도구",
+                  "설치 없이 트림, 병합, 내보내기 — 100% 클라이언트 사이드",
+                ],
                 [
                   "https://time.ashlight.store",
                   "⏰ 예매는타이밍",
