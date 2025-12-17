@@ -55,6 +55,21 @@ const seoTopItems = [
     url: "https://audio.funnyfunny.cloud",
     description: "브라우저에서 바로 사용하는 오디오 편집 도구",
   },
+  {
+    name: "SnapTrail",
+    url: "https://snaptrail.ashlight.store",
+    description: "사진을 자동 그룹화한 추억 타임라인 생성기",
+  },
+  {
+    name: "오늘의 아재개그",
+    url: "https://joke.funnyfunny.cloud",
+    description: "공유각 터지는 개그 모음",
+  },
+  {
+    name: "SoulPrint",
+    url: "https://soul.funnyfunny.cloud",
+    description: "출생 정보를 바탕으로 한 독자적인 성향 분석",
+  },
 ];
 
 const seoApplications = [
@@ -600,7 +615,7 @@ export function HomeContent() {
               </div>
             </div>
             <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-blue-100 mt-16">
-              Top 3
+              Top 6
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
@@ -658,6 +673,59 @@ export function HomeContent() {
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   브라우저에서 바로 사용하는 오디오 편집 도구
+                </p>
+              </a>
+              <a
+                href="https://snaptrail.ashlight.store"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">📍</span>
+                  <span className="text-xs font-semibold text-purple-600">
+                    추억 정리
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">SnapTrail</h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  사진을 자동 그룹화한 타임라인
+                </p>
+              </a>
+              <a
+                href="https://joke.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🤣</span>
+                  <span className="text-xs font-semibold text-emerald-600">
+                    1분 힐링
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  오늘의 아재개그
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  공유각 터지는 개그 모음
+                </p>
+              </a>
+              <a
+                href="https://soul.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🔮</span>
+                  <span className="text-xs font-semibold text-blue-600">
+                    성향 분석
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">SoulPrint</h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  출생 정보 기반 성향 분석
                 </p>
               </a>
             </div>
