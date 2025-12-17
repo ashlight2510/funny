@@ -547,7 +547,7 @@ export function HomeContent() {
     },
   ];
 
-  const filteredTests = allTests.filter((test) => {
+  const filteredServices = allServices.filter((test) => {
     if (!searchQuery.trim()) return true;
     const haystack = [test.title, test.desc, ...(test.tags || [])]
       .join(" ")
@@ -1165,7 +1165,7 @@ export function HomeContent() {
                 </button>
               )}
             </div>
-            {filteredTests.length === 0 ? (
+            {filteredServices.length === 0 ? (
               <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
                 <p>해당 키워드와 맞는 테스트가 없어요.</p>
                 <p className="text-xs text-slate-400 mt-1">
@@ -1174,7 +1174,7 @@ export function HomeContent() {
               </div>
             ) : (
               <div className="grid gap-4 sm:grid-cols-2">
-                {filteredTests.map(({ href, icon, title, desc }) => (
+                {filteredServices.map(({ href, icon, title, desc }) => (
                   <a
                     key={href}
                     href={href}
