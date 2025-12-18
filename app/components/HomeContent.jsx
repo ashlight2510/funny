@@ -1009,6 +1009,39 @@ export function HomeContent() {
               ></div>
             </div>
           </div>
+          <div className="mt-4">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-sm px-2 py-1 rounded-full bg-slate-900 text-white font-semibold">
+                Guide
+              </span>
+              <span className="text-sm text-slate-600">
+                집 못 산 죄 가이드로 실전 팁 확인하기
+              </span>
+            </div>
+            <a
+              href="/guide/missed-house-opportunity"
+              className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+            >
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🏠</div>
+                <div className="flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    New Guide
+                  </p>
+                  <h3 className="text-lg font-bold text-slate-900 leading-snug mt-1">
+                    집 못 산 죄 계산기 가이드
+                  </h3>
+                  <p className="text-sm text-slate-600 mt-1">
+                    집값 상승 놓친 기회비용, 대출 부담, 앞으로의 계획까지 한눈에 정리
+                  </p>
+                  <div className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-700">
+                    <span>가이드 읽기</span>
+                    <span>→</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </section>
 
         <section
