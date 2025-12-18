@@ -39,6 +39,7 @@ const randomTools = [
   "https://run.funnyfunny.cloud",
   "https://charm.funnyfunny.cloud",
   "http://downy.funnyfunny.cloud",
+  "https://xmas.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -64,9 +65,9 @@ const seoTopItems = [
     description: "사진을 자동 그룹화한 추억 타임라인 생성기",
   },
   {
-    name: "오늘의 아재개그",
-    url: "https://joke.funnyfunny.cloud",
-    description: "공유각 터지는 개그 모음",
+    name: "크리스마스 선물, 따뜻함 리포트",
+    url: "https://xmas.funnyfunny.cloud",
+    description: "🎯 선물이 따뜻하게 도착할 확률 리포트",
   },
   {
     name: "SoulPrint",
@@ -201,6 +202,12 @@ const seoApplications = [
     url: "http://downy.funnyfunny.cloud/",
     description: "좌우 이동으로 계단을 밟고, 떨어지면 끝! (계단 1칸당 1점)",
     category: "GameApplication",
+  },
+  {
+    name: "크리스마스 선물, 따뜻함 리포트",
+    url: "https://xmas.funnyfunny.cloud/",
+    description: "🎯 선물이 따뜻하게 도착할 확률을 확인하는 리포트",
+    category: "LifestyleApplication",
   },
 ];
 
@@ -508,6 +515,13 @@ const allServices = [
     desc: "좌우 이동으로 계단을 밟고, 떨어지면 끝!",
     tags: ["게임", "아케이드", "계단"],
   },
+  {
+    href: "https://xmas.funnyfunny.cloud/",
+    icon: "🎁",
+    title: "크리스마스 선물, 따뜻함 리포트",
+    desc: "🎯 선물이 따뜻하게 도착할 확률",
+    tags: ["크리스마스", "선물", "확률", "리포트"],
+  },
 ];
 
 export function HomeContent() {
@@ -809,25 +823,25 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://joke.funnyfunny.cloud"
+                href="https://xmas.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="오늘의 아재개그 - 공유각 터지는 개그 모음"
-                data-amp-service="오늘의 아재개그"
+                aria-label="크리스마스 선물, 따뜻함 리포트 - 선물이 따뜻하게 도착할 확률"
+                data-amp-service="크리스마스 선물, 따뜻함 리포트"
                 data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🤣</span>
+                  <span className="text-xl">🎁</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    1분 힐링
+                    따뜻함 리포트
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  오늘의 아재개그
+                  크리스마스 선물
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  공유각 터지는 개그 모음
+                  🎯 따뜻하게 도착할 확률
                 </p>
               </a>
               <a
@@ -877,6 +891,45 @@ export function HomeContent() {
                   유용할 수 있는 서비스들
                 </p>
               </a>
+            </div>
+
+            <div className="mt-10">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+                Guides
+              </div>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {seoGuides.map((guide) => (
+                  <a
+                    key={guide.slug}
+                    href={`/guide/${guide.slug}`}
+                    aria-label={`${guide.title} - ${guide.desc}`}
+                    data-amp-service={guide.title}
+                    data-amp-section="guides"
+                    className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
+                  >
+                    <div className="text-xl">{guide.emoji}</div>
+                    <div>
+                      <h3 className="font-semibold text-base text-slate-900">
+                        {guide.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 mt-1">
+                        {guide.desc}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <div className="mt-3">
+                <a
+                  href="/guide"
+                  aria-label="가이드 모두 보기"
+                  data-amp-service="가이드 모두 보기"
+                  data-amp-section="guides"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+                >
+                  가이드 모두 보기
+                </a>
+              </div>
             </div>
 
             <div className="mt-10">
@@ -975,38 +1028,6 @@ export function HomeContent() {
                 data-widget_id-pc="6Xgdpy6o"
                 data-widget_id-mo="37Jam9xo"
               ></div>
-            </div>
-          </div>
-          <div className="mt-4">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              Guides
-            </div>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {seoGuides.map((guide) => (
-                <a
-                  key={guide.slug}
-                  href={`/guide/${guide.slug}`}
-                  className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <div className="text-xl">{guide.emoji}</div>
-                  <div>
-                    <h3 className="font-semibold text-base text-slate-900">
-                      {guide.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-1">
-                      {guide.desc}
-                    </p>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div className="mt-3">
-              <a
-                href="/guide"
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
-              >
-                가이드 모두 보기
-              </a>
             </div>
           </div>
         </section>
