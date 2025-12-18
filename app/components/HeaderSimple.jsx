@@ -9,6 +9,9 @@ export function HeaderSimple() {
           <a href="/" className="hover:text-blue-600">
             홈
           </a>
+          <a href="/guide" className="hover:text-blue-600">
+            가이드
+          </a>
           <a
             href="https://funnyfunny.dothome.co.kr/"
             target="_blank"

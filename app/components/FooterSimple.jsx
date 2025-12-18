@@ -3,6 +3,10 @@ export function FooterSimple() {
     <footer className="bg-white border-t mt-20 py-8">
       <div className="max-w-5xl mx-auto px-4 text-center text-xs text-gray-400">
         <div className="space-x-4 mb-4">
+          <a href="/guide" className="hover:text-gray-600">
+            가이드
+          </a>
+          <span>|</span>
           <a href="/privacy" className="hover:text-gray-600">
             개인정보처리방침
           </a>

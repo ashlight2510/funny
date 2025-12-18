@@ -169,7 +169,7 @@ const seoFaq = [
   {
     question: "FunnyFunny Cloud는 어떤 서비스를 제공하나요?",
     answer:
-      "FunnyFunny Cloud는 일상의 소비, 시간, 에너지, 선택을 숫자와 테스트로 시각화하는 정보 서비스입니다.",
+      "funnyfunny.cloud는 일상의 소비, 시간, 습관과 같은 데이터를 테스트와 계산기를 통해 쉽게 점검하고 비교해 볼 수 있는 정보 서비스입니다.\n\n본 사이트의 모든 서비스는 사용자가 자신의 생활 패턴을 이해하고 현실적인 기준과 비교해 볼 수 있도록 직접 기획·개발되었습니다.\n\n제공되는 결과와 수치는 참고용 정보 제공을 목적으로 하며, 일상 속 선택과 관리에 도움을 주기 위한 자료입니다. 본 사이트는 Google 정책을 준수하여 안전하고 투명하게 운영됩니다.",
   },
   {
     question: "무료로 사용할 수 있나요?",
@@ -564,7 +564,7 @@ export function HomeContent() {
       name: "FunnyFunny Cloud",
       url: "https://funnyfunny.cloud",
       description:
-        "일상의 소비, 시간, 에너지, 선택을 숫자와 테스트로 시각화하는 정보 서비스 FunnyFunny Cloud",
+        "funnyfunny.cloud는 일상의 소비, 시간, 습관과 같은 데이터를 테스트와 계산기를 통해 쉽게 점검하고 비교해 볼 수 있는 정보 서비스입니다. 제공되는 결과와 수치는 참고용 정보 제공을 목적으로 하며, 일상 속 선택과 관리에 도움을 주기 위한 자료입니다.",
       potentialAction: {
         "@type": "SearchAction",
         target: "https://funnyfunny.cloud/?q={search_term_string}",
