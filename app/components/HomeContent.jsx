@@ -169,7 +169,7 @@ const seoFaq = [
   {
     question: "FunnyFunny Cloud는 어떤 서비스를 제공하나요?",
     answer:
-      "커피중독, 투자 기회비용, 생산성, 건강 체크, 아재개그 등 라이프스타일·재테크·마음챙김을 아우르는 가벼운 서비스를 제공합니다.",
+      "FunnyFunny Cloud는 일상의 소비, 시간, 에너지, 선택을 숫자와 테스트로 시각화하는 정보 서비스입니다.",
   },
   {
     question: "무료로 사용할 수 있나요?",
@@ -475,6 +475,27 @@ export function HomeContent() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    const handler = (e) => {
+      const a = e.target?.closest?.("a[data-amp-service]");
+      if (!a) return;
+      try {
+        const href = a.getAttribute("href") || "";
+        const service = a.getAttribute("data-amp-service") || "";
+        const section = a.getAttribute("data-amp-section") || "";
+        window.amplitude?.track?.("service_click", {
+          service,
+          section,
+          href,
+        });
+      } catch (_) {
+        // noop
+      }
+    };
+    document.addEventListener("click", handler, true);
+    return () => document.removeEventListener("click", handler, true);
+  }, []);
+
+  useEffect(() => {
     function openRandomTool() {
       const url = randomTools[Math.floor(Math.random() * randomTools.length)];
       window.open(url, "_blank");
@@ -543,7 +564,7 @@ export function HomeContent() {
       name: "FunnyFunny Cloud",
       url: "https://funnyfunny.cloud",
       description:
-        "재미와 통찰을 주는 테스트, 계산기, 유용한 도구들을 한 곳에 모은 FunnyFunny Cloud",
+        "일상의 소비, 시간, 에너지, 선택을 숫자와 테스트로 시각화하는 정보 서비스 FunnyFunny Cloud",
       potentialAction: {
         "@type": "SearchAction",
         target: "https://funnyfunny.cloud/?q={search_term_string}",
@@ -664,6 +685,9 @@ export function HomeContent() {
                 href="https://bit.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="비트코인 안 산 죄 - 그때 샀다면 지금 얼마?"
+                data-amp-service="비트코인 안 산 죄"
+                data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -683,6 +707,9 @@ export function HomeContent() {
                 href="https://pick.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="오늘 뭐 볼까? (OTT) - 검색 없이 바로 영화·드라마 추천"
+                data-amp-service="오늘 뭐 볼까? (OTT)"
+                data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -702,6 +729,9 @@ export function HomeContent() {
                 href="https://audio.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Simple Audio Editor - 브라우저에서 바로 사용하는 오디오 편집 도구"
+                data-amp-service="Simple Audio Editor"
+                data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -721,6 +751,9 @@ export function HomeContent() {
                 href="https://snaptrail.ashlight.store"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="SnapTrail - 사진을 자동 그룹화한 타임라인"
+                data-amp-service="SnapTrail"
+                data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -738,6 +771,9 @@ export function HomeContent() {
                 href="https://joke.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="오늘의 아재개그 - 공유각 터지는 개그 모음"
+                data-amp-service="오늘의 아재개그"
+                data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -757,6 +793,9 @@ export function HomeContent() {
                 href="https://soul.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="SoulPrint - 출생 정보 기반 성향 분석"
+                data-amp-service="SoulPrint"
+                data-amp-section="top6"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -808,6 +847,9 @@ export function HomeContent() {
                   href="https://run.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="화난산타 — 토스산타 빡쳐서 만든 게임 - 공룡 달리기 + 점수 등록/랭킹"
+                  data-amp-service="화난산타"
+                  data-amp-section="game"
                   className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -827,6 +869,9 @@ export function HomeContent() {
                   href="https://charm.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="참참참! (NEON ARCADE) - 라인만 바꿔서 미사일을 피하기만 하면 돼요."
+                  data-amp-service="참참참! (NEON ARCADE)"
+                  data-amp-section="game"
                   className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -844,6 +889,9 @@ export function HomeContent() {
                   href="http://downy.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="다우니 (NEON STAIRS) - 라인만 바꿔서 계단을 밟고, 떨어지면 끝!"
+                  data-amp-service="다우니 (NEON STAIRS)"
+                  data-amp-section="game"
                   className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -1351,6 +1399,9 @@ export function HomeContent() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${title} - ${desc}`}
+                    data-amp-service={title}
+                    data-amp-section="all"
                     className="flex items-start gap-3 p-4 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
                   >
                     <div className="text-xl">{icon}</div>

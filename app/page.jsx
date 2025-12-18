@@ -3,7 +3,7 @@ import { HomeContent } from "./components/HomeContent";
 export const metadata = {
   title: "FunnyFunny Cloud — 하루를 더 똑똑하게 만드는 서비스",
   description:
-    "하루를 더 똑똑하게 만드는 서비스 FunnyFunny Cloud. 커피 중독, 꾸밈비, 집값, 비트코인, 건강수명, 사교육 등 모든 테스트 모음.",
+    "FunnyFunny Cloud는 일상의 소비, 시간, 에너지, 선택을 숫자와 테스트로 시각화하는 정보 서비스입니다.",
   keywords: [
     "하루 생산성 체크 테스트",
     "커피 중독 테스트",
