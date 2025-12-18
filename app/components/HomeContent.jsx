@@ -75,6 +75,39 @@ const seoTopItems = [
   },
 ];
 
+const seoGuides = [
+  {
+    slug: "coffee-addiction-test",
+    emoji: "☕",
+    title: "커피중독 테스트 가이드",
+    desc: "카페인 권장량, 중독 신호, 테스트 기준 한눈에 보기",
+  },
+  {
+    slug: "beauty-bankruptcy-test",
+    emoji: "💄",
+    title: "꾸밈비 파산 테스트 가이드",
+    desc: "뷰티·패션 지출이 자산에 미치는 영향과 계산 방식",
+  },
+  {
+    slug: "asset-shield-index",
+    emoji: "🛡️",
+    title: "자산 방탄 지수 가이드",
+    desc: "현금흐름·비상금·분산 체크로 위기 대응력 점검",
+  },
+  {
+    slug: "bitcoin-regret-calculator",
+    emoji: "💸",
+    title: "비트코인 안 산 죄 가이드",
+    desc: "후회 시뮬레이션, 데이터 기준, 투자 주의 문구 포함",
+  },
+  {
+    slug: "daily-productivity-check",
+    emoji: "⚡",
+    title: "하루 생산성 체크 가이드",
+    desc: "오늘의 집중 상태를 빠르게 점검하는 기준 정리",
+  },
+];
+
 const seoApplications = [
   {
     name: "내 인생 낭비력 지수",
@@ -674,6 +707,38 @@ export function HomeContent() {
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
                 >
                   <span>AshLight</span>
+                </a>
+              </div>
+            </div>
+            <div className="mt-8">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+                Guides
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {seoGuides.map((guide) => (
+                  <a
+                    key={guide.slug}
+                    href={`/guide/${guide.slug}`}
+                    className="flex items-start gap-3 p-4 rounded-2xl bg-white/85 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
+                  >
+                    <div className="text-xl">{guide.emoji}</div>
+                    <div>
+                      <h3 className="font-semibold text-base text-slate-900">
+                        {guide.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 mt-1">
+                        {guide.desc}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <div className="mt-3">
+                <a
+                  href="/guide"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+                >
+                  가이드 모두 보기
                 </a>
               </div>
             </div>
