@@ -38,6 +38,7 @@ const randomTools = [
   "https://audio.funnyfunny.cloud",
   "https://run.funnyfunny.cloud",
   "https://charm.funnyfunny.cloud",
+  "http://downy.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -154,6 +155,12 @@ const seoApplications = [
     name: "참참참! (NEON ARCADE)",
     url: "https://charm.funnyfunny.cloud/",
     description: "라인만 바꿔서 미사일을 피하기만 하면 돼요.",
+    category: "GameApplication",
+  },
+  {
+    name: "다우니 (NEON STAIRS)",
+    url: "http://downy.funnyfunny.cloud/",
+    description: "좌우 이동으로 계단을 밟고, 떨어지면 끝! (계단 1칸당 1점)",
     category: "GameApplication",
   },
 ];
@@ -454,6 +461,13 @@ const allServices = [
     title: "참참참! (NEON ARCADE)",
     desc: "라인만 바꿔서 미사일을 피하기만 하면 돼요.",
     tags: ["게임", "아케이드", "회피"],
+  },
+  {
+    href: "http://downy.funnyfunny.cloud/",
+    icon: "🪜",
+    title: "다우니 (NEON STAIRS)",
+    desc: "좌우 이동으로 계단을 밟고, 떨어지면 끝!",
+    tags: ["게임", "아케이드", "계단"],
   },
 ];
 
@@ -824,6 +838,23 @@ export function HomeContent() {
                   <h4 className="font-bold text-lg leading-snug">참참참!</h4>
                   <p className="text-sm text-slate-600 mt-1">
                     라인만 바꿔서 미사일을 피하기만 하면 돼요.
+                  </p>
+                </a>
+                <a
+                  href="http://downy.funnyfunny.cloud/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl">🪜</span>
+                    <span className="text-xs font-semibold text-blue-600">
+                      NEON STAIRS
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg leading-snug">다우니</h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    라인만 바꿔서 계단을 밟고, 떨어지면 끝!
                   </p>
                 </a>
               </div>
