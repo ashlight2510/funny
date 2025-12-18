@@ -106,6 +106,12 @@ const seoGuides = [
     title: "하루 생산성 체크 가이드",
     desc: "오늘의 집중 상태를 빠르게 점검하는 기준 정리",
   },
+  {
+    slug: "missed-house-opportunity",
+    emoji: "🏠",
+    title: "집 못 산 죄 가이드",
+    desc: "집값 상승 놓친 기회비용과 현실적 다음 단계 정리",
+  },
 ];
 
 const seoApplications = [
