@@ -718,38 +718,6 @@ export function HomeContent() {
                 </a>
               </div>
             </div>
-            <div className="mt-8">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-                Guides
-              </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {seoGuides.map((guide) => (
-                  <a
-                    key={guide.slug}
-                    href={`/guide/${guide.slug}`}
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-white/85 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
-                  >
-                    <div className="text-xl">{guide.emoji}</div>
-                    <div>
-                      <h3 className="font-semibold text-base text-slate-900">
-                        {guide.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 mt-1">
-                        {guide.desc}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-              <div className="mt-3">
-                <a
-                  href="/guide"
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
-                >
-                  가이드 모두 보기
-                </a>
-              </div>
-            </div>
             <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-blue-100 mt-16">
               Top 6
             </h2>
@@ -1010,37 +978,36 @@ export function HomeContent() {
             </div>
           </div>
           <div className="mt-4">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-sm px-2 py-1 rounded-full bg-slate-900 text-white font-semibold">
-                Guide
-              </span>
-              <span className="text-sm text-slate-600">
-                집 못 산 죄 가이드로 실전 팁 확인하기
-              </span>
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+              Guides
             </div>
-            <a
-              href="/guide/missed-house-opportunity"
-              className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-            >
-              <div className="flex items-start gap-3">
-                <div className="text-2xl">🏠</div>
-                <div className="flex-1">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                    New Guide
-                  </p>
-                  <h3 className="text-lg font-bold text-slate-900 leading-snug mt-1">
-                    집 못 산 죄 계산기 가이드
-                  </h3>
-                  <p className="text-sm text-slate-600 mt-1">
-                    집값 상승 놓친 기회비용, 대출 부담, 앞으로의 계획까지 한눈에 정리
-                  </p>
-                  <div className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-700">
-                    <span>가이드 읽기</span>
-                    <span>→</span>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {seoGuides.map((guide) => (
+                <a
+                  key={guide.slug}
+                  href={`/guide/${guide.slug}`}
+                  className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
+                >
+                  <div className="text-xl">{guide.emoji}</div>
+                  <div>
+                    <h3 className="font-semibold text-base text-slate-900">
+                      {guide.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1">
+                      {guide.desc}
+                    </p>
                   </div>
-                </div>
-              </div>
-            </a>
+                </a>
+              ))}
+            </div>
+            <div className="mt-3">
+              <a
+                href="/guide"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+              >
+                가이드 모두 보기
+              </a>
+            </div>
           </div>
         </section>
 
