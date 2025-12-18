@@ -37,6 +37,7 @@ const randomTools = [
   "https://pick.funnyfunny.cloud",
   "https://audio.funnyfunny.cloud",
   "https://run.funnyfunny.cloud",
+  "https://charm.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -147,6 +148,12 @@ const seoApplications = [
     name: "화난산타",
     url: "https://run.funnyfunny.cloud/",
     description: "토스산타 빡쳐서 만든 공룡 달리기 게임 — 점수 등록/랭킹",
+    category: "GameApplication",
+  },
+  {
+    name: "참참참! (NEON ARCADE)",
+    url: "https://charm.funnyfunny.cloud/",
+    description: "라인만 바꿔서 미사일을 피하기만 하면 돼요.",
     category: "GameApplication",
   },
 ];
@@ -440,6 +447,13 @@ const allServices = [
     title: "화난산타",
     desc: "토스산타 빡쳐서 만든 공룡 달리기 게임 (랭킹)",
     tags: ["게임", "공룡", "랭킹"],
+  },
+  {
+    href: "https://charm.funnyfunny.cloud",
+    icon: "🛸",
+    title: "참참참! (NEON ARCADE)",
+    desc: "라인만 바꿔서 미사일을 피하기만 하면 돼요.",
+    tags: ["게임", "아케이드", "회피"],
   },
 ];
 
@@ -793,6 +807,23 @@ export function HomeContent() {
                   </h4>
                   <p className="text-sm text-slate-600 mt-1">
                     공룡 달리기 + 점수 등록/랭킹
+                  </p>
+                </a>
+                <a
+                  href="https://charm.funnyfunny.cloud/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl">🛸</span>
+                    <span className="text-xs font-semibold text-purple-600">
+                      NEON ARCADE
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg leading-snug">참참참!</h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    라인만 바꿔서 미사일을 피하기만 하면 돼요.
                   </p>
                 </a>
               </div>
