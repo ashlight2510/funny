@@ -459,6 +459,407 @@ export const guides = [
   },
 ];
 
+function buildGuideFromSeed(seed) {
+  const subtitle = seed.subtitle || seed.description;
+  const metaDescription =
+    seed.metaDescription ||
+    `${seed.title} 가이드 — ${seed.description || "서비스 활용법을 정리했습니다."}`;
+  const ctaLabel = seed.ctaLabel || `${seed.title} 바로가기`;
+  const sections = [
+    {
+      heading: `${seed.title} 한눈에 보기`,
+      body: [
+        seed.description,
+        `${seed.title}는 ${seed.focus || "짧은 질문과 계산"}으로 ${
+          seed.benefit || "현재 상태를 빠르게 점검"
+        }할 수 있게 만든 도구입니다. 이 가이드는 사용 흐름과 결과 해석을 한 번에 정리합니다.`,
+      ],
+    },
+    {
+      heading: "어떻게 활용할까",
+      body: [
+        seed.usage ||
+          `${seed.title}에서 현재 상태를 입력하면 즉시 결과가 표시됩니다. 입력 값이 단순하니 출퇴근길이나 쉬는 시간에도 바로 시도해 보세요.`,
+        "결과는 참고용 지표이므로 하루·한 달 단위로 다시 측정해 변화를 비교하면 더 의미가 있습니다.",
+      ],
+    },
+    {
+      heading: "결과 해석과 유의사항",
+      body: [
+        seed.note ||
+          "계산은 실험적 지표이며, 개인 상황에 따라 달라질 수 있습니다. 숫자를 그대로 믿기보다 방향성을 잡는 용도로 사용하세요.",
+        "로그인 없이 동작하며 입력값은 저장하지 않습니다.",
+      ],
+    },
+  ];
+
+  const faq = [
+    {
+      question: "무료로 이용할 수 있나요?",
+      answer:
+        seed.freeAnswer ||
+        "네, 회원가입 없이 무료로 사용할 수 있고 결과는 바로 공유할 수 있습니다.",
+    },
+    {
+      question: "결과는 얼마나 신뢰할 수 있나요?",
+      answer:
+        seed.reliability ||
+        "참고용 시뮬레이션/자가진단입니다. 실제 상황이나 전문 상담을 대체하지 않습니다.",
+    },
+    {
+      question: "모바일에서도 편하게 쓸 수 있나요?",
+      answer: "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있습니다.",
+    },
+    {
+      question: "개인정보를 저장하나요?",
+      answer: "입력값은 서버에 저장하지 않고 계산에만 사용합니다.",
+    },
+    {
+      question: "다시 테스트해도 되나요?",
+      answer: "네, 입력 값을 바꿔 여러 번 시도하며 기준점을 잡아보세요.",
+    },
+  ];
+
+  return {
+    slug: seed.slug,
+    title: seed.title,
+    subtitle,
+    category: seed.category,
+    heroEmoji: seed.heroEmoji,
+    serviceUrl: seed.serviceUrl,
+    ctaLabel,
+    metaDescription,
+    keywords: seed.keywords || [],
+    sections,
+    faq,
+    disclaimer: seed.disclaimer,
+  };
+}
+
+const manualSlugs = new Set(guides.map((guide) => guide.slug));
+
+const guideSeeds = [
+  {
+    slug: "energy-balance",
+    title: "내 삶의 에너지 배분 가이드",
+    description: "번아웃 포인트와 회복 플랜을 점검하는 '내 삶의 에너지 배분' 테스트 활용법",
+    category: "라이프스타일",
+    heroEmoji: "⚡",
+    serviceUrl: "https://energy.funnyfunny.cloud",
+    keywords: ["에너지 배분", "번아웃 체크", "회복 루틴", "컨디션 점검"],
+    usage:
+      "수면, 스트레스, 업무 강도 등을 입력하면 에너지 누수 구간과 회복 권장 루틴이 바로 표시됩니다.",
+  },
+  {
+    slug: "mental-strength",
+    title: "하루 정신 체력 지수 가이드",
+    description: "오늘의 뇌 에너지와 집중력 상태를 빠르게 파악하는 '하루 정신 체력 지수' 사용법",
+    category: "라이프스타일",
+    heroEmoji: "🧠",
+    serviceUrl: "https://mental.funnyfunny.cloud",
+    keywords: ["정신 체력", "집중력", "컨디션 체크", "멘탈 점검"],
+  },
+  {
+    slug: "human-type",
+    title: "나를 힘들게 하는 인간 유형 가이드",
+    description: "관계를 힘들게 만드는 유형을 파악하고 대처법을 생각해 보는 테스트 가이드",
+    category: "라이프스타일",
+    heroEmoji: "🙃",
+    serviceUrl: "https://human.funnyfunny.cloud",
+    keywords: ["인간 유형", "관계 스트레스", "대처법", "성향 테스트"],
+  },
+  {
+    slug: "ego-profile",
+    title: "EGO 테스트 가이드",
+    description: "갈등·스트레스 상황에서 드러나는 자아 패턴을 살펴보는 EGO 테스트 안내",
+    category: "라이프스타일",
+    heroEmoji: "🧬",
+    serviceUrl: "https://ego.funnyfunny.cloud",
+    keywords: ["EGO 테스트", "자아 패턴", "스트레스 반응", "갈등 대응"],
+  },
+  {
+    slug: "life-dashboard",
+    title: "인생 남은 시간 대시보드 가이드",
+    description: "수면·커리어·자유시간 등 남은 시간을 숫자로 보는 대시보드 사용법",
+    category: "라이프스타일",
+    heroEmoji: "⏰",
+    serviceUrl: "https://life.funnyfunny.cloud",
+    keywords: ["인생 시간", "남은 시간 대시보드", "시간 관리", "라이프 플랜"],
+  },
+  {
+    slug: "soulprint",
+    title: "SoulPrint 성향 분석 가이드",
+    description: "출생 정보를 바탕으로 성향을 해석하는 SoulPrint 사용법과 해석 팁",
+    category: "라이프스타일",
+    heroEmoji: "🔮",
+    serviceUrl: "https://soul.funnyfunny.cloud",
+    keywords: ["SoulPrint", "성향 분석", "출생 정보", "성격 해석"],
+  },
+  {
+    slug: "senseyear",
+    title: "나는 몇 년생 감성인가 가이드",
+    description: "12가지 질문으로 감성 연대를 추정하는 'senseyear' 테스트 가이드",
+    category: "엔터테인먼트",
+    heroEmoji: "🎵",
+    serviceUrl: "https://senseyear.funnyfunny.cloud",
+    keywords: ["감성 테스트", "세대 감성", "음악 취향", "감성 연대"],
+  },
+  {
+    slug: "alcohol-mbti",
+    title: "주량 MBTI 가이드",
+    description: "술자리 성향과 주량을 가볍게 확인하는 주량 MBTI 테스트 안내",
+    category: "라이프스타일",
+    heroEmoji: "🍺",
+    serviceUrl: "https://alcohol.funnyfunny.cloud",
+    keywords: ["주량 MBTI", "술자리 성향", "주량 테스트", "음주 습관"],
+    disclaimer: "본 테스트는 재미용 참고 지표이며 과음은 건강에 해롭습니다. 음주는 적당히 즐기세요.",
+  },
+  {
+    slug: "lazy-check",
+    title: "귀찮음 진단기 가이드",
+    description: "무기력·귀찮음의 원인을 7가지 요인으로 나눠보는 진단기 사용법",
+    category: "라이프스타일",
+    heroEmoji: "😴",
+    serviceUrl: "https://lazy.funnyfunny.cloud",
+    keywords: ["귀찮음", "무기력", "루틴 점검", "동기부여"],
+  },
+  {
+    slug: "average-compare",
+    title: "대한민국 평균 vs 나 가이드",
+    description: "수입·지출·습관을 한국 평균과 비교해보는 테스트 활용법",
+    category: "라이프스타일",
+    heroEmoji: "📊",
+    serviceUrl: "https://average.funnyfunny.cloud",
+    keywords: ["대한민국 평균", "비교 테스트", "수입 지출", "통계 대비"],
+  },
+  {
+    slug: "energy-leak",
+    title: "인생 에너지 누수 진단기 가이드",
+    description: "어디에서 에너지가 새는지 확인하는 인생 에너지 누수 테스트 안내",
+    category: "라이프스타일",
+    heroEmoji: "⚡",
+    serviceUrl: "https://drain.funnyfunny.cloud",
+    keywords: ["에너지 누수", "번아웃", "회복 포인트", "컨디션 체크"],
+  },
+  {
+    slug: "maldives-match",
+    title: "몰디브 매치 가이드",
+    description: "몰디브 여행 성향을 알아보는 간단한 취향 테스트 안내",
+    category: "엔터테인먼트",
+    heroEmoji: "🏝️",
+    serviceUrl: "https://maldives.funnyfunny.cloud",
+    keywords: ["몰디브", "여행 성향", "휴양 취향", "여행 테스트"],
+  },
+  {
+    slug: "nospend-wealth",
+    title: "내가 안 산 것들의 총자산 가이드",
+    description: "안 샀다면 모였을 금액을 시뮬레이션하는 총자산 계산기 사용법",
+    category: "재테크",
+    heroEmoji: "💸",
+    serviceUrl: "https://nospend.funnyfunny.cloud",
+    keywords: ["총자산 시뮬레이터", "절약", "기회비용", "소비 점검"],
+  },
+  {
+    slug: "edu-hell",
+    title: "사교육 지옥도 계산기 가이드",
+    description: "사교육비가 장기 재정에 미치는 영향을 체감하는 계산기 사용법",
+    category: "재테크",
+    heroEmoji: "🎓",
+    serviceUrl: "https://edu.funnyfunny.cloud",
+    keywords: ["사교육 지출", "교육비 계산", "재정 영향", "가계 점검"],
+  },
+  {
+    slug: "health-longevity",
+    title: "건강수명 & 노후 준비 가이드",
+    description: "건강수명 관점에서 노후 준비 상태를 확인하는 대시보드 안내",
+    category: "라이프스타일",
+    heroEmoji: "🩺",
+    serviceUrl: "https://health.funnyfunny.cloud",
+    keywords: ["건강수명", "노후 준비", "생활습관", "건강 점검"],
+  },
+  {
+    slug: "cook-picker",
+    title: "오늘 뭐 먹지? 가이드",
+    description: "랜덤 메뉴 추천으로 식사 결정을 돕는 '오늘 뭐 먹지?' 사용법",
+    category: "엔터테인먼트",
+    heroEmoji: "🍱",
+    serviceUrl: "https://cook.funnyfunny.cloud",
+    keywords: ["오늘 뭐 먹지", "메뉴 추천", "랜덤 추천", "식사 결정"],
+  },
+  {
+    slug: "pick-ott",
+    title: "오늘 뭐 볼까? (OTT 픽) 가이드",
+    description: "버튼 몇 번으로 OTT 영화·드라마를 추천받는 픽 서비스 사용법",
+    category: "엔터테인먼트",
+    heroEmoji: "🍿",
+    serviceUrl: "https://pick.funnyfunny.cloud",
+    keywords: ["OTT 추천", "영화 추천", "드라마 추천", "콘텐츠 큐레이션"],
+  },
+  {
+    slug: "anju-today",
+    title: "오늘의 안주 가이드",
+    description: "술안주 랜덤 추천으로 고민을 줄이는 '오늘의 안주' 사용법",
+    category: "엔터테인먼트",
+    heroEmoji: "🍢",
+    serviceUrl: "https://anju.funnyfunny.cloud",
+    keywords: ["안주 추천", "랜덤 추천", "술안주", "메뉴 선택"],
+  },
+  {
+    slug: "cafe-cost",
+    title: "카페 지출 역전 계산 가이드",
+    description: "커피값을 모았을 때의 금액을 계산해 보는 '카페 지출 역전' 사용법",
+    category: "재테크",
+    heroEmoji: "☕",
+    serviceUrl: "https://cafe.funnyfunny.cloud",
+    keywords: ["카페 지출", "소비 계산", "기회비용", "절약"],
+  },
+  {
+    slug: "drink-cost",
+    title: "그때 마신 술, 지금 얼마? 가이드",
+    description: "술값을 투자했을 때의 차이를 보여주는 시뮬레이션 안내",
+    category: "재테크",
+    heroEmoji: "🍺",
+    serviceUrl: "https://drink.funnyfunny.cloud",
+    keywords: ["술값 계산", "기회비용", "투자 시뮬레이션", "소비 점검"],
+    disclaimer: "본 계산은 참고용이며 투자 권유가 아닙니다. 무리한 음주는 건강에 해롭습니다.",
+  },
+  {
+    slug: "waste-index",
+    title: "내 인생 낭비력 지수 가이드",
+    description: "시간과 돈의 낭비도를 숫자로 확인하는 낭비력 지수 사용법",
+    category: "라이프스타일",
+    heroEmoji: "♻️",
+    serviceUrl: "https://waste.funnyfunny.cloud",
+    keywords: ["낭비력 지수", "시간 낭비", "소비 습관", "자기 점검"],
+  },
+  {
+    slug: "joke-daily",
+    title: "오늘의 아재개그 가이드",
+    description: "가볍게 웃고 공유하기 좋은 아재개그 모음 활용 팁",
+    category: "엔터테인먼트",
+    heroEmoji: "🤣",
+    serviceUrl: "https://joke.funnyfunny.cloud",
+    keywords: ["아재개그", "웃음", "밈", "짧은 유머"],
+  },
+  {
+    slug: "mind-quote",
+    title: "오늘의 마음챙김 가이드",
+    description: "하루 한 줄 명언으로 마음을 정리하는 마음챙김 서비스 안내",
+    category: "라이프스타일",
+    heroEmoji: "🧠",
+    serviceUrl: "https://mind.funnyfunny.cloud",
+    keywords: ["마음챙김", "명언", "힐링", "한 줄"],
+  },
+  {
+    slug: "beat-drum",
+    title: "드럼 비트 연습기 가이드",
+    description: "기본 패턴과 메트로놈으로 연습하는 드럼 비트 연습기 사용법",
+    category: "유틸리티",
+    heroEmoji: "🥁",
+    serviceUrl: "https://beat.funnyfunny.cloud",
+    keywords: ["드럼 연습", "메트로놈", "리듬 트레이닝", "음악 연습"],
+    usage:
+      "원하는 BPM과 패턴을 선택하면 브라우저에서 바로 재생되어 연습할 수 있습니다. 이어폰이나 스피커를 연결해 사용하세요.",
+  },
+  {
+    slug: "audio-editor",
+    title: "Simple Audio Editor 가이드",
+    description: "브라우저에서 바로 오디오를 자르고 병합하는 Simple Audio Editor 안내",
+    category: "유틸리티",
+    heroEmoji: "🎵",
+    serviceUrl: "https://audio.funnyfunny.cloud",
+    keywords: ["오디오 편집", "트림", "병합", "내보내기"],
+    usage:
+      "파일을 드래그하면 바로 파형이 나타나며, 자르기·병합 후 로컬로 내보낼 수 있습니다. 모든 처리는 브라우저에서 이루어집니다.",
+  },
+  {
+    slug: "time-checker",
+    title: "예매는타이밍 가이드",
+    description: "정확한 서버 시간을 확인해 예매 성공률을 높이는 도구 안내",
+    category: "유틸리티",
+    heroEmoji: "⏰",
+    serviceUrl: "https://time.ashlight.store",
+    keywords: ["서버 시간", "예매 도우미", "시간 동기화", "정확한 시간"],
+  },
+  {
+    slug: "news-it",
+    title: "오늘의 IT 뉴스 가이드",
+    description: "국내·해외 IT 뉴스를 빠르게 훑는 요약 서비스 사용법",
+    category: "유틸리티",
+    heroEmoji: "📰",
+    serviceUrl: "https://news.ashlight.store",
+    keywords: ["IT 뉴스", "요약", "테크 트렌드", "빠른 뉴스"],
+  },
+  {
+    slug: "weather-now",
+    title: "지금날씨 가이드",
+    description: "근처 날씨, 미세먼지, 자외선 정보를 한눈에 보는 지금날씨 사용법",
+    category: "유틸리티",
+    heroEmoji: "🌤️",
+    serviceUrl: "https://weather.ashlight.store",
+    keywords: ["현재 날씨", "미세먼지", "자외선", "체감온도"],
+  },
+  {
+    slug: "emojicon-studio",
+    title: "EmojiCon Studio 가이드",
+    description: "이모지 한 글자로 아이콘·파비콘을 만드는 EmojiCon Studio 안내",
+    category: "유틸리티",
+    heroEmoji: "🎨",
+    serviceUrl: "https://emojicon.site",
+    keywords: ["이모지 아이콘", "파비콘 생성", "앱 아이콘", "디자인 도구"],
+  },
+  {
+    slug: "snaptrail",
+    title: "SnapTrail 가이드",
+    description: "사진을 자동 그룹화해 추억 타임라인을 만드는 SnapTrail 사용법",
+    category: "유틸리티",
+    heroEmoji: "📍",
+    serviceUrl: "https://snaptrail.ashlight.store",
+    keywords: ["사진 정리", "타임라인", "추억 정리", "자동 그룹화"],
+  },
+  {
+    slug: "dday-calculator",
+    title: "D-day 계산기 가이드",
+    description: "날짜 계산과 기념일 관리를 한 번에 하는 D-day 계산기 안내",
+    category: "유틸리티",
+    heroEmoji: "📅",
+    serviceUrl: "https://day.ashlight.store",
+    keywords: ["D-day 계산", "기념일 관리", "날짜 계산기", "디데이"],
+  },
+  {
+    slug: "angry-santa",
+    title: "화난산타 가이드",
+    description: "공룡 달리기 스타일 랭킹 게임 '화난산타' 플레이 팁",
+    category: "게임",
+    heroEmoji: "🦖",
+    serviceUrl: "https://run.funnyfunny.cloud",
+    keywords: ["화난산타", "달리기 게임", "랭킹 게임", "아케이드"],
+  },
+  {
+    slug: "charm-game",
+    title: "참참참! (NEON ARCADE) 가이드",
+    description: "라인을 바꿔 미사일을 피하는 참참참 게임 간단 가이드",
+    category: "게임",
+    heroEmoji: "🛸",
+    serviceUrl: "https://charm.funnyfunny.cloud",
+    keywords: ["참참참", "아케이드 게임", "미사일 피하기", "NEON ARCADE"],
+  },
+  {
+    slug: "downy-game",
+    title: "다우니 (NEON STAIRS) 가이드",
+    description: "좌우 이동으로 계단을 밟는 다우니 NEON STAIRS 플레이 팁",
+    category: "게임",
+    heroEmoji: "🪜",
+    serviceUrl: "http://downy.funnyfunny.cloud/",
+    keywords: ["다우니 게임", "계단 게임", "아케이드", "NEON STAIRS"],
+  },
+];
+
+guideSeeds.forEach((seed) => {
+  if (manualSlugs.has(seed.slug)) return;
+  guides.push(buildGuideFromSeed(seed));
+});
+
 export const guideMap = guides.reduce((acc, guide) => {
   acc[guide.slug] = guide;
   return acc;
