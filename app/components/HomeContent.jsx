@@ -36,6 +36,7 @@ const randomTools = [
   "https://average.funnyfunny.cloud",
   "https://pick.funnyfunny.cloud",
   "https://audio.funnyfunny.cloud",
+  "https://run.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -141,6 +142,12 @@ const seoApplications = [
     description:
       "브라우저에서 바로 사용하는 오디오 편집 도구 — 설치 없이 트림, 병합, 내보내기",
     category: "UtilityApplication",
+  },
+  {
+    name: "화난산타",
+    url: "https://run.funnyfunny.cloud/",
+    description: "토스산타 빡쳐서 만든 공룡 달리기 게임 — 점수 등록/랭킹",
+    category: "GameApplication",
   },
 ];
 
@@ -426,6 +433,13 @@ const allServices = [
     title: "D-day 계산기",
     desc: "날짜 계산, D-Day, N일 후, 기념일, 위젯",
     tags: ["날짜", "D-day", "기념일"],
+  },
+  {
+    href: "https://run.funnyfunny.cloud",
+    icon: "🦖",
+    title: "화난산타",
+    desc: "토스산타 빡쳐서 만든 공룡 달리기 게임 (랭킹)",
+    tags: ["게임", "공룡", "랭킹"],
   },
 ];
 
@@ -755,6 +769,33 @@ export function HomeContent() {
                   유용할 수 있는 서비스들
                 </p>
               </a>
+            </div>
+
+            <div className="mt-10">
+              <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+                게임
+              </h3>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <a
+                  href="https://run.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl">🦖</span>
+                    <span className="text-xs font-semibold text-emerald-600">
+                      랭킹 지원
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg leading-snug">
+                    화난산타 — 토스산타 빡쳐서 만든 게임
+                  </h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    공룡 달리기 + 점수 등록/랭킹
+                  </p>
+                </a>
+              </div>
             </div>
 
             <a
