@@ -595,6 +595,7 @@ export function HomeContent() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "FunnyFunny Cloud",
+      alternateName: ["퍼니퍼니", "퍼니퍼니 클라우드", "FunnyFunny"],
       url: "https://funnyfunny.cloud",
       description:
         "funnyfunny.cloud는 일상의 소비, 시간, 습관과 같은 데이터를 테스트와 계산기를 통해 쉽게 점검하고 비교해 볼 수 있는 정보 서비스입니다. 제공되는 결과와 수치는 참고용 정보 제공을 목적으로 하며, 일상 속 선택과 관리에 도움을 주기 위한 자료입니다.",
@@ -615,6 +616,7 @@ export function HomeContent() {
       "@type": "Organization",
       url: "https://funnyfunny.cloud",
       name: "FunnyFunny Cloud",
+      alternateName: ["퍼니퍼니", "퍼니퍼니 클라우드", "FunnyFunny"],
       logo: "https://funnyfunny.cloud/favicon.svg",
     },
     {
