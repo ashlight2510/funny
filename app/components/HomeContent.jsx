@@ -18,6 +18,7 @@ const randomTools = [
   "https://drain.funnyfunny.cloud",
   "https://maldives.funnyfunny.cloud",
   "https://bit.funnyfunny.cloud",
+  "https://next.funnyfunny.cloud",
   "https://house.funnyfunny.cloud",
   "https://edu.funnyfunny.cloud",
   "https://nospend.funnyfunny.cloud",
@@ -45,6 +46,12 @@ const randomTools = [
 ];
 
 const seoTopItems = [
+  {
+    name: "2026년의 나, 지금 결정된다",
+    url: "https://next.funnyfunny.cloud",
+    description:
+      "올해의 선택이 1년 뒤 인생에 남길 루트 — 습관·돈·인간관계·집중력 기준으로 체크",
+  },
   {
     name: "올해 나의 인생 소비 보고서",
     url: "https://year.funnyfunny.cloud",
@@ -87,14 +94,15 @@ const seoTopItems = [
     url: "https://hand.funnyfunny.cloud",
     description: "사진 한 장으로 손금 흐름을 읽어 성향 카드를 만드는 분석",
   },
-  {
-    name: "오늘의 마음챙김",
-    url: "https://mind.funnyfunny.cloud",
-    description: "하루 한 줄 명언으로 마음을 정리하는 힐링 카드",
-  },
 ];
 
 const seoGuides = [
+  {
+    slug: "next-2026",
+    emoji: "🔮",
+    title: "2026년의 나 가이드",
+    desc: "습관·돈·인간관계·집중력 선택이 만드는 1년 뒤 루트 해석",
+  },
   {
     slug: "life-spending-report",
     emoji: "🧾",
@@ -188,6 +196,13 @@ const seoApplications = [
     url: "https://bit.funnyfunny.cloud/",
     description: "지난 비트코인 미구매분의 기회비용을 계산하는 도구",
     category: "FinanceApplication",
+  },
+  {
+    name: "2026년의 나, 지금 결정된다",
+    url: "https://next.funnyfunny.cloud/",
+    description:
+      "올해의 선택이 1년 뒤 인생에 남기는 루트를 습관·돈·관계·집중력 기준으로 보여주는 시뮬레이터",
+    category: "LifestyleApplication",
   },
   {
     name: "집 못 산 죄",
@@ -290,6 +305,13 @@ const allServices = [
     title: "꾸밈비 파산 테스트",
     desc: "얼마나 태웠을까? 뷰티 지출 체감",
     tags: ["뷰티", "지출", "소비"],
+  },
+  {
+    href: "https://next.funnyfunny.cloud",
+    icon: "🔮",
+    title: "2026년의 나, 지금 결정된다",
+    desc: "습관·돈·관계·집중력 선택이 만드는 1년 뒤 루트",
+    tags: ["미래", "습관", "집중력", "관계"],
   },
   {
     href: "https://year.funnyfunny.cloud",
@@ -806,25 +828,25 @@ export function HomeContent() {
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
-                href="https://year.funnyfunny.cloud"
+                href="https://next.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="올해 나의 인생 소비 보고서 - 돈·시간·감정 흐름 연말결산"
-                data-amp-service="올해 나의 인생 소비 보고서"
+                aria-label="2026년의 나 - 올해 선택이 만드는 1년 뒤 루트"
+                data-amp-service="2026년의 나, 지금 결정된다"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🧾</span>
+                  <span className="text-xl">🔮</span>
                   <span className="text-xs font-semibold text-indigo-600">
                     신규
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  인생 소비 보고서
+                  2026년의 나
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  올해 돈·시간·감정 흐름 3분 컷
+                  1년 뒤 루트, 습관·돈·관계·집중력
                 </p>
               </a>
               <a
@@ -978,25 +1000,25 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://mind.funnyfunny.cloud"
+                href="https://year.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="오늘의 마음챙김 - 하루 한 줄 명언 힐링"
-                data-amp-service="오늘의 마음챙김"
+                aria-label="올해 나의 인생 소비 보고서 - 돈·시간·감정 흐름 연말결산"
+                data-amp-service="올해 나의 인생 소비 보고서"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🧠</span>
-                  <span className="text-xs font-semibold text-emerald-600">
-                    하루 한 줄
+                  <span className="text-xl">🧾</span>
+                  <span className="text-xs font-semibold text-indigo-600">
+                    연말결산
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  오늘의 마음챙김
+                  인생 소비 보고서
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  명언 한 줄로 마음 정리
+                  올해 돈·시간·감정 흐름 3분 컷
                 </p>
               </a>
             </div>
