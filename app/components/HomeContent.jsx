@@ -5,6 +5,7 @@ import { HeaderPortal } from "./HeaderPortal";
 import { FooterPortal } from "./FooterPortal";
 
 const randomTools = [
+  "https://today.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
@@ -47,6 +48,12 @@ const randomTools = [
 ];
 
 const seoTopItems = [
+  {
+    name: "오늘의 나, 잘했다",
+    url: "https://today.funnyfunny.cloud",
+    description:
+      "오늘 내가 잘한 일을 한 줄로 기록하고, 내일의 작은 목표를 바로 정리하는 리플렉션 도구",
+  },
   {
     name: "이번 겨울, 나를 망치는 것 TOP 1",
     url: "https://winter.funnyfunny.cloud",
@@ -99,6 +106,12 @@ const seoTopItems = [
 ];
 
 const seoGuides = [
+  {
+    slug: "today-well-done",
+    emoji: "🌱",
+    title: "오늘의 나, 잘했다 가이드",
+    desc: "오늘 잘한 일을 한 줄로 정리하고, 내일 액션을 만드는 리마인드 방법",
+  },
   {
     slug: "winter-ruin-top1",
     emoji: "❄️",
@@ -162,6 +175,13 @@ const seoGuides = [
 ];
 
 const seoApplications = [
+  {
+    name: "오늘의 나, 잘했다",
+    url: "https://today.funnyfunny.cloud/",
+    description:
+      "오늘 내가 잘한 일을 한 줄로 기록하고 내일의 작은 행동을 바로 정리하는 리마인드 도구",
+    category: "ProductivityApplication",
+  },
   {
     name: "이번 겨울, 나를 망치는 것 TOP 1",
     url: "https://winter.funnyfunny.cloud/",
@@ -307,6 +327,13 @@ const seoFaq = [
 ];
 
 const allServices = [
+  {
+    href: "https://today.funnyfunny.cloud",
+    icon: "🌱",
+    title: "오늘의 나, 잘했다",
+    desc: "오늘, 내가 잘한 건 뭐였을까?",
+    tags: ["리마인드", "칭찬", "루틴", "리플렉션"],
+  },
   {
     href: "https://coffee.funnyfunny.cloud",
     icon: "☕",
@@ -1250,6 +1277,14 @@ export function HomeContent() {
                   <span className="text-xs text-slate-500">3분 컷</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://today.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🌱 오늘의 나, 잘했다
+                  </a>
                   <a
                     className="block hover:text-blue-600"
                     href="https://next.funnyfunny.cloud"
