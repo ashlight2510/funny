@@ -927,45 +927,6 @@ export function HomeContent() {
             </div>
 
             <div className="mt-10">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-                Guides
-              </div>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                {seoGuides.map((guide) => (
-                  <a
-                    key={guide.slug}
-                    href={`/guide/${guide.slug}`}
-                    aria-label={`${guide.title} - ${guide.desc}`}
-                    data-amp-service={guide.title}
-                    data-amp-section="guides"
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
-                  >
-                    <div className="text-xl">{guide.emoji}</div>
-                    <div>
-                      <h3 className="font-semibold text-base text-slate-900">
-                        {guide.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 mt-1">
-                        {guide.desc}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-              <div className="mt-3">
-                <a
-                  href="/guide"
-                  aria-label="가이드 모두 보기"
-                  data-amp-service="가이드 모두 보기"
-                  data-amp-section="guides"
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
-                >
-                  가이드 모두 보기
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-10">
               <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
                 게임
               </h3>
@@ -1061,6 +1022,47 @@ export function HomeContent() {
                 data-widget_id-pc="6Xgdpy6o"
                 data-widget_id-mo="37Jam9xo"
               ></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 pb-4 sm:pb-6">
+          <div className="mt-6 sm:mt-8">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+              Guides
+            </div>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {seoGuides.map((guide) => (
+                <a
+                  key={guide.slug}
+                  href={`/guide/${guide.slug}`}
+                  aria-label={`${guide.title} - ${guide.desc}`}
+                  data-amp-service={guide.title}
+                  data-amp-section="guides"
+                  className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
+                >
+                  <div className="text-xl">{guide.emoji}</div>
+                  <div>
+                    <h3 className="font-semibold text-base text-slate-900">
+                      {guide.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1">
+                      {guide.desc}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="mt-3">
+              <a
+                href="/guide"
+                aria-label="가이드 모두 보기"
+                data-amp-service="가이드 모두 보기"
+                data-amp-section="guides"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+              >
+                가이드 모두 보기
+              </a>
             </div>
           </div>
         </section>
