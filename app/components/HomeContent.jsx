@@ -6,6 +6,7 @@ import { FooterPortal } from "./FooterPortal";
 
 const randomTools = [
   "https://today.funnyfunny.cloud",
+  "https://random.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
@@ -179,6 +180,12 @@ const seoGuides = [
     title: "우리 둘의 조합 축구선수 가이드",
     desc: "둘의 성향을 섞어 닮은 축구선수를 찾는 테스트 사용법",
   },
+  {
+    slug: "neon-pinball-random",
+    emoji: "🎱",
+    title: "네온 핀볼 랜덤 뽑기 가이드",
+    desc: "핀볼판에서 굴러가는 공으로 랜덤 뽑기하고 공유하는 방법",
+  },
 ];
 
 const seoApplications = [
@@ -313,6 +320,12 @@ const seoApplications = [
     url: "https://soccer.funnyfunny.cloud/",
     description: "둘의 성향과 플레이 스타일 조합으로 닮은 축구선수를 알려주는 테스트",
     category: "EntertainmentApplication",
+  },
+  {
+    name: "네온 핀볼 랜덤 뽑기",
+    url: "https://random.funnyfunny.cloud/",
+    description: "핀볼판에서 굴러가는 공으로 랜덤 선택을 뽑는 네온 게임",
+    category: "GameApplication",
   },
 ];
 
@@ -647,6 +660,13 @@ const allServices = [
     title: "다우니 (NEON STAIRS)",
     desc: "좌우 이동으로 계단을 밟고, 떨어지면 끝!",
     tags: ["게임", "아케이드", "계단"],
+  },
+  {
+    href: "https://random.funnyfunny.cloud/",
+    icon: "🎱",
+    title: "네온 핀볼 랜덤 뽑기",
+    desc: "핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기",
+    tags: ["게임", "랜덤", "핀볼"],
   },
   {
     href: "https://xmas.funnyfunny.cloud/",
@@ -1184,6 +1204,28 @@ export function HomeContent() {
                     라인만 바꿔서 계단을 밟고, 떨어지면 끝!
                   </p>
                 </a>
+                <a
+                  href="https://random.funnyfunny.cloud/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="네온 핀볼 랜덤 뽑기 - 핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기"
+                  data-amp-service="네온 핀볼 랜덤 뽑기"
+                  data-amp-section="game"
+                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl">🎱</span>
+                    <span className="text-xs font-semibold text-amber-600">
+                      NEON PINBALL
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg leading-snug">
+                    네온 핀볼 랜덤 뽑기
+                  </h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    핀볼판에서 굴러가는 공이 랜덤 픽을 골라줘요.
+                  </p>
+                </a>
               </div>
             </div>
 
@@ -1585,6 +1627,14 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     🧠 오늘의 마음챙김
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://random.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🎱 네온 핀볼 랜덤 뽑기
                   </a>
                   <a
                     className="block hover:text-blue-600"
