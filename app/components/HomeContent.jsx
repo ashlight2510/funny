@@ -1148,9 +1148,7 @@ export function HomeContent() {
                     <h3 className="font-semibold text-base text-slate-900">
                       {guide.title}
                     </h3>
-                    <p className="text-sm text-slate-600 mt-1">
-                      {guide.desc}
-                    </p>
+                    <p className="text-sm text-slate-600 mt-1">{guide.desc}</p>
                   </div>
                 </a>
               ))}
@@ -1648,7 +1646,7 @@ export function HomeContent() {
             )}
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white p-6 sm:p-10 shadow-lg">
+          <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white pt-6 pb-6 pl-[54px] pr-[54px] sm:pt-14 sm:pb-14 sm:pl-[70px] sm:pr-[70px] shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-blue-200">
@@ -1661,7 +1659,7 @@ export function HomeContent() {
                   지금 많이 보는 인기 테스트 7개
                 </p>
               </div>
-              <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-0 sm:space-x-3 sm:max-w-full sm:overflow-x-auto sm:py-1 w-full">
+              <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
                 <a
                   href="https://year.funnyfunny.cloud"
                   target="_blank"
