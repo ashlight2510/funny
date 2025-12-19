@@ -1658,17 +1658,17 @@ export function HomeContent() {
                   다른 사람들은 이것도 했어요
                 </h4>
                 <p className="mt-2 text-sm text-blue-100">
-                  지금 많이 보는 인기 테스트 3개
+                  지금 많이 보는 인기 테스트 7개
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
                 <a
-                  href="https://energy.funnyfunny.cloud"
+                  href="https://year.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition"
                 >
-                  에너지 누수
+                  인생 소비 보고서
                 </a>
                 <a
                   href="https://bit.funnyfunny.cloud"
@@ -1679,12 +1679,44 @@ export function HomeContent() {
                   비트코인 죄책감
                 </a>
                 <a
+                  href="https://pick.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                >
+                  OTT 픽
+                </a>
+                <a
+                  href="https://drain.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                >
+                  에너지 누수
+                </a>
+                <a
                   href="https://coffee.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   커피 중독
+                </a>
+                <a
+                  href="https://hand.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                >
+                  손바닥 썰 푼다
+                </a>
+                <a
+                  href="https://mind.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                >
+                  오늘의 마음챙김
                 </a>
               </div>
             </div>
