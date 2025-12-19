@@ -45,6 +45,7 @@ const randomTools = [
   "http://downy.funnyfunny.cloud",
   "https://xmas.funnyfunny.cloud",
   "https://hand.funnyfunny.cloud",
+  "https://soccer.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -171,6 +172,12 @@ const seoGuides = [
     emoji: "✋",
     title: "손바닥 썰 푼다 가이드",
     desc: "사진 한 장으로 손금 흐름을 분석하는 방법과 해석 기준",
+  },
+  {
+    slug: "soccer-combo",
+    emoji: "⚽",
+    title: "우리 둘의 조합 축구선수 가이드",
+    desc: "둘의 성향을 섞어 닮은 축구선수를 찾는 테스트 사용법",
   },
 ];
 
@@ -300,6 +307,12 @@ const seoApplications = [
     url: "https://hand.funnyfunny.cloud/",
     description: "사진 한 장으로 보는 손금 성향 분석 — 3초 안에 성향 카드 생성",
     category: "LifestyleApplication",
+  },
+  {
+    name: "우리 둘의 조합이 낳을 축구선수는?",
+    url: "https://soccer.funnyfunny.cloud/",
+    description: "둘의 성향과 플레이 스타일 조합으로 닮은 축구선수를 알려주는 테스트",
+    category: "EntertainmentApplication",
   },
 ];
 
@@ -648,6 +661,13 @@ const allServices = [
     title: "손바닥 썰 푼다",
     desc: "사진 한 장으로 보는 손금 흐름",
     tags: ["손금", "성향", "분석", "사진"],
+  },
+  {
+    href: "https://soccer.funnyfunny.cloud/",
+    icon: "⚽",
+    title: "우리 둘의 조합이 낳을 축구선수는?",
+    desc: "둘의 성향을 섞어 닮은 축구선수를 찾는 테스트",
+    tags: ["축구", "조합", "궁합", "테스트"],
   },
 ];
 
@@ -1549,6 +1569,14 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     🤣 오늘의 아재개그
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://soccer.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ⚽ 우리 둘의 조합 축구선수
                   </a>
                   <a
                     className="block hover:text-blue-600"

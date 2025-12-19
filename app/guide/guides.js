@@ -832,6 +832,20 @@ const guideSeeds = [
     keywords: ["감성 테스트", "세대 감성", "음악 취향", "감성 연대"],
   },
   {
+    slug: "soccer-combo",
+    title: "우리 둘의 조합이 낳을 축구선수는? 가이드",
+    description:
+      "둘의 성향과 포지션 취향을 조합해 닮은 축구선수를 보여주는 테스트 활용법",
+    category: "엔터테인먼트",
+    heroEmoji: "⚽",
+    serviceUrl: "https://soccer.funnyfunny.cloud",
+    keywords: ["축구 테스트", "커플 테스트", "궁합", "선수 유형"],
+    usage:
+      "두 사람이 각각 성향·플레이 스타일을 고르면 바로 조합 결과 카드가 생성됩니다. 팀명/선수명 카드를 복사해 공유해 보세요.",
+    note:
+      "팬심 기반의 재미용 테스트이며 실제 경기력 평가나 스카우팅 자료로 사용하지 마세요.",
+  },
+  {
     slug: "alcohol-mbti",
     title: "주량 MBTI 가이드",
     description: "술자리 성향과 주량을 가볍게 확인하는 주량 MBTI 테스트 안내",
