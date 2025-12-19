@@ -40,6 +40,7 @@ const randomTools = [
   "https://charm.funnyfunny.cloud",
   "http://downy.funnyfunny.cloud",
   "https://xmas.funnyfunny.cloud",
+  "https://hand.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -112,6 +113,12 @@ const seoGuides = [
     emoji: "🏠",
     title: "집 못 산 죄 가이드",
     desc: "집값 상승 놓친 기회비용과 현실적 다음 단계 정리",
+  },
+  {
+    slug: "palm-reading-analysis",
+    emoji: "✋",
+    title: "손바닥 썰 푼다 가이드",
+    desc: "사진 한 장으로 손금 흐름을 분석하는 방법과 해석 기준",
   },
 ];
 
@@ -207,6 +214,12 @@ const seoApplications = [
     name: "크리스마스 선물, 따뜻함 리포트",
     url: "https://xmas.funnyfunny.cloud/",
     description: "🎯 선물이 따뜻하게 도착할 확률을 확인하는 리포트",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "손바닥 썰 푼다",
+    url: "https://hand.funnyfunny.cloud/",
+    description: "사진 한 장으로 보는 손금 성향 분석 — 3초 안에 성향 카드 생성",
     category: "LifestyleApplication",
   },
 ];
@@ -522,6 +535,13 @@ const allServices = [
     desc: "🎯 선물이 따뜻하게 도착할 확률",
     tags: ["크리스마스", "선물", "확률", "리포트"],
   },
+  {
+    href: "https://hand.funnyfunny.cloud/",
+    icon: "✋",
+    title: "손바닥 썰 푼다",
+    desc: "사진 한 장으로 보는 손금 흐름",
+    tags: ["손금", "성향", "분석", "사진"],
+  },
 ];
 
 export function HomeContent() {
@@ -666,6 +686,19 @@ export function HomeContent() {
         priceCurrency: "KRW",
       },
     })),
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "가이드",
+      itemListOrder: "http://schema.org/ItemListOrderAscending",
+      itemListElement: seoGuides.map((guide, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: guide.title,
+        url: `https://funnyfunny.cloud/guide/${guide.slug}`,
+        description: guide.desc,
+      })),
+    },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
