@@ -54,6 +54,7 @@ export const metadata = {
     "다우니 NEON STAIRS",
     "드럼 비트 연습기",
     "내 인생 낭비력 지수",
+    "이번 겨울, 나를 망치는 것 TOP 1",
   ],
 };
 

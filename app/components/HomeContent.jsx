@@ -32,6 +32,7 @@ const randomTools = [
   "https://soul.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
+  "https://winter.funnyfunny.cloud",
   "https://anju.funnyfunny.cloud",
   "https://product.funnyfunny.cloud",
   "https://human.funnyfunny.cloud",
@@ -46,6 +47,12 @@ const randomTools = [
 ];
 
 const seoTopItems = [
+  {
+    name: "이번 겨울, 나를 망치는 것 TOP 1",
+    url: "https://winter.funnyfunny.cloud",
+    description:
+      "겨울마다 반복되는 1순위 방해 요인을 체크하고, 당장 바꿀 루틴과 회복 플랜을 제안합니다.",
+  },
   {
     name: "2026년의 나, 지금 결정된다",
     url: "https://next.funnyfunny.cloud",
@@ -70,11 +77,6 @@ const seoTopItems = [
       "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마 픽, 한국 OTT 전용",
   },
   {
-    name: "Simple Audio Editor",
-    url: "https://audio.funnyfunny.cloud",
-    description: "브라우저에서 바로 사용하는 오디오 편집 도구",
-  },
-  {
     name: "SnapTrail",
     url: "https://snaptrail.ashlight.store",
     description: "사진을 자동 그룹화한 추억 타임라인 생성기",
@@ -97,6 +99,12 @@ const seoTopItems = [
 ];
 
 const seoGuides = [
+  {
+    slug: "winter-ruin-top1",
+    emoji: "❄️",
+    title: "이번 겨울, 나를 망치는 것 TOP 1 가이드",
+    desc: "겨울마다 무너지는 패턴을 찾고 10분 안에 고치는 루틴",
+  },
   {
     slug: "next-2026",
     emoji: "🔮",
@@ -154,6 +162,13 @@ const seoGuides = [
 ];
 
 const seoApplications = [
+  {
+    name: "이번 겨울, 나를 망치는 것 TOP 1",
+    url: "https://winter.funnyfunny.cloud/",
+    description:
+      "겨울마다 반복되는 가장 큰 방해 요인을 점검하고, 회복 루틴·환경 정비 팁을 제안하는 계절형 테스트",
+    category: "LifestyleApplication",
+  },
   {
     name: "올해 나의 인생 소비 보고서",
     url: "https://year.funnyfunny.cloud/",
@@ -319,6 +334,13 @@ const allServices = [
     title: "올해 나의 인생 소비 보고서",
     desc: "올해 돈·시간·감정 흐름을 3분 컷으로 요약",
     tags: ["연말결산", "소비", "시간", "감정"],
+  },
+  {
+    href: "https://winter.funnyfunny.cloud",
+    icon: "❄️",
+    title: "이번 겨울, 나를 망치는 것 TOP 1",
+    desc: "겨울마다 무너지는 1순위 트리거 찾기",
+    tags: ["겨울", "습관", "컨디션", "정리"],
   },
   {
     href: "https://energy.funnyfunny.cloud",
@@ -828,6 +850,28 @@ export function HomeContent() {
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
+                href="https://winter.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="이번 겨울, 나를 망치는 것 TOP 1 - 겨울마다 무너지는 트리거 점검"
+                data-amp-service="이번 겨울, 나를 망치는 것 TOP 1"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">❄️</span>
+                  <span className="text-xs font-semibold text-sky-600">
+                    겨울 특집
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  이번 겨울, 나를 망치는 것
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  가장 큰 방해 1순위 점검
+                </p>
+              </a>
+              <a
                 href="https://next.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -842,9 +886,7 @@ export function HomeContent() {
                     신규
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  2026년의 나
-                </h3>
+                <h3 className="font-bold text-lg leading-snug">2026년의 나</h3>
                 <p className="text-sm text-slate-600 mt-1">
                   1년 뒤 루트, 습관·돈·관계·집중력
                 </p>
@@ -891,28 +933,6 @@ export function HomeContent() {
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   검색 없이 바로 영화·드라마 추천
-                </p>
-              </a>
-              <a
-                href="https://audio.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Simple Audio Editor - 브라우저에서 바로 사용하는 오디오 편집 도구"
-                data-amp-service="Simple Audio Editor"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🎵</span>
-                  <span className="text-xs font-semibold text-amber-600">
-                    최근 인기
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  Simple Audio Editor
-                </h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  브라우저에서 바로 사용하는 오디오 편집 도구
                 </p>
               </a>
               <a
@@ -1232,6 +1252,14 @@ export function HomeContent() {
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
                     className="block hover:text-blue-600"
+                    href="https://next.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔮 2026년의 나, 지금 결정된다
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://mental.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1331,6 +1359,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://year.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🧾 올해 나의 인생 소비 보고서
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://money.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1352,6 +1388,22 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     📊 대한민국 평균 vs 나
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://nospend.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    💸 내가 안 산 것들의 총자산
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://waste.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ♻️ 내 인생 낭비력 지수
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -1388,6 +1440,14 @@ export function HomeContent() {
                   <span className="text-xs text-slate-500">체크 해보기</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://winter.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ❄️ 이번 겨울, 나를 망치는 것 TOP 1
+                  </a>
                   <a
                     className="block hover:text-blue-600"
                     href="https://coffee.funnyfunny.cloud"
@@ -1428,6 +1488,14 @@ export function HomeContent() {
                   >
                     ⏰ 인생 남은 시간 대시보드
                   </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://weather.ashlight.store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🌤️ 지금날씨 — 근처 날씨/자외선
+                  </a>
                 </div>
               </div>
               <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
@@ -1465,19 +1533,19 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
-                    href="https://nospend.funnyfunny.cloud"
+                    href="https://pick.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💸 내가 안 산 것들의 총자산
+                    🍿 오늘 뭐 볼까? (OTT 픽)
                   </a>
                   <a
                     className="block hover:text-blue-600"
-                    href="https://waste.funnyfunny.cloud"
+                    href="https://snaptrail.ashlight.store"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ♻️ 내 인생 낭비력 지수
+                    📍 SnapTrail — 추억 타임라인
                   </a>
                 </div>
               </div>
@@ -1678,10 +1746,18 @@ export function HomeContent() {
                   다른 사람들은 이것도 했어요
                 </h4>
                 <p className="mt-2 text-sm text-blue-100">
-                  지금 많이 보는 인기 테스트 7개
+                  지금 많이 보는 인기 테스트
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
+                <a
+                  href="https://winter.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
+                >
+                  겨울 망치는 원인
+                </a>
                 <a
                   href="https://year.funnyfunny.cloud"
                   target="_blank"
