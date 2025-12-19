@@ -7,6 +7,7 @@ import { FooterPortal } from "./FooterPortal";
 const randomTools = [
   "https://coffee.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
+  "https://year.funnyfunny.cloud",
   "https://energy.funnyfunny.cloud",
   "https://money.funnyfunny.cloud",
   "https://life.funnyfunny.cloud",
@@ -45,6 +46,12 @@ const randomTools = [
 
 const seoTopItems = [
   {
+    name: "올해 나의 인생 소비 보고서",
+    url: "https://year.funnyfunny.cloud",
+    description:
+      "올해 돈·시간·감정이 어디로 흘렀는지 3분 컷으로 정리하는 리포트",
+  },
+  {
     name: "비트코인 안 산 죄",
     url: "https://bit.funnyfunny.cloud",
     description: "비트코인 투자 기회비용 계산기",
@@ -75,9 +82,25 @@ const seoTopItems = [
     url: "https://soul.funnyfunny.cloud",
     description: "출생 정보를 바탕으로 한 독자적인 성향 분석",
   },
+  {
+    name: "손바닥 썰 푼다",
+    url: "https://hand.funnyfunny.cloud",
+    description: "사진 한 장으로 손금 흐름을 읽어 성향 카드를 만드는 분석",
+  },
+  {
+    name: "오늘의 마음챙김",
+    url: "https://mind.funnyfunny.cloud",
+    description: "하루 한 줄 명언으로 마음을 정리하는 힐링 카드",
+  },
 ];
 
 const seoGuides = [
+  {
+    slug: "life-spending-report",
+    emoji: "🧾",
+    title: "올해 나의 인생 소비 보고서 가이드",
+    desc: "돈·시간·감정 리포트를 3분 안에 받는 방법과 결과 해석",
+  },
   {
     slug: "coffee-addiction-test",
     emoji: "☕",
@@ -123,6 +146,12 @@ const seoGuides = [
 ];
 
 const seoApplications = [
+  {
+    name: "올해 나의 인생 소비 보고서",
+    url: "https://year.funnyfunny.cloud/",
+    description: "연말 결산처럼 돈·시간·감정 소비 흐름을 3분 컷 리포트로 요약",
+    category: "LifestyleApplication",
+  },
   {
     name: "내 인생 낭비력 지수",
     url: "https://waste.funnyfunny.cloud/",
@@ -261,6 +290,13 @@ const allServices = [
     title: "꾸밈비 파산 테스트",
     desc: "얼마나 태웠을까? 뷰티 지출 체감",
     tags: ["뷰티", "지출", "소비"],
+  },
+  {
+    href: "https://year.funnyfunny.cloud",
+    icon: "🧾",
+    title: "올해 나의 인생 소비 보고서",
+    desc: "올해 돈·시간·감정 흐름을 3분 컷으로 요약",
+    tags: ["연말결산", "소비", "시간", "감정"],
   },
   {
     href: "https://energy.funnyfunny.cloud",
@@ -766,16 +802,38 @@ export function HomeContent() {
               </div>
             </div>
             <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-blue-100 mt-16">
-              Top 6
+              Top 9
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
+              <a
+                href="https://year.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="올해 나의 인생 소비 보고서 - 돈·시간·감정 흐름 연말결산"
+                data-amp-service="올해 나의 인생 소비 보고서"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🧾</span>
+                  <span className="text-xs font-semibold text-indigo-600">
+                    신규
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  인생 소비 보고서
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  올해 돈·시간·감정 흐름 3분 컷
+                </p>
+              </a>
               <a
                 href="https://bit.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="비트코인 안 산 죄 - 그때 샀다면 지금 얼마?"
                 data-amp-service="비트코인 안 산 죄"
-                data-amp-section="top6"
+                data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -797,7 +855,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 aria-label="오늘 뭐 볼까? (OTT) - 검색 없이 바로 영화·드라마 추천"
                 data-amp-service="오늘 뭐 볼까? (OTT)"
-                data-amp-section="top6"
+                data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -819,7 +877,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 aria-label="Simple Audio Editor - 브라우저에서 바로 사용하는 오디오 편집 도구"
                 data-amp-service="Simple Audio Editor"
-                data-amp-section="top6"
+                data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -841,7 +899,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 aria-label="SnapTrail - 사진을 자동 그룹화한 타임라인"
                 data-amp-service="SnapTrail"
-                data-amp-section="top6"
+                data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -861,7 +919,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 aria-label="크리스마스 선물, 따뜻함 리포트 - 선물이 따뜻하게 도착할 확률"
                 data-amp-service="크리스마스 선물, 따뜻함 리포트"
-                data-amp-section="top6"
+                data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -883,7 +941,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 aria-label="SoulPrint - 출생 정보 기반 성향 분석"
                 data-amp-service="SoulPrint"
-                data-amp-section="top6"
+                data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -895,6 +953,50 @@ export function HomeContent() {
                 <h3 className="font-bold text-lg leading-snug">SoulPrint</h3>
                 <p className="text-sm text-slate-600 mt-1">
                   출생 정보 기반 성향 분석
+                </p>
+              </a>
+              <a
+                href="https://hand.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="손바닥 썰 푼다 - 사진 한 장으로 보는 손금 흐름"
+                data-amp-service="손바닥 썰 푼다"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">✋</span>
+                  <span className="text-xs font-semibold text-amber-600">
+                    사진 분석
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  손바닥 썰 푼다
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  사진 한 장으로 보는 손금 흐름
+                </p>
+              </a>
+              <a
+                href="https://mind.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="오늘의 마음챙김 - 하루 한 줄 명언 힐링"
+                data-amp-service="오늘의 마음챙김"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🧠</span>
+                  <span className="text-xs font-semibold text-emerald-600">
+                    하루 한 줄
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  오늘의 마음챙김
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  명언 한 줄로 마음 정리
                 </p>
               </a>
             </div>
