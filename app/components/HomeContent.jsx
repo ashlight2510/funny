@@ -1648,8 +1648,8 @@ export function HomeContent() {
             )}
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white p-6 sm:p-8 shadow-lg">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white p-6 sm:p-10 shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-blue-200">
                   Stay Longer
@@ -1661,12 +1661,12 @@ export function HomeContent() {
                   지금 많이 보는 인기 테스트 7개
                 </p>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
                 <a
                   href="https://year.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition"
                 >
                   인생 소비 보고서
                 </a>
@@ -1674,7 +1674,7 @@ export function HomeContent() {
                   href="https://bit.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   비트코인 죄책감
                 </a>
@@ -1682,7 +1682,7 @@ export function HomeContent() {
                   href="https://pick.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   OTT 픽
                 </a>
@@ -1690,7 +1690,7 @@ export function HomeContent() {
                   href="https://drain.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   에너지 누수
                 </a>
@@ -1698,7 +1698,7 @@ export function HomeContent() {
                   href="https://coffee.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   커피 중독
                 </a>
@@ -1706,7 +1706,7 @@ export function HomeContent() {
                   href="https://hand.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   손바닥 썰 푼다
                 </a>
@@ -1714,7 +1714,7 @@ export function HomeContent() {
                   href="https://mind.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition"
                 >
                   오늘의 마음챙김
                 </a>
