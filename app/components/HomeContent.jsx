@@ -122,6 +122,12 @@ const seoGuides = [
     desc: "겨울마다 무너지는 패턴을 찾고 10분 안에 고치는 루틴",
   },
   {
+    slug: "flow-community",
+    emoji: "🧵",
+    title: "FLOW 커뮤니티 가이드",
+    desc: "쓰레드+디씨 감성 게시판에서 글 쓰고 토론하는 방법",
+  },
+  {
     slug: "next-2026",
     emoji: "🔮",
     title: "2026년의 나 가이드",
@@ -373,6 +379,13 @@ const allServices = [
     title: "오늘의 나, 잘했다",
     desc: "오늘, 내가 잘한 건 뭐였을까?",
     tags: ["리마인드", "칭찬", "루틴", "리플렉션"],
+  },
+  {
+    href: "http://flow.funnyfunny.cloud/",
+    icon: "🧵",
+    title: "FLOW 커뮤니티",
+    desc: "쓰레드+디씨 감성으로 의견 나누는 게시판",
+    tags: ["커뮤니티", "게시판", "토론"],
   },
   {
     href: "https://coffee.funnyfunny.cloud",
@@ -918,12 +931,12 @@ export function HomeContent() {
 
               <div className="mt-3 flex sm:hidden items-center gap-2">
                 <a
-                  href="https://funnyfunny.dothome.co.kr/"
+                  href="http://flow.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
                 >
-                  <span>게시판</span>
+                  <span>FLOW 게시판</span>
                 </a>
                 <a
                   href="https://ashlight.store"
@@ -1330,15 +1343,15 @@ export function HomeContent() {
             </summary>
             <div className="px-4 pb-4">
               <p className="text-sm text-slate-600 mb-2">
-                모바일에서도 바로 글쓰기/읽기 가능
+                쓰레드+디씨 감성 FLOW 게시판, 모바일에서도 바로 글쓰기/읽기
               </p>
               <a
-                href="https://funnyfunny.dothome.co.kr/"
+                href="http://flow.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:shadow-md transition"
               >
-                게시판 열기
+                FLOW 열기
               </a>
             </div>
           </details>
@@ -1700,6 +1713,12 @@ export function HomeContent() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
+                [
+                  "http://flow.funnyfunny.cloud/",
+                  "🧵 FLOW 커뮤니티",
+                  "쓰레드+디씨 감성으로 소통하는 게시판",
+                  "익명 글쓰기, 실시간 반응, 주제별 스레드로 바로 대화 시작",
+                ],
                 [
                   "https://audio.funnyfunny.cloud",
                   "🎵 Simple Audio Editor",

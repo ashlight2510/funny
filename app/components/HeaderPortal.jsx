@@ -17,12 +17,12 @@ export function HeaderPortal() {
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <a
-            href="https://funnyfunny.dothome.co.kr/"
+            href="http://flow.funnyfunny.cloud/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex px-3 py-2 text-sm rounded-full border border-slate-200 hover:border-blue-400 hover:text-blue-700 transition-colors"
           >
-            게시판
+            FLOW 게시판
           </a>
           <a
             href="https://ashlight.store"

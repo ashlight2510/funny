@@ -13,12 +13,12 @@ export function HeaderSimple() {
             가이드
           </a>
           <a
-            href="https://funnyfunny.dothome.co.kr/"
+            href="http://flow.funnyfunny.cloud/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-600"
           >
-            게시판
+            FLOW
           </a>
         </nav>
       </div>

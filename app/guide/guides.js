@@ -909,6 +909,19 @@ const guideSeeds = [
     keywords: ["SoulPrint", "성향 분석", "출생 정보", "성격 해석"],
   },
   {
+    slug: "flow-community",
+    title: "FLOW 커뮤니티 가이드",
+    description:
+      "쓰레드+디씨 감성으로 이야기 나누는 FLOW 게시판 사용법과 활용 팁",
+    category: "커뮤니티",
+    heroEmoji: "🧵",
+    serviceUrl: "http://flow.funnyfunny.cloud/",
+    keywords: ["커뮤니티", "게시판", "스레드", "익명"],
+    usage:
+      "주제별 스레드를 만들고 익명 닉네임으로 댓글을 달 수 있습니다. 모바일에서도 바로 글을 쓰고 실시간 반응을 확인하세요.",
+    note: "운영 수칙을 지키지 않는 글은 숨김/삭제될 수 있습니다.",
+  },
+  {
     slug: "senseyear",
     title: "나는 몇 년생 감성인가 가이드",
     description:
