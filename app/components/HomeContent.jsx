@@ -31,6 +31,7 @@ const randomTools = [
   "https://joke.funnyfunny.cloud",
   "https://mental.funnyfunny.cloud",
   "https://mind.funnyfunny.cloud",
+  "https://fortune.funnyfunny.cloud",
   "https://soul.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
@@ -43,7 +44,7 @@ const randomTools = [
   "https://audio.funnyfunny.cloud",
   "https://run.funnyfunny.cloud",
   "https://charm.funnyfunny.cloud",
-  "http://downy.funnyfunny.cloud",
+  "https://downy.funnyfunny.cloud",
   "https://xmas.funnyfunny.cloud",
   "https://hand.funnyfunny.cloud",
   "https://soccer.funnyfunny.cloud",
@@ -186,6 +187,12 @@ const seoGuides = [
     title: "네온 핀볼 랜덤 뽑기 가이드",
     desc: "핀볼판에서 굴러가는 공으로 랜덤 뽑기하고 공유하는 방법",
   },
+  {
+    slug: "one-line-fortune",
+    emoji: "🔮",
+    title: "오늘의 한 줄 운세 가이드",
+    desc: "기분에 따라 뽑는 오늘의 한 줄 운세 사용법과 해석 기준",
+  },
 ];
 
 const seoApplications = [
@@ -299,7 +306,7 @@ const seoApplications = [
   },
   {
     name: "다우니 (NEON STAIRS)",
-    url: "http://downy.funnyfunny.cloud/",
+    url: "https://downy.funnyfunny.cloud/",
     description: "좌우 이동으로 계단을 밟고, 떨어지면 끝! (계단 1칸당 1점)",
     category: "GameApplication",
   },
@@ -318,7 +325,8 @@ const seoApplications = [
   {
     name: "우리 둘의 조합이 낳을 축구선수는?",
     url: "https://soccer.funnyfunny.cloud/",
-    description: "둘의 성향과 플레이 스타일 조합으로 닮은 축구선수를 알려주는 테스트",
+    description:
+      "둘의 성향과 플레이 스타일 조합으로 닮은 축구선수를 알려주는 테스트",
     category: "EntertainmentApplication",
   },
   {
@@ -326,6 +334,12 @@ const seoApplications = [
     url: "https://random.funnyfunny.cloud/",
     description: "핀볼판에서 굴러가는 공으로 랜덤 선택을 뽑는 네온 게임",
     category: "GameApplication",
+  },
+  {
+    name: "오늘의 한 줄 운세",
+    url: "https://fortune.funnyfunny.cloud/",
+    description: "기분에 따라 고르는 오늘의 한 줄 운세",
+    category: "LifestyleApplication",
   },
 ];
 
@@ -578,6 +592,13 @@ const allServices = [
     tags: ["아재개그", "웃음", "밈"],
   },
   {
+    href: "https://fortune.funnyfunny.cloud",
+    icon: "🔮",
+    title: "오늘의 한 줄 운세",
+    desc: "기분에 따라 보는 오늘의 한 줄 운세",
+    tags: ["운세", "포춘", "기분", "한 줄"],
+  },
+  {
     href: "https://mind.funnyfunny.cloud",
     icon: "🧠",
     title: "오늘의 마음챙김",
@@ -655,7 +676,7 @@ const allServices = [
     tags: ["게임", "아케이드", "회피"],
   },
   {
-    href: "http://downy.funnyfunny.cloud/",
+    href: "https://downy.funnyfunny.cloud/",
     icon: "🪜",
     title: "다우니 (NEON STAIRS)",
     desc: "좌우 이동으로 계단을 밟고, 떨어지면 끝!",
@@ -1185,7 +1206,7 @@ export function HomeContent() {
                   </p>
                 </a>
                 <a
-                  href="http://downy.funnyfunny.cloud/"
+                  href="https://downy.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="다우니 (NEON STAIRS) - 라인만 바꿔서 계단을 밟고, 떨어지면 끝!"
@@ -1614,6 +1635,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://fortune.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔮 오늘의 한 줄 운세
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://soccer.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1741,6 +1770,12 @@ export function HomeContent() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
+                [
+                  "https://fortune.funnyfunny.cloud",
+                  "🔮 오늘의 한 줄 운세",
+                  "기분에 따라 골라보는 오늘의 운세 한 줄",
+                  "지금 기분과 상황에 맞는 메시지를 바로 확인",
+                ],
                 [
                   "https://news.ashlight.store",
                   "📰 오늘의 IT 뉴스",

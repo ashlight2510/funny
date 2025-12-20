@@ -65,7 +65,8 @@ export const guides = [
       },
       {
         question: "모바일에서도 잘 보이나요?",
-        answer: "모바일 웹 최적화로 휴대폰에서 바로 진행하고 결과를 저장/공유할 수 있습니다.",
+        answer:
+          "모바일 웹 최적화로 휴대폰에서 바로 진행하고 결과를 저장/공유할 수 있습니다.",
       },
       {
         question: "여러 번 다시 해도 되나요?",
@@ -735,7 +736,8 @@ export const guides = [
     faq: [
       {
         question: "최소 몇 개의 후보가 필요할까요?",
-        answer: "두 개 이상 입력하면 바로 돌릴 수 있고, 필요한 만큼 항목을 더해도 동작합니다.",
+        answer:
+          "두 개 이상 입력하면 바로 돌릴 수 있고, 필요한 만큼 항목을 더해도 동작합니다.",
       },
       {
         question: "정말 랜덤으로 뽑히나요?",
@@ -765,7 +767,9 @@ function buildGuideFromSeed(seed) {
   const subtitle = seed.subtitle || seed.description;
   const metaDescription =
     seed.metaDescription ||
-    `${seed.title} 가이드 — ${seed.description || "서비스 활용법을 정리했습니다."}`;
+    `${seed.title} 가이드 — ${
+      seed.description || "서비스 활용법을 정리했습니다."
+    }`;
   const ctaLabel = seed.ctaLabel || `${seed.title} 바로가기`;
   const sections = [
     {
@@ -810,7 +814,8 @@ function buildGuideFromSeed(seed) {
     },
     {
       question: "모바일에서도 편하게 쓸 수 있나요?",
-      answer: "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있습니다.",
+      answer:
+        "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있습니다.",
     },
     {
       question: "개인정보를 저장하나요?",
@@ -844,7 +849,8 @@ const guideSeeds = [
   {
     slug: "energy-balance",
     title: "내 삶의 에너지 배분 가이드",
-    description: "번아웃 포인트와 회복 플랜을 점검하는 '내 삶의 에너지 배분' 테스트 활용법",
+    description:
+      "번아웃 포인트와 회복 플랜을 점검하는 '내 삶의 에너지 배분' 테스트 활용법",
     category: "라이프스타일",
     heroEmoji: "⚡",
     serviceUrl: "https://energy.funnyfunny.cloud",
@@ -855,7 +861,8 @@ const guideSeeds = [
   {
     slug: "mental-strength",
     title: "하루 정신 체력 지수 가이드",
-    description: "오늘의 뇌 에너지와 집중력 상태를 빠르게 파악하는 '하루 정신 체력 지수' 사용법",
+    description:
+      "오늘의 뇌 에너지와 집중력 상태를 빠르게 파악하는 '하루 정신 체력 지수' 사용법",
     category: "라이프스타일",
     heroEmoji: "🧠",
     serviceUrl: "https://mental.funnyfunny.cloud",
@@ -864,7 +871,8 @@ const guideSeeds = [
   {
     slug: "human-type",
     title: "나를 힘들게 하는 인간 유형 가이드",
-    description: "관계를 힘들게 만드는 유형을 파악하고 대처법을 생각해 보는 테스트 가이드",
+    description:
+      "관계를 힘들게 만드는 유형을 파악하고 대처법을 생각해 보는 테스트 가이드",
     category: "라이프스타일",
     heroEmoji: "🙃",
     serviceUrl: "https://human.funnyfunny.cloud",
@@ -873,7 +881,8 @@ const guideSeeds = [
   {
     slug: "ego-profile",
     title: "EGO 테스트 가이드",
-    description: "갈등·스트레스 상황에서 드러나는 자아 패턴을 살펴보는 EGO 테스트 안내",
+    description:
+      "갈등·스트레스 상황에서 드러나는 자아 패턴을 살펴보는 EGO 테스트 안내",
     category: "라이프스타일",
     heroEmoji: "🧬",
     serviceUrl: "https://ego.funnyfunny.cloud",
@@ -882,7 +891,8 @@ const guideSeeds = [
   {
     slug: "life-dashboard",
     title: "인생 남은 시간 대시보드 가이드",
-    description: "수면·커리어·자유시간 등 남은 시간을 숫자로 보는 대시보드 사용법",
+    description:
+      "수면·커리어·자유시간 등 남은 시간을 숫자로 보는 대시보드 사용법",
     category: "라이프스타일",
     heroEmoji: "⏰",
     serviceUrl: "https://life.funnyfunny.cloud",
@@ -891,7 +901,8 @@ const guideSeeds = [
   {
     slug: "soulprint",
     title: "SoulPrint 성향 분석 가이드",
-    description: "출생 정보를 바탕으로 성향을 해석하는 SoulPrint 사용법과 해석 팁",
+    description:
+      "출생 정보를 바탕으로 성향을 해석하는 SoulPrint 사용법과 해석 팁",
     category: "라이프스타일",
     heroEmoji: "🔮",
     serviceUrl: "https://soul.funnyfunny.cloud",
@@ -900,7 +911,8 @@ const guideSeeds = [
   {
     slug: "senseyear",
     title: "나는 몇 년생 감성인가 가이드",
-    description: "12가지 질문으로 감성 연대를 추정하는 'senseyear' 테스트 가이드",
+    description:
+      "12가지 질문으로 감성 연대를 추정하는 'senseyear' 테스트 가이드",
     category: "엔터테인먼트",
     heroEmoji: "🎵",
     serviceUrl: "https://senseyear.funnyfunny.cloud",
@@ -917,8 +929,7 @@ const guideSeeds = [
     keywords: ["축구 테스트", "커플 테스트", "궁합", "선수 유형"],
     usage:
       "두 사람이 각각 성향·플레이 스타일을 고르면 바로 조합 결과 카드가 생성됩니다. 팀명/선수명 카드를 복사해 공유해 보세요.",
-    note:
-      "팬심 기반의 재미용 테스트이며 실제 경기력 평가나 스카우팅 자료로 사용하지 마세요.",
+    note: "팬심 기반의 재미용 테스트이며 실제 경기력 평가나 스카우팅 자료로 사용하지 마세요.",
   },
   {
     slug: "alcohol-mbti",
@@ -928,7 +939,8 @@ const guideSeeds = [
     heroEmoji: "🍺",
     serviceUrl: "https://alcohol.funnyfunny.cloud",
     keywords: ["주량 MBTI", "술자리 성향", "주량 테스트", "음주 습관"],
-    disclaimer: "본 테스트는 재미용 참고 지표이며 과음은 건강에 해롭습니다. 음주는 적당히 즐기세요.",
+    disclaimer:
+      "본 테스트는 재미용 참고 지표이며 과음은 건강에 해롭습니다. 음주는 적당히 즐기세요.",
   },
   {
     slug: "lazy-check",
@@ -951,7 +963,8 @@ const guideSeeds = [
   {
     slug: "energy-leak",
     title: "인생 에너지 누수 진단기 가이드",
-    description: "어디에서 에너지가 새는지 확인하는 인생 에너지 누수 테스트 안내",
+    description:
+      "어디에서 에너지가 새는지 확인하는 인생 에너지 누수 테스트 안내",
     category: "라이프스타일",
     heroEmoji: "⚡",
     serviceUrl: "https://drain.funnyfunny.cloud",
@@ -1054,7 +1067,8 @@ const guideSeeds = [
     faq: [
       {
         question: "진행 시간은 얼마나 걸리나요?",
-        answer: "선택형 문항 위주라 빠르게 답하면 3분 안쪽으로 끝낼 수 있습니다.",
+        answer:
+          "선택형 문항 위주라 빠르게 답하면 3분 안쪽으로 끝낼 수 있습니다.",
       },
       {
         question: "로그인이나 개인정보 입력이 필요한가요?",
@@ -1099,7 +1113,8 @@ const guideSeeds = [
   {
     slug: "cafe-cost",
     title: "카페 지출 역전 계산 가이드",
-    description: "커피값을 모았을 때의 금액을 계산해 보는 '카페 지출 역전' 사용법",
+    description:
+      "커피값을 모았을 때의 금액을 계산해 보는 '카페 지출 역전' 사용법",
     category: "재테크",
     heroEmoji: "☕",
     serviceUrl: "https://cafe.funnyfunny.cloud",
@@ -1113,7 +1128,8 @@ const guideSeeds = [
     heroEmoji: "🍺",
     serviceUrl: "https://drink.funnyfunny.cloud",
     keywords: ["술값 계산", "기회비용", "투자 시뮬레이션", "소비 점검"],
-    disclaimer: "본 계산은 참고용이며 투자 권유가 아닙니다. 무리한 음주는 건강에 해롭습니다.",
+    disclaimer:
+      "본 계산은 참고용이며 투자 권유가 아닙니다. 무리한 음주는 건강에 해롭습니다.",
   },
   {
     slug: "waste-index",
@@ -1156,7 +1172,8 @@ const guideSeeds = [
   {
     slug: "audio-editor",
     title: "Simple Audio Editor 가이드",
-    description: "브라우저에서 바로 오디오를 자르고 병합하는 Simple Audio Editor 안내",
+    description:
+      "브라우저에서 바로 오디오를 자르고 병합하는 Simple Audio Editor 안내",
     category: "유틸리티",
     heroEmoji: "🎵",
     serviceUrl: "https://audio.funnyfunny.cloud",
@@ -1185,7 +1202,8 @@ const guideSeeds = [
   {
     slug: "weather-now",
     title: "지금날씨 가이드",
-    description: "근처 날씨, 미세먼지, 자외선 정보를 한눈에 보는 지금날씨 사용법",
+    description:
+      "근처 날씨, 미세먼지, 자외선 정보를 한눈에 보는 지금날씨 사용법",
     category: "유틸리티",
     heroEmoji: "🌤️",
     serviceUrl: "https://weather.ashlight.store",
@@ -1242,7 +1260,7 @@ const guideSeeds = [
     description: "좌우 이동으로 계단을 밟는 다우니 NEON STAIRS 플레이 팁",
     category: "게임",
     heroEmoji: "🪜",
-    serviceUrl: "http://downy.funnyfunny.cloud/",
+    serviceUrl: "https://downy.funnyfunny.cloud/",
     keywords: ["다우니 게임", "계단 게임", "아케이드", "NEON STAIRS"],
   },
 ];
