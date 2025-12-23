@@ -66,8 +66,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FunnyFunny Cloud — 하루를 더 똑똑하게 만드는 서비스",
-    description:
-      "재미와 통찰을 주는 테스트, 계산기, 유틸리티 서비스 모음",
+    description: "재미와 통찰을 주는 테스트, 계산기, 유틸리티 서비스 모음",
     images: [
       "https://dummyimage.com/1200x630/0f172a/ffffff&text=FunnyFunny+Cloud",
     ],
@@ -112,14 +111,23 @@ export default function RootLayout({ children }) {
           sizes="48x48"
           href="/favicon-48x48.png"
         />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
         <link
           rel="icon"
           type="image/png"
           sizes="192x192"
           href="/favicon-192x192.png"
         />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
       </head>
       <body>
         <noscript>
@@ -175,6 +183,22 @@ export default function RootLayout({ children }) {
         console.error('Amplitude init failed', error);
       }
     })();`,
+          }}
+        />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17728893473"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-ads"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17728893473');`,
           }}
         />
       </body>
