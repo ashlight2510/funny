@@ -8,6 +8,7 @@ const randomTools = [
   "https://today.funnyfunny.cloud",
   "https://random.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
+  "https://video.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
   "https://energy.funnyfunny.cloud",
@@ -116,6 +117,12 @@ const seoTopItems = [
 ];
 
 const seoGuides = [
+  {
+    slug: "autocut-studio",
+    emoji: "🎬",
+    title: "AutoCut Studio 가이드",
+    desc: "침묵 감지·점프컷 자동 타임라인으로 유튜브 영상 편집을 빠르게 끝내는 법",
+  },
   {
     slug: "today-well-done",
     emoji: "🌱",
@@ -309,6 +316,13 @@ const seoApplications = [
     url: "https://audio.funnyfunny.cloud/",
     description:
       "브라우저에서 바로 사용하는 오디오 편집 도구 — 설치 없이 트림, 병합, 내보내기",
+    category: "UtilityApplication",
+  },
+  {
+    name: "AutoCut Studio",
+    url: "https://video.funnyfunny.cloud/",
+    description:
+      "영상 업로드만으로 침묵 구간을 감지해 하이라이트/점프컷 타임라인을 자동 생성하는 웹 편집기",
     category: "UtilityApplication",
   },
   {
@@ -657,6 +671,13 @@ const allServices = [
     title: "Simple Audio Editor",
     desc: "브라우저에서 바로 사용하는 오디오 편집 도구",
     tags: ["오디오", "편집", "도구"],
+  },
+  {
+    href: "https://video.funnyfunny.cloud",
+    icon: "🎬",
+    title: "AutoCut Studio",
+    desc: "침묵 감지로 하이라이트·점프컷 타임라인 자동 생성",
+    tags: ["영상편집", "유튜브", "점프컷", "하이라이트"],
   },
   {
     href: "https://time.ashlight.store",
@@ -1754,6 +1775,12 @@ export function HomeContent() {
                   "🧵 FLOW 커뮤니티",
                   "쓰레드+디씨 감성으로 소통하는 게시판",
                   "익명 글쓰기, 실시간 반응, 주제별 스레드로 바로 대화 시작",
+                ],
+                [
+                  "https://video.funnyfunny.cloud",
+                  "🎬 AutoCut Studio",
+                  "영상 자동 하이라이트/점프컷",
+                  "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
                 ],
                 [
                   "https://audio.funnyfunny.cloud",
