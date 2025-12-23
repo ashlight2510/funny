@@ -903,29 +903,33 @@ export function HomeContent() {
   });
 
   return (
-    <div className="bg-slate-50 text-gray-800 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
+    <div className="bg-gradient-to-b from-[#0b1c16] via-[#0f241c] to-[#123026] text-emerald-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal />
       <main>
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-amber-50"></div>
-          <div className="absolute -left-10 -top-10 w-48 h-48 bg-blue-200/40 blur-3xl"></div>
-          <div className="absolute -right-10 bottom-0 w-48 h-48 bg-purple-200/40 blur-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-red-900/85 to-amber-800/80"></div>
+          <div className="absolute inset-0 snow-fall opacity-60 mix-blend-screen"></div>
+          <div className="absolute -left-10 -top-10 w-48 h-48 bg-emerald-300/30 blur-3xl"></div>
+          <div className="absolute -right-10 bottom-0 w-48 h-48 bg-red-300/30 blur-3xl"></div>
 
           <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
-            <div className="max-w-[440px] sm:max-w-2xl">
-              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-                매일의 생각을 만드는 작은 도구들
+            <div className="max-w-[440px] sm:max-w-2xl text-white">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-amber-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
+                <span>🎄 Christmas Week</span>
+                <span className="text-emerald-100">선물처럼 가볍게</span>
+              </div>
+              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
+                크리스마스에 심심할 때 눌러보는 테스트들
               </h2>
-              <p className="mt-3 text-base text-slate-700">
-                가볍게 해보는 테스트와 도구들로 하루의 생각을 조금 더 깊게
-                만들어보세요.
+              <p className="mt-3 text-base text-emerald-50/90">
+                올 한 해도 고생 많았습니다.
               </p>
               <div className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 sm:items-center">
                 <button
                   data-random-btn
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-slate-900 text-white text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 text-slate-900 text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
                 >
-                  랜덤 테스트 시작
+                  랜덤 산타 선물 열기
                 </button>
               </div>
 
@@ -934,20 +938,20 @@ export function HomeContent() {
                   href="http://flow.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-emerald-200 text-sm font-semibold text-emerald-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
                 >
                   <span>FLOW 게시판</span>
                 </a>
                 <a
                   href="https://ashlight.store"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-emerald-200 text-sm font-semibold text-emerald-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
                 >
                   <span>AshLight</span>
                 </a>
               </div>
             </div>
-            <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-blue-100 mt-16">
-              Top 9
+            <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-100 bg-white/10 px-3 py-1 rounded-full shadow-sm border border-white/20 mt-16">
+              🎁 Christmas Pick 9
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
@@ -957,7 +961,7 @@ export function HomeContent() {
                 aria-label="이번 겨울, 나를 망치는 것 TOP 1 - 겨울마다 무너지는 트리거 점검"
                 data-amp-service="이번 겨울, 나를 망치는 것 TOP 1"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">❄️</span>
@@ -979,7 +983,7 @@ export function HomeContent() {
                 aria-label="2026년의 나 - 올해 선택이 만드는 1년 뒤 루트"
                 data-amp-service="2026년의 나, 지금 결정된다"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🔮</span>
@@ -999,7 +1003,7 @@ export function HomeContent() {
                 aria-label="비트코인 안 산 죄 - 그때 샀다면 지금 얼마?"
                 data-amp-service="비트코인 안 산 죄"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">💸</span>
@@ -1021,7 +1025,7 @@ export function HomeContent() {
                 aria-label="오늘 뭐 볼까? (OTT) - 검색 없이 바로 영화·드라마 추천"
                 data-amp-service="오늘 뭐 볼까? (OTT)"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🍿</span>
@@ -1043,7 +1047,7 @@ export function HomeContent() {
                 aria-label="SnapTrail - 사진을 자동 그룹화한 타임라인"
                 data-amp-service="SnapTrail"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">📍</span>
@@ -1063,7 +1067,7 @@ export function HomeContent() {
                 aria-label="크리스마스 선물, 따뜻함 리포트 - 선물이 따뜻하게 도착할 확률"
                 data-amp-service="크리스마스 선물, 따뜻함 리포트"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🎁</span>
@@ -1085,7 +1089,7 @@ export function HomeContent() {
                 aria-label="SoulPrint - 출생 정보 기반 성향 분석"
                 data-amp-service="SoulPrint"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🔮</span>
@@ -1105,7 +1109,7 @@ export function HomeContent() {
                 aria-label="손바닥 썰 푼다 - 사진 한 장으로 보는 손금 흐름"
                 data-amp-service="손바닥 썰 푼다"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">✋</span>
@@ -1127,7 +1131,7 @@ export function HomeContent() {
                 aria-label="올해 나의 인생 소비 보고서 - 돈·시간·감정 흐름 연말결산"
                 data-amp-service="올해 나의 인생 소비 보고서"
                 data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🧾</span>
@@ -1146,14 +1150,14 @@ export function HomeContent() {
             <div className="mt-6 sm:mt-8 grid gap-2 sm:grid-cols-3">
               <a
                 href="#insight"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
                 <span className="text-sm">💡</span>
                 <p className="text-sm text-slate-700">오늘의 한 줄 인사이트</p>
               </a>
               <a
                 href="#hub"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
                 <span className="text-sm">🧠</span>
                 <p className="text-sm text-slate-700">
@@ -1162,7 +1166,7 @@ export function HomeContent() {
               </a>
               <a
                 href="#utils"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/80 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
                 <span className="text-sm">🛠️</span>
                 <p className="text-sm text-slate-700">
@@ -1183,7 +1187,7 @@ export function HomeContent() {
                   aria-label="화난산타 — 토스산타 빡쳐서 만든 게임 - 공룡 달리기 + 점수 등록/랭킹"
                   data-amp-service="화난산타"
                   data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl">🦖</span>
@@ -1205,7 +1209,7 @@ export function HomeContent() {
                   aria-label="참참참! (NEON ARCADE) - 라인만 바꿔서 미사일을 피하기만 하면 돼요."
                   data-amp-service="참참참! (NEON ARCADE)"
                   data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl">🛸</span>
@@ -1225,7 +1229,7 @@ export function HomeContent() {
                   aria-label="다우니 (NEON STAIRS) - 라인만 바꿔서 계단을 밟고, 떨어지면 끝!"
                   data-amp-service="다우니 (NEON STAIRS)"
                   data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl">🪜</span>
@@ -1245,7 +1249,7 @@ export function HomeContent() {
                   aria-label="네온 핀볼 랜덤 뽑기 - 핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기"
                   data-amp-service="네온 핀볼 랜덤 뽑기"
                   data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/80 border border-slate-200 shadow-sm hover:shadow-md transition"
+                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl">🎱</span>
@@ -1306,7 +1310,7 @@ export function HomeContent() {
                   aria-label={`${guide.title} - ${guide.desc}`}
                   data-amp-service={guide.title}
                   data-amp-section="guides"
-                  className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
+                  className="flex items-start gap-3 p-4 rounded-2xl bg-white text-slate-900 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
                 >
                   <div className="text-xl">{guide.emoji}</div>
                   <div>
@@ -1336,8 +1340,8 @@ export function HomeContent() {
           id="hub"
           className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-14 space-y-12"
         >
-          <details className="sm:hidden rounded-2xl bg-white shadow-sm border border-slate-200">
-            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer">
+          <details className="sm:hidden rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200">
+            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-slate-900">
               <span className="font-semibold">커뮤니티 / 게시판</span>
               <span className="text-sm text-blue-600">열기</span>
             </summary>
@@ -1368,9 +1372,9 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🧠</span>
-                    <h4 className="font-semibold">심리 · 성향</h4>
+                    <h4 className="font-semibold text-slate-900">심리 · 성향</h4>
                   </div>
-                  <span className="text-xs text-slate-500">3분 컷</span>
+                  <span className="text-xs text-slate-600">3분 컷</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -1467,9 +1471,11 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">💰</span>
-                    <h4 className="font-semibold">돈 · 재테크</h4>
+                    <h4 className="font-semibold text-slate-900">
+                      돈 · 재테크
+                    </h4>
                   </div>
-                  <span className="text-xs text-slate-500">현실 점검</span>
+                  <span className="text-xs text-slate-600">현실 점검</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -1566,9 +1572,11 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🌿</span>
-                    <h4 className="font-semibold">건강 · 생활</h4>
+                    <h4 className="font-semibold text-slate-900">
+                      건강 · 생활
+                    </h4>
                   </div>
-                  <span className="text-xs text-slate-500">체크 해보기</span>
+                  <span className="text-xs text-slate-600">체크 해보기</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -1633,9 +1641,9 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🎉</span>
-                    <h4 className="font-semibold">재미 · 밈</h4>
+                    <h4 className="font-semibold text-slate-900">재미 · 밈</h4>
                   </div>
-                  <span className="text-xs text-slate-500">1분 힐링</span>
+                  <span className="text-xs text-slate-600">1분 힐링</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -1773,7 +1781,7 @@ export function HomeContent() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                  className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
                 >
                   <h4 className="font-bold text-lg">{title}</h4>
                   <p className="text-sm text-gray-600 mt-1">{desc}</p>
@@ -1819,7 +1827,7 @@ export function HomeContent() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-5 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                  className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
                 >
                   <h4 className="font-bold text-lg">{title}</h4>
                   <p className="text-sm text-gray-600 mt-1">{desc}</p>
@@ -1835,10 +1843,10 @@ export function HomeContent() {
             </div>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-emerald-100">
                   지금 {allServices.length}개의 서비스가 준비되어 있어요.
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-emerald-100/80">
                   키워드로 검색하거나 바로 클릭해보세요.
                 </p>
               </div>
@@ -1854,7 +1862,7 @@ export function HomeContent() {
                 />
               </label>
             </div>
-            <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
+            <div className="flex items-center justify-between text-xs text-emerald-100/90 mb-3">
               <span>
                 {searchQuery.trim()
                   ? `검색 결과 ${filteredServices.length}개`
@@ -1864,7 +1872,7 @@ export function HomeContent() {
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:text-blue-700 transition"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200 text-slate-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
                 >
                   초기화
                 </button>
@@ -1888,14 +1896,14 @@ export function HomeContent() {
                     aria-label={`${title} - ${desc}`}
                     data-amp-service={title}
                     data-amp-section="all"
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                    className="flex items-start gap-3 p-4 rounded-2xl bg-white/95 text-slate-900 shadow-sm border border-emerald-200 hover:border-amber-300 hover:shadow-md transition"
                   >
                     <div className="text-xl">{icon}</div>
                     <div>
-                      <h4 className="font-semibold text-lg leading-snug">
+                      <h4 className="font-semibold text-lg leading-snug text-slate-900">
                         {title}
                       </h4>
-                      <p className="text-sm text-slate-600">{desc}</p>
+                      <p className="text-sm text-slate-700">{desc}</p>
                     </div>
                   </a>
                 ))}
@@ -1903,17 +1911,17 @@ export function HomeContent() {
             )}
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white pt-6 pb-6 pl-[54px] pr-[54px] sm:pt-14 sm:pb-14 sm:pl-[70px] sm:pr-[70px] shadow-lg">
+          <div className="rounded-2xl bg-gradient-to-br from-emerald-900 via-red-800 to-emerald-900 text-white pt-6 pb-6 pl-[54px] pr-[54px] sm:pt-14 sm:pb-14 sm:pl-[70px] sm:pr-[70px] shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
-                <p className="text-sm uppercase tracking-[0.2em] text-blue-200">
-                  Stay Longer
+                <p className="text-sm uppercase tracking-[0.2em] text-amber-200">
+                  Holiday Picks
                 </p>
                 <h4 className="mt-1 text-2xl font-bold">
-                  다른 사람들은 이것도 했어요
+                  산타처럼 골라 담은 인기 테스트
                 </h4>
-                <p className="mt-2 text-sm text-blue-100">
-                  지금 많이 보는 인기 테스트
+                <p className="mt-2 text-sm text-emerald-50/90">
+                  지금 많이 보는 링크 중 마음에 드는 것만 가볍게 챙겨가세요.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
@@ -1987,29 +1995,29 @@ export function HomeContent() {
 
           <div
             id="faq"
-            className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 sm:p-8 space-y-4"
+            className="rounded-2xl bg-white/95 border border-emerald-200 shadow-lg p-6 sm:p-8 space-y-4 text-slate-900"
           >
             <div className="flex items-center gap-2">
               <span className="text-2xl">❓</span>
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-blue-600">
+                <p className="text-xs uppercase tracking-[0.2em] text-emerald-700">
                   FAQ
                 </p>
                 <h3 className="text-xl font-bold">자주 묻는 질문</h3>
               </div>
             </div>
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-emerald-100">
               {seoFaq.map((item) => (
                 <details key={item.question} className="py-3 group">
                   <summary className="flex items-center justify-between cursor-pointer">
-                    <span className="text-sm font-semibold text-slate-800 group-hover:text-blue-700">
+                    <span className="text-sm font-semibold text-slate-900 group-hover:text-emerald-700">
                       {item.question}
                     </span>
-                    <span className="text-slate-400 text-lg group-open:rotate-45 transition">
+                    <span className="text-emerald-400 text-lg group-open:rotate-45 transition">
                       +
                     </span>
                   </summary>
-                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                  <p className="mt-2 text-sm text-slate-700 leading-relaxed">
                     {item.answer}
                   </p>
                 </details>
@@ -2025,22 +2033,22 @@ export function HomeContent() {
         id="quickBar"
         className="fixed inset-x-0 bottom-3 px-4 sm:px-6 transition transform translate-y-24 opacity-0 pointer-events-none"
       >
-        <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-slate-900 text-white rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
-          <div className="text-sm font-semibold">
-            나를 이해하는 가장 쉬운 방법
+        <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-gradient-to-r from-red-600 via-amber-400 to-emerald-600 text-slate-900 rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
+          <div className="text-sm font-semibold drop-shadow">
+            크리스마스 선물 모드 켜짐 — 부담 없이 열어보기
           </div>
           <div className="flex items-center gap-2">
             <a
               href="#hub"
-              className="px-3 py-2 rounded-full bg-white text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
+              className="px-3 py-2 rounded-full bg-white/80 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
             >
               Hub
             </a>
             <button
               data-random-btn
-              className="px-3 py-2 rounded-full bg-blue-500 text-white text-sm font-semibold hover:-translate-y-0.5 transition"
+              className="px-3 py-2 rounded-full bg-white/90 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
             >
-              랜덤
+              랜덤 선물
             </button>
           </div>
         </div>
