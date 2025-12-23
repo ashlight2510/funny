@@ -110,7 +110,8 @@ const seoTopItems = [
   {
     name: "우연이 아닐지도",
     url: "https://heal.funnyfunny.cloud",
-    description: "클릭 한 번으로 뽑는 위로 카드 — 오늘 필요한 말을 우연처럼 받기",
+    description:
+      "클릭 한 번으로 뽑는 위로 카드 — 오늘 필요한 말을 우연처럼 받기",
   },
 ];
 
@@ -1397,7 +1398,9 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🧠</span>
-                    <h4 className="font-semibold text-slate-900">심리 · 성향</h4>
+                    <h4 className="font-semibold text-slate-900">
+                      심리 · 성향
+                    </h4>
                   </div>
                   <span className="text-xs text-slate-600">3분 컷</span>
                 </div>
@@ -1889,7 +1892,7 @@ export function HomeContent() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="예: 커피, 투자, 마음챙김"
-                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
                 />
               </label>
             </div>
