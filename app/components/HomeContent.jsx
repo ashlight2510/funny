@@ -48,6 +48,7 @@ const randomTools = [
   "https://xmas.funnyfunny.cloud",
   "https://hand.funnyfunny.cloud",
   "https://soccer.funnyfunny.cloud",
+  "https://heal.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -105,6 +106,11 @@ const seoTopItems = [
     name: "손바닥 썰 푼다",
     url: "https://hand.funnyfunny.cloud",
     description: "사진 한 장으로 손금 흐름을 읽어 성향 카드를 만드는 분석",
+  },
+  {
+    name: "우연이 아닐지도",
+    url: "https://heal.funnyfunny.cloud",
+    description: "클릭 한 번으로 뽑는 위로 카드 — 오늘 필요한 말을 우연처럼 받기",
   },
 ];
 
@@ -198,6 +204,12 @@ const seoGuides = [
     emoji: "🔮",
     title: "오늘의 한 줄 운세 가이드",
     desc: "기분에 따라 뽑는 오늘의 한 줄 운세 사용법과 해석 기준",
+  },
+  {
+    slug: "heal-card",
+    emoji: "💌",
+    title: "우연이 아닐지도 가이드",
+    desc: "클릭 한 번으로 오늘의 위로 카드를 받는 방법과 공유 팁",
   },
 ];
 
@@ -345,6 +357,12 @@ const seoApplications = [
     name: "오늘의 한 줄 운세",
     url: "https://fortune.funnyfunny.cloud/",
     description: "기분에 따라 고르는 오늘의 한 줄 운세",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "우연이 아닐지도",
+    url: "https://heal.funnyfunny.cloud/",
+    description: "클릭 한 번으로 뽑는 위로 카드",
     category: "LifestyleApplication",
   },
 ];
@@ -610,6 +628,13 @@ const allServices = [
     title: "오늘의 한 줄 운세",
     desc: "기분에 따라 보는 오늘의 한 줄 운세",
     tags: ["운세", "포춘", "기분", "한 줄"],
+  },
+  {
+    href: "https://heal.funnyfunny.cloud",
+    icon: "💌",
+    title: "우연이 아닐지도",
+    desc: "클릭 한 번으로 받는 위로 카드",
+    tags: ["위로", "힐링", "카드"],
   },
   {
     href: "https://mind.funnyfunny.cloud",
@@ -1797,6 +1822,12 @@ export function HomeContent() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
+                [
+                  "https://heal.funnyfunny.cloud",
+                  "💌 우연이 아닐지도",
+                  "클릭 한 번으로 위로 카드 한 장",
+                  "오늘 필요한 말을 우연처럼 전달",
+                ],
                 [
                   "https://fortune.funnyfunny.cloud",
                   "🔮 오늘의 한 줄 운세",
