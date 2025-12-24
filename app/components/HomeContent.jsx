@@ -50,6 +50,7 @@ const randomTools = [
   "https://hand.funnyfunny.cloud",
   "https://soccer.funnyfunny.cloud",
   "https://heal.funnyfunny.cloud",
+  "https://image.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -117,6 +118,12 @@ const seoTopItems = [
 ];
 
 const seoGuides = [
+  {
+    slug: "image-merge-pdf",
+    emoji: "🖼️",
+    title: "이미지 합치기 & PDF 변환 가이드",
+    desc: "여러 장을 업로드·정렬해 한 장 이미지나 PDF로 저장하는 빠른 변환 사용법",
+  },
   {
     slug: "autocut-studio",
     emoji: "🎬",
@@ -323,6 +330,13 @@ const seoApplications = [
     url: "https://video.funnyfunny.cloud/",
     description:
       "영상 업로드만으로 침묵 구간을 감지해 하이라이트/점프컷 타임라인을 자동 생성하는 웹 편집기",
+    category: "UtilityApplication",
+  },
+  {
+    name: "이미지 합치기 & PDF 변환",
+    url: "https://image.funnyfunny.cloud/",
+    description:
+      "여러 이미지를 업로드해 드래그로 순서를 맞춘 뒤 한 장 이미지나 PDF로 저장하는 변환기",
     category: "UtilityApplication",
   },
   {
@@ -678,6 +692,13 @@ const allServices = [
     title: "AutoCut Studio",
     desc: "침묵 감지로 하이라이트·점프컷 타임라인 자동 생성",
     tags: ["영상편집", "유튜브", "점프컷", "하이라이트"],
+  },
+  {
+    href: "https://image.funnyfunny.cloud",
+    icon: "🖼️",
+    title: "이미지 합치기 & PDF 변환",
+    desc: "여러 장을 드래그 정렬해 한 장 이미지·PDF로 저장",
+    tags: ["이미지", "PDF", "병합", "편집"],
   },
   {
     href: "https://time.ashlight.store",
@@ -1781,6 +1802,12 @@ export function HomeContent() {
                   "🎬 AutoCut Studio",
                   "영상 자동 하이라이트/점프컷",
                   "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
+                ],
+                [
+                  "https://image.funnyfunny.cloud",
+                  "🖼️ 이미지 합치기 & PDF 변환",
+                  "여러 장 업로드하고 정렬해 한 장/ PDF로 저장",
+                  "드래그로 순서를 맞추고 JPG·PNG·PDF로 한 번에 묶어주는 변환기",
                 ],
                 [
                   "https://audio.funnyfunny.cloud",
