@@ -358,6 +358,12 @@ const seoApplications = [
     category: "GameApplication",
   },
   {
+    name: "하루 한판 테트리스",
+    url: "https://tet.funnyfunny.cloud/",
+    description: "싱글(AI)과 2인 플레이를 지원하는 테트리스 게임",
+    category: "GameApplication",
+  },
+  {
     name: "크리스마스 선물, 따뜻함 리포트",
     url: "https://xmas.funnyfunny.cloud/",
     description: "🎯 선물이 따뜻하게 도착할 확률을 확인하는 리포트",
@@ -762,6 +768,13 @@ const allServices = [
     title: "다우니 (NEON STAIRS)",
     desc: "좌우 이동으로 계단을 밟고, 떨어지면 끝!",
     tags: ["게임", "아케이드", "계단"],
+  },
+  {
+    href: "https://tet.funnyfunny.cloud/",
+    icon: "🧱",
+    title: "하루 한판 테트리스",
+    desc: "싱글(AI)과 2인 플레이를 지원하는 테트리스",
+    tags: ["게임", "테트리스", "퍼즐", "2인 플레이"],
   },
   {
     href: "https://random.funnyfunny.cloud/",
@@ -1308,6 +1321,28 @@ export function HomeContent() {
                   <h4 className="font-bold text-lg leading-snug">다우니</h4>
                   <p className="text-sm text-slate-600 mt-1">
                     라인만 바꿔서 계단을 밟고, 떨어지면 끝!
+                  </p>
+                </a>
+                <a
+                  href="https://tet.funnyfunny.cloud/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="하루 한판 테트리스 - 싱글(AI)과 2인 플레이를 지원하는 테트리스 게임"
+                  data-amp-service="하루 한판 테트리스"
+                  data-amp-section="game"
+                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl">🧱</span>
+                    <span className="text-xs font-semibold text-orange-600">
+                      2인 플레이
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg leading-snug">
+                    하루 한판 테트리스
+                  </h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    싱글(AI)과 2인 플레이를 지원하는 테트리스
                   </p>
                 </a>
                 <a

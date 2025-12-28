@@ -1673,6 +1673,15 @@ const guideSeeds = [
     serviceUrl: "https://downy.funnyfunny.cloud/",
     keywords: ["다우니 게임", "계단 게임", "아케이드", "NEON STAIRS"],
   },
+  {
+    slug: "tetris-daily",
+    title: "하루 한판 테트리스 가이드",
+    description: "싱글(AI)과 2인 플레이를 지원하는 테트리스 게임 플레이 팁",
+    category: "게임",
+    heroEmoji: "🧱",
+    serviceUrl: "https://tet.funnyfunny.cloud/",
+    keywords: ["테트리스", "퍼즐 게임", "2인 플레이", "AI 대전"],
+  },
 ];
 
 guideSeeds.forEach((seed) => {
