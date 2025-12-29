@@ -10,6 +10,7 @@ const randomTools = [
   "https://coffee.funnyfunny.cloud",
   "https://video.funnyfunny.cloud",
   "https://local.funnyfunny.cloud",
+  "https://meta.funnyfunny.cloud",
   "https://ocr.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
@@ -64,6 +65,12 @@ const seoTopItems = [
     url: "https://local.funnyfunny.cloud",
     description:
       "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈로 이미지 용량을 줄이고, 업로드 없는 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
+  },
+  {
+    name: "Meta Kit — SEO · OG · Favicon",
+    url: "https://meta.funnyfunny.cloud",
+    description:
+      "메타태그·OG/Twitter 카드·파비콘을 한 번에 생성하고, OG 이미지 텍스트(영문)까지 자동으로 만들어 복붙할 수 있는 메타 생성기",
   },
   {
     name: "오늘의 나, 잘했다",
@@ -129,6 +136,12 @@ const seoTopItems = [
 ];
 
 const seoGuides = [
+  {
+    slug: "meta-kit",
+    emoji: "🧰",
+    title: "Meta Kit — SEO·OG·Favicon 번들 생성",
+    desc: "메타태그·OG/Twitter 카드·파비콘·OG 이미지 텍스트(영문)를 입력 → 생성 → 복붙하는 방법",
+  },
   {
     slug: "local-image-optimizer",
     emoji: "🗜️",
@@ -283,6 +296,13 @@ const seoApplications = [
     description:
       "겨울마다 반복되는 가장 큰 방해 요인을 점검하고, 회복 루틴·환경 정비 팁을 제안하는 계절형 테스트",
     category: "LifestyleApplication",
+  },
+  {
+    name: "Meta Kit — SEO · OG · Favicon",
+    url: "https://meta.funnyfunny.cloud/",
+    description:
+      "메타태그·OG/Twitter 카드·파비콘을 한 번에 생성하고 OG 이미지 텍스트(영문)까지 자동으로 만들어 붙여넣는 메타 생성기",
+    category: "UtilityApplication",
   },
   {
     name: "올해 나의 인생 소비 보고서",
@@ -800,6 +820,13 @@ const allServices = [
     title: "로컬 이미지 최적화 & 파일 인사이트",
     desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈 + 로컬 파일 정보/해시/미리보기",
     tags: ["이미지", "최적화", "로컬", "파일정보", "해시"],
+  },
+  {
+    href: "https://meta.funnyfunny.cloud",
+    icon: "🧰",
+    title: "Meta Kit — SEO · OG · Favicon",
+    desc: "메타태그·OG/Twitter 카드·파비콘을 입력→생성→복붙, OG 이미지 텍스트는 영문만 사용",
+    tags: ["메타태그", "OG", "SEO", "파비콘", "OG 이미지"],
   },
   {
     href: "https://image.funnyfunny.cloud",
@@ -1972,6 +1999,12 @@ export function HomeContent() {
                   "🗜️ 로컬 이미지 최적화 & 파일 인사이트",
                   "드래그 한 번으로 이미지 용량 줄이기 + 파일 정보 확인",
                   "WebP/JPEG 재인코딩·자동 리사이즈로 최적화하고, 업로드 없이 파일 메타·SHA-256·이미지/PDF/텍스트 미리보기를 제공합니다.",
+                ],
+                [
+                  "https://meta.funnyfunny.cloud",
+                  "🧰 Meta Kit — SEO · OG · Favicon",
+                  "메타태그/공유/아이콘을 한 번에 생성하고 복붙",
+                  "SEO·OG·Twitter 카드·파비콘 세트를 입력 → 생성 → 복사하며, OG 이미지 텍스트는 영문만 사용하는 메타 번들러",
                 ],
                 [
                   "https://image.funnyfunny.cloud",

@@ -56,6 +56,7 @@ export const metadata = {
     "점프컷 편집기",
     "침묵 제거 편집기",
     "SnapTrail",
+    "Meta Kit",
     "예매는타이밍",
     "오늘의 IT 뉴스",
     "지금날씨",
