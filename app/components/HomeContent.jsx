@@ -353,7 +353,7 @@ const seoApplications = [
     category: "UtilityApplication",
   },
   {
-    name: "화난산타",
+    name: "달리기",
     url: "https://run.funnyfunny.cloud/",
     description: "공룡 달리기 스타일 랭킹 게임 — 점수 등록/랭킹",
     category: "GameApplication",
@@ -771,7 +771,7 @@ const allServices = [
   {
     href: "https://run.funnyfunny.cloud",
     icon: "🦖",
-    title: "화난산타",
+    title: "달리기",
     desc: "공룡 달리기 스타일 랭킹 게임",
     tags: ["게임", "공룡", "랭킹"],
   },
@@ -1285,8 +1285,8 @@ export function HomeContent() {
                   href="https://run.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="화난산타 — 공룡 달리기 스타일 랭킹 게임"
-                  data-amp-service="화난산타"
+                  aria-label="달리기 — 공룡 달리기 스타일 랭킹 게임"
+                  data-amp-service="달리기"
                   data-amp-section="game"
                   className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
                 >
@@ -1296,7 +1296,7 @@ export function HomeContent() {
                       랭킹 지원
                     </span>
                   </div>
-                  <h4 className="font-bold text-lg leading-snug">화난산타</h4>
+                  <h4 className="font-bold text-lg leading-snug">달리기</h4>
                   <p className="text-sm text-slate-600 mt-1">
                     공룡 달리기 스타일 랭킹 게임
                   </p>

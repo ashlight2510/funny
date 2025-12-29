@@ -1718,12 +1718,12 @@ const guideSeeds = [
   },
   {
     slug: "angry-santa",
-    title: "화난산타 가이드",
-    description: "공룡 달리기 스타일 랭킹 게임 '화난산타' 플레이 팁",
+    title: "달리기 가이드",
+    description: "공룡 달리기 스타일 랭킹 게임 '달리기' 플레이 팁",
     category: "게임",
     heroEmoji: "🦖",
     serviceUrl: "https://run.funnyfunny.cloud",
-    keywords: ["화난산타", "달리기 게임", "랭킹 게임", "아케이드"],
+    keywords: ["달리기", "달리기 게임", "랭킹 게임", "아케이드"],
   },
   {
     slug: "charm-game",

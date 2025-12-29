@@ -14,7 +14,7 @@ export function HeaderPortal() {
               className="text-base sm:text-xl font-bold drop-shadow"
               data-i18n="heroTitle"
             >
-              산타가 놓고 간 가벼운 선물들을 열어보세요
+              유용할 수 있는 서비스, 놀이터
             </h1>
           </div>
         </div>
@@ -39,7 +39,7 @@ export function HeaderPortal() {
             data-i18n="ctaPrimary"
           >
             <span className="sm:hidden">랜덤</span>
-            <span className="hidden sm:inline">랜덤 산타 선물 열기</span>
+            <span className="hidden sm:inline">랜덤 열기</span>
           </button>
         </div>
       </div>

@@ -41,7 +41,7 @@ export const metadata = {
     "EmojiCon Studio",
     "SnapTrail",
     "D-day 계산기",
-    "화난산타",
+    "달리기",
   ],
   alternates: {
     canonical: "/",
