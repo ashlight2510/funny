@@ -342,7 +342,7 @@ const seoApplications = [
   {
     name: "화난산타",
     url: "https://run.funnyfunny.cloud/",
-    description: "토스산타 빡쳐서 만든 공룡 달리기 게임 — 점수 등록/랭킹",
+    description: "공룡 달리기 스타일 랭킹 게임 — 점수 등록/랭킹",
     category: "GameApplication",
   },
   {
@@ -752,7 +752,7 @@ const allServices = [
     href: "https://run.funnyfunny.cloud",
     icon: "🦖",
     title: "화난산타",
-    desc: "토스산타 빡쳐서 만든 공룡 달리기 게임 (랭킹)",
+    desc: "공룡 달리기 스타일 랭킹 게임",
     tags: ["게임", "공룡", "랭킹"],
   },
   {
@@ -996,11 +996,11 @@ export function HomeContent() {
           <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
             <div className="max-w-[440px] sm:max-w-2xl text-white">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-amber-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
-                <span>🎄 Christmas Week</span>
-                <span className="text-emerald-100">선물처럼 가볍게</span>
+                <span>❄️ Winter Week</span>
+                <span className="text-emerald-100">가볍게 즐기기</span>
               </div>
               <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
-                크리스마스에 심심할 때 눌러보는 테스트들
+                겨울에 심심할 때 눌러보는 테스트들
               </h2>
               <p className="mt-3 text-base text-emerald-50/90">
                 올 한 해도 고생 많았습니다.
@@ -1010,7 +1010,7 @@ export function HomeContent() {
                   data-random-btn
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 text-slate-900 text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
                 >
-                  랜덤 산타 선물 열기
+                  랜덤 테스트 열기
                 </button>
               </div>
 
@@ -1157,7 +1157,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  크리스마스 선물
+                  선물 따뜻함 리포트
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   🎯 따뜻하게 도착할 확률
@@ -1265,7 +1265,7 @@ export function HomeContent() {
                   href="https://run.funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="화난산타 — 토스산타 빡쳐서 만든 게임 - 공룡 달리기 + 점수 등록/랭킹"
+                  aria-label="화난산타 — 공룡 달리기 스타일 랭킹 게임"
                   data-amp-service="화난산타"
                   data-amp-section="game"
                   className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
@@ -1276,11 +1276,9 @@ export function HomeContent() {
                       랭킹 지원
                     </span>
                   </div>
-                  <h4 className="font-bold text-lg leading-snug">
-                    화난산타 — 토스산타 빡쳐서 만든 게임
-                  </h4>
+                  <h4 className="font-bold text-lg leading-snug">화난산타</h4>
                   <p className="text-sm text-slate-600 mt-1">
-                    공룡 달리기 + 점수 등록/랭킹
+                    공룡 달리기 스타일 랭킹 게임
                   </p>
                 </a>
                 <a
@@ -2038,10 +2036,10 @@ export function HomeContent() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-amber-200">
-                  Holiday Picks
+                  Winter Picks
                 </p>
                 <h4 className="mt-1 text-2xl font-bold">
-                  산타처럼 골라 담은 인기 테스트
+                  겨울에 보기 좋은 인기 테스트
                 </h4>
                 <p className="mt-2 text-sm text-emerald-50/90">
                   지금 많이 보는 링크 중 마음에 드는 것만 가볍게 챙겨가세요.
@@ -2158,7 +2156,7 @@ export function HomeContent() {
       >
         <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-gradient-to-r from-red-600 via-amber-400 to-emerald-600 text-slate-900 rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
           <div className="text-sm font-semibold drop-shadow">
-            크리스마스 선물 모드 켜짐 — 부담 없이 열어보기
+            빠른 접근 모드 켜짐 — 부담 없이 즐기기
           </div>
           <div className="flex items-center gap-2">
             <a
