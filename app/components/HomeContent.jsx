@@ -7,6 +7,7 @@ import { FooterPortal } from "./FooterPortal";
 const randomTools = [
   "https://today.funnyfunny.cloud",
   "https://random.funnyfunny.cloud",
+  "https://rest.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
   "https://video.funnyfunny.cloud",
   "https://local.funnyfunny.cloud",
@@ -77,6 +78,12 @@ const seoTopItems = [
     url: "https://today.funnyfunny.cloud",
     description:
       "오늘 내가 잘한 일을 한 줄로 기록하고, 내일의 작은 목표를 바로 정리하는 리플렉션 도구",
+  },
+  {
+    name: "이 정도면 쉬어야 할까?",
+    url: "https://rest.funnyfunny.cloud",
+    description:
+      "짧은 설문으로 지금 쉬어도 될지, 즉시 휴식이 필요한지 가볍게 체크하는 휴식 결정 테스트",
   },
   {
     name: "이번 겨울, 나를 망치는 것 TOP 1",
@@ -177,6 +184,12 @@ const seoGuides = [
     emoji: "🌱",
     title: "오늘의 나, 잘했다 가이드",
     desc: "오늘 잘한 일을 한 줄로 정리하고, 내일 액션을 만드는 리마인드 방법",
+  },
+  {
+    slug: "rest-check",
+    emoji: "🛋️",
+    title: "이 정도면 쉬어야 할까? 가이드",
+    desc: "짧은 설문으로 지금 쉬어도 될지 확인하고 휴식 루틴을 고르는 방법",
   },
   {
     slug: "winter-ruin-top1",
@@ -289,6 +302,13 @@ const seoApplications = [
     description:
       "오늘 내가 잘한 일을 한 줄로 기록하고 내일의 작은 행동을 바로 정리하는 리마인드 도구",
     category: "ProductivityApplication",
+  },
+  {
+    name: "이 정도면 쉬어야 할까?",
+    url: "https://rest.funnyfunny.cloud/",
+    description:
+      "짧은 설문으로 지금 쉬어도 될지, 휴식 알림이 필요한지 가볍게 점검하는 휴식 결정 테스트",
+    category: "LifestyleApplication",
   },
   {
     name: "이번 겨울, 나를 망치는 것 TOP 1",
@@ -526,6 +546,13 @@ const allServices = [
     title: "오늘의 나, 잘했다",
     desc: "오늘, 내가 잘한 건 뭐였을까?",
     tags: ["리마인드", "칭찬", "루틴", "리플렉션"],
+  },
+  {
+    href: "https://rest.funnyfunny.cloud",
+    icon: "🛋️",
+    title: "이 정도면 쉬어야 할까?",
+    desc: "짧은 설문으로 지금 쉬어도 될지 체크",
+    tags: ["휴식", "컨디션", "설문", "번아웃"],
   },
   {
     href: "http://flow.funnyfunny.cloud/",
@@ -1216,6 +1243,28 @@ export function HomeContent() {
                 </p>
               </a>
               <a
+                href="https://rest.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="이 정도면 쉬어야 할까? - 짧은 설문으로 지금 쉬어도 될지 체크"
+                data-amp-service="이 정도면 쉬어야 할까?"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🛋️</span>
+                  <span className="text-xs font-semibold text-amber-600">
+                    휴식 체크
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  이 정도면 쉬어야 할까?
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  지금 쉬어도 될지 1분 설문
+                </p>
+              </a>
+              <a
                 href="https://next.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1672,6 +1721,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://rest.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🛋️ 이 정도면 쉬어야 할까?
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://product.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1855,6 +1912,14 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     ☕ 커피중독 테스트
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://rest.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🛋️ 이 정도면 쉬어야 할까?
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2273,6 +2338,14 @@ export function HomeContent() {
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
                   에너지 누수
+                </a>
+                <a
+                  href="https://rest.funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                >
+                  쉬어야 할까
                 </a>
                 <a
                   href="https://coffee.funnyfunny.cloud"
