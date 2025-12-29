@@ -49,7 +49,7 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 
 새 서비스를 추가하거나 변경 시 `sitemap.xml`의 `<lastmod>` 날짜를 업데이트하세요.
 
-## 📋 포함된 서비스 (20개)
+## 📋 포함된 서비스 (22개)
 
 1. ☕ 커피 중독도 테스트 (`coffee.funnyfunny.cloud`)
 2. 💄 꾸밈비 파산 테스트 (`beauty.funnyfunny.cloud`)
@@ -72,6 +72,7 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 19. 🍱 오늘 뭐 먹지? (`cook.funnyfunny.cloud`)
 20. 🔮 SoulPrint (`soul.funnyfunny.cloud`) — 출생 정보를 바탕으로 한 독자적인 성향 분석
 21. 🛕 하루 한 문장 (`temple.funnyfunny.cloud`) — 불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장
+22. 😴 잠들기 도우미 (`sleep.funnyfunny.cloud`) — 코골이·주변 소음 위로 덮는 백색소음 & 환경음
 
 ## 🎨 디자인 특징
 
