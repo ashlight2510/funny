@@ -2417,7 +2417,7 @@ export function HomeContent() {
       >
         <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-gradient-to-r from-red-600 via-amber-400 to-emerald-600 text-slate-900 rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
           <div className="text-sm font-semibold drop-shadow">
-            빠른 접근 모드 켜짐 — 부담 없이 즐기기
+            부담 없이 즐기세요
           </div>
           <div className="flex items-center gap-2">
             <a
