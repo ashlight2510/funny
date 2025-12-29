@@ -54,6 +54,7 @@ const randomTools = [
   "https://soccer.funnyfunny.cloud",
   "https://heal.funnyfunny.cloud",
   "https://image.funnyfunny.cloud",
+  "https://temple.funnyfunny.cloud",
 ];
 
 const seoTopItems = [
@@ -253,6 +254,12 @@ const seoGuides = [
     title: "오늘의 지혜 가이드",
     desc: "성경의 메시지에서 영감을 받은 하루 한 문장을 고르는 방법과 공유 팁",
   },
+  {
+    slug: "temple-daily-quote",
+    emoji: "🛕",
+    title: "하루 한 문장 (Temple) 가이드",
+    desc: "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장을 고르고 공유하는 법",
+  },
 ];
 
 const seoApplications = [
@@ -445,6 +452,12 @@ const seoApplications = [
     name: "우연이 아닐지도",
     url: "https://heal.funnyfunny.cloud/",
     description: "클릭 한 번으로 뽑는 위로 카드",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "하루 한 문장 (Temple)",
+    url: "https://temple.funnyfunny.cloud/",
+    description: "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장",
     category: "LifestyleApplication",
   },
 ];
@@ -724,6 +737,13 @@ const allServices = [
     title: "우연이 아닐지도",
     desc: "클릭 한 번으로 받는 위로 카드",
     tags: ["위로", "힐링", "카드"],
+  },
+  {
+    href: "https://temple.funnyfunny.cloud/",
+    icon: "🛕",
+    title: "하루 한 문장 (Temple)",
+    desc: "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장",
+    tags: ["불교", "명상", "명언", "한 문장"],
   },
   {
     href: "https://mind.funnyfunny.cloud",

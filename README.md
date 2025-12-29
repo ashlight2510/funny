@@ -71,6 +71,7 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 18. 🍺 그때 마신 술, 지금 얼마? (`drink.funnyfunny.cloud`)
 19. 🍱 오늘 뭐 먹지? (`cook.funnyfunny.cloud`)
 20. 🔮 SoulPrint (`soul.funnyfunny.cloud`) — 출생 정보를 바탕으로 한 독자적인 성향 분석
+21. 🛕 하루 한 문장 (`temple.funnyfunny.cloud`) — 불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장
 
 ## 🎨 디자인 특징
 
