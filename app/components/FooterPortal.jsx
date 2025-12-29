@@ -88,7 +88,7 @@ export function FooterPortal() {
               </a>
             </div>
             <p className="text-sm text-emerald-100/80 font-medium">
-              © 2025 FunnyFunny Cloud by AshLight. Merry & Bright.
+              © 2025 FunnyFunny Cloud by AshLight.
             </p>
           </div>
         </div>
