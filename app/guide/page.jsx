@@ -14,6 +14,7 @@ export const metadata = {
     "자산 방탄 지수 가이드",
     "비트코인 안 산 죄 가이드",
     "하루 생산성 체크 가이드",
+    "잠들기 도우미 가이드",
   ],
   alternates: {
     canonical: "/guide",
