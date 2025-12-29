@@ -9,6 +9,7 @@ const randomTools = [
   "https://random.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
   "https://video.funnyfunny.cloud",
+  "https://ocr.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
   "https://energy.funnyfunny.cloud",
@@ -129,6 +130,12 @@ const seoGuides = [
     emoji: "🎬",
     title: "AutoCut Studio 가이드",
     desc: "침묵 감지·점프컷 자동 타임라인으로 유튜브 영상 편집을 빠르게 끝내는 법",
+  },
+  {
+    slug: "image-text-extract",
+    emoji: "🔍",
+    title: "이미지 텍스트 추출 가이드",
+    desc: "사진 속 글자를 자동으로 읽고 복사하는 빠른 OCR 사용법",
   },
   {
     slug: "today-well-done",
@@ -337,6 +344,12 @@ const seoApplications = [
     url: "https://image.funnyfunny.cloud/",
     description:
       "여러 이미지를 업로드해 드래그로 순서를 맞춘 뒤 한 장 이미지나 PDF로 저장하는 변환기",
+    category: "UtilityApplication",
+  },
+  {
+    name: "이미지 텍스트 추출",
+    url: "https://ocr.funnyfunny.cloud/",
+    description: "사진 속 글자를 자동으로 읽어 텍스트로 뽑는 OCR 변환기",
     category: "UtilityApplication",
   },
   {
@@ -705,6 +718,13 @@ const allServices = [
     title: "이미지 합치기 & PDF 변환",
     desc: "여러 장을 드래그 정렬해 한 장 이미지·PDF로 저장",
     tags: ["이미지", "PDF", "병합", "편집"],
+  },
+  {
+    href: "https://ocr.funnyfunny.cloud",
+    icon: "🔍",
+    title: "이미지 텍스트 추출",
+    desc: "사진 속 글자를 자동으로 읽어 텍스트로 뽑기",
+    tags: ["OCR", "텍스트", "사진", "변환"],
   },
   {
     href: "https://time.ashlight.store",
@@ -1841,6 +1861,12 @@ export function HomeContent() {
                   "🖼️ 이미지 합치기 & PDF 변환",
                   "여러 장 업로드하고 정렬해 한 장/ PDF로 저장",
                   "드래그로 순서를 맞추고 JPG·PNG·PDF로 한 번에 묶어주는 변환기",
+                ],
+                [
+                  "https://ocr.funnyfunny.cloud",
+                  "🔍 이미지 텍스트 추출",
+                  "사진 속 글자를 자동으로 읽어 텍스트로 복사",
+                  "영수증·문서·메모를 찍으면 글자를 추출해 바로 클립보드/파일로 저장할 수 있는 OCR 도구",
                 ],
                 [
                   "https://audio.funnyfunny.cloud",
