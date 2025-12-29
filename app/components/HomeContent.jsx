@@ -36,6 +36,7 @@ const randomTools = [
   "https://mind.funnyfunny.cloud",
   "https://fortune.funnyfunny.cloud",
   "https://soul.funnyfunny.cloud",
+  "https://wisdom.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
   "https://winter.funnyfunny.cloud",
@@ -246,6 +247,12 @@ const seoGuides = [
     title: "우연이 아닐지도 가이드",
     desc: "클릭 한 번으로 오늘의 위로 카드를 받는 방법과 공유 팁",
   },
+  {
+    slug: "daily-wisdom",
+    emoji: "📜",
+    title: "오늘의 지혜 가이드",
+    desc: "성경의 메시지에서 영감을 받은 하루 한 문장을 고르는 방법과 공유 팁",
+  },
 ];
 
 const seoApplications = [
@@ -425,6 +432,13 @@ const seoApplications = [
     name: "오늘의 한 줄 운세",
     url: "https://fortune.funnyfunny.cloud/",
     description: "기분에 따라 고르는 오늘의 한 줄 운세",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "오늘의 지혜",
+    url: "https://wisdom.funnyfunny.cloud/",
+    description:
+      "성경의 메시지에서 영감을 받은 하루 한 문장을 고르는 Daily Wisdom",
     category: "LifestyleApplication",
   },
   {
@@ -696,6 +710,13 @@ const allServices = [
     title: "오늘의 한 줄 운세",
     desc: "기분에 따라 보는 오늘의 한 줄 운세",
     tags: ["운세", "포춘", "기분", "한 줄"],
+  },
+  {
+    href: "https://wisdom.funnyfunny.cloud",
+    icon: "📜",
+    title: "오늘의 지혜",
+    desc: "성경의 메시지에서 영감을 받은 하루 한 문장",
+    tags: ["지혜", "성경", "명언", "한 문장"],
   },
   {
     href: "https://heal.funnyfunny.cloud",
@@ -2004,6 +2025,12 @@ export function HomeContent() {
                   "🔮 오늘의 한 줄 운세",
                   "기분에 따라 골라보는 오늘의 운세 한 줄",
                   "지금 기분과 상황에 맞는 메시지를 바로 확인",
+                ],
+                [
+                  "https://wisdom.funnyfunny.cloud",
+                  "📜 오늘의 지혜",
+                  "Daily Wisdom, 하루 한 문장",
+                  "성경의 메시지에서 영감을 받은 오늘의 한 문장",
                 ],
                 [
                   "https://news.ashlight.store",
