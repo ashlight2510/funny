@@ -7,21 +7,20 @@ export function FooterPortal() {
           <div className="text-center mb-12 pb-12 border-b border-white/10">
             <div className="inline-block mb-4">
               <h2 className="text-2xl font-bold mb-4 text-amber-200 drop-shadow">
-                funnyfunny.cloud 소개 — Holiday Edition
+                funnyfunny.cloud 소개
               </h2>
             </div>
             <div className="leading-relaxed text-emerald-50/90 max-w-3xl mx-auto text-base bg-white/5 border border-white/15 rounded-2xl px-5 py-4 shadow-sm">
               <p>
                 funnyfunny.cloud는 일상의 데이터를 더 쉽고 재밌게 보여주는{" "}
                 <span className="font-semibold text-amber-100">
-                  테스트·계산기·정보 도구 포털
+                  유틸리티, 테스트, 계산기, 정보 도구 포털
                 </span>
                 입니다.
               </p>
               <p className="mt-2">
-                이번 주는 모든 서비스를 크리스마스 선물처럼 가볍게 열어볼 수
-                있도록, 밝고 따뜻한 테마로 꾸몄어요. 광고를 포함한 모든 요소는
-                Google 정책을 준수하여 안전하게 운영됩니다.
+                광고를 포함한 모든 요소는 Google 정책을 준수하여 안전하게
+                운영됩니다.
               </p>
             </div>
           </div>
