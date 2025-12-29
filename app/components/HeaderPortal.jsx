@@ -8,7 +8,7 @@ export function HeaderPortal() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-200">
-              FunnyFunny Cloud · Christmas
+              FunnyFunny Cloud · Playground
             </p>
             <h1
               className="text-base sm:text-xl font-bold drop-shadow"

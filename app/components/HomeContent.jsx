@@ -9,6 +9,7 @@ const randomTools = [
   "https://random.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
   "https://video.funnyfunny.cloud",
+  "https://local.funnyfunny.cloud",
   "https://ocr.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
@@ -55,6 +56,12 @@ const randomTools = [
 ];
 
 const seoTopItems = [
+  {
+    name: "로컬 이미지 최적화 & 파일 인사이트",
+    url: "https://local.funnyfunny.cloud",
+    description:
+      "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈로 이미지 용량을 줄이고, 업로드 없는 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
+  },
   {
     name: "오늘의 나, 잘했다",
     url: "https://today.funnyfunny.cloud",
@@ -119,6 +126,12 @@ const seoTopItems = [
 ];
 
 const seoGuides = [
+  {
+    slug: "local-image-optimizer",
+    emoji: "🗜️",
+    title: "로컬 이미지 최적화 & 파일 인사이트 가이드",
+    desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈하고, 로컬에서 파일 정보·SHA-256·미리보기까지 확인하는 법",
+  },
   {
     slug: "image-merge-pdf",
     emoji: "🖼️",
@@ -350,6 +363,13 @@ const seoApplications = [
     name: "이미지 텍스트 추출",
     url: "https://ocr.funnyfunny.cloud/",
     description: "사진 속 글자를 자동으로 읽어 텍스트로 뽑는 OCR 변환기",
+    category: "UtilityApplication",
+  },
+  {
+    name: "로컬 이미지 최적화 & 파일 인사이트",
+    url: "https://local.funnyfunny.cloud/",
+    description:
+      "WebP/JPEG 재인코딩과 자동 리사이즈로 이미지 용량을 줄이고, 업로드 없이 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
     category: "UtilityApplication",
   },
   {
@@ -713,6 +733,13 @@ const allServices = [
     tags: ["영상편집", "유튜브", "점프컷", "하이라이트"],
   },
   {
+    href: "https://local.funnyfunny.cloud/",
+    icon: "🗜️",
+    title: "로컬 이미지 최적화 & 파일 인사이트",
+    desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈 + 로컬 파일 정보/해시/미리보기",
+    tags: ["이미지", "최적화", "로컬", "파일정보", "해시"],
+  },
+  {
     href: "https://image.funnyfunny.cloud",
     icon: "🖼️",
     title: "이미지 합치기 & PDF 변환",
@@ -1052,9 +1079,31 @@ export function HomeContent() {
               </div>
             </div>
             <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-100 bg-white/10 px-3 py-1 rounded-full shadow-sm border border-white/20 mt-16">
-              🎁 Christmas Pick 9
+              🔥 지금 인기 Pick
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
+              <a
+                href="https://local.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="로컬 이미지 최적화 & 파일 인사이트 - 드래그 한 번으로 이미지 용량을 줄이고 파일 정보를 확인"
+                data-amp-service="로컬 이미지 최적화 & 파일 인사이트"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🗜️</span>
+                  <span className="text-xs font-semibold text-emerald-600">
+                    로컬 전용
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  로컬 이미지 최적화
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  WebP/JPEG 재인코딩·자동 리사이즈 + 파일 정보/해시
+                </p>
+              </a>
               <a
                 href="https://winter.funnyfunny.cloud"
                 target="_blank"
@@ -1855,6 +1904,12 @@ export function HomeContent() {
                   "🎬 AutoCut Studio",
                   "영상 자동 하이라이트/점프컷",
                   "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
+                ],
+                [
+                  "https://local.funnyfunny.cloud",
+                  "🗜️ 로컬 이미지 최적화 & 파일 인사이트",
+                  "드래그 한 번으로 이미지 용량 줄이기 + 파일 정보 확인",
+                  "WebP/JPEG 재인코딩·자동 리사이즈로 최적화하고, 업로드 없이 파일 메타·SHA-256·이미지/PDF/텍스트 미리보기를 제공합니다.",
                 ],
                 [
                   "https://image.funnyfunny.cloud",
