@@ -46,6 +46,7 @@ const randomTools = [
   "https://average.funnyfunny.cloud",
   "https://pick.funnyfunny.cloud",
   "https://audio.funnyfunny.cloud",
+  "https://vocal.funnyfunny.cloud",
   "https://run.funnyfunny.cloud",
   "https://charm.funnyfunny.cloud",
   "https://downy.funnyfunny.cloud",
@@ -145,6 +146,12 @@ const seoGuides = [
     emoji: "🎬",
     title: "AutoCut Studio 가이드",
     desc: "침묵 감지·점프컷 자동 타임라인으로 유튜브 영상 편집을 빠르게 끝내는 법",
+  },
+  {
+    slug: "head-voice-trainer",
+    emoji: "🎤",
+    title: "두성터득기 가이드",
+    desc: "헤드보이스에 필요한 호흡·공명 루틴과 음계 따라 부르기 사용법",
   },
   {
     slug: "image-text-extract",
@@ -358,6 +365,13 @@ const seoApplications = [
     description:
       "브라우저에서 바로 사용하는 오디오 편집 도구 — 설치 없이 트림, 병합, 내보내기",
     category: "UtilityApplication",
+  },
+  {
+    name: "두성터득기",
+    url: "https://vocal.funnyfunny.cloud/",
+    description:
+      "호흡·공명·음계 루틴으로 헤드보이스를 빠르게 워밍업하고 체크하는 보컬 연습 코치",
+    category: "LifestyleApplication",
   },
   {
     name: "AutoCut Studio",
@@ -765,6 +779,13 @@ const allServices = [
     title: "Simple Audio Editor",
     desc: "브라우저에서 바로 사용하는 오디오 편집 도구",
     tags: ["오디오", "편집", "도구"],
+  },
+  {
+    href: "https://vocal.funnyfunny.cloud",
+    icon: "🎤",
+    title: "두성터득기",
+    desc: "헤드보이스를 위한 호흡·공명 루틴 따라하기",
+    tags: ["보컬", "두성", "헤드보이스", "연습"],
   },
   {
     href: "https://video.funnyfunny.cloud",
@@ -1969,6 +1990,12 @@ export function HomeContent() {
                   "🎵 Simple Audio Editor",
                   "브라우저에서 바로 사용하는 오디오 편집 도구",
                   "설치 없이 트림, 병합, 내보내기 — 100% 클라이언트 사이드",
+                ],
+                [
+                  "https://vocal.funnyfunny.cloud",
+                  "🎤 두성터득기",
+                  "헤드보이스·두성 연습 코치",
+                  "호흡·공명 워밍업과 음계 따라 부르기로 하루 5분 발성 루틴을 잡을 수 있어요.",
                 ],
                 [
                   "https://time.ashlight.store",
