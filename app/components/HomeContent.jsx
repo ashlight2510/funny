@@ -1174,33 +1174,34 @@ export function HomeContent() {
   });
 
   return (
-    <div className="bg-gradient-to-b from-[#0b1c16] via-[#0f241c] to-[#123026] text-emerald-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
+    <div className="bg-gradient-to-b from-[#0b1621] via-[#101f2e] to-[#14273b] text-slate-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal />
       <main>
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-red-900/85 to-amber-800/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/85 to-sky-950/80"></div>
           <div className="absolute inset-0 snow-fall opacity-60 mix-blend-screen"></div>
-          <div className="absolute -left-10 -top-10 w-48 h-48 bg-emerald-300/30 blur-3xl"></div>
-          <div className="absolute -right-10 bottom-0 w-48 h-48 bg-red-300/30 blur-3xl"></div>
+          <div className="absolute -left-10 -top-10 w-48 h-48 bg-sky-200/25 blur-3xl"></div>
+          <div className="absolute -right-10 bottom-0 w-48 h-48 bg-slate-200/20 blur-3xl"></div>
 
           <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
             <div className="max-w-[440px] sm:max-w-2xl text-white">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-amber-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
-                <span>❄️ Winter Week</span>
-                <span className="text-emerald-100">가볍게 즐기기</span>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-sky-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
+                <span>❄️ Snow Week</span>
+                <span className="text-slate-100">가볍게 즐기기</span>
               </div>
               <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
                 겨울에 심심할 때 눌러보는 테스트들
               </h2>
-              <p className="mt-3 text-base text-emerald-50/90">
+              <p className="mt-3 text-base text-slate-100/90">
                 올 한 해도 고생 많았습니다.
               </p>
               <div className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 sm:items-center">
                 <button
                   data-random-btn
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 text-slate-900 text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-sky-200 via-cyan-200 to-slate-200 text-slate-900 text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition whitespace-nowrap"
                 >
-                  랜덤 테스트 열기
+                  <span className="sm:hidden">랜덤 열기</span>
+                  <span className="hidden sm:inline">랜덤 테스트 열기</span>
                 </button>
               </div>
 
@@ -1209,19 +1210,19 @@ export function HomeContent() {
                   href="http://flow.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-emerald-200 text-sm font-semibold text-emerald-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
                 >
                   <span>FLOW 게시판</span>
                 </a>
                 <a
                   href="https://ashlight.store"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-emerald-200 text-sm font-semibold text-emerald-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
                 >
                   <span>AshLight</span>
                 </a>
               </div>
             </div>
-            <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-100 bg-white/10 px-3 py-1 rounded-full shadow-sm border border-white/20 mt-16">
+            <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-100 bg-white/10 px-3 py-1 rounded-full shadow-sm border border-white/20 mt-16">
               🔥 지금 인기 Pick
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">

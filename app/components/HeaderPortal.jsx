@@ -1,13 +1,13 @@
 export function HeaderPortal() {
   return (
-    <header className="bg-gradient-to-r from-emerald-900/90 via-red-800/90 to-emerald-900/90 backdrop-blur shadow-lg border-b border-white/10 sticky top-0 z-20 text-white">
+    <header className="bg-gradient-to-r from-slate-950/90 via-slate-900/90 to-sky-950/80 backdrop-blur shadow-lg border-b border-white/10 sticky top-0 z-20 text-slate-50">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-red-500 via-amber-400 to-emerald-500 text-slate-900 font-extrabold flex items-center justify-center text-xl shadow-sm">
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-slate-100 via-sky-200 to-slate-300 text-slate-900 font-extrabold flex items-center justify-center text-xl shadow-sm">
             FF
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-200">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
               FunnyFunny Cloud · Playground
             </p>
             <h1
@@ -35,7 +35,7 @@ export function HeaderPortal() {
           </a>
           <button
             data-random-btn
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 text-slate-900 text-sm font-semibold shadow-md hover:shadow-xl transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-sky-200 via-cyan-200 to-slate-200 text-slate-900 text-sm font-semibold shadow-md hover:shadow-xl transition-transform hover:-translate-y-0.5 whitespace-nowrap"
             data-i18n="ctaPrimary"
           >
             <span className="sm:hidden">랜덤</span>
