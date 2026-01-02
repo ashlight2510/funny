@@ -27,6 +27,7 @@ const randomTools = [
   "https://bit.funnyfunny.cloud",
   "https://next.funnyfunny.cloud",
   "https://house.funnyfunny.cloud",
+  "https://space.funnyfunny.cloud",
   "https://edu.funnyfunny.cloud",
   "https://nospend.funnyfunny.cloud",
   "https://waste.funnyfunny.cloud",
@@ -162,6 +163,12 @@ const seoGuides = [
     emoji: "🗜️",
     title: "로컬 이미지 최적화 & 파일 인사이트 가이드",
     desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈하고, 로컬에서 파일 정보·SHA-256·미리보기까지 확인하는 법",
+  },
+  {
+    slug: "pyeong-calculator",
+    emoji: "📐",
+    title: "평수 계산기 가이드",
+    desc: "평↔제곱미터 변환과 원룸/아파트 대표 평형을 빠르게 계산하는 방법",
   },
   {
     slug: "image-merge-pdf",
@@ -400,6 +407,12 @@ const seoApplications = [
     url: "https://house.funnyfunny.cloud/",
     description: "집값 상승 시뮬레이션으로 놓친 금액을 계산",
     category: "FinanceApplication",
+  },
+  {
+    name: "평수 계산기",
+    url: "https://space.funnyfunny.cloud/",
+    description: "평↔제곱미터를 빠르게 변환하고 대표 평형을 확인하는 계산기",
+    category: "UtilityApplication",
   },
   {
     name: "커피중독 테스트",
@@ -735,6 +748,13 @@ const allServices = [
     title: "집 못 산 죄",
     desc: "아… 몇 억 차이일까",
     tags: ["부동산", "투자", "시뮬레이터"],
+  },
+  {
+    href: "https://space.funnyfunny.cloud",
+    icon: "📐",
+    title: "평수 계산기",
+    desc: "평↔제곱미터 변환과 대표 평형 계산",
+    tags: ["부동산", "평수", "면적", "계산기"],
   },
   {
     href: "https://nospend.funnyfunny.cloud",
@@ -1872,6 +1892,14 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
+                    href="https://space.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    📐 평수 계산기
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
                     href="https://year.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -2134,6 +2162,12 @@ export function HomeContent() {
                   "🖼️ 이미지 합치기 & PDF 변환",
                   "여러 장 업로드하고 정렬해 한 장/ PDF로 저장",
                   "드래그로 순서를 맞추고 JPG·PNG·PDF로 한 번에 묶어주는 변환기",
+                ],
+                [
+                  "https://space.funnyfunny.cloud",
+                  "📐 평수 계산기",
+                  "평↔제곱미터 변환 + 대표 평형 확인",
+                  "원룸·오피스텔·아파트 평형을 빠르게 감 잡을 수 있는 면적 변환 계산기",
                 ],
                 [
                   "https://ocr.funnyfunny.cloud",
