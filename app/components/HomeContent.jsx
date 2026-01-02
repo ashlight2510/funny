@@ -10,7 +10,7 @@ const randomTools = [
   "https://rest.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
   "https://video.funnyfunny.cloud",
-  "https://local.funnyfunny.cloud",
+  "https://file.funnyfunny.cloud/",
   "https://meta.funnyfunny.cloud",
   "https://ocr.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
@@ -64,7 +64,7 @@ const randomTools = [
 const seoTopItems = [
   {
     name: "로컬 이미지 최적화 & 파일 인사이트",
-    url: "https://local.funnyfunny.cloud",
+    url: "https://file.funnyfunny.cloud/",
     description:
       "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈로 이미지 용량을 줄이고, 업로드 없는 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
   },
@@ -455,7 +455,7 @@ const seoApplications = [
   },
   {
     name: "로컬 이미지 최적화 & 파일 인사이트",
-    url: "https://local.funnyfunny.cloud/",
+    url: "https://file.funnyfunny.cloud/",
     description:
       "WebP/JPEG 재인코딩과 자동 리사이즈로 이미지 용량을 줄이고, 업로드 없이 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
     category: "UtilityApplication",
@@ -869,7 +869,7 @@ const allServices = [
     tags: ["영상편집", "유튜브", "점프컷", "하이라이트"],
   },
   {
-    href: "https://local.funnyfunny.cloud/",
+    href: "https://file.funnyfunny.cloud/",
     icon: "🗜️",
     title: "로컬 이미지 최적화 & 파일 인사이트",
     desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈 + 로컬 파일 정보/해시/미리보기",
@@ -1227,7 +1227,7 @@ export function HomeContent() {
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
-                href="https://local.funnyfunny.cloud"
+                href="https://file.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="로컬 이미지 최적화 & 파일 인사이트 - 드래그 한 번으로 이미지 용량을 줄이고 파일 정보를 확인"
@@ -1307,7 +1307,9 @@ export function HomeContent() {
                     수면 사운드
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">잠들기 도우미</h3>
+                <h3 className="font-bold text-lg leading-snug">
+                  잠들기 도우미
+                </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   코골이·주변 소음을 덮는 백색소음·환경음
                 </p>
@@ -2108,7 +2110,7 @@ export function HomeContent() {
                   "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
                 ],
                 [
-                  "https://local.funnyfunny.cloud",
+                  "https://file.funnyfunny.cloud/",
                   "🗜️ 로컬 이미지 최적화 & 파일 인사이트",
                   "드래그 한 번으로 이미지 용량 줄이기 + 파일 정보 확인",
                   "WebP/JPEG 재인코딩·자동 리사이즈로 최적화하고, 업로드 없이 파일 메타·SHA-256·이미지/PDF/텍스트 미리보기를 제공합니다.",

@@ -88,7 +88,7 @@ export const guides = [
       "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈를 돌리고, 업로드 없이 파일 정보·SHA-256·이미지/PDF/텍스트 미리보기를 확인할 수 있는 로컬 전용 최적화 도구입니다.",
     category: "크리에이터 도구",
     heroEmoji: "🗜️",
-    serviceUrl: "https://local.funnyfunny.cloud",
+    serviceUrl: "https://file.funnyfunny.cloud",
     ctaLabel: "로컬 이미지 최적화 열기",
     metaDescription:
       "로컬에서만 동작하는 이미지 최적화 & 파일 인사이트 가이드. WebP/JPEG 재인코딩, 자동 리사이즈, 파일 메타데이터와 SHA-256 해시, 이미지/PDF/텍스트 미리보기 사용법을 정리했습니다.",
@@ -269,13 +269,7 @@ export const guides = [
     ctaLabel: "두성터득기 바로가기",
     metaDescription:
       "두성터득기 가이드 — 호흡, 공명, 모음 전환 루틴을 따라 헤드보이스를 안정적으로 내는 방법. 워밍업 순서, 체크포인트, 휴식 팁을 정리했습니다.",
-    keywords: [
-      "두성",
-      "헤드보이스",
-      "보컬 연습",
-      "발성 루틴",
-      "보컬 코치",
-    ],
+    keywords: ["두성", "헤드보이스", "보컬 연습", "발성 루틴", "보컬 코치"],
     sections: [
       {
         heading: "이 도구로 할 수 있는 것",
@@ -2118,13 +2112,7 @@ const guideSeeds = [
     ctaLabel: "하루 한 문장 열기",
     metaDescription:
       "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장(temple) 가이드. 매일 한 줄 명상처럼 읽고, 마음에 드는 구절을 기록·공유하는 방법을 정리했습니다.",
-    keywords: [
-      "하루 한 문장",
-      "temple",
-      "불교 가르침",
-      "명상 한 줄",
-      "명언",
-    ],
+    keywords: ["하루 한 문장", "temple", "불교 가르침", "명상 한 줄", "명언"],
     sections: [
       {
         heading: "무엇을 받을 수 있나요?",
