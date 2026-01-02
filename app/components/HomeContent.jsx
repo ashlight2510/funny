@@ -61,6 +61,7 @@ const randomTools = [
   "https://temple.funnyfunny.cloud",
   "https://sleep.funnyfunny.cloud",
   "https://balance.funnyfunny.cloud/",
+  "https://lotto.funnyfunny.cloud/",
 ];
 
 const seoTopItems = [
@@ -169,6 +170,12 @@ const seoGuides = [
     emoji: "📐",
     title: "평수 계산기 가이드",
     desc: "평↔제곱미터 변환과 원룸/아파트 대표 평형을 빠르게 계산하는 방법",
+  },
+  {
+    slug: "lotto-picker",
+    emoji: "🎟️",
+    title: "로또 추천기 가이드",
+    desc: "버튼 한 번으로 로또 번호를 추천받고 조합을 저장하는 빠른 사용법",
   },
   {
     slug: "image-merge-pdf",
@@ -387,6 +394,13 @@ const seoApplications = [
     url: "https://pick.funnyfunny.cloud/",
     description:
       "검색 없이 버튼 몇 번으로 한국 OTT 영화·드라마를 바로 추천받는 픽",
+    category: "EntertainmentApplication",
+  },
+  {
+    name: "로또 추천기",
+    url: "https://lotto.funnyfunny.cloud/",
+    description:
+      "버튼 한 번으로 로또 번호 조합을 추천하고 저장할 수 있는 빠른 추천기",
     category: "EntertainmentApplication",
   },
   {
@@ -790,6 +804,13 @@ const allServices = [
     title: "오늘 뭐 볼까? (OTT 픽)",
     desc: "검색 없이 바로 영화·드라마 추천",
     tags: ["영화", "드라마", "OTT", "추천"],
+  },
+  {
+    href: "https://lotto.funnyfunny.cloud/",
+    icon: "🎟️",
+    title: "로또 추천기",
+    desc: "버튼 한 번으로 로또 번호 조합 추천",
+    tags: ["로또", "추천", "번호", "랜덤"],
   },
   {
     href: "https://anju.funnyfunny.cloud",
