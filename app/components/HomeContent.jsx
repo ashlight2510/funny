@@ -59,6 +59,7 @@ const randomTools = [
   "https://image.funnyfunny.cloud",
   "https://temple.funnyfunny.cloud",
   "https://sleep.funnyfunny.cloud",
+  "https://balance.funnyfunny.cloud/",
 ];
 
 const seoTopItems = [
@@ -972,6 +973,13 @@ const allServices = [
     title: "네온 핀볼 랜덤 뽑기",
     desc: "핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기",
     tags: ["게임", "랜덤", "핀볼"],
+  },
+  {
+    href: "https://balance.funnyfunny.cloud/",
+    icon: "⚖️",
+    title: "밸런스게임",
+    desc: "두 가지 선택지로 질문을 만들고 바로 공유",
+    tags: ["게임", "밸런스", "질문", "선택"],
   },
   {
     href: "https://xmas.funnyfunny.cloud/",
