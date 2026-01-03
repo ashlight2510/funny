@@ -6,6 +6,7 @@ import { FooterPortal } from "./FooterPortal";
 
 const randomTools = [
   "https://today.funnyfunny.cloud",
+  "https://todo.funnyfunny.cloud/",
   "https://random.funnyfunny.cloud",
   "https://rest.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
@@ -85,6 +86,12 @@ const seoTopItems = [
     url: "https://today.funnyfunny.cloud",
     description:
       "오늘 내가 잘한 일을 한 줄로 기록하고, 내일의 작은 목표를 바로 정리하는 리플렉션 도구",
+  },
+  {
+    name: "오늘의 할 일",
+    url: "https://todo.funnyfunny.cloud/",
+    description:
+      "집중할 일만 담아두고, 완료하면 시원하게 체크하는 오늘의 투두 리스트",
   },
   {
     name: "꿈일기",
@@ -215,6 +222,12 @@ const seoGuides = [
     emoji: "🌱",
     title: "오늘의 나, 잘했다 가이드",
     desc: "오늘 잘한 일을 한 줄로 정리하고, 내일 액션을 만드는 리마인드 방법",
+  },
+  {
+    slug: "today-todo",
+    emoji: "✅",
+    title: "오늘의 할 일 가이드",
+    desc: "집중할 일만 담고 완료 체크로 하루를 정리하는 투두 사용법",
   },
   {
     slug: "dream-diary",
@@ -356,6 +369,13 @@ const seoApplications = [
     url: "https://today.funnyfunny.cloud/",
     description:
       "오늘 내가 잘한 일을 한 줄로 기록하고 내일의 작은 행동을 바로 정리하는 리마인드 도구",
+    category: "ProductivityApplication",
+  },
+  {
+    name: "오늘의 할 일",
+    url: "https://todo.funnyfunny.cloud/",
+    description:
+      "집중할 일을 간단히 적고 완료 체크로 하루를 정리하는 투두 리스트",
     category: "ProductivityApplication",
   },
   {
@@ -642,6 +662,13 @@ const allServices = [
     title: "오늘의 나, 잘했다",
     desc: "오늘, 내가 잘한 건 뭐였을까?",
     tags: ["리마인드", "칭찬", "루틴", "리플렉션"],
+  },
+  {
+    href: "https://todo.funnyfunny.cloud/",
+    icon: "✅",
+    title: "오늘의 할 일",
+    desc: "집중할 일만 담아두고 완료하면 시원하게 체크",
+    tags: ["투두", "할일", "체크", "집중"],
   },
   {
     href: "https://dream.funnyfunny.cloud/",

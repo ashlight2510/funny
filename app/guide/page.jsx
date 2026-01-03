@@ -5,9 +5,10 @@ import { guides } from "./guides";
 export const metadata = {
   title: "서비스 가이드 모음 | FunnyFunny Cloud",
   description:
-    "FunnyFunny Cloud 인기 테스트·도구 가이드를 모았습니다. 이번 겨울, 나를 망치는 것 TOP 1부터 커피중독, 꾸밈비 파산, 자산 방탄 지수, 비트코인 안 산 죄, 하루 생산성 체크까지 한 곳에서 확인하세요.",
+    "FunnyFunny Cloud 인기 테스트·도구 가이드를 모았습니다. 오늘의 할 일부터 이번 겨울, 나를 망치는 것 TOP 1, 커피중독, 꾸밈비 파산, 자산 방탄 지수, 비트코인 안 산 죄, 하루 생산성 체크까지 한 곳에서 확인하세요.",
   keywords: [
     "FunnyFunny 가이드",
+    "오늘의 할 일 가이드",
     "이번 겨울 나를 망치는 것 TOP 1",
     "커피중독 테스트 가이드",
     "꾸밈비 파산 테스트 가이드",
