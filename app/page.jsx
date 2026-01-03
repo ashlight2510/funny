@@ -53,6 +53,7 @@ export const metadata = {
     "이미지 합치기",
     "이미지 병합",
     "오늘의 지혜",
+    "지금 나에게 가장 필요한 한마디",
     "Daily Wisdom",
     "오늘의 할 일",
     "today todo",

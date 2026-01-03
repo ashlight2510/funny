@@ -61,6 +61,7 @@ const randomTools = [
   "https://hand.funnyfunny.cloud",
   "https://soccer.funnyfunny.cloud",
   "https://heal.funnyfunny.cloud",
+  "https://need.funnyfunny.cloud/",
   "https://image.funnyfunny.cloud",
   "https://temple.funnyfunny.cloud",
   "https://sleep.funnyfunny.cloud",
@@ -350,6 +351,12 @@ const seoGuides = [
     desc: "클릭 한 번으로 오늘의 위로 카드를 받는 방법과 공유 팁",
   },
   {
+    slug: "need-one-line",
+    emoji: "🧭",
+    title: "지금 나에게 가장 필요한 한마디 가이드",
+    desc: "감정과 상황을 클릭하고 오늘 필요한 말 한 줄을 받는 방법",
+  },
+  {
     slug: "daily-wisdom",
     emoji: "📜",
     title: "오늘의 지혜 가이드",
@@ -622,6 +629,13 @@ const seoApplications = [
     name: "우연이 아닐지도",
     url: "https://heal.funnyfunny.cloud/",
     description: "클릭 한 번으로 뽑는 위로 카드",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "지금 나에게 가장 필요한 한마디",
+    url: "https://need.funnyfunny.cloud/",
+    description:
+      "감정과 상황을 고르면 오늘 필요한 말 한 줄을 전해주는 위로 메시지 서비스",
     category: "LifestyleApplication",
   },
   {
@@ -956,6 +970,13 @@ const allServices = [
     title: "우연이 아닐지도",
     desc: "클릭 한 번으로 받는 위로 카드",
     tags: ["위로", "힐링", "카드"],
+  },
+  {
+    href: "https://need.funnyfunny.cloud/",
+    icon: "🧭",
+    title: "지금 나에게 가장 필요한 한마디",
+    desc: "감정과 상황을 클릭하면 오늘 필요한 말 한 줄",
+    tags: ["감정", "상황", "위로", "한줄"],
   },
   {
     href: "https://temple.funnyfunny.cloud/",
