@@ -131,6 +131,16 @@ export default function RootLayout({ children }) {
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossOrigin="anonymous"></script>
 </head>
       <body>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M7M2HQVQ"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
+        {children}
       <div className="adsense-block" style={{ margin: '16px 0', textAlign: 'center' }}>
         <ins
           className="adsbygoogle"
@@ -145,16 +155,6 @@ export default function RootLayout({ children }) {
         {`(adsbygoogle = window.adsbygoogle || []).push({});`}
       </Script>
 
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-M7M2HQVQ"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-
-        {children}
 
         <Script
           id="gtm"
