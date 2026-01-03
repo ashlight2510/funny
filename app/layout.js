@@ -128,7 +128,8 @@ export default function RootLayout({ children }) {
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
-      </head>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossOrigin="anonymous"></script>
+</head>
       <body>
         <noscript>
           <iframe
