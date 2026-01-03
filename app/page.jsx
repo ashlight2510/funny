@@ -55,6 +55,8 @@ export const metadata = {
     "오늘의 지혜",
     "Daily Wisdom",
     "성경 한 문장",
+    "꿈일기",
+    "드림 다이어리",
     "PDF 변환",
     "이미지 합치기 & PDF 변환",
     "영상 자동 편집",

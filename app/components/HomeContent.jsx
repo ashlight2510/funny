@@ -9,6 +9,7 @@ const randomTools = [
   "https://random.funnyfunny.cloud",
   "https://rest.funnyfunny.cloud",
   "https://coffee.funnyfunny.cloud",
+  "https://dream.funnyfunny.cloud/",
   "https://video.funnyfunny.cloud",
   "https://file.funnyfunny.cloud/",
   "https://meta.funnyfunny.cloud",
@@ -84,6 +85,12 @@ const seoTopItems = [
     url: "https://today.funnyfunny.cloud",
     description:
       "오늘 내가 잘한 일을 한 줄로 기록하고, 내일의 작은 목표를 바로 정리하는 리플렉션 도구",
+  },
+  {
+    name: "꿈일기",
+    url: "https://dream.funnyfunny.cloud/",
+    description:
+      "브라우저에만 저장되는 개인 꿈 기록장 — 로그인 없이 꿈을 적고 태그로 정리하는 로컬 일기",
   },
   {
     name: "이 정도면 쉬어야 할까?",
@@ -208,6 +215,12 @@ const seoGuides = [
     emoji: "🌱",
     title: "오늘의 나, 잘했다 가이드",
     desc: "오늘 잘한 일을 한 줄로 정리하고, 내일 액션을 만드는 리마인드 방법",
+  },
+  {
+    slug: "dream-diary",
+    emoji: "💭",
+    title: "꿈일기 가이드",
+    desc: "꿈을 기록하고 태그로 정리하는 로컬 꿈 기록장 사용법",
   },
   {
     slug: "rest-check",
@@ -344,6 +357,13 @@ const seoApplications = [
     description:
       "오늘 내가 잘한 일을 한 줄로 기록하고 내일의 작은 행동을 바로 정리하는 리마인드 도구",
     category: "ProductivityApplication",
+  },
+  {
+    name: "꿈일기",
+    url: "https://dream.funnyfunny.cloud/",
+    description:
+      "브라우저에 저장되는 개인 꿈 기록장 — 로컬에서 꿈을 적고 태그로 정리",
+    category: "LifestyleApplication",
   },
   {
     name: "이 정도면 쉬어야 할까?",
@@ -622,6 +642,13 @@ const allServices = [
     title: "오늘의 나, 잘했다",
     desc: "오늘, 내가 잘한 건 뭐였을까?",
     tags: ["리마인드", "칭찬", "루틴", "리플렉션"],
+  },
+  {
+    href: "https://dream.funnyfunny.cloud/",
+    icon: "💭",
+    title: "꿈일기",
+    desc: "꿈을 기록하고 태그로 정리하는 로컬 꿈 기록장",
+    tags: ["꿈", "일기", "기록", "로컬"],
   },
   {
     href: "https://rest.funnyfunny.cloud",
