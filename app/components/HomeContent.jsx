@@ -14,6 +14,7 @@ const randomTools = [
   "https://meta.funnyfunny.cloud",
   "https://ocr.funnyfunny.cloud",
   "https://beauty.funnyfunny.cloud",
+  "https://cosmetics.funnyfunny.cloud",
   "https://year.funnyfunny.cloud",
   "https://energy.funnyfunny.cloud",
   "https://money.funnyfunny.cloud",
@@ -49,6 +50,7 @@ const randomTools = [
   "https://average.funnyfunny.cloud",
   "https://pick.funnyfunny.cloud",
   "https://audio.funnyfunny.cloud",
+  "https://music.funnyfunny.cloud",
   "https://vocal.funnyfunny.cloud",
   "https://run.funnyfunny.cloud",
   "https://charm.funnyfunny.cloud",
@@ -220,6 +222,12 @@ const seoGuides = [
     desc: "코골이·주변 소음을 덮는 백색소음/환경음 믹스와 타이머로 잠드는 법",
   },
   {
+    slug: "music-now",
+    emoji: "🎵",
+    title: "지금 이 시간에 어울리는 음악 가이드",
+    desc: "하루의 리듬에 맞춰 오늘의 음악 무드를 고르는 방법",
+  },
+  {
     slug: "winter-ruin-top1",
     emoji: "❄️",
     title: "이번 겨울, 나를 망치는 것 TOP 1 가이드",
@@ -254,6 +262,12 @@ const seoGuides = [
     emoji: "💄",
     title: "꾸밈비 파산 테스트 가이드",
     desc: "뷰티·패션 지출이 자산에 미치는 영향과 계산 방식",
+  },
+  {
+    slug: "cosmetics-routine-check",
+    emoji: "💄",
+    title: "화장품 루틴 딸깍 체크 가이드",
+    desc: "현재 제품/특징만 체크해 부족·과잉을 확인하고 최소 추천을 받는 방법",
   },
   {
     slug: "asset-shield-index",
@@ -343,6 +357,20 @@ const seoApplications = [
     url: "https://sleep.funnyfunny.cloud/",
     description:
       "코골이·주변 소음을 덮는 백색소음/환경음 믹스와 타이머·페이드아웃으로 편하게 잠들 수 있게 돕는 수면 사운드 플레이어",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "지금 이 시간에 어울리는 음악",
+    url: "https://music.funnyfunny.cloud/",
+    description:
+      "하루의 리듬에 맞춰 지금 어울리는 음악 무드를 골라주는 음악 추천 서비스",
+    category: "EntertainmentApplication",
+  },
+  {
+    name: "화장품 루틴 딸깍 체크",
+    url: "https://cosmetics.funnyfunny.cloud/",
+    description:
+      "현재 쓰는 제품/특징만 체크하면 루틴의 부족·과잉을 표시하고 최소 추천을 알려주는 루틴 점검 도구",
     category: "LifestyleApplication",
   },
   {
@@ -631,6 +659,13 @@ const allServices = [
     tags: ["뷰티", "지출", "소비"],
   },
   {
+    href: "https://cosmetics.funnyfunny.cloud",
+    icon: "🧴",
+    title: "화장품 루틴 딸깍 체크",
+    desc: "내 루틴 부족·과잉을 체크하고 최소 추천 확인",
+    tags: ["화장품", "루틴", "스킨케어", "체크"],
+  },
+  {
     href: "https://next.funnyfunny.cloud",
     icon: "🔮",
     title: "2026년의 나, 지금 결정된다",
@@ -895,6 +930,13 @@ const allServices = [
     title: "Simple Audio Editor",
     desc: "브라우저에서 바로 사용하는 오디오 편집 도구",
     tags: ["오디오", "편집", "도구"],
+  },
+  {
+    href: "https://music.funnyfunny.cloud",
+    icon: "🎵",
+    title: "지금 이 시간에 어울리는 음악",
+    desc: "하루의 리듬에 맞춘 오늘의 음악 무드",
+    tags: ["음악", "무드", "추천", "플레이리스트"],
   },
   {
     href: "https://vocal.funnyfunny.cloud",
