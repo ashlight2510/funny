@@ -131,6 +131,20 @@ export default function RootLayout({ children }) {
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossOrigin="anonymous"></script>
 </head>
       <body>
+      <div className="adsense-block" style={{ margin: '16px 0', textAlign: 'center' }}>
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-format="fluid"
+          data-ad-layout-key="-6t+ed+2i-1n-4w"
+          data-ad-client="ca-pub-1204894220949193"
+          data-ad-slot="7300458753"
+        ></ins>
+      </div>
+      <Script id="adsbygoogle-init" strategy="afterInteractive">
+        {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+      </Script>
+
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-M7M2HQVQ"
