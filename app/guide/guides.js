@@ -2105,6 +2105,28 @@ const guideSeeds = [
     keywords: ["정신 체력", "집중력", "컨디션 체크", "멘탈 점검"],
   },
   {
+    slug: "need-one-line",
+    title: "지금 나에게 가장 필요한 한마디 가이드",
+    description:
+      "감정과 상황을 선택하면 오늘 필요한 말 한 줄을 전해주는 서비스 사용법",
+    category: "라이프스타일",
+    heroEmoji: "🧭",
+    serviceUrl: "https://need.funnyfunny.cloud/",
+    keywords: [
+      "필요한 한마디",
+      "감정 카드",
+      "상황 선택",
+      "위로 문장",
+      "한 줄 메시지",
+    ],
+    focus: "감정과 상황 선택",
+    benefit: "오늘 필요한 말 한 줄을 바로 받기",
+    usage:
+      "감정/상황 카드를 클릭하면 그에 맞는 한 줄 메시지가 즉시 표시됩니다. 마음에 드는 문장은 복사하거나 캡처해두면 리마인드로 쓰기 좋아요.",
+    note:
+      "메시지는 참고용 힌트이며 감정 케어를 대신하지 않습니다. 필요하면 주변 사람이나 전문가의 도움을 받는 것을 권장합니다.",
+  },
+  {
     slug: "human-type",
     title: "나를 힘들게 하는 인간 유형 가이드",
     description:
