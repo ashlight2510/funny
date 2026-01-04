@@ -35,6 +35,7 @@ const randomTools = [
   "https://nospend.funnyfunny.cloud",
   "https://waste.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
+  "https://bmi.funnyfunny.cloud/",
   "https://cafe.funnyfunny.cloud",
   "https://drink.funnyfunny.cloud",
   "https://joke.funnyfunny.cloud",
@@ -285,6 +286,12 @@ const seoGuides = [
     desc: "카페인 권장량, 중독 신호, 테스트 기준 한눈에 보기",
   },
   {
+    slug: "bmi-diet-plan",
+    emoji: "📏",
+    title: "BMI 설문형 다이어트 플랜 가이드",
+    desc: "한 번씩만 딸각으로 BMI와 생활 패턴을 체크하고 현실적인 다이어트 플랜을 확인하는 방법",
+  },
+  {
     slug: "beauty-bankruptcy-test",
     emoji: "💄",
     title: "꾸밈비 파산 테스트 가이드",
@@ -507,6 +514,13 @@ const seoApplications = [
     name: "커피중독 테스트",
     url: "https://coffee.funnyfunny.cloud/",
     description: "카페인 의존도를 체크하고 공유할 수 있는 밈 테스트",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "BMI 설문형 다이어트 플랜",
+    url: "https://bmi.funnyfunny.cloud/",
+    description:
+      "한 번씩만 딸각하고 숫자도 한 번씩만 입력해 BMI와 생활 패턴을 확인하는 설문형 다이어트 플랜",
     category: "LifestyleApplication",
   },
   {
@@ -893,6 +907,13 @@ const allServices = [
     title: "건강수명 & 노후 준비",
     desc: "재미로 보는 건강수명",
     tags: ["건강", "노후", "수명"],
+  },
+  {
+    href: "https://bmi.funnyfunny.cloud/",
+    icon: "📏",
+    title: "BMI 설문형 다이어트 플랜",
+    desc: "한 번씩만 딸각. 숫자도 한 번씩만. 결과는 은근히 도움 됨.",
+    tags: ["BMI", "다이어트", "설문", "플랜"],
   },
   {
     href: "https://cook.funnyfunny.cloud",
