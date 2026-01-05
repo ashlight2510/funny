@@ -46,6 +46,7 @@ const randomTools = [
   "https://wisdom.funnyfunny.cloud",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
+  "https://chef.funnyfunny.cloud/",
   "https://winter.funnyfunny.cloud",
   "https://anju.funnyfunny.cloud",
   "https://product.funnyfunny.cloud",
@@ -248,6 +249,12 @@ const seoGuides = [
     emoji: "🌙",
     title: "잠들기 도우미 가이드",
     desc: "코골이·주변 소음을 덮는 백색소음/환경음 믹스와 타이머로 잠드는 법",
+  },
+  {
+    slug: "chef-judge-choice",
+    emoji: "👨‍🍳",
+    title: "셰프 심사위원: 오늘의 선택 심사 가이드",
+    desc: "안성재·임짱·손종원 밈을 닮은 심사 멘트로 오늘의 선택을 딸깍 평가받는 법",
   },
   {
     slug: "music-now",
@@ -476,6 +483,13 @@ const seoApplications = [
     url: "https://pick.funnyfunny.cloud/",
     description:
       "검색 없이 버튼 몇 번으로 한국 OTT 영화·드라마를 바로 추천받는 픽",
+    category: "EntertainmentApplication",
+  },
+  {
+    name: "셰프 심사위원: 오늘의 선택 심사",
+    url: "https://chef.funnyfunny.cloud/",
+    description:
+      "안성재·임짱·손종원 밈을 닮은 심사 멘트로 오늘의 선택을 딸깍 평가받는 서비스",
     category: "EntertainmentApplication",
   },
   {
@@ -921,6 +935,13 @@ const allServices = [
     title: "오늘 뭐 먹지?",
     desc: "하루 메뉴 랜덤 추천",
     tags: ["음식", "추천", "랜덤"],
+  },
+  {
+    href: "https://chef.funnyfunny.cloud/",
+    icon: "👨‍🍳",
+    title: "셰프 심사위원: 오늘의 선택 심사",
+    desc: "안성재·임짱·손종원 밈 감성으로 선택을 딸깍 심사",
+    tags: ["셰프", "심사", "선택", "딸각", "밈"],
   },
   {
     href: "https://pick.funnyfunny.cloud",
