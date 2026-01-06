@@ -9,6 +9,7 @@ const randomTools = [
   "https://todo.funnyfunny.cloud/",
   "https://random.funnyfunny.cloud",
   "https://rest.funnyfunny.cloud",
+  "https://dailycheck.funnyfunny.cloud/",
   "https://coffee.funnyfunny.cloud",
   "https://dream.funnyfunny.cloud/",
   "https://video.funnyfunny.cloud",
@@ -231,6 +232,12 @@ const seoGuides = [
     emoji: "✅",
     title: "오늘의 할 일 가이드",
     desc: "집중할 일만 담고 완료 체크로 하루를 정리하는 투두 사용법",
+  },
+  {
+    slug: "daily-condition-check",
+    emoji: "📝",
+    title: "오늘 상태 점검표 가이드",
+    desc: "5개 체크로 오늘 컨디션을 한 문장으로 정리하는 방법",
   },
   {
     slug: "dream-diary",
@@ -725,6 +732,13 @@ const allServices = [
     title: "이 정도면 쉬어야 할까?",
     desc: "짧은 설문으로 지금 쉬어도 될지 체크",
     tags: ["휴식", "컨디션", "설문", "번아웃"],
+  },
+  {
+    href: "https://dailycheck.funnyfunny.cloud/",
+    icon: "📝",
+    title: "오늘 상태 점검표",
+    desc: "5개 체크로 오늘 컨디션을 한 문장으로 정리",
+    tags: ["컨디션", "상태", "점검", "체크", "한 문장"],
   },
   {
     href: "https://sleep.funnyfunny.cloud",

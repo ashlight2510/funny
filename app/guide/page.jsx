@@ -19,6 +19,7 @@ export const metadata = {
     "BMI 설문형 다이어트 플랜 가이드",
     "셰프 심사위원 가이드",
     "오늘의 선택 심사 가이드",
+    "오늘 상태 점검표 가이드",
   ],
   alternates: {
     canonical: "/guide",
