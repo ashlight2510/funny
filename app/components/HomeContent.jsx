@@ -1133,7 +1133,7 @@ const allServices = [
     tags: ["날씨", "미세먼지", "자외선"],
   },
   {
-    href: "https://emojicon.site",
+    href: "https://emojicon.funnyfunny.cloud",
     icon: "🎨",
     title: "EmojiCon Studio",
     desc: "이모지로 아이콘/파비콘을 한 번에 생성",
@@ -2406,7 +2406,7 @@ export function HomeContent() {
                   "한국 OTT만 모아 실패 없는 선택을 보여주는 픽 서비스",
                 ],
                 [
-                  "https://emojicon.site",
+                  "https://emojicon.funnyfunny.cloud",
                   "🎨 EmojiCon Studio",
                   "웹/앱용 이모지 아이콘 스튜디오",
                   "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
