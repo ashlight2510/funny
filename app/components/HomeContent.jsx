@@ -86,89 +86,40 @@ const seoTopItems = [
       "메타태그·OG/Twitter 카드·파비콘을 한 번에 생성하고, OG 이미지 텍스트(영문)까지 자동으로 만들어 복붙할 수 있는 메타 생성기",
   },
   {
-    name: "오늘의 나, 잘했다",
-    url: "https://today.funnyfunny.cloud",
+    name: "이미지 합치기 & PDF 변환",
+    url: "https://image.funnyfunny.cloud",
     description:
-      "오늘 내가 잘한 일을 한 줄로 기록하고, 내일의 작은 목표를 바로 정리하는 리플렉션 도구",
+      "여러 장을 업로드해 드래그로 순서를 맞춘 뒤 한 장 이미지나 PDF로 저장하는 변환기",
   },
   {
-    name: "오늘의 할 일",
-    url: "https://todo.funnyfunny.cloud/",
-    description:
-      "집중할 일만 담아두고, 완료하면 시원하게 체크하는 오늘의 투두 리스트",
+    name: "이미지 텍스트 추출",
+    url: "https://ocr.funnyfunny.cloud",
+    description: "사진 속 글자를 자동으로 읽어 텍스트로 뽑는 OCR 변환기",
   },
   {
-    name: "꿈일기",
-    url: "https://dream.funnyfunny.cloud/",
-    description:
-      "브라우저에만 저장되는 개인 꿈 기록장 — 로그인 없이 꿈을 적고 태그로 정리하는 로컬 일기",
+    name: "예매는타이밍",
+    url: "https://time.funnyfunny.cloud",
+    description: "정확한 서버시간·타임존 변환·시간 계산을 빠르게 제공",
   },
   {
-    name: "이 정도면 쉬어야 할까?",
-    url: "https://rest.funnyfunny.cloud",
-    description:
-      "짧은 설문으로 지금 쉬어도 될지, 즉시 휴식이 필요한지 가볍게 체크하는 휴식 결정 테스트",
+    name: "지금날씨",
+    url: "https://weather.funnyfunny.cloud",
+    description: "내 근처 날씨·체감온도·미세먼지·자외선 정보를 제공",
   },
   {
-    name: "잠들기 도우미",
-    url: "https://sleep.funnyfunny.cloud",
-    description:
-      "코골이·주변 소음을 덮는 백색소음·환경음을 믹스하고 타이머/페이드아웃으로 잠드는 환경을 만드는 수면 보조음 플레이어",
+    name: "오늘의 IT 뉴스",
+    url: "https://news.funnyfunny.cloud",
+    description: "국내/해외 IT 뉴스를 빠르게 요약한 큐레이션",
   },
   {
-    name: "이번 겨울, 나를 망치는 것 TOP 1",
-    url: "https://winter.funnyfunny.cloud",
-    description:
-      "겨울마다 반복되는 1순위 방해 요인을 체크하고, 당장 바꿀 루틴과 회복 플랜을 제안합니다.",
+    name: "Simple Audio Editor",
+    url: "https://audio.funnyfunny.cloud",
+    description: "브라우저에서 바로 사용하는 오디오 편집 도구",
   },
   {
-    name: "2026년의 나, 지금 결정된다",
-    url: "https://next.funnyfunny.cloud",
-    description:
-      "올해의 선택이 1년 뒤 인생에 남길 루트 — 습관·돈·인간관계·집중력 기준으로 체크",
-  },
-  {
-    name: "올해 나의 인생 소비 보고서",
-    url: "https://year.funnyfunny.cloud",
-    description:
-      "올해 돈·시간·감정이 어디로 흘렀는지 3분 컷으로 정리하는 리포트",
-  },
-  {
-    name: "비트코인 안 산 죄",
-    url: "https://bit.funnyfunny.cloud",
-    description: "비트코인 투자 기회비용 계산기",
-  },
-  {
-    name: "오늘 뭐 볼까? (OTT 픽)",
-    url: "https://pick.funnyfunny.cloud",
-    description:
-      "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마 픽, 한국 OTT 전용",
-  },
-  {
-    name: "SnapTrail",
-    url: "https://snaptrail.funnyfunny.cloud",
-    description: "사진을 자동 그룹화한 추억 타임라인 생성기",
-  },
-  {
-    name: "크리스마스 선물, 따뜻함 리포트",
-    url: "https://xmas.funnyfunny.cloud",
-    description: "🎯 선물이 따뜻하게 도착할 확률 리포트",
-  },
-  {
-    name: "SoulPrint",
-    url: "https://soul.funnyfunny.cloud",
-    description: "출생 정보를 바탕으로 한 독자적인 성향 분석",
-  },
-  {
-    name: "손바닥 썰 푼다",
-    url: "https://hand.funnyfunny.cloud",
-    description: "사진 한 장으로 손금 흐름을 읽어 성향 카드를 만드는 분석",
-  },
-  {
-    name: "우연이 아닐지도",
-    url: "https://heal.funnyfunny.cloud",
-    description:
-      "클릭 한 번으로 뽑는 위로 카드 — 오늘 필요한 말을 우연처럼 받기",
+    name: "EmojiCon Studio",
+    url: "https://emojicon.funnyfunny.cloud",
+    description: "이모지 한 글자로 아이콘/파비콘을 한 번에 생성",
   },
 ];
 
@@ -748,7 +699,7 @@ const allServices = [
     tags: ["수면", "백색소음", "환경음", "휴식"],
   },
   {
-    href: "http://flow.funnyfunny.cloud/",
+    href: "https://flow.funnyfunny.cloud/",
     icon: "🧵",
     title: "FLOW 커뮤니티",
     desc: "쓰레드+디씨 감성으로 의견 나누는 게시판",
@@ -1336,7 +1287,7 @@ export function HomeContent() {
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: "인기 테스트",
+      name: "핵심 유틸리티",
       itemListOrder: "http://schema.org/ItemListOrderAscending",
       itemListElement: seoTopItems.map((item, index) => ({
         "@type": "ListItem",
@@ -1415,7 +1366,7 @@ export function HomeContent() {
                 겨울에 심심할 때 눌러보는 테스트들
               </h2>
               <p className="mt-3 text-base text-slate-100/90">
-                올 한 해도 고생 많았습니다.
+                올겨울은 조금 더 가볍게, 2026년은 더 좋은 일로 시작해요.
               </p>
               <div className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 sm:items-center">
                 <button
@@ -1429,7 +1380,7 @@ export function HomeContent() {
 
               <div className="mt-3 flex sm:hidden items-center gap-2">
                 <a
-                  href="http://flow.funnyfunny.cloud/"
+                  href="https://flow.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
@@ -1445,7 +1396,7 @@ export function HomeContent() {
               </div>
             </div>
             <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-100 bg-white/10 px-3 py-1 rounded-full shadow-sm border border-white/20 mt-16">
-              🔥 지금 인기 Pick
+              🧰 효용 높은 유틸리티 Pick
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
@@ -1471,239 +1422,173 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://winter.funnyfunny.cloud"
+                href="https://meta.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="이번 겨울, 나를 망치는 것 TOP 1 - 겨울마다 무너지는 트리거 점검"
-                data-amp-service="이번 겨울, 나를 망치는 것 TOP 1"
+                aria-label="Meta Kit — SEO·OG·Favicon - 메타태그를 빠르게 생성"
+                data-amp-service="Meta Kit — SEO · OG · Favicon"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">❄️</span>
-                  <span className="text-xs font-semibold text-sky-600">
-                    겨울 특집
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  이번 겨울, 나를 망치는 것
-                </h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  가장 큰 방해 1순위 점검
-                </p>
-              </a>
-              <a
-                href="https://rest.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="이 정도면 쉬어야 할까? - 짧은 설문으로 지금 쉬어도 될지 체크"
-                data-amp-service="이 정도면 쉬어야 할까?"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🛋️</span>
-                  <span className="text-xs font-semibold text-amber-600">
-                    휴식 체크
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  이 정도면 쉬어야 할까?
-                </h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  지금 쉬어도 될지 1분 설문
-                </p>
-              </a>
-              <a
-                href="https://sleep.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="잠들기 도우미 - 코골이·주변 소음을 덮는 수면 사운드"
-                data-amp-service="잠들기 도우미"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🌙</span>
-                  <span className="text-xs font-semibold text-sky-600">
-                    수면 사운드
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  잠들기 도우미
-                </h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  코골이·주변 소음을 덮는 백색소음·환경음
-                </p>
-              </a>
-              <a
-                href="https://next.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="2026년의 나 - 올해 선택이 만드는 1년 뒤 루트"
-                data-amp-service="2026년의 나, 지금 결정된다"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🔮</span>
+                  <span className="text-xl">🧰</span>
                   <span className="text-xs font-semibold text-indigo-600">
-                    신규
+                    SEO 번들
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">2026년의 나</h3>
+                <h3 className="font-bold text-lg leading-snug">Meta Kit</h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  1년 뒤 루트, 습관·돈·관계·집중력
+                  SEO/OG/파비콘 자동 생성 · 복붙
                 </p>
               </a>
               <a
-                href="https://bit.funnyfunny.cloud"
+                href="https://image.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="비트코인 안 산 죄 - 그때 샀다면 지금 얼마?"
-                data-amp-service="비트코인 안 산 죄"
+                aria-label="이미지 합치기 & PDF 변환 - 여러 장을 한 번에 병합"
+                data-amp-service="이미지 합치기 & PDF 변환"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">💸</span>
-                  <span className="text-xs font-semibold text-blue-600">
-                    지금 핫해요
+                  <span className="text-xl">🖼️</span>
+                  <span className="text-xs font-semibold text-fuchsia-600">
+                    변환기
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  비트코인 안 산 죄
+                  이미지 합치기
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  그때 샀다면 지금 얼마?
+                  드래그 정렬 → 한 장 이미지·PDF
                 </p>
               </a>
               <a
-                href="https://pick.funnyfunny.cloud"
+                href="https://ocr.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="오늘 뭐 볼까? (OTT) - 검색 없이 바로 영화·드라마 추천"
-                data-amp-service="오늘 뭐 볼까? (OTT)"
+                aria-label="이미지 텍스트 추출 - 사진 속 글자 OCR"
+                data-amp-service="이미지 텍스트 추출"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🍿</span>
+                  <span className="text-xl">🔍</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    실패 없는 픽
+                    OCR
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  오늘 뭐 볼까? (OTT)
+                  이미지 텍스트 추출
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  검색 없이 바로 영화·드라마 추천
+                  사진 속 글자를 바로 복사
                 </p>
               </a>
               <a
-                href="https://snaptrail.funnyfunny.cloud"
+                href="https://time.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="SnapTrail - 사진을 자동 그룹화한 타임라인"
-                data-amp-service="SnapTrail"
+                aria-label="예매는타이밍 - 서버시간과 시간 계산"
+                data-amp-service="예매는타이밍"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">📍</span>
-                  <span className="text-xs font-semibold text-purple-600">
-                    추억 정리
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">SnapTrail</h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  사진을 자동 그룹화한 타임라인
-                </p>
-              </a>
-              <a
-                href="https://xmas.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="크리스마스 선물, 따뜻함 리포트 - 선물이 따뜻하게 도착할 확률"
-                data-amp-service="크리스마스 선물, 따뜻함 리포트"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🎁</span>
-                  <span className="text-xs font-semibold text-emerald-600">
-                    따뜻함 리포트
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  선물 따뜻함 리포트
-                </h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  🎯 따뜻하게 도착할 확률
-                </p>
-              </a>
-              <a
-                href="https://soul.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="SoulPrint - 출생 정보 기반 성향 분석"
-                data-amp-service="SoulPrint"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🔮</span>
+                  <span className="text-xl">⏰</span>
                   <span className="text-xs font-semibold text-blue-600">
-                    성향 분석
+                    시간 도구
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">SoulPrint</h3>
+                <h3 className="font-bold text-lg leading-snug">예매는타이밍</h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  출생 정보 기반 성향 분석
+                  정확한 서버시간 · 타임존 계산
                 </p>
               </a>
               <a
-                href="https://hand.funnyfunny.cloud"
+                href="https://weather.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="손바닥 썰 푼다 - 사진 한 장으로 보는 손금 흐름"
-                data-amp-service="손바닥 썰 푼다"
+                aria-label="지금날씨 - 내 근처 날씨/자외선/미세먼지"
+                data-amp-service="지금날씨"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">✋</span>
+                  <span className="text-xl">🌤️</span>
+                  <span className="text-xs font-semibold text-sky-600">
+                    실시간
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">지금날씨</h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  체감온도·미세먼지·자외선
+                </p>
+              </a>
+              <a
+                href="https://news.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="오늘의 IT 뉴스 - 국내외 IT 뉴스 요약"
+                data-amp-service="오늘의 IT 뉴스"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">📰</span>
+                  <span className="text-xs font-semibold text-orange-600">
+                    요약
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  오늘의 IT 뉴스
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  국내·해외 IT 뉴스를 빠르게
+                </p>
+              </a>
+              <a
+                href="https://audio.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Simple Audio Editor - 브라우저 오디오 편집"
+                data-amp-service="Simple Audio Editor"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🎵</span>
+                  <span className="text-xs font-semibold text-emerald-600">
+                    편집
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg leading-snug">
+                  Simple Audio Editor
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  트림·병합·내보내기
+                </p>
+              </a>
+              <a
+                href="https://emojicon.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="EmojiCon Studio - 이모지 아이콘 제작"
+                data-amp-service="EmojiCon Studio"
+                data-amp-section="top9"
+                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">🎨</span>
                   <span className="text-xs font-semibold text-amber-600">
-                    사진 분석
+                    아이콘
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  손바닥 썰 푼다
+                  EmojiCon Studio
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  사진 한 장으로 보는 손금 흐름
-                </p>
-              </a>
-              <a
-                href="https://year.funnyfunny.cloud"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="올해 나의 인생 소비 보고서 - 돈·시간·감정 흐름 연말결산"
-                data-amp-service="올해 나의 인생 소비 보고서"
-                data-amp-section="top9"
-                className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xl">🧾</span>
-                  <span className="text-xs font-semibold text-indigo-600">
-                    연말결산
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg leading-snug">
-                  인생 소비 보고서
-                </h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  올해 돈·시간·감정 흐름 3분 컷
+                  이모지로 아이콘·파비콘 생성
                 </p>
               </a>
             </div>
@@ -1733,118 +1618,6 @@ export function HomeContent() {
                   유용할 수 있는 서비스들
                 </p>
               </a>
-            </div>
-
-            <div className="mt-10">
-              <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-                게임
-              </h3>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <a
-                  href="https://run.funnyfunny.cloud"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="달리기 — 공룡 달리기 스타일 랭킹 게임"
-                  data-amp-service="달리기"
-                  data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">🦖</span>
-                    <span className="text-xs font-semibold text-emerald-600">
-                      랭킹 지원
-                    </span>
-                  </div>
-                  <h4 className="font-bold text-lg leading-snug">달리기</h4>
-                  <p className="text-sm text-slate-600 mt-1">
-                    공룡 달리기 스타일 랭킹 게임
-                  </p>
-                </a>
-                <a
-                  href="https://charm.funnyfunny.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="참참참! (NEON ARCADE) - 라인만 바꿔서 미사일을 피하기만 하면 돼요."
-                  data-amp-service="참참참! (NEON ARCADE)"
-                  data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">🛸</span>
-                    <span className="text-xs font-semibold text-purple-600">
-                      NEON ARCADE
-                    </span>
-                  </div>
-                  <h4 className="font-bold text-lg leading-snug">참참참!</h4>
-                  <p className="text-sm text-slate-600 mt-1">
-                    라인만 바꿔서 미사일을 피하기만 하면 돼요.
-                  </p>
-                </a>
-                <a
-                  href="https://downy.funnyfunny.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="다우니 (NEON STAIRS) - 라인만 바꿔서 계단을 밟고, 떨어지면 끝!"
-                  data-amp-service="다우니 (NEON STAIRS)"
-                  data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">🪜</span>
-                    <span className="text-xs font-semibold text-blue-600">
-                      NEON STAIRS
-                    </span>
-                  </div>
-                  <h4 className="font-bold text-lg leading-snug">다우니</h4>
-                  <p className="text-sm text-slate-600 mt-1">
-                    라인만 바꿔서 계단을 밟고, 떨어지면 끝!
-                  </p>
-                </a>
-                <a
-                  href="https://tet.funnyfunny.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="하루 한판 테트리스 - 싱글(AI)과 2인 플레이를 지원하는 테트리스 게임"
-                  data-amp-service="하루 한판 테트리스"
-                  data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">🧱</span>
-                    <span className="text-xs font-semibold text-orange-600">
-                      2인 플레이
-                    </span>
-                  </div>
-                  <h4 className="font-bold text-lg leading-snug">
-                    하루 한판 테트리스
-                  </h4>
-                  <p className="text-sm text-slate-600 mt-1">
-                    싱글(AI)과 2인 플레이를 지원하는 테트리스
-                  </p>
-                </a>
-                <a
-                  href="https://random.funnyfunny.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="네온 핀볼 랜덤 뽑기 - 핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기"
-                  data-amp-service="네온 핀볼 랜덤 뽑기"
-                  data-amp-section="game"
-                  className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">🎱</span>
-                    <span className="text-xs font-semibold text-amber-600">
-                      NEON PINBALL
-                    </span>
-                  </div>
-                  <h4 className="font-bold text-lg leading-snug">
-                    네온 핀볼 랜덤 뽑기
-                  </h4>
-                  <p className="text-sm text-slate-600 mt-1">
-                    핀볼판에서 굴러가는 공이 랜덤 픽을 골라줘요.
-                  </p>
-                </a>
-              </div>
             </div>
 
             <a
@@ -1877,49 +1650,128 @@ export function HomeContent() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 pb-4 sm:pb-6">
-          <div className="mt-6 sm:mt-8">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              Guides
-            </div>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {seoGuides.map((guide) => (
-                <a
-                  key={guide.slug}
-                  href={`/guide/${guide.slug}`}
-                  aria-label={`${guide.title} - ${guide.desc}`}
-                  data-amp-service={guide.title}
-                  data-amp-section="guides"
-                  className="flex items-start gap-3 p-4 rounded-2xl bg-white text-slate-900 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <div className="text-xl">{guide.emoji}</div>
-                  <div>
-                    <h3 className="font-semibold text-base text-slate-900">
-                      {guide.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-1">{guide.desc}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div className="mt-3">
-              <a
-                href="/guide"
-                aria-label="가이드 모두 보기"
-                data-amp-service="가이드 모두 보기"
-                data-amp-section="guides"
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
-              >
-                가이드 모두 보기
-              </a>
-            </div>
-          </div>
-        </section>
-
         <section
           id="hub"
           className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-14 space-y-12"
         >
+          <div id="utils" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="text-2xl">🛠️</span>
+              <h3 className="text-xl font-bold">유용할 수 있는 서비스들</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {[
+                [
+                  "https://flow.funnyfunny.cloud/",
+                  "🧵 FLOW 커뮤니티",
+                  "쓰레드+디씨 감성으로 소통하는 게시판",
+                  "익명 글쓰기, 실시간 반응, 주제별 스레드로 바로 대화 시작",
+                ],
+                [
+                  "https://video.funnyfunny.cloud",
+                  "🎬 AutoCut Studio",
+                  "영상 자동 하이라이트/점프컷",
+                  "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
+                ],
+                [
+                  "https://file.funnyfunny.cloud/",
+                  "🗜️ 로컬 이미지 최적화 & 파일 인사이트",
+                  "드래그 한 번으로 이미지 용량 줄이기 + 파일 정보 확인",
+                  "WebP/JPEG 재인코딩·자동 리사이즈로 최적화하고, 업로드 없이 파일 메타·SHA-256·이미지/PDF/텍스트 미리보기를 제공합니다.",
+                ],
+                [
+                  "https://meta.funnyfunny.cloud",
+                  "🧰 Meta Kit — SEO · OG · Favicon",
+                  "메타태그/공유/아이콘을 한 번에 생성하고 복붙",
+                  "SEO·OG·Twitter 카드·파비콘 세트를 입력 → 생성 → 복사하며, OG 이미지 텍스트는 영문만 사용하는 메타 번들러",
+                ],
+                [
+                  "https://image.funnyfunny.cloud",
+                  "🖼️ 이미지 합치기 & PDF 변환",
+                  "여러 장 업로드하고 정렬해 한 장/ PDF로 저장",
+                  "드래그로 순서를 맞추고 JPG·PNG·PDF로 한 번에 묶어주는 변환기",
+                ],
+                [
+                  "https://space.funnyfunny.cloud",
+                  "📐 평수 계산기",
+                  "평↔제곱미터 변환 + 대표 평형 확인",
+                  "원룸·오피스텔·아파트 평형을 빠르게 감 잡을 수 있는 면적 변환 계산기",
+                ],
+                [
+                  "https://ocr.funnyfunny.cloud",
+                  "🔍 이미지 텍스트 추출",
+                  "사진 속 글자를 자동으로 읽어 텍스트로 복사",
+                  "영수증·문서·메모를 찍으면 글자를 추출해 바로 클립보드/파일로 저장할 수 있는 OCR 도구",
+                ],
+                [
+                  "https://audio.funnyfunny.cloud",
+                  "🎵 Simple Audio Editor",
+                  "브라우저에서 바로 사용하는 오디오 편집 도구",
+                  "설치 없이 트림, 병합, 내보내기 — 100% 클라이언트 사이드",
+                ],
+                [
+                  "https://vocal.funnyfunny.cloud",
+                  "🎤 두성터득기",
+                  "헤드보이스·두성 연습 코치",
+                  "호흡·공명 워밍업과 음계 따라 부르기로 하루 5분 발성 루틴을 잡을 수 있어요.",
+                ],
+                [
+                  "https://time.funnyfunny.cloud",
+                  "⏰ 예매는타이밍",
+                  "정확한 서버시간 조회, 예매 도우미",
+                  "시간 관련 모든 계산을 한 곳에서.",
+                ],
+                [
+                  "https://news.funnyfunny.cloud",
+                  "📰 오늘의 IT 뉴스",
+                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
+                  "최신 뉴스와 IT 정보를 한눈에.",
+                ],
+                [
+                  "https://weather.funnyfunny.cloud",
+                  "🌤️ 지금날씨",
+                  "내 근처와 주변 날씨 조회",
+                  "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
+                ],
+                [
+                  "https://pick.funnyfunny.cloud",
+                  "🍿 오늘 뭐 볼까? (OTT 픽)",
+                  "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마",
+                  "한국 OTT만 모아 실패 없는 선택을 보여주는 픽 서비스",
+                ],
+                [
+                  "https://emojicon.funnyfunny.cloud",
+                  "🎨 EmojiCon Studio",
+                  "웹/앱용 이모지 아이콘 스튜디오",
+                  "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
+                ],
+                [
+                  "https://snaptrail.funnyfunny.cloud",
+                  "📍 SnapTrail",
+                  "추억 타임라인 생성기",
+                  "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
+                ],
+                [
+                  "https://day.funnyfunny.cloud",
+                  "📅 D-day 계산기",
+                  "날짜 계산, D-Day, N일 후, 기념일, 위젯",
+                  "중요한 날짜를 쉽게 관리하세요.",
+                ],
+              ].map(([href, title, desc, detail]) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                >
+                  <h4 className="font-bold text-lg">{title}</h4>
+                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
+                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                </a>
+              ))}
+            </div>
+          </div>
           <details className="sm:hidden rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200">
             <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-slate-900">
               <span className="font-semibold">커뮤니티 / 게시판</span>
@@ -1930,7 +1782,7 @@ export function HomeContent() {
                 쓰레드+디씨 감성 FLOW 게시판, 모바일에서도 바로 글쓰기/읽기
               </p>
               <a
-                href="http://flow.funnyfunny.cloud/"
+                href="https://flow.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:shadow-md transition"
@@ -2320,124 +2172,6 @@ export function HomeContent() {
               </div>
             </div>
           </div>
-          <div id="utils" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">🛠️</span>
-              <h3 className="text-xl font-bold">유용할 수 있는 서비스들</h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                [
-                  "http://flow.funnyfunny.cloud/",
-                  "🧵 FLOW 커뮤니티",
-                  "쓰레드+디씨 감성으로 소통하는 게시판",
-                  "익명 글쓰기, 실시간 반응, 주제별 스레드로 바로 대화 시작",
-                ],
-                [
-                  "https://video.funnyfunny.cloud",
-                  "🎬 AutoCut Studio",
-                  "영상 자동 하이라이트/점프컷",
-                  "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
-                ],
-                [
-                  "https://file.funnyfunny.cloud/",
-                  "🗜️ 로컬 이미지 최적화 & 파일 인사이트",
-                  "드래그 한 번으로 이미지 용량 줄이기 + 파일 정보 확인",
-                  "WebP/JPEG 재인코딩·자동 리사이즈로 최적화하고, 업로드 없이 파일 메타·SHA-256·이미지/PDF/텍스트 미리보기를 제공합니다.",
-                ],
-                [
-                  "https://meta.funnyfunny.cloud",
-                  "🧰 Meta Kit — SEO · OG · Favicon",
-                  "메타태그/공유/아이콘을 한 번에 생성하고 복붙",
-                  "SEO·OG·Twitter 카드·파비콘 세트를 입력 → 생성 → 복사하며, OG 이미지 텍스트는 영문만 사용하는 메타 번들러",
-                ],
-                [
-                  "https://image.funnyfunny.cloud",
-                  "🖼️ 이미지 합치기 & PDF 변환",
-                  "여러 장 업로드하고 정렬해 한 장/ PDF로 저장",
-                  "드래그로 순서를 맞추고 JPG·PNG·PDF로 한 번에 묶어주는 변환기",
-                ],
-                [
-                  "https://space.funnyfunny.cloud",
-                  "📐 평수 계산기",
-                  "평↔제곱미터 변환 + 대표 평형 확인",
-                  "원룸·오피스텔·아파트 평형을 빠르게 감 잡을 수 있는 면적 변환 계산기",
-                ],
-                [
-                  "https://ocr.funnyfunny.cloud",
-                  "🔍 이미지 텍스트 추출",
-                  "사진 속 글자를 자동으로 읽어 텍스트로 복사",
-                  "영수증·문서·메모를 찍으면 글자를 추출해 바로 클립보드/파일로 저장할 수 있는 OCR 도구",
-                ],
-                [
-                  "https://audio.funnyfunny.cloud",
-                  "🎵 Simple Audio Editor",
-                  "브라우저에서 바로 사용하는 오디오 편집 도구",
-                  "설치 없이 트림, 병합, 내보내기 — 100% 클라이언트 사이드",
-                ],
-                [
-                  "https://vocal.funnyfunny.cloud",
-                  "🎤 두성터득기",
-                  "헤드보이스·두성 연습 코치",
-                  "호흡·공명 워밍업과 음계 따라 부르기로 하루 5분 발성 루틴을 잡을 수 있어요.",
-                ],
-                [
-                  "https://time.funnyfunny.cloud",
-                  "⏰ 예매는타이밍",
-                  "정확한 서버시간 조회, 예매 도우미",
-                  "시간 관련 모든 계산을 한 곳에서.",
-                ],
-                [
-                  "https://news.funnyfunny.cloud",
-                  "📰 오늘의 IT 뉴스",
-                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
-                  "최신 뉴스와 IT 정보를 한눈에.",
-                ],
-                [
-                  "https://weather.funnyfunny.cloud",
-                  "🌤️ 지금날씨",
-                  "내 근처와 주변 날씨 조회",
-                  "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
-                ],
-                [
-                  "https://pick.funnyfunny.cloud",
-                  "🍿 오늘 뭐 볼까? (OTT 픽)",
-                  "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마",
-                  "한국 OTT만 모아 실패 없는 선택을 보여주는 픽 서비스",
-                ],
-                [
-                  "https://emojicon.funnyfunny.cloud",
-                  "🎨 EmojiCon Studio",
-                  "웹/앱용 이모지 아이콘 스튜디오",
-                  "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
-                ],
-                [
-                  "https://snaptrail.funnyfunny.cloud",
-                  "📍 SnapTrail",
-                  "추억 타임라인 생성기",
-                  "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
-                ],
-                [
-                  "https://day.funnyfunny.cloud",
-                  "📅 D-day 계산기",
-                  "날짜 계산, D-Day, N일 후, 기념일, 위젯",
-                  "중요한 날짜를 쉽게 관리하세요.",
-                ],
-              ].map(([href, title, desc, detail]) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <h4 className="font-bold text-lg">{title}</h4>
-                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
-                </a>
-              ))}
-            </div>
-          </div>
           <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">💡</span>
@@ -2496,81 +2230,118 @@ export function HomeContent() {
               ))}
             </div>
           </div>
-          <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">🧪</span>
-              <h3 className="text-xl font-bold">전체 서비스</h3>
-            </div>
-            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm text-emerald-100">
-                  지금 {allServices.length}개의 서비스가 준비되어 있어요.
-                </p>
-                <p className="text-xs text-emerald-100/80">
-                  키워드로 검색하거나 바로 클릭해보세요.
-                </p>
-              </div>
-              <label className="relative w-full sm:w-80">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
-                  🔍
-                </span>
-                <input
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="예: 커피, 투자, 마음챙김"
-                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
-                />
-              </label>
-            </div>
-            <div className="flex items-center justify-between text-xs text-emerald-100/90 mb-3">
-              <span>
-                {searchQuery.trim()
-                  ? `검색 결과 ${filteredServices.length}개`
-                  : "새 서비스가 추가되면 여기서 바로 확인할 수 있어요"}
-              </span>
-              {searchQuery.trim() && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200 text-slate-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
-                >
-                  초기화
-                </button>
-              )}
-            </div>
-            {filteredServices.length === 0 ? (
-              <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
-                <p>해당 키워드와 맞는 테스트가 없어요.</p>
-                <p className="text-xs text-slate-400 mt-1">
-                  철자나 다른 키워드를 입력해 보세요.
-                </p>
-              </div>
-            ) : (
-              <div className="grid gap-4 sm:grid-cols-2">
-                {filteredServices.map(({ href, icon, title, desc }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${title} - ${desc}`}
-                    data-amp-service={title}
-                    data-amp-section="all"
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-white/95 text-slate-900 shadow-sm border border-emerald-200 hover:border-amber-300 hover:shadow-md transition"
-                  >
-                    <div className="text-xl">{icon}</div>
-                    <div>
-                      <h4 className="font-semibold text-lg leading-snug text-slate-900">
-                        {title}
-                      </h4>
-                      <p className="text-sm text-slate-700">{desc}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
 
+          <div className="mt-10">
+            <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+              게임
+            </h3>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <a
+                href="https://run.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="달리기 — 공룡 달리기 스타일 랭킹 게임"
+                data-amp-service="달리기"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🦖</span>
+                  <span className="text-xs font-semibold text-emerald-600">
+                    랭킹 지원
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">달리기</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  공룡 달리기 스타일 랭킹 게임
+                </p>
+              </a>
+              <a
+                href="https://charm.funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="참참참! (NEON ARCADE) - 라인만 바꿔서 미사일을 피하기만 하면 돼요."
+                data-amp-service="참참참! (NEON ARCADE)"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🛸</span>
+                  <span className="text-xs font-semibold text-purple-600">
+                    NEON ARCADE
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">참참참!</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  라인만 바꿔서 미사일을 피하기만 하면 돼요.
+                </p>
+              </a>
+              <a
+                href="https://downy.funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="다우니 (NEON STAIRS) - 라인만 바꿔서 계단을 밟고, 떨어지면 끝!"
+                data-amp-service="다우니 (NEON STAIRS)"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🪜</span>
+                  <span className="text-xs font-semibold text-blue-600">
+                    NEON STAIRS
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">다우니</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  라인만 바꿔서 계단을 밟고, 떨어지면 끝!
+                </p>
+              </a>
+              <a
+                href="https://tet.funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="하루 한판 테트리스 - 싱글(AI)과 2인 플레이를 지원하는 테트리스 게임"
+                data-amp-service="하루 한판 테트리스"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🧱</span>
+                  <span className="text-xs font-semibold text-orange-600">
+                    2인 플레이
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">
+                  하루 한판 테트리스
+                </h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  싱글(AI)과 2인 플레이를 지원하는 테트리스
+                </p>
+              </a>
+              <a
+                href="https://random.funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="네온 핀볼 랜덤 뽑기 - 핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기"
+                data-amp-service="네온 핀볼 랜덤 뽑기"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🎱</span>
+                  <span className="text-xs font-semibold text-amber-600">
+                    NEON PINBALL
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">
+                  네온 핀볼 랜덤 뽑기
+                </h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  핀볼판에서 굴러가는 공이 랜덤 픽을 골라줘요.
+                </p>
+              </a>
+            </div>
+          </div>
           <div className="rounded-2xl bg-gradient-to-br from-emerald-900 via-red-800 to-emerald-900 text-white pt-6 pb-6 pl-[54px] pr-[54px] sm:pt-14 sm:pb-14 sm:pl-[70px] sm:pr-[70px] shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
@@ -2690,6 +2461,120 @@ export function HomeContent() {
                   </p>
                 </details>
               ))}
+            </div>
+          </div>
+
+          <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="text-2xl">🧪</span>
+              <h3 className="text-xl font-bold">전체 서비스</h3>
+            </div>
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm text-emerald-100">
+                  지금 {allServices.length}개의 서비스가 준비되어 있어요.
+                </p>
+                <p className="text-xs text-emerald-100/80">
+                  키워드로 검색하거나 바로 클릭해보세요.
+                </p>
+              </div>
+              <label className="relative w-full sm:w-80">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+                  🔍
+                </span>
+                <input
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="예: 커피, 투자, 마음챙김"
+                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                />
+              </label>
+            </div>
+            <div className="flex items-center justify-between text-xs text-emerald-100/90 mb-3">
+              <span>
+                {searchQuery.trim()
+                  ? `검색 결과 ${filteredServices.length}개`
+                  : "새 서비스가 추가되면 여기서 바로 확인할 수 있어요"}
+              </span>
+              {searchQuery.trim() && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200 text-slate-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
+                >
+                  초기화
+                </button>
+              )}
+            </div>
+            {filteredServices.length === 0 ? (
+              <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
+                <p>해당 키워드와 맞는 테스트가 없어요.</p>
+                <p className="text-xs text-slate-400 mt-1">
+                  철자나 다른 키워드를 입력해 보세요.
+                </p>
+              </div>
+            ) : (
+              <div className="grid gap-4 sm:grid-cols-2">
+                {filteredServices.map(({ href, icon, title, desc }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${title} - ${desc}`}
+                    data-amp-service={title}
+                    data-amp-section="all"
+                    className="flex items-start gap-3 p-4 rounded-2xl bg-white/95 text-slate-900 shadow-sm border border-emerald-200 hover:border-amber-300 hover:shadow-md transition"
+                  >
+                    <div className="text-xl">{icon}</div>
+                    <div>
+                      <h4 className="font-semibold text-lg leading-snug text-slate-900">
+                        {title}
+                      </h4>
+                      <p className="text-sm text-slate-700">{desc}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 pb-10 sm:pb-12">
+          <div className="mt-6 sm:mt-8">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+              Guides
+            </div>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {seoGuides.map((guide) => (
+                <a
+                  key={guide.slug}
+                  href={`/guide/${guide.slug}`}
+                  aria-label={`${guide.title} - ${guide.desc}`}
+                  data-amp-service={guide.title}
+                  data-amp-section="guides"
+                  className="flex items-start gap-3 p-4 rounded-2xl bg-white text-slate-900 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
+                >
+                  <div className="text-xl">{guide.emoji}</div>
+                  <div>
+                    <h3 className="font-semibold text-base text-slate-900">
+                      {guide.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1">{guide.desc}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="mt-3">
+              <a
+                href="/guide"
+                aria-label="가이드 모두 보기"
+                data-amp-service="가이드 모두 보기"
+                data-amp-section="guides"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+              >
+                가이드 모두 보기
+              </a>
             </div>
           </div>
         </section>
