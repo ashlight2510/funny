@@ -146,7 +146,7 @@ const seoTopItems = [
   },
   {
     name: "SnapTrail",
-    url: "https://snaptrail.ashlight.store",
+    url: "https://snaptrail.funnyfunny.cloud",
     description: "사진을 자동 그룹화한 추억 타임라인 생성기",
   },
   {
@@ -1112,21 +1112,21 @@ const allServices = [
     tags: ["OCR", "텍스트", "사진", "변환"],
   },
   {
-    href: "https://time.ashlight.store",
+    href: "https://time.funnyfunny.cloud",
     icon: "⏰",
     title: "예매는타이밍",
     desc: "정확한 서버시간 조회, 예매 도우미",
     tags: ["시간", "서버시간", "예매"],
   },
   {
-    href: "https://news.ashlight.store",
+    href: "https://news.funnyfunny.cloud",
     icon: "📰",
     title: "오늘의 IT 뉴스",
     desc: "국내 및 해외 IT 뉴스를 빠르게 요약",
     tags: ["뉴스", "IT", "요약"],
   },
   {
-    href: "https://weather.ashlight.store",
+    href: "https://weather.funnyfunny.cloud",
     icon: "🌤️",
     title: "지금날씨",
     desc: "내 근처와 주변 날씨 조회",
@@ -1140,14 +1140,14 @@ const allServices = [
     tags: ["아이콘", "파비콘", "이모지"],
   },
   {
-    href: "https://snaptrail.ashlight.store",
+    href: "https://snaptrail.funnyfunny.cloud",
     icon: "📍",
     title: "SnapTrail",
     desc: "사진을 자동 그룹화한 추억 타임라인 생성기",
     tags: ["사진", "타임라인", "추억"],
   },
   {
-    href: "https://day.ashlight.store",
+    href: "https://day.funnyfunny.cloud",
     icon: "📅",
     title: "D-day 계산기",
     desc: "날짜 계산, D-Day, N일 후, 기념일, 위젯",
@@ -1321,7 +1321,7 @@ export function HomeContent() {
       publisher: {
         "@type": "Organization",
         name: "AshLight",
-        url: "https://ashlight.store",
+        url: "https://funnyfunny.cloud",
         logo: "https://funnyfunny.cloud/favicon.svg",
       },
     },
@@ -1437,7 +1437,7 @@ export function HomeContent() {
                   <span>FLOW 게시판</span>
                 </a>
                 <a
-                  href="https://ashlight.store"
+                  href="https://funnyfunny.cloud"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
                 >
                   <span>AshLight</span>
@@ -1601,7 +1601,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://snaptrail.ashlight.store"
+                href="https://snaptrail.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="SnapTrail - 사진을 자동 그룹화한 타임라인"
@@ -2235,7 +2235,7 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
-                    href="https://weather.ashlight.store"
+                    href="https://weather.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -2310,7 +2310,7 @@ export function HomeContent() {
                   </a>
                   <a
                     className="block hover:text-blue-600"
-                    href="https://snaptrail.ashlight.store"
+                    href="https://snaptrail.funnyfunny.cloud"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -2382,19 +2382,19 @@ export function HomeContent() {
                   "호흡·공명 워밍업과 음계 따라 부르기로 하루 5분 발성 루틴을 잡을 수 있어요.",
                 ],
                 [
-                  "https://time.ashlight.store",
+                  "https://time.funnyfunny.cloud",
                   "⏰ 예매는타이밍",
                   "정확한 서버시간 조회, 예매 도우미",
                   "시간 관련 모든 계산을 한 곳에서.",
                 ],
                 [
-                  "https://news.ashlight.store",
+                  "https://news.funnyfunny.cloud",
                   "📰 오늘의 IT 뉴스",
                   "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
                   "최신 뉴스와 IT 정보를 한눈에.",
                 ],
                 [
-                  "https://weather.ashlight.store",
+                  "https://weather.funnyfunny.cloud",
                   "🌤️ 지금날씨",
                   "내 근처와 주변 날씨 조회",
                   "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
@@ -2412,13 +2412,13 @@ export function HomeContent() {
                   "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
                 ],
                 [
-                  "https://snaptrail.ashlight.store",
+                  "https://snaptrail.funnyfunny.cloud",
                   "📍 SnapTrail",
                   "추억 타임라인 생성기",
                   "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
                 ],
                 [
-                  "https://day.ashlight.store",
+                  "https://day.funnyfunny.cloud",
                   "📅 D-day 계산기",
                   "날짜 계산, D-Day, N일 후, 기념일, 위젯",
                   "중요한 날짜를 쉽게 관리하세요.",
@@ -2464,7 +2464,7 @@ export function HomeContent() {
                   "성경의 메시지에서 영감을 받은 오늘의 한 문장",
                 ],
                 [
-                  "https://news.ashlight.store",
+                  "https://news.funnyfunny.cloud",
                   "📰 오늘의 IT 뉴스",
                   "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
                   "최신 뉴스와 IT 정보를 한눈에.",

@@ -43,7 +43,7 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 
 `privacy.html`의 개인정보 보호책임자 이메일을 실제 연락처로 변경하세요:
 
-- 현재: `contact@ashlight.store`
+- 현재: `contact@funnyfunny.cloud`
 
 ### sitemap.xml 업데이트
 

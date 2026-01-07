@@ -2762,7 +2762,7 @@ const guideSeeds = [
     description: "정확한 서버 시간을 확인해 예매 성공률을 높이는 도구 안내",
     category: "유틸리티",
     heroEmoji: "⏰",
-    serviceUrl: "https://time.ashlight.store",
+    serviceUrl: "https://time.funnyfunny.cloud",
     keywords: ["서버 시간", "예매 도우미", "시간 동기화", "정확한 시간"],
   },
   {
@@ -2771,7 +2771,7 @@ const guideSeeds = [
     description: "국내·해외 IT 뉴스를 빠르게 훑는 요약 서비스 사용법",
     category: "유틸리티",
     heroEmoji: "📰",
-    serviceUrl: "https://news.ashlight.store",
+    serviceUrl: "https://news.funnyfunny.cloud",
     keywords: ["IT 뉴스", "요약", "테크 트렌드", "빠른 뉴스"],
   },
   {
@@ -2781,7 +2781,7 @@ const guideSeeds = [
       "근처 날씨, 미세먼지, 자외선 정보를 한눈에 보는 지금날씨 사용법",
     category: "유틸리티",
     heroEmoji: "🌤️",
-    serviceUrl: "https://weather.ashlight.store",
+    serviceUrl: "https://weather.funnyfunny.cloud",
     keywords: ["현재 날씨", "미세먼지", "자외선", "체감온도"],
   },
   {
@@ -2799,7 +2799,7 @@ const guideSeeds = [
     description: "사진을 자동 그룹화해 추억 타임라인을 만드는 SnapTrail 사용법",
     category: "유틸리티",
     heroEmoji: "📍",
-    serviceUrl: "https://snaptrail.ashlight.store",
+    serviceUrl: "https://snaptrail.funnyfunny.cloud",
     keywords: ["사진 정리", "타임라인", "추억 정리", "자동 그룹화"],
   },
   {
@@ -2808,7 +2808,7 @@ const guideSeeds = [
     description: "날짜 계산과 기념일 관리를 한 번에 하는 D-day 계산기 안내",
     category: "유틸리티",
     heroEmoji: "📅",
-    serviceUrl: "https://day.ashlight.store",
+    serviceUrl: "https://day.funnyfunny.cloud",
     keywords: ["D-day 계산", "기념일 관리", "날짜 계산기", "디데이"],
   },
   {

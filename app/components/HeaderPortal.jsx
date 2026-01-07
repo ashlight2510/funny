@@ -28,7 +28,7 @@ export function HeaderPortal() {
             FLOW 게시판
           </a>
           <a
-            href="https://ashlight.store"
+            href="https://funnyfunny.cloud"
             className="hidden sm:inline-flex px-3 py-2 text-sm rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors"
           >
             AshLight

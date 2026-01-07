@@ -36,7 +36,7 @@ export function FooterPortal() {
                   개발 및 운영:
                 </span>
                 <a
-                  href="https://ashlight.store"
+                  href="https://funnyfunny.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sky-200 hover:text-white hover:underline font-medium transition-colors"
