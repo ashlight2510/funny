@@ -317,6 +317,12 @@ const seoGuides = [
     desc: "기분에 따라 뽑는 오늘의 한 줄 운세 사용법과 해석 기준",
   },
   {
+    slug: "saju-sintojungbi",
+    emoji: "🔮",
+    title: "사주풀이 · 신토정비결 가이드",
+    desc: "생년월일/시간 입력으로 사주팔자와 올해·이번 달 흐름을 읽는 방법",
+  },
+  {
     slug: "heal-card",
     emoji: "💌",
     title: "우연이 아닐지도 가이드",
@@ -1726,6 +1732,12 @@ export function HomeContent() {
                   "📰 오늘의 IT 뉴스",
                   "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
                   "최신 뉴스와 IT 정보를 한눈에.",
+                ],
+                [
+                  "https://saju.funnyfunny.cloud/",
+                  "🔮 사주풀이 · 신토정비결",
+                  "사주풀이와 신토정비결 요약",
+                  "생년월일/시간 입력으로 사주팔자 분석, 올해·이번 달 운세 흐름을 간단히 정리합니다.",
                 ],
                 [
                   "https://weather.funnyfunny.cloud",
