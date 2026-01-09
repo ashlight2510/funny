@@ -69,6 +69,7 @@ const randomTools = [
   "https://heal.funnyfunny.cloud",
   "https://need.funnyfunny.cloud/",
   "https://image.funnyfunny.cloud",
+  "http://heic.funnyfunny.cloud/",
   "https://temple.funnyfunny.cloud",
   "https://sleep.funnyfunny.cloud",
   "https://balance.funnyfunny.cloud/",
@@ -138,6 +139,12 @@ const seoGuides = [
     emoji: "🗜️",
     title: "로컬 이미지 최적화 & 파일 인사이트 가이드",
     desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈하고, 로컬에서 파일 정보·SHA-256·미리보기까지 확인하는 법",
+  },
+  {
+    slug: "heic-to-jpg",
+    emoji: "📷",
+    title: "HEIC → JPG 변환기 가이드",
+    desc: "브라우저에서 HEIC를 JPG/WebP/PNG로 변환하고 압축·리사이즈·ZIP으로 받는 방법",
   },
   {
     slug: "pyeong-calculator",
@@ -587,6 +594,13 @@ const seoApplications = [
     name: "이미지 텍스트 추출",
     url: "https://ocr.funnyfunny.cloud/",
     description: "사진 속 글자를 자동으로 읽어 텍스트로 뽑는 OCR 변환기",
+    category: "UtilityApplication",
+  },
+  {
+    name: "HEIC → JPG 변환기",
+    url: "http://heic.funnyfunny.cloud/",
+    description:
+      "업로드 없이 브라우저에서 HEIC를 JPG/WebP/PNG로 변환하고 압축·리사이즈·ZIP 다운로드까지 지원하는 로컬 전용 변환기",
     category: "UtilityApplication",
   },
   {
@@ -1115,6 +1129,13 @@ const allServices = [
     title: "로컬 이미지 최적화 & 파일 인사이트",
     desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈 + 로컬 파일 정보/해시/미리보기",
     tags: ["이미지", "최적화", "로컬", "파일정보", "해시"],
+  },
+  {
+    href: "http://heic.funnyfunny.cloud/",
+    icon: "📷",
+    title: "HEIC → JPG 변환기",
+    desc: "브라우저에서 HEIC를 JPG/WebP/PNG로 변환·압축·리사이즈·ZIP",
+    tags: ["HEIC", "JPG", "변환", "압축", "리사이즈", "ZIP", "WebP", "PNG"],
   },
   {
     href: "https://meta.funnyfunny.cloud",

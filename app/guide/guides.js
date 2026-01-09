@@ -3029,6 +3029,21 @@ const guideSeeds = [
       "파일을 드래그하면 바로 파형이 나타나며, 자르기·병합 후 로컬로 내보낼 수 있습니다. 모든 처리는 브라우저에서 이루어집니다.",
   },
   {
+    slug: "heic-to-jpg",
+    title: "HEIC → JPG 변환기 가이드",
+    description:
+      "업로드 없이 브라우저에서 HEIC를 JPG/WebP/PNG로 변환하고 압축·리사이즈·ZIP으로 받는 방법",
+    category: "유틸리티",
+    heroEmoji: "📷",
+    serviceUrl: "http://heic.funnyfunny.cloud/",
+    keywords: ["HEIC 변환", "JPG", "WebP", "PNG", "압축", "리사이즈", "ZIP"],
+    focus: "HEIC 다중 변환과 ZIP 다운로드",
+    benefit: "여러 장을 한 번에 변환하고 용량까지 정리",
+    usage:
+      "HEIC 파일을 여러 장 드래그하면 변환 포맷과 압축/리사이즈 옵션을 바로 고를 수 있습니다. 변환 후 ZIP으로 내려받아 한 번에 저장하세요.",
+    note: "모든 처리는 브라우저에서 이뤄지며 파일은 업로드되지 않습니다.",
+  },
+  {
     slug: "time-checker",
     title: "예매는타이밍 가이드",
     description: "정확한 서버 시간을 확인해 예매 성공률을 높이는 도구 안내",
