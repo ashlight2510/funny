@@ -33,6 +33,7 @@ const randomTools = [
   "https://house.funnyfunny.cloud",
   "https://space.funnyfunny.cloud",
   "https://edu.funnyfunny.cloud",
+  "https://baby.funnyfunny.cloud/",
   "https://nospend.funnyfunny.cloud",
   "https://waste.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
@@ -293,6 +294,12 @@ const seoGuides = [
     desc: "집값 상승 놓친 기회비용과 현실적 다음 단계 정리",
   },
   {
+    slug: "birthrate-reality-test",
+    emoji: "👶",
+    title: "출산율 체감 테스트 가이드",
+    desc: "질문을 따라 출산율 변화를 체감하고 결과를 해석·공유하는 방법",
+  },
+  {
     slug: "palm-reading-analysis",
     emoji: "✋",
     title: "손바닥 썰 푼다 가이드",
@@ -481,6 +488,13 @@ const seoApplications = [
     url: "https://house.funnyfunny.cloud/",
     description: "집값 상승 시뮬레이션으로 놓친 금액을 계산",
     category: "FinanceApplication",
+  },
+  {
+    name: "출산율 체감 테스트",
+    url: "https://baby.funnyfunny.cloud/",
+    description:
+      "이 장면은 ‘미래 예측’이 아니라 이미 진행 중인 현재일 수 있습니다.",
+    category: "LifestyleApplication",
   },
   {
     name: "평수 계산기",
@@ -892,6 +906,13 @@ const allServices = [
     title: "사교육 지옥도 계산기",
     desc: "교육비 인생 시뮬레이터",
     tags: ["교육비", "지출", "시뮬레이션"],
+  },
+  {
+    href: "https://baby.funnyfunny.cloud/",
+    icon: "👶",
+    title: "출산율 체감 테스트",
+    desc: "이 장면은 ‘미래 예측’이 아니라 이미 진행 중인 현재일 수 있습니다.",
+    tags: ["출산율", "인구", "사회", "체감", "테스트"],
   },
   {
     href: "https://health.funnyfunny.cloud",
