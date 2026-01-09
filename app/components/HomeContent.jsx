@@ -21,6 +21,7 @@ const randomTools = [
   "https://year.funnyfunny.cloud",
   "https://energy.funnyfunny.cloud",
   "https://money.funnyfunny.cloud",
+  "https://specific.funnyfunny.cloud/",
   "https://invest.funnyfunny.cloud",
   "https://life.funnyfunny.cloud",
   "https://ego.funnyfunny.cloud",
@@ -277,6 +278,12 @@ const seoGuides = [
     desc: "현금흐름·비상금·분산 체크로 위기 대응력 점검",
   },
   {
+    slug: "asset-allocation-check",
+    emoji: "🧮",
+    title: "자산 비중 진단 가이드",
+    desc: "현금·금(현물)·부동산·주식·코인 비중으로 포트폴리오 타입 점검",
+  },
+  {
     slug: "invest-confidence-builder",
     emoji: "📈",
     title: "투자 확신 빌더 가이드",
@@ -454,6 +461,13 @@ const seoApplications = [
     name: "내가 안 산 것들의 총자산",
     url: "https://nospend.funnyfunny.cloud/",
     description: "안 샀다면 얼마를 모았을지 계산하는 총자산 시뮬레이터",
+    category: "FinanceApplication",
+  },
+  {
+    name: "자산 비중 진단",
+    url: "https://specific.funnyfunny.cloud/",
+    description:
+      "현금·금(현물)·부동산·주식·코인 비중을 한눈에 보고 포트폴리오 타입을 가볍게 점검하는 자산 분포 진단",
     category: "FinanceApplication",
   },
   {
@@ -821,6 +835,13 @@ const allServices = [
     title: "자산 방탄 지수",
     desc: "경제 위기 버티기 레벨 측정",
     tags: ["재테크", "위기대응", "자산"],
+  },
+  {
+    href: "https://specific.funnyfunny.cloud/",
+    icon: "🧮",
+    title: "자산 비중 진단",
+    desc: "현금·금(현물)·부동산·주식·코인 비중을 한눈에 체크",
+    tags: ["자산", "포트폴리오", "비중", "진단", "재테크"],
   },
   {
     href: "https://life.funnyfunny.cloud",
@@ -2027,6 +2048,14 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     🛡️ 자산 방탄 지수
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://specific.funnyfunny.cloud/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🧮 자산 비중 진단
                   </a>
                   <a
                     className="block hover:text-blue-600"
