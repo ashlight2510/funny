@@ -21,6 +21,7 @@ const randomTools = [
   "https://year.funnyfunny.cloud",
   "https://energy.funnyfunny.cloud",
   "https://money.funnyfunny.cloud",
+  "https://invest.funnyfunny.cloud",
   "https://life.funnyfunny.cloud",
   "https://ego.funnyfunny.cloud",
   "https://senseyear.funnyfunny.cloud",
@@ -276,6 +277,12 @@ const seoGuides = [
     desc: "현금흐름·비상금·분산 체크로 위기 대응력 점검",
   },
   {
+    slug: "invest-confidence-builder",
+    emoji: "📈",
+    title: "투자 확신 빌더 가이드",
+    desc: "수익률이 아니라 판단을 기록해 흔들림을 줄이는 사용법",
+  },
+  {
     slug: "bitcoin-regret-calculator",
     emoji: "💸",
     title: "비트코인 안 산 죄 가이드",
@@ -487,6 +494,12 @@ const seoApplications = [
     name: "집 못 산 죄",
     url: "https://house.funnyfunny.cloud/",
     description: "집값 상승 시뮬레이션으로 놓친 금액을 계산",
+    category: "FinanceApplication",
+  },
+  {
+    name: "투자 확신 빌더",
+    url: "https://invest.funnyfunny.cloud/",
+    description: "수익률 대신 판단을 기록해 흔들림을 줄이는 투자 기록 도구",
     category: "FinanceApplication",
   },
   {
@@ -885,6 +898,13 @@ const allServices = [
     title: "집 못 산 죄",
     desc: "아… 몇 억 차이일까",
     tags: ["부동산", "투자", "시뮬레이터"],
+  },
+  {
+    href: "https://invest.funnyfunny.cloud",
+    icon: "📈",
+    title: "투자 확신 빌더",
+    desc: "수익률이 아니라, 판단을 기록해 흔들림을 줄입니다.",
+    tags: ["투자", "판단", "기록", "확신", "멘탈"],
   },
   {
     href: "https://space.funnyfunny.cloud",
@@ -1975,6 +1995,14 @@ export function HomeContent() {
                     rel="noopener noreferrer"
                   >
                     🏠 집 못 산 죄
+                  </a>
+                  <a
+                    className="block hover:text-blue-600"
+                    href="https://invest.funnyfunny.cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    📈 투자 확신 빌더
                   </a>
                   <a
                     className="block hover:text-blue-600"

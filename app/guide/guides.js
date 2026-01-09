@@ -2493,6 +2493,29 @@ const guideSeeds = [
       "수면, 스트레스, 업무 강도 등을 입력하면 에너지 누수 구간과 회복 권장 루틴이 바로 표시됩니다.",
   },
   {
+    slug: "invest-confidence-builder",
+    title: "투자 확신 빌더 가이드",
+    description:
+      "수익률이 아니라 판단을 기록해 흔들림을 줄이는 '투자 확신 빌더' 사용법",
+    category: "재테크",
+    heroEmoji: "📈",
+    serviceUrl: "https://invest.funnyfunny.cloud",
+    keywords: [
+      "투자 확신",
+      "투자 판단 기록",
+      "투자 일지",
+      "멘탈 관리",
+      "기록 투자",
+    ],
+    focus: "투자 판단과 근거 기록",
+    benefit: "의사결정 흔들림을 줄이고 리뷰 기준을 확보",
+    usage:
+      "매수/매도 판단 시점에 근거, 리스크, 기대 시나리오를 간단히 기록합니다. 이후 변동 구간에서 기록을 다시 열어 당시 판단 기준과 다른지 비교해 보세요.",
+    note:
+      "투자 성과를 보장하지 않으며, 기록은 판단을 점검하기 위한 참고용입니다.",
+    disclaimer: "본 서비스는 투자 자문이 아니며 모든 투자는 본인 책임입니다.",
+  },
+  {
     slug: "mental-strength",
     title: "하루 정신 체력 지수 가이드",
     description:
