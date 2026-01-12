@@ -36,6 +36,7 @@ const randomTools = [
   "https://space.funnyfunny.cloud",
   "https://edu.funnyfunny.cloud",
   "https://baby.funnyfunny.cloud/",
+  "https://miracle.funnyfunny.cloud/",
   "https://nospend.funnyfunny.cloud",
   "https://waste.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
@@ -321,6 +322,12 @@ const seoGuides = [
     desc: "질문을 따라 출산율 변화를 체감하고 결과를 해석·공유하는 방법",
   },
   {
+    slug: "better-birth-odds",
+    emoji: "🌍",
+    title: "한국보다 더 좋은 조건에서 태어날 확률은? 가이드",
+    desc: "출생 조건을 비교해 확률을 확인하고 결과를 해석·공유하는 방법",
+  },
+  {
     slug: "palm-reading-analysis",
     emoji: "✋",
     title: "손바닥 썰 푼다 가이드",
@@ -528,6 +535,13 @@ const seoApplications = [
     url: "https://baby.funnyfunny.cloud/",
     description:
       "이 장면은 ‘미래 예측’이 아니라 이미 진행 중인 현재일 수 있습니다.",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "한국보다 더 좋은 조건에서 태어날 확률은?",
+    url: "https://miracle.funnyfunny.cloud/",
+    description:
+      "출생 조건을 비교해 한국보다 더 좋은 환경에서 태어날 확률을 확인하는 테스트",
     category: "LifestyleApplication",
   },
   {
@@ -968,6 +982,13 @@ const allServices = [
     title: "출산율 체감 테스트",
     desc: "이 장면은 ‘미래 예측’이 아니라 이미 진행 중인 현재일 수 있습니다.",
     tags: ["출산율", "인구", "사회", "체감", "테스트"],
+  },
+  {
+    href: "https://miracle.funnyfunny.cloud/",
+    icon: "🌍",
+    title: "한국보다 더 좋은 조건에서 태어날 확률은?",
+    desc: "출생 조건을 비교해 더 좋은 환경에서 태어날 확률을 확인",
+    tags: ["출생", "확률", "국가", "비교", "사회"],
   },
   {
     href: "https://health.funnyfunny.cloud",
