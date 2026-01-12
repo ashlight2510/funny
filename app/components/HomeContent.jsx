@@ -1503,7 +1503,7 @@ export function HomeContent() {
                 </div>
                 <div className="w-full sm:w-80 flex-shrink-0">
                   <label className="relative w-full">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+                    <span className="absolute left-3 top-[calc(50%+2px)] -translate-y-[46%] text-slate-400 text-sm">
                       🔍
                     </span>
                     <input
