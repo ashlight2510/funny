@@ -1267,6 +1267,8 @@ const allServices = [
 
 export function HomeContent() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
+  const [tagsExpanded, setTagsExpanded] = useState(false);
 
   useEffect(() => {
     const handler = (e) => {
@@ -1434,13 +1436,42 @@ export function HomeContent() {
     },
   ];
 
-  const filteredServices = allServices.filter((test) => {
-    if (!searchQuery.trim()) return true;
-    const haystack = [test.title, test.desc, ...(test.tags || [])]
-      .join(" ")
-      .toLowerCase();
-    return haystack.includes(searchQuery.trim().toLowerCase());
+  // 모든 태그 추출 및 인기순 정렬 (사용 빈도 기준)
+  const tagCounts = {};
+  allServices.forEach((service) => {
+    (service.tags || []).forEach((tag) => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
   });
+  const allTags = Array.from(
+    new Set(allServices.flatMap((service) => service.tags || []))
+  ).sort((a, b) => {
+    // 먼저 사용 빈도순, 그 다음 알파벳순
+    const countDiff = tagCounts[b] - tagCounts[a];
+    return countDiff !== 0 ? countDiff : a.localeCompare(b);
+  });
+
+  // 주요 태그 (처음 22개, 약 2줄)
+  const mainTags = allTags.slice(0, 22);
+  const remainingTags = allTags.slice(22);
+
+  const filteredServices = allServices.filter((test) => {
+    // 태그 필터링
+    if (selectedTag && !(test.tags || []).includes(selectedTag)) {
+      return false;
+    }
+    // 검색어 필터링
+    if (searchQuery.trim()) {
+      const haystack = [test.title, test.desc, ...(test.tags || [])]
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(searchQuery.trim().toLowerCase());
+    }
+    return true;
+  });
+
+  // 검색 결과 표시 여부 (검색어나 태그가 선택되었을 때만 표시)
+  const showSearchResults = searchQuery.trim() || selectedTag;
 
   return (
     <div className="bg-gradient-to-b from-[#0b1621] via-[#101f2e] to-[#14273b] text-slate-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
@@ -1458,12 +1489,163 @@ export function HomeContent() {
                 <span>❄️ Snow Week</span>
                 <span className="text-slate-100">가볍게 즐기기</span>
               </div>
-              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
-                겨울에 심심할 때 눌러보는 테스트들
-              </h2>
-              <p className="mt-3 text-base text-slate-100/90">
-                올겨울은 조금 더 가볍게, 2026년은 더 좋은 일로 시작해요.
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="flex-1">
+                  <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
+                    겨울에 심심할 때 눌러보는 테스트들
+                  </h2>
+                  <p className="mt-3 text-base text-slate-100/90">
+                    올겨울은 조금 더 가볍게, 2026년은 더 좋은 일로 시작해요.
+                  </p>
+                  <div className="mt-3 text-sm text-slate-200/80">
+                    전체 {allServices.length}개의 서비스
+                  </div>
+                </div>
+                <div className="w-full sm:w-80 flex-shrink-0">
+                  <label className="relative w-full">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+                      🔍
+                    </span>
+                    <input
+                      value={searchQuery}
+                      onChange={(e) => {
+                        setSearchQuery(e.target.value);
+                        setSelectedTag("");
+                      }}
+                      placeholder="예: 커피, 투자, 마음챙김"
+                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm text-sm text-white placeholder:text-slate-300 focus:border-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-300/30"
+                    />
+                  </label>
+                </div>
+              </div>
+              {showSearchResults && (
+                <div className="mt-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-lg font-bold text-white">
+                        검색 결과
+                      </h3>
+                      <p className="text-sm text-slate-200/80 mt-1">
+                        {selectedTag
+                          ? `"${selectedTag}" 태그: ${filteredServices.length}개`
+                          : searchQuery.trim()
+                          ? `"${searchQuery}" 검색: ${filteredServices.length}개`
+                          : `${filteredServices.length}개`}
+                      </p>
+                    </div>
+                    {(searchQuery.trim() || selectedTag) && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchQuery("");
+                          setSelectedTag("");
+                        }}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold hover:bg-white/20 transition"
+                      >
+                        초기화
+                      </button>
+                    )}
+                  </div>
+                  {filteredServices.length === 0 ? (
+                    <div className="p-6 rounded-2xl bg-white/10 border border-white/20 text-center text-sm text-slate-200">
+                      <p>해당 키워드와 맞는 서비스가 없어요.</p>
+                      <p className="text-xs text-slate-300/80 mt-1">
+                        다른 키워드나 태그를 선택해 보세요.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {filteredServices.map(
+                        ({ href, icon, title, desc, tags }) => (
+                          <a
+                            key={href}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${title} - ${desc}`}
+                            data-amp-service={title}
+                            data-amp-section="search"
+                            className="flex items-start gap-3 p-4 rounded-2xl bg-white/95 text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
+                          >
+                            <div className="text-xl">{icon}</div>
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-lg leading-snug text-slate-900">
+                                {title}
+                              </h4>
+                              <p className="text-sm text-slate-700 mt-1">
+                                {desc}
+                              </p>
+                              {tags && tags.length > 0 && (
+                                <div className="flex flex-wrap gap-1 mt-2">
+                                  {tags.slice(0, 3).map((tag) => (
+                                    <span
+                                      key={tag}
+                                      className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600"
+                                    >
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </a>
+                        )
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {allTags.length > 0 && (
+                <div className="mt-4">
+                  <div className="flex flex-wrap gap-2">
+                    {mainTags.map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => {
+                          setSelectedTag(selectedTag === tag ? "" : tag);
+                          setSearchQuery("");
+                        }}
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition ${
+                          selectedTag === tag
+                            ? "bg-sky-200 text-slate-900 shadow-md"
+                            : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20"
+                        }`}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                    {tagsExpanded &&
+                      remainingTags.map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => {
+                            setSelectedTag(selectedTag === tag ? "" : tag);
+                            setSearchQuery("");
+                          }}
+                          className={`px-3 py-1.5 rounded-full text-xs font-semibold transition ${
+                            selectedTag === tag
+                              ? "bg-sky-200 text-slate-900 shadow-md"
+                              : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20"
+                          }`}
+                        >
+                          {tag}
+                        </button>
+                      ))}
+                  </div>
+                  {remainingTags.length > 0 && (
+                    <button
+                      onClick={() => setTagsExpanded(!tagsExpanded)}
+                      className="mt-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold hover:bg-white/20 transition"
+                    >
+                      {tagsExpanded
+                        ? "태그 접기"
+                        : `태그 더보기 (${remainingTags.length}개)`}
+                    </button>
+                  )}
+                </div>
+              )}
+
               <div className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 sm:items-center">
                 <button
                   data-random-btn
