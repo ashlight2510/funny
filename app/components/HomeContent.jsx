@@ -75,6 +75,7 @@ const randomTools = [
   "https://sleep.funnyfunny.cloud",
   "https://balance.funnyfunny.cloud/",
   "https://lotto.funnyfunny.cloud/",
+  "http://sudoku.funnyfunny.cloud/",
 ];
 
 const seoTopItems = [
@@ -1283,6 +1284,13 @@ const allServices = [
     title: "우리 둘의 조합이 낳을 축구선수는?",
     desc: "둘의 성향을 섞어 닮은 축구선수를 찾는 테스트",
     tags: ["축구", "조합", "궁합", "테스트"],
+  },
+  {
+    href: "http://sudoku.funnyfunny.cloud/",
+    icon: "🧩",
+    title: "스도쿠 웹게임",
+    desc: "난이도 선택해서 푸는 클래식 스도쿠",
+    tags: ["스도쿠", "퍼즐", "게임", "두뇌"],
   },
 ];
 

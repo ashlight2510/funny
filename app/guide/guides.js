@@ -2777,6 +2777,19 @@ const guideSeeds = [
     keywords: ["감성 테스트", "세대 감성", "음악 취향", "감성 연대"],
   },
   {
+    slug: "sudoku",
+    title: "스도쿠 웹게임 가이드",
+    description:
+      "난이도별 스도쿠를 빠르게 푸는 팁과 단축키 사용법을 정리한 가이드",
+    category: "엔터테인먼트",
+    heroEmoji: "🧩",
+    serviceUrl: "http://sudoku.funnyfunny.cloud/",
+    keywords: ["스도쿠", "퍼즐", "두뇌 게임", "단축키", "난이도"],
+    usage:
+      "난이도를 선택한 뒤 새 게임을 시작하고, 메모 모드와 힌트를 조합해 퍼즐을 풀어보세요. 체크 기능으로 실수를 빠르게 잡을 수 있습니다.",
+    note: "힌트와 정답 보기 기능은 학습용입니다. 기록에 도전할 때는 사용을 최소화하세요.",
+  },
+  {
     slug: "soccer-combo",
     title: "우리 둘의 조합이 낳을 축구선수는? 가이드",
     description:
