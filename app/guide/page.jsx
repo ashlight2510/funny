@@ -40,9 +40,9 @@ export default function GuideIndexPage() {
             FunnyFunny Cloud 인기 서비스 가이드 모음
           </h1>
           <p className="mt-3 text-base sm:text-lg text-slate-700 leading-relaxed">
-            검색 유입과 승인 안정성을 동시에 잡는 5개 핵심 서비스를 위한 짧은
-            가이드입니다. H1, 키워드, FAQ까지 한 페이지에 담아 바로 활용할 수
-            있습니다.
+            서비스 사용법이 애매할 때 바로 찾아보는 짧은 안내서들을 모아두었습니다.
+            각 페이지에서 핵심 흐름과 키워드, FAQ를 한 번에 읽고 따라하면 yes/no
+            버튼을 누르듯 편안하게 서비스를 시작할 수 있어요.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {guides.map((guide) => (

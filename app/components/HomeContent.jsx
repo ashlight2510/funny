@@ -1768,7 +1768,7 @@ export function HomeContent() {
                       </p>
                     </div>
                   ) : (
-                    <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                       {filteredServices.map(
                         ({ href, icon, title, desc, tags }) => (
                           <a
@@ -2138,10 +2138,7 @@ export function HomeContent() {
           </div>
         </section>
 
-        <section
-          id="hub"
-          className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-14 space-y-12"
-        >
+        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-14 space-y-12">
           <div id="utils" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🛠️</span>
@@ -2286,7 +2283,7 @@ export function HomeContent() {
             </div>
           </details>
 
-          <div>
+          <div id="hub">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧭</span>
               <h3 className="text-xl font-bold">
