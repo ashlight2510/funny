@@ -1690,7 +1690,7 @@ export function HomeContent() {
           <div className="absolute -right-10 bottom-0 w-48 h-48 bg-slate-200/20 blur-3xl"></div>
 
           <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
-            <div className="max-w-[440px] sm:max-w-2xl text-white">
+            <div className="w-full text-white">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-sky-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
                 <span>{t("heroBadgeMain")}</span>
                 <span className="text-slate-100">{t("heroBadgeSub")}</span>
