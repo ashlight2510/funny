@@ -1421,26 +1421,7 @@ function formatTemplate(template, vars = {}) {
   );
 }
 
-const defaultLang = "en";
-
-function getRegionPreferredLang(fallback = defaultLang) {
-  if (typeof window === "undefined") return fallback;
-  const hasNavigator = typeof navigator !== "undefined";
-  const intlLocale =
-    typeof Intl === "object" && typeof Intl.DateTimeFormat === "function"
-      ? Intl.DateTimeFormat().resolvedOptions().locale
-      : "";
-  const sources = [
-    ...(hasNavigator && navigator.languages ? navigator.languages : []),
-    hasNavigator ? navigator.language : "",
-    hasNavigator ? navigator.userLanguage : "",
-    intlLocale,
-  ]
-    .filter(Boolean)
-    .map((locale) => locale.toLowerCase());
-  const hasKorean = sources.some((locale) => locale.startsWith("ko"));
-  return hasKorean ? "ko" : fallback;
-}
+const defaultLang = "ko";
 
 function getInitialLang() {
   if (typeof window === "undefined") return defaultLang;
@@ -1448,8 +1429,17 @@ function getInitialLang() {
   if (stored && pageCopy[stored]) {
     return stored;
   }
-  const candidate = getRegionPreferredLang(defaultLang);
-  return pageCopy[candidate] ? candidate : defaultLang;
+  const hasNavigator = typeof navigator !== "undefined";
+  if (hasNavigator) {
+    const browserLang =
+      navigator.languages && navigator.languages.length
+        ? navigator.languages[0]
+        : navigator.language;
+    if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+      return "ko";
+    }
+  }
+  return defaultLang;
 }
 
 export function HomeContent() {
