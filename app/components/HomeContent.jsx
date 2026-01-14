@@ -37,6 +37,7 @@ const randomTools = [
   "https://edu.funnyfunny.cloud",
   "https://baby.funnyfunny.cloud/",
   "https://miracle.funnyfunny.cloud/",
+  "https://n.funnyfunny.cloud/",
   "https://nospend.funnyfunny.cloud",
   "https://waste.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
@@ -153,6 +154,12 @@ const seoGuides = [
     emoji: "📐",
     title: "평수 계산기 가이드",
     desc: "평↔제곱미터 변환과 원룸/아파트 대표 평형을 빠르게 계산하는 방법",
+  },
+  {
+    slug: "nbang-calculator",
+    emoji: "🍽️",
+    title: "N빵 계산기 가이드",
+    desc: "음식점 이름·인원·총금액을 입력해 1인당 금액을 계산하고 바로 클립보드로 복사하는 흐름",
   },
   {
     slug: "lotto-picker",
@@ -549,6 +556,13 @@ const seoApplications = [
     name: "평수 계산기",
     url: "https://space.funnyfunny.cloud/",
     description: "평↔제곱미터를 빠르게 변환하고 대표 평형을 확인하는 계산기",
+    category: "UtilityApplication",
+  },
+  {
+    name: "N빵 계산기",
+    url: "https://n.funnyfunny.cloud/",
+    description:
+      "음식점 이름·인원·총금액을 입력하면 1인당 금액을 바로 계산하고 복사할 수 있는 계산기",
     category: "UtilityApplication",
   },
   {
@@ -969,6 +983,13 @@ const allServices = [
     title: "내가 안 산 것들의 총자산",
     desc: '"그때 그거만 안 샀어도..."를 숫자로',
     tags: ["절약", "총자산", "기회비용"],
+  },
+  {
+    href: "https://n.funnyfunny.cloud/",
+    icon: "🍽️",
+    title: "N빵 계산기",
+    desc: "음식점 이름·인원·총금액 입력 후 1인당 금액을 자동 계산하고 복사할 수 있는 식사 계산기",
+    tags: ["계산기", "금액", "식사", "복사", "N빵"],
   },
   {
     href: "https://edu.funnyfunny.cloud",
