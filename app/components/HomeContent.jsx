@@ -1294,10 +1294,164 @@ const allServices = [
   },
 ];
 
+const pageCopy = {
+  ko: {
+    headerHeroTitle: "유용할 수 있는 서비스, 놀이터",
+    ctaPrimarySmall: "랜덤",
+    ctaPrimaryLarge: "랜덤 열기",
+    heroBadgeMain: "❄️ Snow Week",
+    heroBadgeSub: "가볍게 즐기기",
+    heroTitle: "겨울에 심심할 때 눌러보는 테스트들",
+    heroSubtitle: "올겨울은 조금 더 가볍게, 2026년은 더 좋은 일로 시작해요.",
+    heroServiceCount: "전체 {count}개의 서비스",
+    searchPlaceholder: "예: 커피, 투자, 마음챙김",
+    searchResultsTitle: "검색 결과",
+    searchTagResults: '"{tag}" 태그: {count}개',
+    searchQueryResults: '"{query}" 검색: {count}개',
+    searchCount: "{count}개",
+    searchBottomSummary: "검색 결과 {count}개",
+    searchBottomEmpty: "새 서비스가 추가되면 여기서 바로 확인할 수 있어요",
+    searchResetButton: "초기화",
+    searchNoMatches: "해당 키워드와 맞는 서비스가 없어요.",
+    searchNoMatchesHint: "다른 키워드나 태그를 선택해 보세요.",
+    tagsMore: "태그 더보기 ({count}개)",
+    tagsCollapse: "태그 접기",
+    randomButtonSmall: "랜덤 열기",
+    randomButtonLarge: "랜덤 테스트 열기",
+    quickFlow: "FLOW 게시판",
+    quickAshlight: "AshLight",
+    topUtilityHeading: "🧰 효용 높은 유틸리티 Pick",
+    insightCtaTitle: "오늘의 한 줄 인사이트",
+    hubCtaTitle: "나를 이해하는 가장 쉬운 방법",
+    utilsCtaTitle: "유용할 수 있는 서비스들",
+    viewAllServices: "모든 서비스 보기",
+    recommendedContentLabel: "추천 콘텐츠",
+    usefulServicesTitle: "유용할 수 있는 서비스들",
+    footerIntroTitle: "funnyfunny.cloud 소개",
+    footerIntroDescription1:
+      "funnyfunny.cloud는 일상의 데이터를 더 쉽고 재밌게 보여주는 ",
+    footerIntroHighlight: "유틸리티, 테스트, 계산기, 정보 도구 포털",
+    footerIntroDescription2: "입니다.",
+    footerIntroDescription3:
+      "광고를 포함한 모든 요소는 Google 정책을 준수하여 안전하게 운영됩니다.",
+    footerOperationTitle: "운영 정보",
+    footerOperationDeveloperLabel: "개발 및 운영:",
+    footerOperationContactLabel: "문의:",
+    footerLinkPrivacy: "개인정보처리방침",
+    footerLinkTerms: "이용약관",
+    footerLinkCopyright: "저작권 안내",
+    footerLinkPolicy: "운영정책",
+    footerCopyright: "© 2025 FunnyFunny Cloud by AshLight.",
+  },
+  en: {
+    headerHeroTitle: "Useful services, playground",
+    ctaPrimarySmall: "Random",
+    ctaPrimaryLarge: "Open random tool",
+    heroBadgeMain: "❄️ Snow Week",
+    heroBadgeSub: "Easy to enjoy",
+    heroTitle: "Tests to click when winter feels long",
+    heroSubtitle: "Relax this winter and start 2026 with better moments.",
+    heroServiceCount: "{count} services in total",
+    searchPlaceholder: "Try: coffee, investment, mindfulness",
+    searchResultsTitle: "Search results",
+    searchTagResults: '"{tag}" tag: {count} services',
+    searchQueryResults: '"{query}" search: {count} results',
+    searchCount: "{count} entries",
+    searchBottomSummary: "{count} search results",
+    searchBottomEmpty: "New services will appear here shortly.",
+    searchResetButton: "Reset",
+    searchNoMatches: "No services match that keyword.",
+    searchNoMatchesHint: "Try another keyword or tag.",
+    tagsMore: "More tags ({count})",
+    tagsCollapse: "Hide tags",
+    randomButtonSmall: "Open random",
+    randomButtonLarge: "Open random test",
+    quickFlow: "FLOW board",
+    quickAshlight: "AshLight",
+    topUtilityHeading: "🧰 Useful utility picks",
+    insightCtaTitle: "Today's single-line insight",
+    hubCtaTitle: "The simplest way to understand me",
+    utilsCtaTitle: "Helpful services",
+    viewAllServices: "View all services",
+    recommendedContentLabel: "Recommended content",
+    usefulServicesTitle: "Helpful services",
+    footerIntroTitle: "About funnyfunny.cloud",
+    footerIntroDescription1:
+      "funnyfunny.cloud delivers everyday data through fun utilities, tests, calculators, and informative tools.",
+    footerIntroHighlight: "",
+    footerIntroDescription2: "",
+    footerIntroDescription3:
+      "All ads and elements comply with Google's policies for safe operation.",
+    footerOperationTitle: "Operation info",
+    footerOperationDeveloperLabel: "Developed and operated by:",
+    footerOperationContactLabel: "Contact:",
+    footerLinkPrivacy: "Privacy policy",
+    footerLinkTerms: "Terms of service",
+    footerLinkCopyright: "Copyright notice",
+    footerLinkPolicy: "Operating policy",
+    footerCopyright: "© 2025 FunnyFunny Cloud by AshLight.",
+  },
+};
+
+function formatTemplate(template, vars = {}) {
+  if (typeof template !== "string") return template;
+  return template.replace(/\{(.*?)\}/g, (_, key) =>
+    Object.prototype.hasOwnProperty.call(vars, key) ? vars[key] : ""
+  );
+}
+
+const defaultLang = "en";
+
+function getRegionPreferredLang(fallback = defaultLang) {
+  if (typeof window === "undefined") return fallback;
+  const hasNavigator = typeof navigator !== "undefined";
+  const intlLocale =
+    typeof Intl === "object" && typeof Intl.DateTimeFormat === "function"
+      ? Intl.DateTimeFormat().resolvedOptions().locale
+      : "";
+  const sources = [
+    ...(hasNavigator && navigator.languages ? navigator.languages : []),
+    hasNavigator ? navigator.language : "",
+    hasNavigator ? navigator.userLanguage : "",
+    intlLocale,
+  ]
+    .filter(Boolean)
+    .map((locale) => locale.toLowerCase());
+  const hasKorean = sources.some((locale) => locale.startsWith("ko"));
+  return hasKorean ? "ko" : fallback;
+}
+
+function getInitialLang() {
+  if (typeof window === "undefined") return defaultLang;
+  const stored = window.localStorage?.getItem("preferredLang");
+  if (stored && pageCopy[stored]) {
+    return stored;
+  }
+  const candidate = getRegionPreferredLang(defaultLang);
+  return pageCopy[candidate] ? candidate : defaultLang;
+}
+
 export function HomeContent() {
+  const [lang, setLang] = useState(getInitialLang);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
   const [tagsExpanded, setTagsExpanded] = useState(false);
+  const translationPack = pageCopy[lang] || pageCopy[defaultLang];
+  const fallbackPack = pageCopy[defaultLang];
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    window.localStorage?.setItem("preferredLang", lang);
+  }, [lang]);
+
+  const t = (key, vars = {}) =>
+    formatTemplate(
+      translationPack[key] ?? fallbackPack[key] ?? key,
+      vars
+    );
+  const handleLangChange = (nextLang) => {
+    setLang(pageCopy[nextLang] ? nextLang : defaultLang);
+  };
 
   useEffect(() => {
     const handler = (e) => {
@@ -1484,27 +1638,29 @@ export function HomeContent() {
   const mainTags = allTags.slice(0, 22);
   const remainingTags = allTags.slice(22);
 
+  const normalizedQuery = searchQuery.trim();
+
   const filteredServices = allServices.filter((test) => {
     // 태그 필터링
     if (selectedTag && !(test.tags || []).includes(selectedTag)) {
       return false;
     }
     // 검색어 필터링
-    if (searchQuery.trim()) {
+    if (normalizedQuery) {
       const haystack = [test.title, test.desc, ...(test.tags || [])]
         .join(" ")
         .toLowerCase();
-      return haystack.includes(searchQuery.trim().toLowerCase());
+      return haystack.includes(normalizedQuery.toLowerCase());
     }
     return true;
   });
 
   // 검색 결과 표시 여부 (검색어나 태그가 선택되었을 때만 표시)
-  const showSearchResults = searchQuery.trim() || selectedTag;
+  const showSearchResults = normalizedQuery || selectedTag;
 
   return (
     <div className="bg-gradient-to-b from-[#0b1621] via-[#101f2e] to-[#14273b] text-slate-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
-      <HeaderPortal />
+      <HeaderPortal lang={lang} onLangChange={handleLangChange} t={t} />
       <main>
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/85 to-sky-950/80"></div>
@@ -1515,19 +1671,19 @@ export function HomeContent() {
           <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
             <div className="max-w-[440px] sm:max-w-2xl text-white">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-sky-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
-                <span>❄️ Snow Week</span>
-                <span className="text-slate-100">가볍게 즐기기</span>
+                <span>{t("heroBadgeMain")}</span>
+                <span className="text-slate-100">{t("heroBadgeSub")}</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                 <div className="flex-1">
                   <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
-                    겨울에 심심할 때 눌러보는 테스트들
+                    {t("heroTitle")}
                   </h2>
                   <p className="mt-3 text-base text-slate-100/90">
-                    올겨울은 조금 더 가볍게, 2026년은 더 좋은 일로 시작해요.
+                    {t("heroSubtitle")}
                   </p>
                   <div className="mt-3 text-sm text-slate-200/80">
-                    전체 {allServices.length}개의 서비스
+                    {t("heroServiceCount", { count: allServices.length })}
                   </div>
                 </div>
                 <div className="w-full sm:w-80 flex-shrink-0">
@@ -1541,7 +1697,7 @@ export function HomeContent() {
                         setSearchQuery(e.target.value);
                         setSelectedTag("");
                       }}
-                      placeholder="예: 커피, 투자, 마음챙김"
+                      placeholder={t("searchPlaceholder")}
                       className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm text-sm text-white placeholder:text-slate-300 focus:border-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-300/30"
                     />
                   </label>
@@ -1550,19 +1706,27 @@ export function HomeContent() {
               {showSearchResults && (
                 <div className="mt-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h3 className="text-lg font-bold text-white">
-                        검색 결과
-                      </h3>
-                      <p className="text-sm text-slate-200/80 mt-1">
-                        {selectedTag
-                          ? `"${selectedTag}" 태그: ${filteredServices.length}개`
-                          : searchQuery.trim()
-                          ? `"${searchQuery}" 검색: ${filteredServices.length}개`
-                          : `${filteredServices.length}개`}
-                      </p>
-                    </div>
-                    {(searchQuery.trim() || selectedTag) && (
+                  <div>
+                    <h3 className="text-lg font-bold text-white">
+                      {t("searchResultsTitle")}
+                    </h3>
+                    <p className="text-sm text-slate-200/80 mt-1">
+                      {selectedTag
+                        ? t("searchTagResults", {
+                            tag: selectedTag,
+                            count: filteredServices.length,
+                          })
+                        : normalizedQuery
+                        ? t("searchQueryResults", {
+                            query: normalizedQuery,
+                            count: filteredServices.length,
+                          })
+                        : t("searchCount", {
+                            count: filteredServices.length,
+                          })}
+                    </p>
+                  </div>
+                    {(normalizedQuery || selectedTag) && (
                       <button
                         type="button"
                         onClick={() => {
@@ -1668,8 +1832,8 @@ export function HomeContent() {
                       className="mt-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold hover:bg-white/20 transition"
                     >
                       {tagsExpanded
-                        ? "태그 접기"
-                        : `태그 더보기 (${remainingTags.length}개)`}
+                        ? t("tagsCollapse")
+                        : t("tagsMore", { count: remainingTags.length })}
                     </button>
                   )}
                 </div>
@@ -1680,8 +1844,8 @@ export function HomeContent() {
                   data-random-btn
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-sky-200 via-cyan-200 to-slate-200 text-slate-900 text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition whitespace-nowrap"
                 >
-                  <span className="sm:hidden">랜덤 열기</span>
-                  <span className="hidden sm:inline">랜덤 테스트 열기</span>
+                  <span className="sm:hidden">{t("randomButtonSmall")}</span>
+                  <span className="hidden sm:inline">{t("randomButtonLarge")}</span>
                 </button>
               </div>
 
@@ -1692,18 +1856,18 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
                 >
-                  <span>FLOW 게시판</span>
+                <span>{t("quickFlow")}</span>
                 </a>
                 <a
                   href="https://funnyfunny.cloud"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
                 >
-                  <span>AshLight</span>
+                  <span>{t("quickAshlight")}</span>
                 </a>
               </div>
             </div>
             <h2 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-100 bg-white/10 px-3 py-1 rounded-full shadow-sm border border-white/20 mt-16">
-              🧰 효용 높은 유틸리티 Pick
+              {t("topUtilityHeading")}
             </h2>
             <div className="mt-8 sm:mt-10 grid gap-4 sm:grid-cols-3">
               <a
@@ -1905,25 +2069,21 @@ export function HomeContent() {
                 className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
                 <span className="text-sm">💡</span>
-                <p className="text-sm text-slate-700">오늘의 한 줄 인사이트</p>
+                <p className="text-sm text-slate-700">{t("insightCtaTitle")}</p>
               </a>
               <a
                 href="#hub"
                 className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
                 <span className="text-sm">🧠</span>
-                <p className="text-sm text-slate-700">
-                  나를 이해하는 가장 쉬운 방법
-                </p>
+                <p className="text-sm text-slate-700">{t("hubCtaTitle")}</p>
               </a>
               <a
                 href="#utils"
                 className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
               >
                 <span className="text-sm">🛠️</span>
-                <p className="text-sm text-slate-700">
-                  유용할 수 있는 서비스들
-                </p>
+                <p className="text-sm text-slate-700">{t("utilsCtaTitle")}</p>
               </a>
             </div>
 
@@ -1931,7 +2091,7 @@ export function HomeContent() {
               href="#tests"
               className="w-full sm:w-auto inline-block text-center flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 shadow hover:border-blue-300 hover:text-blue-700 hover:-translate-y-0.5 transition mt-16"
             >
-              모든 서비스 보기
+              {t("viewAllServices")}
             </a>
           </div>
         </section>
@@ -1943,7 +2103,7 @@ export function HomeContent() {
                 <span className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
                   AD
                 </span>
-                <span>추천 콘텐츠</span>
+                <span>{t("recommendedContentLabel")}</span>
               </div>
               <span className="text-xs text-slate-400">Dable</span>
             </div>
@@ -1964,7 +2124,7 @@ export function HomeContent() {
           <div id="utils" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🛠️</span>
-              <h3 className="text-xl font-bold">유용할 수 있는 서비스들</h3>
+              <h3 className="text-xl font-bold">{t("usefulServicesTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
@@ -2814,24 +2974,26 @@ export function HomeContent() {
                 <input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="예: 커피, 투자, 마음챙김"
+                  placeholder={t("searchPlaceholder")}
                   className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
                 />
               </label>
             </div>
             <div className="flex items-center justify-between text-xs text-emerald-100/90 mb-3">
               <span>
-                {searchQuery.trim()
-                  ? `검색 결과 ${filteredServices.length}개`
-                  : "새 서비스가 추가되면 여기서 바로 확인할 수 있어요"}
+                {normalizedQuery
+                  ? t("searchBottomSummary", {
+                      count: filteredServices.length,
+                    })
+                  : t("searchBottomEmpty")}
               </span>
-              {searchQuery.trim() && (
+              {normalizedQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
                   className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200 text-slate-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
                 >
-                  초기화
+                  {t("searchResetButton")}
                 </button>
               )}
             </div>
@@ -2909,7 +3071,7 @@ export function HomeContent() {
         </section>
       </main>
 
-      <FooterPortal />
+        <FooterPortal t={t} />
 
       <div
         id="quickBar"
