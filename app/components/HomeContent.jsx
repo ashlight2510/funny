@@ -2273,7 +2273,7 @@ export function HomeContent() {
             </div>
           </details>
 
-          <div id="hub">
+          <div id="hub" className="scroll-mt-24 sm:scroll-mt-28">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧭</span>
               <h3 className="text-xl font-bold">
