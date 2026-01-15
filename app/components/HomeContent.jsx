@@ -1482,6 +1482,15 @@ const pageCopy = {
     sectionFun: "Fun & Memes",
     labelQuickCheck: "Quick check",
     label1MinChill: "1-minute chill",
+    faqTitle: "Frequently Asked Questions",
+    allServicesTitle: "All Services",
+    searchNoMatches: "No tests match that keyword.",
+    searchNoMatchesHint: "Try a different spelling or keyword.",
+    guidesLabel: "Guides",
+    viewAllGuides: "View all guides",
+    quickBarMessage: "Enjoy without pressure",
+    quickBarHub: "Hub",
+    quickBarRandomGift: "Random gift",
     hubTitle: "나를 이해하는 가장 간단한 방법",
     sectionPsychology: "심리 & 특성",
     sectionMoney: "돈 & 투자",
@@ -1492,6 +1501,15 @@ const pageCopy = {
     sectionFun: "재미 & 밈",
     labelQuickCheck: "빠른 체크",
     label1MinChill: "1분 여유",
+    faqTitle: "자주 묻는 질문",
+    allServicesTitle: "모든 서비스",
+    searchNoMatches: "해당 키워드와 일치하는 서비스가 없습니다.",
+    searchNoMatchesHint: "다른 키워드나 태그를 시도해보세요.",
+    guidesLabel: "가이드",
+    viewAllGuides: "모든 가이드 보기",
+    quickBarMessage: "부담 없이 즐기세요",
+    quickBarHub: "Hub",
+    quickBarRandomGift: "랜덤 선물",
   },
 };
 
@@ -3028,7 +3046,7 @@ export function HomeContent() {
                 <p className="text-xs uppercase tracking-[0.2em] text-emerald-700">
                   FAQ
                 </p>
-                <h3 className="text-xl font-bold">Frequently Asked Questions</h3>
+                <h3 className="text-xl font-bold">{t("faqTitle")}</h3>
               </div>
             </div>
             <div className="divide-y divide-emerald-100">
@@ -3053,7 +3071,7 @@ export function HomeContent() {
           <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧪</span>
-              <h3 className="text-xl font-bold">All Services</h3>
+              <h3 className="text-xl font-bold">{t("allServicesTitle")}</h3>
             </div>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -3096,9 +3114,9 @@ export function HomeContent() {
             </div>
             {filteredServices.length === 0 ? (
               <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
-                <p>No tests match that keyword.</p>
+                <p>{t("searchNoMatches")}</p>
                 <p className="text-xs text-slate-400 mt-1">
-                  Try a different spelling or keyword.
+                  {t("searchNoMatchesHint")}
                 </p>
               </div>
             ) : (
@@ -3131,7 +3149,7 @@ export function HomeContent() {
         <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 pb-10 sm:pb-12">
           <div className="mt-6 sm:mt-8">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              Guides
+              {t("guidesLabel")}
             </div>
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
               {seoGuides.map((guide) => (
@@ -3156,12 +3174,12 @@ export function HomeContent() {
             <div className="mt-3">
               <a
                 href="/guide"
-                aria-label="View all guides"
-                data-amp-service="View all guides"
+                aria-label={t("viewAllGuides")}
+                data-amp-service={t("viewAllGuides")}
                 data-amp-section="guides"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
               >
-                View all guides
+                {t("viewAllGuides")}
               </a>
             </div>
           </div>
@@ -3176,20 +3194,20 @@ export function HomeContent() {
       >
         <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-gradient-to-r from-red-600 via-amber-400 to-emerald-600 text-slate-900 rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
           <div className="text-sm font-semibold drop-shadow">
-            Enjoy without pressure
+            {t("quickBarMessage")}
           </div>
           <div className="flex items-center gap-2">
             <a
               href="#hub"
               className="px-3 py-2 rounded-full bg-white/80 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
             >
-              Hub
+              {t("quickBarHub")}
             </a>
             <button
               data-random-btn
               className="px-3 py-2 rounded-full bg-white/90 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
             >
-              Random gift
+              {t("quickBarRandomGift")}
             </button>
           </div>
         </div>
