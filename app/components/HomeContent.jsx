@@ -1343,51 +1343,51 @@ const allServices = [
 
 const pageCopy = {
   ko: {
-    headerHeroTitle: "Useful services, playground",
-    ctaPrimarySmall: "Random",
-    ctaPrimaryLarge: "Open random tool",
-    heroBadgeMain: "❄️ Snow Week",
-    heroBadgeSub: "Easy to enjoy",
-    heroTitle: "Tests to click when winter feels long",
-    heroSubtitle: "Relax this winter and start 2026 with better moments.",
-    heroServiceCount: "{count} services in total",
-    searchPlaceholder: "Try: coffee, investment, mindfulness",
-    searchResultsTitle: "Search results",
-    searchTagResults: '"{tag}" tag: {count} services',
-    searchQueryResults: '"{query}" search: {count} results',
-    searchCount: "{count} entries",
-    searchBottomSummary: "{count} search results",
-    searchBottomEmpty: "New services will appear here shortly.",
-    searchResetButton: "Reset",
-    searchNoMatches: "No services match that keyword.",
-    searchNoMatchesHint: "Try another keyword or tag.",
-    tagsMore: "More tags ({count})",
-    tagsCollapse: "Hide tags",
-    randomButtonSmall: "Open random",
-    randomButtonLarge: "Open random test",
-    quickFlow: "FLOW board",
+    headerHeroTitle: "유용할 수 있는 서비스, 놀이터",
+    ctaPrimarySmall: "랜덤",
+    ctaPrimaryLarge: "랜덤 열기",
+    heroBadgeMain: "❄️ 스노우 위크",
+    heroBadgeSub: "쉽게 즐기기",
+    heroTitle: "겨울이 길게 느껴질 때 클릭할 테스트들",
+    heroSubtitle: "이번 겨울을 여유롭게 보내고, 더 나은 순간들로 2026년을 시작하세요.",
+    heroServiceCount: "총 {count}개 서비스",
+    searchPlaceholder: "예: 커피, 투자, 마음챙김",
+    searchResultsTitle: "검색 결과",
+    searchTagResults: '"{tag}" 태그: {count}개 서비스',
+    searchQueryResults: '"{query}" 검색: {count}개 결과',
+    searchCount: "{count}개 항목",
+    searchBottomSummary: "{count}개 검색 결과",
+    searchBottomEmpty: "새로운 서비스가 곧 여기에 나타날 예정입니다.",
+    searchResetButton: "초기화",
+    searchNoMatches: "해당 키워드와 일치하는 서비스가 없습니다.",
+    searchNoMatchesHint: "다른 키워드나 태그를 시도해보세요.",
+    tagsMore: "더 많은 태그 ({count})",
+    tagsCollapse: "태그 숨기기",
+    randomButtonSmall: "랜덤 열기",
+    randomButtonLarge: "랜덤 테스트 열기",
+    quickFlow: "FLOW 게시판",
     quickAshlight: "AshLight",
-    topUtilityHeading: "🧰 Useful utility picks",
-    insightCtaTitle: "Today's single-line insight",
-    hubCtaTitle: "The simplest way to understand me",
-    utilsCtaTitle: "Helpful services",
-    viewAllServices: "View all services",
-    recommendedContentLabel: "Recommended content",
-    usefulServicesTitle: "Helpful services",
-    footerIntroTitle: "About funnyfunny.cloud",
+    topUtilityHeading: "🧰 유용한 유틸리티 추천",
+    insightCtaTitle: "오늘의 한 줄 인사이트",
+    hubCtaTitle: "나를 이해하는 가장 간단한 방법",
+    utilsCtaTitle: "유용한 서비스",
+    viewAllServices: "모든 서비스 보기",
+    recommendedContentLabel: "추천 콘텐츠",
+    usefulServicesTitle: "유용한 서비스",
+    footerIntroTitle: "funnyfunny.cloud 소개",
     footerIntroDescription1:
-      "funnyfunny.cloud delivers everyday data through fun utilities, tests, calculators, and informative tools.",
+      "funnyfunny.cloud는 재미있는 유틸리티, 테스트, 계산기, 정보 도구를 통해 일상의 데이터를 전달합니다.",
     footerIntroHighlight: "",
     footerIntroDescription2: "",
     footerIntroDescription3:
-      "All ads and elements comply with Google's policies for safe operation.",
-    footerOperationTitle: "Operation info",
-    footerOperationDeveloperLabel: "Developed and operated by:",
-    footerOperationContactLabel: "Contact:",
-    footerLinkPrivacy: "Privacy policy",
-    footerLinkTerms: "Terms of service",
-    footerLinkCopyright: "Copyright notice",
-    footerLinkPolicy: "Operating policy",
+      "모든 광고와 요소는 안전한 운영을 위해 Google 정책을 준수합니다.",
+    footerOperationTitle: "운영 정보",
+    footerOperationDeveloperLabel: "개발 및 운영:",
+    footerOperationContactLabel: "문의:",
+    footerLinkPrivacy: "개인정보 처리방침",
+    footerLinkTerms: "서비스 이용약관",
+    footerLinkCopyright: "저작권 안내",
+    footerLinkPolicy: "운영 정책",
     footerCopyright: "© 2025 FunnyFunny Cloud by AshLight.",
   },
   en: {
@@ -1437,6 +1437,26 @@ const pageCopy = {
     footerLinkCopyright: "Copyright notice",
     footerLinkPolicy: "Operating policy",
     footerCopyright: "© 2025 FunnyFunny Cloud by AshLight.",
+    badgeLocalOnly: "로컬 전용",
+    badgeSEOBundle: "SEO 번들",
+    badgeConverter: "변환기",
+    badgeOCR: "OCR",
+    badgeTimeTool: "시간 도구",
+    badgeLive: "실시간",
+    badgeSummary: "요약",
+    badgeEdit: "편집",
+    badgeIcons: "아이콘",
+    communityBoard: "커뮤니티 / 게시판",
+    openLabel: "열기",
+    adLabel: "광고",
+    dableLabel: "Dable",
+    openFLOW: "FLOW 열기",
+    hubTitle: "나를 이해하는 가장 간단한 방법",
+    sectionPsychology: "심리 & 특성",
+    sectionMoney: "돈 & 투자",
+    label3MinQuick: "3분 컷",
+    labelRealityCheck: "현실 체크",
+    flowBoardDesc: "스레드 + 포럼 느낌의 게시판, 모바일에서 글쓰고 읽기",
   },
 };
 
@@ -1919,7 +1939,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🗜️</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    Local only
+                    {t("badgeLocalOnly")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
@@ -1941,7 +1961,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🧰</span>
                   <span className="text-xs font-semibold text-indigo-600">
-                    SEO bundle
+                    {t("badgeSEOBundle")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">Meta Kit</h3>
@@ -1961,7 +1981,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🖼️</span>
                   <span className="text-xs font-semibold text-fuchsia-600">
-                    Converter
+                    {t("badgeConverter")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
@@ -1983,7 +2003,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🔍</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    OCR
+                    {t("badgeOCR")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
@@ -2005,7 +2025,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">⏰</span>
                   <span className="text-xs font-semibold text-blue-600">
-                    Time tool
+                    {t("badgeTimeTool")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">Time Checker</h3>
@@ -2025,7 +2045,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🌤️</span>
                   <span className="text-xs font-semibold text-sky-600">
-                    Live
+                    {t("badgeLive")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">Current Weather</h3>
@@ -2045,7 +2065,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">📰</span>
                   <span className="text-xs font-semibold text-orange-600">
-                    Summary
+                    {t("badgeSummary")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
@@ -2067,7 +2087,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🎵</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    Edit
+                    {t("badgeEdit")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
@@ -2089,7 +2109,7 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🎨</span>
                   <span className="text-xs font-semibold text-amber-600">
-                    Icons
+                    {t("badgeIcons")}
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
@@ -2138,11 +2158,11 @@ export function HomeContent() {
             <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-slate-100">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
                 <span className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
-                  AD
+                  {t("adLabel")}
                 </span>
                 <span>{t("recommendedContentLabel")}</span>
               </div>
-              <span className="text-xs text-slate-400">Dable</span>
+              <span className="text-xs text-slate-400">{t("dableLabel")}</span>
             </div>
             <div className="p-4 sm:p-5">
               <div
@@ -2281,12 +2301,12 @@ export function HomeContent() {
           </div>
           <details className="sm:hidden rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200">
             <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-slate-900">
-              <span className="font-semibold">Community / Board</span>
-              <span className="text-sm text-blue-600">Open</span>
+              <span className="font-semibold">{t("communityBoard")}</span>
+              <span className="text-sm text-blue-600">{t("openLabel")}</span>
             </summary>
             <div className="px-4 pb-4">
               <p className="text-sm text-slate-600 mb-2">
-                FLOW board with thread + forum vibes, post and read on mobile
+                {t("flowBoardDesc")}
               </p>
               <a
                 href="https://flow.funnyfunny.cloud/"
@@ -2294,7 +2314,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:shadow-md transition"
               >
-                Open FLOW
+                {t("openFLOW")}
               </a>
             </div>
           </details>
@@ -2303,7 +2323,7 @@ export function HomeContent() {
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧭</span>
               <h3 className="text-xl font-bold">
-                The simplest way to understand me
+                {t("hubTitle")}
               </h3>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -2312,10 +2332,10 @@ export function HomeContent() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🧠</span>
                     <h4 className="font-semibold text-slate-900">
-                      Psychology & Traits
+                      {t("sectionPsychology")}
                     </h4>
                   </div>
-                  <span className="text-xs text-slate-600">3-minute quick</span>
+                  <span className="text-xs text-slate-600">{t("label3MinQuick")}</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2421,10 +2441,10 @@ export function HomeContent() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">💰</span>
                     <h4 className="font-semibold text-slate-900">
-                      Money & Investing
+                      {t("sectionMoney")}
                     </h4>
                   </div>
-                  <span className="text-xs text-slate-600">Reality check</span>
+                  <span className="text-xs text-slate-600">{t("labelRealityCheck")}</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2546,10 +2566,10 @@ export function HomeContent() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🌿</span>
                     <h4 className="font-semibold text-slate-900">
-                      Health & Lifestyle
+                      {t("sectionHealth")}
                     </h4>
                   </div>
-                  <span className="text-xs text-slate-600">Quick check</span>
+                  <span className="text-xs text-slate-600">{t("labelQuickCheck")}</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2622,9 +2642,9 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🎉</span>
-                    <h4 className="font-semibold text-slate-900">Fun & Memes</h4>
+                    <h4 className="font-semibold text-slate-900">{t("sectionFun")}</h4>
                   </div>
-                  <span className="text-xs text-slate-600">1-minute chill</span>
+                  <span className="text-xs text-slate-600">{t("label1MinChill")}</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
