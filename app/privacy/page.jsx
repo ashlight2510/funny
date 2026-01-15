@@ -3,18 +3,18 @@ import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
 export const metadata = {
-  title: '개인정보처리방침 — FunnyFunny Cloud',
-  description: 'FunnyFunny Cloud 개인정보처리방침',
+  title: 'Privacy Policy — FunnyFunny Cloud',
+  description: 'FunnyFunny Cloud privacy policy',
   openGraph: {
     type: 'website',
     url: 'https://funnyfunny.cloud/privacy',
-    title: '개인정보처리방침 — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud 개인정보처리방침'
+    title: 'Privacy Policy — FunnyFunny Cloud',
+    description: 'FunnyFunny Cloud privacy policy'
   },
   twitter: {
     card: 'summary_large_image',
-    title: '개인정보처리방침 — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud 개인정보처리방침'
+    title: 'Privacy Policy — FunnyFunny Cloud',
+    description: 'FunnyFunny Cloud privacy policy'
   }
 };
 
@@ -23,145 +23,154 @@ export default function PrivacyPage() {
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-8">개인정보처리방침</h1>
+        <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
 
         <div className="bg-white rounded-lg shadow p-8 space-y-6 text-sm leading-relaxed">
-          <p className="text-gray-600">최종 수정일: 2024년 1월 1일</p>
+          <p className="text-gray-600">Last updated: January 1, 2024</p>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">1. 개인정보의 처리 목적</h2>
+            <h2 className="text-xl font-bold mb-4">1. Purpose of Processing</h2>
             <p className="mb-4">
-              FunnyFunny Cloud(이하 "본 사이트")는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는
-              다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라
-              별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+              FunnyFunny Cloud (“the site”) processes personal information for
+              the purposes below. We do not use information for purposes other
+              than those listed here, and if the purpose changes, we will take
+              appropriate measures such as obtaining consent as required by law.
             </p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>서비스 제공: 계산기, 테스트, 유틸리티 서비스 제공</li>
-              <li>서비스 개선: 사용자 경험 향상 및 서비스 품질 개선</li>
-              <li>통계 분석: 방문자 통계 및 서비스 이용 현황 분석</li>
+              <li>Service delivery: calculators, tests, and utility tools</li>
+              <li>Service improvement: enhancing UX and service quality</li>
+              <li>Analytics: visitor statistics and usage analysis</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">2. 개인정보의 처리 및 보유기간</h2>
+            <h2 className="text-xl font-bold mb-4">2. Retention Period</h2>
             <p className="mb-4">
-              본 사이트는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보
-              보유·이용기간 내에서 개인정보를 처리·보유합니다.
+              We retain personal information only for the period required by
+              law or agreed to by the data subject at the time of collection.
             </p>
-            <p className="mb-4">각각의 개인정보 처리 및 보유 기간은 다음과 같습니다:</p>
+            <p className="mb-4">Retention periods include:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>서비스 이용 기록: 수집·이용에 관한 동의일로부터 3년까지</li>
-              <li>통계 데이터: 익명화 처리 후 영구 보관 가능</li>
+              <li>Service usage logs: up to 3 years from the date of consent</li>
+              <li>Analytics data: may be stored indefinitely after anonymization</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">3. 처리하는 개인정보의 항목</h2>
-            <p className="mb-4">본 사이트는 다음의 개인정보 항목을 처리하고 있습니다:</p>
+            <h2 className="text-xl font-bold mb-4">3. Items Collected</h2>
+            <p className="mb-4">We process the following information:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>자동 수집 정보: IP 주소, 쿠키, 방문 일시, 서비스 이용 기록, 기기 정보</li>
-              <li>Google Analytics를 통한 방문자 통계 정보</li>
+              <li>Automatically collected info: IP address, cookies, visit time, usage logs, device info</li>
+              <li>Visitor statistics via Google Analytics</li>
             </ul>
             <p className="mt-4">
-              ※ 본 사이트는 대부분의 서비스에서 회원가입을 요구하지 않으며, 사용자가 직접 입력하는 개인정보는 저장하지 않습니다.
+              Note: Most services do not require sign-up, and we do not store
+              personal information that users directly enter into tools.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">4. 개인정보의 제3자 제공</h2>
-            <p className="mb-4">본 사이트는 원칙적으로 정보주체의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우에는 예외로 합니다:</p>
+            <h2 className="text-xl font-bold mb-4">4. Sharing with Third Parties</h2>
+            <p className="mb-4">
+              We do not share personal information with third parties unless:
+            </p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>법령에 특별한 규정이 있는 경우</li>
-              <li>Google Analytics를 통한 통계 분석 (익명화된 정보)</li>
+              <li>Required by law</li>
+              <li>For anonymized analytics via Google Analytics</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">5. 개인정보처리의 위탁</h2>
-            <p className="mb-4">본 사이트는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다:</p>
+            <h2 className="text-xl font-bold mb-4">5. Outsourcing</h2>
+            <p className="mb-4">
+              We outsource certain processing tasks to the following services:
+            </p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>Google Analytics: 방문자 통계 분석</li>
-              <li>Google AdSense: 광고 서비스 제공 (예정)</li>
+              <li>Google Analytics: visitor analytics</li>
+              <li>Google AdSense: advertising services (planned)</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">6. 정보주체의 권리·의무 및 그 행사방법</h2>
-            <p className="mb-4">정보주체는 다음과 같은 권리를 행사할 수 있습니다:</p>
+            <h2 className="text-xl font-bold mb-4">6. Your Rights</h2>
+            <p className="mb-4">You may exercise the following rights:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>개인정보 열람 요구</li>
-              <li>개인정보 정정·삭제 요구</li>
-              <li>개인정보 처리정지 요구</li>
+              <li>Access your personal information</li>
+              <li>Request correction or deletion</li>
+              <li>Request suspension of processing</li>
             </ul>
             <p className="mt-4">
-              권리 행사는 개인정보 보호법 시행령 제41조 제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수
-              있으며, 본 사이트는 이에 대해 지체 없이 조치하겠습니다.
+              Requests may be made in writing, by email, or by fax pursuant to
+              applicable law, and we will respond without undue delay.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">7. 개인정보의 파기</h2>
+            <h2 className="text-xl font-bold mb-4">7. Destruction of Data</h2>
             <p className="mb-4">
-              본 사이트는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당
-              개인정보를 파기합니다.
+              We destroy personal information without delay once retention
+              periods end or the purpose of processing is fulfilled.
             </p>
-            <p className="mb-4">파기의 절차 및 방법은 다음과 같습니다:</p>
+            <p className="mb-4">Procedures and methods include:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>파기 절차: 불필요한 개인정보 및 개인정보파일을 선정하고, 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.</li>
-              <li>파기 방법: 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다.</li>
+              <li>Selection and approval by the privacy officer</li>
+              <li>Irreversible deletion of electronic records</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">8. 쿠키의 운영 및 거부</h2>
+            <h2 className="text-xl font-bold mb-4">8. Cookies</h2>
             <p className="mb-4">
-              본 사이트는 이용자에게 개인화된 서비스를 제공하기 위해 쿠키를 사용합니다. 쿠키는 웹사이트를 방문할 때 사용자의
-              브라우저에 저장되는 작은 텍스트 파일입니다.
+              We use cookies to provide personalized services. Cookies are
+              small text files stored in your browser when you visit a site.
             </p>
-            <p className="mb-4">쿠키 사용 목적:</p>
+            <p className="mb-4">Cookie purposes:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>방문자 통계 분석</li>
-              <li>서비스 이용 패턴 분석</li>
-              <li>광고 최적화</li>
+              <li>Visitor analytics</li>
+              <li>Usage pattern analysis</li>
+              <li>Ad optimization</li>
             </ul>
             <p className="mt-4">
-              사용자는 쿠키 설치에 대한 선택권을 가지고 있으며, 웹브라우저 설정에서 쿠키 허용 여부를 선택할 수 있습니다. 다만,
-              쿠키 설치를 거부할 경우 서비스 이용에 어려움이 있을 수 있습니다.
+              You can choose whether to allow cookies in your browser settings.
+              Refusing cookies may affect service usability.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">9. 개인정보 보호책임자</h2>
+            <h2 className="text-xl font-bold mb-4">9. Privacy Officer</h2>
             <p className="mb-4">
-              본 사이트는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제
-              등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+              We designate a privacy officer to handle privacy-related
+              inquiries, complaints, and remedies as follows:
             </p>
             <div className="bg-gray-50 p-4 rounded mt-4">
               <p>
-                <strong>개인정보 보호책임자</strong>
+                <strong>Privacy Officer</strong>
               </p>
               <p>
-                이메일:{' '}
+                Email:{' '}
                 <a href="mailto:ashlight2510@gmail.com" className="text-blue-600 hover:underline">
                   ashlight2510@gmail.com
                 </a>
               </p>
-              <p>※ 정보주체께서는 본 사이트의 서비스를 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자에게 문의하실 수 있습니다.</p>
+              <p>
+                You may contact the privacy officer about any privacy-related
+                questions or issues that arise while using the site.
+              </p>
             </div>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">10. 개인정보 처리방침 변경</h2>
+            <h2 className="text-xl font-bold mb-4">10. Policy Updates</h2>
             <p>
-              이 개인정보처리방침은 2024년 1월 1일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는
-              경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
+              This policy is effective as of January 1, 2024. We will announce
+              material changes at least seven days before they take effect.
             </p>
           </section>
         </div>
 
         <div className="mt-8 text-center">
           <a href="/" className="text-blue-600 hover:underline">
-            ← 홈으로 돌아가기
+            ← Back to home
           </a>
         </div>
       </main>

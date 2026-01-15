@@ -99,7 +99,7 @@ export default function GuidePage({ params }) {
               href="/"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-800 font-semibold shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
             >
-              홈으로 돌아가기
+              Back to home
             </a>
           </div>
         </section>
@@ -124,7 +124,7 @@ export default function GuidePage({ params }) {
 
         {guide.disclaimer && (
           <section className="bg-amber-50 text-amber-900 border border-amber-200 rounded-3xl p-5 sm:p-6 shadow-sm">
-            <p className="text-sm font-semibold">주의</p>
+            <p className="text-sm font-semibold">Notice</p>
             <p className="mt-1 text-sm sm:text-base leading-relaxed">
               {guide.disclaimer}
             </p>
@@ -141,7 +141,7 @@ export default function GuidePage({ params }) {
               <p className="text-xs uppercase tracking-[0.2em] text-blue-600">
                 FAQ
               </p>
-              <h3 className="text-xl font-bold">자주 묻는 질문</h3>
+              <h3 className="text-xl font-bold">Frequently Asked Questions</h3>
             </div>
           </div>
           <div className="divide-y divide-slate-100">
@@ -167,15 +167,15 @@ export default function GuidePage({ params }) {
           <div className="flex items-center justify-between gap-3 mb-4">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-blue-200">
-                더 읽어보기
+                Read more
               </p>
-              <h4 className="text-xl font-bold mt-1">다른 가이드도 확인하기</h4>
+              <h4 className="text-xl font-bold mt-1">Explore other guides</h4>
             </div>
             <a
               href="/"
               className="hidden sm:inline-flex px-3 py-2 rounded-full bg-white/10 border border-white/20 text-xs font-semibold hover:bg-white/20 transition"
             >
-              FunnyFunny 홈
+              FunnyFunny Home
             </a>
           </div>
           <div className="grid sm:grid-cols-2 gap-3">

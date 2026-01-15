@@ -1,6 +1,6 @@
 export function HeaderPortal({ lang, onLangChange, t }) {
   const languages = [
-    { code: "ko", label: "한국어" },
+    { code: "ko", label: "Korean" },
     { code: "en", label: "English" },
   ];
 
@@ -19,7 +19,7 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                 <span className="hidden sm:inline"> · Playground</span>
               </p>
               <h1 className="text-base sm:text-xl font-bold drop-shadow">
-                {t ? t("headerHeroTitle") : "유용할 수 있는 서비스, 놀이터"}
+                {t ? t("headerHeroTitle") : "Useful services, playground"}
               </h1>
             </div>
             </div>
@@ -31,7 +31,7 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                 rel="noopener noreferrer"
                 className="px-3 py-2 text-sm rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors"
               >
-                FLOW 게시판
+                FLOW Board
               </a>
               <a
                 href="https://ashlight.store"
@@ -45,10 +45,10 @@ export function HeaderPortal({ lang, onLangChange, t }) {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-sky-200 via-cyan-200 to-slate-200 text-slate-900 text-sm font-semibold shadow-md hover:shadow-xl transition-transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               <span className="sm:hidden">
-                {t ? t("ctaPrimarySmall") : "랜덤"}
+                {t ? t("ctaPrimarySmall") : "Random"}
               </span>
               <span className="hidden sm:inline">
-                {t ? t("ctaPrimaryLarge") : "랜덤 열기"}
+                {t ? t("ctaPrimaryLarge") : "Open random"}
               </span>
             </button>
             </div>

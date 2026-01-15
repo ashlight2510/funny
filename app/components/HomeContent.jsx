@@ -82,52 +82,52 @@ const randomTools = [
 
 const seoTopItems = [
   {
-    name: "로컬 이미지 최적화 & 파일 인사이트",
+    name: "Local Image Optimizer & File Insights",
     url: "https://file.funnyfunny.cloud/",
     description:
-      "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈로 이미지 용량을 줄이고, 업로드 없는 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
+      "Re-encode WebP/JPEG and auto-resize with one drag. View local file info, SHA-256, and previews without uploads.",
   },
   {
     name: "Meta Kit — SEO · OG · Favicon",
     url: "https://meta.funnyfunny.cloud",
     description:
-      "메타태그·OG/Twitter 카드·파비콘을 한 번에 생성하고, OG 이미지 텍스트(영문)까지 자동으로 만들어 복붙할 수 있는 메타 생성기",
+      "Generate meta tags, OG/Twitter cards, and favicons in one place, plus OG image text ready to copy.",
   },
   {
-    name: "이미지 합치기 & PDF 변환",
+    name: "Image Merge & PDF Converter",
     url: "https://image.funnyfunny.cloud",
     description:
-      "여러 장을 업로드해 드래그로 순서를 맞춘 뒤 한 장 이미지나 PDF로 저장하는 변환기",
+      "Upload multiple images, reorder by drag, and save as a single image or PDF.",
   },
   {
-    name: "이미지 텍스트 추출",
+    name: "Image Text Extractor",
     url: "https://ocr.funnyfunny.cloud",
-    description: "사진 속 글자를 자동으로 읽어 텍스트로 뽑는 OCR 변환기",
+    description: "OCR that extracts text from photos automatically.",
   },
   {
-    name: "예매는타이밍",
+    name: "Time Checker",
     url: "https://time.funnyfunny.cloud",
-    description: "정확한 서버시간·타임존 변환·시간 계산을 빠르게 제공",
+    description: "Accurate server time, time zone conversion, and quick time calculations.",
   },
   {
-    name: "지금날씨",
+    name: "Current Weather",
     url: "https://weather.funnyfunny.cloud",
-    description: "내 근처 날씨·체감온도·미세먼지·자외선 정보를 제공",
+    description: "Local weather, feels-like temperature, dust, and UV info.",
   },
   {
-    name: "오늘의 IT 뉴스",
+    name: "IT News Today",
     url: "https://news.funnyfunny.cloud",
-    description: "국내/해외 IT 뉴스를 빠르게 요약한 큐레이션",
+    description: "Quick summaries of domestic and global IT news.",
   },
   {
     name: "Simple Audio Editor",
     url: "https://audio.funnyfunny.cloud",
-    description: "브라우저에서 바로 사용하는 오디오 편집 도구",
+    description: "Edit audio directly in the browser.",
   },
   {
     name: "EmojiCon Studio",
     url: "https://emojicon.funnyfunny.cloud",
-    description: "이모지 한 글자로 아이콘/파비콘을 한 번에 생성",
+    description: "Create icons and favicons from a single emoji.",
   },
 ];
 
@@ -135,620 +135,632 @@ const seoGuides = [
   {
     slug: "meta-kit",
     emoji: "🧰",
-    title: "Meta Kit — SEO·OG·Favicon 번들 생성",
-    desc: "메타태그·OG/Twitter 카드·파비콘·OG 이미지 텍스트(영문)를 입력 → 생성 → 복붙하는 방법",
+    title: "Meta Kit — SEO/OG/Favicon Bundle Guide",
+    desc: "Enter meta tags, OG/Twitter cards, favicons, and OG image text, then generate and copy.",
   },
   {
     slug: "local-image-optimizer",
     emoji: "🗜️",
-    title: "로컬 이미지 최적화 & 파일 인사이트 가이드",
-    desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈하고, 로컬에서 파일 정보·SHA-256·미리보기까지 확인하는 법",
+    title: "Local Image Optimizer & File Insights Guide",
+    desc: "Re-encode WebP/JPEG, auto-resize, and view local file info, SHA-256, and previews.",
   },
   {
     slug: "heic-to-jpg",
     emoji: "📷",
-    title: "HEIC → JPG 변환기 가이드",
-    desc: "브라우저에서 HEIC를 JPG/WebP/PNG로 변환하고 압축·리사이즈·ZIP으로 받는 방법",
+    title: "HEIC to JPG Converter Guide",
+    desc: "Convert HEIC to JPG/WebP/PNG in-browser with compression, resize, and ZIP export.",
   },
   {
     slug: "pyeong-calculator",
     emoji: "📐",
-    title: "평수 계산기 가이드",
-    desc: "평↔제곱미터 변환과 원룸/아파트 대표 평형을 빠르게 계산하는 방법",
+    title: "Pyeong-to-Square-Meter Calculator Guide",
+    desc: "Convert pyeong to square meters and check typical apartment sizes quickly.",
   },
   {
     slug: "nbang-calculator",
     emoji: "🍽️",
-    title: "N빵 계산기 가이드",
-    desc: "음식점 이름·인원·총금액을 입력해 1인당 금액을 계산하고 바로 클립보드로 복사하는 흐름",
+    title: "Split-the-Bill Calculator Guide",
+    desc: "Enter venue, headcount, and total to calculate per-person cost and copy instantly.",
   },
   {
     slug: "commute-cost-time",
     emoji: "⏰",
-    title: "출퇴근 비용 & 시간 계산기 가이드",
-    desc: "출퇴근 비용·시간을 계산하고, 아낀 시간을 어떻게 활용할지 추천받는 방법",
+    title: "Commute Cost & Time Calculator Guide",
+    desc: "Calculate commuting cost/time and get ideas for using reclaimed time.",
   },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
-    title: "로또 추천기 가이드",
-    desc: "버튼 한 번으로 로또 번호를 추천받고 조합을 저장하는 빠른 사용법",
+    title: "Lotto Number Picker Guide",
+    desc: "Get recommended number sets with one click and save your favorites.",
   },
   {
     slug: "image-merge-pdf",
     emoji: "🖼️",
-    title: "이미지 합치기 & PDF 변환 가이드",
-    desc: "여러 장을 업로드·정렬해 한 장 이미지나 PDF로 저장하는 빠른 변환 사용법",
+    title: "Image Merge & PDF Converter Guide",
+    desc: "Upload and reorder multiple images, then export as one image or PDF.",
   },
   {
     slug: "autocut-studio",
     emoji: "🎬",
-    title: "AutoCut Studio 가이드",
-    desc: "침묵 감지·점프컷 자동 타임라인으로 유튜브 영상 편집을 빠르게 끝내는 법",
+    title: "AutoCut Studio Guide",
+    desc: "Speed up YouTube editing with silence detection and jump-cut timelines.",
   },
   {
     slug: "head-voice-trainer",
     emoji: "🎤",
-    title: "두성터득기 가이드",
-    desc: "헤드보이스에 필요한 호흡·공명 루틴과 음계 따라 부르기 사용법",
+    title: "Head Voice Trainer Guide",
+    desc: "Breathing, resonance routines, and scale-following practice for head voice.",
   },
   {
     slug: "image-text-extract",
     emoji: "🔍",
-    title: "이미지 텍스트 추출 가이드",
-    desc: "사진 속 글자를 자동으로 읽고 복사하는 빠른 OCR 사용법",
+    title: "Image Text Extractor Guide",
+    desc: "Quick OCR workflow to extract and copy text from images.",
   },
   {
     slug: "today-well-done",
     emoji: "🌱",
-    title: "오늘의 나, 잘했다 가이드",
-    desc: "오늘 잘한 일을 한 줄로 정리하고, 내일 액션을 만드는 리마인드 방법",
+    title: "Today, Well Done Guide",
+    desc: "Summarize today’s wins in one line and set a small action for tomorrow.",
   },
   {
     slug: "today-todo",
     emoji: "✅",
-    title: "오늘의 할 일 가이드",
-    desc: "집중할 일만 담고 완료 체크로 하루를 정리하는 투두 사용법",
+    title: "Today's To-Do Guide",
+    desc: "Capture focus tasks and wrap your day with clean completion checks.",
   },
   {
     slug: "daily-condition-check",
     emoji: "📝",
-    title: "오늘 상태 점검표 가이드",
-    desc: "5개 체크로 오늘 컨디션을 한 문장으로 정리하는 방법",
+    title: "Daily Condition Check Guide",
+    desc: "Use five quick checks to summarize your condition in one line.",
   },
   {
     slug: "dream-diary",
     emoji: "💭",
-    title: "꿈일기 가이드",
-    desc: "꿈을 기록하고 태그로 정리하는 로컬 꿈 기록장 사용법",
+    title: "Dream Diary Guide",
+    desc: "Record dreams locally and organize them with tags.",
   },
   {
     slug: "rest-check",
     emoji: "🛋️",
-    title: "이 정도면 쉬어야 할까? 가이드",
-    desc: "짧은 설문으로 지금 쉬어도 될지 확인하고 휴식 루틴을 고르는 방법",
+    title: "Should I Rest Now? Guide",
+    desc: "Use a short survey to decide on rest and pick a recovery routine.",
   },
   {
     slug: "sleep-helper",
     emoji: "🌙",
-    title: "잠들기 도우미 가이드",
-    desc: "코골이·주변 소음을 덮는 백색소음/환경음 믹스와 타이머로 잠드는 법",
+    title: "Sleep Helper Guide",
+    desc: "Fall asleep with white noise mixes, ambient sounds, and timers.",
   },
   {
     slug: "chef-judge-choice",
     emoji: "👨‍🍳",
-    title: "셰프 심사위원: 오늘의 선택 심사 가이드",
-    desc: "안성재·임짱·손종원 밈을 닮은 심사 멘트로 오늘의 선택을 딸깍 평가받는 법",
+    title: "Chef Judge: Today's Choice Guide",
+    desc: "Get meme-style judging comments to decide today’s choice fast.",
   },
   {
     slug: "music-now",
     emoji: "🎵",
-    title: "지금 이 시간에 어울리는 음악 가이드",
-    desc: "하루의 리듬에 맞춰 오늘의 음악 무드를 고르는 방법",
+    title: "Music for This Moment Guide",
+    desc: "Pick a music mood that fits the time of day and your rhythm.",
   },
   {
     slug: "winter-ruin-top1",
     emoji: "❄️",
-    title: "이번 겨울, 나를 망치는 것 TOP 1 가이드",
-    desc: "겨울마다 무너지는 패턴을 찾고 10분 안에 고치는 루틴",
+    title: "Winter Trigger Top 1 Guide",
+    desc: "Spot your winter crash pattern and fix it with a 10-minute routine.",
   },
   {
     slug: "flow-community",
     emoji: "🧵",
-    title: "FLOW 커뮤니티 가이드",
-    desc: "쓰레드+디씨 감성 게시판에서 글 쓰고 토론하는 방법",
+    title: "FLOW Community Guide",
+    desc: "How to post and discuss on the thread-style FLOW board.",
   },
   {
     slug: "next-2026",
     emoji: "🔮",
-    title: "2026년의 나 가이드",
-    desc: "습관·돈·인간관계·집중력 선택이 만드는 1년 뒤 루트 해석",
+    title: "Future Me 2026 Guide",
+    desc: "Interpret next-year routes shaped by habits, money, relationships, and focus.",
   },
   {
     slug: "life-spending-report",
     emoji: "🧾",
-    title: "올해 나의 인생 소비 보고서 가이드",
-    desc: "돈·시간·감정 리포트를 3분 안에 받는 방법과 결과 해석",
+    title: "Life Spending Report Guide",
+    desc: "Get a 3-minute report on money, time, and emotion spending.",
   },
   {
     slug: "coffee-addiction-test",
     emoji: "☕",
-    title: "커피중독 테스트 가이드",
-    desc: "카페인 권장량, 중독 신호, 테스트 기준 한눈에 보기",
+    title: "Coffee Addiction Test Guide",
+    desc: "Caffeine limits, addiction signals, and the test criteria at a glance.",
   },
   {
     slug: "bmi-diet-plan",
     emoji: "📏",
-    title: "BMI 설문형 다이어트 플랜 가이드",
-    desc: "한 번씩만 딸각으로 BMI와 생활 패턴을 체크하고 현실적인 다이어트 플랜을 확인하는 방법",
+    title: "BMI Survey Diet Plan Guide",
+    desc: "Check BMI and lifestyle patterns in quick taps to get a realistic plan.",
   },
   {
     slug: "beauty-bankruptcy-test",
     emoji: "💄",
-    title: "꾸밈비 파산 테스트 가이드",
-    desc: "뷰티·패션 지출이 자산에 미치는 영향과 계산 방식",
+    title: "Beauty Bankruptcy Test Guide",
+    desc: "How beauty and fashion spending affects your assets and how it’s calculated.",
   },
   {
     slug: "cosmetics-routine-check",
     emoji: "💄",
-    title: "화장품 루틴 딸깍 체크 가이드",
-    desc: "현재 제품/특징만 체크해 부족·과잉을 확인하고 최소 추천을 받는 방법",
+    title: "Cosmetics Routine Check Guide",
+    desc: "Check current products/features to see gaps or overloads and get a minimal plan.",
   },
   {
     slug: "asset-shield-index",
     emoji: "🛡️",
-    title: "자산 방탄 지수 가이드",
-    desc: "현금흐름·비상금·분산 체크로 위기 대응력 점검",
+    title: "Asset Shield Index Guide",
+    desc: "Assess resilience with cash flow, emergency funds, and diversification checks.",
   },
   {
     slug: "asset-allocation-check",
     emoji: "🧮",
-    title: "자산 비중 진단 가이드",
-    desc: "현금·금(현물)·부동산·주식·코인 비중으로 포트폴리오 타입 점검",
+    title: "Asset Allocation Check Guide",
+    desc: "Review your portfolio type across cash, gold, real estate, stocks, and crypto.",
   },
   {
     slug: "invest-confidence-builder",
     emoji: "📈",
-    title: "투자 확신 빌더 가이드",
-    desc: "수익률이 아니라 판단을 기록해 흔들림을 줄이는 사용법",
+    title: "Investment Confidence Builder Guide",
+    desc: "Stabilize decisions by logging your reasoning rather than returns.",
   },
   {
     slug: "bitcoin-regret-calculator",
     emoji: "💸",
-    title: "비트코인 안 산 죄 가이드",
-    desc: "후회 시뮬레이션, 데이터 기준, 투자 주의 문구 포함",
+    title: "Bitcoin Regret Calculator Guide",
+    desc: "Includes regret simulation, data assumptions, and investment cautions.",
   },
   {
     slug: "daily-productivity-check",
     emoji: "⚡",
-    title: "하루 생산성 체크 가이드",
-    desc: "오늘의 집중 상태를 빠르게 점검하는 기준 정리",
+    title: "Daily Productivity Check Guide",
+    desc: "A quick checklist to assess today’s focus and energy.",
   },
   {
     slug: "missed-house-opportunity",
     emoji: "🏠",
-    title: "집 못 산 죄 가이드",
-    desc: "집값 상승 놓친 기회비용과 현실적 다음 단계 정리",
+    title: "Missed House Opportunity Guide",
+    desc: "Opportunity cost of price growth and realistic next steps.",
   },
   {
     slug: "birthrate-reality-test",
     emoji: "👶",
-    title: "출산율 체감 테스트 가이드",
-    desc: "질문을 따라 출산율 변화를 체감하고 결과를 해석·공유하는 방법",
+    title: "Birthrate Reality Test Guide",
+    desc: "Follow the questions to feel the shift and interpret/share the results.",
   },
   {
     slug: "better-birth-odds",
     emoji: "🌍",
-    title: "한국보다 더 좋은 조건에서 태어날 확률은? 가이드",
-    desc: "출생 조건을 비교해 확률을 확인하고 결과를 해석·공유하는 방법",
+    title: "Better Birth Odds Guide",
+    desc: "Compare birth conditions and interpret/share your probability results.",
   },
   {
     slug: "palm-reading-analysis",
     emoji: "✋",
-    title: "손바닥 썰 푼다 가이드",
-    desc: "사진 한 장으로 손금 흐름을 분석하는 방법과 해석 기준",
+    title: "Palm Reading Analysis Guide",
+    desc: "Analyze palm lines from a single photo and interpret key signals.",
   },
   {
     slug: "soccer-combo",
     emoji: "⚽",
-    title: "우리 둘의 조합 축구선수 가이드",
-    desc: "둘의 성향을 섞어 닮은 축구선수를 찾는 테스트 사용법",
+    title: "Soccer Combo Guide",
+    desc: "Mix two personalities to find the footballer you resemble.",
   },
   {
     slug: "neon-pinball-random",
     emoji: "🎱",
-    title: "네온 핀볼 랜덤 뽑기 가이드",
-    desc: "핀볼판에서 굴러가는 공으로 랜덤 뽑기하고 공유하는 방법",
+    title: "Neon Pinball Random Draw Guide",
+    desc: "Use rolling pinballs to pick random winners and share results.",
   },
   {
     slug: "one-line-fortune",
     emoji: "🔮",
-    title: "오늘의 한 줄 운세 가이드",
-    desc: "기분에 따라 뽑는 오늘의 한 줄 운세 사용법과 해석 기준",
+    title: "One-Line Fortune Guide",
+    desc: "Pick a daily fortune based on your mood and interpret it fast.",
   },
   {
     slug: "saju-sintojungbi",
     emoji: "🔮",
-    title: "사주풀이 · 신토정비결 가이드",
-    desc: "생년월일/시간 입력으로 사주팔자와 올해·이번 달 흐름을 읽는 방법",
+    title: "Saju & Sintojungbi Guide",
+    desc: "Use birth date/time to read your four pillars and yearly/monthly flow.",
   },
   {
     slug: "heal-card",
     emoji: "💌",
-    title: "우연이 아닐지도 가이드",
-    desc: "클릭 한 번으로 오늘의 위로 카드를 받는 방법과 공유 팁",
+    title: "Maybe Not a Coincidence Guide",
+    desc: "Get a comfort card with one click and share it easily.",
   },
   {
     slug: "need-one-line",
     emoji: "🧭",
-    title: "지금 나에게 가장 필요한 한마디 가이드",
-    desc: "감정과 상황을 클릭하고 오늘 필요한 말 한 줄을 받는 방법",
+    title: "The One Line I Need Guide",
+    desc: "Click your emotion and situation to receive the line you need today.",
   },
   {
     slug: "daily-wisdom",
     emoji: "📜",
-    title: "오늘의 지혜 가이드",
-    desc: "성경의 메시지에서 영감을 받은 하루 한 문장을 고르는 방법과 공유 팁",
+    title: "Daily Wisdom Guide",
+    desc: "Choose a daily line inspired by scripture and share it.",
   },
   {
     slug: "temple-daily-quote",
     emoji: "🛕",
-    title: "하루 한 문장 (Temple) 가이드",
-    desc: "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장을 고르고 공유하는 법",
+    title: "Temple Daily Quote Guide",
+    desc: "Pick and share daily lines based on Buddhist teachings in modern language.",
   },
 ];
 
 const seoApplications = [
   {
-    name: "오늘의 나, 잘했다",
+    name: "Today, Well Done",
     url: "https://today.funnyfunny.cloud/",
     description:
-      "오늘 내가 잘한 일을 한 줄로 기록하고 내일의 작은 행동을 바로 정리하는 리마인드 도구",
+      "Log today’s wins in one line and plan a small action for tomorrow.",
     category: "ProductivityApplication",
   },
   {
-    name: "오늘의 할 일",
+    name: "Today's To-Do",
     url: "https://todo.funnyfunny.cloud/",
     description:
-      "집중할 일을 간단히 적고 완료 체크로 하루를 정리하는 투두 리스트",
+      "A focused to-do list with simple completion checks.",
     category: "ProductivityApplication",
   },
   {
-    name: "꿈일기",
+    name: "Dream Diary",
     url: "https://dream.funnyfunny.cloud/",
     description:
-      "브라우저에 저장되는 개인 꿈 기록장 — 로컬에서 꿈을 적고 태그로 정리",
+      "A local dream journal saved in your browser with tags.",
     category: "LifestyleApplication",
   },
   {
-    name: "이 정도면 쉬어야 할까?",
+    name: "Should I Rest Now?",
     url: "https://rest.funnyfunny.cloud/",
     description:
-      "짧은 설문으로 지금 쉬어도 될지, 휴식 알림이 필요한지 가볍게 점검하는 휴식 결정 테스트",
+      "A short survey to decide rest needs and recovery routines.",
     category: "LifestyleApplication",
   },
   {
-    name: "잠들기 도우미",
+    name: "Sleep Helper",
     url: "https://sleep.funnyfunny.cloud/",
     description:
-      "코골이·주변 소음을 덮는 백색소음/환경음 믹스와 타이머·페이드아웃으로 편하게 잠들 수 있게 돕는 수면 사운드 플레이어",
+      "White noise and ambient mixes with timer and fade-out for better sleep.",
     category: "LifestyleApplication",
   },
   {
-    name: "지금 이 시간에 어울리는 음악",
+    name: "Music for This Moment",
     url: "https://music.funnyfunny.cloud/",
     description:
-      "하루의 리듬에 맞춰 지금 어울리는 음악 무드를 골라주는 음악 추천 서비스",
+      "Pick a music mood that matches your time of day.",
     category: "EntertainmentApplication",
   },
   {
-    name: "화장품 루틴 딸깍 체크",
+    name: "Cosmetics Routine Check",
     url: "https://cosmetics.funnyfunny.cloud/",
     description:
-      "현재 쓰는 제품/특징만 체크하면 루틴의 부족·과잉을 표시하고 최소 추천을 알려주는 루틴 점검 도구",
+      "Check your products and features to find gaps, overloads, and a minimal plan.",
     category: "LifestyleApplication",
   },
   {
-    name: "이번 겨울, 나를 망치는 것 TOP 1",
+    name: "Winter Trigger Top 1",
     url: "https://winter.funnyfunny.cloud/",
     description:
-      "겨울마다 반복되는 가장 큰 방해 요인을 점검하고, 회복 루틴·환경 정비 팁을 제안하는 계절형 테스트",
+      "Identify your biggest winter drag and get recovery tips.",
     category: "LifestyleApplication",
   },
   {
     name: "Meta Kit — SEO · OG · Favicon",
     url: "https://meta.funnyfunny.cloud/",
     description:
-      "메타태그·OG/Twitter 카드·파비콘을 한 번에 생성하고 OG 이미지 텍스트(영문)까지 자동으로 만들어 붙여넣는 메타 생성기",
+      "Generate meta tags, OG/Twitter cards, favicons, and OG text for easy copy.",
     category: "UtilityApplication",
   },
   {
-    name: "올해 나의 인생 소비 보고서",
+    name: "Life Spending Report",
     url: "https://year.funnyfunny.cloud/",
-    description: "연말 결산처럼 돈·시간·감정 소비 흐름을 3분 컷 리포트로 요약",
+    description:
+      "A 3-minute report on how you spent money, time, and emotions.",
     category: "LifestyleApplication",
   },
   {
-    name: "내 인생 낭비력 지수",
+    name: "Waste Index",
     url: "https://waste.funnyfunny.cloud/",
-    description: "지금까지 쓴 돈과 시간의 낭비도를 숫자로 확인하는 테스트",
+    description:
+      "See wasted money and time as a single score.",
     category: "LifestyleApplication",
   },
   {
-    name: "대한민국 평균 vs 나",
+    name: "Korea Average vs Me",
     url: "https://average.funnyfunny.cloud/",
-    description: "내 지표가 한국 평균과 얼마나 다른지 확인하는 비교 테스터",
+    description:
+      "Compare your metrics with national averages.",
     category: "LifestyleApplication",
   },
   {
-    name: "하루 생산성 체크 테스트",
+    name: "Daily Productivity Check",
     url: "https://product.funnyfunny.cloud/",
-    description: "오늘 내 집중/에너지/의사결정 상태를 빠르게 확인하는 테스트",
+    description:
+      "Quickly check focus, energy, and decision state.",
     category: "ProductivityApplication",
   },
   {
-    name: "내가 안 산 것들의 총자산",
+    name: "Total Wealth of What I Didn’t Buy",
     url: "https://nospend.funnyfunny.cloud/",
-    description: "안 샀다면 얼마를 모았을지 계산하는 총자산 시뮬레이터",
+    description:
+      "Estimate how much you could have saved by not buying.",
     category: "FinanceApplication",
   },
   {
-    name: "자산 비중 진단",
+    name: "Asset Allocation Check",
     url: "https://specific.funnyfunny.cloud/",
     description:
-      "현금·금(현물)·부동산·주식·코인 비중을 한눈에 보고 포트폴리오 타입을 가볍게 점검하는 자산 분포 진단",
+      "Review your mix across cash, gold, real estate, stocks, and crypto.",
     category: "FinanceApplication",
   },
   {
-    name: "오늘 뭐 볼까? (OTT 픽)",
+    name: "OTT Pick",
     url: "https://pick.funnyfunny.cloud/",
     description:
-      "검색 없이 버튼 몇 번으로 한국 OTT 영화·드라마를 바로 추천받는 픽",
+      "Get instant Korean OTT movie and drama picks without searching.",
     category: "EntertainmentApplication",
   },
   {
-    name: "셰프 심사위원: 오늘의 선택 심사",
+    name: "Chef Judge: Today's Choice",
     url: "https://chef.funnyfunny.cloud/",
     description:
-      "안성재·임짱·손종원 밈을 닮은 심사 멘트로 오늘의 선택을 딸깍 평가받는 서비스",
+      "Meme-style judging comments that help you choose fast.",
     category: "EntertainmentApplication",
   },
   {
-    name: "로또 추천기",
+    name: "Lotto Number Picker",
     url: "https://lotto.funnyfunny.cloud/",
     description:
-      "버튼 한 번으로 로또 번호 조합을 추천하고 저장할 수 있는 빠른 추천기",
+      "One-click lotto number recommendations with save support.",
     category: "EntertainmentApplication",
   },
   {
-    name: "비트코인 안 산 죄",
+    name: "Bitcoin Regret Calculator",
     url: "https://bit.funnyfunny.cloud/",
-    description: "지난 비트코인 미구매분의 기회비용을 계산하는 도구",
+    description:
+      "Calculate opportunity cost if you didn’t buy Bitcoin.",
     category: "FinanceApplication",
   },
   {
-    name: "2026년의 나, 지금 결정된다",
+    name: "Future Me 2026",
     url: "https://next.funnyfunny.cloud/",
     description:
-      "올해의 선택이 1년 뒤 인생에 남기는 루트를 습관·돈·관계·집중력 기준으로 보여주는 시뮬레이터",
+      "Simulate next-year routes based on habits, money, relationships, and focus.",
     category: "LifestyleApplication",
   },
   {
-    name: "집 못 산 죄",
+    name: "Missed House Opportunity",
     url: "https://house.funnyfunny.cloud/",
-    description: "집값 상승 시뮬레이션으로 놓친 금액을 계산",
+    description:
+      "Calculate missed gains from rising home prices.",
     category: "FinanceApplication",
   },
   {
-    name: "투자 확신 빌더",
+    name: "Investment Confidence Builder",
     url: "https://invest.funnyfunny.cloud/",
-    description: "수익률 대신 판단을 기록해 흔들림을 줄이는 투자 기록 도구",
+    description:
+      "Record decisions to reduce volatility in judgment.",
     category: "FinanceApplication",
   },
   {
-    name: "출산율 체감 테스트",
+    name: "Birthrate Reality Test",
     url: "https://baby.funnyfunny.cloud/",
     description:
-      "이 장면은 ‘미래 예측’이 아니라 이미 진행 중인 현재일 수 있습니다.",
+      "A scenario-based test that frames the birthrate shift in real life.",
     category: "LifestyleApplication",
   },
   {
-    name: "한국보다 더 좋은 조건에서 태어날 확률은?",
+    name: "Better Birth Odds",
     url: "https://miracle.funnyfunny.cloud/",
     description:
-      "출생 조건을 비교해 한국보다 더 좋은 환경에서 태어날 확률을 확인하는 테스트",
+      "Compare birth conditions and estimate the odds of a better environment.",
     category: "LifestyleApplication",
   },
   {
-    name: "평수 계산기",
+    name: "Pyeong Calculator",
     url: "https://space.funnyfunny.cloud/",
-    description: "평↔제곱미터를 빠르게 변환하고 대표 평형을 확인하는 계산기",
+    description:
+      "Convert pyeong to square meters and check typical sizes.",
     category: "UtilityApplication",
   },
   {
-    name: "N빵 계산기",
+    name: "Split-the-Bill Calculator",
     url: "https://n.funnyfunny.cloud/",
     description:
-      "음식점 이름·인원·총금액을 입력하면 1인당 금액을 바로 계산하고 복사할 수 있는 계산기",
+      "Enter venue, headcount, and total to calculate per-person cost.",
     category: "UtilityApplication",
   },
   {
-    name: "커피중독 테스트",
+    name: "Coffee Addiction Test",
     url: "https://coffee.funnyfunny.cloud/",
-    description: "카페인 의존도를 체크하고 공유할 수 있는 밈 테스트",
+    description:
+      "A meme-style test to check caffeine dependence.",
     category: "LifestyleApplication",
   },
   {
-    name: "BMI 설문형 다이어트 플랜",
+    name: "BMI Survey Diet Plan",
     url: "https://bmi.funnyfunny.cloud/",
     description:
-      "한 번씩만 딸각하고 숫자도 한 번씩만 입력해 BMI와 생활 패턴을 확인하는 설문형 다이어트 플랜",
+      "A quick survey to check BMI and lifestyle patterns for a realistic plan.",
     category: "LifestyleApplication",
   },
   {
-    name: "꾸밈비 파산 테스트",
+    name: "Beauty Bankruptcy Test",
     url: "https://beauty.funnyfunny.cloud/",
-    description: "뷰티 지출이 재정에 미치는 영향을 체감형으로 계산",
+    description:
+      "A felt-impact calculator for beauty spending.",
     category: "LifestyleApplication",
   },
   {
-    name: "나를 힘들게 하는 인간 유형 테스트",
+    name: "People Who Drain Me Test",
     url: "https://human.funnyfunny.cloud/",
     description:
-      "관계를 힘들게 만드는 사람 유형을 알아보는 테스트 (나 자신 평가 아님)",
+      "Find the people types that drain you (not a self-evaluation).",
     category: "LifestyleApplication",
   },
   {
     name: "Simple Audio Editor",
     url: "https://audio.funnyfunny.cloud/",
     description:
-      "브라우저에서 바로 사용하는 오디오 편집 도구 — 설치 없이 트림, 병합, 내보내기",
+      "Trim, merge, and export audio directly in the browser.",
     category: "UtilityApplication",
   },
   {
-    name: "두성터득기",
+    name: "Head Voice Trainer",
     url: "https://vocal.funnyfunny.cloud/",
     description:
-      "호흡·공명·음계 루틴으로 헤드보이스를 빠르게 워밍업하고 체크하는 보컬 연습 코치",
+      "Warm up head voice with breathing, resonance, and scale routines.",
     category: "LifestyleApplication",
   },
   {
     name: "AutoCut Studio",
     url: "https://video.funnyfunny.cloud/",
     description:
-      "영상 업로드만으로 침묵 구간을 감지해 하이라이트/점프컷 타임라인을 자동 생성하는 웹 편집기",
+      "Detect silence and auto-create highlight/jump-cut timelines.",
     category: "UtilityApplication",
   },
   {
-    name: "이미지 합치기 & PDF 변환",
+    name: "Image Merge & PDF Converter",
     url: "https://image.funnyfunny.cloud/",
     description:
-      "여러 이미지를 업로드해 드래그로 순서를 맞춘 뒤 한 장 이미지나 PDF로 저장하는 변환기",
+      "Upload images, reorder by drag, and export as one image or PDF.",
     category: "UtilityApplication",
   },
   {
-    name: "이미지 텍스트 추출",
+    name: "Image Text Extractor",
     url: "https://ocr.funnyfunny.cloud/",
-    description: "사진 속 글자를 자동으로 읽어 텍스트로 뽑는 OCR 변환기",
+    description:
+      "OCR that extracts text from photos.",
     category: "UtilityApplication",
   },
   {
-    name: "HEIC → JPG 변환기",
+    name: "HEIC to JPG Converter",
     url: "http://heic.funnyfunny.cloud/",
     description:
-      "업로드 없이 브라우저에서 HEIC를 JPG/WebP/PNG로 변환하고 압축·리사이즈·ZIP 다운로드까지 지원하는 로컬 전용 변환기",
+      "Convert HEIC to JPG/WebP/PNG with compression, resize, and ZIP export.",
     category: "UtilityApplication",
   },
   {
-    name: "로컬 이미지 최적화 & 파일 인사이트",
+    name: "Local Image Optimizer & File Insights",
     url: "https://file.funnyfunny.cloud/",
     description:
-      "WebP/JPEG 재인코딩과 자동 리사이즈로 이미지 용량을 줄이고, 업로드 없이 파일 정보·SHA-256·미리보기를 제공하는 로컬 전용 도구",
+      "Re-encode and auto-resize images, plus local file info and SHA-256.",
     category: "UtilityApplication",
   },
   {
-    name: "달리기",
+    name: "Dino Runner",
     url: "https://run.funnyfunny.cloud/",
-    description: "공룡 달리기 스타일 랭킹 게임 — 점수 등록/랭킹",
+    description: "Dino runner ranking game with score submissions.",
     category: "GameApplication",
   },
   {
-    name: "참참참! (NEON ARCADE)",
+    name: "Charm (NEON ARCADE)",
     url: "https://charm.funnyfunny.cloud/",
-    description: "라인만 바꿔서 미사일을 피하기만 하면 돼요.",
+    description: "Switch lanes to dodge incoming missiles.",
     category: "GameApplication",
   },
   {
-    name: "다우니 (NEON STAIRS)",
+    name: "Downy (NEON STAIRS)",
     url: "https://downy.funnyfunny.cloud/",
-    description: "좌우 이동으로 계단을 밟고, 떨어지면 끝! (계단 1칸당 1점)",
+    description: "Step left/right on stairs; fall and it's over.",
     category: "GameApplication",
   },
   {
-    name: "하루 한판 테트리스",
+    name: "Daily Tetris",
     url: "https://tet.funnyfunny.cloud/",
-    description: "싱글(AI)과 2인 플레이를 지원하는 테트리스 게임",
+    description: "Tetris with solo AI and two-player mode.",
     category: "GameApplication",
   },
   {
-    name: "크리스마스 선물, 따뜻함 리포트",
+    name: "Warm Gift Report",
     url: "https://xmas.funnyfunny.cloud/",
-    description: "🎯 선물이 따뜻하게 도착할 확률을 확인하는 리포트",
+    description: "Check the probability of a warm gift arrival.",
     category: "LifestyleApplication",
   },
   {
-    name: "손바닥 썰 푼다",
+    name: "Palm Reading Story",
     url: "https://hand.funnyfunny.cloud/",
-    description: "사진 한 장으로 보는 손금 성향 분석 — 3초 안에 성향 카드 생성",
+    description: "Palm-line analysis from a single photo in seconds.",
     category: "LifestyleApplication",
   },
   {
-    name: "우리 둘의 조합이 낳을 축구선수는?",
+    name: "Soccer Combo",
     url: "https://soccer.funnyfunny.cloud/",
     description:
-      "둘의 성향과 플레이 스타일 조합으로 닮은 축구선수를 알려주는 테스트",
+      "Combine two play styles to find the footballer you resemble.",
     category: "EntertainmentApplication",
   },
   {
-    name: "네온 핀볼 랜덤 뽑기",
+    name: "Neon Pinball Random Draw",
     url: "https://random.funnyfunny.cloud/",
-    description: "핀볼판에서 굴러가는 공으로 랜덤 선택을 뽑는 네온 게임",
+    description: "A neon pinball game that selects random winners.",
     category: "GameApplication",
   },
   {
-    name: "오늘의 한 줄 운세",
+    name: "One-Line Fortune",
     url: "https://fortune.funnyfunny.cloud/",
-    description: "기분에 따라 고르는 오늘의 한 줄 운세",
+    description: "Pick a daily fortune line based on your mood.",
     category: "LifestyleApplication",
   },
   {
-    name: "오늘의 지혜",
+    name: "Daily Wisdom",
     url: "https://wisdom.funnyfunny.cloud/",
     description:
-      "성경의 메시지에서 영감을 받은 하루 한 문장을 고르는 Daily Wisdom",
+      "Choose a daily line inspired by scripture.",
     category: "LifestyleApplication",
   },
   {
-    name: "우연이 아닐지도",
+    name: "Maybe Not a Coincidence",
     url: "https://heal.funnyfunny.cloud/",
-    description: "클릭 한 번으로 뽑는 위로 카드",
+    description: "A one-click comfort card.",
     category: "LifestyleApplication",
   },
   {
-    name: "지금 나에게 가장 필요한 한마디",
+    name: "The One Line I Need",
     url: "https://need.funnyfunny.cloud/",
     description:
-      "감정과 상황을 고르면 오늘 필요한 말 한 줄을 전해주는 위로 메시지 서비스",
+      "Get a comforting line based on your emotion and situation.",
     category: "LifestyleApplication",
   },
   {
-    name: "하루 한 문장 (Temple)",
+    name: "Temple Daily Quote",
     url: "https://temple.funnyfunny.cloud/",
-    description: "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장",
+    description: "Daily lines based on Buddhist teachings in modern language.",
     category: "LifestyleApplication",
   },
 ];
 
 const seoFaq = [
   {
-    question: "FunnyFunny Cloud는 어떤 서비스를 제공하나요?",
+    question: "What services does FunnyFunny Cloud provide?",
     answer:
-      "funnyfunny.cloud는 일상의 소비, 시간, 습관과 같은 데이터를 테스트와 계산기를 통해 쉽게 점검하고 비교해 볼 수 있는 정보 서비스입니다.\n\n본 사이트의 모든 서비스는 사용자가 자신의 생활 패턴을 이해하고 현실적인 기준과 비교해 볼 수 있도록 직접 기획·개발되었습니다.\n\n제공되는 결과와 수치는 참고용 정보 제공을 목적으로 하며, 일상 속 선택과 관리에 도움을 주기 위한 자료입니다. 본 사이트는 Google 정책을 준수하여 안전하고 투명하게 운영됩니다.",
+      "funnyfunny.cloud helps you review everyday spending, time, and habit data through tests and calculators.\n\nAll services are designed and built in-house to help users understand their patterns and compare them against realistic benchmarks.\n\nResults are for reference only and meant to support everyday choices and planning. The site is operated safely and transparently in compliance with Google policies.",
   },
   {
-    question: "무료로 사용할 수 있나요?",
+    question: "Is it free to use?",
     answer:
-      "모든 서비스는 로그인 없이 무료로 이용 가능하며 공유 링크도 제한 없이 복사해 사용할 수 있습니다.",
+      "All services are free to use without logging in, and you can share links without restrictions.",
   },
   {
-    question: "모바일에서도 편하게 쓸 수 있나요?",
+    question: "Is it mobile-friendly?",
     answer:
-      "모바일에 최적화된 UI로 제작돼 휴대폰에서도 바로 실행할 수 있고, 랜덤 버튼으로 빠르게 서비스를 시작할 수 있습니다.",
+      "Yes. The UI is optimized for mobile, and the random button helps you start quickly.",
   },
   {
-    question: "새로운 서비스가 업데이트되나요?",
+    question: "Are new services added?",
     answer:
-      "정기적으로 인기 주제와 사회 이슈에 맞춘 서비스를 추가하며, 전체 리스트와 검색에서 바로 확인할 수 있습니다.",
+      "We regularly add new services aligned with popular topics and trends, visible in the full list and search.",
   },
 ];
 
@@ -756,626 +768,626 @@ const allServices = [
   {
     href: "https://today.funnyfunny.cloud",
     icon: "🌱",
-    title: "오늘의 나, 잘했다",
-    desc: "오늘, 내가 잘한 건 뭐였을까?",
-    tags: ["리마인드", "칭찬", "루틴", "리플렉션"],
+    title: "Today, Well Done",
+    desc: "What did I do well today?",
+    tags: ["reminder", "praise", "routine", "reflection"],
   },
   {
     href: "https://todo.funnyfunny.cloud/",
     icon: "✅",
-    title: "오늘의 할 일",
-    desc: "집중할 일만 담아두고 완료하면 시원하게 체크",
-    tags: ["투두", "할일", "체크", "집중"],
+    title: "Today's To-Do",
+    desc: "Keep only focus tasks and check them off cleanly.",
+    tags: ["todo", "tasks", "checklist", "focus"],
   },
   {
     href: "https://dream.funnyfunny.cloud/",
     icon: "💭",
-    title: "꿈일기",
-    desc: "꿈을 기록하고 태그로 정리하는 로컬 꿈 기록장",
-    tags: ["꿈", "일기", "기록", "로컬"],
+    title: "Dream Diary",
+    desc: "A local dream journal with tagging.",
+    tags: ["dreams", "journal", "records", "local"],
   },
   {
     href: "https://rest.funnyfunny.cloud",
     icon: "🛋️",
-    title: "이 정도면 쉬어야 할까?",
-    desc: "짧은 설문으로 지금 쉬어도 될지 체크",
-    tags: ["휴식", "컨디션", "설문", "번아웃"],
+    title: "Should I Rest Now?",
+    desc: "A short survey to check if you should rest now.",
+    tags: ["rest", "condition", "survey", "burnout"],
   },
   {
     href: "https://dailycheck.funnyfunny.cloud/",
     icon: "📝",
-    title: "오늘 상태 점검표",
-    desc: "5개 체크로 오늘 컨디션을 한 문장으로 정리",
-    tags: ["컨디션", "상태", "점검", "체크", "한 문장"],
+    title: "Daily Condition Check",
+    desc: "Summarize today’s condition in one line with 5 checks.",
+    tags: ["condition", "status", "check", "summary", "one-line"],
   },
   {
     href: "https://sleep.funnyfunny.cloud",
     icon: "🌙",
-    title: "잠들기 도우미",
-    desc: "코골이·주변 소음 덮는 수면 사운드 플레이어",
-    tags: ["수면", "백색소음", "환경음", "휴식"],
+    title: "Sleep Helper",
+    desc: "Sleep sound player that masks snoring and noise.",
+    tags: ["sleep", "white-noise", "ambient", "rest"],
   },
   {
     href: "https://flow.funnyfunny.cloud/",
     icon: "🧵",
-    title: "FLOW 커뮤니티",
-    desc: "쓰레드+디씨 감성으로 의견 나누는 게시판",
-    tags: ["커뮤니티", "게시판", "토론"],
+    title: "FLOW Community",
+    desc: "A thread-style board for sharing opinions.",
+    tags: ["community", "board", "discussion"],
   },
   {
     href: "https://coffee.funnyfunny.cloud",
     icon: "☕",
-    title: "커피중독 테스트",
-    desc: "카페인 의존도·부활 횟수 체크",
-    tags: ["카페인", "커피", "건강", "중독"],
+    title: "Coffee Addiction Test",
+    desc: "Check caffeine dependence and revival count.",
+    tags: ["caffeine", "coffee", "health", "addiction"],
   },
   {
     href: "https://beauty.funnyfunny.cloud",
     icon: "💄",
-    title: "꾸밈비 파산 테스트",
-    desc: "얼마나 태웠을까? 뷰티 지출 체감",
-    tags: ["뷰티", "지출", "소비"],
+    title: "Beauty Bankruptcy Test",
+    desc: "Feel the impact of your beauty spending.",
+    tags: ["beauty", "spending", "consumption"],
   },
   {
     href: "https://cosmetics.funnyfunny.cloud",
     icon: "🧴",
-    title: "화장품 루틴 딸깍 체크",
-    desc: "내 루틴 부족·과잉을 체크하고 최소 추천 확인",
-    tags: ["화장품", "루틴", "스킨케어", "체크"],
+    title: "Cosmetics Routine Check",
+    desc: "Check routine gaps or overloads and get a minimal recommendation.",
+    tags: ["cosmetics", "routine", "skincare", "check"],
   },
   {
     href: "https://next.funnyfunny.cloud",
     icon: "🔮",
-    title: "2026년의 나, 지금 결정된다",
-    desc: "습관·돈·관계·집중력 선택이 만드는 1년 뒤 루트",
-    tags: ["미래", "습관", "집중력", "관계"],
+    title: "Future Me 2026",
+    desc: "Your one-year route shaped by habits, money, relationships, and focus.",
+    tags: ["future", "habits", "focus", "relationships"],
   },
   {
     href: "https://year.funnyfunny.cloud",
     icon: "🧾",
-    title: "올해 나의 인생 소비 보고서",
-    desc: "올해 돈·시간·감정 흐름을 3분 컷으로 요약",
-    tags: ["연말결산", "소비", "시간", "감정"],
+    title: "Life Spending Report",
+    desc: "A 3-minute summary of money, time, and emotion flow.",
+    tags: ["year-end", "spending", "time", "emotion"],
   },
   {
     href: "https://winter.funnyfunny.cloud",
     icon: "❄️",
-    title: "이번 겨울, 나를 망치는 것 TOP 1",
-    desc: "겨울마다 무너지는 1순위 트리거 찾기",
-    tags: ["겨울", "습관", "컨디션", "정리"],
+    title: "Winter Trigger Top 1",
+    desc: "Find the top trigger that breaks your winter routine.",
+    tags: ["winter", "habits", "condition", "reset"],
   },
   {
     href: "https://energy.funnyfunny.cloud",
     icon: "⚡",
-    title: "내 삶의 에너지 배분",
-    desc: "번아웃 포인트와 리커버리 가이드",
-    tags: ["에너지", "번아웃", "회복"],
+    title: "Life Energy Balance",
+    desc: "Identify burnout points and recovery guides.",
+    tags: ["energy", "burnout", "recovery"],
   },
   {
     href: "https://product.funnyfunny.cloud",
     icon: "🚀",
-    title: "하루 생산성 체크 테스트",
-    desc: "오늘 내 집중·에너지·의사결정 상태 빠르게 체크",
-    tags: ["생산성", "집중력", "루틴"],
+    title: "Daily Productivity Check",
+    desc: "Quickly check focus, energy, and decision state.",
+    tags: ["productivity", "focus", "routine"],
   },
   {
     href: "https://mental.funnyfunny.cloud",
     icon: "🧠",
-    title: "하루 정신 체력 지수 테스트",
-    desc: "오늘의 뇌 에너지·집중력 상태 진단",
-    tags: ["멘탈", "집중", "컨디션"],
+    title: "Daily Mental Stamina Index",
+    desc: "Assess today’s brain energy and focus state.",
+    tags: ["mental", "focus", "condition"],
   },
   {
     href: "https://commute.funnyfunny.cloud/",
     icon: "⏰",
-    title: "출퇴근 비용 & 시간 계산기",
-    desc: "출퇴근 비용과 시간을 계산하고 활용 아이디어 받기",
-    tags: ["출퇴근", "시간", "비용", "교통", "루틴"],
+    title: "Commute Cost & Time Calculator",
+    desc: "Calculate commute cost and time, and get usage ideas.",
+    tags: ["commute", "time", "cost", "transport", "routine"],
   },
   {
     href: "https://human.funnyfunny.cloud",
     icon: "🙃",
-    title: "나를 힘들게 하는 인간 유형",
-    desc: "이 테스트는 '나 자신'을 평가하지 않습니다.",
-    tags: ["관계", "성향", "인간유형"],
+    title: "People Who Drain Me",
+    desc: "This test does not evaluate you.",
+    tags: ["relationships", "personality", "types"],
   },
   {
     href: "https://ego.funnyfunny.cloud",
     icon: "🧬",
-    title: "EGO 테스트",
-    desc: "성격 테스트 아님, 갈등·스트레스·선택 앞에서 튀어나오는 자아 분석",
-    tags: ["자아", "스트레스", "갈등"],
+    title: "EGO Test",
+    desc: "Not a personality test. Analyze ego under conflict, stress, and choices.",
+    tags: ["ego", "stress", "conflict"],
   },
   {
     href: "https://money.funnyfunny.cloud",
     icon: "🛡️",
-    title: "자산 방탄 지수",
-    desc: "경제 위기 버티기 레벨 측정",
-    tags: ["재테크", "위기대응", "자산"],
+    title: "Asset Shield Index",
+    desc: "Measure your resilience against economic downturns.",
+    tags: ["finance", "risk", "assets"],
   },
   {
     href: "https://specific.funnyfunny.cloud/",
     icon: "🧮",
-    title: "자산 비중 진단",
-    desc: "현금·금(현물)·부동산·주식·코인 비중을 한눈에 체크",
-    tags: ["자산", "포트폴리오", "비중", "진단", "재테크"],
+    title: "Asset Allocation Check",
+    desc: "Check your cash, gold, real estate, stock, and crypto ratios.",
+    tags: ["assets", "portfolio", "allocation", "diagnosis", "finance"],
   },
   {
     href: "https://life.funnyfunny.cloud",
     icon: "⏰",
-    title: "인생 남은 시간 대시보드",
-    desc: "자유시간, 수면, 커리어 남은 시간",
-    tags: ["시간", "대시보드", "라이프"],
+    title: "Life Time Dashboard",
+    desc: "Remaining time for free time, sleep, and career.",
+    tags: ["time", "dashboard", "life"],
   },
   {
     href: "https://soul.funnyfunny.cloud",
     icon: "🔮",
     title: "SoulPrint",
-    desc: "출생 정보를 바탕으로 한 독자적인 성향 분석",
-    tags: ["성향", "출생", "분석"],
+    desc: "A unique personality analysis based on birth data.",
+    tags: ["personality", "birth", "analysis"],
   },
   {
     href: "https://saju.funnyfunny.cloud/",
     icon: "🔮",
-    title: "사주풀이 · 신토정비결",
-    desc: "생년월일/시간으로 사주팔자와 올해·이번 달 흐름 정리",
-    tags: ["사주", "운세", "신토정비", "사주풀이"],
+    title: "Saju & Sintojungbi",
+    desc: "Read four pillars and yearly/monthly flow by birth date/time.",
+    tags: ["saju", "fortune", "sintojungbi", "reading"],
   },
   {
     href: "https://senseyear.funnyfunny.cloud",
     icon: "🎵",
-    title: "나는 몇 년생 감성인가",
-    desc: "12가지 질문으로 알아보는 나의 감성 테스트",
-    tags: ["감성", "테스트", "성향"],
+    title: "Birth-Year Vibe Test",
+    desc: "Find your vibe through 12 quick questions.",
+    tags: ["vibe", "test", "personality"],
   },
   {
     href: "https://alcohol.funnyfunny.cloud",
     icon: "🍺",
-    title: "주량 MBTI",
-    desc: "술자리 성향 MBTI",
-    tags: ["술자리", "주량", "성향"],
+    title: "Alcohol MBTI",
+    desc: "Drinking style MBTI.",
+    tags: ["drinking", "alcohol", "style"],
   },
   {
     href: "https://lazy.funnyfunny.cloud",
     icon: "😴",
-    title: "귀찮음 진단기",
-    desc: "7가지 요인으로 무기력 원인 찾기",
-    tags: ["무기력", "귀찮음", "진단"],
+    title: "Laziness Diagnostic",
+    desc: "Find causes of lethargy across 7 factors.",
+    tags: ["lethargy", "laziness", "diagnosis"],
   },
   {
     href: "https://average.funnyfunny.cloud",
     icon: "📊",
-    title: "대한민국 평균 vs 나",
-    desc: "수입·지출·습관이 한국 평균과 얼마나 다른지 비교",
-    tags: ["평균", "통계", "비교"],
+    title: "Korea Average vs Me",
+    desc: "Compare your income, spending, and habits to national averages.",
+    tags: ["average", "stats", "comparison"],
   },
   {
     href: "https://drain.funnyfunny.cloud",
     icon: "⚡",
-    title: "인생 에너지 누수 진단기",
-    desc: "지금 나는 어디로 새고 있는가",
-    tags: ["에너지", "피로", "누수"],
+    title: "Life Energy Leak Diagnostic",
+    desc: "Where is your energy leaking right now?",
+    tags: ["energy", "fatigue", "leak"],
   },
   {
     href: "https://maldives.funnyfunny.cloud",
     icon: "🏝️",
-    title: "몰디브 매치",
-    desc: "나의 몰디브 여행 성향 찾기",
-    tags: ["여행", "휴양", "몰디브"],
+    title: "Maldives Match",
+    desc: "Find your Maldives travel style.",
+    tags: ["travel", "resort", "maldives"],
   },
   {
     href: "https://bit.funnyfunny.cloud",
     icon: "💸",
-    title: "비트코인 안 산 죄",
-    desc: "그때 샀다면 지금 얼마?",
-    tags: ["비트코인", "투자", "기회비용"],
+    title: "Bitcoin Regret",
+    desc: "If you bought then, how much would it be now?",
+    tags: ["bitcoin", "investment", "opportunity-cost"],
   },
   {
     href: "https://house.funnyfunny.cloud",
     icon: "🏠",
-    title: "집 못 산 죄",
-    desc: "아… 몇 억 차이일까",
-    tags: ["부동산", "투자", "시뮬레이터"],
+    title: "Missed House Opportunity",
+    desc: "How big is the gap now?",
+    tags: ["real-estate", "investment", "simulator"],
   },
   {
     href: "https://invest.funnyfunny.cloud",
     icon: "📈",
-    title: "투자 확신 빌더",
-    desc: "수익률이 아니라, 판단을 기록해 흔들림을 줄입니다.",
-    tags: ["투자", "판단", "기록", "확신", "멘탈"],
+    title: "Investment Confidence Builder",
+    desc: "Log your judgment, not returns, to reduce wobbles.",
+    tags: ["investing", "decision", "logging", "confidence", "mindset"],
   },
   {
     href: "https://space.funnyfunny.cloud",
     icon: "📐",
-    title: "평수 계산기",
-    desc: "평↔제곱미터 변환과 대표 평형 계산",
-    tags: ["부동산", "평수", "면적", "계산기"],
+    title: "Pyeong Calculator",
+    desc: "Convert pyeong to square meters and check typical sizes.",
+    tags: ["real-estate", "pyeong", "area", "calculator"],
   },
   {
     href: "https://nospend.funnyfunny.cloud",
     icon: "💸",
-    title: "내가 안 산 것들의 총자산",
-    desc: '"그때 그거만 안 샀어도..."를 숫자로',
-    tags: ["절약", "총자산", "기회비용"],
+    title: "Total Wealth of What I Didn't Buy",
+    desc: "Turn “if only I hadn’t bought it” into numbers.",
+    tags: ["saving", "total-wealth", "opportunity-cost"],
   },
   {
     href: "https://n.funnyfunny.cloud/",
     icon: "🍽️",
-    title: "N빵 계산기",
-    desc: "음식점 이름·인원·총금액 입력 후 1인당 금액을 자동 계산하고 복사할 수 있는 식사 계산기",
-    tags: ["계산기", "금액", "식사", "복사", "N빵"],
+    title: "Split-the-Bill Calculator",
+    desc: "Enter venue, headcount, and total to calculate and copy per-person cost.",
+    tags: ["calculator", "cost", "meal", "split", "copy"],
   },
   {
     href: "https://edu.funnyfunny.cloud",
     icon: "🎓",
-    title: "사교육 지옥도 계산기",
-    desc: "교육비 인생 시뮬레이터",
-    tags: ["교육비", "지출", "시뮬레이션"],
+    title: "Private Education Hell Map",
+    desc: "An education cost life simulator.",
+    tags: ["education", "spending", "simulation"],
   },
   {
     href: "https://baby.funnyfunny.cloud/",
     icon: "👶",
-    title: "출산율 체감 테스트",
-    desc: "이 장면은 ‘미래 예측’이 아니라 이미 진행 중인 현재일 수 있습니다.",
-    tags: ["출산율", "인구", "사회", "체감", "테스트"],
+    title: "Birthrate Reality Test",
+    desc: "This may be the present, not a future prediction.",
+    tags: ["birthrate", "population", "society", "test"],
   },
   {
     href: "https://miracle.funnyfunny.cloud/",
     icon: "🌍",
-    title: "한국보다 더 좋은 조건에서 태어날 확률은?",
-    desc: "출생 조건을 비교해 더 좋은 환경에서 태어날 확률을 확인",
-    tags: ["출생", "확률", "국가", "비교", "사회"],
+    title: "Better Birth Odds",
+    desc: "Compare birth conditions and check your odds of a better environment.",
+    tags: ["birth", "probability", "country", "comparison", "society"],
   },
   {
     href: "https://health.funnyfunny.cloud",
     icon: "🩺",
-    title: "건강수명 & 노후 준비",
-    desc: "재미로 보는 건강수명",
-    tags: ["건강", "노후", "수명"],
+    title: "Healthspan & Retirement",
+    desc: "A playful take on healthspan.",
+    tags: ["health", "retirement", "longevity"],
   },
   {
     href: "https://bmi.funnyfunny.cloud/",
     icon: "📏",
-    title: "BMI 설문형 다이어트 플랜",
-    desc: "한 번씩만 딸각. 숫자도 한 번씩만. 결과는 은근히 도움 됨.",
-    tags: ["BMI", "다이어트", "설문", "플랜"],
+    title: "BMI Survey Diet Plan",
+    desc: "Tap once each. Enter numbers once. Surprisingly helpful.",
+    tags: ["BMI", "diet", "survey", "plan"],
   },
   {
     href: "https://cook.funnyfunny.cloud",
     icon: "🍱",
-    title: "오늘 뭐 먹지?",
-    desc: "하루 메뉴 랜덤 추천",
-    tags: ["음식", "추천", "랜덤"],
+    title: "What to Eat Today?",
+    desc: "Random menu recommendations for the day.",
+    tags: ["food", "recommendation", "random"],
   },
   {
     href: "https://chef.funnyfunny.cloud/",
     icon: "👨‍🍳",
-    title: "셰프 심사위원: 오늘의 선택 심사",
-    desc: "안성재·임짱·손종원 밈 감성으로 선택을 딸깍 심사",
-    tags: ["셰프", "심사", "선택", "딸각", "밈"],
+    title: "Chef Judge: Today's Choice",
+    desc: "Meme-style judging comments for your choice.",
+    tags: ["chef", "judge", "choice", "meme"],
   },
   {
     href: "https://pick.funnyfunny.cloud",
     icon: "🍿",
-    title: "오늘 뭐 볼까? (OTT 픽)",
-    desc: "검색 없이 바로 영화·드라마 추천",
-    tags: ["영화", "드라마", "OTT", "추천"],
+    title: "OTT Pick",
+    desc: "Instant movie and drama recommendations without searching.",
+    tags: ["movies", "drama", "OTT", "recommendation"],
   },
   {
     href: "https://lotto.funnyfunny.cloud/",
     icon: "🎟️",
-    title: "로또 추천기",
-    desc: "버튼 한 번으로 로또 번호 조합 추천",
-    tags: ["로또", "추천", "번호", "랜덤"],
+    title: "Lotto Number Picker",
+    desc: "One-click lotto number combinations.",
+    tags: ["lotto", "recommendation", "numbers", "random"],
   },
   {
     href: "https://anju.funnyfunny.cloud",
     icon: "🍢",
-    title: "오늘의 안주",
-    desc: "술안주 랜덤 추천",
-    tags: ["술", "안주", "랜덤"],
+    title: "Today's Snack Pairing",
+    desc: "Random snack pairing for drinks.",
+    tags: ["snack", "drinks", "random"],
   },
   {
     href: "https://cafe.funnyfunny.cloud",
     icon: "☕",
-    title: "카페 지출 역전 계산",
-    desc: "30살까지 커피로 태운 돈?",
-    tags: ["카페", "지출", "소비"],
+    title: "Cafe Spending Reversal",
+    desc: "How much did coffee cost you by age 30?",
+    tags: ["cafe", "spending", "consumption"],
   },
   {
     href: "https://drink.funnyfunny.cloud",
     icon: "🍺",
-    title: "그때 마신 술, 지금 얼마?",
-    desc: "한 달 술값 총액 vs 투자했을 때 금액",
-    tags: ["술값", "투자", "비용"],
+    title: "That Drink, Now How Much?",
+    desc: "Monthly alcohol spend vs invested amount.",
+    tags: ["alcohol", "investment", "cost"],
   },
   {
     href: "https://waste.funnyfunny.cloud",
     icon: "♻️",
-    title: "내 인생 낭비력 지수",
-    desc: "지금까지 쓴 돈, 낭비력으로 환산",
-    tags: ["낭비", "돈", "습관"],
+    title: "Waste Index",
+    desc: "Convert money spent into a waste score.",
+    tags: ["waste", "money", "habits"],
   },
   {
     href: "https://joke.funnyfunny.cloud",
     icon: "🤣",
-    title: "오늘의 아재개그",
-    desc: "공유각 터지는 개그 모음",
-    tags: ["아재개그", "웃음", "밈"],
+    title: "Dad Jokes of the Day",
+    desc: "Shareable jokes for a quick laugh.",
+    tags: ["dad-jokes", "humor", "meme"],
   },
   {
     href: "https://fortune.funnyfunny.cloud",
     icon: "🔮",
-    title: "오늘의 한 줄 운세",
-    desc: "기분에 따라 보는 오늘의 한 줄 운세",
-    tags: ["운세", "포춘", "기분", "한 줄"],
+    title: "One-Line Fortune",
+    desc: "A daily fortune line based on your mood.",
+    tags: ["fortune", "mood", "one-line"],
   },
   {
     href: "https://wisdom.funnyfunny.cloud",
     icon: "📜",
-    title: "오늘의 지혜",
-    desc: "성경의 메시지에서 영감을 받은 하루 한 문장",
-    tags: ["지혜", "성경", "명언", "한 문장"],
+    title: "Daily Wisdom",
+    desc: "A daily line inspired by scripture.",
+    tags: ["wisdom", "scripture", "quote", "daily"],
   },
   {
     href: "https://heal.funnyfunny.cloud",
     icon: "💌",
-    title: "우연이 아닐지도",
-    desc: "클릭 한 번으로 받는 위로 카드",
-    tags: ["위로", "힐링", "카드"],
+    title: "Maybe Not a Coincidence",
+    desc: "A comfort card with one click.",
+    tags: ["comfort", "healing", "card"],
   },
   {
     href: "https://need.funnyfunny.cloud/",
     icon: "🧭",
-    title: "지금 나에게 가장 필요한 한마디",
-    desc: "감정과 상황을 클릭하면 오늘 필요한 말 한 줄",
-    tags: ["감정", "상황", "위로", "한줄"],
+    title: "The One Line I Need",
+    desc: "Click your emotion and situation for today’s line.",
+    tags: ["emotion", "situation", "comfort", "one-line"],
   },
   {
     href: "https://temple.funnyfunny.cloud/",
     icon: "🛕",
-    title: "하루 한 문장 (Temple)",
-    desc: "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장",
-    tags: ["불교", "명상", "명언", "한 문장"],
+    title: "Temple Daily Quote",
+    desc: "Daily lines based on Buddhist teachings in modern language.",
+    tags: ["buddhism", "meditation", "quote", "daily"],
   },
   {
     href: "https://mind.funnyfunny.cloud",
     icon: "🧠",
-    title: "오늘의 마음챙김",
-    desc: "명언 한 줄 힐링",
-    tags: ["마음챙김", "명언", "힐링"],
+    title: "Today's Mindfulness",
+    desc: "A one-line quote for calm.",
+    tags: ["mindfulness", "quote", "healing"],
   },
   {
     href: "https://beat.funnyfunny.cloud",
     icon: "🥁",
-    title: "드럼 비트 연습기",
-    desc: "메트로놈 + 기본 패턴 연습",
-    tags: ["드럼", "리듬", "연습"],
+    title: "Drum Beat Trainer",
+    desc: "Metronome plus basic pattern practice.",
+    tags: ["drum", "rhythm", "practice"],
   },
   {
     href: "https://audio.funnyfunny.cloud",
     icon: "🎵",
     title: "Simple Audio Editor",
-    desc: "브라우저에서 바로 사용하는 오디오 편집 도구",
-    tags: ["오디오", "편집", "도구"],
+    desc: "Audio editing directly in the browser.",
+    tags: ["audio", "editing", "tool"],
   },
   {
     href: "https://music.funnyfunny.cloud",
     icon: "🎵",
-    title: "지금 이 시간에 어울리는 음악",
-    desc: "하루의 리듬에 맞춘 오늘의 음악 무드",
-    tags: ["음악", "무드", "추천", "플레이리스트"],
+    title: "Music for This Moment",
+    desc: "Music moods that fit today’s rhythm.",
+    tags: ["music", "mood", "recommendation", "playlist"],
   },
   {
     href: "https://vocal.funnyfunny.cloud",
     icon: "🎤",
-    title: "두성터득기",
-    desc: "헤드보이스를 위한 호흡·공명 루틴 따라하기",
-    tags: ["보컬", "두성", "헤드보이스", "연습"],
+    title: "Head Voice Trainer",
+    desc: "Breathing and resonance routines for head voice.",
+    tags: ["vocal", "head-voice", "practice"],
   },
   {
     href: "https://video.funnyfunny.cloud",
     icon: "🎬",
     title: "AutoCut Studio",
-    desc: "침묵 감지로 하이라이트·점프컷 타임라인 자동 생성",
-    tags: ["영상편집", "유튜브", "점프컷", "하이라이트"],
+    desc: "Auto-create highlight and jump-cut timelines via silence detection.",
+    tags: ["video-editing", "youtube", "jump-cut", "highlights"],
   },
   {
     href: "https://file.funnyfunny.cloud/",
     icon: "🗜️",
-    title: "로컬 이미지 최적화 & 파일 인사이트",
-    desc: "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈 + 로컬 파일 정보/해시/미리보기",
-    tags: ["이미지", "최적화", "로컬", "파일정보", "해시"],
+    title: "Local Image Optimizer & File Insights",
+    desc: "Re-encode WebP/JPEG, auto-resize, and view local file info, hashes, and previews.",
+    tags: ["image", "optimizer", "local", "file-info", "hash"],
   },
   {
     href: "http://heic.funnyfunny.cloud/",
     icon: "📷",
-    title: "HEIC → JPG 변환기",
-    desc: "브라우저에서 HEIC를 JPG/WebP/PNG로 변환·압축·리사이즈·ZIP",
-    tags: ["HEIC", "JPG", "변환", "압축", "리사이즈", "ZIP", "WebP", "PNG"],
+    title: "HEIC to JPG Converter",
+    desc: "Convert HEIC to JPG/WebP/PNG with compression, resize, and ZIP export.",
+    tags: ["HEIC", "JPG", "convert", "compress", "resize", "ZIP", "WebP", "PNG"],
   },
   {
     href: "https://meta.funnyfunny.cloud",
     icon: "🧰",
     title: "Meta Kit — SEO · OG · Favicon",
-    desc: "메타태그·OG/Twitter 카드·파비콘을 입력→생성→복붙, OG 이미지 텍스트는 영문만 사용",
-    tags: ["메타태그", "OG", "SEO", "파비콘", "OG 이미지"],
+    desc: "Enter meta tags, OG/Twitter cards, and favicons to generate and copy. OG text uses English.",
+    tags: ["meta-tags", "OG", "SEO", "favicon", "OG-image"],
   },
   {
     href: "https://image.funnyfunny.cloud",
     icon: "🖼️",
-    title: "이미지 합치기 & PDF 변환",
-    desc: "여러 장을 드래그 정렬해 한 장 이미지·PDF로 저장",
-    tags: ["이미지", "PDF", "병합", "편집"],
+    title: "Image Merge & PDF Converter",
+    desc: "Drag to reorder and save as one image or PDF.",
+    tags: ["image", "PDF", "merge", "edit"],
   },
   {
     href: "https://ocr.funnyfunny.cloud",
     icon: "🔍",
-    title: "이미지 텍스트 추출",
-    desc: "사진 속 글자를 자동으로 읽어 텍스트로 뽑기",
-    tags: ["OCR", "텍스트", "사진", "변환"],
+    title: "Image Text Extractor",
+    desc: "Extract text from photos automatically.",
+    tags: ["OCR", "text", "photo", "convert"],
   },
   {
     href: "https://time.funnyfunny.cloud",
     icon: "⏰",
-    title: "예매는타이밍",
-    desc: "정확한 서버시간 조회, 예매 도우미",
-    tags: ["시간", "서버시간", "예매"],
+    title: "Time Checker",
+    desc: "Accurate server time and ticketing helper.",
+    tags: ["time", "server-time", "ticketing"],
   },
   {
     href: "https://news.funnyfunny.cloud",
     icon: "📰",
-    title: "오늘의 IT 뉴스",
-    desc: "국내 및 해외 IT 뉴스를 빠르게 요약",
-    tags: ["뉴스", "IT", "요약"],
+    title: "IT News Today",
+    desc: "Quick summaries of domestic and global IT news.",
+    tags: ["news", "IT", "summary"],
   },
   {
     href: "https://weather.funnyfunny.cloud",
     icon: "🌤️",
-    title: "지금날씨",
-    desc: "내 근처와 주변 날씨 조회",
-    tags: ["날씨", "미세먼지", "자외선"],
+    title: "Current Weather",
+    desc: "Check nearby weather conditions.",
+    tags: ["weather", "dust", "UV"],
   },
   {
     href: "https://emojicon.funnyfunny.cloud",
     icon: "🎨",
     title: "EmojiCon Studio",
-    desc: "이모지로 아이콘/파비콘을 한 번에 생성",
-    tags: ["아이콘", "파비콘", "이모지"],
+    desc: "Create icons and favicons from emojis.",
+    tags: ["icons", "favicon", "emoji"],
   },
   {
     href: "https://snaptrail.funnyfunny.cloud",
     icon: "📍",
     title: "SnapTrail",
-    desc: "사진을 자동 그룹화한 추억 타임라인 생성기",
-    tags: ["사진", "타임라인", "추억"],
+    desc: "Automatically grouped photo timeline generator.",
+    tags: ["photos", "timeline", "memories"],
   },
   {
     href: "https://day.funnyfunny.cloud",
     icon: "📅",
-    title: "D-day 계산기",
-    desc: "날짜 계산, D-Day, N일 후, 기념일, 위젯",
-    tags: ["날짜", "D-day", "기념일"],
+    title: "D-day Calculator",
+    desc: "Date calculations, D-Day, days after, anniversaries, widgets.",
+    tags: ["date", "D-day", "anniversary"],
   },
   {
     href: "https://run.funnyfunny.cloud",
     icon: "🦖",
-    title: "달리기",
-    desc: "공룡 달리기 스타일 랭킹 게임",
-    tags: ["게임", "공룡", "랭킹"],
+    title: "Dino Runner",
+    desc: "Dino runner-style ranking game.",
+    tags: ["game", "dino", "ranking"],
   },
   {
     href: "https://charm.funnyfunny.cloud",
     icon: "🛸",
-    title: "참참참! (NEON ARCADE)",
-    desc: "라인만 바꿔서 미사일을 피하기만 하면 돼요.",
-    tags: ["게임", "아케이드", "회피"],
+    title: "Charm (NEON ARCADE)",
+    desc: "Switch lanes to dodge missiles.",
+    tags: ["game", "arcade", "dodge"],
   },
   {
     href: "https://downy.funnyfunny.cloud/",
     icon: "🪜",
-    title: "다우니 (NEON STAIRS)",
-    desc: "좌우 이동으로 계단을 밟고, 떨어지면 끝!",
-    tags: ["게임", "아케이드", "계단"],
+    title: "Downy (NEON STAIRS)",
+    desc: "Step left/right on stairs; fall and it’s over.",
+    tags: ["game", "arcade", "stairs"],
   },
   {
     href: "https://tet.funnyfunny.cloud/",
     icon: "🧱",
-    title: "하루 한판 테트리스",
-    desc: "싱글(AI)과 2인 플레이를 지원하는 테트리스",
-    tags: ["게임", "테트리스", "퍼즐", "2인 플레이"],
+    title: "Daily Tetris",
+    desc: "Tetris with solo AI and two-player support.",
+    tags: ["game", "tetris", "puzzle", "two-player"],
   },
   {
     href: "https://random.funnyfunny.cloud/",
     icon: "🎱",
-    title: "네온 핀볼 랜덤 뽑기",
-    desc: "핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기",
-    tags: ["게임", "랜덤", "핀볼"],
+    title: "Neon Pinball Random Draw",
+    desc: "Rolling pinballs pick a random winner.",
+    tags: ["game", "random", "pinball"],
   },
   {
     href: "https://balance.funnyfunny.cloud/",
     icon: "⚖️",
-    title: "밸런스게임",
-    desc: "두 가지 선택지로 질문을 만들고 바로 공유",
-    tags: ["게임", "밸런스", "질문", "선택"],
+    title: "Balance Game",
+    desc: "Create two-choice questions and share instantly.",
+    tags: ["game", "balance", "questions", "choices"],
   },
   {
     href: "https://xmas.funnyfunny.cloud/",
     icon: "🎁",
-    title: "크리스마스 선물, 따뜻함 리포트",
-    desc: "🎯 선물이 따뜻하게 도착할 확률",
-    tags: ["크리스마스", "선물", "확률", "리포트"],
+    title: "Warm Gift Report",
+    desc: "🎯 Probability of a warm gift arrival.",
+    tags: ["christmas", "gift", "probability", "report"],
   },
   {
     href: "https://hand.funnyfunny.cloud/",
     icon: "✋",
-    title: "손바닥 썰 푼다",
-    desc: "사진 한 장으로 보는 손금 흐름",
-    tags: ["손금", "성향", "분석", "사진"],
+    title: "Palm Reading Story",
+    desc: "Palm-line insights from a single photo.",
+    tags: ["palm", "personality", "analysis", "photo"],
   },
   {
     href: "https://soccer.funnyfunny.cloud/",
     icon: "⚽",
-    title: "우리 둘의 조합이 낳을 축구선수는?",
-    desc: "둘의 성향을 섞어 닮은 축구선수를 찾는 테스트",
-    tags: ["축구", "조합", "궁합", "테스트"],
+    title: "Soccer Combo",
+    desc: "Combine two personalities to find a matching footballer.",
+    tags: ["soccer", "combo", "compatibility", "test"],
   },
   {
     href: "http://sudoku.funnyfunny.cloud/",
     icon: "🧩",
-    title: "스도쿠 웹게임",
-    desc: "난이도 선택해서 푸는 클래식 스도쿠",
-    tags: ["스도쿠", "퍼즐", "게임", "두뇌"],
+    title: "Sudoku Web Game",
+    desc: "Classic sudoku with selectable difficulty.",
+    tags: ["sudoku", "puzzle", "game", "brain"],
   },
 ];
 
 const pageCopy = {
   ko: {
-    headerHeroTitle: "유용할 수 있는 서비스, 놀이터",
-    ctaPrimarySmall: "랜덤",
-    ctaPrimaryLarge: "랜덤 열기",
+    headerHeroTitle: "Useful services, playground",
+    ctaPrimarySmall: "Random",
+    ctaPrimaryLarge: "Open random tool",
     heroBadgeMain: "❄️ Snow Week",
-    heroBadgeSub: "가볍게 즐기기",
-    heroTitle: "겨울에 심심할 때 눌러보는 테스트들",
-    heroSubtitle: "올겨울은 조금 더 가볍게, 2026년은 더 좋은 일로 시작해요.",
-    heroServiceCount: "전체 {count}개의 서비스",
-    searchPlaceholder: "예: 커피, 투자, 마음챙김",
-    searchResultsTitle: "검색 결과",
-    searchTagResults: '"{tag}" 태그: {count}개',
-    searchQueryResults: '"{query}" 검색: {count}개',
-    searchCount: "{count}개",
-    searchBottomSummary: "검색 결과 {count}개",
-    searchBottomEmpty: "새 서비스가 추가되면 여기서 바로 확인할 수 있어요",
-    searchResetButton: "초기화",
-    searchNoMatches: "해당 키워드와 맞는 서비스가 없어요.",
-    searchNoMatchesHint: "다른 키워드나 태그를 선택해 보세요.",
-    tagsMore: "태그 더보기 ({count}개)",
-    tagsCollapse: "태그 접기",
-    randomButtonSmall: "랜덤 열기",
-    randomButtonLarge: "랜덤 테스트 열기",
-    quickFlow: "FLOW 게시판",
+    heroBadgeSub: "Easy to enjoy",
+    heroTitle: "Tests to click when winter feels long",
+    heroSubtitle: "Relax this winter and start 2026 with better moments.",
+    heroServiceCount: "{count} services in total",
+    searchPlaceholder: "Try: coffee, investment, mindfulness",
+    searchResultsTitle: "Search results",
+    searchTagResults: '"{tag}" tag: {count} services',
+    searchQueryResults: '"{query}" search: {count} results',
+    searchCount: "{count} entries",
+    searchBottomSummary: "{count} search results",
+    searchBottomEmpty: "New services will appear here shortly.",
+    searchResetButton: "Reset",
+    searchNoMatches: "No services match that keyword.",
+    searchNoMatchesHint: "Try another keyword or tag.",
+    tagsMore: "More tags ({count})",
+    tagsCollapse: "Hide tags",
+    randomButtonSmall: "Open random",
+    randomButtonLarge: "Open random test",
+    quickFlow: "FLOW board",
     quickAshlight: "AshLight",
-    topUtilityHeading: "🧰 효용 높은 유틸리티 Pick",
-    insightCtaTitle: "오늘의 한 줄 인사이트",
-    hubCtaTitle: "나를 이해하는 가장 쉬운 방법",
-    utilsCtaTitle: "유용할 수 있는 서비스들",
-    viewAllServices: "모든 서비스 보기",
-    recommendedContentLabel: "추천 콘텐츠",
-    usefulServicesTitle: "유용할 수 있는 서비스들",
-    footerIntroTitle: "funnyfunny.cloud 소개",
+    topUtilityHeading: "🧰 Useful utility picks",
+    insightCtaTitle: "Today's single-line insight",
+    hubCtaTitle: "The simplest way to understand me",
+    utilsCtaTitle: "Helpful services",
+    viewAllServices: "View all services",
+    recommendedContentLabel: "Recommended content",
+    usefulServicesTitle: "Helpful services",
+    footerIntroTitle: "About funnyfunny.cloud",
     footerIntroDescription1:
-      "funnyfunny.cloud는 일상의 데이터를 더 쉽고 재밌게 보여주는 ",
-    footerIntroHighlight: "유틸리티, 테스트, 계산기, 정보 도구 포털",
-    footerIntroDescription2: "입니다.",
+      "funnyfunny.cloud delivers everyday data through fun utilities, tests, calculators, and informative tools.",
+    footerIntroHighlight: "",
+    footerIntroDescription2: "",
     footerIntroDescription3:
-      "광고를 포함한 모든 요소는 Google 정책을 준수하여 안전하게 운영됩니다.",
-    footerOperationTitle: "운영 정보",
-    footerOperationDeveloperLabel: "개발 및 운영:",
-    footerOperationContactLabel: "문의:",
-    footerLinkPrivacy: "개인정보처리방침",
-    footerLinkTerms: "이용약관",
-    footerLinkCopyright: "저작권 안내",
-    footerLinkPolicy: "운영정책",
+      "All ads and elements comply with Google's policies for safe operation.",
+    footerOperationTitle: "Operation info",
+    footerOperationDeveloperLabel: "Developed and operated by:",
+    footerOperationContactLabel: "Contact:",
+    footerLinkPrivacy: "Privacy policy",
+    footerLinkTerms: "Terms of service",
+    footerLinkCopyright: "Copyright notice",
+    footerLinkPolicy: "Operating policy",
     footerCopyright: "© 2025 FunnyFunny Cloud by AshLight.",
   },
   en: {
@@ -1435,7 +1447,7 @@ function formatTemplate(template, vars = {}) {
   );
 }
 
-const defaultLang = "ko";
+const defaultLang = "en";
 
 function getInitialLang() {
   if (typeof window === "undefined") return defaultLang;
@@ -1566,10 +1578,10 @@ export function HomeContent() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "FunnyFunny Cloud",
-      alternateName: ["퍼니퍼니", "퍼니퍼니 클라우드", "FunnyFunny"],
+      alternateName: ["FunnyFunny", "FunnyFunny Cloud"],
       url: "https://funnyfunny.cloud",
       description:
-        "funnyfunny.cloud는 일상의 소비, 시간, 습관과 같은 데이터를 테스트와 계산기를 통해 쉽게 점검하고 비교해 볼 수 있는 정보 서비스입니다. 제공되는 결과와 수치는 참고용 정보 제공을 목적으로 하며, 일상 속 선택과 관리에 도움을 주기 위한 자료입니다.",
+        "funnyfunny.cloud is an information service that helps you check and compare everyday data like spending, time, and habits through tests and calculators. Results are provided for reference and to support daily decisions and management.",
       potentialAction: {
         "@type": "SearchAction",
         target: "https://funnyfunny.cloud/?q={search_term_string}",
@@ -1587,13 +1599,13 @@ export function HomeContent() {
       "@type": "Organization",
       url: "https://funnyfunny.cloud",
       name: "FunnyFunny Cloud",
-      alternateName: ["퍼니퍼니", "퍼니퍼니 클라우드", "FunnyFunny"],
+      alternateName: ["FunnyFunny", "FunnyFunny Cloud"],
       logo: "https://funnyfunny.cloud/favicon.svg",
     },
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: "핵심 유틸리티",
+      name: "Core Utilities",
       itemListOrder: "http://schema.org/ItemListOrderAscending",
       itemListElement: seoTopItems.map((item, index) => ({
         "@type": "ListItem",
@@ -1620,7 +1632,7 @@ export function HomeContent() {
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: "가이드",
+      name: "Guides",
       itemListOrder: "http://schema.org/ItemListOrderAscending",
       itemListElement: seoGuides.map((guide, index) => ({
         "@type": "ListItem",
@@ -1644,7 +1656,7 @@ export function HomeContent() {
     },
   ];
 
-  // 모든 태그 추출 및 인기순 정렬 (사용 빈도 기준)
+  // Extract all tags and sort by popularity (usage frequency).
   const tagCounts = {};
   allServices.forEach((service) => {
     (service.tags || []).forEach((tag) => {
@@ -1654,23 +1666,23 @@ export function HomeContent() {
   const allTags = Array.from(
     new Set(allServices.flatMap((service) => service.tags || []))
   ).sort((a, b) => {
-    // 먼저 사용 빈도순, 그 다음 알파벳순
+    // Sort by usage count first, then alphabetically.
     const countDiff = tagCounts[b] - tagCounts[a];
     return countDiff !== 0 ? countDiff : a.localeCompare(b);
   });
 
-  // 주요 태그 (처음 22개, 약 2줄)
+  // Main tags (first 22, roughly two rows).
   const mainTags = allTags.slice(0, 22);
   const remainingTags = allTags.slice(22);
 
   const normalizedQuery = searchQuery.trim();
 
   const filteredServices = allServices.filter((test) => {
-    // 태그 필터링
+    // Tag filtering.
     if (selectedTag && !(test.tags || []).includes(selectedTag)) {
       return false;
     }
-    // 검색어 필터링
+    // Query filtering.
     if (normalizedQuery) {
       const haystack = [test.title, test.desc, ...(test.tags || [])]
         .join(" ")
@@ -1680,7 +1692,7 @@ export function HomeContent() {
     return true;
   });
 
-  // 검색 결과 표시 여부 (검색어나 태그가 선택되었을 때만 표시)
+  // Show results only when a query or tag is selected.
   const showSearchResults = normalizedQuery || selectedTag;
 
   return (
@@ -1760,15 +1772,15 @@ export function HomeContent() {
                         }}
                         className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold hover:bg-white/20 transition"
                       >
-                        초기화
+                        Reset
                       </button>
                     )}
                   </div>
                   {filteredServices.length === 0 ? (
                     <div className="p-6 rounded-2xl bg-white/10 border border-white/20 text-center text-sm text-slate-200">
-                      <p>해당 키워드와 맞는 서비스가 없어요.</p>
+                      <p>No services match that keyword.</p>
                       <p className="text-xs text-slate-300/80 mt-1">
-                        다른 키워드나 태그를 선택해 보세요.
+                        Try another keyword or tag.
                       </p>
                     </div>
                   ) : (
@@ -1899,29 +1911,29 @@ export function HomeContent() {
                 href="https://file.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="로컬 이미지 최적화 & 파일 인사이트 - 드래그 한 번으로 이미지 용량을 줄이고 파일 정보를 확인"
-                data-amp-service="로컬 이미지 최적화 & 파일 인사이트"
+                aria-label="Local Image Optimizer & File Insights - reduce image size with one drag and view file info"
+                data-amp-service="Local Image Optimizer & File Insights"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🗜️</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    로컬 전용
+                    Local only
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  로컬 이미지 최적화
+                  Local Image Optimizer
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  WebP/JPEG 재인코딩·자동 리사이즈 + 파일 정보/해시
+                  WebP/JPEG re-encode, auto-resize, file info, hash
                 </p>
               </a>
               <a
                 href="https://meta.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Meta Kit — SEO·OG·Favicon - 메타태그를 빠르게 생성"
+                aria-label="Meta Kit — SEO · OG · Favicon - generate meta tags fast"
                 data-amp-service="Meta Kit — SEO · OG · Favicon"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
@@ -1929,42 +1941,42 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🧰</span>
                   <span className="text-xs font-semibold text-indigo-600">
-                    SEO 번들
+                    SEO bundle
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">Meta Kit</h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  SEO/OG/파비콘 자동 생성 · 복붙
+                  Auto-generate SEO/OG/favicon and copy-paste
                 </p>
               </a>
               <a
                 href="https://image.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="이미지 합치기 & PDF 변환 - 여러 장을 한 번에 병합"
-                data-amp-service="이미지 합치기 & PDF 변환"
+                aria-label="Image Merge & PDF Converter - merge multiple images at once"
+                data-amp-service="Image Merge & PDF Converter"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🖼️</span>
                   <span className="text-xs font-semibold text-fuchsia-600">
-                    변환기
+                    Converter
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  이미지 합치기
+                  Image Merge
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  드래그 정렬 → 한 장 이미지·PDF
+                  Drag to sort → one image or PDF
                 </p>
               </a>
               <a
                 href="https://ocr.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="이미지 텍스트 추출 - 사진 속 글자 OCR"
-                data-amp-service="이미지 텍스트 추출"
+                aria-label="Image Text Extractor - OCR text from photos"
+                data-amp-service="Image Text Extractor"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
@@ -1975,79 +1987,79 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  이미지 텍스트 추출
+                  Image Text Extractor
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  사진 속 글자를 바로 복사
+                  Copy text straight from photos
                 </p>
               </a>
               <a
                 href="https://time.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="예매는타이밍 - 서버시간과 시간 계산"
-                data-amp-service="예매는타이밍"
+                aria-label="Time Checker - server time and time calculations"
+                data-amp-service="Time Checker"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">⏰</span>
                   <span className="text-xs font-semibold text-blue-600">
-                    시간 도구
+                    Time tool
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">예매는타이밍</h3>
+                <h3 className="font-bold text-lg leading-snug">Time Checker</h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  정확한 서버시간 · 타임존 계산
+                  Accurate server time and time zones
                 </p>
               </a>
               <a
                 href="https://weather.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="지금날씨 - 내 근처 날씨/자외선/미세먼지"
-                data-amp-service="지금날씨"
+                aria-label="Current Weather - local weather, UV, dust"
+                data-amp-service="Current Weather"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🌤️</span>
                   <span className="text-xs font-semibold text-sky-600">
-                    실시간
+                    Live
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">지금날씨</h3>
+                <h3 className="font-bold text-lg leading-snug">Current Weather</h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  체감온도·미세먼지·자외선
+                  Feels-like temp, dust, and UV
                 </p>
               </a>
               <a
                 href="https://news.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="오늘의 IT 뉴스 - 국내외 IT 뉴스 요약"
-                data-amp-service="오늘의 IT 뉴스"
+                aria-label="IT News Today - quick IT news summary"
+                data-amp-service="IT News Today"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">📰</span>
                   <span className="text-xs font-semibold text-orange-600">
-                    요약
+                    Summary
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  오늘의 IT 뉴스
+                  IT News Today
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  국내·해외 IT 뉴스를 빠르게
+                  Quick IT news highlights
                 </p>
               </a>
               <a
                 href="https://audio.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Simple Audio Editor - 브라우저 오디오 편집"
+                aria-label="Simple Audio Editor - browser audio editing"
                 data-amp-service="Simple Audio Editor"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
@@ -2055,21 +2067,21 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🎵</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    편집
+                    Edit
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
                   Simple Audio Editor
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  트림·병합·내보내기
+                  Trim, merge, export
                 </p>
               </a>
               <a
                 href="https://emojicon.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="EmojiCon Studio - 이모지 아이콘 제작"
+                aria-label="EmojiCon Studio - create emoji icons"
                 data-amp-service="EmojiCon Studio"
                 data-amp-section="top9"
                 className="group p-4 rounded-2xl bg-white/85 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
@@ -2077,14 +2089,14 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xl">🎨</span>
                   <span className="text-xs font-semibold text-amber-600">
-                    아이콘
+                    Icons
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
                   EmojiCon Studio
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  이모지로 아이콘·파비콘 생성
+                  Emoji to icons and favicons
                 </p>
               </a>
             </div>
@@ -2152,105 +2164,105 @@ export function HomeContent() {
               {[
                 [
                   "https://flow.funnyfunny.cloud/",
-                  "🧵 FLOW 커뮤니티",
-                  "쓰레드+디씨 감성으로 소통하는 게시판",
-                  "익명 글쓰기, 실시간 반응, 주제별 스레드로 바로 대화 시작",
+                  "🧵 FLOW Community",
+                  "A board with thread + forum vibes",
+                  "Anonymous posting, live reactions, and topic threads to start chatting fast",
                 ],
                 [
                   "https://video.funnyfunny.cloud",
                   "🎬 AutoCut Studio",
-                  "영상 자동 하이라이트/점프컷",
-                  "침묵 구간을 감지해 하이라이트 타임라인과 쇼츠 구간을 뽑아 유튜버 편집 시간을 줄여줍니다.",
+                  "Auto highlight & jump cuts",
+                  "Detects silence to extract highlight timelines and shorts to cut editing time.",
                 ],
                 [
                   "https://file.funnyfunny.cloud/",
-                  "🗜️ 로컬 이미지 최적화 & 파일 인사이트",
-                  "드래그 한 번으로 이미지 용량 줄이기 + 파일 정보 확인",
-                  "WebP/JPEG 재인코딩·자동 리사이즈로 최적화하고, 업로드 없이 파일 메타·SHA-256·이미지/PDF/텍스트 미리보기를 제공합니다.",
+                  "🗜️ Local Image Optimizer & File Insights",
+                  "One drag to shrink images + view file details",
+                  "Re-encode WebP/JPEG, auto-resize, and view file metadata, SHA-256, plus image/PDF/text previews without uploads.",
                 ],
                 [
                   "https://meta.funnyfunny.cloud",
                   "🧰 Meta Kit — SEO · OG · Favicon",
-                  "메타태그/공유/아이콘을 한 번에 생성하고 복붙",
-                  "SEO·OG·Twitter 카드·파비콘 세트를 입력 → 생성 → 복사하며, OG 이미지 텍스트는 영문만 사용하는 메타 번들러",
+                  "Generate meta tags, sharing cards, and icons in one go",
+                  "Enter SEO/OG/Twitter cards + favicon set → generate → copy. OG image text supports English only.",
                 ],
                 [
                   "https://image.funnyfunny.cloud",
-                  "🖼️ 이미지 합치기 & PDF 변환",
-                  "여러 장 업로드하고 정렬해 한 장/ PDF로 저장",
-                  "드래그로 순서를 맞추고 JPG·PNG·PDF로 한 번에 묶어주는 변환기",
+                  "🖼️ Image Merge & PDF Converter",
+                  "Upload multiple images, reorder, and save as one image or PDF",
+                  "Drag to order and export to JPG/PNG/PDF in one batch",
                 ],
                 [
                   "https://space.funnyfunny.cloud",
-                  "📐 평수 계산기",
-                  "평↔제곱미터 변환 + 대표 평형 확인",
-                  "원룸·오피스텔·아파트 평형을 빠르게 감 잡을 수 있는 면적 변환 계산기",
+                  "📐 Pyeong Calculator",
+                  "Convert pyeong ↔ square meters + check typical sizes",
+                  "Quick area converter for studios, officetels, and apartments",
                 ],
                 [
                   "https://ocr.funnyfunny.cloud",
-                  "🔍 이미지 텍스트 추출",
-                  "사진 속 글자를 자동으로 읽어 텍스트로 복사",
-                  "영수증·문서·메모를 찍으면 글자를 추출해 바로 클립보드/파일로 저장할 수 있는 OCR 도구",
+                  "🔍 Image Text Extractor",
+                  "Auto-read text in photos and copy as text",
+                  "OCR tool that extracts text from receipts, documents, or notes to clipboard or file",
                 ],
                 [
                   "https://audio.funnyfunny.cloud",
                   "🎵 Simple Audio Editor",
-                  "브라우저에서 바로 사용하는 오디오 편집 도구",
-                  "설치 없이 트림, 병합, 내보내기 — 100% 클라이언트 사이드",
+                  "Edit audio directly in the browser",
+                  "Trim, merge, export with no install — 100% client-side",
                 ],
                 [
                   "https://vocal.funnyfunny.cloud",
-                  "🎤 두성터득기",
-                  "헤드보이스·두성 연습 코치",
-                  "호흡·공명 워밍업과 음계 따라 부르기로 하루 5분 발성 루틴을 잡을 수 있어요.",
+                  "🎤 Head Voice Trainer",
+                  "Head voice practice coach",
+                  "Build a 5-minute routine with breathing, resonance warmups, and scale-following.",
                 ],
                 [
                   "https://time.funnyfunny.cloud",
-                  "⏰ 예매는타이밍",
-                  "정확한 서버시간 조회, 예매 도우미",
-                  "시간 관련 모든 계산을 한 곳에서.",
+                  "⏰ Time Checker",
+                  "Accurate server time and booking helper",
+                  "All time-related calculations in one place.",
                 ],
                 [
                   "https://news.funnyfunny.cloud",
-                  "📰 오늘의 IT 뉴스",
-                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
-                  "최신 뉴스와 IT 정보를 한눈에.",
+                  "📰 IT News Today",
+                  "Quick summaries of local and global IT news",
+                  "See the latest tech news at a glance.",
                 ],
                 [
                   "https://saju.funnyfunny.cloud/",
-                  "🔮 사주풀이 · 신토정비결",
-                  "사주풀이와 신토정비결 요약",
-                  "생년월일/시간 입력으로 사주팔자 분석, 올해·이번 달 운세 흐름을 간단히 정리합니다.",
+                  "🔮 Four Pillars & Shinto Fortune",
+                  "Four pillars and Shinto fortune summary",
+                  "Enter birth date/time to summarize this year and month trends.",
                 ],
                 [
                   "https://weather.funnyfunny.cloud",
-                  "🌤️ 지금날씨",
-                  "내 근처와 주변 날씨 조회",
-                  "초미세먼지, 자외선, 체감온도 등의 정보를 제공합니다.",
+                  "🌤️ Current Weather",
+                  "Check nearby weather conditions",
+                  "Includes fine dust, UV, and feels-like temperature.",
                 ],
                 [
                   "https://pick.funnyfunny.cloud",
-                  "🍿 오늘 뭐 볼까? (OTT 픽)",
-                  "검색 없이 버튼 몇 번으로 바로 추천받는 영화·드라마",
-                  "한국 OTT만 모아 실패 없는 선택을 보여주는 픽 서비스",
+                  "🍿 What Should I Watch? (OTT Picks)",
+                  "Get movie or drama picks in a few clicks",
+                  "Curated Korean OTT picks for no-regrets choices",
                 ],
                 [
                   "https://emojicon.funnyfunny.cloud",
                   "🎨 EmojiCon Studio",
-                  "웹/앱용 이모지 아이콘 스튜디오",
-                  "이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 아이콘까지 한 번에 생성",
+                  "Emoji icon studio for web and apps",
+                  "Enter one emoji to generate icons, favicons, and app store sizes",
                 ],
                 [
                   "https://snaptrail.funnyfunny.cloud",
                   "📍 SnapTrail",
-                  "추억 타임라인 생성기",
-                  "사진을 연도와 월별, 지역으로 자동 그룹화하여 시간순으로 정리된 타임라인을 제공",
+                  "Memory timeline maker",
+                  "Auto-group photos by year, month, and region to build a chronological timeline",
                 ],
                 [
                   "https://day.funnyfunny.cloud",
-                  "📅 D-day 계산기",
-                  "날짜 계산, D-Day, N일 후, 기념일, 위젯",
-                  "중요한 날짜를 쉽게 관리하세요.",
+                  "📅 D-day Calculator",
+                  "Date math, D-Day, N days later, anniversaries, widgets",
+                  "Manage important dates easily.",
                 ],
               ].map(([href, title, desc, detail]) => (
                 <a
@@ -2269,12 +2281,12 @@ export function HomeContent() {
           </div>
           <details className="sm:hidden rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200">
             <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-slate-900">
-              <span className="font-semibold">커뮤니티 / 게시판</span>
-              <span className="text-sm text-blue-600">열기</span>
+              <span className="font-semibold">Community / Board</span>
+              <span className="text-sm text-blue-600">Open</span>
             </summary>
             <div className="px-4 pb-4">
               <p className="text-sm text-slate-600 mb-2">
-                쓰레드+디씨 감성 FLOW 게시판, 모바일에서도 바로 글쓰기/읽기
+                FLOW board with thread + forum vibes, post and read on mobile
               </p>
               <a
                 href="https://flow.funnyfunny.cloud/"
@@ -2282,7 +2294,7 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:shadow-md transition"
               >
-                FLOW 열기
+                Open FLOW
               </a>
             </div>
           </details>
@@ -2291,7 +2303,7 @@ export function HomeContent() {
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧭</span>
               <h3 className="text-xl font-bold">
-                나를 이해하는 가장 쉬운 방법
+                The simplest way to understand me
               </h3>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -2300,10 +2312,10 @@ export function HomeContent() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🧠</span>
                     <h4 className="font-semibold text-slate-900">
-                      심리 · 성향
+                      Psychology & Traits
                     </h4>
                   </div>
-                  <span className="text-xs text-slate-600">3분 컷</span>
+                  <span className="text-xs text-slate-600">3-minute quick</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2312,7 +2324,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🌱 오늘의 나, 잘했다
+                    🌱 Today, Well Done
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2320,7 +2332,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🔮 2026년의 나, 지금 결정된다
+                    🔮 Your 2026 Starts Now
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2328,7 +2340,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧠 하루 정신 체력 지수
+                    🧠 Daily Mental Energy Index
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2336,7 +2348,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ⚡ 인생 에너지 누수 / 배분
+                    ⚡ Life Energy Leak / Allocation
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2344,7 +2356,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛋️ 이 정도면 쉬어야 할까?
+                    🛋️ Should I Rest Now?
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2352,7 +2364,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🚀 하루 생산성 체크 테스트
+                    🚀 Daily Productivity Check
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2360,7 +2372,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    😴 귀찮음 진단기
+                    😴 Laziness Check
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2368,7 +2380,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🙃 나를 힘들게 하는 인간 유형
+                    🙃 People Who Drain Me
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2376,7 +2388,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🔮 SoulPrint — 출생 성향 분석
+                    🔮 SoulPrint — Birth Trait Analysis
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2384,7 +2396,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎵 나는 몇 년생 감성인가
+                    🎵 My Birth-Year Vibe
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2392,7 +2404,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍺 주량 MBTI
+                    🍺 Drinking MBTI
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2400,7 +2412,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧬 EGO 테스트
+                    🧬 EGO Test
                   </a>
                 </div>
               </div>
@@ -2409,10 +2421,10 @@ export function HomeContent() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">💰</span>
                     <h4 className="font-semibold text-slate-900">
-                      돈 · 재테크
+                      Money & Investing
                     </h4>
                   </div>
-                  <span className="text-xs text-slate-600">현실 점검</span>
+                  <span className="text-xs text-slate-600">Reality check</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2421,7 +2433,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💸 비트코인 안 산 죄
+                    💸 Bitcoin FOMO Check
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2429,7 +2441,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🏠 집 못 산 죄
+                    🏠 No-Home Buyer Guilt
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2437,7 +2449,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📈 투자 확신 빌더
+                    📈 Investment Confidence Builder
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2445,7 +2457,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📐 평수 계산기
+                    📐 Pyeong Calculator
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2453,7 +2465,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧾 올해 나의 인생 소비 보고서
+                    🧾 My Spending Report This Year
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2461,7 +2473,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛡️ 자산 방탄 지수
+                    🛡️ Asset Shield Index
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2469,7 +2481,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧮 자산 비중 진단
+                    🧮 Asset Allocation Check
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2477,7 +2489,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎓 사교육 지옥도
+                    🎓 Private Education Burn Map
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2485,7 +2497,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📊 대한민국 평균 vs 나
+                    📊 Korea Average vs Me
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2493,7 +2505,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💸 내가 안 산 것들의 총자산
+                    💸 Total Worth of What I Skipped
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2501,7 +2513,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ♻️ 내 인생 낭비력 지수
+                    ♻️ Life Waste Index
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2509,7 +2521,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ☕ 카페 지출 역전 계산
+                    ☕ Cafe Spend Break-even
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2517,7 +2529,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍺 그때 마신 술, 지금 얼마?
+                    🍺 How Much Is That Drink Now?
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2525,7 +2537,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💄 꾸밈비 파산 테스트
+                    💄 Beauty Spend Bankrupt Check
                   </a>
                 </div>
               </div>
@@ -2534,10 +2546,10 @@ export function HomeContent() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🌿</span>
                     <h4 className="font-semibold text-slate-900">
-                      건강 · 생활
+                      Health & Lifestyle
                     </h4>
                   </div>
-                  <span className="text-xs text-slate-600">체크 해보기</span>
+                  <span className="text-xs text-slate-600">Quick check</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2546,7 +2558,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ❄️ 이번 겨울, 나를 망치는 것 TOP 1
+                    ❄️ This Winter's Top Problem
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2554,7 +2566,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ☕ 커피중독 테스트
+                    ☕ Coffee Addiction Test
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2562,7 +2574,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛋️ 이 정도면 쉬어야 할까?
+                    🛋️ Should I Rest Now?
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2570,7 +2582,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🩺 건강수명 & 노후 준비
+                    🩺 Healthspan & Retirement Prep
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2578,7 +2590,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍱 오늘 뭐 먹지?
+                    🍱 What Should I Eat Today?
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2586,7 +2598,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍢 오늘의 안주 추천
+                    🍢 Today's Snack Pairing
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2594,7 +2606,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ⏰ 인생 남은 시간 대시보드
+                    ⏰ Life Time Remaining Dashboard
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2602,7 +2614,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🌤️ 지금날씨 — 근처 날씨/자외선
+                    🌤️ Current Weather — local weather/UV
                   </a>
                 </div>
               </div>
@@ -2610,9 +2622,9 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🎉</span>
-                    <h4 className="font-semibold text-slate-900">재미 · 밈</h4>
+                    <h4 className="font-semibold text-slate-900">Fun & Memes</h4>
                   </div>
-                  <span className="text-xs text-slate-600">1분 힐링</span>
+                  <span className="text-xs text-slate-600">1-minute chill</span>
                 </div>
                 <div className="space-y-2 text-sm text-slate-700">
                   <a
@@ -2621,7 +2633,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🤣 오늘의 아재개그
+                    🤣 Dad Joke of the Day
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2629,7 +2641,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🔮 오늘의 한 줄 운세
+                    🔮 One-line Fortune for Today
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2637,7 +2649,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ⚽ 우리 둘의 조합 축구선수
+                    ⚽ Our Combo Footballer
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2645,7 +2657,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧠 오늘의 마음챙김
+                    🧠 Mindfulness Line of the Day
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2653,7 +2665,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎱 네온 핀볼 랜덤 뽑기
+                    🎱 Neon Pinball Random Picker
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2661,7 +2673,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🥁 드럼 비트 연습기
+                    🥁 Drum Beat Practice
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2669,7 +2681,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍿 오늘 뭐 볼까? (OTT 픽)
+                    🍿 What Should I Watch? (OTT Picks)
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2677,7 +2689,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📍 SnapTrail — 추억 타임라인
+                    📍 SnapTrail — Memory Timeline
                   </a>
                 </div>
               </div>
@@ -2686,45 +2698,45 @@ export function HomeContent() {
           <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">💡</span>
-              <h3 className="text-xl font-bold">오늘의 한 줄 인사이트</h3>
+              <h3 className="text-xl font-bold">Today's One-line Insight</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
                 [
                   "https://heal.funnyfunny.cloud",
-                  "💌 우연이 아닐지도",
-                  "클릭 한 번으로 위로 카드 한 장",
-                  "오늘 필요한 말을 우연처럼 전달",
+                  "💌 Maybe Not a Coincidence",
+                  "One click for a comfort card",
+                  "Delivers the words you need today",
                 ],
                 [
                   "https://fortune.funnyfunny.cloud",
-                  "🔮 오늘의 한 줄 운세",
-                  "기분에 따라 골라보는 오늘의 운세 한 줄",
-                  "지금 기분과 상황에 맞는 메시지를 바로 확인",
+                  "🔮 One-line Fortune for Today",
+                  "Pick a fortune line based on your mood",
+                  "See a message that matches your moment",
                 ],
                 [
                   "https://wisdom.funnyfunny.cloud",
-                  "📜 오늘의 지혜",
-                  "Daily Wisdom, 하루 한 문장",
-                  "성경의 메시지에서 영감을 받은 오늘의 한 문장",
+                  "📜 Today's Wisdom",
+                  "Daily Wisdom in one line",
+                  "A one-line message inspired by biblical teachings",
                 ],
                 [
                   "https://news.funnyfunny.cloud",
-                  "📰 오늘의 IT 뉴스",
-                  "국내 및 해외 IT 관련 뉴스를 빠르게 요약",
-                  "최신 뉴스와 IT 정보를 한눈에.",
+                  "📰 IT News Today",
+                  "Quick summaries of local and global IT news",
+                  "See the latest tech updates at a glance.",
                 ],
                 [
                   "https://joke.funnyfunny.cloud",
-                  "😄 오늘의 아재개그",
-                  "공유각 터지는 개그 모음",
-                  "웃음은 건강에 최고",
+                  "😄 Dad Joke of the Day",
+                  "Share-worthy joke collection",
+                  "Laughter is the best medicine",
                 ],
                 [
                   "https://mind.funnyfunny.cloud",
-                  "🧠 오늘의 마음챙김",
-                  "오늘의 명언을 한 줄로 힐링",
-                  "마음을 가벼워지게",
+                  "🧠 Mindfulness Line of the Day",
+                  "Heal with a one-line quote",
+                  "Lighten your mind",
                 ],
               ].map(([href, title, desc, detail]) => (
                 <a
@@ -2744,35 +2756,35 @@ export function HomeContent() {
 
           <div className="mt-10">
             <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              게임
+              Games
             </h3>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <a
                 href="https://run.funnyfunny.cloud"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="달리기 — 공룡 달리기 스타일 랭킹 게임"
-                data-amp-service="달리기"
+                aria-label="Run — dino runner-style leaderboard game"
+                data-amp-service="Run"
                 data-amp-section="game"
                 className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🦖</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    랭킹 지원
+                    Leaderboard
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">달리기</h4>
+                <h4 className="font-bold text-lg leading-snug">Run</h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  공룡 달리기 스타일 랭킹 게임
+                  Dino runner-style ranking game
                 </p>
               </a>
               <a
                 href="https://charm.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="참참참! (NEON ARCADE) - 라인만 바꿔서 미사일을 피하기만 하면 돼요."
-                data-amp-service="참참참! (NEON ARCADE)"
+                aria-label="Cham Cham Cham! (NEON ARCADE) - switch lanes to dodge missiles"
+                data-amp-service="Cham Cham Cham! (NEON ARCADE)"
                 data-amp-section="game"
                 className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
@@ -2782,17 +2794,19 @@ export function HomeContent() {
                     NEON ARCADE
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">참참참!</h4>
+                <h4 className="font-bold text-lg leading-snug">
+                  Cham Cham Cham!
+                </h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  라인만 바꿔서 미사일을 피하기만 하면 돼요.
+                  Just switch lanes to dodge the missiles.
                 </p>
               </a>
               <a
                 href="https://downy.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="다우니 (NEON STAIRS) - 라인만 바꿔서 계단을 밟고, 떨어지면 끝!"
-                data-amp-service="다우니 (NEON STAIRS)"
+                aria-label="Downy (NEON STAIRS) - switch lanes to climb stairs, fall and it's over"
+                data-amp-service="Downy (NEON STAIRS)"
                 data-amp-section="game"
                 className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
@@ -2802,39 +2816,39 @@ export function HomeContent() {
                     NEON STAIRS
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">다우니</h4>
+                <h4 className="font-bold text-lg leading-snug">Downy</h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  라인만 바꿔서 계단을 밟고, 떨어지면 끝!
+                  Switch lanes to step on stairs, fall and it's over!
                 </p>
               </a>
               <a
                 href="https://tet.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="하루 한판 테트리스 - 싱글(AI)과 2인 플레이를 지원하는 테트리스 게임"
-                data-amp-service="하루 한판 테트리스"
+                aria-label="One Round Tetris - single (AI) and 2-player modes"
+                data-amp-service="One Round Tetris"
                 data-amp-section="game"
                 className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🧱</span>
                   <span className="text-xs font-semibold text-orange-600">
-                    2인 플레이
+                    2-player
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
-                  하루 한판 테트리스
+                  One Round Tetris
                 </h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  싱글(AI)과 2인 플레이를 지원하는 테트리스
+                  Tetris with single (AI) and 2-player modes
                 </p>
               </a>
               <a
                 href="https://random.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="네온 핀볼 랜덤 뽑기 - 핀볼판에서 굴러가는 공이 랜덤 픽을 골라주는 뽑기"
-                data-amp-service="네온 핀볼 랜덤 뽑기"
+                aria-label="Neon Pinball Random Picker - the rolling ball picks for you"
+                data-amp-service="Neon Pinball Random Picker"
                 data-amp-section="game"
                 className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
               >
@@ -2845,10 +2859,10 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
-                  네온 핀볼 랜덤 뽑기
+                  Neon Pinball Random Picker
                 </h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  핀볼판에서 굴러가는 공이 랜덤 픽을 골라줘요.
+                  The rolling ball on the board picks randomly.
                 </p>
               </a>
             </div>
@@ -2860,10 +2874,10 @@ export function HomeContent() {
                   Winter Picks
                 </p>
                 <h4 className="mt-1 text-2xl font-bold">
-                  겨울에 보기 좋은 인기 테스트
+                  Popular tests to enjoy in winter
                 </h4>
                 <p className="mt-2 text-sm text-emerald-50/90">
-                  지금 많이 보는 링크 중 마음에 드는 것만 가볍게 챙겨가세요.
+                  Pick a few favorites from what people are viewing right now.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
@@ -2873,7 +2887,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
                 >
-                  겨울 망치는 원인
+                  Winter Mood Wrecker
                 </a>
                 <a
                   href="https://year.funnyfunny.cloud"
@@ -2881,7 +2895,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
                 >
-                  인생 소비 보고서
+                  Life Spending Report
                 </a>
                 <a
                   href="https://bit.funnyfunny.cloud"
@@ -2889,7 +2903,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  비트코인 죄책감
+                  Bitcoin Guilt
                 </a>
                 <a
                   href="https://pick.funnyfunny.cloud"
@@ -2897,7 +2911,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  OTT 픽
+                  OTT Picks
                 </a>
                 <a
                   href="https://drain.funnyfunny.cloud"
@@ -2905,7 +2919,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  에너지 누수
+                  Energy Leak
                 </a>
                 <a
                   href="https://rest.funnyfunny.cloud"
@@ -2913,7 +2927,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  쉬어야 할까
+                  Should I Rest?
                 </a>
                 <a
                   href="https://coffee.funnyfunny.cloud"
@@ -2921,7 +2935,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  커피 중독
+                  Coffee Addiction
                 </a>
                 <a
                   href="https://hand.funnyfunny.cloud"
@@ -2929,7 +2943,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  손바닥 썰 푼다
+                  Palm Story Time
                 </a>
                 <a
                   href="https://mind.funnyfunny.cloud"
@@ -2937,7 +2951,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  오늘의 마음챙김
+                  Mindfulness Line
                 </a>
               </div>
             </div>
@@ -2953,7 +2967,7 @@ export function HomeContent() {
                 <p className="text-xs uppercase tracking-[0.2em] text-emerald-700">
                   FAQ
                 </p>
-                <h3 className="text-xl font-bold">자주 묻는 질문</h3>
+                <h3 className="text-xl font-bold">Frequently Asked Questions</h3>
               </div>
             </div>
             <div className="divide-y divide-emerald-100">
@@ -2978,15 +2992,15 @@ export function HomeContent() {
           <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">🧪</span>
-              <h3 className="text-xl font-bold">전체 서비스</h3>
+              <h3 className="text-xl font-bold">All Services</h3>
             </div>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm text-emerald-100">
-                  지금 {allServices.length}개의 서비스가 준비되어 있어요.
+                  {allServices.length} services are ready right now.
                 </p>
                 <p className="text-xs text-emerald-100/80">
-                  키워드로 검색하거나 바로 클릭해보세요.
+                  Search by keyword or click to open.
                 </p>
               </div>
               <label className="relative w-full sm:w-80">
@@ -3021,9 +3035,9 @@ export function HomeContent() {
             </div>
             {filteredServices.length === 0 ? (
               <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
-                <p>해당 키워드와 맞는 테스트가 없어요.</p>
+                <p>No tests match that keyword.</p>
                 <p className="text-xs text-slate-400 mt-1">
-                  철자나 다른 키워드를 입력해 보세요.
+                  Try a different spelling or keyword.
                 </p>
               </div>
             ) : (
@@ -3081,12 +3095,12 @@ export function HomeContent() {
             <div className="mt-3">
               <a
                 href="/guide"
-                aria-label="가이드 모두 보기"
-                data-amp-service="가이드 모두 보기"
+                aria-label="View all guides"
+                data-amp-service="View all guides"
                 data-amp-section="guides"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
               >
-                가이드 모두 보기
+                View all guides
               </a>
             </div>
           </div>
@@ -3101,7 +3115,7 @@ export function HomeContent() {
       >
         <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-gradient-to-r from-red-600 via-amber-400 to-emerald-600 text-slate-900 rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
           <div className="text-sm font-semibold drop-shadow">
-            부담 없이 즐기세요
+            Enjoy without pressure
           </div>
           <div className="flex items-center gap-2">
             <a
@@ -3114,7 +3128,7 @@ export function HomeContent() {
               data-random-btn
               className="px-3 py-2 rounded-full bg-white/90 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
             >
-              랜덤 선물
+              Random gift
             </button>
           </div>
         </div>

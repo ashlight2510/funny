@@ -7,10 +7,10 @@ export function HeaderSimple() {
         </a>
         <nav className="space-x-4 text-sm hidden sm:flex">
           <a href="/" className="hover:text-blue-600">
-            홈
+            Home
           </a>
           <a href="/guide" className="hover:text-blue-600">
-            가이드
+            Guides
           </a>
           <a
             href="http://flow.funnyfunny.cloud/"

@@ -1,1098 +1,1112 @@
-export const guides = [
+const rawGuides = [
   {
     slug: "autocut-studio",
-    title: "AutoCut Studio — 영상 자동 하이라이트/점프컷",
+    title: "AutoCut Studio — Auto Highlights & Jump Cuts",
     subtitle:
-      "영상 업로드 → 침묵 감지 → 하이라이트/쇼츠 타임라인 자동 생성. 타임스탬프를 복사해 바로 편집이나 업로드에 붙여넣을 수 있습니다.",
-    category: "크리에이터 도구",
+      "Upload video → detect silence → auto-generate highlight/shorts timelines. Copy timestamps to paste into edits or uploads.",
+    category: "Creator Tools",
     heroEmoji: "🎬",
     serviceUrl: "https://video.funnyfunny.cloud",
-    ctaLabel: "AutoCut Studio 바로가기",
+    ctaLabel: "Open AutoCut Studio",
     metaDescription:
-      "유튜브·쇼츠용 영상에서 침묵 구간을 감지해 점프컷/하이라이트 타임라인을 자동으로 뽑아주는 AutoCut Studio 가이드. 쇼츠 구간 추천, 타임스탬프/EDL 복사 팁까지 한 번에 확인하세요.",
+      "AutoCut Studio guide for YouTube/Shorts: detect silence to generate jump-cut/highlight timelines, with shorts suggestions and timestamp/EDL copy tips.",
     keywords: [
       "AutoCut Studio",
-      "영상 자동 편집",
-      "침묵 제거",
-      "점프컷",
-      "타임스탬프",
-      "유튜브 쇼츠",
+      "auto video editing",
+      "silence removal",
+      "jump cuts",
+      "timestamps",
+      "YouTube Shorts",
     ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "업로드만 하면 침묵 구간을 스캔해 말이 집중된 부분을 하이라이트로 추출합니다.",
-          "긴 영상에서 쇼츠로 쓸 만한 고밀도 구간을 빠르게 골라내고, 점프컷을 위한 타임라인을 자동으로 만듭니다.",
+          "Upload a video to scan silence and extract speech-heavy highlights.",
+          "Quickly find dense segments for shorts and auto-build a jump-cut timeline.",
         ],
       },
       {
-        heading: "시작하기: 업로드와 기준 잡기",
+        heading: "Get started: upload and set thresholds",
         body: [
-          "Step 1. 영상 파일을 드래그하거나 선택해 올립니다. 업로드가 끝나면 자동으로 스캔이 시작됩니다.",
-          "Step 2. '침묵 기준'을 조절해 하이라이트 범위를 세밀하게 맞춥니다. 기준을 올리면 말이 많은 부분만, 낮추면 에너지가 있는 대부분의 구간을 잡아냅니다.",
-          "스캔 속도/정확도를 조절해 장시간 영상도 빠르게 훑을 수 있습니다. 기준을 바꾸면 타임라인이 바로 다시 계산됩니다.",
+          "Step 1. Drag or select a video file. Scanning starts after upload.",
+          "Step 2. Adjust the silence threshold to fine-tune highlights. Higher captures only talk-heavy parts; lower captures most energetic parts.",
+          "Tune scan speed/accuracy for long videos. Changing the threshold recalculates the timeline immediately.",
         ],
       },
       {
-        heading: "하이라이트 · 쇼츠 추천 활용법",
+        heading: "Using highlights & shorts suggestions",
         body: [
-          "하이라이트 리스트에서 각 구간을 바로 재생하며 길이를 확인할 수 있습니다.",
-          "쇼츠로 쓸 만한 짧은 구간과 길이 정보를 함께 보여주니, 썸네일/제목 아이디어를 떠올리며 바로 메모하세요.",
-          "필요 없는 구간은 리스트에서 빼고, 남긴 구간만 타임스탬프로 복사해 두면 이후 편집기가 없어도 컷 순서를 정리할 수 있습니다.",
+          "Play each highlight segment and check its length.",
+          "Short-form candidates include length info, so you can note thumbnail/title ideas immediately.",
+          "Remove unwanted segments and copy the remaining timestamps to organize cuts without an editor.",
         ],
       },
       {
-        heading: "내보내기와 협업 팁",
+        heading: "Export & collaboration tips",
         body: [
-          "📋 버튼 한 번으로 타임스탬프/EDL을 복사해 프리미어/파이널컷/캡컷에 붙여 넣을 수 있습니다.",
-          "하이라이트 요약 텍스트까지 함께 복사해 두면 업로드 설명란 작성이나 편집자 전달 메모에 바로 쓸 수 있습니다.",
-          "스캔 결과는 브라우저에서만 사용되니, 다른 편집기와 연동하려면 복사한 타임스탬프를 저장해 두세요.",
+          "Copy timestamps/EDL with one click for Premiere/Final Cut/CapCut.",
+          "Copy highlight summaries to use in upload descriptions or editor notes.",
+          "Results stay in the browser, so save copied timestamps for external workflows.",
         ],
       },
     ],
     faq: [
       {
-        question: "누가 사용하면 좋을까요?",
+        question: "Who is this for?",
         answer:
-          "유튜브/쇼츠 편집 시간을 단축하고 싶은 크리에이터, 팟캐스트·웨비나에서 핵심 구간만 뽑고 싶은 팀에게 특히 유용합니다.",
+          "Creators who want to cut YouTube/Shorts editing time, or teams extracting key segments from podcasts or webinars.",
       },
       {
-        question: "영상은 어디에서 처리되나요?",
+        question: "Where is the video processed?",
         answer:
-          "브라우저에서 바로 스캔해 하이라이트를 계산합니다. 대용량 영상은 기기 성능과 네트워크 속도에 따라 시간이 달라질 수 있습니다.",
+          "It scans in the browser. Large files may take longer depending on device performance and network speed.",
       },
       {
-        question: "결과를 어떻게 활용하나요?",
+        question: "How do I use the results?",
         answer:
-          "하이라이트 리스트에서 원하는 구간만 남긴 뒤 타임스탬프/요약을 복사해 편집기, 업로드 설명란, 협업 메모 등에 붙여넣으면 됩니다.",
+          "Keep only the segments you want, then copy timestamps/summaries into editors, upload descriptions, or collaboration notes.",
       },
       {
-        question: "쇼츠 추천도 해주나요?",
+        question: "Does it suggest shorts?",
         answer:
-          "네. 침묵이 적고 에너지가 높은 구간을 쇼츠 후보로 표시해 길이와 시작·끝 시간을 바로 확인할 수 있습니다.",
+          "Yes. It marks low-silence, high-energy segments as shorts with length and start/end times.",
       },
       {
-        question: "복사한 타임스탬프는 어디에 쓰면 좋나요?",
+        question: "Where should I use copied timestamps?",
         answer:
-          "프리미어·파이널컷·캡컷 타임라인 정리, 유튜브 챕터/설명란, 편집자 전달용 메모 등 컷 분류가 필요한 곳에 붙여넣어 활용하세요.",
+          "Use them for Premiere/Final Cut/CapCut timelines, YouTube chapters/descriptions, or editor handoff notes.",
       },
     ],
     disclaimer:
-      "AutoCut Studio는 현재 베타 버전입니다. 긴 영상이나 낮은 사양 기기에서는 스캔 시간이 길어질 수 있으며, 결과 정확도는 음원/녹음 상태에 따라 달라집니다.",
+      "AutoCut Studio is currently in beta. Long videos or low-end devices may take longer to scan, and accuracy depends on the audio recording.",
   },
   {
     slug: "chef-judge-choice",
-    title: "셰프 심사위원: 오늘의 선택 심사 가이드",
+    title: "Chef Judge: Today's Choice Review Guide",
     subtitle:
-      "요리는 안 합니다. 대신 오늘의 선택을 심사합니다. 딸각 한 번으로 심사 멘트를 받는 밈형 선택 서비스 활용법을 정리했습니다.",
-    category: "엔터테인먼트",
+      "No cooking here. Instead, we judge today's choices. A meme-style service that delivers verdict lines with one click.",
+    category: "Entertainment",
     heroEmoji: "👨‍🍳",
     serviceUrl: "https://chef.funnyfunny.cloud/",
-    ctaLabel: "셰프 심사위원 열기",
+    ctaLabel: "Open Chef Judge",
     metaDescription:
-      "셰프 심사위원: 오늘의 선택 심사 가이드 — 안성재·임짱·손종원 밈 감성 심사 멘트로 오늘의 선택을 딸깍 평가받는 법. 메뉴, 콘텐츠, 일정 등 고민되는 선택지를 빠르게 정리하세요.",
+      "Chef Judge guide — get meme-style verdicts inspired by Ahn Sung-jae, Im Jjang, and Son Jong-won. Quickly resolve menu, content, or schedule choices.",
     keywords: [
-      "셰프 심사위원",
-      "오늘의 선택 심사",
-      "안성재",
-      "임짱",
-      "손종원",
-      "심사위원 밈",
-      "딸각",
-      "선택 장애",
+      "Chef Judge",
+      "choice review",
+      "Ahn Sung-jae",
+      "Im Jjang",
+      "Son Jong-won",
+      "judge meme",
+      "one-click",
+      "decision fatigue",
     ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "메뉴, 콘텐츠, 일정 등 오늘의 선택지를 입력하고 심사위원 멘트를 받을 수 있습니다.",
-          "안성재·임짱·손종원 밈 톤을 닮은 심사 말투로 선택 포인트를 빠르게 정리합니다.",
-          "짧은 결과 카드처럼 나오므로 스크린샷/공유용으로도 활용하기 좋습니다.",
+          "Enter menu, content, or schedule choices and receive judge-style verdicts.",
+          "The meme tone helps summarize decision points quickly.",
+          "Results appear as short cards, making them easy to screenshot and share.",
         ],
       },
       {
-        heading: "시작하기: 선택지 딸깍 넣기",
+        heading: "Get started: plug in choices",
         body: [
-          "Step 1. 오늘 고민하는 선택지를 2개 이상 준비합니다. (예: 짜장 vs 짬뽕, 드라마 vs 영화)",
-          "Step 2. 선택지를 입력하거나 제공되는 예시 중에서 골라 딸깍 실행합니다.",
-          "Step 3. 심사 멘트를 확인하고, 마음에 드는 선택이 나오면 바로 결정합니다.",
+          "Step 1. Prepare at least two options (e.g., noodles vs noodles, drama vs movie).",
+          "Step 2. Enter your options or pick from examples, then click.",
+          "Step 3. Read the verdict and decide once a winner stands out.",
         ],
       },
       {
-        heading: "심사 멘트 활용 팁",
+        heading: "Using the verdicts",
         body: [
-          "동료나 친구와 의견이 갈릴 때, 심사 멘트를 캡처해 공유하면 논쟁이 깔끔해집니다.",
-          "결과가 애매하면 선택지 표현을 바꿔 다시 딸깍해 보세요. 멘트 톤이 달라지며 결정 포인트가 선명해집니다.",
-          "결과 카드에 나오는 키워드를 오늘의 목표로 짧게 메모해 두면 우유부단함을 줄일 수 있습니다.",
+          "When opinions differ, share a verdict screenshot to end the debate quickly.",
+          "If results feel vague, tweak the option wording and try again for clearer decision cues.",
+          "Use verdict keywords as quick notes to reduce indecision.",
         ],
       },
       {
-        heading: "유행 키워드로 더 재미있게",
+        heading: "Have more fun with trending keywords",
         body: [
-          "안성재·임짱·손종원 같은 심사위원 밈 키워드로 검색 유입이 많습니다.",
-          "메뉴/선택/심사/딸각 같은 트렌드 키워드를 조합하면 공유 도달 범위가 넓어집니다.",
+          "Search traffic often comes from judge meme keywords like Ahn Sung-jae, Im Jjang, and Son Jong-won.",
+          "Combining menu/choice/judgement/one-click keywords can expand share reach.",
         ],
       },
     ],
     faq: [
       {
-        question: "정말 셰프가 심사해 주나요?",
-        answer: "아니요. 실제 심사가 아닌 밈/패러디 톤의 재미용 결과입니다.",
+        question: "Is this an actual chef review?",
+        answer: "No. It is a meme/parody-style result for fun.",
       },
       {
-        question: "어떤 선택에 쓰면 좋나요?",
+        question: "What decisions is it good for?",
         answer:
-          "메뉴 선택, 뭐 볼지 고르기, 일정/장소 결정처럼 가볍게 결정하기 어려운 상황에 잘 맞습니다.",
+          "Menu picks, what to watch, or light schedule/location decisions.",
       },
       {
-        question: "결과는 저장되나요?",
+        question: "Are results saved?",
         answer:
-          "결과는 화면에서 바로 확인할 수 있으며, 필요하면 캡처나 공유로 기록해 두세요.",
+          "Results appear on screen. Capture or share if you want to keep them.",
       },
       {
-        question: "왜 딸깍이라고 하나요?",
+        question: "Why call it one-click?",
         answer:
-          "한 번의 클릭으로 바로 심사 멘트가 뜨는 빠른 사용 흐름을 강조한 표현입니다.",
+          "It highlights the instant verdict experience after a single click.",
       },
     ],
     disclaimer:
-      "본 서비스는 실제 심사나 공식 인물/프로그램과 무관한 밈형 선택 도구이며, 결과는 재미용 참고 정보입니다.",
+      "This is a meme-style choice tool unrelated to any official judge or program. Results are for fun and reference only.",
   },
   {
     slug: "local-image-optimizer",
-    title: "로컬 이미지 최적화 & 파일 인사이트",
+    title: "Local Image Optimizer & File Insights",
     subtitle:
-      "드래그 한 번으로 WebP/JPEG 재인코딩·자동 리사이즈를 돌리고, 업로드 없이 파일 정보·SHA-256·이미지/PDF/텍스트 미리보기를 확인할 수 있는 로컬 전용 최적화 도구입니다.",
-    category: "크리에이터 도구",
+      "Re-encode WebP/JPEG and auto-resize with one drag, plus view file info, SHA-256, and image/PDF/text previews without uploads.",
+    category: "Creator Tools",
     heroEmoji: "🗜️",
     serviceUrl: "https://file.funnyfunny.cloud",
-    ctaLabel: "로컬 이미지 최적화 열기",
+    ctaLabel: "Open Local Image Optimizer",
     metaDescription:
-      "로컬에서만 동작하는 이미지 최적화 & 파일 인사이트 가이드. WebP/JPEG 재인코딩, 자동 리사이즈, 파일 메타데이터와 SHA-256 해시, 이미지/PDF/텍스트 미리보기 사용법을 정리했습니다.",
+      "Local-only image optimization & file insights guide: WebP/JPEG re-encode, auto-resize, metadata, SHA-256, and image/PDF/text previews.",
     keywords: [
-      "이미지 최적화",
+      "image optimization",
       "WebP",
       "JPEG",
-      "자동 리사이즈",
+      "auto resize",
       "SHA-256",
-      "파일 정보",
-      "로컬 전용",
+      "file info",
+      "local only",
     ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "이미지를 드래그하면 바로 WebP/JPEG로 재인코딩하며, 자동 리사이즈로 용량을 줄입니다.",
-          "서버 업로드 없이 브라우저에서만 처리해 민감한 파일도 안심하고 최적화할 수 있습니다.",
-          "파일 이름, 크기, 해상도, EXIF 등 메타데이터를 한눈에 보고 필요하면 SHA-256 해시를 바로 계산할 수 있습니다.",
-          "이미지뿐 아니라 PDF, 텍스트 파일까지 로컬 미리보기로 내용 확인이 가능합니다.",
+          "Drag images to re-encode to WebP/JPEG and reduce size with auto-resize.",
+          "All processing happens in the browser, so sensitive files never upload.",
+          "View filename, size, resolution, EXIF, and calculate SHA-256 instantly.",
+          "Preview images, PDFs, and text files locally.",
         ],
       },
       {
-        heading: "시작하기: 드래그 & 옵션 설정",
+        heading: "Get started: drag & set options",
         body: [
-          "Step 1. 이미지 또는 파일을 브라우저로 드래그하면 리스트에 바로 추가됩니다.",
-          "Step 2. 출력 포맷(WebP/JPEG)과 품질 슬라이더, 최대 너비/높이 등 리사이즈 옵션을 선택합니다.",
-          "Step 3. 변환을 누르면 최적화 결과와 파일 정보가 나란히 표시되며, 저장 버튼으로 즉시 다운로드할 수 있습니다.",
+          "Step 1. Drag images or files into the browser list.",
+          "Step 2. Choose output format (WebP/JPEG), quality, and max width/height.",
+          "Step 3. Convert to see optimized output and file info side by side, then download.",
         ],
       },
       {
-        heading: "이미지 최적화 포인트",
+        heading: "Image optimization tips",
         body: [
-          "WebP는 용량을 크게 줄이는 데 유리하고, JPEG는 폭넓은 호환성이 장점입니다. 상황에 맞게 포맷을 선택하세요.",
-          "너비/높이 제한을 설정하면 SNS·웹 업로드용으로 빠르게 리사이즈할 수 있습니다.",
-          "품질이 너무 낮게 느껴지면 슬라이더를 올려 재인코딩을 다시 시도해 보세요. 로컬 처리라 반복해도 업로드 부담이 없습니다.",
+          "WebP shrinks size more; JPEG has broader compatibility. Choose per use case.",
+          "Set width/height limits for quick web or social uploads.",
+          "If quality feels low, raise the slider and re-encode. Local processing makes retries easy.",
         ],
       },
       {
-        heading: "파일 정보 · SHA-256 확인하기",
+        heading: "Check file info & SHA-256",
         body: [
-          "파일별 이름, 크기, 해상도, EXIF 등 주요 메타데이터를 바로 확인할 수 있습니다.",
-          "SHA-256 해시는 버튼 한 번으로 계산되며, 다운로드한 결과물이 원본과 동일한지 확인할 때 유용합니다.",
-          "복사 버튼을 눌러 해시와 파일 정보를 바로 기록하거나 공유하세요.",
+          "See name, size, resolution, EXIF, and other metadata instantly.",
+          "Calculate SHA-256 with one click to verify files after download.",
+          "Use the copy button to record or share hashes and file info.",
         ],
       },
       {
-        heading: "미리보기 활용 팁",
+        heading: "Preview tips",
         body: [
-          "이미지, PDF, 텍스트 파일은 업로드 없이 즉시 미리보기로 내용을 확인할 수 있습니다.",
-          "여러 장을 처리할 때는 썸네일을 보며 필요 없는 파일을 바로 제외하고, 최적화된 버전만 다운로드하세요.",
-          "변환 결과와 원본을 번갈아 보며 품질 차이를 체크한 뒤 최종본을 선택하면 실패 없이 정리할 수 있습니다.",
+          "Preview images, PDFs, and text files instantly without uploads.",
+          "Use thumbnails to exclude unnecessary files and download only optimized versions.",
+          "Compare original and converted versions to choose the final output confidently.",
         ],
       },
     ],
     faq: [
       {
-        question: "파일이 서버로 업로드되나요?",
+        question: "Are files uploaded to a server?",
         answer:
-          "아니요. 모든 변환과 정보 조회는 브라우저 안에서만 이뤄집니다. 네트워크 전송 없이 로컬에서 처리됩니다.",
+          "No. All conversions and inspections happen in the browser locally.",
       },
       {
-        question: "어떤 파일을 다룰 수 있나요?",
+        question: "What files are supported?",
         answer:
-          "이미지는 JPG/PNG/WebP를 최적화할 수 있고, 이미지·PDF·텍스트 파일은 업로드 없이 미리보기와 정보 확인이 가능합니다.",
+          "Images (JPG/PNG/WebP) can be optimized, and image/PDF/text files can be previewed and inspected locally.",
       },
       {
-        question: "여러 장을 한 번에 넣어도 되나요?",
+        question: "Can I process multiple files at once?",
         answer:
-          "여러 이미지를 드래그해 순서대로 처리할 수 있습니다. 각 파일의 결과와 정보를 개별로 확인하고 필요한 것만 저장하세요.",
+          "Yes. Drag multiple images and review results per file, saving only what you need.",
       },
       {
-        question: "품질이 마음에 들지 않으면?",
+        question: "What if the quality is not good enough?",
         answer:
-          "포맷을 바꾸거나 품질 슬라이더와 최대 크기 옵션을 조정한 뒤 다시 변환해 보세요. 로컬 처리라 반복해도 부담이 없습니다.",
+          "Switch formats or adjust quality and size limits, then re-convert. Local processing makes retries easy.",
       },
       {
-        question: "SHA-256 해시는 어디에 쓰나요?",
+        question: "What is SHA-256 used for?",
         answer:
-          "다운로드한 결과 파일이 이후에도 변하지 않았는지 검증할 때, 또는 원본과 최적화본을 비교할 때 해시를 기록해 두면 유용합니다.",
+          "Use it to verify file integrity after download or compare originals to optimized versions.",
       },
     ],
     disclaimer:
-      "대용량 파일은 기기 성능에 따라 처리 시간이 길어질 수 있습니다. 브라우저 탭을 닫으면 변환 내역과 해시는 초기화됩니다.",
+      "Large files may take longer depending on device performance. Closing the tab clears conversion history and hashes.",
   },
   {
     slug: "meta-kit",
-    title: "Meta Kit — SEO · OG · Favicon 번들 생성기",
+    title: "Meta Kit — SEO · OG · Favicon Bundle Generator",
     subtitle:
-      "입력 한 번으로 SEO 메타태그, OG/Twitter 카드, 파비콘, OG 이미지 텍스트(영문)를 생성하고 바로 복사해 적용하는 방법을 정리했습니다.",
-    category: "크리에이터 도구",
+      "Generate SEO meta tags, OG/Twitter cards, favicons, and English-only OG image text in one flow, then copy to apply.",
+    category: "Creator Tools",
     heroEmoji: "🧰",
     serviceUrl: "https://meta.funnyfunny.cloud",
-    ctaLabel: "Meta Kit 열기",
+    ctaLabel: "Open Meta Kit",
     metaDescription:
-      "Meta Kit 가이드 — SEO/OG 메타태그, 파비콘, OG 이미지 텍스트(영문)를 입력→생성→복붙하는 법과 공유 미리보기 점검 팁을 정리했습니다.",
+      "Meta Kit guide — enter SEO/OG meta tags, favicons, and English OG image text, generate, then copy. Includes share preview tips.",
     keywords: [
       "Meta Kit",
-      "메타태그 생성",
-      "OG 이미지",
-      "파비콘 생성",
-      "SEO 메타",
+      "meta tag generator",
+      "OG image",
+      "favicon generator",
+      "SEO meta",
       "Open Graph",
-      "OG 텍스트 영어",
+      "OG text English",
     ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "SEO용 메타태그, OG/Twitter 카드, 파비콘, OG 이미지 텍스트(영문)를 한 번에 생성합니다.",
-          "사이트 이름·URL·설명·브랜드 컬러를 입력하면 필요한 코드와 에셋 링크를 묶어서 제공합니다.",
-          "미리보기 섹션에서 공유 요약과 OG 이미지 텍스트를 확인한 뒤 그대로 복사해 붙여넣을 수 있습니다.",
+          "Generate SEO meta tags, OG/Twitter cards, favicons, and English OG image text at once.",
+          "Enter site name, URL, description, and brand color to get the code and asset links.",
+          "Review share previews and OG image text, then copy and paste directly.",
         ],
       },
       {
-        heading: "시작하기: 기본 정보 입력",
+        heading: "Get started: enter basics",
         body: [
-          "사이트 이름, 제목, 설명, 도메인(URL), 브랜드 컬러를 순서대로 입력합니다. 필수 항목을 채울수록 완성도가 높아집니다.",
-          "OG Image Text 필드는 영문만 지원합니다. 서비스 키워드를 영어로 짧게 적어야 글자가 깨지지 않습니다.",
-          "옵션으로 아이콘 배경색·다크모드 여부를 조정해 파비콘 스타일을 맞출 수 있습니다.",
+          "Enter site name, title, description, domain URL, and brand color for best results.",
+          "OG Image Text supports English only, so keep it short to avoid broken glyphs.",
+          "Optionally adjust icon background color and dark mode to match favicon style.",
         ],
       },
       {
-        heading: "결과 확인과 복사",
+        heading: "Review and copy",
         body: [
-          "페이지 하단의 결과 영역에서 `<head>`에 붙여넣을 메타태그와 아이콘 링크를 확인합니다.",
-          "Copy 버튼으로 메타 블록 전체를 복사하거나, OG 이미지 텍스트/파비콘 세트처럼 필요한 부분만 골라 복사하세요.",
-          "Next.js나 React 프로젝트라면 `metadata` 또는 `<Head>` 컴포넌트에 그대로 붙여넣고 URL만 환경에 맞게 확인하면 됩니다.",
+          "Check the generated meta tags and icon links for your `<head>` section.",
+          "Copy the full block or select parts like OG text or favicon sets as needed.",
+          "For Next.js or React, paste into `metadata` or `<Head>` and confirm URLs for your environment.",
         ],
       },
       {
-        heading: "SEO · 공유 품질 점검 팁",
+        heading: "SEO & sharing QA tips",
         body: [
-          "OG/Twitter 카드가 제대로 보이는지 Facebook Sharing Debugger, Twitter Card Validator로 한 번씩 확인하면 안전합니다.",
-          "브랜드 컬러와 파비콘 배경색이 안 맞으면 컬러 값을 조정하고 다시 생성해 보세요. 생성은 클라이언트에서 즉시 반복 가능합니다.",
-          "서비스 이름을 바꾸거나 새 언어 버전을 만들 때는 제목/설명/OG 텍스트를 함께 업데이트해 일관성을 맞추세요.",
+          "Validate OG/Twitter cards using Facebook Sharing Debugger and Twitter Card Validator.",
+          "If colors do not match, adjust them and regenerate instantly on the client.",
+          "When renaming a service or adding a new language, update title/description/OG text together for consistency.",
         ],
       },
     ],
     faq: [
       {
-        question: "입력한 데이터가 서버에 저장되나요?",
+        question: "Is my input data stored on a server?",
         answer:
-          "아니요. 입력 값은 메타 코드 생성을 위해 브라우저에서만 사용되며 서버에 저장하지 않습니다.",
+          "No. Inputs are used only in the browser to generate meta code.",
       },
       {
-        question: "OG 이미지 텍스트는 왜 영어만 지원하나요?",
+        question: "Why is OG image text English-only?",
         answer:
-          "메타 이미지용 텍스트 렌더링이 영문 전용으로 설정돼 있어 한글/특수문자가 깨질 수 있습니다. 키워드를 짧은 영문으로 입력해 주세요.",
+          "The meta image text renderer is English-only, so non-Latin characters may break. Use short English keywords.",
       },
       {
-        question: "파비콘 크기는 어떻게 적용되나요?",
+        question: "How are favicon sizes handled?",
         answer:
-          "다양한 사이즈의 파비콘 링크 태그를 함께 생성해 모바일/데스크톱에 맞게 적용할 수 있습니다. 필요 없는 사이즈는 삭제해도 됩니다.",
+          "It generates multiple favicon link tags for mobile and desktop. You can remove sizes you do not need.",
       },
       {
-        question: "생성한 메타태그는 어디에 붙이나요?",
+        question: "Where do I place the generated meta tags?",
         answer:
-          "정적 사이트는 `<head>` 영역에, Next.js는 `metadata` 설정 또는 `Head` 컴포넌트에 그대로 붙여넣으면 됩니다. 도메인(URL)만 배포 환경에 맞게 확인하세요.",
+          "Paste into the `<head>` for static sites, or into `metadata`/`Head` for Next.js. Verify the domain URL for your deployment.",
       },
       {
-        question: "생성 후에 내용을 수정하고 싶으면?",
+        question: "How do I edit after generating?",
         answer:
-          "입력 값을 다시 바꾸고 Generate를 누르면 즉시 새 코드가 만들어집니다. 공유 미리보기에서 내용이 원하는 대로 보이는지 체크한 뒤 복사하세요.",
+          "Update inputs and click Generate again to get fresh code. Check the share preview, then copy.",
       },
     ],
     disclaimer:
-      "생성된 메타태그와 OG 텍스트는 참고용입니다. 배포 전 실제 도메인과 소셜 미리보기를 검증해 주세요. OG 이미지 텍스트는 영문만 지원합니다.",
+      "Generated meta tags and OG text are for reference. Verify the domain and social previews before release. OG image text is English-only.",
   },
   {
     slug: "pyeong-calculator",
-    title: "평수 계산기 — 평↔제곱미터 변환",
+    title: "Pyeong Calculator — Pyeong ↔ Square Meters",
     subtitle:
-      "평 또는 제곱미터(㎡)를 입력하면 즉시 환산값을 보여주고, 자주 쓰는 평형도 한눈에 확인할 수 있는 면적 계산기 가이드입니다.",
-    category: "생활 · 부동산",
+      "Enter pyeong or square meters (㎡) to convert instantly and check common size presets.",
+    category: "Lifestyle · Real Estate",
     heroEmoji: "📐",
     serviceUrl: "https://space.funnyfunny.cloud/",
-    ctaLabel: "평수 계산기 열기",
+    ctaLabel: "Open Pyeong Calculator",
     metaDescription:
-      "평수 계산기 가이드 — 평↔제곱미터(㎡) 변환 공식과 사용법, 대표 평형 확인 팁까지 정리했습니다.",
+      "Pyeong calculator guide — conversion formulas, usage steps, and common size tips.",
     keywords: [
-      "평수 계산기",
-      "평",
-      "제곱미터",
-      "면적 변환",
+      "pyeong calculator",
+      "pyeong",
+      "square meters",
+      "area conversion",
       "㎡",
-      "부동산 면적",
+      "real estate area",
     ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "평을 입력하면 제곱미터(㎡)로, 제곱미터를 입력하면 평으로 즉시 변환합니다.",
-          "원룸·오피스텔·아파트 등 대표 평형을 빠르게 비교할 수 있어 면적 감을 잡기 좋습니다.",
-          "모바일에서도 바로 입력·복사가 가능해 현장에서도 빠르게 확인할 수 있습니다.",
+          "Convert pyeong to square meters (㎡) and back instantly.",
+          "Compare typical sizes for studios, officetels, and apartments quickly.",
+          "Mobile-friendly input and copy make on-site checks easy.",
         ],
       },
       {
-        heading: "빠른 변환 사용법",
+        heading: "Quick conversion steps",
         body: [
-          "Step 1. 변환하고 싶은 단위를 선택하고 숫자를 입력합니다.",
-          "Step 2. 결과 영역에서 환산값을 바로 확인합니다.",
-          "Step 3. 필요하면 결과를 복사해 견적, 메모, 계약 비교에 붙여넣으세요.",
+          "Step 1. Select the unit and enter a number.",
+          "Step 2. Read the converted value in the result area.",
+          "Step 3. Copy the result for estimates, notes, or contract comparisons.",
         ],
       },
       {
-        heading: "기본 공식 이해하기",
+        heading: "Know the formula",
         body: [
-          "1평 = 3.3058㎡, 1㎡ = 0.3025평입니다.",
-          "㎡ → 평은 `㎡ ÷ 3.3058`, 평 → ㎡는 `평 × 3.3058`로 계산됩니다.",
-          "계산기는 소수점까지 자동 변환해 근사치를 빠르게 보여줍니다.",
+          "1 pyeong = 3.3058㎡, and 1㎡ = 0.3025 pyeong.",
+          "㎡ → pyeong is `㎡ ÷ 3.3058`, pyeong → ㎡ is `pyeong × 3.3058`.",
+          "The calculator converts decimals automatically for quick estimates.",
         ],
       },
       {
-        heading: "대표 평형 감 잡기",
+        heading: "Sense common size ranges",
         body: [
-          "대표 평형은 체감하기 어려운 면적을 빠르게 비교할 때 유용합니다.",
-          "가족 수·가구 배치·방 개수에 맞춰 대략적인 면적 감을 잡고, 실제 도면으로 최종 확인하세요.",
+          "Common size presets help compare hard-to-imagine areas quickly.",
+          "Estimate based on family size, layout, and room count, then confirm with floor plans.",
         ],
       },
     ],
     faq: [
       {
-        question: "1평은 몇 제곱미터인가요?",
+        question: "How many square meters is 1 pyeong?",
         answer:
-          "1평은 3.3058㎡입니다. 계산기에서 평을 입력하면 자동으로 환산됩니다.",
+          "1 pyeong equals 3.3058㎡. Enter pyeong to convert automatically.",
       },
       {
-        question: "전용면적과 공급면적 차이도 계산하나요?",
+        question: "Does it handle exclusive vs. supply area?",
         answer:
-          "기본적으로 면적 단위 변환만 제공합니다. 전용/공급은 부동산 표기 방식이므로 계약서나 분양 공고 기준을 함께 확인하세요.",
+          "It only converts units. Exclusive/supply areas depend on real estate standards, so check the contract or listing.",
       },
       {
-        question: "소수점이 길게 나오는 게 맞나요?",
+        question: "Why are there long decimals?",
         answer:
-          "네. 평↔㎡ 변환은 소수점이 발생합니다. 필요한 자리까지만 반올림해 활용하세요.",
+          "Yes. Pyeong ↔ ㎡ conversions produce decimals. Round as needed.",
       },
       {
-        question: "모바일에서도 사용 가능한가요?",
+        question: "Does it work on mobile?",
         answer:
-          "네. 모바일 입력과 복사에 최적화되어 현장에서도 빠르게 확인할 수 있습니다.",
+          "Yes. It is optimized for mobile input and copy, so you can check on site.",
       },
     ],
     disclaimer:
-      "본 계산기는 변환값을 빠르게 확인하기 위한 참고용 도구입니다. 계약이나 도면 확인 시에는 공식 표기 면적을 함께 확인하세요.",
+      "This calculator is for quick reference. Always verify official area values in contracts and plans.",
   },
   {
     slug: "nbang-calculator",
-    title: "N빵 계산기 — 식사 정산 흐름",
+    title: "Split-the-bill Calculator — Meal Settlement",
     subtitle:
-      "음식점 이름·인원·총금액만 입력하면 팁/서비스부터 1인당 금액까지 계산하고 복사까지 한 번에 처리할 수 있는 생활 계산기입니다.",
-    category: "생활 계산기",
+      "Enter venue, headcount, and total to calculate tip/service and per-person amounts, then copy in one flow.",
+    category: "Lifestyle Calculator",
     heroEmoji: "🍽️",
     serviceUrl: "https://n.funnyfunny.cloud/",
-    ctaLabel: "N빵 계산기 열기",
+    ctaLabel: "Open Split-the-bill Calculator",
     metaDescription:
-      "N빵 계산기 가이드 — 음식점 이름과 인원, 총금액을 넣어 1인당 금액, 팁 포함 여부, 소수점 반올림까지 확인하고 클립보드로 복사하는 흐름을 정리했습니다.",
-    keywords: ["N빵", "계산기", "정산", "식사", "복사", "팁", "소수점"],
+      "Split-the-bill guide — enter venue, headcount, and total to see per-person cost, tip inclusion, rounding options, and copy to clipboard.",
+    keywords: [
+      "split the bill",
+      "calculator",
+      "settlement",
+      "meal",
+      "copy",
+      "tip",
+      "rounding",
+    ],
     sections: [
       {
-        heading: "정확한 입력으로 시작하기",
+        heading: "Start with accurate inputs",
         body: [
-          "Step 1. 음식점 이름과 함께 먹은 인원을 입력해 상황을 정리하세요.",
-          "Step 2. 총금액에는 음식값·주류·팁·서비스 요금까지 모두 포함해 넣습니다.",
-          "세금이나 팁만 별도 관리한다면 해당 값을 제외하고, 옵션에서 포함 여부를 바꾸면 됩니다.",
+          "Step 1. Enter the venue name and the number of people.",
+          "Step 2. Include food, drinks, tips, and service fees in the total.",
+          "If tax or tips are handled separately, exclude them and toggle the inclusion option.",
         ],
       },
       {
-        heading: "1인당 금액과 복사하기",
+        heading: "Per-person amount & copy",
         body: [
-          "계산 버튼을 누르면 소수점 반올림/내림/버림 옵션을 바로 바꿔 여러 시나리오를 비교할 수 있습니다.",
-          "1인당 금액이 나타나면, '복사' 버튼으로 이름/인원/총금액/1인당 금액이 정리된 문장을 클립보드에 담습니다.",
-          "붙여넣은 결과는 단체 채팅·메모·카톡 정산 메시지로 바로 활용할 수 있습니다.",
+          "Use rounding options (up/down/none) to compare scenarios after calculating.",
+          "The Copy button puts a summary sentence with venue, headcount, total, and per-person cost on the clipboard.",
+          "Paste into group chat, notes, or settlement messages immediately.",
         ],
       },
       {
-        heading: "정산 팁과 공유",
+        heading: "Settlement tips & sharing",
         body: [
-          "팁이나 서비스 요금이 포함될 때는 옵션을 조절해 포함/미포함 결과를 동시에 비교하세요.",
-          "같은 총금액에 다른 인원 수를 적용해 얼마나 차이가 나는지 확인한 뒤, 계산기 결과를 캡처하거나 복사해 공유하면 빠른 합의가 가능합니다.",
-          "자주 쓰는 조합은 즐겨찾기에 추가하면 다음 방문에도 입력을 최소화할 수 있습니다.",
+          "Compare results with tips/service included vs. excluded to avoid confusion.",
+          "Try different headcounts with the same total, then share a screenshot or copied summary for quick agreement.",
+          "Save frequent setups as favorites to minimize input next time.",
         ],
       },
     ],
     faq: [
       {
-        question: "팁·서비스 비용은 어떻게 넣나요?",
+        question: "How do I include tips or service fees?",
         answer:
-          "총금액에 팁/서비스를 포함하면 자동 반영되며, 별도로 관리하고 싶다면 해당 값만 빼고 입력한 뒤 다시 계산하면 됩니다.",
+          "Include them in the total for automatic calculation, or exclude and toggle the option if tracking separately.",
       },
       {
-        question: "복사된 결과를 어디에 써요?",
+        question: "Where can I use the copied result?",
         answer:
-          "복사 버튼을 누르면 정리된 단체 정산 문장이 클립보드에 들어가므로 카카오톡·밴드·노션 등에 그대로 붙여넣으면 됩니다.",
+          "Paste the prepared settlement sentence into chats, notes, or docs.",
       },
       {
-        question: "인원 수를 바꾸는 방법은요?",
+        question: "How do I change the headcount?",
         answer:
-          "인원 칸에서 숫자를 수정하고 다시 계산하면 됩니다. 총금액 고정 상태에서 인원 수만 바꿔보며 비교도 쉽게 할 수 있습니다.",
+          "Edit the headcount field and recalculate. You can compare scenarios while keeping the total fixed.",
       },
     ],
     disclaimer:
-      "계산 결과는 참고용이며 실제 결제할 금액은 업체 확인 또는 동석자와 다시 검토해 주세요.",
+      "Results are for reference; confirm the actual payment with the venue or participants.",
   },
   {
     slug: "head-voice-trainer",
-    title: "두성터득기 — 헤드보이스 연습 루틴",
+    title: "Head Voice Trainer — Head Voice Practice Routine",
     subtitle:
-      "호흡, 공명, 모음 전환을 단계별로 따라 두성을 빠르게 체득하는 짧은 워밍업 가이드입니다.",
-    category: "보컬 트레이닝",
+      "A short warm-up guide to quickly learn head voice through breathing, resonance, and vowel transitions.",
+    category: "Vocal Training",
     heroEmoji: "🎤",
     serviceUrl: "https://vocal.funnyfunny.cloud",
-    ctaLabel: "두성터득기 바로가기",
+    ctaLabel: "Open Head Voice Trainer",
     metaDescription:
-      "두성터득기 가이드 — 호흡, 공명, 모음 전환 루틴을 따라 헤드보이스를 안정적으로 내는 방법. 워밍업 순서, 체크포인트, 휴식 팁을 정리했습니다.",
-    keywords: ["두성", "헤드보이스", "보컬 연습", "발성 루틴", "보컬 코치"],
+      "Head Voice Trainer guide — breathing, resonance, and vowel transitions to stabilize head voice, with warmup order and rest tips.",
+    keywords: [
+      "head voice",
+      "vocal training",
+      "voice practice",
+      "vocal routine",
+      "vocal coach",
+    ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "두성을 만들기 위한 호흡, 공명, 모음 전환 루틴을 한눈에 정리해 바로 따라갈 수 있습니다.",
-          "목 힘을 빼고 머리 공명으로 음을 띄우는 감각을 익힐 수 있도록 체크포인트를 단계별로 제시합니다.",
-          "짧은 워밍업을 돌린 뒤 오늘 편안하게 낼 수 있는 최고음을 확인하며 연습 강도를 조절할 수 있습니다.",
+          "Follow a clear routine for breathing, resonance, and vowel transitions.",
+          "Step-by-step checkpoints help you release throat tension and lift resonance.",
+          "After a short warmup, check your comfortable top note to adjust intensity.",
         ],
       },
       {
-        heading: "시작하기: 준비와 워밍업",
+        heading: "Get started: prep & warmup",
         body: [
-          "얇은 호흡으로 가볍게 숨을 빼고, 어깨와 턱의 힘을 풀어주세요. 물 한 모금으로 입을 적시면 성대 마찰을 줄일 수 있습니다.",
-          "화면에 안내된 순서대로 호흡 → 허밍/립트릴 → 모음 전환을 진행합니다. 힘이 들어가면 한 단계 낮은 음으로 다시 시도하세요.",
-          "이어폰을 끼고 조용한 공간에서 5분만 투자하면 루틴을 한 사이클 돌릴 수 있습니다.",
+          "Exhale lightly and relax shoulders/jaw. A sip of water reduces vocal fold friction.",
+          "Follow breathing → humming/lip trills → vowel transitions. If tension rises, drop a step and retry.",
+          "Use earphones in a quiet space; a single cycle takes about 5 minutes.",
         ],
       },
       {
-        heading: "연습 루틴과 체크포인트",
+        heading: "Routine checkpoints",
         body: [
-          "허밍이나 립트릴로 숨을 분산시키며 공명 위치를 올린 뒤, 모음을 열어도 이완을 유지하는지 확인합니다.",
-          "목 앞쪽이 답답하거나 턱이 잠기면 즉시 끊고 깊게 하품하는 느낌으로 다시 시작하세요. 가성으로 가볍게 연결하는 것도 도움이 됩니다.",
-          "오늘 편한 최고음, 불편한 구간을 메모해 두면 다음 연습 때 바로 비교할 수 있습니다.",
+          "Use humming or lip trills to lift resonance, then keep relaxation as you open vowels.",
+          "If the throat tightens or jaw locks, stop and restart with a relaxed yawning feeling.",
+          "Note your comfortable top note and difficult ranges for comparison next time.",
         ],
       },
       {
-        heading: "기록과 개선 팁",
+        heading: "Tracking & improvement tips",
         body: [
-          "짧게 녹음해 공명 위치와 발음이 흔들리는 지점을 듣고, 느리게 반복하면 교정이 쉬워집니다.",
-          "고음만 반복하기보다 중저음에서 힘을 빼는 연습과 휴식 시간을 섞어 성대 피로를 막으세요.",
-          "컨디션이 떨어진 날은 루틴을 절반만 돌리고, 무리가 느껴지면 즉시 중단하고 휴식을 취합니다.",
+          "Record short clips, listen for unstable resonance or diction, and repeat slowly to fix issues.",
+          "Mix lower-mid relaxation drills with rest breaks to prevent fatigue.",
+          "On low-energy days, run half the routine and stop if you feel strain.",
         ],
       },
     ],
     faq: [
       {
-        question: "누가 사용하면 좋을까요?",
+        question: "Who is this for?",
         answer:
-          "두성을 처음 시도하는 사람, 노래방 고음이 막히는 사람, 합창·보컬 연습 전 워밍업이 필요한 사람에게 유용합니다.",
+          "Beginners to head voice, singers stuck on high notes, or anyone needing a quick warmup.",
       },
       {
-        question: "얼마나 자주 연습할까요?",
+        question: "How often should I practice?",
         answer:
-          "하루 5~10분 정도 가볍게 반복하면 충분합니다. 목이 피곤한 날은 강도를 낮추거나 하루를 쉬어 주세요.",
+          "5–10 minutes daily is enough. Reduce intensity or rest if your throat feels tired.",
       },
       {
-        question: "목이 잠기거나 통증이 느껴지면?",
+        question: "What if I feel tightness or pain?",
         answer:
-          "즉시 멈추고 물을 마신 뒤 낮은 음과 허밍으로 돌아가세요. 통증이 지속되면 휴식하거나 전문 보컬 코치·의료진과 상담하는 것이 안전합니다.",
+          "Stop immediately, sip water, and return to lower tones and humming. Seek professional advice if pain persists.",
       },
       {
-        question: "데이터가 저장되나요?",
+        question: "Is any data saved?",
         answer:
-          "모든 루틴과 체크포인트는 브라우저에서만 안내되며, 입력이나 녹음 내용은 서버에 저장하지 않습니다.",
+          "All guidance stays in the browser; inputs or recordings are not stored on a server.",
       },
       {
-        question: "모바일에서도 연습할 수 있나요?",
+        question: "Can I practice on mobile?",
         answer:
-          "모바일 웹에 맞춰 제작돼 휴대폰에서도 바로 사용할 수 있습니다. 주변 소음을 줄이고 이어폰을 착용하면 더 편하게 따라갈 수 있습니다.",
+          "Yes. It works on mobile web; use earphones and reduce ambient noise for best results.",
       },
     ],
     disclaimer:
-      "목소리와 성대 건강은 개인차가 큽니다. 통증이나 어지러움이 느껴지면 연습을 즉시 중단하고 휴식을 취하거나 전문가의 상담을 받으세요.",
+      "Voice health varies by person. Stop if you feel pain or dizziness and seek professional advice if needed.",
   },
   {
     slug: "image-merge-pdf",
-    title: "이미지 합치기 & PDF 변환",
+    title: "Image Merge & PDF Converter",
     subtitle:
-      "여러 장의 이미지를 업로드해 드래그로 순서를 맞추고, 한 장 이미지나 PDF로 바로 묶을 수 있는 변환기입니다. HTML 파일도 PDF로 변환할 수 있습니다.",
-    category: "크리에이터 도구",
+      "Upload multiple images, drag to reorder, and merge into one image or PDF. HTML files can also be converted to PDF.",
+    category: "Creator Tools",
     heroEmoji: "🖼️",
     serviceUrl: "https://image.funnyfunny.cloud",
-    ctaLabel: "이미지 합치기 & PDF 변환 바로가기",
+    ctaLabel: "Open Image Merge & PDF Converter",
     metaDescription:
-      "이미지 여러 장을 드래그로 정렬해 한 장 이미지 또는 PDF로 저장하는 방법을 정리한 가이드. HTML을 PDF로 변환하는 기능도 포함되어 있습니다. 업로드, 순서 변경, 저장 옵션, 품질 유지 팁을 한눈에 확인하세요.",
+      "Guide to sorting multiple images via drag-and-drop and saving as a single image or PDF. Includes HTML-to-PDF, upload, reorder, save options, and quality tips.",
     keywords: [
-      "이미지 합치기",
-      "이미지 병합",
-      "PDF 변환",
-      "이미지 정렬",
-      "HTML PDF 변환",
-      "이미지 합치기 & PDF 변환",
+      "image merge",
+      "image combine",
+      "PDF convert",
+      "image reorder",
+      "HTML to PDF",
+      "image merge PDF",
     ],
     sections: [
       {
-        heading: "무엇을 할 수 있나요?",
+        heading: "What you can do",
         body: [
-          "JPG·PNG 등 여러 장의 이미지를 한 번에 올리고, 드래그로 순서를 바꾼 뒤 한 장으로 붙이거나 PDF로 저장할 수 있습니다.",
-          "영수증/과제/스캔본을 깔끔히 정렬하거나, 웹용 긴 이미지로 합치고 싶을 때 빠르게 작업할 수 있는 도구입니다.",
-          "HTML 파일을 업로드하면 PDF로 변환할 수 있어, 웹페이지나 문서를 PDF로 저장하고 싶을 때 유용합니다.",
+          "Upload multiple JPG/PNG images, reorder by drag, and merge into one image or PDF.",
+          "Great for receipts, assignments, scans, or long web-ready images.",
+          "Upload HTML to convert it into a PDF for easy sharing or archiving.",
         ],
       },
       {
-        heading: "시작하기: 업로드와 정렬",
+        heading: "Get started: upload & reorder",
         body: [
-          "Step 1. 여러 장의 이미지를 한 번에 선택해 업로드합니다. 업로드 후 리스트에서 미리 보기가 보입니다.",
-          "Step 2. 필요한 순서대로 드래그 앤 드롭해 재정렬합니다. 잘못 올린 이미지는 삭제하고 다시 추가할 수 있습니다.",
-          "비슷한 해상도/비율을 가진 이미지를 넣으면 합친 결과가 더 매끄럽게 이어집니다.",
+          "Step 1. Upload multiple images at once and review the previews.",
+          "Step 2. Drag and drop to reorder. Remove and re-add any incorrect files.",
+          "Images with similar resolution/aspect ratio produce smoother results.",
         ],
       },
       {
-        heading: "한 장 이미지로 묶기",
+        heading: "Merge into one image",
         body: [
-          "정렬이 끝나면 '한 장으로 합치기'나 비슷한 이미지 결합 옵션을 눌러 합친 결과를 바로 봅니다.",
-          "필요하다면 배경색·여백 등 옵션을 조정해 가독성을 맞춘 뒤 JPG나 PNG로 다운로드하세요.",
-          "긴 캡처나 비교 이미지를 만들 때는 순서를 다시 확인하고 저장하면 됩니다.",
+          "After ordering, click the merge option to preview the combined result.",
+          "Adjust background color or margins for readability, then download as JPG or PNG.",
+          "Double-check the sequence when making long captures or comparisons.",
         ],
       },
       {
-        heading: "PDF로 변환하기",
+        heading: "Convert to PDF",
         body: [
-          "PDF 저장 옵션을 선택하면 정렬된 순서 그대로 한 개의 PDF로 묶입니다.",
-          "페이지 단위로 정리되므로 서류 제출, 인쇄용 정리, 스캔본 보관에 유용합니다.",
-          "다운로드 후 이메일이나 메신저에 바로 첨부해 공유할 수 있습니다.",
+          "Choose the PDF option to bundle all images in order.",
+          "Perfect for submissions, printing, or organizing scanned documents.",
+          "Download and attach directly to email or messenger apps.",
         ],
       },
       {
-        heading: "HTML을 PDF로 변환하기",
+        heading: "Convert HTML to PDF",
         body: [
-          "HTML 파일을 업로드하면 자동으로 PDF로 변환됩니다. 웹페이지나 HTML 문서를 PDF로 저장하고 싶을 때 바로 사용할 수 있습니다.",
-          "변환 시 페이지 레이아웃과 스타일이 유지되며, 인쇄 최적화 옵션을 통해 PDF 품질을 조정할 수 있습니다.",
-          "이력서, 포트폴리오, 문서 등 HTML로 작성된 내용을 PDF로 변환해 제출하거나 공유할 때 편리합니다.",
-          "HTML에 사진이나 이미지가 포함된 경우, HTML 파일과 함께 해당 이미지 파일들을 같이 업로드하면 PDF 변환 시 이미지가 정상적으로 포함됩니다.",
+          "Upload an HTML file to convert it to PDF for web pages or HTML documents.",
+          "Layout and styles are preserved; adjust print optimization for quality.",
+          "Useful for resumes, portfolios, or documents authored in HTML.",
+          "If your HTML references images, upload the HTML file with those images to include them in the PDF.",
         ],
       },
     ],
     faq: [
       {
-        question: "몇 장까지 업로드할 수 있나요?",
+        question: "How many images can I upload?",
         answer:
-          "여러 장을 한 번에 올릴 수 있으며, 브라우저 성능에 따라 처리 가능한 장수가 달라질 수 있습니다. 너무 큰 용량의 이미지는 나눠서 합치는 것을 권장합니다.",
+          "You can upload multiple images at once, but performance depends on your browser. Split very large batches if needed.",
       },
       {
-        question: "순서를 바꾸는 방법은?",
+        question: "How do I change the order?",
         answer:
-          "업로드한 이미지 썸네일을 드래그 앤 드롭하면 즉시 순서가 변경됩니다. 순서를 다시 바꿔도 저장 옵션을 누르기 전까지 자유롭게 수정할 수 있습니다.",
+          "Drag and drop uploaded thumbnails to reorder instantly. You can keep rearranging until you save.",
       },
       {
-        question: "어떤 형식으로 저장되나요?",
+        question: "What formats can I save to?",
         answer:
-          "한 장 이미지(JPG/PNG)나 PDF 중 선택해 다운로드할 수 있습니다. 목적에 맞게 형식을 골라주세요.",
+          "Download as a single image (JPG/PNG) or PDF. Choose based on your use case.",
       },
       {
-        question: "이미지를 합칠 때 여백이나 비율이 깨지면?",
+        question: "What if margins or aspect ratios look off?",
         answer:
-          "업로드 전에 비슷한 비율의 이미지를 준비하거나, 결합 옵션에서 여백·배경색을 조정해 정렬 상태를 확인한 뒤 저장해 보세요.",
+          "Use images with similar aspect ratios, or adjust margins/background in options before saving.",
       },
       {
-        question: "로그인이 필요한가요?",
+        question: "Do I need to log in?",
         answer:
-          "로그인 없이 바로 업로드하고 합칠 수 있어 가볍게 사용할 수 있습니다.",
+          "No. You can upload and merge without signing in.",
       },
       {
-        question: "HTML 파일도 변환할 수 있나요?",
+        question: "Can I convert HTML files too?",
         answer:
-          "네, HTML 파일을 업로드하면 PDF로 변환할 수 있습니다. 웹페이지나 HTML 문서를 PDF로 저장하고 싶을 때 유용합니다. 변환 시 레이아웃과 스타일이 유지됩니다.",
+          "Yes. Upload HTML to convert it to PDF. Layout and styles are preserved.",
       },
       {
-        question: "HTML을 PDF로 변환할 때 어떤 형식이 지원되나요?",
+        question: "What HTML formats are supported?",
         answer:
-          "표준 HTML 파일(.html)을 업로드하면 PDF로 변환됩니다. CSS 스타일과 레이아웃이 포함된 HTML도 정상적으로 변환되며, 인쇄 최적화 옵션을 통해 PDF 품질을 조정할 수 있습니다.",
+          "Standard .html files are supported, including CSS layout. Use print optimization options to adjust PDF quality.",
       },
       {
-        question: "HTML에 사진이 포함되어 있으면 어떻게 하나요?",
+        question: "What if the HTML includes images?",
         answer:
-          "HTML 파일에 이미지나 사진이 포함된 경우, HTML 파일과 함께 해당 이미지 파일들(JPG, PNG 등)을 같이 업로드하면 PDF 변환 시 이미지가 정상적으로 포함됩니다. HTML과 이미지를 함께 선택해 업로드하면 자동으로 연결되어 변환됩니다.",
+          "Upload the HTML file along with referenced images (JPG/PNG) so they render in the PDF.",
       },
     ],
   },
   {
     slug: "image-text-extract",
-    title: "이미지 텍스트 추출 — 사진 속 글자 자동 복사",
+    title: "Image Text Extractor — Auto-copy Text from Photos",
     subtitle:
-      "사진을 올리면 글자를 자동으로 읽어 텍스트로 정리하는 OCR 도구입니다. 영수증·책·메모를 빠르게 디지털화할 때 써 보세요.",
-    category: "크리에이터 도구",
+      "Upload a photo to OCR text automatically. Great for digitizing receipts, books, and notes.",
+    category: "Creator Tools",
     heroEmoji: "🔍",
     serviceUrl: "https://ocr.funnyfunny.cloud",
-    ctaLabel: "이미지 텍스트 추출 바로가기",
+    ctaLabel: "Open Image Text Extractor",
     metaDescription:
-      "사진에서 글자를 자동으로 인식해 텍스트로 뽑는 OCR 가이드. 업로드, 정확도 높이는 팁, 결과 복사 방법을 한 번에 확인하세요.",
+      "OCR guide for extracting text from photos, with upload steps, accuracy tips, and copy instructions.",
     keywords: [
-      "이미지 텍스트 추출",
+      "image text extractor",
       "OCR",
-      "사진 문자 인식",
-      "텍스트 추출",
-      "이미지에서 글자",
-      "스캔 텍스트",
+      "photo text recognition",
+      "text extraction",
+      "text from images",
+      "scanned text",
     ],
     sections: [
       {
-        heading: "무엇을 할 수 있나요?",
+        heading: "What you can do",
         body: [
-          "사진·스크린샷·스캔본을 올리면 글자를 자동으로 인식해 텍스트로 정리합니다.",
-          "회의록, 책 일부, 영수증·메모를 타이핑 없이 디지털화할 때 유용합니다.",
+          "Upload photos, screenshots, or scans to extract text automatically.",
+          "Great for digitizing meeting notes, book pages, receipts, or memos.",
         ],
       },
       {
-        heading: "시작하기: 업로드와 추출",
+        heading: "Get started: upload & extract",
         body: [
-          "Step 1. JPG·PNG 등 이미지를 드래그하거나 선택해 올립니다.",
-          "Step 2. 자동 인식이 끝나면 추출된 텍스트가 결과 영역에 표시됩니다.",
-          "Step 3. '복사' 버튼이나 단축키를 활용해 텍스트를 클립보드로 옮긴 뒤 원하는 앱에 붙여넣습니다.",
+          "Step 1. Drag or select a JPG/PNG image.",
+          "Step 2. After OCR, extracted text appears in the results area.",
+          "Step 3. Copy the text to your clipboard and paste into the app you want.",
         ],
       },
       {
-        heading: "정확도 높이는 팁",
+        heading: "Tips for higher accuracy",
         body: [
-          "글자가 선명하게 보이도록 기울어지지 않게 촬영해 주세요.",
-          "빛 반사, 그림자, 구겨진 종이가 있으면 결과가 달라질 수 있습니다.",
-          "가능하면 원본 해상도를 유지한 이미지를 올리고, 잘린 부분이 없는지 미리보기로 체크합니다.",
+          "Capture the text straight-on and keep it sharp.",
+          "Reflections, shadows, or crumpled paper can reduce accuracy.",
+          "Use high-resolution images and check the preview for cropped edges.",
         ],
       },
       {
-        heading: "결과 활용 아이디어",
+        heading: "Ideas for using results",
         body: [
-          "번역기·워드 프로세서에 바로 붙여넣어 2차 작업을 이어갑니다.",
-          "영수증·명함의 금액이나 연락처를 복사해 가계부·CRM에 입력합니다.",
-          "회의/강의 필기 이미지를 텍스트로 바꿔 검색 가능한 노트로 보관합니다.",
+          "Paste into translators or word processors for quick follow-up work.",
+          "Copy amounts or contacts from receipts/business cards into ledgers or CRM.",
+          "Turn lecture notes into searchable text archives.",
         ],
       },
     ],
     faq: [
       {
-        question: "어떤 파일을 지원하나요?",
+        question: "What files are supported?",
         answer:
-          "일반적으로 JPG·PNG 등 이미지 파일을 바로 올려 사용할 수 있습니다. 해상도가 높을수록 정확도가 좋아집니다.",
+          "JPG/PNG image files are supported. Higher resolution improves accuracy.",
       },
       {
-        question: "텍스트를 어떻게 내보내나요?",
+        question: "How do I export the text?",
         answer:
-          "추출 결과에서 복사 버튼을 눌러 클립보드에 담거나, 표시된 텍스트를 그대로 선택·복사해 다른 문서에 붙여넣으면 됩니다.",
+          "Use the copy button or select the text directly, then paste into another document.",
       },
       {
-        question: "정확도가 떨어질 때는 어떻게 하나요?",
+        question: "What if accuracy is low?",
         answer:
-          "촬영 각도를 반듯하게 맞추고, 조명을 밝게 해 반사·그림자를 줄여 다시 시도해 보세요. 해상도가 낮다면 원본을 더 크게 촬영하는 것이 도움이 됩니다.",
+          "Retake the photo with better lighting and a straight angle. If resolution is low, capture a larger original image.",
       },
     ],
   },
   {
     slug: "winter-ruin-top1",
-    title: "이번 겨울, 나를 망치는 것 TOP 1",
+    title: "This Winter's #1 Wrecker",
     subtitle:
-      "추위, 빛, 식습관, 이동량 중 겨울마다 나를 무너뜨리는 1순위 트리거를 찾고, 바로 고칠 루틴을 제안합니다.",
-    category: "라이프스타일",
+      "Find your top winter trigger among cold, light, eating habits, and movement, then get a quick fix routine.",
+    category: "Lifestyle",
     heroEmoji: "❄️",
     serviceUrl: "https://winter.funnyfunny.cloud",
-    ctaLabel: "겨울 망치는 것 TOP 1 바로가기",
+    ctaLabel: "Open Winter Wrecker #1",
     metaDescription:
-      "겨울마다 반복되는 컨디션 붕괴 원인을 점검하고, 빛·온도·식습관·이동 루틴을 바로잡는 실행 플랜을 담은 가이드.",
+      "Guide to identify recurring winter slumps and reset light, temperature, diet, and movement routines.",
     keywords: [
-      "겨울 컨디션",
-      "겨울 우울",
-      "겨울 루틴",
-      "연말 번아웃",
-      "폭식 줄이기",
+      "winter condition",
+      "winter blues",
+      "winter routine",
+      "year-end burnout",
+      "reduce binge eating",
     ],
     sections: [
       {
-        heading: "겨울마다 무너지는 패턴 찾기",
+        heading: "Find the recurring winter pattern",
         body: [
-          "온도와 일조량이 줄면 수면 리듬이 무너지고, 야식·달달한 간식으로 에너지 수급을 메우려는 패턴이 생깁니다.",
-          "테스트는 수면/기상 시간, 간식·카페인 빈도, 난방·습도 관리 여부, 이동량 변화를 묻고 가장 큰 방해 요인을 1순위로 제시합니다.",
+          "Lower temperatures and daylight often disrupt sleep and drive late-night snacking.",
+          "The test checks sleep, caffeine/snack habits, heating/humidity, and movement to find your top blocker.",
         ],
       },
       {
-        heading: "진행 방식과 시간",
+        heading: "Flow & time",
         body: [
-          "선택형 문항을 빠르게 누르면 2~3분 안에 완료할 수 있습니다. 질문을 건너뛰어도 결과가 계산되므로 부담 없이 진행하세요.",
-          "중간에 답을 바꾸고 싶다면 이전 버튼으로 돌아가거나, 새로고침 후 다시 시작해 다른 겨울 루틴 시나리오를 비교할 수 있습니다.",
+          "Finish in 2–3 minutes by tapping multiple-choice items. Skipping still gives results.",
+          "Go back to edit answers or refresh to compare different routine scenarios.",
         ],
       },
       {
-        heading: "결과 카드 읽는 법",
+        heading: "How to read the result card",
         body: [
-          "결과는 '이번 겨울에 나를 망치는 것 TOP 1'과 함께 예상되는 증상(피로·집중력 저하·기분 부침)과 개선 팁을 제공합니다.",
-          "광량/활동/식습관/생활 환경별 체크리스트가 함께 나오니, 가장 쉬운 한 가지부터 바로 실행해 보세요.",
+          "Results show your #1 winter wrecker with expected symptoms and improvement tips.",
+          "Use the light/activity/diet/environment checklist and start with the easiest action.",
         ],
       },
       {
-        heading: "실행 플랜 예시",
+        heading: "Example action plans",
         body: [
-          "아침 10분 산책·스트레칭, 오후 카페인 컷오프, 침실 온도·습도(18~20도/50%) 유지처럼 바로 적용할 수 있는 루틴을 제안합니다.",
-          "폭식·야식이 원인이라면 간식 컷오프 시간과 대체 간식(단백질/따뜻한 차)을 알려주고, 이동량 부족이라면 주 3회 가벼운 홈트 링크를 추천합니다.",
+          "Try a 10-minute morning walk, afternoon caffeine cutoff, or bedroom temp/humidity targets.",
+          "If overeating is the trigger, set a snack cutoff and swap to protein/warm tea; low movement suggests light home workouts.",
         ],
       },
     ],
     faq: [
       {
-        question: "누가 사용하면 좋나요?",
+        question: "Who is this for?",
         answer:
-          "겨울마다 컨디션이 급격히 떨어지거나, 야식·늦잠·무기력이 반복되는 사람들이 원인을 한눈에 정리할 때 유용합니다.",
+          "Anyone whose energy drops every winter or who repeats late-night snacking, oversleeping, or sluggishness.",
       },
       {
-        question: "시간은 얼마나 걸리나요?",
+        question: "How long does it take?",
         answer:
-          "빠르게 누르면 2~3분 내에 끝나며, 중간에 멈춰도 입력된 값으로 결과를 바로 볼 수 있습니다.",
+          "About 2–3 minutes, and you can still get results even if you stop early.",
       },
       {
-        question: "결과는 어떤 기준으로 나오나요?",
+        question: "How are results calculated?",
         answer:
-          "수면·활동·식습관·환경 관련 답변을 가중치로 계산해 가장 영향력이 큰 요인을 1순위로 제시합니다. 엔터테인먼트·자가 점검용 참고 자료입니다.",
+          "Sleep, activity, diet, and environment answers are weighted to identify the strongest factor. For self-checking and fun.",
       },
       {
-        question: "모바일에서도 잘 보이나요?",
+        question: "Is it mobile-friendly?",
         answer:
-          "모바일 웹 최적화로 휴대폰에서 바로 진행하고 결과를 저장/공유할 수 있습니다.",
+          "Yes. It is optimized for mobile web with easy save/share.",
       },
       {
-        question: "여러 번 다시 해도 되나요?",
+        question: "Can I retake it?",
         answer:
-          "네. 답변을 바꿔 다른 루틴을 시뮬레이션하며, 어떤 조합이 가장 효과적인지 비교해 볼 수 있습니다.",
+          "Yes. Change answers to simulate different routines and compare what works best.",
       },
     ],
   },
   {
     slug: "rest-check",
-    title: "이 정도면 쉬어야 할까?",
+    title: "Should I Rest Now?",
     subtitle:
-      "짧은 설문으로 지금 쉬어도 되는지, 휴식 경고가 필요한지 확인합니다.",
-    category: "라이프스타일",
+      "A short survey checks whether you need rest or a reset right now.",
+    category: "Lifestyle",
     heroEmoji: "🛋️",
     serviceUrl: "https://rest.funnyfunny.cloud",
-    ctaLabel: "지금 쉬어도 될지 확인하기",
+    ctaLabel: "Check if I should rest",
     metaDescription:
-      "1분 설문으로 지금 쉬어야 할지 가볍게 확인하는 휴식 결정 테스트. 번아웃 신호, 컨디션 지표, 바로 쉴 거리 팁까지 안내합니다.",
+      "A 1-minute rest decision test with burnout signals, condition indicators, and quick recovery tips.",
     keywords: [
-      "휴식 설문",
-      "쉬어야 할까",
-      "컨디션 점검",
-      "번아웃 체크",
-      "휴식 결정",
+      "rest survey",
+      "should I rest",
+      "condition check",
+      "burnout check",
+      "rest decision",
     ],
     sections: [
       {
-        heading: "이 테스트로 알 수 있는 것",
+        heading: "What this test tells you",
         body: [
-          "에너지·집중·감정 상태 질문을 통해 지금 당장 쉬어야 하는지, 짧은 휴식으로 회복 가능한지 알려줍니다.",
-          "수면 부족, 통증, 감정 과부하 등 번아웃 신호를 가볍게 체크하고, 오늘 가능한 회복 루틴을 제안합니다.",
+          "Energy, focus, and mood questions show whether you need rest now or just a short reset.",
+          "It lightly checks burnout signals and suggests recovery routines you can do today.",
         ],
       },
       {
-        heading: "진행 방법",
+        heading: "How it works",
         body: [
-          "문장을 읽고 현재 상태에 가장 가까운 답을 고르면 1분 내로 완료됩니다.",
-          "중간에 멈춰도 이전 답변으로 결과가 계산되니 부담 없이 눌러보세요.",
+          "Choose the closest option for each prompt and finish in about a minute.",
+          "Even if you stop early, results are calculated from your answers.",
         ],
       },
       {
-        heading: "결과 읽는 법",
+        heading: "Reading the results",
         body: [
-          "결과는 '지금 바로 쉬기 / 짧게 리셋 / 아직 괜찮음'처럼 단계로 안내하며, 각각에 맞는 간단한 액션을 제시합니다.",
-          "10~20분 파워냅, 스트레칭, 물 마시기, 스크린 타임 줄이기 등 바로 실행할 수 있는 팁을 함께 제공합니다.",
+          "Results show steps like 'rest now / quick reset / still okay' with simple actions.",
+          "Tips include 10–20 minute naps, stretching, hydration, and reducing screen time.",
         ],
       },
       {
-        heading: "더 잘 활용하는 팁",
+        heading: "Make it more useful",
         body: [
-          "출근/퇴근, 취침 전 등 하루에 두 번만 눌러도 컨디션 패턴을 파악할 수 있습니다.",
-          "하루 생산성 체크, 인생 에너지 누수 테스트와 함께 사용하면 휴식 우선순위를 정하기 쉽습니다.",
+          "Run it twice a day (commute or bedtime) to spot your condition patterns.",
+          "Pair it with the productivity and energy leak tests to prioritize rest.",
         ],
       },
     ],
     faq: [
       {
-        question: "누가 사용하면 좋나요?",
+        question: "Who should use this?",
         answer:
-          "집중이 안 되거나 몸이 무거운데 쉬어도 될지 애매한 직장인, 학생, 프리랜서 모두 가볍게 참고할 수 있습니다.",
+          "Anyone unsure whether to rest—office workers, students, or freelancers.",
       },
       {
-        question: "시간은 얼마나 걸리나요?",
+        question: "How long does it take?",
         answer:
-          "선택형 문항이라 1분이면 끝납니다. 답을 수정하거나 다시 시작해도 바로 결과가 계산됩니다.",
+          "About 1 minute. Results update immediately if you change answers.",
       },
       {
-        question: "모바일에서도 편하게 볼 수 있나요?",
+        question: "Is it easy on mobile?",
         answer:
-          "네. 모바일 웹에 최적화되어 있어 이동 중에도 바로 진행하고 결과를 저장/공유할 수 있습니다.",
+          "Yes. Mobile-friendly and easy to save/share while on the go.",
       },
       {
-        question: "의학적 조언인가요?",
+        question: "Is this medical advice?",
         answer:
-          "아니요. 자가 점검용 참고 자료로 제공되며, 지속되는 통증·피로가 있다면 전문가 상담을 권장합니다.",
+          "No. It is a self-check reference; consult a professional for ongoing pain or fatigue.",
       },
     ],
     disclaimer:
-      "이 도구는 휴식 판단을 돕기 위한 참고용 설문입니다. 의료 조언이 아니며, 건강 이상이 느껴지면 전문가 상담을 권장합니다.",
+      "This survey is for reference only and not medical advice. Seek professional help if symptoms persist.",
   },
   {
     slug: "daily-condition-check",
-    title: "오늘 상태 점검표로 5개 체크하고 컨디션 한 문장 만들기",
+    title: "Daily Condition Check: 5 Checks for a One-line Summary",
     subtitle:
-      "가볍게 5개 항목만 체크해 오늘의 컨디션을 한 문장으로 정리합니다.",
-    category: "라이프스타일",
+      "Check five quick items to summarize today's condition in one line.",
+    category: "Lifestyle",
     heroEmoji: "📝",
     serviceUrl: "https://dailycheck.funnyfunny.cloud/",
-    ctaLabel: "오늘 상태 점검표 열기",
+    ctaLabel: "Open Daily Condition Check",
     metaDescription:
-      "5개 체크로 오늘 컨디션을 한 문장으로 정리하는 상태 점검표 가이드. dailycheck.funnyfunny.cloud에서 바로 확인하세요.",
+      "Daily condition checklist guide: five quick checks to generate a one-line summary.",
     keywords: [
-      "오늘 상태 점검표",
-      "컨디션 체크",
-      "상태 점검",
-      "하루 컨디션",
-      "한 문장 기록",
+      "daily condition check",
+      "condition check",
+      "status check",
+      "daily condition",
+      "one-line log",
     ],
     sections: [
       {
-        heading: "이 서비스로 확인할 수 있는 것",
+        heading: "What you can check",
         body: [
-          "에너지, 집중, 감정, 몸 상태, 오늘 일정의 부담도를 간단히 체크해 현재 컨디션을 요약합니다.",
-          "결과는 긴 리포트가 아니라 '오늘 컨디션 한 문장'으로 깔끔하게 정리됩니다.",
+          "Quickly check energy, focus, mood, body condition, and schedule load.",
+          "Results are summarized as a clean one-line condition statement.",
         ],
       },
       {
-        heading: "진행 방법",
+        heading: "How it works",
         body: [
-          "5개 질문을 읽고 지금 상태에 가까운 선택지를 고르면 즉시 결과가 생성됩니다.",
-          "앱/로그인 없이 브라우저에서 바로 이용할 수 있어 아침 루틴에도 부담 없습니다.",
+          "Answer five prompts and get results immediately.",
+          "No app or login required, so it fits into morning routines.",
         ],
       },
       {
-        heading: "결과를 활용하는 팁",
+        heading: "Tips for using results",
         body: [
-          "한 문장 컨디션을 캘린더나 메모 앱에 저장해 하루 흐름을 기록해 보세요.",
-          "컨디션이 낮게 나오면 해야 할 일의 난이도를 조정하거나, 짧은 회복 루틴을 먼저 배치하는 데 도움이 됩니다.",
+          "Save the one-line summary in your calendar or notes to track daily flow.",
+          "If your condition is low, adjust task difficulty or schedule a recovery routine first.",
         ],
       },
       {
-        heading: "자주 함께 쓰는 서비스",
+        heading: "Frequently paired services",
         body: [
-          "하루 생산성 체크, 이 정도면 쉬어야 할까? 테스트와 함께 보면 오늘 계획을 더 현실적으로 조정할 수 있습니다.",
+          "Pair with the daily productivity check or the rest decision test to plan realistically.",
         ],
       },
     ],
     faq: [
       {
-        question: "체크는 얼마나 걸리나요?",
+        question: "How long does it take?",
         answer:
-          "5개 항목이라 30초~1분이면 끝납니다. 빠르게 눌러도 바로 결과가 보여요.",
+          "About 30–60 seconds for five items, with instant results.",
       },
       {
-        question: "하루에 여러 번 해도 되나요?",
+        question: "Can I do it multiple times a day?",
         answer:
-          "가능합니다. 오전/오후 컨디션이 달라질 때 다시 체크하면 하루 흐름을 비교하기 좋습니다.",
+          "Yes. Re-check in the morning or afternoon to compare your day.",
       },
       {
-        question: "결과는 저장되나요?",
+        question: "Are results saved?",
         answer:
-          "서비스는 가벼운 체크용으로 제공되며, 결과 저장은 캡처나 메모로 기록하는 방식을 추천합니다.",
+          "It is a lightweight check, so we recommend saving via screenshot or notes.",
       },
       {
-        question: "의학적 진단인가요?",
+        question: "Is this a medical diagnosis?",
         answer:
-          "아니요. 자가 점검용 참고 자료이며, 건강 이상이 느껴지면 전문가 상담을 권장합니다.",
+          "No. It is a self-check reference; consult a professional if you feel unwell.",
       },
     ],
     disclaimer:
-      "본 점검표는 컨디션을 가볍게 돌아보기 위한 참고용 도구입니다. 의학적 조언이 아니며, 건강 문제는 전문가 상담을 권장합니다.",
+      "This checklist is for light self-review and not medical advice. Seek professional help for health concerns.",
   },
   {
     slug: "sleep-helper",
-    title: "잠들기 도우미",
+    title: "Sleep Helper",
     subtitle:
-      "코골이·주변 소음을 덮는 백색소음/환경음 믹스와 타이머/페이드아웃으로 잠들기 좋은 소리 환경을 만드는 법을 정리했습니다.",
-    category: "라이프스타일",
+      "Mix white noise and ambient sounds with a timer/fade-out to create a sleep-friendly soundscape.",
+    category: "Lifestyle",
     heroEmoji: "🌙",
     serviceUrl: "https://sleep.funnyfunny.cloud",
-    ctaLabel: "잠들기 도우미 열기",
+    ctaLabel: "Open Sleep Helper",
     metaDescription:
-      "코골이·주변 소음 속에서도 잠들기 쉽게 백색소음·비/파도/선풍기 사운드를 섞고 페이드아웃 타이머를 켜는 방법을 안내합니다.",
+      "Mix white noise with rain/waves/fan sounds and use a fade-out timer to sleep more easily despite snoring or ambient noise.",
     keywords: [
-      "잠들기 도우미",
-      "백색소음",
-      "코골이 소음",
-      "수면 사운드",
-      "환경음",
+      "sleep helper",
+      "white noise",
+      "snoring noise",
+      "sleep sounds",
+      "ambient sound",
     ],
     sections: [
       {
-        heading: "이 도구로 할 수 있는 것",
+        heading: "What you can do",
         body: [
-          "코골이·생활 소음을 덮는 백색소음과 비/파도/선풍기 등 환경음을 원하는 만큼 섞어 재생할 수 있습니다.",
-          "타이머와 페이드아웃을 켜서 잠들 무렵 볼륨이 자연스럽게 줄어들도록 설정할 수 있습니다.",
-          "좌우 밸런스와 개별 볼륨을 조절해 이어폰, 스피커 어느 쪽에서도 편안한 소리를 만들 수 있습니다.",
+          "Blend white noise with rain, waves, or fan sounds to mask everyday noise.",
+          "Use a timer and fade-out so volume drops naturally as you fall asleep.",
+          "Adjust balance and individual volumes for headphones or speakers.",
         ],
       },
       {
-        heading: "시작하기: 소리 골라 섞기",
+        heading: "Get started: mix your sounds",
         body: [
-          "Step 1. 기본 백색소음/핑크노이즈를 켜서 코골이나 에어컨 같은 반복 소리를 덮습니다.",
-          "Step 2. 파도/빗소리/선풍기 등 원하는 환경음을 추가해 마음이 편안해지는 톤을 찾습니다.",
-          "Step 3. 각 소리의 볼륨을 낮게 시작해 조금씩 올려 귓압 없이 들리는 지점을 맞춘 뒤 타이머를 설정하세요.",
+          "Step 1. Turn on white or pink noise to cover repeating sounds.",
+          "Step 2. Add waves, rain, or fan sounds to find a calming tone.",
+          "Step 3. Start low, raise gently, and set a timer once it feels comfortable.",
         ],
       },
       {
-        heading: "주변 소음 가리는 팁",
+        heading: "Noise-masking tips",
         body: [
-          "코골이는 저음+중음 피크가 많으므로 백색소음과 선풍기 소리를 적당히 섞으면 덮기 쉬워집니다.",
-          "베개 스피커나 이어폰을 쓸 때는 한쪽만 크게 틀지 말고 좌우 밸런스를 맞춰 피로를 줄이세요.",
-          "너무 큰 볼륨보다 '내 숨소리보다 살짝 큰 정도'로 설정하면 장시간 들어도 부담이 덜합니다.",
+          "Snoring sits in low/mid ranges, so mix white noise with fan sounds.",
+          "Balance left/right volume to reduce fatigue if using earbuds or pillow speakers.",
+          "Set volume just above your breathing rather than too loud.",
         ],
       },
       {
-        heading: "잠들기 루틴 예시",
+        heading: "Sample bedtime routine",
         body: [
-          "취침 15분 전 조명 밝기를 낮추고, 파도/빗소리를 켜며 타이머 30~45분에 페이드아웃을 설정합니다.",
-          "스마트폰 알림을 끄고 화면을 뒤집어두면 수면 방해를 줄일 수 있습니다.",
-          "하루에 한 번 같은 조합을 반복하면 '이 소리가 나면 잠드는 시간'이라는 조건화를 만들기 쉬워집니다.",
+          "15 minutes before bed, dim lights and set a 30–45 minute fade-out.",
+          "Turn off notifications and flip the phone face-down to reduce distractions.",
+          "Repeat the same mix daily to build a sleep cue.",
         ],
       },
     ],
     faq: [
       {
-        question: "코골이를 완전히 없애주나요?",
+        question: "Does it eliminate snoring?",
         answer:
-          "아니요. 잠들기 전에 주변 소음을 덮어 체감 소음을 줄이는 용도입니다. 수면 장애나 코골이가 심하다면 전문 상담을 권장합니다.",
+          "No. It masks noise to reduce perceived disturbance. Seek professional help for severe snoring or sleep issues.",
       },
       {
-        question: "모바일 화면을 꺼도 재생되나요?",
+        question: "Will it keep playing with the screen off?",
         answer:
-          "대부분의 브라우저는 화면을 꺼도 오디오가 계속 재생됩니다. 절전 모드에서 중단된다면 화면 꺼짐 시간을 잠시 늘리고 사용해 보세요.",
+          "Most browsers keep audio playing. If power saving stops it, extend screen-off time temporarily.",
       },
       {
-        question: "볼륨은 어느 정도가 좋을까요?",
+        question: "What volume is best?",
         answer:
-          "귀에 압박감이 없는 선(50~60% 이하)에서 주변 소음이 묻히는지 확인하며 맞춰주세요. 장시간 큰 볼륨은 피로를 줄 수 있습니다.",
+          "Keep it comfortable (around or below 50–60%) while masking noise. Avoid long sessions at high volume.",
       },
       {
-        question: "유튜브/스트리밍 소리랑 뭐가 다른가요?",
+        question: "How is this different from YouTube/streaming?",
         answer:
-          "로그인이나 광고 없이 바로 재생되고, 여러 소리를 섞거나 타이머·페이드아웃을 함께 설정할 수 있어 잠들기 전 루틴으로 쓰기 좋습니다.",
+          "It plays instantly without login or ads, and lets you mix sounds with timer/fade-out for bedtime routines.",
       },
     ],
     disclaimer:
-      "이 서비스는 수면 보조음을 제공하는 도구입니다. 의료 조언이 아니며, 수면 장애나 소음 문제가 지속된다면 전문가 상담을 권장합니다.",
+      "This tool provides sleep-assisting sounds only. It is not medical advice.",
   },
   {
     slug: "life-spending-report",
-    title: "올해 나의 인생 소비 보고서",
+    title: "My Life Spending Report This Year",
     subtitle:
-      "올해 내 돈·시간·감정이 어디로 흘렀는지, 재미있게 그리고 쉽게 정리해드립니다.",
-    category: "라이프스타일",
+      "A fun, simple summary of where your money, time, and emotions went this year.",
+    category: "Lifestyle",
     heroEmoji: "🧾",
     serviceUrl: "https://year.funnyfunny.cloud",
-    ctaLabel: "인생 소비 보고서 바로가기",
+    ctaLabel: "Open Life Spending Report",
     metaDescription:
-      "돈·시간·감정 소비 패턴을 3분 컷으로 요약하는 올해 나의 인생 소비 보고서. 연말/연초 라이프 로그를 한눈에 정리하세요.",
+      "Summarize spending of money, time, and emotions in about 3 minutes. A quick year-end life log.",
     keywords: [
-      "인생 소비 보고서",
-      "돈 시간 감정 리포트",
-      "연말 결산",
-      "소비 패턴",
-      "라이프 로그",
+      "life spending report",
+      "money time emotion report",
+      "year-end review",
+      "spending patterns",
+      "life log",
     ],
     sections: [
       {
-        heading: "돈·시간·감정 흐름을 한 장에",
+        heading: "Money, time, and emotion at a glance",
         body: [
-          "30개의 질문으로 올해의 소비, 시간, 감정 에너지가 어디에 몰렸는지 점수화해 요약 카드로 보여줍니다.",
-          "결제 내역을 직접 입력하지 않고 선택만 하면 되도록 설계해 가볍게 연말 결산을 할 수 있습니다.",
+          "Answer 30 questions to score where your resources concentrated this year.",
+          "No transaction input needed—just choose options for a light year-end review.",
         ],
       },
       {
-        heading: "진행 방식과 모드",
+        heading: "Flow and modes",
         body: [
-          "질문은 하나씩 나타나며 버튼을 누르면 바로 다음으로 넘어가 3분 안에 끝낼 수 있습니다.",
-          "빠르게 보고 싶다면 돈·시간·감정 핵심만 묻는 15문항 빠른 모드를 선택하세요. 중간에 이전/패스 버튼으로 흐름을 조정할 수 있습니다.",
+          "Questions appear one by one; tap through to finish in about 3 minutes.",
+          "Use the 15-question quick mode for just the essentials. Back/pass buttons are available.",
         ],
       },
       {
-        heading: "결과 리포트에서 볼 수 있는 것",
+        heading: "What the report shows",
         body: [
-          "돈·시간·감정 각각의 상위 소비 카테고리와 올해를 요약하는 제목/한 줄 해석을 카드 형태로 제공합니다.",
-          "내년 한 줄 처방과 행운 멘트까지 함께 제시해 공유하기 좋게 구성되어 있습니다. 결과 링크 복사/공유 버튼으로 바로 퍼갈 수 있습니다.",
+          "Top categories for money, time, and emotion plus a one-line summary card.",
+          "Includes a next-year suggestion and share-friendly result cards.",
         ],
       },
       {
-        heading: "이렇게 활용해 보세요",
+        heading: "How to use it",
         body: [
-          "결과에 나온 상위 소비 영역을 다음 달/내년 계획에 반영하고, 줄이거나 더 투자하고 싶은 항목을 골라 보세요.",
-          "시간과 감정 소비도 함께 나오니 '돈을 어디에 쓰며 어떤 감정을 가장 많이 썼는지'를 짝지어 보면 행동 우선순위를 세우기 쉽습니다.",
+          "Apply top categories to next-month or next-year plans, and choose areas to cut or invest in.",
+          "Pair money and emotion spending to set clearer priorities.",
         ],
       },
     ],
     faq: [
       {
-        question: "정말 3분 안에 끝나나요?",
+        question: "Does it really finish in 3 minutes?",
         answer:
-          "단일 선택형 질문 30개라 빠르게 누르면 3분 내로 완료됩니다. 핵심만 보고 싶다면 15문항 빠른 모드도 제공합니다.",
+          "Yes, 30 single-choice questions can be done in about 3 minutes. A 15-question quick mode is available.",
       },
       {
-        question: "로그인이나 개인 정보가 필요한가요?",
+        question: "Do I need to log in or share personal data?",
         answer:
-          "로그인 없이 바로 시작할 수 있고, 입력한 선택지는 결과 계산에만 사용됩니다.",
+          "No login required. Answers are used only to calculate results.",
       },
       {
-        question: "결과는 어떻게 공유하나요?",
+        question: "How do I share results?",
         answer:
-          "결과 카드 아래에 있는 링크 복사/공유 버튼을 누르면 바로 퍼갈 수 있습니다. 한 번 더 버튼으로 다시 진행도 가능합니다.",
+          "Use the copy/share buttons under the result card. You can also retry with another run.",
       },
       {
-        question: "모바일에서도 잘 보이나요?",
+        question: "Is it mobile-friendly?",
         answer:
-          "모바일 웹에 맞춰 구성되어 있어 휴대폰으로도 부담 없이 진행하고 결과를 저장할 수 있습니다.",
+          "Yes. It is optimized for mobile web and easy to save results.",
       },
       {
-        question: "정확한 분석인가요?",
+        question: "Is it an accurate analysis?",
         answer:
-          "자가 체크 기반의 엔터테인먼트·참고용 리포트입니다. 지출 기록이나 상담을 대체하지 않으니 흐름을 가볍게 점검하는 용도로 활용하세요.",
+          "It is a self-check, entertainment-style report and not a replacement for financial records or counseling.",
       },
     ],
   },
@@ -2702,7 +2716,7 @@ function buildGuideFromSeed(seed) {
   };
 }
 
-const manualSlugs = new Set(guides.map((guide) => guide.slug));
+const manualSlugs = new Set(rawGuides.map((guide) => guide.slug));
 
 const guideSeeds = [
   {
@@ -3404,8 +3418,135 @@ const guideSeeds = [
 
 guideSeeds.forEach((seed) => {
   if (manualSlugs.has(seed.slug)) return;
-  guides.push(buildGuideFromSeed(seed));
+  rawGuides.push(buildGuideFromSeed(seed));
 });
+
+const hasKorean = (value) =>
+  typeof value === "string" && /[가-힣]/.test(value);
+
+const categoryMap = {
+  "크리에이터 도구": "Creator Tools",
+  "라이프스타일": "Lifestyle",
+  "생활 계산기": "Lifestyle Calculator",
+  "생활 · 부동산": "Lifestyle · Real Estate",
+  "보컬 트레이닝": "Vocal Training",
+  "재테크": "Finance",
+  "엔터테인먼트": "Entertainment",
+  "커뮤니티": "Community",
+  "유틸리티": "Utilities",
+  "게임": "Games",
+  "뷰티": "Beauty",
+};
+
+const slugToTitle = (slug) =>
+  slug
+    .split("-")
+    .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
+    .join(" ");
+
+const buildDefaultSections = (title) => [
+  {
+    heading: "Overview",
+    body: [
+      `${title} is a quick, browser-based tool for everyday checks and decisions.`,
+      "Open the service and follow the on-screen steps to get results.",
+    ],
+  },
+  {
+    heading: "How to use it",
+    body: [
+      "Enter your inputs to see instant results.",
+      "Try different values to compare outcomes and save the version you like.",
+    ],
+  },
+  {
+    heading: "Notes",
+    body: [
+      "Use results as a reference, not a final decision.",
+      "No login is required and inputs are not stored.",
+    ],
+  },
+];
+
+const defaultFaq = [
+  {
+    question: "Is it free to use?",
+    answer: "Yes. It runs in the browser with no login required.",
+  },
+  {
+    question: "Are results saved?",
+    answer: "No. Inputs are used only for calculation.",
+  },
+  {
+    question: "Can I use it on mobile?",
+    answer: "Yes. It is optimized for mobile web.",
+  },
+];
+
+const sanitizeGuide = (guide) => {
+  const title = hasKorean(guide.title)
+    ? slugToTitle(guide.slug)
+    : guide.title;
+  const subtitle = hasKorean(guide.subtitle)
+    ? `A quick guide to using ${title}.`
+    : guide.subtitle || `A quick guide to using ${title}.`;
+  const metaDescription = hasKorean(guide.metaDescription)
+    ? `${title} guide on FunnyFunny Cloud with quick steps and tips.`
+    : guide.metaDescription || `${title} guide on FunnyFunny Cloud.`;
+  const category = categoryMap[guide.category]
+    ? categoryMap[guide.category]
+    : hasKorean(guide.category)
+    ? "Guide"
+    : guide.category;
+  const ctaLabel = hasKorean(guide.ctaLabel)
+    ? `Open ${title}`
+    : guide.ctaLabel;
+  const keywords = (guide.keywords || []).some(hasKorean)
+    ? Array.from(
+        new Set(
+          [
+            ...guide.slug.split("-"),
+            ...title.toLowerCase().split(" "),
+          ].filter(Boolean)
+        )
+      ).slice(0, 8)
+    : guide.keywords || [];
+  const hasSectionCopy =
+    Array.isArray(guide.sections) && guide.sections.length > 0;
+  const sections =
+    !hasSectionCopy ||
+    guide.sections.some(
+      (section) =>
+        hasKorean(section.heading) ||
+        (section.body || []).some((paragraph) => hasKorean(paragraph))
+    )
+      ? buildDefaultSections(title)
+      : guide.sections;
+  const hasFaqCopy = Array.isArray(guide.faq) && guide.faq.length > 0;
+  const faq =
+    !hasFaqCopy ||
+    guide.faq.some((item) => hasKorean(item.question) || hasKorean(item.answer))
+      ? defaultFaq
+      : guide.faq;
+  const disclaimer = hasKorean(guide.disclaimer)
+    ? "Results are provided for reference only."
+    : guide.disclaimer;
+
+  return {
+    ...guide,
+    title,
+    subtitle,
+    metaDescription,
+    category,
+    ctaLabel,
+    keywords,
+    sections,
+    faq,
+    disclaimer,
+  };
+};
+
+export const guides = rawGuides.map(sanitizeGuide);
 
 export const guideMap = guides.reduce((acc, guide) => {
   acc[guide.slug] = guide;

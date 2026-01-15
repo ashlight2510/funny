@@ -9,29 +9,29 @@ export function FooterPortal({ t }) {
           <div className="text-center mb-12 pb-12 border-b border-white/10">
             <div className="inline-block mb-4">
               <h2 className="text-2xl font-bold mb-4 text-sky-200 drop-shadow">
-                {getText("footerIntroTitle", "funnyfunny.cloud 소개")}
+                {getText("footerIntroTitle", "About funnyfunny.cloud")}
               </h2>
             </div>
             <div className="leading-relaxed text-slate-100/90 max-w-3xl mx-auto text-base bg-white/5 border border-white/15 rounded-2xl px-5 py-4 shadow-sm">
               <p>
                 {getText(
                   "footerIntroDescription1",
-                  "funnyfunny.cloud는 일상의 데이터를 더 쉽고 재밌게 보여주는 "
+                  "funnyfunny.cloud helps you understand everyday data in a simple and enjoyable way. "
                 )}
                 {getText("footerIntroHighlight") && (
                   <span className="font-semibold text-sky-100">
                     {getText(
                       "footerIntroHighlight",
-                      "유틸리티, 테스트, 계산기, 정보 도구 포털"
+                      "A portal of utilities, tests, calculators, and info tools"
                     )}
                   </span>
                 )}
-                {getText("footerIntroDescription2", "입니다.")}
+                {getText("footerIntroDescription2", "")}
               </p>
               <p className="mt-2">
                 {getText(
                   "footerIntroDescription3",
-                  "광고를 포함한 모든 요소는 Google 정책을 준수하여 안전하게 운영됩니다."
+                  "All ads and elements are operated in compliance with Google policies."
                 )}
               </p>
             </div>
@@ -40,12 +40,12 @@ export function FooterPortal({ t }) {
           <div className="text-center mb-12 pb-12 border-b border-white/10">
             <h3 className="text-xl font-bold text-sky-100 mb-6 flex items-center justify-center gap-2">
               <span className="text-2xl">📋</span>
-              <span>{getText("footerOperationTitle", "운영 정보")}</span>
+              <span>{getText("footerOperationTitle", "Operations")}</span>
             </h3>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
               <div className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg shadow-sm border border-white/15">
                 <span className="font-semibold text-slate-100">
-                  {getText("footerOperationDeveloperLabel", "개발 및 운영:")}
+                  {getText("footerOperationDeveloperLabel", "Developed & operated by:")}
                 </span>
                 <a
                   href="https://funnyfunny.cloud"
@@ -58,7 +58,7 @@ export function FooterPortal({ t }) {
               </div>
               <div className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg shadow-sm border border-white/15">
                 <span className="font-semibold text-slate-100">
-                  {getText("footerOperationContactLabel", "문의:")}
+                  {getText("footerOperationContactLabel", "Contact:")}
                 </span>
                 <a
                   href="mailto:ashlight2510@gmail.com"
@@ -76,28 +76,28 @@ export function FooterPortal({ t }) {
                 href="/privacy"
                 className="text-sm text-slate-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
               >
-                {getText("footerLinkPrivacy", "개인정보처리방침")}
+                {getText("footerLinkPrivacy", "Privacy Policy")}
               </a>
               <span className="text-white/40">·</span>
               <a
                 href="/terms"
                 className="text-sm text-slate-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
               >
-                {getText("footerLinkTerms", "이용약관")}
+                {getText("footerLinkTerms", "Terms of Service")}
               </a>
               <span className="text-white/40">·</span>
               <a
                 href="/copyright"
                 className="text-sm text-slate-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
               >
-                {getText("footerLinkCopyright", "저작권 안내")}
+                {getText("footerLinkCopyright", "Copyright Notice")}
               </a>
               <span className="text-white/40">·</span>
               <a
                 href="/policy"
                 className="text-sm text-slate-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
               >
-                {getText("footerLinkPolicy", "운영정책")}
+                {getText("footerLinkPolicy", "Operations Policy")}
               </a>
             </div>
             <p className="text-sm text-slate-200/80 font-medium">

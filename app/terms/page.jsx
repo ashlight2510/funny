@@ -3,18 +3,18 @@ import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
 export const metadata = {
-  title: '이용약관 — FunnyFunny Cloud',
-  description: 'FunnyFunny Cloud 이용약관',
+  title: 'Terms of Service — FunnyFunny Cloud',
+  description: 'FunnyFunny Cloud terms of service',
   openGraph: {
     type: 'website',
     url: 'https://funnyfunny.cloud/terms',
-    title: '이용약관 — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud 이용약관'
+    title: 'Terms of Service — FunnyFunny Cloud',
+    description: 'FunnyFunny Cloud terms of service'
   },
   twitter: {
     card: 'summary_large_image',
-    title: '이용약관 — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud 이용약관'
+    title: 'Terms of Service — FunnyFunny Cloud',
+    description: 'FunnyFunny Cloud terms of service'
   }
 };
 
@@ -23,103 +23,138 @@ export default function TermsPage() {
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-8">이용약관</h1>
+        <h1 className="text-3xl font-bold mb-8">Terms of Service</h1>
 
         <div className="bg-white rounded-lg shadow p-8 space-y-6 text-sm leading-relaxed">
-          <p className="text-gray-600">최종 수정일: 2024년 1월 1일</p>
+          <p className="text-gray-600">Last updated: January 1, 2024</p>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">제1조 (목적)</h2>
-            <p>이 약관은 FunnyFunny Cloud(이하 "본 사이트")가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 회사와 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-4">제2조 (정의)</h2>
-            <p className="mb-4">이 약관에서 사용하는 용어의 정의는 다음과 같습니다:</p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>"서비스"란 본 사이트가 제공하는 모든 계산기, 테스트, 유틸리티 및 관련 서비스를 의미합니다.</li>
-              <li>"이용자"란 본 사이트에 접속하여 이 약관에 따라 본 사이트가 제공하는 서비스를 받는 회원 및 비회원을 말합니다.</li>
-              <li>"콘텐츠"란 본 사이트에서 제공하는 모든 정보, 텍스트, 그래픽, 링크 등을 의미합니다.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-4">제3조 (약관의 게시와 개정)</h2>
-            <p className="mb-4">본 사이트는 이 약관의 내용을 이용자가 쉽게 알 수 있도록 서비스 초기 화면에 게시합니다.</p>
-            <p>본 사이트는 필요한 경우 관련 법령을 위배하지 않는 범위에서 이 약관을 개정할 수 있으며, 개정된 약관은 서비스 화면에 공지하거나 기타의 방법으로 이용자에게 공지합니다.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-4">제4조 (서비스의 제공 및 변경)</h2>
-            <p className="mb-4">본 사이트는 다음과 같은 서비스를 제공합니다:</p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>다양한 계산기 및 테스트 서비스</li>
-              <li>유틸리티 및 도구 서비스</li>
-              <li>정보 제공 서비스</li>
-              <li>기타 본 사이트가 추가 개발하거나 제휴계약 등을 통해 이용자에게 제공하는 일체의 서비스</li>
-            </ul>
-            <p className="mt-4">본 사이트는 서비스의 내용을 변경할 수 있으며, 변경 시에는 사전에 공지합니다.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-4">제5조 (서비스의 중단)</h2>
-            <p className="mb-4">본 사이트는 다음 각 호에 해당하는 경우 서비스 제공을 중단할 수 있습니다:</p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>서비스용 설비의 보수 등 공사로 인한 부득이한 경우</li>
-              <li>전기통신사업법에 규정된 기간통신사업자가 전기통신 서비스를 중지했을 경우</li>
-              <li>국가비상사태, 서비스 설비의 장애 또는 서비스 이용의 폭주 등으로 서비스 이용에 지장이 있는 경우</li>
-              <li>기타 중대한 사유로 인하여 본 사이트가 서비스 제공을 지속하는 것이 부적당하다고 인정하는 경우</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-4">제6조 (이용자의 의무)</h2>
-            <p className="mb-4">이용자는 다음 행위를 하여서는 안 됩니다:</p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>신청 또는 변경 시 허위 내용의 등록</li>
-              <li>타인의 정보 도용</li>
-              <li>본 사이트가 게시한 정보의 변경</li>
-              <li>본 사이트가 정한 정보 이외의 정보(컴퓨터 프로그램 등) 등의 송신 또는 게시</li>
-              <li>본 사이트와 기타 제3자의 저작권 등 지적재산권에 대한 침해</li>
-              <li>본 사이트 및 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위</li>
-              <li>외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 본 사이트에 공개 또는 게시하는 행위</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-4">제7조 (저작권의 귀속 및 이용제한)</h2>
-            <p className="mb-4">본 사이트가 작성한 저작물에 대한 저작권 기타 지적재산권은 본 사이트에 귀속합니다.</p>
-            <p className="mb-4">
-              이용자는 본 사이트를 이용함으로써 얻은 정보 중 본 사이트에게 지적재산권이 귀속된 정보를 본 사이트의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안 됩니다.
+            <h2 className="text-xl font-bold mb-4">Article 1 (Purpose)</h2>
+            <p>
+              These Terms govern the conditions, procedures, rights, duties,
+              and responsibilities between FunnyFunny Cloud (“the site”) and
+              users for all services provided.
             </p>
-            <p>본 사이트는 약정에 따라 이용자에게 귀속된 저작권을 사용하는 경우 당해 이용자에게 통보하여야 합니다.</p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">제8조 (면책조항)</h2>
-            <p className="mb-4">본 사이트는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다.</p>
-            <p className="mb-4">본 사이트는 이용자의 귀책사유로 인한 서비스 이용의 장애에 대하여는 책임을 지지 않습니다.</p>
-            <p className="mb-4">본 사이트는 이용자가 서비스를 이용하여 기대하는 수익을 상실한 것에 대하여 책임을 지지 않으며, 그 밖의 서비스를 통하여 얻은 자료로 인한 손해에 관하여 책임을 지지 않습니다.</p>
-            <p>본 사이트에서 제공하는 서비스의 계산 결과 및 정보는 참고용이며, 실제 의사결정에 대한 책임은 이용자에게 있습니다.</p>
+            <h2 className="text-xl font-bold mb-4">Article 2 (Definitions)</h2>
+            <p className="mb-4">Key terms are defined as follows:</p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>“Services” include all calculators, tests, utilities, and related offerings on the site.</li>
+              <li>“User” means anyone who accesses the site and uses the services, whether registered or not.</li>
+              <li>“Content” refers to all information, text, graphics, and links provided on the site.</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">제9조 (분쟁의 해결)</h2>
+            <h2 className="text-xl font-bold mb-4">Article 3 (Posting and Amendments)</h2>
             <p className="mb-4">
-              본 사이트와 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
+              These Terms are posted on the initial service screen for easy access.
             </p>
-            <p>본 사이트와 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</p>
+            <p>
+              We may revise these Terms within the limits of applicable law.
+              Updated Terms will be announced on the service screen or by other
+              appropriate means.
+            </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">제10조 (기타)</h2>
-            <p>이 약관에서 정하지 아니한 사항에 대해서는 관련법령 또는 상관례에 따릅니다.</p>
+            <h2 className="text-xl font-bold mb-4">Article 4 (Provision and Changes)</h2>
+            <p className="mb-4">The site provides services such as:</p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Various calculators and tests</li>
+              <li>Utilities and tools</li>
+              <li>Information services</li>
+              <li>Other services developed or provided through partnerships</li>
+            </ul>
+            <p className="mt-4">
+              We may change service content and will provide notice in advance.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold mb-4">Article 5 (Service Suspension)</h2>
+            <p className="mb-4">We may suspend service in cases such as:</p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Maintenance or construction of service facilities</li>
+              <li>Telecommunications service interruptions by carriers</li>
+              <li>National emergencies, system failures, or usage spikes</li>
+              <li>Other significant reasons making continued service impractical</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold mb-4">Article 6 (User Obligations)</h2>
+            <p className="mb-4">Users must not:</p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Register false information or make false changes</li>
+              <li>Impersonate others or misuse their information</li>
+              <li>Alter posted information without authorization</li>
+              <li>Transmit or post unauthorized materials (e.g., programs)</li>
+              <li>Infringe on intellectual property rights</li>
+              <li>Damage the reputation of the site or third parties</li>
+              <li>Post obscene, violent, or otherwise inappropriate content</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold mb-4">Article 7 (Copyright and Use)</h2>
+            <p className="mb-4">
+              Copyright and other intellectual property rights for site-created
+              works belong to the site.
+            </p>
+            <p className="mb-4">
+              Users may not reproduce, transmit, publish, distribute, or
+              otherwise use site-owned content for commercial purposes without
+              prior permission, nor enable third parties to do so.
+            </p>
+            <p>
+              If we use content owned by users under an agreement, we will
+              notify the user accordingly.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold mb-4">Article 8 (Disclaimer)</h2>
+            <p className="mb-4">
+              We are not liable for failure to provide services due to force
+              majeure or similar circumstances.
+            </p>
+            <p className="mb-4">
+              We are not responsible for service disruptions caused by users.
+            </p>
+            <p className="mb-4">
+              We are not liable for losses arising from user expectations or
+              use of information provided through the service.
+            </p>
+            <p>
+              Calculations and information are for reference only. Users are
+              responsible for their decisions.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold mb-4">Article 9 (Dispute Resolution)</h2>
+            <p className="mb-4">
+              Lawsuits related to disputes between the site and users will be
+              filed in the court of the user’s address at the time of filing,
+              or the competent district court if no address is available. If
+              the address is unclear or the user resides abroad, jurisdiction
+              follows the Civil Procedure Act.
+            </p>
+            <p>Korean law governs disputes between the site and users.</p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold mb-4">Article 10 (Miscellaneous)</h2>
+            <p>Matters not covered herein follow applicable laws or customary practices.</p>
           </section>
         </div>
 
         <div className="mt-8 text-center">
           <a href="/" className="text-blue-600 hover:underline">
-            ← 홈으로 돌아가기
+            ← Back to home
           </a>
         </div>
       </main>

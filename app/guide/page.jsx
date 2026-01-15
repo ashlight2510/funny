@@ -3,24 +3,24 @@ import { HeaderSimple } from "../components/HeaderSimple";
 import { guides } from "./guides";
 
 export const metadata = {
-  title: "서비스 가이드 모음 | FunnyFunny Cloud",
+  title: "Service Guide Hub | FunnyFunny Cloud",
   description:
-    "FunnyFunny Cloud 인기 테스트·도구 가이드를 모았습니다. 오늘의 할 일부터 BMI 설문형 다이어트 플랜, 이번 겨울, 나를 망치는 것 TOP 1, 커피중독, 꾸밈비 파산, 자산 방탄 지수, 비트코인 안 산 죄, 하루 생산성 체크까지 한 곳에서 확인하세요.",
+    "A curated collection of FunnyFunny Cloud guides. Explore everything from today’s to-do and BMI diet plans to winter triggers, coffee addiction, beauty spending, asset protection, bitcoin regret, and productivity checks.",
   keywords: [
-    "FunnyFunny 가이드",
-    "오늘의 할 일 가이드",
-    "이번 겨울 나를 망치는 것 TOP 1",
-    "커피중독 테스트 가이드",
-    "꾸밈비 파산 테스트 가이드",
-    "자산 방탄 지수 가이드",
-    "비트코인 안 산 죄 가이드",
-    "하루 생산성 체크 가이드",
-    "잠들기 도우미 가이드",
-    "BMI 설문형 다이어트 플랜 가이드",
-    "셰프 심사위원 가이드",
-    "오늘의 선택 심사 가이드",
-    "오늘 상태 점검표 가이드",
-    "투자 확신 빌더 가이드",
+    "FunnyFunny guide",
+    "today to-do guide",
+    "winter trigger TOP 1",
+    "coffee addiction test guide",
+    "beauty bankruptcy test guide",
+    "asset shield index guide",
+    "bitcoin regret guide",
+    "daily productivity check guide",
+    "sleep helper guide",
+    "BMI diet plan guide",
+    "chef judge guide",
+    "today's choice judge guide",
+    "daily check-in guide",
+    "investment confidence builder guide",
   ],
   alternates: {
     canonical: "/guide",
@@ -37,12 +37,12 @@ export default function GuideIndexPage() {
             Guide Hub
           </p>
           <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold leading-tight">
-            FunnyFunny Cloud 인기 서비스 가이드 모음
+            FunnyFunny Cloud Guide Collection
           </h1>
           <p className="mt-3 text-base sm:text-lg text-slate-700 leading-relaxed">
-            서비스 사용법이 애매할 때 바로 찾아보는 짧은 안내서들을 모아두었습니다.
-            각 페이지에서 핵심 흐름과 키워드, FAQ를 한 번에 읽고 따라하면 yes/no
-            버튼을 누르듯 편안하게 서비스를 시작할 수 있어요.
+            A quick, practical guide library for when you want to use a service
+            without guessing. Each page summarizes the core flow, keywords, and
+            FAQs so you can get started fast and confidently.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {guides.map((guide) => (
@@ -87,7 +87,7 @@ export default function GuideIndexPage() {
                   href={`/guide/${guide.slug}`}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold shadow-md hover:-translate-y-0.5 transition"
                 >
-                  가이드 읽기
+                  Read guide
                 </a>
                 <a
                   href={guide.serviceUrl}
@@ -95,7 +95,7 @@ export default function GuideIndexPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
                 >
-                  서비스 바로가기
+                  Open service
                 </a>
               </div>
             </article>

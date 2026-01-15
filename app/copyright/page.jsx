@@ -3,18 +3,18 @@ import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
 export const metadata = {
-  title: '저작권 안내 — FunnyFunny Cloud',
-  description: 'FunnyFunny Cloud 저작권 안내',
+  title: 'Copyright Notice — FunnyFunny Cloud',
+  description: 'FunnyFunny Cloud copyright notice',
   openGraph: {
     type: 'website',
     url: 'https://funnyfunny.cloud/copyright',
-    title: '저작권 안내 — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud 저작권 안내'
+    title: 'Copyright Notice — FunnyFunny Cloud',
+    description: 'FunnyFunny Cloud copyright notice'
   },
   twitter: {
     card: 'summary_large_image',
-    title: '저작권 안내 — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud 저작권 안내'
+    title: 'Copyright Notice — FunnyFunny Cloud',
+    description: 'FunnyFunny Cloud copyright notice'
   }
 };
 
@@ -23,77 +23,79 @@ export default function CopyrightPage() {
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-8">저작권 안내</h1>
+        <h1 className="text-3xl font-bold mb-8">Copyright Notice</h1>
 
         <div className="bg-white rounded-lg shadow p-8 space-y-6 text-sm leading-relaxed">
-          <p className="text-gray-600">최종 수정일: 2024년 1월 1일</p>
+          <p className="text-gray-600">Last updated: January 1, 2024</p>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">1. 저작권 소유</h2>
+            <h2 className="text-xl font-bold mb-4">1. Copyright Ownership</h2>
             <p className="mb-4">
-              funnyfunny.cloud(이하 "본 사이트")에 게시된 모든 콘텐츠, 디자인, 로고, 이미지, 텍스트, 소프트웨어 코드 등은
-              AshLight의 지적재산권에 속하며, 저작권법 및 국제 저작권 조약에 의해 보호받습니다.
+              All content, designs, logos, images, text, and software code on
+              funnyfunny.cloud (“the site”) are the intellectual property of
+              AshLight and are protected by copyright laws and international
+              treaties.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">2. 사용 허가 범위</h2>
-            <p className="mb-4">본 사이트의 콘텐츠는 다음의 경우에 한하여 사용할 수 있습니다:</p>
+            <h2 className="text-xl font-bold mb-4">2. Permitted Use</h2>
+            <p className="mb-4">You may use site content only if:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>개인적인 비상업적 목적으로만 사용</li>
-              <li>출처를 명시한 경우에 한하여 인용</li>
-              <li>본 사이트의 명시적 허가를 받은 경우</li>
+              <li>It is for personal, non-commercial use</li>
+              <li>The source is clearly attributed when quoted</li>
+              <li>You have explicit permission from the site</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">3. 금지 사항</h2>
-            <p className="mb-4">다음의 행위는 엄격히 금지됩니다:</p>
+            <h2 className="text-xl font-bold mb-4">3. Prohibited Actions</h2>
+            <p className="mb-4">The following actions are strictly prohibited:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>본 사이트의 콘텐츠를 무단으로 복제, 배포, 전송하는 행위</li>
-              <li>상업적 목적으로 본 사이트의 콘텐츠를 사용하는 행위</li>
-              <li>본 사이트의 콘텐츠를 변조하거나 수정하는 행위</li>
-              <li>본 사이트의 콘텐츠를 다른 사이트에 무단으로 게시하는 행위</li>
-              <li>본 사이트의 소스 코드를 역공학하거나 복제하는 행위</li>
+              <li>Unauthorized reproduction, distribution, or transmission</li>
+              <li>Commercial use of site content</li>
+              <li>Modifying or altering site content</li>
+              <li>Republishing content on other sites without permission</li>
+              <li>Reverse engineering or copying source code</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">4. 제3자 콘텐츠</h2>
+            <h2 className="text-xl font-bold mb-4">4. Third-Party Content</h2>
             <p className="mb-4">
-              본 사이트에서 사용되는 일부 이미지, 아이콘, 폰트 등은 제3자가 제공하는 것으로, 해당 저작권은 원저작자에게
-              있습니다. 본 사이트는 이러한 콘텐츠의 사용에 대해 적절한 라이선스를 보유하고 있거나 공정 이용(Fair Use)
-              원칙에 따라 사용하고 있습니다.
+              Some images, icons, and fonts are provided by third parties and
+              remain the property of their respective owners. We use such
+              content under appropriate licenses or fair use principles.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">5. 사용자 생성 콘텐츠</h2>
+            <h2 className="text-xl font-bold mb-4">5. User-Generated Content</h2>
             <p className="mb-4">
-              사용자가 본 사이트를 통해 생성하거나 게시한 콘텐츠에 대한 저작권은 해당 사용자에게 있습니다. 다만, 사용자는 본
-              사이트에 콘텐츠를 게시함으로써 본 사이트가 해당 콘텐츠를 사이트 운영 및 홍보 목적으로 사용할 수 있는 비독점적
-              라이선스를 부여하는 것에 동의합니다.
+              Users retain copyright to content they create or post. By posting,
+              users grant the site a non-exclusive license to use the content
+              for site operation and promotion.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">6. 저작권 침해 신고</h2>
+            <h2 className="text-xl font-bold mb-4">6. Copyright Infringement Reports</h2>
             <p className="mb-4">
-              본 사이트의 콘텐츠가 귀하의 저작권을 침해한다고 생각되시는 경우, 아래 연락처로 신고해 주시기 바랍니다. 신고 시
-              다음 정보를 포함해 주세요:
+              If you believe your copyright is infringed, contact us with the
+              following information:
             </p>
             <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>침해되는 저작물에 대한 설명</li>
-              <li>침해되는 저작물의 위치(URL)</li>
-              <li>저작권 소유자 정보</li>
-              <li>연락처 정보</li>
+              <li>Description of the infringed work</li>
+              <li>Location (URL) of the infringing material</li>
+              <li>Copyright owner information</li>
+              <li>Contact information</li>
             </ul>
             <div className="bg-gray-50 p-4 rounded mt-4">
               <p>
-                <strong>저작권 침해 신고 연락처</strong>
+                <strong>Copyright report contact</strong>
               </p>
               <p>
-                이메일:{' '}
+                Email:{' '}
                 <a href="mailto:ashlight2510@gmail.com" className="text-blue-600 hover:underline">
                   ashlight2510@gmail.com
                 </a>
@@ -102,17 +104,18 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">7. 면책 조항</h2>
+            <h2 className="text-xl font-bold mb-4">7. Disclaimer</h2>
             <p>
-              본 사이트는 사용자가 본 사이트의 콘텐츠를 사용함으로써 발생할 수 있는 모든 손해에 대해 책임을 지지 않습니다.
-              사용자는 본 사이트의 콘텐츠를 사용하기 전에 관련 법률 및 규정을 확인하고 준수할 책임이 있습니다.
+              The site is not liable for damages arising from use of its
+              content. Users are responsible for complying with relevant laws
+              and regulations.
             </p>
           </section>
         </div>
 
         <div className="mt-8 text-center">
           <a href="/" className="text-blue-600 hover:underline">
-            ← 홈으로 돌아가기
+            ← Back to home
           </a>
         </div>
       </main>
