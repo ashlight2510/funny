@@ -1781,6 +1781,25 @@ const pageCopy = {
     quickBarRandomGift: "Random gift",
     servicesReady: "services are ready right now.",
     searchHint: "Search by keyword or click to open.",
+    sectionGames: "Games",
+    gameLeaderboard: "Leaderboard",
+    gameNeonArcade: "NEON ARCADE",
+    gameNeonStairs: "NEON STAIRS",
+    game2Player: "2-player",
+    gameNeonPinball: "NEON PINBALL",
+    gameRunDesc: "Dino runner-style ranking game",
+    gameCharmDesc: "Just switch lanes to dodge the missiles.",
+    gameDownyDesc: "Switch lanes to step on stairs, fall and it's over!",
+    gameTetrisDesc: "Tetris with single (AI) and 2-player modes",
+    gamePinballDesc: "The rolling ball on the board picks randomly.",
+    winterPicks: "Winter Picks",
+    winterPicksTitle: "Popular tests to enjoy in winter",
+    winterPicksDesc: "Pick a few favorites from what people are viewing right now.",
+    winterMoodWrecker: "Winter Mood Wrecker",
+    lifeSpendingReport: "Life Spending Report",
+    bitcoinGuilt: "Bitcoin Guilt",
+    ottPicks: "OTT Picks",
+    energyLeak: "Energy Leak",
     hubTitle: "나를 이해하는 가장 간단한 방법",
     sectionPsychology: "심리 & 특성",
     sectionMoney: "돈 & 투자",
@@ -1802,6 +1821,25 @@ const pageCopy = {
     quickBarRandomGift: "랜덤 선물",
     servicesReady: "개의 서비스가 준비되어 있습니다.",
     searchHint: "키워드로 검색하거나 클릭하여 열 수 있습니다.",
+    sectionGames: "게임",
+    gameLeaderboard: "랭킹",
+    gameNeonArcade: "네온 아케이드",
+    gameNeonStairs: "네온 계단",
+    game2Player: "2인용",
+    gameNeonPinball: "네온 핀볼",
+    gameRunDesc: "공룡 러너 스타일 랭킹 게임",
+    gameCharmDesc: "차선을 바꿔 미사일을 피하세요.",
+    gameDownyDesc: "계단에서 좌우로 발 디디기. 떨어지면 끝!",
+    gameTetrisDesc: "솔로(AI)와 2인용 모드 테트리스",
+    gamePinballDesc: "보드 위 굴러가는 공이 랜덤으로 선택합니다.",
+    winterPicks: "겨울 추천",
+    winterPicksTitle: "겨울에 즐기기 좋은 인기 테스트",
+    winterPicksDesc: "지금 사람들이 보고 있는 것 중에서 몇 가지를 선택해보세요.",
+    winterMoodWrecker: "겨울 무드 파괴자",
+    lifeSpendingReport: "인생 소비 보고서",
+    bitcoinGuilt: "비트코인 안 산 죄",
+    ottPicks: "OTT 픽",
+    energyLeak: "에너지 누수",
   },
 };
 
@@ -3154,7 +3192,7 @@ export function HomeContent() {
 
           <div className="mt-10">
             <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              Games
+              {t("sectionGames")}
             </h3>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <a
@@ -3169,12 +3207,12 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🦖</span>
                   <span className="text-xs font-semibold text-emerald-600">
-                    Leaderboard
+                    {t("gameLeaderboard")}
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">Run</h4>
+                <h4 className="font-bold text-lg leading-snug">{getServiceTitle("https://run.funnyfunny.cloud")}</h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  Dino runner-style ranking game
+                  {t("gameRunDesc")}
                 </p>
               </a>
               <a
@@ -3189,14 +3227,14 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🛸</span>
                   <span className="text-xs font-semibold text-purple-600">
-                    NEON ARCADE
+                    {t("gameNeonArcade")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
-                  Cham Cham Cham!
+                  {getServiceTitle("https://charm.funnyfunny.cloud/")}
                 </h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  Just switch lanes to dodge the missiles.
+                  {t("gameCharmDesc")}
                 </p>
               </a>
               <a
@@ -3211,12 +3249,12 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🪜</span>
                   <span className="text-xs font-semibold text-blue-600">
-                    NEON STAIRS
+                    {t("gameNeonStairs")}
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">Downy</h4>
+                <h4 className="font-bold text-lg leading-snug">{getServiceTitle("https://downy.funnyfunny.cloud/")}</h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  Switch lanes to step on stairs, fall and it&apos;s over!
+                  {t("gameDownyDesc")}
                 </p>
               </a>
               <a
@@ -3231,14 +3269,14 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🧱</span>
                   <span className="text-xs font-semibold text-orange-600">
-                    2-player
+                    {t("game2Player")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
-                  One Round Tetris
+                  {getServiceTitle("https://tet.funnyfunny.cloud/")}
                 </h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  Tetris with single (AI) and 2-player modes
+                  {t("gameTetrisDesc")}
                 </p>
               </a>
               <a
@@ -3253,14 +3291,14 @@ export function HomeContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🎱</span>
                   <span className="text-xs font-semibold text-amber-600">
-                    NEON PINBALL
+                    {t("gameNeonPinball")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
-                  Neon Pinball Random Picker
+                  {getServiceTitle("https://random.funnyfunny.cloud/")}
                 </h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  The rolling ball on the board picks randomly.
+                  {t("gamePinballDesc")}
                 </p>
               </a>
             </div>
@@ -3269,13 +3307,13 @@ export function HomeContent() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-amber-200">
-                  Winter Picks
+                  {t("winterPicks")}
                 </p>
                 <h4 className="mt-1 text-2xl font-bold">
-                  Popular tests to enjoy in winter
+                  {t("winterPicksTitle")}
                 </h4>
                 <p className="mt-2 text-sm text-emerald-50/90">
-                  Pick a few favorites from what people are viewing right now.
+                  {t("winterPicksDesc")}
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
@@ -3285,7 +3323,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
                 >
-                  Winter Mood Wrecker
+                  {getServiceTitle("https://winter.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://year.funnyfunny.cloud"
@@ -3293,7 +3331,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
                 >
-                  Life Spending Report
+                  {getServiceTitle("https://year.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://bit.funnyfunny.cloud"
@@ -3301,7 +3339,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  Bitcoin Guilt
+                  {getServiceTitle("https://bit.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://pick.funnyfunny.cloud"
@@ -3309,7 +3347,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  OTT Picks
+                  {getServiceTitle("https://pick.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://drain.funnyfunny.cloud"
@@ -3317,7 +3355,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  Energy Leak
+                  {getServiceTitle("https://drain.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://rest.funnyfunny.cloud"
