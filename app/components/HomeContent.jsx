@@ -1557,7 +1557,7 @@ function getAllServices(lang = "en") {
     {
       href: "https://charm.funnyfunny.cloud",
       icon: "🛸",
-      title: isKo ? "Charm (NEON ARCADE)" : "Charm (NEON ARCADE)",
+      title: isKo ? "참참참 (NEON ARCADE)" : "Cham Cham Cham! (NEON ARCADE)",
       desc: isKo
         ? "차선을 바꿔 미사일 피하기."
         : "Switch lanes to dodge missiles.",
