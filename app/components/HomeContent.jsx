@@ -1010,7 +1010,7 @@ function getAllServices(lang = "en") {
       href: "https://nospend.funnyfunny.cloud",
       icon: "💸",
       title: isKo ? "안 산 것의 총 자산" : "Total Wealth of What I Didn't Buy",
-      desc: isKo ? ""안 샀으면"을 숫자로 바꾸기." : "Turn “if only I hadn’t bought it” into numbers.",
+      desc: isKo ? '"안 샀으면"을 숫자로 바꾸기.' : "Turn \"if only I hadn't bought it\" into numbers.",
       tags: isKo ? ['저축', '총자산', '기회비용'] : ["saving", "total-wealth", "opportunity-cost"],
     },
     {
