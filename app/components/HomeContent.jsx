@@ -1794,7 +1794,8 @@ const pageCopy = {
     gamePinballDesc: "The rolling ball on the board picks randomly.",
     winterPicks: "Winter Picks",
     winterPicksTitle: "Popular tests to enjoy in winter",
-    winterPicksDesc: "Pick a few favorites from what people are viewing right now.",
+    winterPicksDesc:
+      "Pick a few favorites from what people are viewing right now.",
     winterMoodWrecker: "Winter Mood Wrecker",
     lifeSpendingReport: "Life Spending Report",
     bitcoinGuilt: "Bitcoin Guilt",
@@ -1834,7 +1835,8 @@ const pageCopy = {
     gamePinballDesc: "보드 위 굴러가는 공이 랜덤으로 선택합니다.",
     winterPicks: "겨울 추천",
     winterPicksTitle: "겨울에 즐기기 좋은 인기 테스트",
-    winterPicksDesc: "지금 사람들이 보고 있는 것 중에서 몇 가지를 선택해보세요.",
+    winterPicksDesc:
+      "지금 사람들이 보고 있는 것 중에서 몇 가지를 선택해보세요.",
     winterMoodWrecker: "겨울 무드 파괴자",
     lifeSpendingReport: "인생 소비 보고서",
     bitcoinGuilt: "비트코인 안 산 죄",
@@ -2578,122 +2580,196 @@ export function HomeContent() {
               <h3 className="text-xl font-bold">{t("usefulServicesTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                [
-                  "https://flow.funnyfunny.cloud/",
-                  "🧵 FLOW Community",
-                  "A board with thread + forum vibes",
-                  "Anonymous posting, live reactions, and topic threads to start chatting fast",
-                ],
-                [
-                  "https://video.funnyfunny.cloud",
-                  "🎬 AutoCut Studio",
-                  "Auto highlight & jump cuts",
-                  "Detects silence to extract highlight timelines and shorts to cut editing time.",
-                ],
-                [
-                  "https://file.funnyfunny.cloud/",
-                  "🗜️ Local Image Optimizer & File Insights",
-                  "One drag to shrink images + view file details",
-                  "Re-encode WebP/JPEG, auto-resize, and view file metadata, SHA-256, plus image/PDF/text previews without uploads.",
-                ],
-                [
-                  "https://meta.funnyfunny.cloud",
-                  "🧰 Meta Kit — SEO · OG · Favicon",
-                  "Generate meta tags, sharing cards, and icons in one go",
-                  "Enter SEO/OG/Twitter cards + favicon set → generate → copy. OG image text supports English only.",
-                ],
-                [
-                  "https://image.funnyfunny.cloud",
-                  "🖼️ Image Merge & PDF Converter",
-                  "Upload multiple images, reorder, and save as one image or PDF",
-                  "Drag to order and export to JPG/PNG/PDF in one batch",
-                ],
-                [
-                  "https://space.funnyfunny.cloud",
-                  "📐 Pyeong Calculator",
-                  "Convert pyeong ↔ square meters + check typical sizes",
-                  "Quick area converter for studios, officetels, and apartments",
-                ],
-                [
-                  "https://ocr.funnyfunny.cloud",
-                  "🔍 Image Text Extractor",
-                  "Auto-read text in photos and copy as text",
-                  "OCR tool that extracts text from receipts, documents, or notes to clipboard or file",
-                ],
-                [
-                  "https://audio.funnyfunny.cloud",
-                  "🎵 Simple Audio Editor",
-                  "Edit audio directly in the browser",
-                  "Trim, merge, export with no install — 100% client-side",
-                ],
-                [
-                  "https://vocal.funnyfunny.cloud",
-                  "🎤 Head Voice Trainer",
-                  "Head voice practice coach",
-                  "Build a 5-minute routine with breathing, resonance warmups, and scale-following.",
-                ],
-                [
-                  "https://time.funnyfunny.cloud",
-                  "⏰ Time Checker",
-                  "Accurate server time and booking helper",
-                  "All time-related calculations in one place.",
-                ],
-                [
-                  "https://news.funnyfunny.cloud",
-                  "📰 IT News Today",
-                  "Quick summaries of local and global IT news",
-                  "See the latest tech news at a glance.",
-                ],
-                [
-                  "https://saju.funnyfunny.cloud/",
-                  "🔮 Four Pillars & Shinto Fortune",
-                  "Four pillars and Shinto fortune summary",
-                  "Enter birth date/time to summarize this year and month trends.",
-                ],
-                [
-                  "https://weather.funnyfunny.cloud",
-                  "🌤️ Current Weather",
-                  "Check nearby weather conditions",
-                  "Includes fine dust, UV, and feels-like temperature.",
-                ],
-                [
-                  "https://pick.funnyfunny.cloud",
-                  "🍿 What Should I Watch? (OTT Picks)",
-                  "Get movie or drama picks in a few clicks",
-                  "Curated Korean OTT picks for no-regrets choices",
-                ],
-                [
-                  "https://emojicon.funnyfunny.cloud",
-                  "🎨 EmojiCon Studio",
-                  "Emoji icon studio for web and apps",
-                  "Enter one emoji to generate icons, favicons, and app store sizes",
-                ],
-                [
-                  "https://snaptrail.funnyfunny.cloud",
-                  "📍 SnapTrail",
-                  "Memory timeline maker",
-                  "Auto-group photos by year, month, and region to build a chronological timeline",
-                ],
-                [
-                  "https://day.funnyfunny.cloud",
-                  "📅 D-day Calculator",
-                  "Date math, D-Day, N days later, anniversaries, widgets",
-                  "Manage important dates easily.",
-                ],
-              ].map(([href, title, desc, detail]) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <h4 className="font-bold text-lg">{title}</h4>
-                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
-                </a>
-              ))}
+              {(() => {
+                const isKo = lang === "ko";
+                const utils = [
+                  {
+                    href: "https://flow.funnyfunny.cloud/",
+                    title: isKo ? "🧵 FLOW Community" : "🧵 FLOW Community",
+                    desc: isKo
+                      ? "스레드 + 포럼 느낌의 게시판"
+                      : "A board with thread + forum vibes",
+                    detail: isKo
+                      ? "익명 게시, 실시간 반응, 주제별 스레드로 빠르게 대화 시작"
+                      : "Anonymous posting, live reactions, and topic threads to start chatting fast",
+                  },
+                  {
+                    href: "https://video.funnyfunny.cloud",
+                    title: isKo ? "🎬 AutoCut Studio" : "🎬 AutoCut Studio",
+                    desc: isKo ? "자동 하이라이트 & 점프 컷" : "Auto highlight & jump cuts",
+                    detail: isKo
+                      ? "침묵 감지로 하이라이트 타임라인과 쇼츠 추출해 편집 시간 단축"
+                      : "Detects silence to extract highlight timelines and shorts to cut editing time.",
+                  },
+                  {
+                    href: "https://file.funnyfunny.cloud/",
+                    title: isKo
+                      ? "🗜️ 로컬 이미지 최적화 & 파일 인사이트"
+                      : "🗜️ Local Image Optimizer & File Insights",
+                    desc: isKo
+                      ? "드래그 한 번으로 이미지 축소 + 파일 정보 확인"
+                      : "One drag to shrink images + view file details",
+                    detail: isKo
+                      ? "WebP/JPEG 재인코딩, 자동 리사이즈, 파일 메타데이터/SHA-256 확인, 이미지/PDF/텍스트 미리보기 (업로드 불필요)"
+                      : "Re-encode WebP/JPEG, auto-resize, and view file metadata, SHA-256, plus image/PDF/text previews without uploads.",
+                  },
+                  {
+                    href: "https://meta.funnyfunny.cloud",
+                    title: isKo
+                      ? "🧰 Meta Kit — SEO · OG · Favicon"
+                      : "🧰 Meta Kit — SEO · OG · Favicon",
+                    desc: isKo
+                      ? "메타 태그, 공유 카드, 아이콘을 한 번에 생성"
+                      : "Generate meta tags, sharing cards, and icons in one go",
+                    detail: isKo
+                      ? "SEO/OG/Twitter 카드 + 파비콘 세트 입력 → 생성 → 복사. OG 이미지 텍스트는 영어만 지원"
+                      : "Enter SEO/OG/Twitter cards + favicon set → generate → copy. OG image text supports English only.",
+                  },
+                  {
+                    href: "https://image.funnyfunny.cloud",
+                    title: isKo
+                      ? "🖼️ 이미지 병합 & PDF 변환기"
+                      : "🖼️ Image Merge & PDF Converter",
+                    desc: isKo
+                      ? "여러 이미지 업로드, 순서 변경, 하나의 이미지 또는 PDF로 저장"
+                      : "Upload multiple images, reorder, and save as one image or PDF",
+                    detail: isKo
+                      ? "드래그로 순서 정렬 후 JPG/PNG/PDF로 일괄 내보내기"
+                      : "Drag to order and export to JPG/PNG/PDF in one batch",
+                  },
+                  {
+                    href: "https://space.funnyfunny.cloud",
+                    title: isKo ? "📐 평수 계산기" : "📐 Pyeong Calculator",
+                    desc: isKo
+                      ? "평 ↔ 제곱미터 변환 + 일반적인 크기 확인"
+                      : "Convert pyeong ↔ square meters + check typical sizes",
+                    detail: isKo
+                      ? "원룸, 오피스텔, 아파트를 위한 빠른 면적 변환기"
+                      : "Quick area converter for studios, officetels, and apartments",
+                  },
+                  {
+                    href: "https://ocr.funnyfunny.cloud",
+                    title: isKo ? "🔍 이미지 텍스트 추출기" : "🔍 Image Text Extractor",
+                    desc: isKo
+                      ? "사진 속 텍스트 자동 읽기 및 텍스트로 복사"
+                      : "Auto-read text in photos and copy as text",
+                    detail: isKo
+                      ? "영수증, 문서, 메모의 텍스트를 클립보드나 파일로 추출하는 OCR 도구"
+                      : "OCR tool that extracts text from receipts, documents, or notes to clipboard or file",
+                  },
+                  {
+                    href: "https://audio.funnyfunny.cloud",
+                    title: isKo ? "🎵 간단한 오디오 편집기" : "🎵 Simple Audio Editor",
+                    desc: isKo ? "브라우저에서 직접 오디오 편집" : "Edit audio directly in the browser",
+                    detail: isKo
+                      ? "설치 없이 자르기, 병합, 내보내기 — 100% 클라이언트 사이드"
+                      : "Trim, merge, export with no install — 100% client-side",
+                  },
+                  {
+                    href: "https://vocal.funnyfunny.cloud",
+                    title: isKo ? "🎤 두성 트레이너" : "🎤 Head Voice Trainer",
+                    desc: isKo ? "두성 연습 코치" : "Head voice practice coach",
+                    detail: isKo
+                      ? "호흡, 공명 워밍업, 스케일 따라하기로 5분 루틴 구성"
+                      : "Build a 5-minute routine with breathing, resonance warmups, and scale-following.",
+                  },
+                  {
+                    href: "https://time.funnyfunny.cloud",
+                    title: isKo ? "⏰ 시간 확인기" : "⏰ Time Checker",
+                    desc: isKo
+                      ? "정확한 서버 시간 및 예약 도우미"
+                      : "Accurate server time and booking helper",
+                    detail: isKo
+                      ? "모든 시간 관련 계산을 한 곳에서"
+                      : "All time-related calculations in one place.",
+                  },
+                  {
+                    href: "https://news.funnyfunny.cloud",
+                    title: isKo ? "📰 IT 뉴스 오늘" : "📰 IT News Today",
+                    desc: isKo
+                      ? "국내외 IT 뉴스 빠른 요약"
+                      : "Quick summaries of local and global IT news",
+                    detail: isKo
+                      ? "최신 기술 뉴스를 한눈에 확인"
+                      : "See the latest tech news at a glance.",
+                  },
+                  {
+                    href: "https://saju.funnyfunny.cloud/",
+                    title: isKo
+                      ? "🔮 사주 & 신토 운세"
+                      : "🔮 Four Pillars & Shinto Fortune",
+                    desc: isKo
+                      ? "사주와 신토 운세 요약"
+                      : "Four pillars and Shinto fortune summary",
+                    detail: isKo
+                      ? "생년월일/시간 입력으로 올해와 이번 달 트렌드 요약"
+                      : "Enter birth date/time to summarize this year and month trends.",
+                  },
+                  {
+                    href: "https://weather.funnyfunny.cloud",
+                    title: isKo ? "🌤️ 지금날씨" : "🌤️ Current Weather",
+                    desc: isKo
+                      ? "내 근처 날씨 조건 확인"
+                      : "Check nearby weather conditions",
+                    detail: isKo
+                      ? "미세먼지, 자외선, 체감온도 포함"
+                      : "Includes fine dust, UV, and feels-like temperature.",
+                  },
+                  {
+                    href: "https://pick.funnyfunny.cloud",
+                    title: isKo
+                      ? "🍿 뭐 볼까? (OTT 픽)"
+                      : "🍿 What Should I Watch? (OTT Picks)",
+                    desc: isKo
+                      ? "몇 번의 클릭으로 영화나 드라마 추천 받기"
+                      : "Get movie or drama picks in a few clicks",
+                    detail: isKo
+                      ? "후회 없는 선택을 위한 큐레이션된 한국 OTT 추천"
+                      : "Curated Korean OTT picks for no-regrets choices",
+                  },
+                  {
+                    href: "https://emojicon.funnyfunny.cloud",
+                    title: isKo ? "🎨 EmojiCon Studio" : "🎨 EmojiCon Studio",
+                    desc: isKo
+                      ? "웹과 앱을 위한 이모지 아이콘 스튜디오"
+                      : "Emoji icon studio for web and apps",
+                    detail: isKo
+                      ? "이모지 하나 입력으로 아이콘, 파비콘, 앱 스토어 크기 생성"
+                      : "Enter one emoji to generate icons, favicons, and app store sizes",
+                  },
+                  {
+                    href: "https://snaptrail.funnyfunny.cloud",
+                    title: isKo ? "📍 SnapTrail" : "📍 SnapTrail",
+                    desc: isKo ? "추억 타임라인 메이커" : "Memory timeline maker",
+                    detail: isKo
+                      ? "연도, 월, 지역별로 사진 자동 그룹화하여 연대순 타임라인 구성"
+                      : "Auto-group photos by year, month, and region to build a chronological timeline",
+                  },
+                  {
+                    href: "https://day.funnyfunny.cloud",
+                    title: isKo ? "📅 D-day 계산기" : "📅 D-day Calculator",
+                    desc: isKo
+                      ? "날짜 계산, D-day, N일 후, 기념일, 위젯"
+                      : "Date math, D-Day, N days later, anniversaries, widgets",
+                    detail: isKo
+                      ? "중요한 날짜를 쉽게 관리"
+                      : "Manage important dates easily.",
+                  },
+                ];
+                return utils.map(({ href, title, desc, detail }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                  >
+                    <h4 className="font-bold text-lg">{title}</h4>
+                    <p className="text-sm text-gray-600 mt-1">{desc}</p>
+                    <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                  </a>
+                ));
+              })()}
             </div>
           </div>
           <details className="sm:hidden rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200">
@@ -2852,7 +2928,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💸 Bitcoin FOMO Check
+                    💸 {getServiceTitle("https://bit.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2860,7 +2936,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🏠 No-Home Buyer Guilt
+                    🏠 {getServiceTitle("https://house.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2868,7 +2944,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📈 Investment Confidence Builder
+                    📈 {getServiceTitle("https://invest.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2884,7 +2960,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧾 My Spending Report This Year
+                    🧾 {getServiceTitle("https://year.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2892,7 +2968,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛡️ Asset Shield Index
+                    🛡️ {getServiceTitle("https://money.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2900,7 +2976,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧮 Asset Allocation Check
+                    🧮 {getServiceTitle("https://specific.funnyfunny.cloud/")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2908,7 +2984,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎓 Private Education Burn Map
+                    🎓 {getServiceTitle("https://edu.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2916,7 +2992,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📊 Korea Average vs Me
+                    📊 {getServiceTitle("https://average.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2924,7 +3000,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💸 Total Worth of What I Skipped
+                    💸 {getServiceTitle("https://nospend.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2932,7 +3008,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ♻️ Life Waste Index
+                    ♻️ {getServiceTitle("https://waste.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2940,7 +3016,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ☕ Cafe Spend Break-even
+                    ☕ {getServiceTitle("https://cafe.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2948,7 +3024,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍺 How Much Is That Drink Now?
+                    🍺 {getServiceTitle("https://drink.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2956,7 +3032,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    💄 Beauty Spend Bankrupt Check
+                    💄 {getServiceTitle("https://beauty.funnyfunny.cloud")}
                   </a>
                 </div>
               </div>
@@ -2979,7 +3055,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ❄️ This Winter&apos;s Top Problem
+                    ❄️ {getServiceTitle("https://winter.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3019,7 +3095,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍢 Today&apos;s Snack Pairing
+                    🍢 {getServiceTitle("https://anju.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3090,7 +3166,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎱 Neon Pinball Random Picker
+                    🎱 {getServiceTitle("https://random.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3124,69 +3200,97 @@ export function HomeContent() {
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">💡</span>
               <h3 className="text-xl font-bold">
-                Today&apos;s One-line Insight
+                {t("insightCtaTitle")}
               </h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                [
-                  "https://heal.funnyfunny.cloud",
-                  `💌 ${getServiceTitle("https://heal.funnyfunny.cloud")}`,
-                  "One click for a comfort card",
-                  "Delivers the words you need today",
-                ],
-                [
-                  "https://fortune.funnyfunny.cloud",
-                  `🔮 ${getServiceTitle("https://fortune.funnyfunny.cloud")}`,
-                  "Pick a fortune line based on your mood",
-                  "See a message that matches your moment",
-                ],
-                [
-                  "https://wisdom.funnyfunny.cloud",
-                  `📜 ${getServiceTitle("https://wisdom.funnyfunny.cloud")}`,
-                  "Daily Wisdom in one line",
-                  "A one-line message inspired by biblical teachings",
-                ],
-                [
-                  "https://news.funnyfunny.cloud",
-                  "📰 IT News Today",
-                  "Quick summaries of local and global IT news",
-                  "See the latest tech updates at a glance.",
-                ],
-                [
-                  "https://joke.funnyfunny.cloud",
-                  `😄 ${getServiceTitle("https://joke.funnyfunny.cloud")}`,
-                  "Share-worthy joke collection",
-                  "Laughter is the best medicine",
-                ],
-                [
-                  "https://mind.funnyfunny.cloud",
-                  `🧠 ${getServiceTitle("https://mind.funnyfunny.cloud")}`,
-                  "Heal with a one-line quote",
-                  "Lighten your mind",
-                ],
-                [
-                  "https://motivate.funnyfunny.cloud/",
-                  `🔥 ${getServiceTitle("https://motivate.funnyfunny.cloud/")}`,
-                  "A short line to refocus",
-                  "Reset your mindset in seconds",
-                ],
-              ].map(([href, title, desc, detail]) => {
-                const serviceTitle = getServiceTitle(href) || title;
-                return (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-                  >
-                    <h4 className="font-bold text-lg">{serviceTitle}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                    <p className="text-xs text-gray-500 mt-2">{detail}</p>
-                  </a>
-                );
-              })}
+              {(() => {
+                const isKo = lang === "ko";
+                const insights = [
+                  {
+                    href: "https://heal.funnyfunny.cloud",
+                    icon: "💌",
+                    desc: isKo
+                      ? "클릭 한 번으로 위로 카드"
+                      : "One click for a comfort card",
+                    detail: isKo
+                      ? "오늘 필요한 말을 전달"
+                      : "Delivers the words you need today",
+                  },
+                  {
+                    href: "https://fortune.funnyfunny.cloud",
+                    icon: "🔮",
+                    desc: isKo
+                      ? "기분에 맞는 운세 한 줄 선택"
+                      : "Pick a fortune line based on your mood",
+                    detail: isKo
+                      ? "지금 순간에 맞는 메시지 확인"
+                      : "See a message that matches your moment",
+                  },
+                  {
+                    href: "https://wisdom.funnyfunny.cloud",
+                    icon: "📜",
+                    desc: isKo ? "하루 한 줄 지혜" : "Daily Wisdom in one line",
+                    detail: isKo
+                      ? "성경 가르침에서 영감을 받은 한 줄 메시지"
+                      : "A one-line message inspired by biblical teachings",
+                  },
+                  {
+                    href: "https://news.funnyfunny.cloud",
+                    icon: "📰",
+                    desc: isKo
+                      ? "국내외 IT 뉴스 빠른 요약"
+                      : "Quick summaries of local and global IT news",
+                    detail: isKo
+                      ? "최신 기술 업데이트를 한눈에 확인"
+                      : "See the latest tech updates at a glance.",
+                  },
+                  {
+                    href: "https://joke.funnyfunny.cloud",
+                    icon: "😄",
+                    desc: isKo
+                      ? "공유할 만한 유머 모음"
+                      : "Share-worthy joke collection",
+                    detail: isKo
+                      ? "웃음이 최고의 약"
+                      : "Laughter is the best medicine",
+                  },
+                  {
+                    href: "https://mind.funnyfunny.cloud",
+                    icon: "🧠",
+                    desc: isKo
+                      ? "한 줄 명언으로 치유"
+                      : "Heal with a one-line quote",
+                    detail: isKo ? "마음을 가볍게" : "Lighten your mind",
+                  },
+                  {
+                    href: "https://motivate.funnyfunny.cloud/",
+                    icon: "🔥",
+                    desc: isKo
+                      ? "재집중을 위한 짧은 한 줄"
+                      : "A short line to refocus",
+                    detail: isKo
+                      ? "몇 초 만에 마음가짐 리셋"
+                      : "Reset your mindset in seconds",
+                  },
+                ];
+                return insights.map(({ href, icon, desc, detail }) => {
+                  const serviceTitle = getServiceTitle(href);
+                  return (
+                    <a
+                      key={href}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                    >
+                      <h4 className="font-bold text-lg">{icon} {serviceTitle}</h4>
+                      <p className="text-sm text-gray-600 mt-1">{desc}</p>
+                      <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                    </a>
+                  );
+                });
+              })()}
             </div>
           </div>
 
@@ -3210,7 +3314,9 @@ export function HomeContent() {
                     {t("gameLeaderboard")}
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">{getServiceTitle("https://run.funnyfunny.cloud")}</h4>
+                <h4 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://run.funnyfunny.cloud")}
+                </h4>
                 <p className="text-sm text-slate-600 mt-1">
                   {t("gameRunDesc")}
                 </p>
@@ -3252,7 +3358,9 @@ export function HomeContent() {
                     {t("gameNeonStairs")}
                   </span>
                 </div>
-                <h4 className="font-bold text-lg leading-snug">{getServiceTitle("https://downy.funnyfunny.cloud/")}</h4>
+                <h4 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://downy.funnyfunny.cloud/")}
+                </h4>
                 <p className="text-sm text-slate-600 mt-1">
                   {t("gameDownyDesc")}
                 </p>
