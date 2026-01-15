@@ -1670,7 +1670,7 @@ export function HomeContent() {
   const showSearchResults = normalizedQuery || selectedTag;
 
   return (
-    <div className="bg-gradient-to-b from-[#0b1621] via-[#101f2e] to-[#14273b] text-slate-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
+    <div className="relative bg-gradient-to-b from-[#0b1621] via-[#101f2e] to-[#14273b] text-slate-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal lang={lang} onLangChange={handleLangChange} t={t} />
       <main>
         <section className="relative overflow-hidden">
