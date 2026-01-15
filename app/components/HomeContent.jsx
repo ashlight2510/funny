@@ -1852,6 +1852,12 @@ export function HomeContent() {
   const handleLangChange = (nextLang) => {
     setLang(pageCopy[nextLang] ? nextLang : defaultLang);
   };
+  
+  // Helper function to get translated service name by href
+  const getServiceTitle = (href) => {
+    const service = allServices.find((s) => s.href === href || s.href === href + "/");
+    return service ? service.title : href;
+  };
 
   useEffect(() => {
     const handler = (e) => {
@@ -2288,7 +2294,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  Local Image Optimizer
+                  {getServiceTitle("https://file.funnyfunny.cloud/")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   WebP/JPEG re-encode, auto-resize, file info, hash
@@ -2309,7 +2315,9 @@ export function HomeContent() {
                     {t("badgeSEOBundle")}
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">Meta Kit</h3>
+                <h3 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://meta.funnyfunny.cloud")}
+                </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Auto-generate SEO/OG/favicon and copy-paste
                 </p>
@@ -2329,7 +2337,9 @@ export function HomeContent() {
                     {t("badgeConverter")}
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">Image Merge</h3>
+                <h3 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://image.funnyfunny.cloud")}
+                </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Drag to sort → one image or PDF
                 </p>
@@ -2350,7 +2360,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  Image Text Extractor
+                  {getServiceTitle("https://ocr.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Copy text straight from photos
@@ -2371,7 +2381,9 @@ export function HomeContent() {
                     {t("badgeTimeTool")}
                   </span>
                 </div>
-                <h3 className="font-bold text-lg leading-snug">Time Checker</h3>
+                <h3 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://time.funnyfunny.cloud")}
+                </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Accurate server time and time zones
                 </p>
@@ -2392,7 +2404,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  Current Weather
+                  {getServiceTitle("https://weather.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Feels-like temp, dust, and UV
@@ -2414,7 +2426,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  IT News Today
+                  {getServiceTitle("https://news.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Quick IT news highlights
@@ -2436,7 +2448,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  Simple Audio Editor
+                  {getServiceTitle("https://audio.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Trim, merge, export
@@ -2458,7 +2470,7 @@ export function HomeContent() {
                   </span>
                 </div>
                 <h3 className="font-bold text-lg leading-snug">
-                  EmojiCon Studio
+                  {getServiceTitle("https://emojicon.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
                   Emoji to icons and favicons
@@ -2689,7 +2701,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🌱 Today, Well Done
+                    🌱 {getServiceTitle("https://today.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2697,7 +2709,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🔮 Your 2026 Starts Now
+                    🔮 {getServiceTitle("https://next.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2705,7 +2717,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧠 Daily Mental Energy Index
+                    🧠 {getServiceTitle("https://mental.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2713,7 +2725,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ⚡ Life Energy Leak / Allocation
+                    ⚡ {getServiceTitle("https://energy.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2721,7 +2733,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛋️ Should I Rest Now?
+                    🛋️ {getServiceTitle("https://rest.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2729,7 +2741,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🚀 Daily Productivity Check
+                    🚀 {getServiceTitle("https://product.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2737,7 +2749,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    😴 Laziness Check
+                    😴 {getServiceTitle("https://lazy.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2745,7 +2757,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🙃 People Who Drain Me
+                    🙃 {getServiceTitle("https://human.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2753,7 +2765,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🔮 SoulPrint — Birth Trait Analysis
+                    🔮 {getServiceTitle("https://soul.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2761,7 +2773,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎵 My Birth-Year Vibe
+                    🎵 {getServiceTitle("https://senseyear.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2769,7 +2781,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍺 Drinking MBTI
+                    🍺 {getServiceTitle("https://alcohol.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2777,7 +2789,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧬 EGO Test
+                    🧬 {getServiceTitle("https://ego.funnyfunny.cloud")}
                   </a>
                 </div>
               </div>
@@ -2824,7 +2836,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📐 Pyeong Calculator
+                    📐 {getServiceTitle("https://space.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2935,7 +2947,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ☕ Coffee Addiction Test
+                    ☕ {getServiceTitle("https://coffee.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2943,7 +2955,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛋️ Should I Rest Now?
+                    🛋️ {getServiceTitle("https://rest.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2951,7 +2963,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🩺 Healthspan & Retirement Prep
+                    🩺 {getServiceTitle("https://health.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2959,7 +2971,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍱 What Should I Eat Today?
+                    🍱 {getServiceTitle("https://cook.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2975,7 +2987,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ⏰ Life Time Remaining Dashboard
+                    ⏰ {getServiceTitle("https://life.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2983,7 +2995,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🌤️ Current Weather — local weather/UV
+                    🌤️ {getServiceTitle("https://weather.funnyfunny.cloud")}
                   </a>
                 </div>
               </div>
@@ -3006,7 +3018,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🤣 Dad Joke of the Day
+                    🤣 {getServiceTitle("https://joke.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3014,7 +3026,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🔮 One-line Fortune for Today
+                    🔮 {getServiceTitle("https://fortune.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3022,7 +3034,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ⚽ Our Combo Footballer
+                    ⚽ {getServiceTitle("https://soccer.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3030,7 +3042,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🧠 Mindfulness Line of the Day
+                    🧠 {getServiceTitle("https://mind.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3054,7 +3066,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍿 What Should I Watch? (OTT Picks)
+                    🍿 {getServiceTitle("https://pick.funnyfunny.cloud")}
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -3062,7 +3074,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📍 SnapTrail — Memory Timeline
+                    📍 {getServiceTitle("https://snaptrail.funnyfunny.cloud")}
                   </a>
                 </div>
               </div>
@@ -3071,25 +3083,27 @@ export function HomeContent() {
           <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">💡</span>
-              <h3 className="text-xl font-bold">Today&apos;s One-line Insight</h3>
+              <h3 className="text-xl font-bold">
+                Today&apos;s One-line Insight
+              </h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
                 [
                   "https://heal.funnyfunny.cloud",
-                  "💌 Maybe Not a Coincidence",
+                  `💌 ${getServiceTitle("https://heal.funnyfunny.cloud")}`,
                   "One click for a comfort card",
                   "Delivers the words you need today",
                 ],
                 [
                   "https://fortune.funnyfunny.cloud",
-                  "🔮 One-line Fortune for Today",
+                  `🔮 ${getServiceTitle("https://fortune.funnyfunny.cloud")}`,
                   "Pick a fortune line based on your mood",
                   "See a message that matches your moment",
                 ],
                 [
                   "https://wisdom.funnyfunny.cloud",
-                  "📜 Today's Wisdom",
+                  `📜 ${getServiceTitle("https://wisdom.funnyfunny.cloud")}`,
                   "Daily Wisdom in one line",
                   "A one-line message inspired by biblical teachings",
                 ],
@@ -3101,35 +3115,38 @@ export function HomeContent() {
                 ],
                 [
                   "https://joke.funnyfunny.cloud",
-                  "😄 Dad Joke of the Day",
+                  `😄 ${getServiceTitle("https://joke.funnyfunny.cloud")}`,
                   "Share-worthy joke collection",
                   "Laughter is the best medicine",
                 ],
                 [
                   "https://mind.funnyfunny.cloud",
-                  "🧠 Mindfulness Line of the Day",
+                  `🧠 ${getServiceTitle("https://mind.funnyfunny.cloud")}`,
                   "Heal with a one-line quote",
                   "Lighten your mind",
                 ],
                 [
                   "https://motivate.funnyfunny.cloud/",
-                  "🔥 Motivation Reset",
+                  `🔥 ${getServiceTitle("https://motivate.funnyfunny.cloud/")}`,
                   "A short line to refocus",
                   "Reset your mindset in seconds",
                 ],
-              ].map(([href, title, desc, detail]) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <h4 className="font-bold text-lg">{title}</h4>
-                  <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                  <p className="text-xs text-gray-500 mt-2">{detail}</p>
-                </a>
-              ))}
+              ].map(([href, title, desc, detail]) => {
+                const serviceTitle = getServiceTitle(href) || title;
+                return (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                  >
+                    <h4 className="font-bold text-lg">{serviceTitle}</h4>
+                    <p className="text-sm text-gray-600 mt-1">{desc}</p>
+                    <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -3306,7 +3323,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  Should I Rest?
+                  {getServiceTitle("https://rest.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://coffee.funnyfunny.cloud"
@@ -3314,7 +3331,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  Coffee Addiction
+                  {getServiceTitle("https://coffee.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://hand.funnyfunny.cloud"
@@ -3322,7 +3339,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  Palm Story Time
+                  {getServiceTitle("https://hand.funnyfunny.cloud")}
                 </a>
                 <a
                   href="https://mind.funnyfunny.cloud"
@@ -3330,7 +3347,7 @@ export function HomeContent() {
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
                 >
-                  Mindfulness Line
+                  {getServiceTitle("https://mind.funnyfunny.cloud")}
                 </a>
               </div>
             </div>
