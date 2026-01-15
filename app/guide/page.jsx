@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FooterSimple } from "../components/FooterSimple";
 import { HeaderSimple } from "../components/HeaderSimple";
 import { guides } from "./guides";
-import { getSeoGuides } from "../components/HomeContent";
+import { getSeoGuides } from "../lib/services";
 
 const guidePageCopy = {
   ko: {
