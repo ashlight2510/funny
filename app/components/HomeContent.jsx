@@ -133,7 +133,7 @@ const seoTopItems = [
   },
 ];
 
-function getSeoGuides(lang = "en") {
+export function getSeoGuides(lang = "en") {
   const isKo = lang === "ko";
   
   return [
