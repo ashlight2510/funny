@@ -772,577 +772,865 @@ function getAllServices(lang = "en") {
       href: "https://todo.funnyfunny.cloud/",
       icon: "✅",
       title: isKo ? "오늘의 할 일" : "Today's To-Do",
-      desc: isKo ? "집중할 일만 남기고 깔끔하게 체크하자." : "Keep only focus tasks and check them off cleanly.",
-      tags: isKo ? ['할일', '작업', '체크리스트', '집중'] : ["todo", "tasks", "checklist", "focus"],
+      desc: isKo
+        ? "집중할 일만 남기고 깔끔하게 체크하자."
+        : "Keep only focus tasks and check them off cleanly.",
+      tags: isKo
+        ? ["할일", "작업", "체크리스트", "집중"]
+        : ["todo", "tasks", "checklist", "focus"],
     },
     {
       href: "https://dream.funnyfunny.cloud/",
       icon: "💭",
       title: isKo ? "꿈 일기" : "Dream Diary",
-      desc: isKo ? "태그로 정리하는 로컬 꿈 기록장." : "A local dream journal with tagging.",
-      tags: isKo ? ['꿈', '일기', '기록', '로컬'] : ["dreams", "journal", "records", "local"],
+      desc: isKo
+        ? "태그로 정리하는 로컬 꿈 기록장."
+        : "A local dream journal with tagging.",
+      tags: isKo
+        ? ["꿈", "일기", "기록", "로컬"]
+        : ["dreams", "journal", "records", "local"],
     },
     {
       href: "https://rest.funnyfunny.cloud",
       icon: "🛋️",
       title: isKo ? "이 정도면 쉬어야 할까?" : "Should I Rest Now?",
-      desc: isKo ? "지금 쉬어도 될지 확인하는 짧은 설문." : "A short survey to check if you should rest now.",
-      tags: isKo ? ['휴식', '컨디션', '설문', '번아웃'] : ["rest", "condition", "survey", "burnout"],
+      desc: isKo
+        ? "지금 쉬어도 될지 확인하는 짧은 설문."
+        : "A short survey to check if you should rest now.",
+      tags: isKo
+        ? ["휴식", "컨디션", "설문", "번아웃"]
+        : ["rest", "condition", "survey", "burnout"],
     },
     {
       href: "https://dailycheck.funnyfunny.cloud/",
       icon: "📝",
       title: isKo ? "하루 컨디션 체크" : "Daily Condition Check",
-      desc: isKo ? "5가지 체크로 오늘의 컨디션을 한 줄로 정리." : "Summarize today’s condition in one line with 5 checks.",
-      tags: isKo ? ['컨디션', '상태', '체크', '요약', '한줄'] : ["condition", "status", "check", "summary", "one-line"],
+      desc: isKo
+        ? "5가지 체크로 오늘의 컨디션을 한 줄로 정리."
+        : "Summarize today’s condition in one line with 5 checks.",
+      tags: isKo
+        ? ["컨디션", "상태", "체크", "요약", "한줄"]
+        : ["condition", "status", "check", "summary", "one-line"],
     },
     {
       href: "https://sleep.funnyfunny.cloud",
       icon: "🌙",
       title: isKo ? "잠들기 도우미" : "Sleep Helper",
-      desc: isKo ? "코골이와 주변 소음을 덮는 수면 사운드 플레이어." : "Sleep sound player that masks snoring and noise.",
-      tags: isKo ? ['수면', '백색소음', '환경음', '휴식'] : ["sleep", "white-noise", "ambient", "rest"],
+      desc: isKo
+        ? "코골이와 주변 소음을 덮는 수면 사운드 플레이어."
+        : "Sleep sound player that masks snoring and noise.",
+      tags: isKo
+        ? ["수면", "백색소음", "환경음", "휴식"]
+        : ["sleep", "white-noise", "ambient", "rest"],
     },
     {
       href: "https://motivate.funnyfunny.cloud/",
       icon: "🔥",
       title: isKo ? "동기부여 리셋" : "Motivation Reset",
-      desc: isKo ? "마음을 리셋할 짧은 한 문장 받기." : "Get a short line to reset your mindset.",
-      tags: isKo ? ['동기부여', '마음가짐', '리셋', '집중'] : ["motivation", "mindset", "reset", "focus"],
+      desc: isKo
+        ? "마음을 리셋할 짧은 한 문장 받기."
+        : "Get a short line to reset your mindset.",
+      tags: isKo
+        ? ["동기부여", "마음가짐", "리셋", "집중"]
+        : ["motivation", "mindset", "reset", "focus"],
     },
     {
       href: "https://flow.funnyfunny.cloud/",
       icon: "🧵",
       title: isKo ? "FLOW 커뮤니티" : "FLOW Community",
-      desc: isKo ? "의견을 공유하는 스레드형 게시판." : "A thread-style board for sharing opinions.",
-      tags: isKo ? ['커뮤니티', '게시판', '토론'] : ["community", "board", "discussion"],
+      desc: isKo
+        ? "의견을 공유하는 스레드형 게시판."
+        : "A thread-style board for sharing opinions.",
+      tags: isKo
+        ? ["커뮤니티", "게시판", "토론"]
+        : ["community", "board", "discussion"],
     },
     {
       href: "https://coffee.funnyfunny.cloud",
       icon: "☕",
       title: isKo ? "커피 중독 테스트" : "Coffee Addiction Test",
-      desc: isKo ? "카페인 의존도와 회복 횟수 확인." : "Check caffeine dependence and revival count.",
-      tags: isKo ? ['카페인', '커피', '건강', '중독'] : ["caffeine", "coffee", "health", "addiction"],
+      desc: isKo
+        ? "카페인 의존도와 회복 횟수 확인."
+        : "Check caffeine dependence and revival count.",
+      tags: isKo
+        ? ["카페인", "커피", "건강", "중독"]
+        : ["caffeine", "coffee", "health", "addiction"],
     },
     {
       href: "https://beauty.funnyfunny.cloud",
       icon: "💄",
       title: isKo ? "꾸밈비 파산 테스트" : "Beauty Bankruptcy Test",
-      desc: isKo ? "뷰티 지출의 영향력을 체감하기." : "Feel the impact of your beauty spending.",
-      tags: isKo ? ['뷰티', '지출', '소비'] : ["beauty", "spending", "consumption"],
+      desc: isKo
+        ? "뷰티 지출의 영향력을 체감하기."
+        : "Feel the impact of your beauty spending.",
+      tags: isKo
+        ? ["뷰티", "지출", "소비"]
+        : ["beauty", "spending", "consumption"],
     },
     {
       href: "https://cosmetics.funnyfunny.cloud",
       icon: "🧴",
       title: isKo ? "화장품 루틴 체크" : "Cosmetics Routine Check",
-      desc: isKo ? "루틴의 부족·과잉을 확인하고 최소 추천 받기." : "Check routine gaps or overloads and get a minimal recommendation.",
-      tags: isKo ? ['화장품', '루틴', '스킨케어', '체크'] : ["cosmetics", "routine", "skincare", "check"],
+      desc: isKo
+        ? "루틴의 부족·과잉을 확인하고 최소 추천 받기."
+        : "Check routine gaps or overloads and get a minimal recommendation.",
+      tags: isKo
+        ? ["화장품", "루틴", "스킨케어", "체크"]
+        : ["cosmetics", "routine", "skincare", "check"],
     },
     {
       href: "https://next.funnyfunny.cloud",
       icon: "🔮",
       title: isKo ? "2026년의 나" : "Future Me 2026",
-      desc: isKo ? "습관, 돈, 관계, 집중력이 만드는 1년 후 루트." : "Your one-year route shaped by habits, money, relationships, and focus.",
-      tags: isKo ? ['미래', '습관', '집중', '관계'] : ["future", "habits", "focus", "relationships"],
+      desc: isKo
+        ? "습관, 돈, 관계, 집중력이 만드는 1년 후 루트."
+        : "Your one-year route shaped by habits, money, relationships, and focus.",
+      tags: isKo
+        ? ["미래", "습관", "집중", "관계"]
+        : ["future", "habits", "focus", "relationships"],
     },
     {
       href: "https://year.funnyfunny.cloud",
       icon: "🧾",
       title: isKo ? "올해 나의 인생 소비 보고서" : "Life Spending Report",
-      desc: isKo ? "돈, 시간, 감정 흐름을 3분 안에 요약." : "A 3-minute summary of money, time, and emotion flow.",
-      tags: isKo ? ['연말', '지출', '시간', '감정'] : ["year-end", "spending", "time", "emotion"],
+      desc: isKo
+        ? "돈, 시간, 감정 흐름을 3분 안에 요약."
+        : "A 3-minute summary of money, time, and emotion flow.",
+      tags: isKo
+        ? ["연말", "지출", "시간", "감정"]
+        : ["year-end", "spending", "time", "emotion"],
     },
     {
       href: "https://winter.funnyfunny.cloud",
       icon: "❄️",
       title: isKo ? "이번 겨울, 나를 망치는 것 TOP 1" : "Winter Trigger Top 1",
-      desc: isKo ? "겨울 루틴을 무너뜨리는 최고의 트리거 찾기." : "Find the top trigger that breaks your winter routine.",
-      tags: isKo ? ['겨울', '습관', '컨디션', '리셋'] : ["winter", "habits", "condition", "reset"],
+      desc: isKo
+        ? "겨울 루틴을 무너뜨리는 최고의 트리거 찾기."
+        : "Find the top trigger that breaks your winter routine.",
+      tags: isKo
+        ? ["겨울", "습관", "컨디션", "리셋"]
+        : ["winter", "habits", "condition", "reset"],
     },
     {
       href: "https://energy.funnyfunny.cloud",
       icon: "⚡",
       title: isKo ? "생명 에너지 밸런스" : "Life Energy Balance",
-      desc: isKo ? "번아웃 지점과 회복 가이드 확인." : "Identify burnout points and recovery guides.",
-      tags: isKo ? ['에너지', '번아웃', '회복'] : ["energy", "burnout", "recovery"],
+      desc: isKo
+        ? "번아웃 지점과 회복 가이드 확인."
+        : "Identify burnout points and recovery guides.",
+      tags: isKo
+        ? ["에너지", "번아웃", "회복"]
+        : ["energy", "burnout", "recovery"],
     },
     {
       href: "https://product.funnyfunny.cloud",
       icon: "🚀",
       title: isKo ? "하루 생산성 체크" : "Daily Productivity Check",
-      desc: isKo ? "집중, 에너지, 결정 상태를 빠르게 확인." : "Quickly check focus, energy, and decision state.",
-      tags: isKo ? ['생산성', '집중', '루틴'] : ["productivity", "focus", "routine"],
+      desc: isKo
+        ? "집중, 에너지, 결정 상태를 빠르게 확인."
+        : "Quickly check focus, energy, and decision state.",
+      tags: isKo
+        ? ["생산성", "집중", "루틴"]
+        : ["productivity", "focus", "routine"],
     },
     {
       href: "https://mental.funnyfunny.cloud",
       icon: "🧠",
       title: isKo ? "하루 뇌력 지수" : "Daily Mental Stamina Index",
-      desc: isKo ? "오늘의 뇌 에너지와 집중 상태 평가." : "Assess today’s brain energy and focus state.",
-      tags: isKo ? ['정신', '집중', '컨디션'] : ["mental", "focus", "condition"],
+      desc: isKo
+        ? "오늘의 뇌 에너지와 집중 상태 평가."
+        : "Assess today’s brain energy and focus state.",
+      tags: isKo
+        ? ["정신", "집중", "컨디션"]
+        : ["mental", "focus", "condition"],
     },
     {
       href: "https://commute.funnyfunny.cloud/",
       icon: "⏰",
-      title: isKo ? "출퇴근 비용·시간 계산기" : "Commute Cost & Time Calculator",
-      desc: isKo ? "출퇴근 비용과 시간을 계산하고 활용 아이디어 받기." : "Calculate commute cost and time, and get usage ideas.",
-      tags: isKo ? ['출퇴근', '시간', '비용', '교통', '루틴'] : ["commute", "time", "cost", "transport", "routine"],
+      title: isKo
+        ? "출퇴근 비용·시간 계산기"
+        : "Commute Cost & Time Calculator",
+      desc: isKo
+        ? "출퇴근 비용과 시간을 계산하고 활용 아이디어 받기."
+        : "Calculate commute cost and time, and get usage ideas.",
+      tags: isKo
+        ? ["출퇴근", "시간", "비용", "교통", "루틴"]
+        : ["commute", "time", "cost", "transport", "routine"],
     },
     {
       href: "https://human.funnyfunny.cloud",
       icon: "🙃",
       title: isKo ? "나를 고갈시키는 사람들" : "People Who Drain Me",
-      desc: isKo ? "이 테스트는 당신을 평가하지 않습니다." : "This test does not evaluate you.",
-      tags: isKo ? ['관계', '성격', '유형'] : ["relationships", "personality", "types"],
+      desc: isKo
+        ? "이 테스트는 당신을 평가하지 않습니다."
+        : "This test does not evaluate you.",
+      tags: isKo
+        ? ["관계", "성격", "유형"]
+        : ["relationships", "personality", "types"],
     },
     {
       href: "https://ego.funnyfunny.cloud",
       icon: "🧬",
       title: isKo ? "EGO 테스트" : "EGO Test",
-      desc: isKo ? "성격 테스트가 아닙니다. 갈등, 스트레스, 선택 속의 자아를 분석합니다." : "Not a personality test. Analyze ego under conflict, stress, and choices.",
-      tags: isKo ? ['자아', '스트레스', '갈등'] : ["ego", "stress", "conflict"],
+      desc: isKo
+        ? "성격 테스트가 아닙니다. 갈등, 스트레스, 선택 속의 자아를 분석합니다."
+        : "Not a personality test. Analyze ego under conflict, stress, and choices.",
+      tags: isKo ? ["자아", "스트레스", "갈등"] : ["ego", "stress", "conflict"],
     },
     {
       href: "https://money.funnyfunny.cloud",
       icon: "🛡️",
       title: isKo ? "자산 방탄 지수" : "Asset Shield Index",
-      desc: isKo ? "경제 하락에 대한 회복력 측정." : "Measure your resilience against economic downturns.",
-      tags: isKo ? ['금융', '리스크', '자산'] : ["finance", "risk", "assets"],
+      desc: isKo
+        ? "경제 하락에 대한 회복력 측정."
+        : "Measure your resilience against economic downturns.",
+      tags: isKo ? ["금융", "리스크", "자산"] : ["finance", "risk", "assets"],
     },
     {
       href: "https://specific.funnyfunny.cloud/",
       icon: "🧮",
       title: isKo ? "자산 비중 진단" : "Asset Allocation Check",
-      desc: isKo ? "현금, 금, 부동산, 주식, 코인 비중 확인." : "Check your cash, gold, real estate, stock, and crypto ratios.",
-      tags: isKo ? ['자산', '포트폴리오', '배분', '진단', '금융'] : ["assets", "portfolio", "allocation", "diagnosis", "finance"],
+      desc: isKo
+        ? "현금, 금, 부동산, 주식, 코인 비중 확인."
+        : "Check your cash, gold, real estate, stock, and crypto ratios.",
+      tags: isKo
+        ? ["자산", "포트폴리오", "배분", "진단", "금융"]
+        : ["assets", "portfolio", "allocation", "diagnosis", "finance"],
     },
     {
       href: "https://life.funnyfunny.cloud",
       icon: "⏰",
       title: isKo ? "인생 시간 대시보드" : "Life Time Dashboard",
-      desc: isKo ? "여유 시간, 수면, 커리어에 남은 시간." : "Remaining time for free time, sleep, and career.",
-      tags: isKo ? ['시간', '대시보드', '인생'] : ["time", "dashboard", "life"],
+      desc: isKo
+        ? "여유 시간, 수면, 커리어에 남은 시간."
+        : "Remaining time for free time, sleep, and career.",
+      tags: isKo ? ["시간", "대시보드", "인생"] : ["time", "dashboard", "life"],
     },
     {
       href: "https://soul.funnyfunny.cloud",
       icon: "🔮",
       title: isKo ? "SoulPrint" : "SoulPrint",
-      desc: isKo ? "출생 데이터 기반의 독특한 성격 분석." : "A unique personality analysis based on birth data.",
-      tags: isKo ? ['성격', '출생', '분석'] : ["personality", "birth", "analysis"],
+      desc: isKo
+        ? "출생 데이터 기반의 독특한 성격 분석."
+        : "A unique personality analysis based on birth data.",
+      tags: isKo
+        ? ["성격", "출생", "분석"]
+        : ["personality", "birth", "analysis"],
     },
     {
       href: "https://saju.funnyfunny.cloud/",
       icon: "🔮",
       title: isKo ? "사주풀이 · 신토정비결" : "Saju & Sintojungbi",
-      desc: isKo ? "생년월일/시간으로 사주팔자와 연월 흐름 읽기." : "Read four pillars and yearly/monthly flow by birth date/time.",
-      tags: isKo ? ['사주', '운세', '신토정비결', '해석'] : ["saju", "fortune", "sintojungbi", "reading"],
+      desc: isKo
+        ? "생년월일/시간으로 사주팔자와 연월 흐름 읽기."
+        : "Read four pillars and yearly/monthly flow by birth date/time.",
+      tags: isKo
+        ? ["사주", "운세", "신토정비결", "해석"]
+        : ["saju", "fortune", "sintojungbi", "reading"],
     },
     {
       href: "https://senseyear.funnyfunny.cloud",
       icon: "🎵",
       title: isKo ? "출생연도 바이브 테스트" : "Birth-Year Vibe Test",
-      desc: isKo ? "12가지 빠른 질문으로 나의 바이브 찾기." : "Find your vibe through 12 quick questions.",
-      tags: isKo ? ['바이브', '테스트', '성격'] : ["vibe", "test", "personality"],
+      desc: isKo
+        ? "12가지 빠른 질문으로 나의 바이브 찾기."
+        : "Find your vibe through 12 quick questions.",
+      tags: isKo
+        ? ["바이브", "테스트", "성격"]
+        : ["vibe", "test", "personality"],
     },
     {
       href: "https://alcohol.funnyfunny.cloud",
       icon: "🍺",
       title: isKo ? "알코올 MBTI" : "Alcohol MBTI",
       desc: isKo ? "음주 스타일 MBTI." : "Drinking style MBTI.",
-      tags: isKo ? ['음주', '알코올', '스타일'] : ["drinking", "alcohol", "style"],
+      tags: isKo
+        ? ["음주", "알코올", "스타일"]
+        : ["drinking", "alcohol", "style"],
     },
     {
       href: "https://lazy.funnyfunny.cloud",
       icon: "😴",
       title: isKo ? "무기력 진단" : "Laziness Diagnostic",
-      desc: isKo ? "7가지 요인으로 무기력 원인 찾기." : "Find causes of lethargy across 7 factors.",
-      tags: isKo ? ['무기력', '게으름', '진단'] : ["lethargy", "laziness", "diagnosis"],
+      desc: isKo
+        ? "7가지 요인으로 무기력 원인 찾기."
+        : "Find causes of lethargy across 7 factors.",
+      tags: isKo
+        ? ["무기력", "게으름", "진단"]
+        : ["lethargy", "laziness", "diagnosis"],
     },
     {
       href: "https://average.funnyfunny.cloud",
       icon: "📊",
       title: isKo ? "한국 평균 vs 나" : "Korea Average vs Me",
-      desc: isKo ? "소득, 지출, 습관을 국가 평균과 비교." : "Compare your income, spending, and habits to national averages.",
-      tags: isKo ? ['평균', '통계', '비교'] : ["average", "stats", "comparison"],
+      desc: isKo
+        ? "소득, 지출, 습관을 국가 평균과 비교."
+        : "Compare your income, spending, and habits to national averages.",
+      tags: isKo
+        ? ["평균", "통계", "비교"]
+        : ["average", "stats", "comparison"],
     },
     {
       href: "https://drain.funnyfunny.cloud",
       icon: "⚡",
       title: isKo ? "생명 에너지 누수 진단" : "Life Energy Leak Diagnostic",
-      desc: isKo ? "지금 에너지가 어디서 새고 있나?" : "Where is your energy leaking right now?",
-      tags: isKo ? ['에너지', '피로', '누수'] : ["energy", "fatigue", "leak"],
+      desc: isKo
+        ? "지금 에너지가 어디서 새고 있나?"
+        : "Where is your energy leaking right now?",
+      tags: isKo ? ["에너지", "피로", "누수"] : ["energy", "fatigue", "leak"],
     },
     {
       href: "https://maldives.funnyfunny.cloud",
       icon: "🏝️",
       title: isKo ? "몰디브 매치" : "Maldives Match",
-      desc: isKo ? "나의 몰디브 여행 스타일 찾기." : "Find your Maldives travel style.",
-      tags: isKo ? ['여행', '리조트', '몰디브'] : ["travel", "resort", "maldives"],
+      desc: isKo
+        ? "나의 몰디브 여행 스타일 찾기."
+        : "Find your Maldives travel style.",
+      tags: isKo
+        ? ["여행", "리조트", "몰디브"]
+        : ["travel", "resort", "maldives"],
     },
     {
       href: "https://bit.funnyfunny.cloud",
       icon: "💸",
       title: isKo ? "비트코인 안 산 죄" : "Bitcoin Regret",
-      desc: isKo ? "그때 샀다면 지금 얼마일까?" : "If you bought then, how much would it be now?",
-      tags: isKo ? ['비트코인', '투자', '기회비용'] : ["bitcoin", "investment", "opportunity-cost"],
+      desc: isKo
+        ? "그때 샀다면 지금 얼마일까?"
+        : "If you bought then, how much would it be now?",
+      tags: isKo
+        ? ["비트코인", "투자", "기회비용"]
+        : ["bitcoin", "investment", "opportunity-cost"],
     },
     {
       href: "https://house.funnyfunny.cloud",
       icon: "🏠",
       title: isKo ? "집 못 산 죄" : "Missed House Opportunity",
       desc: isKo ? "지금 격차는 얼마나 클까?" : "How big is the gap now?",
-      tags: isKo ? ['부동산', '투자', '시뮬레이터'] : ["real-estate", "investment", "simulator"],
+      tags: isKo
+        ? ["부동산", "투자", "시뮬레이터"]
+        : ["real-estate", "investment", "simulator"],
     },
     {
       href: "https://invest.funnyfunny.cloud",
       icon: "📈",
       title: isKo ? "투자 확신 빌더" : "Investment Confidence Builder",
-      desc: isKo ? "수익률이 아니라 판단을 기록해 흔들림 줄이기." : "Log your judgment, not returns, to reduce wobbles.",
-      tags: isKo ? ['투자', '결정', '기록', '확신', '마음가짐'] : ["investing", "decision", "logging", "confidence", "mindset"],
+      desc: isKo
+        ? "수익률이 아니라 판단을 기록해 흔들림 줄이기."
+        : "Log your judgment, not returns, to reduce wobbles.",
+      tags: isKo
+        ? ["투자", "결정", "기록", "확신", "마음가짐"]
+        : ["investing", "decision", "logging", "confidence", "mindset"],
     },
     {
       href: "https://space.funnyfunny.cloud",
       icon: "📐",
       title: isKo ? "평수 계산기" : "Pyeong Calculator",
-      desc: isKo ? "평을 제곱미터로 변환하고 대표 평형 확인." : "Convert pyeong to square meters and check typical sizes.",
-      tags: isKo ? ['부동산', '평', '면적', '계산기'] : ["real-estate", "pyeong", "area", "calculator"],
+      desc: isKo
+        ? "평을 제곱미터로 변환하고 대표 평형 확인."
+        : "Convert pyeong to square meters and check typical sizes.",
+      tags: isKo
+        ? ["부동산", "평", "면적", "계산기"]
+        : ["real-estate", "pyeong", "area", "calculator"],
     },
     {
       href: "https://nospend.funnyfunny.cloud",
       icon: "💸",
       title: isKo ? "안 산 것의 총 자산" : "Total Wealth of What I Didn't Buy",
-      desc: isKo ? '"안 샀으면"을 숫자로 바꾸기.' : "Turn \"if only I hadn't bought it\" into numbers.",
-      tags: isKo ? ['저축', '총자산', '기회비용'] : ["saving", "total-wealth", "opportunity-cost"],
+      desc: isKo
+        ? '"안 샀으면"을 숫자로 바꾸기.'
+        : 'Turn "if only I hadn\'t bought it" into numbers.',
+      tags: isKo
+        ? ["저축", "총자산", "기회비용"]
+        : ["saving", "total-wealth", "opportunity-cost"],
     },
     {
       href: "https://n.funnyfunny.cloud/",
       icon: "🍽️",
       title: isKo ? "N빵 계산기" : "Split-the-Bill Calculator",
-      desc: isKo ? "장소, 인원, 총액 입력으로 1인당 비용 계산·복사." : "Enter venue, headcount, and total to calculate and copy per-person cost.",
-      tags: isKo ? ['계산기', '비용', '식사', '나눔', '복사'] : ["calculator", "cost", "meal", "split", "copy"],
+      desc: isKo
+        ? "장소, 인원, 총액 입력으로 1인당 비용 계산·복사."
+        : "Enter venue, headcount, and total to calculate and copy per-person cost.",
+      tags: isKo
+        ? ["계산기", "비용", "식사", "나눔", "복사"]
+        : ["calculator", "cost", "meal", "split", "copy"],
     },
     {
       href: "https://edu.funnyfunny.cloud",
       icon: "🎓",
       title: isKo ? "사교육 지옥도" : "Private Education Hell Map",
-      desc: isKo ? "교육비 인생 시뮬레이터." : "An education cost life simulator.",
-      tags: isKo ? ['교육', '지출', '시뮬레이션'] : ["education", "spending", "simulation"],
+      desc: isKo
+        ? "교육비 인생 시뮬레이터."
+        : "An education cost life simulator.",
+      tags: isKo
+        ? ["교육", "지출", "시뮬레이션"]
+        : ["education", "spending", "simulation"],
     },
     {
       href: "https://baby.funnyfunny.cloud/",
       icon: "👶",
       title: isKo ? "출산율 체감 테스트" : "Birthrate Reality Test",
-      desc: isKo ? "이건 미래 예측이 아니라 현재일 수 있습니다." : "This may be the present, not a future prediction.",
-      tags: isKo ? ['출산율', '인구', '사회', '테스트'] : ["birthrate", "population", "society", "test"],
+      desc: isKo
+        ? "이건 미래 예측이 아니라 현재일 수 있습니다."
+        : "This may be the present, not a future prediction.",
+      tags: isKo
+        ? ["출산율", "인구", "사회", "테스트"]
+        : ["birthrate", "population", "society", "test"],
     },
     {
       href: "https://miracle.funnyfunny.cloud/",
       icon: "🌍",
       title: isKo ? "더 좋은 조건에서 태어날 확률" : "Better Birth Odds",
-      desc: isKo ? "출생 조건을 비교하고 더 나은 환경 확률 확인." : "Compare birth conditions and check your odds of a better environment.",
-      tags: isKo ? ['출생', '확률', '국가', '비교', '사회'] : ["birth", "probability", "country", "comparison", "society"],
+      desc: isKo
+        ? "출생 조건을 비교하고 더 나은 환경 확률 확인."
+        : "Compare birth conditions and check your odds of a better environment.",
+      tags: isKo
+        ? ["출생", "확률", "국가", "비교", "사회"]
+        : ["birth", "probability", "country", "comparison", "society"],
     },
     {
       href: "https://health.funnyfunny.cloud",
       icon: "🩺",
       title: isKo ? "건강수명 & 은퇴 준비" : "Healthspan & Retirement",
-      desc: isKo ? "건강수명에 대한 재미있는 접근." : "A playful take on healthspan.",
-      tags: isKo ? ['건강', '은퇴', '장수'] : ["health", "retirement", "longevity"],
+      desc: isKo
+        ? "건강수명에 대한 재미있는 접근."
+        : "A playful take on healthspan.",
+      tags: isKo
+        ? ["건강", "은퇴", "장수"]
+        : ["health", "retirement", "longevity"],
     },
     {
       href: "https://bmi.funnyfunny.cloud/",
       icon: "📏",
       title: isKo ? "BMI 설문형 다이어트 플랜" : "BMI Survey Diet Plan",
-      desc: isKo ? "한 번씩만 딸각. 숫자 한 번 입력. 놀랍도록 도움됨." : "Tap once each. Enter numbers once. Surprisingly helpful.",
-      tags: isKo ? ['BMI', '다이어트', '설문', '플랜'] : ["BMI", "diet", "survey", "plan"],
+      desc: isKo
+        ? "한 번씩만 딸각. 숫자 한 번 입력. 놀랍도록 도움됨."
+        : "Tap once each. Enter numbers once. Surprisingly helpful.",
+      tags: isKo
+        ? ["BMI", "다이어트", "설문", "플랜"]
+        : ["BMI", "diet", "survey", "plan"],
     },
     {
       href: "https://cook.funnyfunny.cloud",
       icon: "🍱",
       title: isKo ? "오늘 뭐 먹지?" : "What to Eat Today?",
-      desc: isKo ? "오늘의 랜덤 메뉴 추천." : "Random menu recommendations for the day.",
-      tags: isKo ? ['음식', '추천', '랜덤'] : ["food", "recommendation", "random"],
+      desc: isKo
+        ? "오늘의 랜덤 메뉴 추천."
+        : "Random menu recommendations for the day.",
+      tags: isKo
+        ? ["음식", "추천", "랜덤"]
+        : ["food", "recommendation", "random"],
     },
     {
       href: "https://chef.funnyfunny.cloud/",
       icon: "👨‍🍳",
       title: isKo ? "셰프 심사위원: 오늘의 선택" : "Chef Judge: Today's Choice",
-      desc: isKo ? "선택을 돕는 밈 스타일 심사 멘트." : "Meme-style judging comments for your choice.",
-      tags: isKo ? ['셰프', '심사', '선택', '밈'] : ["chef", "judge", "choice", "meme"],
+      desc: isKo
+        ? "선택을 돕는 밈 스타일 심사 멘트."
+        : "Meme-style judging comments for your choice.",
+      tags: isKo
+        ? ["셰프", "심사", "선택", "밈"]
+        : ["chef", "judge", "choice", "meme"],
     },
     {
       href: "https://pick.funnyfunny.cloud",
       icon: "🍿",
       title: isKo ? "OTT 픽" : "OTT Pick",
-      desc: isKo ? "검색 없이 바로 영화·드라마 추천." : "Instant movie and drama recommendations without searching.",
-      tags: isKo ? ['영화', '드라마', 'OTT', '추천'] : ["movies", "drama", "OTT", "recommendation"],
+      desc: isKo
+        ? "검색 없이 바로 영화·드라마 추천."
+        : "Instant movie and drama recommendations without searching.",
+      tags: isKo
+        ? ["영화", "드라마", "OTT", "추천"]
+        : ["movies", "drama", "OTT", "recommendation"],
     },
     {
       href: "https://lotto.funnyfunny.cloud/",
       icon: "🎟️",
       title: isKo ? "로또 번호 뽑기" : "Lotto Number Picker",
-      desc: isKo ? "원클릭 로또 번호 조합." : "One-click lotto number combinations.",
-      tags: isKo ? ['로또', '추천', '번호', '랜덤'] : ["lotto", "recommendation", "numbers", "random"],
+      desc: isKo
+        ? "원클릭 로또 번호 조합."
+        : "One-click lotto number combinations.",
+      tags: isKo
+        ? ["로또", "추천", "번호", "랜덤"]
+        : ["lotto", "recommendation", "numbers", "random"],
     },
     {
       href: "https://anju.funnyfunny.cloud",
       icon: "🍢",
       title: isKo ? "오늘의 안주 페어링" : "Today's Snack Pairing",
-      desc: isKo ? "술과 함께할 랜덤 안주 추천." : "Random snack pairing for drinks.",
-      tags: isKo ? ['안주', '술', '랜덤'] : ["snack", "drinks", "random"],
+      desc: isKo
+        ? "술과 함께할 랜덤 안주 추천."
+        : "Random snack pairing for drinks.",
+      tags: isKo ? ["안주", "술", "랜덤"] : ["snack", "drinks", "random"],
     },
     {
       href: "https://cafe.funnyfunny.cloud",
       icon: "☕",
       title: isKo ? "카페 지출 역전" : "Cafe Spending Reversal",
-      desc: isKo ? "30세까지 커피가 얼마나 들었을까?" : "How much did coffee cost you by age 30?",
-      tags: isKo ? ['카페', '지출', '소비'] : ["cafe", "spending", "consumption"],
+      desc: isKo
+        ? "30세까지 커피가 얼마나 들었을까?"
+        : "How much did coffee cost you by age 30?",
+      tags: isKo
+        ? ["카페", "지출", "소비"]
+        : ["cafe", "spending", "consumption"],
     },
     {
       href: "https://drink.funnyfunny.cloud",
       icon: "🍺",
       title: isKo ? "그 술, 지금 얼마?" : "That Drink, Now How Much?",
-      desc: isKo ? "월 음주비 vs 투자했을 때 금액." : "Monthly alcohol spend vs invested amount.",
-      tags: isKo ? ['알코올', '투자', '비용'] : ["alcohol", "investment", "cost"],
+      desc: isKo
+        ? "월 음주비 vs 투자했을 때 금액."
+        : "Monthly alcohol spend vs invested amount.",
+      tags: isKo
+        ? ["알코올", "투자", "비용"]
+        : ["alcohol", "investment", "cost"],
     },
     {
       href: "https://waste.funnyfunny.cloud",
       icon: "♻️",
       title: isKo ? "낭비 지수" : "Waste Index",
-      desc: isKo ? "쓴 돈을 낭비 점수로 변환." : "Convert money spent into a waste score.",
-      tags: isKo ? ['낭비', '돈', '습관'] : ["waste", "money", "habits"],
+      desc: isKo
+        ? "쓴 돈을 낭비 점수로 변환."
+        : "Convert money spent into a waste score.",
+      tags: isKo ? ["낭비", "돈", "습관"] : ["waste", "money", "habits"],
     },
     {
       href: "https://joke.funnyfunny.cloud",
       icon: "🤣",
       title: isKo ? "오늘의 아재 개그" : "Dad Jokes of the Day",
-      desc: isKo ? "공유하기 좋은 짧은 웃음." : "Shareable jokes for a quick laugh.",
-      tags: isKo ? ['아재개그', '유머', '밈'] : ["dad-jokes", "humor", "meme"],
+      desc: isKo
+        ? "공유하기 좋은 짧은 웃음."
+        : "Shareable jokes for a quick laugh.",
+      tags: isKo ? ["아재개그", "유머", "밈"] : ["dad-jokes", "humor", "meme"],
     },
     {
       href: "https://fortune.funnyfunny.cloud",
       icon: "🔮",
       title: isKo ? "오늘의 한 줄 운세" : "One-Line Fortune",
-      desc: isKo ? "기분에 따라 뽑는 하루 한 줄 운세." : "A daily fortune line based on your mood.",
-      tags: isKo ? ['운세', '기분', '한줄'] : ["fortune", "mood", "one-line"],
+      desc: isKo
+        ? "기분에 따라 뽑는 하루 한 줄 운세."
+        : "A daily fortune line based on your mood.",
+      tags: isKo ? ["운세", "기분", "한줄"] : ["fortune", "mood", "one-line"],
     },
     {
       href: "https://wisdom.funnyfunny.cloud",
       icon: "📜",
       title: isKo ? "오늘의 지혜" : "Daily Wisdom",
-      desc: isKo ? "성경에서 영감을 받은 하루 한 문장." : "A daily line inspired by scripture.",
-      tags: isKo ? ['지혜', '성경', '명언', '하루'] : ["wisdom", "scripture", "quote", "daily"],
+      desc: isKo
+        ? "성경에서 영감을 받은 하루 한 문장."
+        : "A daily line inspired by scripture.",
+      tags: isKo
+        ? ["지혜", "성경", "명언", "하루"]
+        : ["wisdom", "scripture", "quote", "daily"],
     },
     {
       href: "https://heal.funnyfunny.cloud",
       icon: "💌",
       title: isKo ? "우연이 아닐지도" : "Maybe Not a Coincidence",
       desc: isKo ? "원클릭 위로 카드." : "A comfort card with one click.",
-      tags: isKo ? ['위로', '힐링', '카드'] : ["comfort", "healing", "card"],
+      tags: isKo ? ["위로", "힐링", "카드"] : ["comfort", "healing", "card"],
     },
     {
       href: "https://need.funnyfunny.cloud/",
       icon: "🧭",
       title: isKo ? "지금 나에게 가장 필요한 한마디" : "The One Line I Need",
-      desc: isKo ? "감정과 상황을 클릭해 오늘의 한 문장 받기." : "Click your emotion and situation for today’s line.",
-      tags: isKo ? ['감정', '상황', '위로', '한줄'] : ["emotion", "situation", "comfort", "one-line"],
+      desc: isKo
+        ? "감정과 상황을 클릭해 오늘의 한 문장 받기."
+        : "Click your emotion and situation for today’s line.",
+      tags: isKo
+        ? ["감정", "상황", "위로", "한줄"]
+        : ["emotion", "situation", "comfort", "one-line"],
     },
     {
       href: "https://temple.funnyfunny.cloud/",
       icon: "🛕",
       title: isKo ? "하루 한 문장 (Temple)" : "Temple Daily Quote",
-      desc: isKo ? "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장." : "Daily lines based on Buddhist teachings in modern language.",
-      tags: isKo ? ['불교', '명상', '명언', '하루'] : ["buddhism", "meditation", "quote", "daily"],
+      desc: isKo
+        ? "불교 가르침을 오늘의 언어로 풀어낸 하루 한 문장."
+        : "Daily lines based on Buddhist teachings in modern language.",
+      tags: isKo
+        ? ["불교", "명상", "명언", "하루"]
+        : ["buddhism", "meditation", "quote", "daily"],
     },
     {
       href: "https://mind.funnyfunny.cloud",
       icon: "🧠",
       title: isKo ? "오늘의 마음챙김" : "Today's Mindfulness",
       desc: isKo ? "차분함을 위한 한 줄 명언." : "A one-line quote for calm.",
-      tags: isKo ? ['마음챙김', '명언', '힐링'] : ["mindfulness", "quote", "healing"],
+      tags: isKo
+        ? ["마음챙김", "명언", "힐링"]
+        : ["mindfulness", "quote", "healing"],
     },
     {
       href: "https://beat.funnyfunny.cloud",
       icon: "🥁",
       title: isKo ? "드럼 비트 연습" : "Drum Beat Trainer",
-      desc: isKo ? "메트로놈 + 기본 패턴 연습." : "Metronome plus basic pattern practice.",
-      tags: isKo ? ['드럼', '리듬', '연습'] : ["drum", "rhythm", "practice"],
+      desc: isKo
+        ? "메트로놈 + 기본 패턴 연습."
+        : "Metronome plus basic pattern practice.",
+      tags: isKo ? ["드럼", "리듬", "연습"] : ["drum", "rhythm", "practice"],
     },
     {
       href: "https://audio.funnyfunny.cloud",
       icon: "🎵",
       title: isKo ? "Simple Audio Editor" : "Simple Audio Editor",
-      desc: isKo ? "브라우저에서 바로 오디오 편집." : "Audio editing directly in the browser.",
-      tags: isKo ? ['오디오', '편집', '도구'] : ["audio", "editing", "tool"],
+      desc: isKo
+        ? "브라우저에서 바로 오디오 편집."
+        : "Audio editing directly in the browser.",
+      tags: isKo ? ["오디오", "편집", "도구"] : ["audio", "editing", "tool"],
     },
     {
       href: "https://music.funnyfunny.cloud",
       icon: "🎵",
       title: isKo ? "지금 이 시간에 어울리는 음악" : "Music for This Moment",
-      desc: isKo ? "오늘의 리듬에 맞는 음악 무드." : "Music moods that fit today’s rhythm.",
-      tags: isKo ? ['음악', '무드', '추천', '플레이리스트'] : ["music", "mood", "recommendation", "playlist"],
+      desc: isKo
+        ? "오늘의 리듬에 맞는 음악 무드."
+        : "Music moods that fit today’s rhythm.",
+      tags: isKo
+        ? ["음악", "무드", "추천", "플레이리스트"]
+        : ["music", "mood", "recommendation", "playlist"],
     },
     {
       href: "https://vocal.funnyfunny.cloud",
       icon: "🎤",
       title: isKo ? "두성터득기" : "Head Voice Trainer",
-      desc: isKo ? "호흡과 공명 루틴으로 두성 연습." : "Breathing and resonance routines for head voice.",
-      tags: isKo ? ['보컬', '두성', '연습'] : ["vocal", "head-voice", "practice"],
+      desc: isKo
+        ? "호흡과 공명 루틴으로 두성 연습."
+        : "Breathing and resonance routines for head voice.",
+      tags: isKo
+        ? ["보컬", "두성", "연습"]
+        : ["vocal", "head-voice", "practice"],
     },
     {
       href: "https://video.funnyfunny.cloud",
       icon: "🎬",
       title: isKo ? "AutoCut Studio" : "AutoCut Studio",
-      desc: isKo ? "침묵 감지로 하이라이트·점프컷 타임라인 자동 생성." : "Auto-create highlight and jump-cut timelines via silence detection.",
-      tags: isKo ? ['영상편집', '유튜브', '점프컷', '하이라이트'] : ["video-editing", "youtube", "jump-cut", "highlights"],
+      desc: isKo
+        ? "침묵 감지로 하이라이트·점프컷 타임라인 자동 생성."
+        : "Auto-create highlight and jump-cut timelines via silence detection.",
+      tags: isKo
+        ? ["영상편집", "유튜브", "점프컷", "하이라이트"]
+        : ["video-editing", "youtube", "jump-cut", "highlights"],
     },
     {
       href: "https://file.funnyfunny.cloud/",
       icon: "🗜️",
-      title: isKo ? "로컬 이미지 최적화 & 파일 인사이트" : "Local Image Optimizer & File Insights",
-      desc: isKo ? "WebP/JPEG 재인코딩, 자동 리사이즈, 로컬 파일 정보·해시·미리보기 확인." : "Re-encode WebP/JPEG, auto-resize, and view local file info, hashes, and previews.",
-      tags: isKo ? ['이미지', '최적화', '로컬', '파일정보', '해시'] : ["image", "optimizer", "local", "file-info", "hash"],
+      title: isKo
+        ? "로컬 이미지 최적화 & 파일 인사이트"
+        : "Local Image Optimizer & File Insights",
+      desc: isKo
+        ? "WebP/JPEG 재인코딩, 자동 리사이즈, 로컬 파일 정보·해시·미리보기 확인."
+        : "Re-encode WebP/JPEG, auto-resize, and view local file info, hashes, and previews.",
+      tags: isKo
+        ? ["이미지", "최적화", "로컬", "파일정보", "해시"]
+        : ["image", "optimizer", "local", "file-info", "hash"],
     },
     {
       href: "http://heic.funnyfunny.cloud/",
       icon: "📷",
       title: isKo ? "HEIC to JPG 변환기" : "HEIC to JPG Converter",
-      desc: isKo ? "압축, 리사이즈, ZIP 내보내기로 HEIC를 JPG/WebP/PNG로 변환." : "Convert HEIC to JPG/WebP/PNG with compression, resize, and ZIP export.",
-      tags: isKo ? ['HEIC', 'JPG', '변환', '압축', '리사이즈', 'ZIP', 'WebP', 'PNG'] : [
-        "HEIC",
-        "JPG",
-        "convert",
-        "compress",
-        "resize",
-        "ZIP",
-        "WebP",
-        "PNG",
-      ],
+      desc: isKo
+        ? "압축, 리사이즈, ZIP 내보내기로 HEIC를 JPG/WebP/PNG로 변환."
+        : "Convert HEIC to JPG/WebP/PNG with compression, resize, and ZIP export.",
+      tags: isKo
+        ? ["HEIC", "JPG", "변환", "압축", "리사이즈", "ZIP", "WebP", "PNG"]
+        : [
+            "HEIC",
+            "JPG",
+            "convert",
+            "compress",
+            "resize",
+            "ZIP",
+            "WebP",
+            "PNG",
+          ],
     },
     {
       href: "https://meta.funnyfunny.cloud",
       icon: "🧰",
-      title: isKo ? "Meta Kit — SEO · OG · Favicon" : "Meta Kit — SEO · OG · Favicon",
-      desc: isKo ? "메타 태그, OG/Twitter 카드, 파비콘 입력 후 생성·복사. OG 텍스트는 영문만 사용." : "Enter meta tags, OG/Twitter cards, and favicons to generate and copy. OG text uses English.",
-      tags: isKo ? ['메타태그', 'OG', 'SEO', '파비콘', 'OG이미지'] : ["meta-tags", "OG", "SEO", "favicon", "OG-image"],
+      title: isKo
+        ? "Meta Kit — SEO · OG · Favicon"
+        : "Meta Kit — SEO · OG · Favicon",
+      desc: isKo
+        ? "메타 태그, OG/Twitter 카드, 파비콘 입력 후 생성·복사. OG 텍스트는 영문만 사용."
+        : "Enter meta tags, OG/Twitter cards, and favicons to generate and copy. OG text uses English.",
+      tags: isKo
+        ? ["메타태그", "OG", "SEO", "파비콘", "OG이미지"]
+        : ["meta-tags", "OG", "SEO", "favicon", "OG-image"],
     },
     {
       href: "https://image.funnyfunny.cloud",
       icon: "🖼️",
       title: isKo ? "이미지 합치기 & PDF 변환" : "Image Merge & PDF Converter",
-      desc: isKo ? "드래그로 순서 정렬 후 한 장 이미지 또는 PDF로 저장." : "Drag to reorder and save as one image or PDF.",
-      tags: isKo ? ['이미지', 'PDF', '합치기', '편집'] : ["image", "PDF", "merge", "edit"],
+      desc: isKo
+        ? "드래그로 순서 정렬 후 한 장 이미지 또는 PDF로 저장."
+        : "Drag to reorder and save as one image or PDF.",
+      tags: isKo
+        ? ["이미지", "PDF", "합치기", "편집"]
+        : ["image", "PDF", "merge", "edit"],
     },
     {
       href: "https://ocr.funnyfunny.cloud",
       icon: "🔍",
       title: isKo ? "이미지 텍스트 추출" : "Image Text Extractor",
-      desc: isKo ? "사진에서 텍스트 자동 추출." : "Extract text from photos automatically.",
-      tags: isKo ? ['OCR', '텍스트', '사진', '변환'] : ["OCR", "text", "photo", "convert"],
+      desc: isKo
+        ? "사진에서 텍스트 자동 추출."
+        : "Extract text from photos automatically.",
+      tags: isKo
+        ? ["OCR", "텍스트", "사진", "변환"]
+        : ["OCR", "text", "photo", "convert"],
     },
     {
       href: "https://time.funnyfunny.cloud",
       icon: "⏰",
       title: isKo ? "예매는타이밍" : "Time Checker",
-      desc: isKo ? "정확한 서버 시간과 예매 도우미." : "Accurate server time and ticketing helper.",
-      tags: isKo ? ['시간', '서버시간', '예매'] : ["time", "server-time", "ticketing"],
+      desc: isKo
+        ? "정확한 서버 시간과 예매 도우미."
+        : "Accurate server time and ticketing helper.",
+      tags: isKo
+        ? ["시간", "서버시간", "예매"]
+        : ["time", "server-time", "ticketing"],
     },
     {
       href: "https://news.funnyfunny.cloud",
       icon: "📰",
       title: isKo ? "오늘의 IT 뉴스" : "IT News Today",
-      desc: isKo ? "국내·해외 IT 뉴스 빠른 요약." : "Quick summaries of domestic and global IT news.",
-      tags: isKo ? ['뉴스', 'IT', '요약'] : ["news", "IT", "summary"],
+      desc: isKo
+        ? "국내·해외 IT 뉴스 빠른 요약."
+        : "Quick summaries of domestic and global IT news.",
+      tags: isKo ? ["뉴스", "IT", "요약"] : ["news", "IT", "summary"],
     },
     {
       href: "https://weather.funnyfunny.cloud",
       icon: "🌤️",
       title: isKo ? "지금날씨" : "Current Weather",
-      desc: isKo ? "내 근처 날씨 조건 확인." : "Check nearby weather conditions.",
-      tags: isKo ? ['날씨', '미세먼지', '자외선'] : ["weather", "dust", "UV"],
+      desc: isKo
+        ? "내 근처 날씨 조건 확인."
+        : "Check nearby weather conditions.",
+      tags: isKo ? ["날씨", "미세먼지", "자외선"] : ["weather", "dust", "UV"],
     },
     {
       href: "https://emojicon.funnyfunny.cloud",
       icon: "🎨",
       title: isKo ? "EmojiCon Studio" : "EmojiCon Studio",
-      desc: isKo ? "이모지로 아이콘·파비콘 제작." : "Create icons and favicons from emojis.",
-      tags: isKo ? ['아이콘', '파비콘', '이모지'] : ["icons", "favicon", "emoji"],
+      desc: isKo
+        ? "이모지로 아이콘·파비콘 제작."
+        : "Create icons and favicons from emojis.",
+      tags: isKo
+        ? ["아이콘", "파비콘", "이모지"]
+        : ["icons", "favicon", "emoji"],
     },
     {
       href: "https://snaptrail.funnyfunny.cloud",
       icon: "📍",
       title: isKo ? "SnapTrail" : "SnapTrail",
-      desc: isKo ? "자동 그룹화된 사진 타임라인 생성기." : "Automatically grouped photo timeline generator.",
-      tags: isKo ? ['사진', '타임라인', '추억'] : ["photos", "timeline", "memories"],
+      desc: isKo
+        ? "자동 그룹화된 사진 타임라인 생성기."
+        : "Automatically grouped photo timeline generator.",
+      tags: isKo
+        ? ["사진", "타임라인", "추억"]
+        : ["photos", "timeline", "memories"],
     },
     {
       href: "https://day.funnyfunny.cloud",
       icon: "📅",
       title: isKo ? "D-day 계산기" : "D-day Calculator",
-      desc: isKo ? "날짜 계산, D-day, N일 후, 기념일, 위젯." : "Date calculations, D-Day, days after, anniversaries, widgets.",
-      tags: isKo ? ['날짜', 'D-day', '기념일'] : ["date", "D-day", "anniversary"],
+      desc: isKo
+        ? "날짜 계산, D-day, N일 후, 기념일, 위젯."
+        : "Date calculations, D-Day, days after, anniversaries, widgets.",
+      tags: isKo
+        ? ["날짜", "D-day", "기념일"]
+        : ["date", "D-day", "anniversary"],
     },
     {
       href: "https://run.funnyfunny.cloud",
       icon: "🦖",
       title: isKo ? "공룡 러너" : "Dino Runner",
-      desc: isKo ? "공룡 러너 스타일 랭킹 게임." : "Dino runner-style ranking game.",
-      tags: isKo ? ['게임', '공룡', '랭킹'] : ["game", "dino", "ranking"],
+      desc: isKo
+        ? "공룡 러너 스타일 랭킹 게임."
+        : "Dino runner-style ranking game.",
+      tags: isKo ? ["게임", "공룡", "랭킹"] : ["game", "dino", "ranking"],
     },
     {
       href: "https://charm.funnyfunny.cloud",
       icon: "🛸",
       title: isKo ? "Charm (NEON ARCADE)" : "Charm (NEON ARCADE)",
-      desc: isKo ? "차선을 바꿔 미사일 피하기." : "Switch lanes to dodge missiles.",
-      tags: isKo ? ['게임', '아케이드', '회피'] : ["game", "arcade", "dodge"],
+      desc: isKo
+        ? "차선을 바꿔 미사일 피하기."
+        : "Switch lanes to dodge missiles.",
+      tags: isKo ? ["게임", "아케이드", "회피"] : ["game", "arcade", "dodge"],
     },
     {
       href: "https://downy.funnyfunny.cloud/",
       icon: "🪜",
       title: isKo ? "Downy (NEON STAIRS)" : "Downy (NEON STAIRS)",
-      desc: isKo ? "계단에서 좌우로 발 디디기. 떨어지면 끝." : "Step left/right on stairs; fall and it’s over.",
-      tags: isKo ? ['게임', '아케이드', '계단'] : ["game", "arcade", "stairs"],
+      desc: isKo
+        ? "계단에서 좌우로 발 디디기. 떨어지면 끝."
+        : "Step left/right on stairs; fall and it’s over.",
+      tags: isKo ? ["게임", "아케이드", "계단"] : ["game", "arcade", "stairs"],
     },
     {
       href: "https://tet.funnyfunny.cloud/",
       icon: "🧱",
       title: isKo ? "데일리 테트리스" : "Daily Tetris",
-      desc: isKo ? "솔로 AI와 2인용 지원 테트리스." : "Tetris with solo AI and two-player support.",
-      tags: isKo ? ['게임', '테트리스', '퍼즐', '2인용'] : ["game", "tetris", "puzzle", "two-player"],
+      desc: isKo
+        ? "솔로 AI와 2인용 지원 테트리스."
+        : "Tetris with solo AI and two-player support.",
+      tags: isKo
+        ? ["게임", "테트리스", "퍼즐", "2인용"]
+        : ["game", "tetris", "puzzle", "two-player"],
     },
     {
       href: "https://random.funnyfunny.cloud/",
       icon: "🎱",
       title: isKo ? "네온 핀볼 랜덤 뽑기" : "Neon Pinball Random Draw",
-      desc: isKo ? "굴러가는 핀볼로 랜덤 당첨자 선택." : "Rolling pinballs pick a random winner.",
-      tags: isKo ? ['게임', '랜덤', '핀볼'] : ["game", "random", "pinball"],
+      desc: isKo
+        ? "굴러가는 핀볼로 랜덤 당첨자 선택."
+        : "Rolling pinballs pick a random winner.",
+      tags: isKo ? ["게임", "랜덤", "핀볼"] : ["game", "random", "pinball"],
     },
     {
       href: "https://balance.funnyfunny.cloud/",
       icon: "⚖️",
       title: isKo ? "밸런스 게임" : "Balance Game",
-      desc: isKo ? "두 가지 선택 질문 만들고 바로 공유." : "Create two-choice questions and share instantly.",
-      tags: isKo ? ['게임', '밸런스', '질문', '선택'] : ["game", "balance", "questions", "choices"],
+      desc: isKo
+        ? "두 가지 선택 질문 만들고 바로 공유."
+        : "Create two-choice questions and share instantly.",
+      tags: isKo
+        ? ["게임", "밸런스", "질문", "선택"]
+        : ["game", "balance", "questions", "choices"],
     },
     {
       href: "https://xmas.funnyfunny.cloud/",
       icon: "🎁",
       title: isKo ? "따뜻한 선물 보고서" : "Warm Gift Report",
-      desc: isKo ? "🎯 따뜻한 선물 도착 확률." : "🎯 Probability of a warm gift arrival.",
-      tags: isKo ? ['크리스마스', '선물', '확률', '보고서'] : ["christmas", "gift", "probability", "report"],
+      desc: isKo
+        ? "🎯 따뜻한 선물 도착 확률."
+        : "🎯 Probability of a warm gift arrival.",
+      tags: isKo
+        ? ["크리스마스", "선물", "확률", "보고서"]
+        : ["christmas", "gift", "probability", "report"],
     },
     {
       href: "https://hand.funnyfunny.cloud/",
       icon: "✋",
       title: isKo ? "손바닥 썰 푼다" : "Palm Reading Story",
-      desc: isKo ? "사진 한 장으로 손금 인사이트." : "Palm-line insights from a single photo.",
-      tags: isKo ? ['손금', '성격', '분석', '사진'] : ["palm", "personality", "analysis", "photo"],
+      desc: isKo
+        ? "사진 한 장으로 손금 인사이트."
+        : "Palm-line insights from a single photo.",
+      tags: isKo
+        ? ["손금", "성격", "분석", "사진"]
+        : ["palm", "personality", "analysis", "photo"],
     },
     {
       href: "https://soccer.funnyfunny.cloud/",
       icon: "⚽",
       title: isKo ? "우리 둘의 조합 축구선수" : "Soccer Combo",
-      desc: isKo ? "두 성향을 섞어 맞는 축구선수 찾기." : "Combine two personalities to find a matching footballer.",
-      tags: isKo ? ['축구', '조합', '궁합', '테스트'] : ["soccer", "combo", "compatibility", "test"],
+      desc: isKo
+        ? "두 성향을 섞어 맞는 축구선수 찾기."
+        : "Combine two personalities to find a matching footballer.",
+      tags: isKo
+        ? ["축구", "조합", "궁합", "테스트"]
+        : ["soccer", "combo", "compatibility", "test"],
     },
     {
       href: "http://sudoku.funnyfunny.cloud/",
@@ -2639,7 +2927,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    ❄️ This Winter's Top Problem
+                    ❄️ This Winter&apos;s Top Problem
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2679,7 +2967,7 @@ export function HomeContent() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🍢 Today's Snack Pairing
+                    🍢 Today&apos;s Snack Pairing
                   </a>
                   <a
                     className="block hover:text-blue-600"
@@ -2783,7 +3071,7 @@ export function HomeContent() {
           <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">💡</span>
-              <h3 className="text-xl font-bold">Today's One-line Insight</h3>
+              <h3 className="text-xl font-bold">Today&apos;s One-line Insight</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
@@ -2909,7 +3197,7 @@ export function HomeContent() {
                 </div>
                 <h4 className="font-bold text-lg leading-snug">Downy</h4>
                 <p className="text-sm text-slate-600 mt-1">
-                  Switch lanes to step on stairs, fall and it's over!
+                  Switch lanes to step on stairs, fall and it&apos;s over!
                 </p>
               </a>
               <a
