@@ -1800,7 +1800,7 @@ const pageCopy = {
     quickBarMessage: "부담 없이 즐기세요",
     quickBarHub: "Hub",
     quickBarRandomGift: "랜덤 선물",
-    servicesReady: "서비스가 준비되어 있습니다.",
+    servicesReady: "개의 서비스가 준비되어 있습니다.",
     searchHint: "키워드로 검색하거나 클릭하여 열 수 있습니다.",
   },
 };
@@ -1852,10 +1852,12 @@ export function HomeContent() {
   const handleLangChange = (nextLang) => {
     setLang(pageCopy[nextLang] ? nextLang : defaultLang);
   };
-  
+
   // Helper function to get translated service name by href
   const getServiceTitle = (href) => {
-    const service = allServices.find((s) => s.href === href || s.href === href + "/");
+    const service = allServices.find(
+      (s) => s.href === href || s.href === href + "/"
+    );
     return service ? service.title : href;
   };
 
