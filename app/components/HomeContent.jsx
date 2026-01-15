@@ -50,6 +50,7 @@ const randomTools = [
   "https://fortune.funnyfunny.cloud",
   "https://soul.funnyfunny.cloud",
   "https://wisdom.funnyfunny.cloud",
+  "https://motivate.funnyfunny.cloud/",
   "https://beat.funnyfunny.cloud",
   "https://cook.funnyfunny.cloud",
   "https://chef.funnyfunny.cloud/",
@@ -385,6 +386,12 @@ const seoGuides = [
     desc: "Click your emotion and situation to receive the line you need today.",
   },
   {
+    slug: "motivate",
+    emoji: "🔥",
+    title: "Motivation Reset Guide",
+    desc: "Get a short line to reset your mindset and refocus quickly.",
+  },
+  {
     slug: "daily-wisdom",
     emoji: "📜",
     title: "Daily Wisdom Guide",
@@ -432,6 +439,13 @@ const seoApplications = [
     url: "https://sleep.funnyfunny.cloud/",
     description:
       "White noise and ambient mixes with timer and fade-out for better sleep.",
+    category: "LifestyleApplication",
+  },
+  {
+    name: "Motivation Reset",
+    url: "https://motivate.funnyfunny.cloud/",
+    description:
+      "Get a short line to reset your mindset and regain focus.",
     category: "LifestyleApplication",
   },
   {
@@ -806,6 +820,13 @@ const allServices = [
     title: "Sleep Helper",
     desc: "Sleep sound player that masks snoring and noise.",
     tags: ["sleep", "white-noise", "ambient", "rest"],
+  },
+  {
+    href: "https://motivate.funnyfunny.cloud/",
+    icon: "🔥",
+    title: "Motivation Reset",
+    desc: "Get a short line to reset your mindset.",
+    tags: ["motivation", "mindset", "reset", "focus"],
   },
   {
     href: "https://flow.funnyfunny.cloud/",
@@ -2771,6 +2792,12 @@ export function HomeContent() {
                   "🧠 Mindfulness Line of the Day",
                   "Heal with a one-line quote",
                   "Lighten your mind",
+                ],
+                [
+                  "https://motivate.funnyfunny.cloud/",
+                  "🔥 Motivation Reset",
+                  "A short line to refocus",
+                  "Reset your mindset in seconds",
                 ],
               ].map(([href, title, desc, detail]) => (
                 <a

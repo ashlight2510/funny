@@ -160,6 +160,59 @@ const rawGuides = [
       "This is a meme-style choice tool unrelated to any official judge or program. Results are for fun and reference only.",
   },
   {
+    slug: "motivate",
+    title: "Motivation Reset Guide",
+    subtitle:
+      "Get a short line to reset your mindset and regain focus when you feel stuck.",
+    category: "Lifestyle",
+    heroEmoji: "🔥",
+    serviceUrl: "https://motivate.funnyfunny.cloud/",
+    ctaLabel: "Open Motivation Reset",
+    metaDescription:
+      "Motivation Reset guide — receive a short line to reset your mindset and refocus in seconds.",
+    keywords: ["motivation", "reset", "mindset", "focus", "one-line"],
+    sections: [
+      {
+        heading: "What you can do",
+        body: [
+          "Receive a concise motivation line that helps you reset and refocus.",
+          "Use it as a quick mental reset before tasks or after a slump.",
+        ],
+      },
+      {
+        heading: "Get started",
+        body: [
+          "Step 1. Open the service and select your current mood or situation.",
+          "Step 2. Read the line and take a short pause to reset your focus.",
+          "Step 3. Copy or screenshot your favorite lines for later.",
+        ],
+      },
+      {
+        heading: "Build a simple routine",
+        body: [
+          "Start your day with one line to set a clear intention.",
+          "Use another line after lunch or before a deep work block.",
+          "Save lines that work for you and rotate them weekly.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Is it free?",
+        answer: "Yes. It works without login and is free to use.",
+      },
+      {
+        question: "Are results saved?",
+        answer:
+          "No. If you want to keep a line, copy or screenshot it.",
+      },
+      {
+        question: "Can I use it on mobile?",
+        answer: "Yes. The UI is optimized for mobile web.",
+      },
+    ],
+  },
+  {
     slug: "local-image-optimizer",
     title: "Local Image Optimizer & File Insights",
     subtitle:
