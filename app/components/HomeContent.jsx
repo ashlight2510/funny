@@ -77,6 +77,7 @@ const randomTools = [
   "https://balance.funnyfunny.cloud/",
   "https://lotto.funnyfunny.cloud/",
   "http://sudoku.funnyfunny.cloud/",
+  "https://commute.funnyfunny.cloud/",
 ];
 
 const seoTopItems = [
@@ -160,6 +161,12 @@ const seoGuides = [
     emoji: "🍽️",
     title: "N빵 계산기 가이드",
     desc: "음식점 이름·인원·총금액을 입력해 1인당 금액을 계산하고 바로 클립보드로 복사하는 흐름",
+  },
+  {
+    slug: "commute-cost-time",
+    emoji: "⏰",
+    title: "출퇴근 비용 & 시간 계산기 가이드",
+    desc: "출퇴근 비용·시간을 계산하고, 아낀 시간을 어떻게 활용할지 추천받는 방법",
   },
   {
     slug: "lotto-picker",
@@ -857,6 +864,13 @@ const allServices = [
     title: "하루 정신 체력 지수 테스트",
     desc: "오늘의 뇌 에너지·집중력 상태 진단",
     tags: ["멘탈", "집중", "컨디션"],
+  },
+  {
+    href: "https://commute.funnyfunny.cloud/",
+    icon: "⏰",
+    title: "출퇴근 비용 & 시간 계산기",
+    desc: "출퇴근 비용과 시간을 계산하고 활용 아이디어 받기",
+    tags: ["출퇴근", "시간", "비용", "교통", "루틴"],
   },
   {
     href: "https://human.funnyfunny.cloud",

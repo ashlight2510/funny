@@ -6,27 +6,6 @@ export function HeaderPortal({ lang, onLangChange, t }) {
 
   return (
     <>
-      {/* 모바일: 언어 토글 버튼을 헤더 밖 우상단에 배치 (fixed 아님) */}
-      {lang && onLangChange && (
-        <div className="sm:hidden absolute top-4 right-4 z-30">
-          <div className="flex items-center gap-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/30 px-2 py-1 text-xs shadow-lg">
-            {languages.map(({ code, label }) => (
-              <button
-                key={code}
-                type="button"
-                onClick={() => onLangChange(code)}
-                className={`px-2 py-1 rounded-full transition ${
-                  lang === code
-                    ? "bg-white text-slate-900 font-semibold"
-                    : "text-white/70 hover:text-white"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
       <header className="bg-gradient-to-r from-slate-950/90 via-slate-900/90 to-sky-950/80 backdrop-blur shadow-lg border-b border-white/10 sticky top-0 z-20 text-slate-50">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between gap-3">
@@ -72,8 +51,11 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                 {t ? t("ctaPrimaryLarge") : "랜덤 열기"}
               </span>
             </button>
-            {lang && onLangChange && (
-              <div className="hidden sm:flex items-center gap-1 rounded-full bg-white/10 border border-white/30 px-2 py-1 text-xs">
+            </div>
+          </div>
+          {lang && onLangChange && (
+            <div className="mt-3 flex">
+              <div className="flex items-center gap-1 rounded-full bg-white/10 border border-white/30 px-2 py-1 text-xs">
                 {languages.map(({ code, label }) => (
                   <button
                     key={code}
@@ -89,9 +71,8 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                   </button>
                 ))}
               </div>
-            )}
             </div>
-          </div>
+          )}
         </div>
       </header>
     </>

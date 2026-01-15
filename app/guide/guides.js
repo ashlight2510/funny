@@ -3061,6 +3061,20 @@ const guideSeeds = [
       "본 계산은 참고용이며 투자 권유가 아닙니다. 무리한 음주는 건강에 해롭습니다.",
   },
   {
+    slug: "commute-cost-time",
+    title: "출퇴근 비용 & 시간 계산기 가이드",
+    description:
+      "출퇴근에 쓰는 비용과 시간을 계산하고, 아낀 시간을 어떻게 활용할지 추천받는 방법",
+    category: "라이프스타일",
+    heroEmoji: "⏰",
+    serviceUrl: "https://commute.funnyfunny.cloud/",
+    keywords: ["출퇴근", "시간 계산", "교통비", "기회비용", "루틴"],
+    usage:
+      "이동 시간, 교통비, 출근 빈도를 입력하면 주·월 단위 누적 비용과 시간을 바로 확인할 수 있습니다.",
+    note:
+      "추천은 참고용입니다. 본인 일정과 체력 수준에 맞춰 현실적인 루틴으로 조정해 보세요.",
+  },
+  {
     slug: "waste-index",
     title: "내 인생 낭비력 지수 가이드",
     description: "시간과 돈의 낭비도를 숫자로 확인하는 낭비력 지수 사용법",
