@@ -1367,6 +1367,8 @@ const pageCopy = {
     headerHeroTitle: "유용할 수 있는 서비스, 놀이터",
     ctaPrimarySmall: "랜덤",
     ctaPrimaryLarge: "랜덤 열기",
+    langKorean: "한국어",
+    langEnglish: "English",
     heroBadgeMain: "❄️ 스노우 위크",
     heroBadgeSub: "쉽게 즐기기",
     heroTitle: "겨울이 길게 느껴질 때 클릭할 테스트들",
@@ -1415,6 +1417,8 @@ const pageCopy = {
     headerHeroTitle: "Useful services, playground",
     ctaPrimarySmall: "Random",
     ctaPrimaryLarge: "Open random tool",
+    langKorean: "한국어",
+    langEnglish: "English",
     heroBadgeMain: "❄️ Snow Week",
     heroBadgeSub: "Easy to enjoy",
     heroTitle: "Tests to click when winter feels long",
@@ -1491,6 +1495,8 @@ const pageCopy = {
     quickBarMessage: "Enjoy without pressure",
     quickBarHub: "Hub",
     quickBarRandomGift: "Random gift",
+    servicesReady: "services are ready right now.",
+    searchHint: "Search by keyword or click to open.",
     hubTitle: "나를 이해하는 가장 간단한 방법",
     sectionPsychology: "심리 & 특성",
     sectionMoney: "돈 & 투자",
@@ -1510,6 +1516,8 @@ const pageCopy = {
     quickBarMessage: "부담 없이 즐기세요",
     quickBarHub: "Hub",
     quickBarRandomGift: "랜덤 선물",
+    servicesReady: "서비스가 준비되어 있습니다.",
+    searchHint: "키워드로 검색하거나 클릭하여 열 수 있습니다.",
   },
 };
 
@@ -3076,10 +3084,10 @@ export function HomeContent() {
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm text-emerald-100">
-                  {allServices.length} services are ready right now.
+                  {allServices.length} {t("servicesReady")}
                 </p>
                 <p className="text-xs text-emerald-100/80">
-                  Search by keyword or click to open.
+                  {t("searchHint")}
                 </p>
               </div>
               <label className="relative w-full sm:w-80">

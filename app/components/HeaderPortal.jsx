@@ -1,7 +1,7 @@
 export function HeaderPortal({ lang, onLangChange, t }) {
   const languages = [
-    { code: "ko", label: "한국어" },
-    { code: "en", label: "English" },
+    { code: "ko", label: t ? t("langKorean") : "한국어" },
+    { code: "en", label: t ? t("langEnglish") : "English" },
   ];
 
   return (
@@ -52,13 +52,13 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                 rel="noopener noreferrer"
                 className="px-3 py-2 text-sm rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors"
               >
-                FLOW Board
+                {t ? t("quickFlow") : "FLOW Board"}
               </a>
               <a
                 href="https://ashlight.store"
                 className="px-3 py-2 text-sm rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors"
               >
-                AshLight
+                {t ? t("quickAshlight") : "AshLight"}
               </a>
             </div>
             <button
