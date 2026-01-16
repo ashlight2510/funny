@@ -2771,6 +2771,9 @@ function buildGuideFromSeed(seed) {
 
 const manualSlugs = new Set(rawGuides.map((guide) => guide.slug));
 
+// 원본 rawGuides 보존 (sanitizeGuide 전 상태)
+const rawGuidesOriginal = [...rawGuides];
+
 const guideSeeds = [
   {
     slug: "energy-balance",
@@ -3469,13 +3472,32 @@ const guideSeeds = [
   },
 ];
 
+// guideSeeds에서 한국어 가이드 생성 (sanitizeGuide 전에 추가)
 guideSeeds.forEach((seed) => {
   if (manualSlugs.has(seed.slug)) return;
+  rawGuidesOriginal.push(buildGuideFromSeed(seed));
   rawGuides.push(buildGuideFromSeed(seed));
 });
 
 const hasKorean = (value) =>
   typeof value === "string" && /[가-힣]/.test(value);
+
+// rawGuidesOriginal에서 언어별로 분리
+const guidesByLang = {
+  ko: rawGuidesOriginal.filter((guide) =>
+    guide.sections?.some((section) =>
+      section.body?.some((p) => hasKorean(p))
+    ) || hasKorean(guide.title) || hasKorean(guide.category)
+  ),
+  en: rawGuidesOriginal.filter((guide) => {
+    const hasKoInSections = guide.sections?.some((section) =>
+      section.body?.some((p) => hasKorean(p))
+    );
+    const hasKoInTitle = hasKorean(guide.title);
+    const hasKoInCategory = hasKorean(guide.category);
+    return !hasKoInSections && !hasKoInTitle && !hasKoInCategory;
+  }),
+};
 
 const categoryMap = {
   "크리에이터 도구": "Creator Tools",
@@ -3715,66 +3737,98 @@ function formatGuideTemplate(template, vars = {}) {
   );
 }
 
+// 언어별 가이드 맵 생성
+const guideMapByLang = {
+  ko: guidesByLang.ko.reduce((acc, guide) => {
+    acc[guide.slug] = guide;
+    return acc;
+  }, {}),
+  en: guidesByLang.en.reduce((acc, guide) => {
+    acc[guide.slug] = guide;
+    return acc;
+  }, {}),
+};
+
+// 원본 가이드도 맵으로 변환 (fallback용)
+const rawGuideMap = rawGuidesOriginal.reduce((acc, guide) => {
+  acc[guide.slug] = guide;
+  return acc;
+}, {});
+
 // 언어별 가이드 반환 함수
 export function getGuide(slug, lang = "en") {
   const isKo = lang === "ko";
-  const guide = guideMap[slug];
+  const targetLang = isKo ? "ko" : "en";
+  
+  // 언어별 가이드에서 먼저 찾기
+  let guide = guideMapByLang[targetLang][slug];
+  
+  // 없으면 원본에서 찾기 (fallback)
+  if (!guide) {
+    guide = rawGuideMap[slug];
+  }
   
   if (!guide) return null;
 
-  // 카테고리 번역
-  const categoryTranslationsForLang = categoryTranslations[lang] || {};
-  const translatedCategory =
-    categoryTranslationsForLang[guide.category] || guide.category;
+  // 한국어 가이드를 영어로 변환해야 하는 경우 (영어 요청)
+  if (!isKo && hasKorean(guide.title || "")) {
+    // sanitizeGuide로 변환 (하지만 sections/faq는 원본 유지)
+    const sanitized = sanitizeGuide(guide);
+    // sections와 faq는 원본 유지 (영어로 변환하지 않음)
+    return {
+      ...sanitized,
+      sections: guide.sections || sanitized.sections,
+      faq: guide.faq || sanitized.faq,
+    };
+  }
 
-  // 제목과 설명은 getSeoGuides에서 가져옴 (이미 번역됨)
-  // 여기서는 sections와 faq를 번역
-  let translatedSections = guide.sections;
-  let translatedFaq = guide.faq;
+  // 한국어 요청인데 영어 가이드인 경우는 그대로 반환
+  // (영어 가이드는 이미 영어로 되어 있음)
+  if (isKo && !hasKorean(guide.title || "")) {
+    // 영어 가이드를 한국어로 변환하려면 기본 섹션/FAQ 사용
+    const categoryTranslationsForLang = categoryTranslations[lang] || {};
+    const translatedCategory =
+      categoryTranslationsForLang[guide.category] || guide.category;
 
-  // sections가 기본 섹션이면 번역된 기본 섹션 사용
-  if (
-    guide.sections &&
-    guide.sections.length > 0 &&
-    guide.sections[0].heading === "Overview"
-  ) {
+    // 제목과 설명은 getSeoGuides에서 가져옴 (이미 번역됨)
+    // sections와 faq는 기본 번역 사용
     const defaultSections = defaultSectionsTranslations[lang] || defaultSectionsTranslations.en;
-    translatedSections = defaultSections.map((section) => ({
+    const translatedSections = defaultSections.map((section) => ({
       heading: section.heading,
       body: section.body.map((paragraph) =>
         formatGuideTemplate(paragraph, { title: guide.title })
       ),
     }));
-  } else if (isKo) {
-    // 영어 sections를 한국어로 번역 (기본 메시지로 대체)
-    // 실제 번역은 나중에 추가 가능
-    translatedSections = guide.sections || defaultSectionsTranslations.ko;
+
+    const translatedFaq = defaultFaqTranslations[lang] || defaultFaqTranslations.en;
+
+    const translatedCtaLabel = `${guide.title} 열기`;
+
+    return {
+      ...guide,
+      category: translatedCategory,
+      sections: translatedSections,
+      faq: translatedFaq,
+      ctaLabel: translatedCtaLabel,
+    };
   }
 
-  // faq가 기본 FAQ면 번역된 기본 FAQ 사용
-  if (
-    guide.faq &&
-    guide.faq.length > 0 &&
-    guide.faq[0].question === "Is it free to use?"
-  ) {
-    translatedFaq = defaultFaqTranslations[lang] || defaultFaqTranslations.en;
-  } else if (isKo) {
-    // 영어 FAQ를 한국어로 번역 (기본 메시지로 대체)
-    // 실제 번역은 나중에 추가 가능
-    translatedFaq = guide.faq || defaultFaqTranslations.ko;
+  // 한국어 가이드인 경우 카테고리만 번역 (역방향)
+  if (isKo && hasKorean(guide.category || "")) {
+    // 카테고리는 이미 한국어이므로 그대로 사용
+    return guide;
   }
 
-  // CTA 레이블 번역
-  const translatedCtaLabel = isKo
-    ? guide.ctaLabel?.replace("Open ", "").replace(" open", "") + " 열기" ||
-      `${guide.title} 열기`
-    : guide.ctaLabel;
+  // 영어 가이드인 경우 카테고리 번역
+  if (!isKo) {
+    const categoryTranslationsForLang = categoryTranslations[lang] || {};
+    const translatedCategory =
+      categoryTranslationsForLang[guide.category] || guide.category;
+    return {
+      ...guide,
+      category: translatedCategory,
+    };
+  }
 
-  return {
-    ...guide,
-    category: translatedCategory,
-    sections: translatedSections,
-    faq: translatedFaq,
-    ctaLabel: translatedCtaLabel,
-  };
+  return guide;
 }
