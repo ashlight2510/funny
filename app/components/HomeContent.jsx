@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { HeaderPortal } from "./HeaderPortal";
 import { FooterPortal } from "./FooterPortal";
-import { randomTools, seoTopItems, seoApplications, seoFaq } from "../lib/constants";
+import { randomTools, seoTopItems, seoApplications, getSeoFaq } from "../lib/constants";
 import { getAllServices, getSeoGuides } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
@@ -26,6 +26,7 @@ export function HomeContent() {
   const fallbackPack = pageCopy[defaultLang];
   const allServices = getAllServices(lang);
   const seoGuides = getSeoGuides(lang);
+  const seoFaq = getSeoFaq(lang);
 
   useEffect(() => {
     document.documentElement.lang = lang;

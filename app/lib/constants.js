@@ -458,26 +458,38 @@ export const seoApplications = [
   },
 ];
 
-// SEO FAQ
-export const seoFaq = [
-  {
-    question: "What services does FunnyFunny Cloud provide?",
-    answer:
-      "funnyfunny.cloud helps you review everyday spending, time, and habit data through tests and calculators.\n\nAll services are designed and built in-house to help users understand their patterns and compare them against realistic benchmarks.\n\nResults are for reference only and meant to support everyday choices and planning. The site is operated safely and transparently in compliance with Google policies.",
-  },
-  {
-    question: "Is it free to use?",
-    answer:
-      "All services are free to use without logging in, and you can share links without restrictions.",
-  },
-  {
-    question: "Is it mobile-friendly?",
-    answer:
-      "Yes. The UI is optimized for mobile, and the random button helps you start quickly.",
-  },
-  {
-    question: "Are new services added?",
-    answer:
-      "We regularly add new services aligned with popular topics and trends, visible in the full list and search.",
-  },
-];
+// SEO FAQ - 언어별 FAQ 반환 함수
+export function getSeoFaq(lang = "en") {
+  const isKo = lang === "ko";
+  
+  return [
+    {
+      question: isKo
+        ? "FunnyFunny Cloud는 어떤 서비스를 제공하나요?"
+        : "What services does FunnyFunny Cloud provide?",
+      answer: isKo
+        ? "funnyfunny.cloud는 테스트와 계산기를 통해 일상적인 지출, 시간, 습관 데이터를 검토하는 데 도움을 줍니다.\n\n모든 서비스는 사용자가 자신의 패턴을 이해하고 현실적인 기준과 비교할 수 있도록 내부에서 설계 및 구축되었습니다.\n\n결과는 참고용이며 일상적인 선택과 계획을 지원하기 위한 것입니다. 사이트는 Google 정책을 준수하여 안전하고 투명하게 운영됩니다."
+        : "funnyfunny.cloud helps you review everyday spending, time, and habit data through tests and calculators.\n\nAll services are designed and built in-house to help users understand their patterns and compare them against realistic benchmarks.\n\nResults are for reference only and meant to support everyday choices and planning. The site is operated safely and transparently in compliance with Google policies.",
+    },
+    {
+      question: isKo ? "무료로 사용할 수 있나요?" : "Is it free to use?",
+      answer: isKo
+        ? "모든 서비스는 로그인 없이 무료로 사용할 수 있으며, 제한 없이 링크를 공유할 수 있습니다."
+        : "All services are free to use without logging in, and you can share links without restrictions.",
+    },
+    {
+      question: isKo ? "모바일 친화적인가요?" : "Is it mobile-friendly?",
+      answer: isKo
+        ? "네. UI는 모바일에 최적화되어 있으며, 랜덤 버튼을 통해 빠르게 시작할 수 있습니다."
+        : "Yes. The UI is optimized for mobile, and the random button helps you start quickly.",
+    },
+    {
+      question: isKo
+        ? "새로운 서비스가 추가되나요?"
+        : "Are new services added?",
+      answer: isKo
+        ? "인기 있는 주제와 트렌드에 맞춰 새로운 서비스를 정기적으로 추가하며, 전체 목록과 검색에서 확인할 수 있습니다."
+        : "We regularly add new services aligned with popular topics and trends, visible in the full list and search.",
+    },
+  ];
+}
