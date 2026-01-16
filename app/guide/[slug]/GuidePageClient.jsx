@@ -40,7 +40,21 @@ export function GuidePageClient({ guide }) {
   const guideCtaLabel = translatedGuide.ctaLabel;
   const guideDisclaimer = translatedGuide.disclaimer || null;
 
-  const otherGuides = guides.filter(({ slug }) => slug !== guide.slug);
+  // 언어별로 변환된 다른 가이드들
+  const otherGuides = guides
+    .filter(({ slug }) => slug !== guide.slug)
+    .map((item) => {
+      const translatedItem = getGuide(item.slug, lang) || item;
+      const seoItem = seoGuides.find((g) => g.slug === item.slug);
+      return {
+        ...item,
+        slug: item.slug,
+        heroEmoji: item.heroEmoji,
+        title: seoItem?.title || translatedItem.title || item.title,
+        metaDescription: seoItem?.desc || translatedItem.metaDescription || item.metaDescription,
+        category: translatedItem.category || item.category,
+      };
+    });
 
   const faqJsonLd = {
     "@context": "https://schema.org",
