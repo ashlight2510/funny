@@ -3605,3 +3605,176 @@ export const guideMap = guides.reduce((acc, guide) => {
   acc[guide.slug] = guide;
   return acc;
 }, {});
+
+// 언어별 가이드 카테고리 번역
+const categoryTranslations = {
+  ko: {
+    "Creator Tools": "크리에이터 도구",
+    "Lifestyle": "라이프스타일",
+    "Lifestyle Calculator": "생활 계산기",
+    "Lifestyle · Real Estate": "생활 · 부동산",
+    "Vocal Training": "보컬 트레이닝",
+    "Finance": "재테크",
+    "Entertainment": "엔터테인먼트",
+    "Community": "커뮤니티",
+    "Utilities": "유틸리티",
+    "Games": "게임",
+    "Beauty": "뷰티",
+    "Guide": "가이드",
+  },
+  en: {},
+};
+
+// 기본 섹션 번역
+const defaultSectionsTranslations = {
+  ko: [
+    {
+      heading: "개요",
+      body: [
+        "{title}는 일상적인 체크와 결정을 위한 빠른 브라우저 기반 도구입니다.",
+        "서비스를 열고 화면의 단계를 따라 결과를 확인하세요.",
+      ],
+    },
+    {
+      heading: "사용 방법",
+      body: [
+        "입력값을 입력하면 즉시 결과가 표시됩니다.",
+        "다양한 값을 시도해 결과를 비교하고 원하는 버전을 저장하세요.",
+      ],
+    },
+    {
+      heading: "참고사항",
+      body: [
+        "결과는 최종 결정이 아닌 참고용으로 사용하세요.",
+        "로그인이 필요하지 않으며 입력값은 저장되지 않습니다.",
+      ],
+    },
+  ],
+  en: [
+    {
+      heading: "Overview",
+      body: [
+        "{title} is a quick, browser-based tool for everyday checks and decisions.",
+        "Open the service and follow the on-screen steps to get results.",
+      ],
+    },
+    {
+      heading: "How to use it",
+      body: [
+        "Enter your inputs to see instant results.",
+        "Try different values to compare outcomes and save the version you like.",
+      ],
+    },
+    {
+      heading: "Notes",
+      body: [
+        "Use results as a reference, not a final decision.",
+        "No login is required and inputs are not stored.",
+      ],
+    },
+  ],
+};
+
+// 기본 FAQ 번역
+const defaultFaqTranslations = {
+  ko: [
+    {
+      question: "무료로 이용할 수 있나요?",
+      answer: "네, 브라우저에서 실행되며 로그인 없이 사용할 수 있습니다.",
+    },
+    {
+      question: "결과는 저장되나요?",
+      answer: "아니요, 입력값은 계산에만 사용됩니다.",
+    },
+    {
+      question: "모바일에서도 사용할 수 있나요?",
+      answer: "네, 모바일 웹에 최적화되어 있습니다.",
+    },
+  ],
+  en: [
+    {
+      question: "Is it free to use?",
+      answer: "Yes. It runs in the browser with no login required.",
+    },
+    {
+      question: "Are results saved?",
+      answer: "No. Inputs are used only for calculation.",
+    },
+    {
+      question: "Can I use it on mobile?",
+      answer: "Yes. It is optimized for mobile web.",
+    },
+  ],
+};
+
+// 템플릿 변수 치환 함수
+function formatGuideTemplate(template, vars = {}) {
+  if (typeof template !== "string") return template;
+  return template.replace(/\{(.*?)\}/g, (_, key) =>
+    Object.prototype.hasOwnProperty.call(vars, key) ? vars[key] : ""
+  );
+}
+
+// 언어별 가이드 반환 함수
+export function getGuide(slug, lang = "en") {
+  const isKo = lang === "ko";
+  const guide = guideMap[slug];
+  
+  if (!guide) return null;
+
+  // 카테고리 번역
+  const categoryTranslationsForLang = categoryTranslations[lang] || {};
+  const translatedCategory =
+    categoryTranslationsForLang[guide.category] || guide.category;
+
+  // 제목과 설명은 getSeoGuides에서 가져옴 (이미 번역됨)
+  // 여기서는 sections와 faq를 번역
+  let translatedSections = guide.sections;
+  let translatedFaq = guide.faq;
+
+  // sections가 기본 섹션이면 번역된 기본 섹션 사용
+  if (
+    guide.sections &&
+    guide.sections.length > 0 &&
+    guide.sections[0].heading === "Overview"
+  ) {
+    const defaultSections = defaultSectionsTranslations[lang] || defaultSectionsTranslations.en;
+    translatedSections = defaultSections.map((section) => ({
+      heading: section.heading,
+      body: section.body.map((paragraph) =>
+        formatGuideTemplate(paragraph, { title: guide.title })
+      ),
+    }));
+  } else if (isKo) {
+    // 영어 sections를 한국어로 번역 (기본 메시지로 대체)
+    // 실제 번역은 나중에 추가 가능
+    translatedSections = guide.sections || defaultSectionsTranslations.ko;
+  }
+
+  // faq가 기본 FAQ면 번역된 기본 FAQ 사용
+  if (
+    guide.faq &&
+    guide.faq.length > 0 &&
+    guide.faq[0].question === "Is it free to use?"
+  ) {
+    translatedFaq = defaultFaqTranslations[lang] || defaultFaqTranslations.en;
+  } else if (isKo) {
+    // 영어 FAQ를 한국어로 번역 (기본 메시지로 대체)
+    // 실제 번역은 나중에 추가 가능
+    translatedFaq = guide.faq || defaultFaqTranslations.ko;
+  }
+
+  // CTA 레이블 번역
+  const translatedCtaLabel = isKo
+    ? guide.ctaLabel?.replace("Open ", "").replace(" open", "") + " 열기" ||
+      `${guide.title} 열기`
+    : guide.ctaLabel;
+
+  return {
+    ...guide,
+    category: translatedCategory,
+    sections: translatedSections,
+    faq: translatedFaq,
+    ctaLabel: translatedCtaLabel,
+  };
+}

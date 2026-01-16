@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FooterSimple } from "../../components/FooterSimple";
 import { HeaderSimple } from "../../components/HeaderSimple";
-import { guides } from "../guides";
+import { guides, getGuide } from "../guides";
 import { getSeoGuides } from "../../lib/services";
 import { pageCopy } from "../../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../../lib/i18n";
@@ -15,6 +15,9 @@ export function GuidePageClient({ guide }) {
   const fallbackPack = pageCopy[defaultLang];
   const seoGuides = getSeoGuides(lang);
   const seoGuide = seoGuides.find((g) => g.slug === guide.slug);
+  
+  // 언어별로 가이드 데이터 가져오기
+  const translatedGuide = getGuide(guide.slug, lang) || guide;
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -29,15 +32,20 @@ export function GuidePageClient({ guide }) {
   };
 
   // Use translated title/description from getSeoGuides if available
-  const guideTitle = seoGuide?.title || guide.title;
-  const guideDesc = seoGuide?.desc || guide.metaDescription;
+  const guideTitle = seoGuide?.title || translatedGuide.title;
+  const guideDesc = seoGuide?.desc || translatedGuide.metaDescription;
+  const guideCategory = translatedGuide.category;
+  const guideSections = translatedGuide.sections;
+  const guideFaq = translatedGuide.faq;
+  const guideCtaLabel = translatedGuide.ctaLabel;
+  const guideDisclaimer = translatedGuide.disclaimer || null;
 
   const otherGuides = guides.filter(({ slug }) => slug !== guide.slug);
 
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: guide.faq.map((item) => ({
+    mainEntity: guideFaq.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -55,7 +63,7 @@ export function GuidePageClient({ guide }) {
           <div className="flex items-center gap-3 text-sm text-slate-600">
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-100">
               <span>{guide.heroEmoji}</span>
-              <span>{guide.category}</span>
+              <span>{guideCategory}</span>
             </span>
             <span className="text-slate-300">/</span>
             <span className="text-slate-600">{t("guidesLabel")}</span>
@@ -83,7 +91,7 @@ export function GuidePageClient({ guide }) {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold shadow-md hover:-translate-y-0.5 hover:shadow-lg transition"
             >
-              {guide.ctaLabel}
+              {guideCtaLabel}
             </a>
             <a
               href="/"
@@ -95,7 +103,7 @@ export function GuidePageClient({ guide }) {
         </section>
 
         <section className="space-y-8">
-          {guide.sections.map((section) => (
+          {guideSections.map((section) => (
             <article
               key={section.heading}
               className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-7"
@@ -112,11 +120,11 @@ export function GuidePageClient({ guide }) {
           ))}
         </section>
 
-        {guide.disclaimer && (
+        {guideDisclaimer && (
           <section className="bg-amber-50 text-amber-900 border border-amber-200 rounded-3xl p-5 sm:p-6 shadow-sm">
             <p className="text-sm font-semibold">{t("notice")}</p>
             <p className="mt-1 text-sm sm:text-base leading-relaxed">
-              {guide.disclaimer}
+              {guideDisclaimer}
             </p>
           </section>
         )}
@@ -135,7 +143,7 @@ export function GuidePageClient({ guide }) {
             </div>
           </div>
           <div className="divide-y divide-slate-100">
-            {guide.faq.map((item) => (
+            {guideFaq.map((item) => (
               <details key={item.question} className="py-3 group">
                 <summary className="flex items-center justify-between cursor-pointer">
                   <span className="text-sm font-semibold text-slate-800 group-hover:text-blue-700">
