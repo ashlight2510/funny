@@ -3,19 +3,15 @@
 import { useEffect, useState } from "react";
 import { HeaderPortal } from "./HeaderPortal";
 import { FooterPortal } from "./FooterPortal";
-import { randomTools, seoTopItems, seoApplications, getSeoFaq } from "../lib/constants";
+import {
+  randomTools,
+  seoTopItems,
+  seoApplications,
+  getSeoFaq,
+} from "../lib/constants";
 import { getAllServices, getSeoGuides } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
-
-
-
-
-
-
-
-
-
 
 export function HomeContent() {
   const [lang, setLang] = useState(getInitialLang);
@@ -44,7 +40,7 @@ export function HomeContent() {
     // Normalize URLs by removing trailing slashes for comparison
     const normalizeUrl = (url) => url.replace(/\/$/, "");
     const normalizedHref = normalizeUrl(href);
-    
+
     const service = allServices.find(
       (s) => normalizeUrl(s.href) === normalizedHref
     );
@@ -746,7 +742,9 @@ export function HomeContent() {
                   {
                     href: "https://video.funnyfunny.cloud",
                     title: isKo ? "🎬 AutoCut Studio" : "🎬 AutoCut Studio",
-                    desc: isKo ? "자동 하이라이트 & 점프 컷" : "Auto highlight & jump cuts",
+                    desc: isKo
+                      ? "자동 하이라이트 & 점프 컷"
+                      : "Auto highlight & jump cuts",
                     detail: isKo
                       ? "침묵 감지로 하이라이트 타임라인과 쇼츠 추출해 편집 시간 단축"
                       : "Detects silence to extract highlight timelines and shorts to cut editing time.",
@@ -799,7 +797,9 @@ export function HomeContent() {
                   },
                   {
                     href: "https://ocr.funnyfunny.cloud",
-                    title: isKo ? "🔍 이미지 텍스트 추출기" : "🔍 Image Text Extractor",
+                    title: isKo
+                      ? "🔍 이미지 텍스트 추출기"
+                      : "🔍 Image Text Extractor",
                     desc: isKo
                       ? "사진 속 텍스트 자동 읽기 및 텍스트로 복사"
                       : "Auto-read text in photos and copy as text",
@@ -809,8 +809,12 @@ export function HomeContent() {
                   },
                   {
                     href: "https://audio.funnyfunny.cloud",
-                    title: isKo ? "🎵 간단한 오디오 편집기" : "🎵 Simple Audio Editor",
-                    desc: isKo ? "브라우저에서 직접 오디오 편집" : "Edit audio directly in the browser",
+                    title: isKo
+                      ? "🎵 간단한 오디오 편집기"
+                      : "🎵 Simple Audio Editor",
+                    desc: isKo
+                      ? "브라우저에서 직접 오디오 편집"
+                      : "Edit audio directly in the browser",
                     detail: isKo
                       ? "설치 없이 자르기, 병합, 내보내기 — 100% 클라이언트 사이드"
                       : "Trim, merge, export with no install — 100% client-side",
@@ -890,7 +894,9 @@ export function HomeContent() {
                   {
                     href: "https://snaptrail.funnyfunny.cloud",
                     title: isKo ? "📍 SnapTrail" : "📍 SnapTrail",
-                    desc: isKo ? "추억 타임라인 메이커" : "Memory timeline maker",
+                    desc: isKo
+                      ? "추억 타임라인 메이커"
+                      : "Memory timeline maker",
                     detail: isKo
                       ? "연도, 월, 지역별로 사진 자동 그룹화하여 연대순 타임라인 구성"
                       : "Auto-group photos by year, month, and region to build a chronological timeline",
@@ -1349,9 +1355,7 @@ export function HomeContent() {
           <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
               <span className="text-2xl">💡</span>
-              <h3 className="text-xl font-bold">
-                {t("insightCtaTitle")}
-              </h3>
+              <h3 className="text-xl font-bold">{t("insightCtaTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {(() => {
@@ -1434,7 +1438,9 @@ export function HomeContent() {
                       rel="noopener noreferrer"
                       className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
                     >
-                      <h4 className="font-bold text-lg">{icon} {serviceTitle}</h4>
+                      <h4 className="font-bold text-lg">
+                        {icon} {serviceTitle}
+                      </h4>
                       <p className="text-sm text-gray-600 mt-1">{desc}</p>
                       <p className="text-xs text-gray-500 mt-2">{detail}</p>
                     </a>

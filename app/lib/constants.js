@@ -461,7 +461,7 @@ export const seoApplications = [
 // SEO FAQ - 언어별 FAQ 반환 함수
 export function getSeoFaq(lang = "en") {
   const isKo = lang === "ko";
-  
+
   return [
     {
       question: isKo
