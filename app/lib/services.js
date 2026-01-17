@@ -44,6 +44,12 @@ export function getSeoGuides(lang = "en") {
       title: isKo ? "세금 계산기 가이드" : "Tax Calculator Guide",
       desc: isKo ? "직장인/프리랜서/개인사업자의 세금·보험·경비를 추정하고 월 실수령액과 세금 납부 시기를 확인하세요." : "Estimate taxes, insurance, and expenses for employees, freelancers, and self-employed. Check monthly take-home pay and tax payment schedule.",
     },
+    {
+      slug: "inlaw-translator",
+      emoji: "💬",
+      title: isKo ? "고부번역기 가이드" : "In-Law Translator Guide",
+      desc: isKo ? "고부갈등의 말을 번역하고, 감정을 정리하고, 선택지를 제시하는 도구." : "Translate words, organize emotions, and offer choices for in-law conflicts.",
+    },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
@@ -690,6 +696,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["세금", "계산기", "직장인", "프리랜서", "사업자", "보험", "경비"]
         : ["tax", "calculator", "employee", "freelancer", "self-employed", "insurance", "expenses"],
+    },
+    {
+      href: "https://inlaw.funnyfunny.cloud",
+      icon: "💬",
+      title: isKo ? "고부번역기" : "In-Law Translator",
+      desc: isKo
+        ? "고부갈등의 말을 번역하고, 감정을 정리하고, 선택지를 제시."
+        : "Translate words, organize emotions, and offer choices for in-law conflicts.",
+      tags: isKo
+        ? ["고부", "번역", "갈등", "중재", "감정", "선택지", "도구"]
+        : ["in-law", "translator", "conflict", "mediation", "emotions", "choices", "tool"],
     },
     {
       href: "https://edu.funnyfunny.cloud",

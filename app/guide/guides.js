@@ -652,6 +652,115 @@ const rawGuides = [
       "These results are reference estimates. Actual tax amounts may vary by deductions, industry, documentation, and enrollment type. For accurate calculations, consult a tax professional.",
   },
   {
+    slug: "inlaw-translator",
+    title: "In-Law Translator — Translate Words, Organize Emotions, Offer Choices",
+    subtitle:
+      "We don't 'resolve' conflict. Instead, we translate words, organize emotions, and offer choices. A tool to reduce the current burden.",
+    category: "Lifestyle",
+    heroEmoji: "💬",
+    serviceUrl: "https://inlaw.funnyfunny.cloud",
+    ctaLabel: "Open In-Law Translator",
+    metaDescription:
+      "In-Law Translator guide — translate words, organize emotions, and offer choices for in-law conflicts. Three tools: translator, mediator, and daily shield.",
+    keywords: [
+      "in-law translator",
+      "conflict mediation",
+      "emotion organization",
+      "communication tool",
+      "relationship",
+      "family conflict",
+    ],
+    sections: [
+      {
+        heading: "What you can do",
+        body: [
+          "Translate in-law words into surface meaning / hidden meaning (possibility) / response options.",
+          "Convert raw emotions into husband-friendly versions for mediation.",
+          "Get daily shield sentences to keep your pace in difficult situations.",
+        ],
+      },
+      {
+        heading: "Three tools",
+        body: [
+          "① In-Law Translator: Enter what they said, get surface meaning, hidden intents, and 3 recommended responses.",
+          "② Husband Mediator Translator: Convert your raw emotions into 4 versions (emotion-removed, persuasion-focused, minimal conflict, one-line).",
+          "③ Today's Shield: Get sentences to protect your pace and customize them for your situation.",
+        ],
+      },
+      {
+        heading: "For In-Law Translator",
+        body: [
+          "Select a context (daily/visit/parenting/household/financial) and choose a tone (peaceful/neutral/boundary).",
+          "Enter what they said to get analysis of surface meaning and possible hidden intents.",
+          "Review 3 recommended responses and action guide based on your chosen tone.",
+        ],
+      },
+      {
+        heading: "For Husband Mediator Translator",
+        body: [
+          "Select a goal (reduce conflict/ask for help/set boundaries/create rules) and enter what you want to say.",
+          "Get 4 versions: emotion-removed, persuasion-focused, minimal conflict, and one-line request.",
+          "Choose the version that fits the situation and your husband's communication style.",
+        ],
+      },
+      {
+        heading: "For Today's Shield",
+        body: [
+          "Get a random shield sentence to keep your pace in difficult moments.",
+          "Customize it by adding a keyword (holiday/visit/parenting/tone/money) to adapt to your situation.",
+          "Use it as a reminder to maintain boundaries and emotional balance.",
+        ],
+      },
+      {
+        heading: "Understanding results",
+        body: [
+          "Surface Meaning: What the words literally say on the surface.",
+          "Hidden Meaning (Possibility): Possible underlying emotions or intentions.",
+          "Recommended Responses: Options based on your chosen tone and context.",
+          "Action Guide: When to respond immediately vs. buying time.",
+        ],
+      },
+      {
+        heading: "Tips for better results",
+        body: [
+          "Don't seek the 'right answer'—increase your options instead.",
+          "Translate possibility, don't take sides.",
+          "Often buying time is better than immediate response.",
+          "Separating words into 'surface/hidden/request' reduces emotional drain.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Is this counseling or therapy?",
+        answer:
+          "No. This service is not counseling/therapy and does not judge who is right. It's a tool to translate words, organize emotions, and offer choices.",
+      },
+      {
+        question: "Are results saved?",
+        answer:
+          "No. This page does not send input to servers and does not store in the browser. However, clicking 'Copy' will copy to clipboard only.",
+      },
+      {
+        question: "How accurate are the translations?",
+        answer:
+          "These are not 'answers' but 'possible interpretations/options.' They may differ completely depending on situation/relationship/tone/accumulated emotions.",
+      },
+      {
+        question: "What if there's threat or abuse?",
+        answer:
+          "If there is threat/verbal abuse/physical danger or extreme stress persists, please consider seeking help from those around you (family/friends/professional organizations) first.",
+      },
+      {
+        question: "Can I use this on mobile?",
+        answer:
+          "Yes. It's optimized for mobile web and can be used on any device.",
+      },
+    ],
+    disclaimer:
+      "This service is not counseling/therapy and does not judge who is right. If there is threat/verbal abuse/physical danger or extreme stress persists, please seek professional help.",
+  },
+  {
     slug: "head-voice-trainer",
     title: "Head Voice Trainer — Head Voice Practice Routine",
     subtitle:
@@ -3262,6 +3371,109 @@ const guideSeeds = [
       "이동 시간, 교통비, 출근 빈도를 입력하면 주·월 단위 누적 비용과 시간을 바로 확인할 수 있습니다.",
     note:
       "추천은 참고용입니다. 본인 일정과 체력 수준에 맞춰 현실적인 루틴으로 조정해 보세요.",
+  },
+  {
+    slug: "inlaw-translator",
+    title: "고부번역기 가이드",
+    description:
+      "고부갈등의 말을 번역하고, 감정을 정리하고, 선택지를 제시하는 도구",
+    category: "라이프스타일",
+    heroEmoji: "💬",
+    serviceUrl: "https://inlaw.funnyfunny.cloud",
+    keywords: ["고부", "번역", "갈등", "중재", "감정", "선택지", "도구"],
+    usage:
+      "세 가지 도구(고부번역기, 남편 중재 번역기, 오늘의 방패)를 선택하여 사용할 수 있습니다.",
+    note:
+      "이 서비스는 상담/치료가 아니며, 누가 옳은지 판단하지 않습니다. 선택지를 늘리는 도구입니다.",
+    sections: [
+      {
+        heading: "이 도구로 할 수 있는 것",
+        body: [
+          "고부갈등의 말을 표면 의미 / 속뜻(가능성) / 대응 선택지로 번역할 수 있습니다.",
+          "원문 감정을 남편에게 전달하기 좋은 버전으로 변환할 수 있습니다.",
+          "어려운 상황에서 내 템포를 지킬 수 있는 문장을 받을 수 있습니다.",
+        ],
+      },
+      {
+        heading: "세 가지 도구",
+        body: [
+          "① 고부번역기: 상대가 한 말을 입력하면 표면 의미, 속뜻, 추천 반응 3가지를 받을 수 있습니다.",
+          "② 남편 중재 번역기: 원문 감정을 4가지 버전(감정 제거, 설득 중심, 최소 충돌, 한 줄)으로 변환할 수 있습니다.",
+          "③ 오늘의 방패: 내 템포를 지키는 문장을 받고 상황에 맞게 커스터마이즈할 수 있습니다.",
+        ],
+      },
+      {
+        heading: "고부번역기 사용법",
+        body: [
+          "상황(일상/방문/육아/집안일/금전)을 선택하고 톤(평화형/중립형/선긋기형)을 선택하세요.",
+          "상대가 한 말을 입력하면 표면 의미와 가능한 속뜻을 분석해드립니다.",
+          "선택한 톤에 맞는 추천 반응 3가지와 행동 가이드를 확인하세요.",
+        ],
+      },
+      {
+        heading: "남편 중재 번역기 사용법",
+        body: [
+          "목표(싸움 줄이기/도움 요청/경계 세우기/규칙 만들기)를 선택하고 원문을 입력하세요.",
+          "4가지 버전(감정 제거, 설득 중심, 최소 충돌, 한 줄 요청)을 받을 수 있습니다.",
+          "상황과 남편의 소통 스타일에 맞는 버전을 선택하세요.",
+        ],
+      },
+      {
+        heading: "오늘의 방패 사용법",
+        body: [
+          "어려운 순간에 내 템포를 지킬 수 있는 랜덤 문장을 받을 수 있습니다.",
+          "키워드(명절/방문/육아/말투/돈)를 추가하여 내 상황에 맞게 커스터마이즈할 수 있습니다.",
+          "경계와 감정 균형을 유지하기 위한 도구로 사용하세요.",
+        ],
+      },
+      {
+        heading: "결과 이해하기",
+        body: [
+          "표면 의미: 말이 표면적으로 의미하는 것",
+          "속뜻(가능성): 가능한 숨겨진 감정이나 의도",
+          "추천 반응: 선택한 톤과 상황에 맞는 옵션",
+          "행동 가이드: 즉시 반응 vs 시간 벌기의 시점",
+        ],
+      },
+      {
+        heading: "더 나은 결과를 위한 팁",
+        body: [
+          "'정답'을 찾으려 하지 말고 '선택지'를 늘리세요.",
+          "편들기보다 가능성 번역을 사용하세요.",
+          "즉시 반응보다 시간 벌기가 이득일 때가 많습니다.",
+          "말을 '표면/속뜻/요청'으로 분리하면 감정 소모가 줄어듭니다.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "이건 상담이나 치료인가요?",
+        answer:
+          "아닙니다. 이 서비스는 상담/치료가 아니며, 누가 옳은지 판단하지 않습니다. 말을 번역하고, 감정을 정리하고, 선택지를 제시하는 도구입니다.",
+      },
+      {
+        question: "결과가 저장되나요?",
+        answer:
+          "아니요. 이 페이지는 입력 내용을 서버로 전송하지 않으며, 브라우저에 저장하지 않습니다. 단, '복사' 기능을 누르면 클립보드에만 복사됩니다.",
+      },
+      {
+        question: "번역의 정확도는 어느 정도인가요?",
+        answer:
+          "이 결과는 '정답'이 아니라 '가능한 해석/선택지'입니다. 상황/관계/말투/누적된 감정에 따라 전혀 다를 수 있어요.",
+      },
+      {
+        question: "위협이나 폭언이 있다면?",
+        answer:
+          "위협/폭언/신체적 위험이 있거나, 극심한 스트레스가 지속된다면 주변 도움(가족/지인/전문기관)을 우선 고려하세요.",
+      },
+      {
+        question: "모바일에서도 사용할 수 있나요?",
+        answer:
+          "네. 모바일 웹에 최적화되어 있어 어떤 기기에서도 사용할 수 있습니다.",
+      },
+    ],
+    disclaimer:
+      "이 서비스는 상담/치료가 아니며, 누가 옳은지 판단하지 않습니다. 위협/폭언/신체적 위험이 있거나, 극심한 스트레스가 지속된다면 전문가의 도움을 받으세요.",
   },
   {
     slug: "tax-calculator",
