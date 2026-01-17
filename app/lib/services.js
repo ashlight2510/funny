@@ -749,17 +749,6 @@ export function getAllServices(lang = "en") {
         : ["hwatu", "fortune", "today", "luck", "card", "divination", "mystical"],
     },
     {
-      href: "https://solhwatu.funnyfunny.cloud",
-      icon: "🎴",
-      title: isKo ? "화투 솔리테어" : "Hwatu Solitaire",
-      desc: isKo
-        ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임."
-        : "A card stacking game using Hwatu cards instead of playing cards.",
-      tags: isKo
-        ? ["화투", "솔리테어", "게임", "카드", "퍼즐", "오락"]
-        : ["hwatu", "solitaire", "game", "cards", "puzzle", "entertainment"],
-    },
-    {
       href: "https://edu.funnyfunny.cloud",
       icon: "🎓",
       title: isKo ? "사교육 지옥도" : "Private Education Hell Map",
@@ -1203,6 +1192,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["게임", "밸런스", "질문", "선택"]
         : ["game", "balance", "questions", "choices"],
+    },
+    {
+      href: "https://solhwatu.funnyfunny.cloud",
+      icon: "🎴",
+      title: isKo ? "화투 솔리테어" : "Hwatu Solitaire",
+      desc: isKo
+        ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임."
+        : "A card stacking game using Hwatu cards instead of playing cards.",
+      tags: isKo
+        ? ["화투", "솔리테어", "게임", "카드", "퍼즐", "오락"]
+        : ["hwatu", "solitaire", "game", "cards", "puzzle", "entertainment"],
     },
     {
       href: "https://xmas.funnyfunny.cloud/",
