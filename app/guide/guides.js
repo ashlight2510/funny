@@ -761,6 +761,104 @@ const rawGuides = [
       "This service is not counseling/therapy and does not judge who is right. If there is threat/verbal abuse/physical danger or extreme stress persists, please seek professional help.",
   },
   {
+    slug: "fridge-rescue",
+    title: "Fridge Rescue — Recipe Recommendations from Fridge Ingredients",
+    subtitle:
+      "Enter ingredients in your fridge to get recipe recommendations you can make right now. Step-by-step cooking instructions included.",
+    category: "Food & Cooking",
+    heroEmoji: "🥕",
+    serviceUrl: "https://fridge.funnyfunny.cloud",
+    ctaLabel: "Open Fridge Rescue",
+    metaDescription:
+      "Fridge Rescue guide — recommend recipes you can make right now with fridge ingredients and guide cooking steps. Three-step selection: ingredients, mood, taste.",
+    keywords: [
+      "fridge rescue",
+      "recipe recommendation",
+      "cooking guide",
+      "ingredient-based recipes",
+      "meal planning",
+      "fridge cleanout",
+      "cooking steps",
+    ],
+    sections: [
+      {
+        heading: "What you can do",
+        body: [
+          "Select ingredients in your fridge to get recipe recommendations you can make right now.",
+          "Filter by mood (hearty/light/protein/veggies) and taste preference (spicy/mild/home-style/any).",
+          "Get cooking steps and optional ingredient suggestions to make each dish better.",
+        ],
+      },
+      {
+        heading: "Get started: three steps",
+        body: [
+          "Step 1. Select ingredients: Choose from categories (staples, protein, vegetables, other) that you have in your fridge.",
+          "Step 2. Choose your mood: Pick what you want (hearty/light/protein/veggies) based on how you feel.",
+          "Step 3. Select taste: Choose your preferred flavor (spicy/mild/home-style/any).",
+        ],
+      },
+      {
+        heading: "Understanding recipe results",
+        body: [
+          "Ranked recommendations: Recipes are scored and ranked based on your selections and available ingredients.",
+          "Top recipe highlight: The best match gets a special border and background color.",
+          "Cooking steps: Click 'View Cooking Steps' to see detailed step-by-step instructions.",
+          "Bonus ingredients: If you have optional ingredients, they'll be highlighted to enhance the dish.",
+        ],
+      },
+      {
+        heading: "Using optional ingredients",
+        body: [
+          "Recipes show optional ingredients that can make the dish better if you have them.",
+          "You can still make the recipe without optional ingredients—they're just suggestions.",
+          "The scoring system gives bonus points if you have optional ingredients, so better matches appear first.",
+        ],
+      },
+      {
+        heading: "Saving and sharing",
+        body: [
+          "Copy recipe: Copy recipe name, reason, cooking time, and steps to share or save.",
+          "Favorite: Mark recipes you like to see them highlighted in future recommendations.",
+          "History: Recently recommended recipes are saved so you can quickly find them again.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What if I don't have enough ingredients?",
+        answer:
+          "The calculator only shows recipes you can make with your selected ingredients. Required ingredients are mandatory, but optional ingredients are just suggestions for better results.",
+      },
+      {
+        question: "How are recipes scored?",
+        answer:
+          "Recipes are scored based on required ingredients, optional ingredients you have, your mood selection (protein/vitamin/light/hearty), taste preference match, cooking time, and whether it's a favorite.",
+      },
+      {
+        question: "Are recipe names in Korean or English?",
+        answer:
+          "Recipe names are provided in both Korean and English. The interface language determines which version is displayed, but the underlying data supports both.",
+      },
+      {
+        question: "Can I save my ingredient selections?",
+        answer:
+          "Yes. Your selected ingredients, mood, and taste preferences are saved in your browser's local storage and will be restored when you return.",
+      },
+      {
+        question: "What if no recipes match my ingredients?",
+        answer:
+          "If no recipes match, you'll see a friendly message suggesting to add more ingredients or try again. The calculator needs at least the required ingredients for each recipe.",
+      },
+      {
+        question: "Are cooking steps detailed?",
+        answer:
+          "Yes. Each recipe includes step-by-step cooking instructions that you can expand to view. Steps are written in simple, actionable language.",
+      },
+    ],
+    disclaimer:
+      "Recipe recommendations are suggestions based on available ingredients. Always check food safety and expiration dates before cooking. Cooking times and steps are approximate and may vary by your setup and experience.",
+  },
+  {
     slug: "head-voice-trainer",
     title: "Head Voice Trainer — Head Voice Practice Routine",
     subtitle:
@@ -3474,6 +3572,97 @@ const guideSeeds = [
     ],
     disclaimer:
       "이 서비스는 상담/치료가 아니며, 누가 옳은지 판단하지 않습니다. 위협/폭언/신체적 위험이 있거나, 극심한 스트레스가 지속된다면 전문가의 도움을 받으세요.",
+  },
+  {
+    slug: "fridge-rescue",
+    title: "냉장고 구조대 가이드",
+    description:
+      "냉장고 재료로 지금 바로 만들 수 있는 요리를 추천하고 조리 방법을 안내합니다",
+    category: "음식 & 요리",
+    heroEmoji: "🥕",
+    serviceUrl: "https://fridge.funnyfunny.cloud",
+    keywords: ["냉장고", "요리", "레시피", "재료", "구조", "음식"],
+    usage:
+      "냉장고에 있는 재료를 선택하고 오늘의 기분과 맛 선호도를 입력하면 지금 만들 수 있는 요리를 추천받을 수 있습니다.",
+    note:
+      "레시피 추천은 참고용입니다. 음식 안전과 유통기한을 확인한 후 조리하세요. 조리 시간과 단계는 대략적인 값입니다.",
+    sections: [
+      {
+        heading: "이 도구로 할 수 있는 것",
+        body: [
+          "냉장고에 있는 재료를 선택하여 지금 바로 만들 수 있는 요리를 추천받을 수 있습니다.",
+          "오늘의 기분(든든하게/가볍게/단백질/야채)과 맛 선호도(매콤/담백/집밥/상관없음)로 필터링할 수 있습니다.",
+          "각 요리의 조리 방법과 선택 재료 제안을 받아 더 맛있게 만들 수 있습니다.",
+        ],
+      },
+      {
+        heading: "시작하기: 3단계",
+        body: [
+          "STEP 1. 재료 선택: 냉장고에 있는 재료를 카테고리별(주식류/단백질/야채/기타)로 선택하세요.",
+          "STEP 2. 기분 선택: 지금 원하는 것을 선택하세요(든든하게/가볍게/단백질/야채·비타민).",
+          "STEP 3. 맛 선택: 원하는 맛을 선택하세요(매콤/담백/집밥/상관없음).",
+        ],
+      },
+      {
+        heading: "레시피 결과 이해하기",
+        body: [
+          "순위별 추천: 선택한 항목과 사용 가능한 재료를 기반으로 점수를 매겨 순위를 매깁니다.",
+          "1위 레시피 강조: 가장 잘 맞는 요리는 특별한 테두리와 배경색으로 강조됩니다.",
+          "조리 방법: '조리 방법 보기'를 클릭하면 단계별 상세 지침을 볼 수 있습니다.",
+          "보너스 재료: 선택 재료가 있으면 더 좋아지는 요리임을 강조해 표시됩니다.",
+        ],
+      },
+      {
+        heading: "선택 재료 활용하기",
+        body: [
+          "레시피에는 요리를 더 맛있게 만들 수 있는 선택 재료가 표시됩니다.",
+          "선택 재료가 없어도 요리를 만들 수 있습니다. 단지 제안일 뿐입니다.",
+          "점수 시스템은 선택 재료가 있으면 보너스 점수를 주므로 더 잘 맞는 요리가 먼저 나타납니다.",
+        ],
+      },
+      {
+        heading: "저장 및 공유",
+        body: [
+          "레시피 복사: 레시피 이름, 추천 이유, 조리 시간, 단계를 복사하여 공유하거나 저장하세요.",
+          "즐겨찾기: 좋아하는 레시피를 표시하면 이후 추천에서 강조 표시됩니다.",
+          "최근 기록: 최근에 추천받은 레시피가 저장되어 빠르게 다시 찾을 수 있습니다.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "재료가 충분하지 않으면 어떻게 하나요?",
+        answer:
+          "계산기는 선택한 재료로 만들 수 있는 레시피만 표시합니다. 필수 재료는 필수이지만, 선택 재료는 단지 더 나은 결과를 위한 제안입니다.",
+      },
+      {
+        question: "레시피 점수는 어떻게 매기나요?",
+        answer:
+          "레시피는 필수 재료, 보유한 선택 재료, 기분 선택(단백질/비타민/가볍게/든든하게), 맛 선호도 일치, 조리 시간, 즐겨찾기 여부를 기반으로 점수가 매겨집니다.",
+      },
+      {
+        question: "레시피 이름은 한국어인가요, 영어인가요?",
+        answer:
+          "레시피 이름은 한국어와 영어 모두 제공됩니다. 인터페이스 언어에 따라 표시되는 버전이 결정되지만, 기본 데이터는 둘 다 지원합니다.",
+      },
+      {
+        question: "선택한 재료를 저장할 수 있나요?",
+        answer:
+          "네. 선택한 재료, 기분, 맛 선호도는 브라우저의 로컬 스토리지에 저장되며, 돌아오면 복원됩니다.",
+      },
+      {
+        question: "재료에 맞는 레시피가 없으면?",
+        answer:
+          "맞는 레시피가 없으면 더 많은 재료를 추가하거나 다시 시도하라는 친절한 메시지가 표시됩니다. 계산기는 각 레시피에 최소한의 필수 재료가 필요합니다.",
+      },
+      {
+        question: "조리 단계가 상세한가요?",
+        answer:
+          "네. 각 레시피에는 펼쳐서 볼 수 있는 단계별 조리 지침이 포함되어 있습니다. 단계는 간단하고 실용적인 언어로 작성되어 있습니다.",
+      },
+    ],
+    disclaimer:
+      "레시피 추천은 사용 가능한 재료를 기반으로 한 제안입니다. 조리 전에 항상 음식 안전과 유통기한을 확인하세요. 조리 시간과 단계는 대략적인 값이며 설정과 경험에 따라 달라질 수 있습니다.",
   },
   {
     slug: "tax-calculator",

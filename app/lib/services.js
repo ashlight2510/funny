@@ -50,6 +50,12 @@ export function getSeoGuides(lang = "en") {
       title: isKo ? "고부번역기 가이드" : "In-Law Translator Guide",
       desc: isKo ? "고부갈등의 말을 번역하고, 감정을 정리하고, 선택지를 제시하는 도구." : "Translate words, organize emotions, and offer choices for in-law conflicts.",
     },
+    {
+      slug: "fridge-rescue",
+      emoji: "🥕",
+      title: isKo ? "냉장고 구조대 가이드" : "Fridge Rescue Guide",
+      desc: isKo ? "냉장고 재료로 지금 바로 만들 수 있는 요리를 추천하고 조리 방법을 안내합니다." : "Recommend recipes you can make right now with fridge ingredients and guide cooking steps.",
+    },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
@@ -707,6 +713,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["고부", "번역", "갈등", "중재", "감정", "선택지", "도구"]
         : ["in-law", "translator", "conflict", "mediation", "emotions", "choices", "tool"],
+    },
+    {
+      href: "https://fridge.funnyfunny.cloud",
+      icon: "🥕",
+      title: isKo ? "냉장고 구조대" : "Fridge Rescue",
+      desc: isKo
+        ? "냉장고에 있는 재료로 지금 가능한 요리를 구조합니다."
+        : "Rescue recipes you can make right now with ingredients in your fridge.",
+      tags: isKo
+        ? ["냉장고", "요리", "레시피", "재료", "구조", "음식"]
+        : ["fridge", "cooking", "recipe", "ingredients", "rescue", "food"],
     },
     {
       href: "https://edu.funnyfunny.cloud",
