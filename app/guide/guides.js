@@ -859,6 +859,114 @@ const rawGuides = [
       "Recipe recommendations are suggestions based on available ingredients. Always check food safety and expiration dates before cooking. Cooking times and steps are approximate and may vary by your setup and experience.",
   },
   {
+    slug: "hwatu-fortune",
+    title: "Hwatu Fortune — Today's Fortune by Hwatu Cards",
+    subtitle:
+      "Draw a single Hwatu card to discover today's fortune and luck. Each card reveals a unique message based on month, grade, and theme.",
+    category: "Fortune & Divination",
+    heroEmoji: "🎴",
+    serviceUrl: "https://hwatu.funnyfunny.cloud",
+    ctaLabel: "Open Hwatu Fortune",
+    metaDescription:
+      "Hwatu Fortune guide — discover today's fortune with a single Hwatu card. Learn about card grades (Legendary/Unique/Rare/Special), themes, fortune scores, and sharing.",
+    keywords: [
+      "hwatu fortune",
+      "korean cards fortune",
+      "daily fortune",
+      "card divination",
+      "fortune telling",
+      "today's fortune",
+      "hwatu cards",
+    ],
+    sections: [
+      {
+        heading: "What you can do",
+        body: [
+          "Draw a single Hwatu card to discover today's fortune and luck.",
+          "Get personalized fortune messages based on card grade, month, and theme.",
+          "See your fortune score (60-100) and receive daily suggestions for action.",
+          "Save and share your fortune results via text or image.",
+        ],
+      },
+      {
+        heading: "Get started: draw a card",
+        body: [
+          "Click the 'Draw Today's Fortune' button or click the card itself to flip it.",
+          "The card will flip to reveal your Hwatu card with its month, grade, and theme.",
+          "Your personalized fortune message, score, and daily suggestion will appear below the card.",
+        ],
+      },
+      {
+        heading: "Understanding card grades",
+        body: [
+          "Legendary: The highest grade. Perfect days to start new things, take on challenges, and make important decisions.",
+          "Unique: Good days to take the lead, focus on goals, and seek cooperation.",
+          "Rare: Stable days to take things step by step and discover opportunities in routine flow.",
+          "Special: Unexpected good opportunities may come. Keep your eyes open and be prepared.",
+        ],
+      },
+      {
+        heading: "Fortune scores and messages",
+        body: [
+          "Fortune Score: Each card comes with a score between 60-100 points based on the card grade.",
+          "Main Fortune Line: A personalized message based on your card grade and theme.",
+          "Theme Hint: Additional insight based on the card's theme (Start/Relationships/Opportunity/etc.).",
+          "Today's Suggestion: A practical action tip to maximize your day's fortune.",
+        ],
+      },
+      {
+        heading: "Saving and sharing",
+        body: [
+          "Copy Result: Copy your fortune result as text to share on social media (X, KakaoTalk, etc.).",
+          "Share as Image: Generate an image of your fortune card, score, and message to share visually.",
+          "History: Your last 7 days of fortune draws are saved locally in your browser.",
+        ],
+      },
+      {
+        heading: "Card themes and meanings",
+        body: [
+          "Each of the 12 months has a unique theme: Start, Relationships, Opportunity, Organization, Competition, Abundance, Recovery, Focus, Completion, Transition, Expansion, Finishing.",
+          "The theme adds context to your fortune message and helps you understand the overall energy of the day.",
+          "Monthly themes combine with card grades to create personalized fortune interpretations.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "How often can I draw?",
+        answer:
+          "You can draw as many times as you want. Each draw is random, so results may vary each time.",
+      },
+      {
+        question: "Are results the same for everyone?",
+        answer:
+          "No. Each user gets different results based on a unique user ID, timestamp, and random seed. Even the same person will get different results on each draw.",
+      },
+      {
+        question: "What do the card grades mean?",
+        answer:
+          "Card grades (Legendary/Unique/Rare/Special) determine the base fortune score and message tone. Higher grades indicate better fortune days, but all grades offer valuable insights.",
+      },
+      {
+        question: "Can I save my fortune history?",
+        answer:
+          "Yes. The service automatically saves your last 7 days of fortune draws in your browser's local storage. Only you can see your history.",
+      },
+      {
+        question: "Is this fortune telling accurate?",
+        answer:
+          "Hwatu Fortune is for entertainment and reflection purposes. Use it as a tool to think about your day, not as definitive predictions.",
+      },
+      {
+        question: "What if I don't like my fortune?",
+        answer:
+          "You can draw again anytime. Remember that fortune messages are meant to inspire reflection and positive action, regardless of the score.",
+      },
+    ],
+    disclaimer:
+      "Hwatu Fortune is for entertainment and reflection purposes. Results are generated randomly and are not intended as definitive predictions. Use fortune messages as inspiration for daily reflection and positive action.",
+  },
+  {
     slug: "head-voice-trainer",
     title: "Head Voice Trainer — Head Voice Practice Routine",
     subtitle:
@@ -3663,6 +3771,107 @@ const guideSeeds = [
     ],
     disclaimer:
       "레시피 추천은 사용 가능한 재료를 기반으로 한 제안입니다. 조리 전에 항상 음식 안전과 유통기한을 확인하세요. 조리 시간과 단계는 대략적인 값이며 설정과 경험에 따라 달라질 수 있습니다.",
+  },
+  {
+    slug: "hwatu-fortune",
+    title: "화투로 보는 오늘의 운세 가이드",
+    description:
+      "화투 한 장으로 알아보는 오늘의 운세와 행운. 카드 등급, 월별 테마, 운세 점수로 개인 맞춤 운세를 받아보세요.",
+    category: "운세 · 점술",
+    heroEmoji: "🎴",
+    serviceUrl: "https://hwatu.funnyfunny.cloud",
+    keywords: ["화투", "운세", "오늘", "행운", "카드", "점", "미신"],
+    usage:
+      "카드를 뒤집으면 오늘의 화투 카드와 함께 개인 맞춤 운세 메시지, 점수, 오늘의 제안을 확인할 수 있습니다.",
+    note:
+      "화투 운세는 재미와 성찰을 위한 도구입니다. 결과는 무작위로 생성되며, 운세 메시지는 일상 성찰과 긍정적 행동의 영감으로 활용하세요.",
+    sections: [
+      {
+        heading: "이 도구로 할 수 있는 것",
+        body: [
+          "화투 한 장을 뽑아 오늘의 운세와 행운을 확인할 수 있습니다.",
+          "카드 등급, 월별, 테마를 기반으로 한 개인 맞춤 운세 메시지를 받을 수 있습니다.",
+          "운세 점수(60-100점)를 확인하고 오늘의 행동 제안을 받을 수 있습니다.",
+          "운세 결과를 텍스트나 이미지로 저장하고 공유할 수 있습니다.",
+        ],
+      },
+      {
+        heading: "시작하기: 카드 뽑기",
+        body: [
+          "'오늘 운세 뽑기' 버튼을 누르거나 카드 자체를 클릭하여 뒤집으세요.",
+          "카드가 뒤집히며 당신의 화투 카드가 월, 등급, 테마와 함께 나타납니다.",
+          "개인 맞춤 운세 메시지, 점수, 오늘의 제안이 카드 아래에 표시됩니다.",
+        ],
+      },
+      {
+        heading: "카드 등급 이해하기",
+        body: [
+          "전설: 최고 등급입니다. 새로 시작하기, 도전하기, 중요한 결정을 내리기에 완벽한 날입니다.",
+          "유니크: 주도권을 잡고, 목표에 집중하며, 협력을 찾기에 좋은 날입니다.",
+          "레어: 차근차근 진행하고, 일상적인 흐름 속에서 기회를 발견하기 좋은 안정적인 날입니다.",
+          "특별: 예상 밖의 좋은 기회가 올 수 있습니다. 눈을 크게 뜨고 준비하세요.",
+        ],
+      },
+      {
+        heading: "운세 점수와 메시지",
+        body: [
+          "운세 점수: 각 카드는 등급에 따라 60-100점 사이의 점수를 받습니다.",
+          "주 운세 문구: 카드 등급과 테마를 기반으로 한 개인 맞춤 메시지입니다.",
+          "테마 힌트: 카드의 테마(시작/관계/기회 등)를 기반으로 한 추가적인 통찰입니다.",
+          "오늘의 제안: 오늘의 운세를 최대한 활용하기 위한 실용적인 행동 팁입니다.",
+        ],
+      },
+      {
+        heading: "저장하고 공유하기",
+        body: [
+          "결과 복사: 운세 결과를 텍스트로 복사하여 소셜 미디어(X, 카카오톡 등)에 공유할 수 있습니다.",
+          "이미지로 공유: 운세 카드, 점수, 메시지를 이미지로 생성하여 시각적으로 공유할 수 있습니다.",
+          "기록: 최근 7일간의 운세 뽑기 기록이 브라우저에 로컬로 저장됩니다.",
+        ],
+      },
+      {
+        heading: "카드 테마와 의미",
+        body: [
+          "12개월 각각은 고유한 테마를 가지고 있습니다: 시작, 관계, 기회, 정리, 승부, 풍요, 회복, 집중, 완성, 전환, 확장, 마무리.",
+          "테마는 운세 메시지에 맥락을 더하며 하루의 전체적인 기운을 이해하는 데 도움을 줍니다.",
+          "월별 테마는 카드 등급과 결합하여 개인 맞춤 운세 해석을 만듭니다.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "몇 번이나 뽑을 수 있나요?",
+        answer:
+          "원하는 만큼 뽑을 수 있습니다. 각 뽑기는 랜덤하므로 매번 다른 결과가 나올 수 있습니다.",
+      },
+      {
+        question: "모든 사람이 같은 결과를 받나요?",
+        answer:
+          "아닙니다. 각 사용자는 고유한 사용자 ID, 타임스탬프, 랜덤 시드를 기반으로 다른 결과를 받습니다. 같은 사람이라도 매번 다른 결과가 나올 수 있습니다.",
+      },
+      {
+        question: "카드 등급은 무엇을 의미하나요?",
+        answer:
+          "카드 등급(전설/유니크/레어/특별)은 기본 운세 점수와 메시지 톤을 결정합니다. 높은 등급은 더 나은 운세 날을 나타내지만, 모든 등급이 가치 있는 통찰을 제공합니다.",
+      },
+      {
+        question: "운세 기록을 저장할 수 있나요?",
+        answer:
+          "네. 서비스는 브라우저의 로컬 스토리지에 최근 7일간의 운세 뽑기를 자동으로 저장합니다. 당신만 기록을 볼 수 있습니다.",
+      },
+      {
+        question: "이 운세는 정확한가요?",
+        answer:
+          "화투 운세는 오락과 성찰 목적으로 제공됩니다. 확정적인 예측이 아닌 하루를 생각해보는 도구로 사용하세요.",
+      },
+      {
+        question: "운세가 마음에 들지 않으면?",
+        answer:
+          "언제든지 다시 뽑을 수 있습니다. 운세 메시지는 점수와 관계없이 성찰과 긍정적 행동의 영감을 위한 것입니다.",
+      },
+    ],
+    disclaimer:
+      "화투 운세는 오락과 성찰 목적으로 제공됩니다. 결과는 무작위로 생성되며 확정적인 예측을 위한 것이 아닙니다. 운세 메시지는 일상 성찰과 긍정적 행동의 영감으로 활용하세요.",
   },
   {
     slug: "tax-calculator",

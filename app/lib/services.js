@@ -56,6 +56,12 @@ export function getSeoGuides(lang = "en") {
       title: isKo ? "냉장고 구조대 가이드" : "Fridge Rescue Guide",
       desc: isKo ? "냉장고 재료로 지금 바로 만들 수 있는 요리를 추천하고 조리 방법을 안내합니다." : "Recommend recipes you can make right now with fridge ingredients and guide cooking steps.",
     },
+    {
+      slug: "hwatu-fortune",
+      emoji: "🎴",
+      title: isKo ? "화투로 보는 오늘의 운세 가이드" : "Hwatu Fortune Guide",
+      desc: isKo ? "화투 한 장으로 알아보는 오늘의 운세와 행운." : "Discover today's fortune and luck with a single Hwatu card.",
+    },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
@@ -724,6 +730,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["냉장고", "요리", "레시피", "재료", "구조", "음식"]
         : ["fridge", "cooking", "recipe", "ingredients", "rescue", "food"],
+    },
+    {
+      href: "https://hwatu.funnyfunny.cloud",
+      icon: "🎴",
+      title: isKo ? "화투로 보는 오늘의 운세" : "Today's Fortune by Hwatu Cards",
+      desc: isKo
+        ? "화투 한 장으로 알아보는 오늘의 운세와 행운."
+        : "Discover today's fortune and luck with a single Hwatu card.",
+      tags: isKo
+        ? ["화투", "운세", "오늘", "행운", "카드", "점", "미신"]
+        : ["hwatu", "fortune", "today", "luck", "card", "divination", "mystical"],
     },
     {
       href: "https://edu.funnyfunny.cloud",
