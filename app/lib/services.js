@@ -1174,6 +1174,17 @@ export function getAllServices(lang = "en") {
         : ["game", "tetris", "puzzle", "two-player"],
     },
     {
+      href: "https://solhwatu.funnyfunny.cloud",
+      icon: "🎴",
+      title: isKo ? "화투 솔리테어" : "Hwatu Solitaire",
+      desc: isKo
+        ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임."
+        : "A card stacking game using Hwatu cards instead of playing cards.",
+      tags: isKo
+        ? ["화투", "솔리테어", "게임", "카드", "퍼즐", "오락"]
+        : ["hwatu", "solitaire", "game", "cards", "puzzle", "entertainment"],
+    },
+    {
       href: "https://random.funnyfunny.cloud/",
       icon: "🎱",
       title: isKo ? "네온 핀볼 랜덤 뽑기" : "Neon Pinball Random Draw",
@@ -1192,17 +1203,6 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["게임", "밸런스", "질문", "선택"]
         : ["game", "balance", "questions", "choices"],
-    },
-    {
-      href: "https://solhwatu.funnyfunny.cloud",
-      icon: "🎴",
-      title: isKo ? "화투 솔리테어" : "Hwatu Solitaire",
-      desc: isKo
-        ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임."
-        : "A card stacking game using Hwatu cards instead of playing cards.",
-      tags: isKo
-        ? ["화투", "솔리테어", "게임", "카드", "퍼즐", "오락"]
-        : ["hwatu", "solitaire", "game", "cards", "puzzle", "entertainment"],
     },
     {
       href: "https://xmas.funnyfunny.cloud/",
