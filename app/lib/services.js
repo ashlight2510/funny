@@ -32,12 +32,18 @@ export function getSeoGuides(lang = "en") {
     title: isKo ? "N빵 계산기 가이드" : "Split-the-Bill Calculator Guide",
     desc: isKo ? "장소, 인원수, 총액을 입력하여 1인당 비용을 계산하고 즉시 복사하세요." : "Enter venue, headcount, and total to calculate per-person cost and copy instantly.",
   },
-  {
-    slug: "commute-cost-time",
-    emoji: "⏰",
-    title: isKo ? "출퇴근 비용 & 시간 계산기 가이드" : "Commute Cost & Time Calculator Guide",
-    desc: isKo ? "출퇴근 비용/시간을 계산하고 절약된 시간 활용 아이디어를 얻으세요." : "Calculate commuting cost/time and get ideas for using reclaimed time.",
-  },
+    {
+      slug: "commute-cost-time",
+      emoji: "⏰",
+      title: isKo ? "출퇴근 비용 & 시간 계산기 가이드" : "Commute Cost & Time Calculator Guide",
+      desc: isKo ? "출퇴근 비용/시간을 계산하고 절약된 시간 활용 아이디어를 얻으세요." : "Calculate commuting cost/time and get ideas for using reclaimed time.",
+    },
+    {
+      slug: "tax-calculator",
+      emoji: "🧾",
+      title: isKo ? "세금 계산기 가이드" : "Tax Calculator Guide",
+      desc: isKo ? "직장인/프리랜서/개인사업자의 세금·보험·경비를 추정하고 월 실수령액과 세금 납부 시기를 확인하세요." : "Estimate taxes, insurance, and expenses for employees, freelancers, and self-employed. Check monthly take-home pay and tax payment schedule.",
+    },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
@@ -673,6 +679,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["계산기", "비용", "식사", "나눔", "복사"]
         : ["calculator", "cost", "meal", "split", "copy"],
+    },
+    {
+      href: "https://tax.funnyfunny.cloud",
+      icon: "🧾",
+      title: isKo ? "세금 계산기" : "Tax Calculator",
+      desc: isKo
+        ? "직장인/프리랜서/개인사업자 세금·보험·경비 추정 및 월 실수령액 확인."
+        : "Estimate taxes, insurance, and expenses for employees, freelancers, and self-employed.",
+      tags: isKo
+        ? ["세금", "계산기", "직장인", "프리랜서", "사업자", "보험", "경비"]
+        : ["tax", "calculator", "employee", "freelancer", "self-employed", "insurance", "expenses"],
     },
     {
       href: "https://edu.funnyfunny.cloud",

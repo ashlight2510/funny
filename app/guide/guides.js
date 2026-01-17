@@ -533,6 +533,125 @@ const rawGuides = [
       "Results are for reference; confirm the actual payment with the venue or participants.",
   },
   {
+    slug: "tax-calculator",
+    title: "Tax Calculator — Employee, Freelancer, Self-employed Tax Estimation",
+    subtitle:
+      "Estimate taxes, insurance, and expenses for employees, freelancers, and self-employed individuals. Check monthly take-home pay and tax payment schedule.",
+    category: "Finance Calculator",
+    heroEmoji: "🧾",
+    serviceUrl: "https://tax.funnyfunny.cloud",
+    ctaLabel: "Open Tax Calculator",
+    metaDescription:
+      "Tax calculator guide — estimate taxes, insurance, and expenses for employees, freelancers, and self-employed. Check monthly take-home pay and tax payment schedule.",
+    keywords: [
+      "tax calculator",
+      "tax estimation",
+      "employee tax",
+      "freelancer tax",
+      "self-employed tax",
+      "take-home pay",
+      "tax payment schedule",
+      "insurance calculation",
+    ],
+    sections: [
+      {
+        heading: "What you can do",
+        body: [
+          "Estimate taxes, insurance, and expenses for three employment types: employee, freelancer, and self-employed.",
+          "Check your monthly take-home pay and understand how much goes to taxes and insurance.",
+          "See the tax payment schedule (tax waves) to prepare for large payments in advance.",
+        ],
+      },
+      {
+        heading: "Select your employment type",
+        body: [
+          "Step 1. Choose one of three modes: Employee, Freelancer/Side Job, or Self-employed.",
+          "Step 2. Each mode shows only the relevant input fields for your situation.",
+          "The calculator adjusts automatically based on your selection.",
+        ],
+      },
+      {
+        heading: "For Employees",
+        body: [
+          "Enter your gross monthly salary and optional details (dependents, deduction level).",
+          "Get estimates for income tax (including local tax) and 4 insurances.",
+          "See the year-end settlement schedule (refunds or additional payments) and monthly deductions.",
+        ],
+      },
+      {
+        heading: "For Freelancers",
+        body: [
+          "Enter your average monthly income, expense ratio, and whether 3.3% is withheld.",
+          "Understand that 3.3% withholding may be a prepayment, not the final tax.",
+          "See when income tax settlement occurs (usually the following year) and plan reserves accordingly.",
+        ],
+      },
+      {
+        heading: "For Self-employed",
+        body: [
+          "Enter monthly sales, expenses, VAT type, and VAT scheme.",
+          "See VAT and income tax reserve estimates and payment schedules.",
+          "Understand VAT as temporarily held money (refunds are possible) and plan for annual income tax waves.",
+        ],
+      },
+      {
+        heading: "Understanding results",
+        body: [
+          "Monthly Take-home: The amount you can actually use after taxes, insurance, and expenses.",
+          "Money Flow: See how income is deducted and where it goes (taxes, insurance, expenses).",
+          "Tax Wave Forecast: Months when large tax payments occur—plan your reserve account accordingly.",
+        ],
+      },
+      {
+        heading: "Saving and sharing",
+        body: [
+          "Save your inputs locally in the browser for quick recalculation later.",
+          "Copy a summary of your inputs and results to share or keep records.",
+          "Data stays in your browser only—nothing is sent to servers.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "How accurate are the estimates?",
+        answer:
+          "These are rough estimates for reference. Actual amounts vary by deductions, industry, documentation, and enrollment type. Consult a tax professional for exact calculations.",
+      },
+      {
+        question: "What is the difference between the three modes?",
+        answer:
+          "Employee mode estimates monthly salary deductions. Freelancer mode shows tax settlement timing. Self-employed mode includes VAT and annual income tax planning.",
+      },
+      {
+        question: "What is a tax wave?",
+        answer:
+          "Tax waves are months when large tax payments occur (e.g., income tax settlement in May, VAT payments in Jan/Jul). The calculator helps you prepare by showing when these occur.",
+      },
+      {
+        question: "Is 3.3% the final tax for freelancers?",
+        answer:
+          "No. 3.3% is often a withholding payment. Actual tax is usually settled the following year, and refunds are possible depending on expenses and deductions.",
+      },
+      {
+        question: "How is VAT different for self-employed?",
+        answer:
+          "VAT is tax collected from customers and temporarily held. You pay it later, and refunds are possible. It's not your money initially.",
+      },
+      {
+        question: "Can I save my inputs?",
+        answer:
+          "Yes. Use the 'Save Input' button to store your current inputs locally. They will be restored when you return to the same mode.",
+      },
+      {
+        question: "Is my data sent to a server?",
+        answer:
+          "No. All calculations happen in your browser, and saved data stays in local storage only.",
+      },
+    ],
+    disclaimer:
+      "These results are reference estimates. Actual tax amounts may vary by deductions, industry, documentation, and enrollment type. For accurate calculations, consult a tax professional.",
+  },
+  {
     slug: "head-voice-trainer",
     title: "Head Voice Trainer — Head Voice Practice Routine",
     subtitle:
@@ -3143,6 +3262,117 @@ const guideSeeds = [
       "이동 시간, 교통비, 출근 빈도를 입력하면 주·월 단위 누적 비용과 시간을 바로 확인할 수 있습니다.",
     note:
       "추천은 참고용입니다. 본인 일정과 체력 수준에 맞춰 현실적인 루틴으로 조정해 보세요.",
+  },
+  {
+    slug: "tax-calculator",
+    title: "세금 계산기 가이드",
+    description:
+      "직장인/프리랜서/개인사업자의 세금·보험·경비를 추정하고 월 실수령액과 세금 납부 시기를 확인하는 방법",
+    category: "재테크",
+    heroEmoji: "🧾",
+    serviceUrl: "https://tax.funnyfunny.cloud",
+    keywords: ["세금 계산", "직장인 세금", "프리랜서 세금", "사업자 세금", "실수령액", "세금 파도"],
+    usage:
+      "모드를 선택하고 필요한 정보를 입력하면 세금, 보험, 경비가 자동으로 계산되고 월 실수령액과 세금 납부 시기를 확인할 수 있습니다.",
+    note:
+      "결과는 참고용 추정치입니다. 공제/업종/증빙/가입 형태 등에 따라 실제와 다를 수 있어요. 정확한 계산은 세무 전문가와 상담하시기 바랍니다.",
+    sections: [
+      {
+        heading: "이 도구로 할 수 있는 것",
+        body: [
+          "직장인, 프리랜서, 개인사업자 세 가지 고용 형태에 맞춰 세금·보험·경비를 추정할 수 있습니다.",
+          "월 실수령액을 확인하고 세금과 보험으로 얼마나 빠지는지 한눈에 파악할 수 있습니다.",
+          "세금 파도(큰 금액이 나가는 달)를 미리 확인해 세금 통장을 준비할 수 있습니다.",
+        ],
+      },
+      {
+        heading: "고용 형태 선택하기",
+        body: [
+          "Step 1. 직장인, 프리랜서/N잡, 개인사업자 중 하나의 모드를 선택하세요.",
+          "Step 2. 선택한 모드에 맞는 입력 필드만 표시됩니다.",
+          "계산기는 선택에 따라 자동으로 조정됩니다.",
+        ],
+      },
+      {
+        heading: "직장인 모드",
+        body: [
+          "세전 월급과 선택 항목(부양가족 수, 연말정산 공제)을 입력하세요.",
+          "소득세(지방세 포함)와 4대보험 추정치를 확인할 수 있습니다.",
+          "연말정산 정산(환급/추가납부)과 매월 자동 공제 일정을 확인하세요.",
+        ],
+      },
+      {
+        heading: "프리랜서 모드",
+        body: [
+          "월 평균 수입, 경비 비율, 3.3% 원천징수 여부를 입력하세요.",
+          "3.3%가 최종 세금이 아니라 미리 낸 돈일 수 있다는 점을 이해하세요.",
+          "종합소득세 정산 시기(보통 다음 해)를 확인하고 세금 적립을 계획하세요.",
+        ],
+      },
+      {
+        heading: "개인사업자 모드",
+        body: [
+          "월 매출, 경비, 부가세 업종, 부가세 방식을 입력하세요.",
+          "부가세와 종합소득세 적립 추정치 및 납부 일정을 확인하세요.",
+          "부가세를 잠깐 보관했다가 내는 구조(환급 가능)임을 이해하고 연간 소득세 파도에 대비하세요.",
+        ],
+      },
+      {
+        heading: "결과 이해하기",
+        body: [
+          "월 실수령액: 세금, 보험, 경비를 제외한 실제로 사용 가능한 금액입니다.",
+          "돈의 흐름: 수입이 어떻게 차감되는지, 어디로 가는지(세금·보험·경비) 확인하세요.",
+          "세금 파도 예상: 큰 금액이 나가는 달을 확인하고 세금 통장을 미리 준비하세요.",
+        ],
+      },
+      {
+        heading: "저장 및 공유하기",
+        body: [
+          "입력값을 브라우저에 로컬 저장해 나중에 빠르게 다시 계산할 수 있습니다.",
+          "입력값과 결과 요약을 복사해 공유하거나 기록으로 남길 수 있습니다.",
+          "데이터는 브라우저에만 저장되며 서버로 전송되지 않습니다.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "추정치의 정확도는 어느 정도인가요?",
+        answer:
+          "참고용 대략적인 추정치입니다. 실제 금액은 공제, 업종, 증빙 방식, 가입 형태에 따라 달라집니다. 정확한 계산은 세무 전문가와 상담하시기 바랍니다.",
+      },
+      {
+        question: "세 가지 모드의 차이점은 무엇인가요?",
+        answer:
+          "직장인 모드는 월급 공제를 추정합니다. 프리랜서 모드는 세금 정산 시기를 보여줍니다. 개인사업자 모드는 부가세와 연간 소득세 계획을 포함합니다.",
+      },
+      {
+        question: "세금 파도란 무엇인가요?",
+        answer:
+          "세금 파도는 큰 세금이 나가는 달입니다(예: 5월 종합소득세 정산, 1월/7월 부가세 납부). 계산기는 이러한 시기를 보여줘 미리 준비할 수 있게 도와줍니다.",
+      },
+      {
+        question: "프리랜서의 3.3%가 최종 세금인가요?",
+        answer:
+          "아닙니다. 3.3%는 미리 떼는 돈(원천징수)일 수 있습니다. 실제 세금은 보통 다음 해에 정산되며, 경비와 공제에 따라 환급도 가능합니다.",
+      },
+      {
+        question: "개인사업자의 부가세는 어떻게 다른가요?",
+        answer:
+          "부가세는 고객에게 받은 세금을 잠깐 보관했다가 내는 구조입니다. 나중에 내며 환급도 가능합니다. 처음부터 내 돈이 아닙니다.",
+      },
+      {
+        question: "입력값을 저장할 수 있나요?",
+        answer:
+          "네, '입력 저장' 버튼을 사용해 현재 입력값을 로컬에 저장할 수 있습니다. 같은 모드로 돌아오면 복원됩니다.",
+      },
+      {
+        question: "데이터가 서버로 전송되나요?",
+        answer:
+          "아니요. 모든 계산은 브라우저에서 이루어지며, 저장된 데이터는 로컬 스토리지에만 저장됩니다.",
+      },
+    ],
+    disclaimer:
+      "이 결과는 참고용 추정치입니다. 실제 세금 금액은 공제, 업종, 증빙 방식, 가입 형태에 따라 달라질 수 있습니다. 정확한 계산은 세무 전문가와 상담하시기 바랍니다.",
   },
   {
     slug: "waste-index",
