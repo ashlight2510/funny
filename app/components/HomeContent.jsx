@@ -1544,6 +1544,28 @@ export function HomeContent() {
                 </p>
               </a>
               <a
+                href="https://solhwatu.funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hwatu Solitaire - card stacking game using Hwatu cards"
+                data-amp-service="Hwatu Solitaire"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🎴</span>
+                  <span className="text-xs font-semibold text-indigo-600">
+                    {t("gameSolitaire")}
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://solhwatu.funnyfunny.cloud")}
+                </h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  {t("gameSolitaireDesc")}
+                </p>
+              </a>
+              <a
                 href="https://random.funnyfunny.cloud/"
                 target="_blank"
                 rel="noopener noreferrer"
