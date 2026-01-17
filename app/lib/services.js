@@ -62,6 +62,12 @@ export function getSeoGuides(lang = "en") {
       title: isKo ? "화투로 보는 오늘의 운세 가이드" : "Hwatu Fortune Guide",
       desc: isKo ? "화투 한 장으로 알아보는 오늘의 운세와 행운." : "Discover today's fortune and luck with a single Hwatu card.",
     },
+    {
+      slug: "hwatu-solitaire",
+      emoji: "🎴",
+      title: isKo ? "화투 솔리테어 가이드" : "Hwatu Solitaire Guide",
+      desc: isKo ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임." : "A card stacking game using Hwatu cards instead of playing cards.",
+    },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
@@ -741,6 +747,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["화투", "운세", "오늘", "행운", "카드", "점", "미신"]
         : ["hwatu", "fortune", "today", "luck", "card", "divination", "mystical"],
+    },
+    {
+      href: "https://solhwatu.funnyfunny.cloud",
+      icon: "🎴",
+      title: isKo ? "화투 솔리테어" : "Hwatu Solitaire",
+      desc: isKo
+        ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임."
+        : "A card stacking game using Hwatu cards instead of playing cards.",
+      tags: isKo
+        ? ["화투", "솔리테어", "게임", "카드", "퍼즐", "오락"]
+        : ["hwatu", "solitaire", "game", "cards", "puzzle", "entertainment"],
     },
     {
       href: "https://edu.funnyfunny.cloud",

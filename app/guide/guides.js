@@ -967,6 +967,88 @@ const rawGuides = [
       "Hwatu Fortune is for entertainment and reflection purposes. Results are generated randomly and are not intended as definitive predictions. Use fortune messages as inspiration for daily reflection and positive action.",
   },
   {
+    slug: "hwatu-solitaire",
+    title: "Hwatu Solitaire — Card Stacking Game",
+    subtitle:
+      "A solitaire game using Hwatu cards instead of playing cards. Stack cards in descending order (12→1) with alternating colors and no consecutive icons.",
+    category: "Games",
+    heroEmoji: "🎴",
+    serviceUrl: "https://solhwatu.funnyfunny.cloud",
+    ctaLabel: "Open Hwatu Solitaire",
+    metaDescription:
+      "Hwatu Solitaire guide — play solitaire with Korean Hwatu cards. Learn the rules (12→1 descending, color alternate, no consecutive icons), how to move cards, and win strategies.",
+    keywords: [
+      "hwatu solitaire",
+      "korean cards game",
+      "card stacking",
+      "solitaire game",
+      "hwatu cards",
+      "card puzzle",
+    ],
+    sections: [
+      {
+        heading: "What you can do",
+        body: [
+          "Play solitaire using Hwatu cards (12 months × 4 cards = 48 cards total).",
+          "Stack cards in descending order (12→1) with alternating colors and no consecutive icons.",
+          "Move all cards to the foundation piles (4 piles) to win.",
+        ],
+      },
+      {
+        heading: "Get started: understanding the rules",
+        body: [
+          "Goal: Move all 48 cards to the foundation piles (4 piles) starting from month 12.",
+          "Rules: Cards must be placed in descending order (12→1), colors must alternate (red/blue), and icons cannot be consecutive.",
+          "Tableau: 6 columns where you can stack cards following the same rules.",
+          "Stock: Click to draw cards one at a time. When empty, click again to recycle the discard pile.",
+        ],
+      },
+      {
+        heading: "How to play",
+        body: [
+          "Drag and drop cards to move them, or tap to select then tap destination.",
+          "On mobile, you can tap a card to select it, then tap a destination pile to move.",
+          "Use the Hint button to see a suggested move.",
+          "Use Undo to revert your last move.",
+          "Click New Game to start fresh.",
+        ],
+      },
+      {
+        heading: "Tips for winning",
+        body: [
+          "Always try to reveal face-down cards in the tableau first.",
+          "Move cards to foundation piles whenever possible to free up space.",
+          "Plan your moves to avoid blocking important cards.",
+          "Use the hint feature if you're stuck, but try to think through moves yourself first.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What are the card rules?",
+        answer:
+          "Cards must be placed in descending order (12→1), colors must alternate (red/blue), and icons cannot be consecutive. Empty foundation piles can only accept month 12 cards.",
+      },
+      {
+        question: "Can I move multiple cards at once?",
+        answer:
+          "Yes, you can move stacks of cards from the tableau if they follow the stacking rules. From waste or foundation, only single cards can be moved.",
+      },
+      {
+        question: "What happens when the stock is empty?",
+        answer:
+          "Click the empty stock pile to recycle the discard pile back to the stock (face down). You can do this as many times as needed.",
+      },
+      {
+        question: "Is there a time limit?",
+        answer:
+          "No, take your time. The game is designed for relaxation and strategic thinking.",
+      },
+    ],
+    disclaimer:
+      "Hwatu Solitaire is a card game for entertainment. Enjoy at your own pace and use hints if needed.",
+  },
+  {
     slug: "head-voice-trainer",
     title: "Head Voice Trainer — Head Voice Practice Routine",
     subtitle:
@@ -3983,6 +4065,82 @@ const guideSeeds = [
     ],
     disclaimer:
       "이 결과는 참고용 추정치입니다. 실제 세금 금액은 공제, 업종, 증빙 방식, 가입 형태에 따라 달라질 수 있습니다. 정확한 계산은 세무 전문가와 상담하시기 바랍니다.",
+  },
+  {
+    slug: "hwatu-solitaire",
+    title: "화투 솔리테어 가이드",
+    description:
+      "트럼프 대신 화투로 즐기는 카드 쌓기 게임. 12→1 내림차순, 색 교차, 아이콘 연속 금지 규칙으로 모든 카드를 기지로 옮기세요.",
+    category: "게임",
+    heroEmoji: "🎴",
+    serviceUrl: "https://solhwatu.funnyfunny.cloud",
+    keywords: ["화투", "솔리테어", "게임", "카드", "퍼즐", "오락"],
+    usage:
+      "카드를 드래그하거나 탭하여 선택한 후 목적지에 놓으면 됩니다. 모든 카드를 기지(4칸)로 옮기면 승리합니다.",
+    note:
+      "화투 솔리테어는 재미를 위한 카드 게임입니다. 천천히 즐기고 힌트를 활용하세요.",
+    sections: [
+      {
+        heading: "이 도구로 할 수 있는 것",
+        body: [
+          "화투 카드(12개월 × 4장 = 총 48장)로 솔리테어를 즐길 수 있습니다.",
+          "12→1 내림차순, 색 교차, 아이콘 연속 금지 규칙으로 카드를 쌓을 수 있습니다.",
+          "모든 카드를 기지(4칸)로 옮겨 승리할 수 있습니다.",
+        ],
+      },
+      {
+        heading: "시작하기: 규칙 이해하기",
+        body: [
+          "목표: 모든 48장의 카드를 기지(4칸)로 옮기세요. 기지는 12월부터 시작합니다.",
+          "규칙: 카드는 내림차순(12→1)으로 놓아야 하며, 색은 교차해야 하고(빨강/파랑), 아이콘은 연속될 수 없습니다.",
+          "테이블: 같은 규칙으로 카드를 쌓을 수 있는 6개의 열입니다.",
+          "덱: 클릭하면 한 장씩 카드를 뽑습니다. 비어 있으면 다시 클릭하여 버린 카드를 재활용합니다.",
+        ],
+      },
+      {
+        heading: "게임 방법",
+        body: [
+          "카드를 드래그 앤 드롭하여 이동하거나, 탭하여 선택한 후 목적지를 탭하세요.",
+          "모바일에서는 카드를 탭하여 선택한 후 목적지 더미를 탭하여 이동할 수 있습니다.",
+          "힌트 버튼을 사용하여 제안된 이동을 확인하세요.",
+          "되돌리기 버튼으로 마지막 이동을 취소할 수 있습니다.",
+          "새 게임 버튼을 클릭하여 처음부터 시작하세요.",
+        ],
+      },
+      {
+        heading: "승리 팁",
+        body: [
+          "항상 테이블의 뒤집힌 카드를 먼저 뒤집으려고 노력하세요.",
+          "가능할 때마다 카드를 기지로 옮겨 공간을 확보하세요.",
+          "중요한 카드를 막지 않도록 이동을 계획하세요.",
+          "막혔을 때 힌트 기능을 사용하되, 먼저 직접 생각해보세요.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "카드 규칙은 무엇인가요?",
+        answer:
+          "카드는 내림차순(12→1)으로 놓아야 하며, 색은 교차해야 하고(빨강/파랑), 아이콘은 연속될 수 없습니다. 빈 기지는 12월 카드만 받을 수 있습니다.",
+      },
+      {
+        question: "여러 카드를 한 번에 옮길 수 있나요?",
+        answer:
+          "네, 테이블에서 규칙을 따르는 카드 더미를 한 번에 옮길 수 있습니다. 버린 카드나 기지에서는 한 장씩만 옮길 수 있습니다.",
+      },
+      {
+        question: "덱이 비어 있으면 어떻게 되나요?",
+        answer:
+          "빈 덱 더미를 클릭하면 버린 카드를 덱으로 재활용합니다(뒤집힌 상태). 필요한 만큼 반복할 수 있습니다.",
+      },
+      {
+        question: "시간 제한이 있나요?",
+        answer:
+          "아니요, 천천히 즐기세요. 이 게임은 휴식과 전략적 사고를 위해 설계되었습니다.",
+      },
+    ],
+    disclaimer:
+      "화투 솔리테어는 재미를 위한 카드 게임입니다. 천천히 즐기고 필요하면 힌트를 활용하세요.",
   },
   {
     slug: "waste-index",
