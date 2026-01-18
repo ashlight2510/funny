@@ -68,6 +68,12 @@ export function getSeoGuides(lang = "en") {
       title: isKo ? "화투 솔리테어 가이드" : "Hwatu Solitaire Guide",
       desc: isKo ? "트럼프 대신 화투로 즐기는 카드 쌓기 게임." : "A card stacking game using Hwatu cards instead of playing cards.",
     },
+    {
+      slug: "melancholy",
+      emoji: "🌙",
+      title: isKo ? "마음 컨디션 체크 가이드" : "Mind Condition Check Guide",
+      desc: isKo ? "진단이 아닌, 오늘의 마음을 정리하고 기운을 회복하는 짧은 체크와 응원." : "Not a diagnosis, but a brief check to organize today's feelings and recover energy.",
+    },
   {
     slug: "lotto-picker",
     emoji: "🎟️",
@@ -350,6 +356,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["휴식", "컨디션", "설문", "번아웃"]
         : ["rest", "condition", "survey", "burnout"],
+    },
+    {
+      href: "https://melancholy.funnyfunny.cloud",
+      icon: "🌙",
+      title: isKo ? "마음 컨디션 체크 · 기운 회복 가이드" : "Mind Condition Check · Energy Recovery Guide",
+      desc: isKo
+        ? "진단이 아닌, 오늘의 마음을 정리하고 기운을 회복하는 짧은 체크와 응원."
+        : "Not a diagnosis, but a brief check to organize today's feelings and recover energy.",
+      tags: isKo
+        ? ["마음", "컨디션", "우울", "회복", "정신건강"]
+        : ["mind", "condition", "melancholy", "recovery", "mental-health"],
     },
     {
       href: "https://dailycheck.funnyfunny.cloud/",

@@ -1455,6 +1455,85 @@ const rawGuides = [
       "This survey is for reference only and not medical advice. Seek professional help if symptoms persist.",
   },
   {
+    slug: "melancholy",
+    title: "Mind Condition Check · Energy Recovery Guide",
+    subtitle:
+      "Not a diagnosis, but a brief check to organize today's feelings and recover energy.",
+    category: "Lifestyle",
+    heroEmoji: "🌙",
+    serviceUrl: "https://melancholy.funnyfunny.cloud",
+    ctaLabel: "Open Mind Condition Check",
+    metaDescription:
+      "Mind condition check guide: organize today's feelings with short questions and get 3 actionable steps and encouraging words.",
+    keywords: [
+      "mind condition check",
+      "melancholy",
+      "mental health",
+      "mood check",
+      "recovery guide",
+      "emotional wellness",
+    ],
+    sections: [
+      {
+        heading: "What this check offers",
+        body: [
+          "Answer short questions to organize today's emotional state and identify what you need right now.",
+          "Get personalized interpretation, 3 actionable steps you can take today, and encouraging messages.",
+          "Receive guidance on what people around you can do to help, especially for PMS-related mood changes.",
+        ],
+      },
+      {
+        heading: "How it works",
+        body: [
+          "Choose between general mood check or PMS-focused check at the start.",
+          "Answer questions one at a time—selecting an option automatically moves to the next question.",
+          "Progress bar shows how many questions remain. Results appear immediately after completion.",
+        ],
+      },
+      {
+        heading: "Understanding your results",
+        body: [
+          "Interpretation section explains whether your feelings are related to condition/stress or hormonal rhythms.",
+          "'What I need today' provides permission to lower expectations and respect your needs.",
+          "'3 Actions I can take now' suggests minimal, doable steps—not grand goals.",
+          "Today's message section offers encouraging quotes tailored to your severity level.",
+        ],
+      },
+      {
+        heading: "When to use this",
+        body: [
+          "Use when you feel down but aren't sure why, or when PMS symptoms feel overwhelming.",
+          "Helpful for organizing scattered feelings and finding small ways to recover energy.",
+          "The glow effect increases as you check items in 'What I need today', visually reinforcing self-care.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Is this a medical diagnosis?",
+        answer:
+          "No. This service is not for medical diagnosis/treatment purposes. It's a self-check tool for organizing feelings and finding small recovery steps.",
+      },
+      {
+        question: "How long does it take?",
+        answer:
+          "About 2-3 minutes. Each question is single-choice and automatically advances, making it quick to complete.",
+      },
+      {
+        question: "Can I share results with others?",
+        answer:
+          "Yes. Copy the encouraging message or show the 'Show to people around you' section to help others understand how to support you.",
+      },
+      {
+        question: "What if symptoms are severe or recurring?",
+        answer:
+          "If feelings are intense, recurring monthly, or significantly impacting daily life, consulting with a gynecologist or mental health professional can be very helpful.",
+      },
+    ],
+    disclaimer:
+      "This service is not for medical diagnosis/treatment purposes. If symptoms are severe, recurring, or significantly impact daily life, please consult with a healthcare professional.",
+  },
+  {
     slug: "daily-condition-check",
     title: "Daily Condition Check: 5 Checks for a One-line Summary",
     subtitle:
