@@ -99,6 +99,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "두성을 위한 호흡, 공명 루틴, 스케일 따라하기 연습." : "Breathing, resonance routines, and scale-following practice for head voice.",
   },
   {
+    slug: "wav-to-mp3",
+    emoji: "🎵",
+    title: isKo ? "WAV → MP3 변환기 가이드" : "WAV to MP3 Converter Guide",
+    desc: isKo ? "브라우저에서 안전하게 WAV를 MP3로 변환. 서버 업로드 없이 로컬에서 처리됩니다." : "Convert WAV to MP3 safely in the browser. All processing happens locally with no server uploads.",
+  },
+  {
     slug: "image-text-extract",
     emoji: "🔍",
     title: isKo ? "이미지 텍스트 추출기 가이드" : "Image Text Extractor Guide",
@@ -988,6 +994,15 @@ export function getAllServices(lang = "en") {
         ? "브라우저에서 바로 오디오 편집."
         : "Audio editing directly in the browser.",
       tags: isKo ? ["오디오", "편집", "도구"] : ["audio", "editing", "tool"],
+    },
+    {
+      href: "https://wav.funnyfunny.cloud",
+      icon: "🎵",
+      title: isKo ? "WAV → MP3 변환기" : "WAV to MP3 Converter",
+      desc: isKo
+        ? "브라우저에서 안전하게 WAV를 MP3로 변환."
+        : "Convert WAV to MP3 safely in the browser.",
+      tags: isKo ? ["오디오", "변환", "도구"] : ["audio", "converter", "tool"],
     },
     {
       href: "https://music.funnyfunny.cloud",
