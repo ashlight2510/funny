@@ -4382,6 +4382,21 @@ const guideSeeds = [
     note: "표/레이아웃/서식은 재현되지 않으며 텍스트만 추출됩니다.",
   },
   {
+    slug: "mood-now",
+    title: "무드 체크 가이드",
+    description:
+      "지금 기분을 간단히 기록하고 정리하는 로컬 무드 체크 사용법.",
+    category: "유틸리티",
+    heroEmoji: "🌈",
+    serviceUrl: "https://mood.funnyfunny.cloud/",
+    keywords: ["무드", "기분", "기록", "정리", "로컬"],
+    focus: "짧게 기록하고 현재 상태를 정리",
+    benefit: "빠르게 감정을 정리하고 흐름을 확인",
+    usage:
+      "무드 단계를 선택하고 간단한 메모를 남기면 현재 기분이 정리됩니다. 필요하면 결과를 복사하거나 저장하세요.",
+    note: "의료/진단 목적이 아닌 참고용 기록입니다.",
+  },
+  {
     slug: "news-it",
     title: "오늘의 IT 뉴스 가이드",
     description: "국내·해외 IT 뉴스를 빠르게 훑는 요약 서비스 사용법",

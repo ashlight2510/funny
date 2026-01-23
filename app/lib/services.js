@@ -27,6 +27,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "HWPX에서 텍스트만 빠르게 추출해 PDF/DOCX로 저장. 표/레이아웃은 미지원." : "Extract text from HWPX and export to PDF/DOCX. Tables/layouts are not supported.",
   },
   {
+    slug: "mood-now",
+    emoji: "🌈",
+    title: isKo ? "무드 체크 가이드" : "Mood Check Guide",
+    desc: isKo ? "지금 기분을 간단히 기록하고 정리하는 로컬 무드 체크." : "A quick local mood check to record how you feel right now.",
+  },
+  {
     slug: "pyeong-calculator",
     emoji: "📐",
     title: isKo ? "평수 계산기 가이드" : "Pyeong-to-Square-Meter Calculator Guide",
@@ -1086,6 +1092,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["HWPX", "텍스트", "추출", "PDF", "DOCX"]
         : ["HWPX", "text", "extract", "PDF", "DOCX"],
+    },
+    {
+      href: "https://mood.funnyfunny.cloud/",
+      icon: "🌈",
+      title: isKo ? "무드 체크" : "Mood Check",
+      desc: isKo
+        ? "지금 기분을 짧게 기록하고 정리."
+        : "Record and review your current mood in a short flow.",
+      tags: isKo
+        ? ["무드", "기분", "기록", "로컬"]
+        : ["mood", "feeling", "log", "local"],
     },
     {
       href: "https://meta.funnyfunny.cloud",

@@ -65,6 +65,8 @@ export const metadata = {
     "image merge & PDF",
     "HWPX text extractor",
     "HWPX to PDF",
+    "mood check",
+    "mood tracker",
     "auto video editing",
     "jump-cut editor",
     "silence remover",
