@@ -1096,13 +1096,13 @@ export function getAllServices(lang = "en") {
     {
       href: "https://mood.funnyfunny.cloud/",
       icon: "🌈",
-      title: isKo ? "무드 체크" : "Mood Check",
+      title: isKo ? "기분전환도우미" : "Mood Shift",
       desc: isKo
-        ? "지금 기분을 짧게 기록하고 정리."
-        : "Record and review your current mood in a short flow.",
+        ? "기분이 애매할 때 딸깍 누르면 조금이라도 바뀌는. 위로·조언 없이 기분만 살짝 옮겨주는 서비스."
+        : "When you feel in-between, one tap can shift it a little. No advice, no pressure—just a nudge.",
       tags: isKo
-        ? ["무드", "기분", "기록", "로컬"]
-        : ["mood", "feeling", "log", "local"],
+        ? ["기분전환", "무드", "가벼운 위로", "기분 리셋"]
+        : ["mood", "shift", "reset", "light relief"],
     },
     {
       href: "https://meta.funnyfunny.cloud",
