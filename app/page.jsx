@@ -63,6 +63,8 @@ export const metadata = {
     "dream diary",
     "PDF converter",
     "image merge & PDF",
+    "HWPX text extractor",
+    "HWPX to PDF",
     "auto video editing",
     "jump-cut editor",
     "silence remover",

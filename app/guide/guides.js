@@ -4367,6 +4367,21 @@ const guideSeeds = [
     keywords: ["서버 시간", "예매 도우미", "시간 동기화", "정확한 시간"],
   },
   {
+    slug: "hwpx-text-extractor",
+    title: "HWPX 텍스트 추출기 가이드",
+    description:
+      "HWPX 파일에서 텍스트만 추출해 PDF/DOCX로 저장하는 방법 (표/레이아웃 미지원).",
+    category: "유틸리티",
+    heroEmoji: "📄",
+    serviceUrl: "https://hwp.funnyfunny.cloud/",
+    keywords: ["HWPX", "텍스트 추출", "PDF", "DOCX", "로컬 처리"],
+    focus: "텍스트만 빠르게 추출하고 내보내기",
+    benefit: "설치 없이 로컬에서 안전하게 텍스트를 정리",
+    usage:
+      "HWPX 파일을 드래그하면 텍스트가 문단으로 추출됩니다. 필요한 문구를 수정한 뒤 PDF 또는 DOCX로 내려받아 사용하세요.",
+    note: "표/레이아웃/서식은 재현되지 않으며 텍스트만 추출됩니다.",
+  },
+  {
     slug: "news-it",
     title: "오늘의 IT 뉴스 가이드",
     description: "국내·해외 IT 뉴스를 빠르게 훑는 요약 서비스 사용법",

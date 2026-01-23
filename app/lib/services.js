@@ -21,6 +21,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "브라우저에서 HEIC를 JPG/WebP/PNG로 변환 (압축, 리사이즈, ZIP 내보내기 포함)." : "Convert HEIC to JPG/WebP/PNG in-browser with compression, resize, and ZIP export.",
   },
   {
+    slug: "hwpx-text-extractor",
+    emoji: "📄",
+    title: isKo ? "HWPX 텍스트 추출기 가이드" : "HWPX Text Extractor Guide",
+    desc: isKo ? "HWPX에서 텍스트만 빠르게 추출해 PDF/DOCX로 저장. 표/레이아웃은 미지원." : "Extract text from HWPX and export to PDF/DOCX. Tables/layouts are not supported.",
+  },
+  {
     slug: "pyeong-calculator",
     emoji: "📐",
     title: isKo ? "평수 계산기 가이드" : "Pyeong-to-Square-Meter Calculator Guide",
@@ -1069,6 +1075,17 @@ export function getAllServices(lang = "en") {
             "WebP",
             "PNG",
           ],
+    },
+    {
+      href: "https://hwp.funnyfunny.cloud/",
+      icon: "📄",
+      title: isKo ? "HWPX 텍스트 추출기" : "HWPX Text Extractor",
+      desc: isKo
+        ? "HWPX에서 텍스트만 추출하고 PDF/DOCX로 저장."
+        : "Extract text from HWPX and export to PDF/DOCX.",
+      tags: isKo
+        ? ["HWPX", "텍스트", "추출", "PDF", "DOCX"]
+        : ["HWPX", "text", "extract", "PDF", "DOCX"],
     },
     {
       href: "https://meta.funnyfunny.cloud",
