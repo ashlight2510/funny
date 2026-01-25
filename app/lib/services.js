@@ -1129,6 +1129,17 @@ export function getAllServices(lang = "en") {
         : ["image", "PDF", "merge", "edit"],
     },
     {
+      href: "https://pdfimg.funnyfunny.cloud/",
+      icon: "📄",
+      title: isKo ? "PDF → 이미지 변환기" : "PDF to Images Converter",
+      desc: isKo
+        ? "서버 업로드 없이 브라우저에서 PDF를 페이지별 PNG/JPEG로 변환."
+        : "Convert PDF pages to PNG/JPEG images in your browser. No uploads; processed locally.",
+      tags: isKo
+        ? ["PDF", "이미지", "PNG", "JPEG", "변환", "로컬"]
+        : ["PDF", "image", "PNG", "JPEG", "convert", "local"],
+    },
+    {
       href: "https://ocr.funnyfunny.cloud",
       icon: "🔍",
       title: isKo ? "이미지 텍스트 추출" : "Image Text Extractor",
