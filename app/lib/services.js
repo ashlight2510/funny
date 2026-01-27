@@ -117,6 +117,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "브라우저에서 안전하게 WAV를 MP3로 변환. 서버 업로드 없이 로컬에서 처리됩니다." : "Convert WAV to MP3 safely in the browser. All processing happens locally with no server uploads.",
   },
   {
+    slug: "birth-age-calculator",
+    emoji: "🎂",
+    title: isKo ? "나이 계산기 가이드" : "Birth Age Calculator Guide",
+    desc: isKo ? "생년월일만 입력하면 만·연·세는 나이를 한 번에 계산. 다음 생일 D-day, 링크 공유 지원." : "Enter birth date to get Korean age, international age, and next birthday D-day. Share via link.",
+  },
+  {
     slug: "image-text-extract",
     emoji: "🔍",
     title: isKo ? "이미지 텍스트 추출기 가이드" : "Image Text Extractor Guide",
@@ -1211,6 +1217,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["날짜", "D-day", "기념일"]
         : ["date", "D-day", "anniversary"],
+    },
+    {
+      href: "https://birth.funnyfunny.cloud",
+      icon: "🎂",
+      title: isKo ? "나이 계산기" : "Birth Age Calculator",
+      desc: isKo
+        ? "생년월일만 입력하면 만·연·세는 나이를 한 번에. 다음 생일 D-day, 링크 공유."
+        : "Enter birth date to get Korean age, international age, and next birthday D-day. Share via link.",
+      tags: isKo
+        ? ["나이", "만 나이", "생년월일", "D-day"]
+        : ["age", "birth", "calculator", "D-day"],
     },
     {
       href: "https://run.funnyfunny.cloud",
