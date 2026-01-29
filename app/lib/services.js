@@ -117,6 +117,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "브라우저에서 안전하게 WAV를 MP3로 변환. 서버 업로드 없이 로컬에서 처리됩니다." : "Convert WAV to MP3 safely in the browser. All processing happens locally with no server uploads.",
   },
   {
+    slug: "mr-vocal-remover",
+    emoji: "🎵",
+    title: isKo ? "MR 메이커 · 보컬 제거기 가이드" : "MR Maker · Vocal Remover Guide",
+    desc: isKo ? "보컬만 듣기 / MR만 듣기. 브라우저에서 스테레오 분리 후 미리듣기·다운로드." : "Listen to vocals only or MR only. Separate stereo in-browser, preview and download.",
+  },
+  {
     slug: "birth-age-calculator",
     emoji: "🎂",
     title: isKo ? "나이 계산기 가이드" : "Birth Age Calculator Guide",
@@ -1027,6 +1033,15 @@ export function getAllServices(lang = "en") {
         ? "브라우저에서 안전하게 WAV를 MP3로 변환."
         : "Convert WAV to MP3 safely in the browser.",
       tags: isKo ? ["오디오", "변환", "도구"] : ["audio", "converter", "tool"],
+    },
+    {
+      href: "https://mr.funnyfunny.cloud",
+      icon: "🎵",
+      title: isKo ? "MR 메이커 · 보컬 제거기" : "MR Maker · Vocal Remover",
+      desc: isKo
+        ? "보컬만 듣기 / MR만 듣기. 스테레오 분리 후 미리듣기·다운로드."
+        : "Listen to vocals only or MR only. Separate stereo, preview and download.",
+      tags: isKo ? ["MR", "보컬제거", "카라오케", "오디오"] : ["MR", "vocal remover", "karaoke", "audio"],
     },
     {
       href: "https://music.funnyfunny.cloud",
