@@ -3570,6 +3570,19 @@ const guideSeeds = [
     note: "운영 수칙을 지키지 않는 글은 숨김/삭제될 수 있습니다.",
   },
   {
+    slug: "emote-emotion",
+    title: "희노애락 가이드",
+    description:
+      "감정을 털어놓는 익명 썰 플랫폼 희노애락 사용법과 활용 팁",
+    category: "커뮤니티",
+    heroEmoji: "😊",
+    serviceUrl: "https://emote.funnyfunny.cloud/",
+    keywords: ["희노애락", "감정", "썰", "익명", "공감", "커뮤니티"],
+    usage:
+      "감정(희·노·애·락)을 선택하고 본문만 작성하면 됩니다. Cmd+Enter로 빠르게 등록하고, Esc로 모달을 닫을 수 있습니다. HOT/NEW 피드에서 인기 썰을 확인하고 공감·댓글로 반응하세요.",
+    note: "오늘의 감정 질문에 답하면 글쓰기가 더 쉬워집니다. 운영 수칙을 지키지 않는 글은 숨김/삭제될 수 있습니다.",
+  },
+  {
     slug: "senseyear",
     title: "나는 몇 년생 감성인가 가이드",
     description:

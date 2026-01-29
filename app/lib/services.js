@@ -123,6 +123,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "생년월일만 입력하면 만·연·세는 나이를 한 번에 계산. 다음 생일 D-day, 링크 공유 지원." : "Enter birth date to get Korean age, international age, and next birthday D-day. Share via link.",
   },
   {
+    slug: "emote-emotion",
+    emoji: "😊",
+    title: isKo ? "희노애락 가이드" : "Emote Guide",
+    desc: isKo ? "감정을 털어놓는 익명 썰 플랫폼. 희·노·애·락으로 공감받고 추천받으세요." : "Anonymous emotion story platform. Share joy, anger, love, and fun. Get empathy and discover stories.",
+  },
+  {
     slug: "image-text-extract",
     emoji: "🔍",
     title: isKo ? "이미지 텍스트 추출기 가이드" : "Image Text Extractor Guide",
@@ -1228,6 +1234,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["나이", "만 나이", "생년월일", "D-day"]
         : ["age", "birth", "calculator", "D-day"],
+    },
+    {
+      href: "https://emote.funnyfunny.cloud",
+      icon: "😊",
+      title: isKo ? "희노애락" : "Emote",
+      desc: isKo
+        ? "감정을 털어놓는 익명 썰 플랫폼. 희·노·애·락으로 공감받으세요."
+        : "Anonymous emotion story platform. Share joy, anger, love, and fun.",
+      tags: isKo
+        ? ["감정", "썰", "익명", "공감", "희노애락"]
+        : ["emotion", "story", "anonymous", "community"],
     },
     {
       href: "https://run.funnyfunny.cloud",
