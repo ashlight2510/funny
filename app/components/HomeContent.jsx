@@ -1450,7 +1450,7 @@ export function HomeContent() {
             </div>
           </div>
 
-          <div className="mt-10">
+          <div id="arcade" className="mt-10 scroll-mt-24">
             <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
               {t("sectionGames")}
             </h3>
@@ -1519,6 +1519,28 @@ export function HomeContent() {
                 </h4>
                 <p className="text-sm text-slate-600 mt-1">
                   {t("gameDownyDesc")}
+                </p>
+              </a>
+              <a
+                href="https://neox.funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NEOX - neon arcade shooter, dodge barrages and climb score"
+                data-amp-service="NEOX"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🚀</span>
+                  <span className="text-xs font-semibold text-cyan-600">
+                    {t("gameNeox")}
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("https://neox.funnyfunny.cloud/")}
+                </h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  {t("gameNeoxDesc")}
                 </p>
               </a>
               <a
@@ -1843,6 +1865,12 @@ export function HomeContent() {
               className="px-3 py-2 rounded-full bg-white/80 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
             >
               {t("quickBarHub")}
+            </a>
+            <a
+              href="#arcade"
+              className="px-3 py-2 rounded-full bg-white/80 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
+            >
+              {t("quickBarArcade")}
             </a>
             <button
               data-random-btn

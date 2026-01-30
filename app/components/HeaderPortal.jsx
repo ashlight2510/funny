@@ -50,6 +50,12 @@ export function HeaderPortal({ lang, onLangChange, t }) {
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               <div className="hidden sm:flex items-center gap-2">
                 <a
+                  href="#arcade"
+                  className="px-3 py-2 text-sm rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors"
+                >
+                  {t ? t("quickArcade") : "Arcade"}
+                </a>
+                <a
                   href="http://flow.funnyfunny.cloud/"
                   target="_blank"
                   rel="noopener noreferrer"
