@@ -1598,6 +1598,15 @@ export function HomeContent() {
 
       <FooterPortal t={t} />
 
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label={t("topButtonLabel")}
+        className="hidden md:flex fixed bottom-6 right-6 w-12 h-12 items-center justify-center rounded-full bg-slate-700/90 text-white shadow-lg hover:bg-slate-600 hover:shadow-xl transition z-50"
+      >
+        ↑
+      </button>
+
       <div
         id="quickBar"
         className="fixed inset-x-0 bottom-3 px-4 sm:px-6 transition transform translate-y-24 opacity-0 pointer-events-none"

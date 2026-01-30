@@ -126,6 +126,7 @@ export const pageCopy = {
     bitcoinGuilt: "비트코인 안 산 죄",
     ottPicks: "OTT 픽",
     energyLeak: "에너지 누수",
+    topButtonLabel: "맨 위로",
   },
   en: {
     headerHeroTitle: "Useful services, playground",
@@ -255,6 +256,6 @@ export const pageCopy = {
     bitcoinGuilt: "Bitcoin Guilt",
     ottPicks: "OTT Picks",
     energyLeak: "Energy Leak",
-    hubTitle: "The simplest way to understand me",
+    topButtonLabel: "Back to top",
   },
 };
