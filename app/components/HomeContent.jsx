@@ -1157,72 +1157,26 @@ export function HomeContent() {
               {(() => {
                 const isKo = lang === "ko";
                 const insights = [
-                  {
-                    href: "https://heal.funnyfunny.cloud",
-                    icon: "💌",
-                    desc: isKo
-                      ? "클릭 한 번으로 위로 카드"
-                      : "One click for a comfort card",
-                    detail: isKo
-                      ? "오늘 필요한 말을 전달"
-                      : "Delivers the words you need today",
-                  },
-                  {
-                    href: "https://fortune.funnyfunny.cloud",
-                    icon: "🔮",
-                    desc: isKo
-                      ? "기분에 맞는 운세 한 줄 선택"
-                      : "Pick a fortune line based on your mood",
-                    detail: isKo
-                      ? "지금 순간에 맞는 메시지 확인"
-                      : "See a message that matches your moment",
-                  },
-                  {
-                    href: "https://wisdom.funnyfunny.cloud",
-                    icon: "📜",
-                    desc: isKo ? "하루 한 줄 지혜" : "Daily Wisdom in one line",
-                    detail: isKo
-                      ? "성경 가르침에서 영감을 받은 한 줄 메시지"
-                      : "A one-line message inspired by biblical teachings",
-                  },
-                  {
-                    href: "https://news.funnyfunny.cloud",
-                    icon: "📰",
-                    desc: isKo
-                      ? "국내외 IT 뉴스 빠른 요약"
-                      : "Quick summaries of local and global IT news",
-                    detail: isKo
-                      ? "최신 기술 업데이트를 한눈에 확인"
-                      : "See the latest tech updates at a glance.",
-                  },
-                  {
-                    href: "https://joke.funnyfunny.cloud",
-                    icon: "😄",
-                    desc: isKo
-                      ? "공유할 만한 유머 모음"
-                      : "Share-worthy joke collection",
-                    detail: isKo
-                      ? "웃음이 최고의 약"
-                      : "Laughter is the best medicine",
-                  },
-                  {
-                    href: "https://mind.funnyfunny.cloud",
-                    icon: "🧠",
-                    desc: isKo
-                      ? "한 줄 명언으로 치유"
-                      : "Heal with a one-line quote",
-                    detail: isKo ? "마음을 가볍게" : "Lighten your mind",
-                  },
-                  {
-                    href: "https://motivate.funnyfunny.cloud/",
-                    icon: "🔥",
-                    desc: isKo
-                      ? "재집중을 위한 짧은 한 줄"
-                      : "A short line to refocus",
-                    detail: isKo
-                      ? "몇 초 만에 마음가짐 리셋"
-                      : "Reset your mindset in seconds",
-                  },
+                  { href: "https://today.funnyfunny.cloud", icon: "🌱", desc: isKo ? "오늘 내가 잘한 일" : "What did I do well today?", detail: isKo ? "한 줄로 요약하고 내일 행동 정하기" : "Summarize wins and set tomorrow's action" },
+                  { href: "https://todo.funnyfunny.cloud/", icon: "✅", desc: isKo ? "오늘의 할 일" : "Today's to-do", detail: isKo ? "집중할 일만 남기고 체크" : "Keep focus tasks and check off" },
+                  { href: "https://melancholy.funnyfunny.cloud", icon: "🌙", desc: isKo ? "오늘의 마음 정리" : "Organize today's feelings", detail: isKo ? "기운 회복을 위한 짧은 체크" : "Brief check for energy recovery" },
+                  { href: "https://dailycheck.funnyfunny.cloud/", icon: "📝", desc: isKo ? "오늘의 컨디션 한 줄" : "Today's condition in one line", detail: isKo ? "5가지 체크로 요약" : "Summarize with 5 quick checks" },
+                  { href: "https://rest.funnyfunny.cloud", icon: "🛋️", desc: isKo ? "지금 쉬어도 될까?" : "Should I rest now?", detail: isKo ? "짧은 설문으로 확인" : "Check with a short survey" },
+                  { href: "https://hwatu.funnyfunny.cloud", icon: "🎴", desc: isKo ? "화투로 보는 오늘의 운세" : "Today's fortune by Hwatu", detail: isKo ? "한 장으로 행운 확인" : "One card for today's luck" },
+                  { href: "https://cook.funnyfunny.cloud", icon: "🍱", desc: isKo ? "오늘 뭐 먹지?" : "What to eat today?", detail: isKo ? "랜덤 메뉴 추천" : "Random menu recommendations" },
+                  { href: "https://chef.funnyfunny.cloud/", icon: "👨‍🍳", desc: isKo ? "오늘의 선택 심사" : "Today's choice judge", detail: isKo ? "밈 스타일 판단 코멘트" : "Meme-style judging comments" },
+                  { href: "https://anju.funnyfunny.cloud", icon: "🍢", desc: isKo ? "오늘의 안주 페어링" : "Today's snack pairing", detail: isKo ? "술과 함께할 랜덤 안주" : "Random snack for drinks" },
+                  { href: "https://pick.funnyfunny.cloud", icon: "🍿", desc: isKo ? "오늘 뭐 볼까" : "What to watch today", detail: isKo ? "영화·드라마 추천" : "Movie and drama picks" },
+                  { href: "https://heal.funnyfunny.cloud", icon: "💌", desc: isKo ? "클릭 한 번 위로 카드" : "One-click comfort card", detail: isKo ? "오늘 필요한 말 전달" : "Words you need today" },
+                  { href: "https://fortune.funnyfunny.cloud", icon: "🔮", desc: isKo ? "오늘의 한 줄 운세" : "One-line fortune", detail: isKo ? "기분에 맞는 운세 선택" : "Fortune based on your mood" },
+                  { href: "https://wisdom.funnyfunny.cloud", icon: "📜", desc: isKo ? "오늘의 지혜" : "Daily wisdom", detail: isKo ? "성경 영감 한 줄" : "One line from scripture" },
+                  { href: "https://need.funnyfunny.cloud/", icon: "🧭", desc: isKo ? "지금 필요한 한마디" : "The one line I need", detail: isKo ? "감정·상황별 한 문장" : "Today's line by emotion" },
+                  { href: "https://temple.funnyfunny.cloud/", icon: "🛕", desc: isKo ? "하루 한 문장 (절)" : "Temple daily quote", detail: isKo ? "불교 가르침을 오늘 언어로" : "Buddhist teachings in modern language" },
+                  { href: "https://mind.funnyfunny.cloud", icon: "🧠", desc: isKo ? "오늘의 마음챙김" : "Today's mindfulness", detail: isKo ? "차분함을 위한 한 줄" : "One-line quote for calm" },
+                  { href: "https://joke.funnyfunny.cloud", icon: "🤣", desc: isKo ? "오늘의 아재 개그" : "Dad jokes of the day", detail: isKo ? "공유하기 좋은 짧은 웃음" : "Shareable quick laughs" },
+                  { href: "https://news.funnyfunny.cloud", icon: "📰", desc: isKo ? "오늘의 IT 뉴스" : "IT news today", detail: isKo ? "국내외 IT 뉴스 요약" : "Quick IT news summaries" },
+                  { href: "https://motivate.funnyfunny.cloud/", icon: "🔥", desc: isKo ? "동기부여 리셋" : "Motivation reset", detail: isKo ? "몇 초 만에 마음가짐 리셋" : "Reset mindset in seconds" },
+                  { href: "https://music.funnyfunny.cloud", icon: "🎵", desc: isKo ? "지금 어울리는 음악" : "Music for this moment", detail: isKo ? "오늘의 리듬에 맞는 무드" : "Music moods for today's rhythm" },
                 ];
                 return insights.map(({ href, icon, desc, detail }) => {
                   const serviceTitle = getServiceTitle(href);
