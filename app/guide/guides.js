@@ -3649,6 +3649,18 @@ const guideSeeds = [
     note: "운영 수칙을 지키지 않는 글은 숨김/삭제될 수 있습니다.",
   },
   {
+    slug: "cheoreomcheoreom",
+    title: "처음처럼 가이드",
+    description: "잊고 지냈던 순간을 다시 떠올리게 하는 하루 한 질문 서비스",
+    category: "커뮤니티",
+    heroEmoji: "🌿",
+    serviceUrl: "https://happy.funnyfunny.cloud/",
+    keywords: ["처음처럼", "초심", "기억", "행복", "하루 한 질문"],
+    usage:
+      "이 서비스는 위로를 주지 않고, 답을 주지 않고, 고치려 들지 않습니다. 하루에 질문 하나만 조용히 건넵니다. 기록은 브라우저에만 저장되며, '오늘은 넘깁니다'를 눌러도 괜찮습니다.",
+    note: "과거 기록은 메뉴에서 '기록에 대해'를 통해 볼 수 있으며, 백업은 선택적으로 내보낼 수 있습니다.",
+  },
+  {
     slug: "chat-random",
     title: "랜덤 채팅 가이드",
     description:

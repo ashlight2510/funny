@@ -201,6 +201,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "익명 1:1 랜덤 채팅. WebSocket 기반." : "Anonymous 1:1 random chat. WebSocket-based.",
   },
   {
+    slug: "cheoreomcheoreom",
+    emoji: "🌿",
+    title: isKo ? "처음처럼 가이드" : "Like the First Time Guide",
+    desc: isKo ? "잊고 지냈던 순간을 다시 떠올리게 하는 하루 한 질문." : "One question a day to recall moments you've forgotten.",
+  },
+  {
     slug: "flow-community",
     emoji: "🧵",
     title: isKo ? "FLOW 커뮤니티 가이드" : "FLOW Community Guide",
@@ -399,6 +405,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["꿈", "일기", "기록", "로컬"]
         : ["dreams", "journal", "records", "local"],
+    },
+    {
+      href: "https://happy.funnyfunny.cloud/",
+      icon: "🌿",
+      title: isKo ? "처음처럼" : "Like the First Time",
+      desc: isKo
+        ? "잊고 지냈던 순간을 다시 떠올리게 하는 하루 한 질문."
+        : "One question a day to recall moments you've forgotten.",
+      tags: isKo
+        ? ["초심", "기억", "행복", "질문"]
+        : ["beginner's mind", "memory", "happiness", "reflection"],
     },
     {
       href: "https://rest.funnyfunny.cloud",

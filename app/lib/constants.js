@@ -78,6 +78,7 @@ export const randomTools = [
   "http://sudoku.funnyfunny.cloud/",
   "https://commute.funnyfunny.cloud/",
   "https://chat.funnyfunny.cloud/",
+  "https://happy.funnyfunny.cloud/",
 ];
 
 // SEO 상위 항목

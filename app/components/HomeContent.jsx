@@ -758,6 +758,7 @@ export function HomeContent() {
                   items: [
                     ["https://today.funnyfunny.cloud", "🌱"],
                     ["https://todo.funnyfunny.cloud/", "✅"],
+                    ["https://happy.funnyfunny.cloud/", "🌿"],
                     ["https://dream.funnyfunny.cloud/", "💭"],
                     ["https://melancholy.funnyfunny.cloud", "🌙"],
                     ["https://dailycheck.funnyfunny.cloud/", "📝"],
@@ -903,6 +904,7 @@ export function HomeContent() {
                   { href: "https://chef.funnyfunny.cloud/", icon: "👨‍🍳", desc: isKo ? "오늘의 선택 심사" : "Today's choice judge", detail: isKo ? "밈 스타일 판단 코멘트" : "Meme-style judging comments" },
                   { href: "https://anju.funnyfunny.cloud", icon: "🍢", desc: isKo ? "오늘의 안주 페어링" : "Today's snack pairing", detail: isKo ? "술과 함께할 랜덤 안주" : "Random snack for drinks" },
                   { href: "https://pick.funnyfunny.cloud", icon: "🍿", desc: isKo ? "오늘 뭐 볼까" : "What to watch today", detail: isKo ? "영화·드라마 추천" : "Movie and drama picks" },
+                  { href: "https://happy.funnyfunny.cloud/", icon: "🌿", desc: isKo ? "처음처럼" : "Like the First Time", detail: isKo ? "잊고 지냈던 순간을 떠올리는 하루 한 질문" : "One question a day to recall forgotten moments" },
                   { href: "https://heal.funnyfunny.cloud", icon: "💌", desc: isKo ? "클릭 한 번 위로 카드" : "One-click comfort card", detail: isKo ? "오늘 필요한 말 전달" : "Words you need today" },
                   { href: "https://fortune.funnyfunny.cloud", icon: "🔮", desc: isKo ? "오늘의 한 줄 운세" : "One-line fortune", detail: isKo ? "기분에 맞는 운세 선택" : "Fortune based on your mood" },
                   { href: "https://wisdom.funnyfunny.cloud", icon: "📜", desc: isKo ? "오늘의 지혜" : "Daily wisdom", detail: isKo ? "성경 영감 한 줄" : "One line from scripture" },
