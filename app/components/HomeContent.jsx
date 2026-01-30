@@ -749,404 +749,140 @@ export function HomeContent() {
               <span className="text-2xl">🧭</span>
               <h3 className="text-xl font-bold">{t("hubTitle")}</h3>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">🧠</span>
-                    <h4 className="font-semibold text-slate-900">
-                      {t("sectionPsychology")}
-                    </h4>
-                  </div>
-                  <span className="text-xs text-slate-600">
-                    {t("label3MinQuick")}
-                  </span>
+            {(() => {
+              const hubCategories = [
+                {
+                  icon: "🧠",
+                  titleKey: "sectionPsychology",
+                  badgeKey: "label3MinQuick",
+                  items: [
+                    ["https://today.funnyfunny.cloud", "🌱"],
+                    ["https://todo.funnyfunny.cloud/", "✅"],
+                    ["https://dream.funnyfunny.cloud/", "💭"],
+                    ["https://melancholy.funnyfunny.cloud", "🌙"],
+                    ["https://dailycheck.funnyfunny.cloud/", "📝"],
+                    ["https://rest.funnyfunny.cloud", "🛋️"],
+                    ["https://mental.funnyfunny.cloud", "🧠"],
+                    ["https://energy.funnyfunny.cloud", "⚡"],
+                    ["https://drain.funnyfunny.cloud", "⚡"],
+                    ["https://product.funnyfunny.cloud", "🚀"],
+                    ["https://lazy.funnyfunny.cloud", "😴"],
+                    ["https://human.funnyfunny.cloud", "🙃"],
+                    ["https://ego.funnyfunny.cloud", "🧬"],
+                    ["https://soul.funnyfunny.cloud", "🔮"],
+                    ["https://senseyear.funnyfunny.cloud", "🎵"],
+                    ["https://saju.funnyfunny.cloud/", "🔮"],
+                    ["https://alcohol.funnyfunny.cloud", "🍺"],
+                    ["https://inlaw.funnyfunny.cloud", "💬"],
+                    ["https://motivate.funnyfunny.cloud/", "🔥"],
+                  ],
+                },
+                {
+                  icon: "💰",
+                  titleKey: "sectionMoney",
+                  badgeKey: "labelRealityCheck",
+                  items: [
+                    ["https://bit.funnyfunny.cloud", "💸"],
+                    ["https://house.funnyfunny.cloud", "🏠"],
+                    ["https://invest.funnyfunny.cloud", "📈"],
+                    ["https://money.funnyfunny.cloud", "🛡️"],
+                    ["https://specific.funnyfunny.cloud/", "🧮"],
+                    ["https://year.funnyfunny.cloud", "🧾"],
+                    ["https://tax.funnyfunny.cloud", "🧾"],
+                    ["https://space.funnyfunny.cloud", "📐"],
+                    ["https://edu.funnyfunny.cloud", "🎓"],
+                    ["https://average.funnyfunny.cloud", "📊"],
+                    ["https://nospend.funnyfunny.cloud", "💸"],
+                    ["https://waste.funnyfunny.cloud", "♻️"],
+                    ["https://commute.funnyfunny.cloud/", "⏰"],
+                    ["https://n.funnyfunny.cloud/", "🍽️"],
+                    ["https://cafe.funnyfunny.cloud", "☕"],
+                    ["https://drink.funnyfunny.cloud", "🍺"],
+                    ["https://beauty.funnyfunny.cloud", "💄"],
+                  ],
+                },
+                {
+                  icon: "🌿",
+                  titleKey: "sectionHealth",
+                  badgeKey: "labelQuickCheck",
+                  items: [
+                    ["https://winter.funnyfunny.cloud", "❄️"],
+                    ["https://coffee.funnyfunny.cloud", "☕"],
+                    ["https://health.funnyfunny.cloud", "🩺"],
+                    ["https://bmi.funnyfunny.cloud/", "📏"],
+                    ["https://hairloss.funnyfunny.cloud/", "🌿"],
+                    ["https://cosmetics.funnyfunny.cloud", "🧴"],
+                    ["https://sleep.funnyfunny.cloud", "🌙"],
+                    ["https://life.funnyfunny.cloud", "⏰"],
+                    ["https://cook.funnyfunny.cloud", "🍱"],
+                    ["https://fridge.funnyfunny.cloud", "🥕"],
+                    ["https://anju.funnyfunny.cloud", "🍢"],
+                    ["https://weather.funnyfunny.cloud", "🌤️"],
+                    ["https://baby.funnyfunny.cloud/", "👶"],
+                    ["https://miracle.funnyfunny.cloud/", "🌍"],
+                  ],
+                },
+                {
+                  icon: "🎉",
+                  titleKey: "sectionFun",
+                  badgeKey: "label1MinChill",
+                  items: [
+                    ["https://heal.funnyfunny.cloud", "💌"],
+                    ["https://fortune.funnyfunny.cloud", "🔮"],
+                    ["https://need.funnyfunny.cloud/", "🧭"],
+                    ["https://wisdom.funnyfunny.cloud", "📜"],
+                    ["https://temple.funnyfunny.cloud/", "🛕"],
+                    ["https://hwatu.funnyfunny.cloud", "🎴"],
+                    ["https://joke.funnyfunny.cloud", "🤣"],
+                    ["https://mind.funnyfunny.cloud", "🧠"],
+                    ["https://soccer.funnyfunny.cloud", "⚽"],
+                    ["https://balance.funnyfunny.cloud/", "⚖️"],
+                    ["https://random.funnyfunny.cloud/", "🎱"],
+                    ["https://pick.funnyfunny.cloud", "🍿"],
+                    ["https://beat.funnyfunny.cloud", "🥁"],
+                    ["https://maldives.funnyfunny.cloud", "🏝️"],
+                    ["https://hand.funnyfunny.cloud/", "✋"],
+                    ["https://snaptrail.funnyfunny.cloud", "📍"],
+                    ["https://xmas.funnyfunny.cloud/", "🎁"],
+                  ],
+                },
+              ];
+              return (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {hubCategories.map((cat) => (
+                    <div
+                      key={cat.titleKey}
+                      className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200"
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">{cat.icon}</span>
+                          <h4 className="font-semibold text-slate-900">
+                            {t(cat.titleKey)}
+                          </h4>
+                        </div>
+                        <span className="text-xs text-slate-600">
+                          {t(cat.badgeKey)}
+                        </span>
+                      </div>
+                      <div className="space-y-2 text-sm text-slate-700">
+                        {cat.items.map(([href, emoji]) => (
+                          <a
+                            key={href}
+                            className="block hover:text-blue-600"
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {emoji} {getServiceTitle(href)}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-2 text-sm text-slate-700">
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://today.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🌱 {getServiceTitle("https://today.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://next.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔮 {getServiceTitle("https://next.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://mental.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🧠 {getServiceTitle("https://mental.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://energy.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ⚡ {getServiceTitle("https://energy.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://rest.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🛋️ {getServiceTitle("https://rest.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://product.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🚀 {getServiceTitle("https://product.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://lazy.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    😴 {getServiceTitle("https://lazy.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://human.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🙃 {getServiceTitle("https://human.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://soul.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔮 {getServiceTitle("https://soul.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://senseyear.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🎵 {getServiceTitle("https://senseyear.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://alcohol.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🍺 {getServiceTitle("https://alcohol.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://ego.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🧬 {getServiceTitle("https://ego.funnyfunny.cloud")}
-                  </a>
-                </div>
-              </div>
-              <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">💰</span>
-                    <h4 className="font-semibold text-slate-900">
-                      {t("sectionMoney")}
-                    </h4>
-                  </div>
-                  <span className="text-xs text-slate-600">
-                    {t("labelRealityCheck")}
-                  </span>
-                </div>
-                <div className="space-y-2 text-sm text-slate-700">
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://bit.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    💸 {getServiceTitle("https://bit.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://house.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🏠 {getServiceTitle("https://house.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://invest.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📈 {getServiceTitle("https://invest.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://space.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📐 {getServiceTitle("https://space.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://year.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🧾 {getServiceTitle("https://year.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://money.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🛡️ {getServiceTitle("https://money.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://specific.funnyfunny.cloud/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🧮 {getServiceTitle("https://specific.funnyfunny.cloud/")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://edu.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🎓 {getServiceTitle("https://edu.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://average.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📊 {getServiceTitle("https://average.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://nospend.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    💸 {getServiceTitle("https://nospend.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://waste.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ♻️ {getServiceTitle("https://waste.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://cafe.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ☕ {getServiceTitle("https://cafe.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://drink.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🍺 {getServiceTitle("https://drink.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://beauty.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    💄 {getServiceTitle("https://beauty.funnyfunny.cloud")}
-                  </a>
-                </div>
-              </div>
-              <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">🌿</span>
-                    <h4 className="font-semibold text-slate-900">
-                      {t("sectionHealth")}
-                    </h4>
-                  </div>
-                  <span className="text-xs text-slate-600">
-                    {t("labelQuickCheck")}
-                  </span>
-                </div>
-                <div className="space-y-2 text-sm text-slate-700">
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://winter.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ❄️ {getServiceTitle("https://winter.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://coffee.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ☕ {getServiceTitle("https://coffee.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://rest.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🛋️ {getServiceTitle("https://rest.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://health.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🩺 {getServiceTitle("https://health.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://cook.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🍱 {getServiceTitle("https://cook.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://anju.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🍢 {getServiceTitle("https://anju.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://life.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ⏰ {getServiceTitle("https://life.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://weather.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🌤️ {getServiceTitle("https://weather.funnyfunny.cloud")}
-                  </a>
-                </div>
-              </div>
-              <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">🎉</span>
-                    <h4 className="font-semibold text-slate-900">
-                      {t("sectionFun")}
-                    </h4>
-                  </div>
-                  <span className="text-xs text-slate-600">
-                    {t("label1MinChill")}
-                  </span>
-                </div>
-                <div className="space-y-2 text-sm text-slate-700">
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://joke.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🤣 {getServiceTitle("https://joke.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://fortune.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔮 {getServiceTitle("https://fortune.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://soccer.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ⚽ {getServiceTitle("https://soccer.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://mind.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🧠 {getServiceTitle("https://mind.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://random.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🎱 {getServiceTitle("https://random.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://beat.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🥁 Drum Beat Practice
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://pick.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🍿 {getServiceTitle("https://pick.funnyfunny.cloud")}
-                  </a>
-                  <a
-                    className="block hover:text-blue-600"
-                    href="https://snaptrail.funnyfunny.cloud"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📍 {getServiceTitle("https://snaptrail.funnyfunny.cloud")}
-                  </a>
-                </div>
-              </div>
-            </div>
+              );
+            })()}
           </div>
           <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
             <div className="flex items-center gap-2 mb-5">
