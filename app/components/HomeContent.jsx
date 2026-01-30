@@ -1609,6 +1609,28 @@ export function HomeContent() {
                   {t("gamePinballDesc")}
                 </p>
               </a>
+              <a
+                href="http://sudoku.funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sudoku Web Game - classic sudoku with selectable difficulty"
+                data-amp-service="Sudoku Web Game"
+                data-amp-section="game"
+                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl">🧩</span>
+                  <span className="text-xs font-semibold text-slate-600">
+                    {t("gameSudoku")}
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg leading-snug">
+                  {getServiceTitle("http://sudoku.funnyfunny.cloud/")}
+                </h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  {t("gameSudokuDesc")}
+                </p>
+              </a>
             </div>
           </div>
           <div className="rounded-2xl bg-gradient-to-br from-emerald-900 via-red-800 to-emerald-900 text-white pt-6 pb-6 pl-[54px] pr-[54px] sm:pt-14 sm:pb-14 sm:pl-[70px] sm:pr-[70px] shadow-lg">

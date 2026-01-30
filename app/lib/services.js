@@ -1417,8 +1417,10 @@ export function getAllServices(lang = "en") {
     {
       href: "http://sudoku.funnyfunny.cloud/",
       icon: "🧩",
-      title: "Sudoku Web Game",
-      desc: "Classic sudoku with selectable difficulty.",
+      title: isKo ? "스도쿠 웹게임" : "Sudoku Web Game",
+      desc: isKo
+        ? "난이도별로 선택할 수 있는 클래식 스도쿠."
+        : "Classic sudoku with selectable difficulty.",
       tags: isKo
         ? ["스도쿠", "퍼즐", "게임", "두뇌"]
         : ["sudoku", "puzzle", "game", "brain"],
