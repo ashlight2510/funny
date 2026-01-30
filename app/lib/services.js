@@ -303,6 +303,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "굴러가는 핀볼로 랜덤 당첨자를 선택하고 결과를 공유하세요." : "Use rolling pinballs to pick random winners and share results.",
   },
   {
+    slug: "neox-arcade-shooter",
+    emoji: "🚀",
+    title: isKo ? "NEOX 아케이드 슈터 가이드" : "NEOX Arcade Shooter Guide",
+    desc: isKo ? "네온 탄막을 피하며 최고 점수에 도전하는 NEOX 활용 가이드." : "Guide to NEOX: dodge neon barrages and chase high scores.",
+  },
+  {
     slug: "one-line-fortune",
     emoji: "🔮",
     title: isKo ? "한 줄 운세 가이드" : "One-Line Fortune Guide",
@@ -1287,6 +1293,17 @@ export function getAllServices(lang = "en") {
         ? "계단에서 좌우로 발 디디기. 떨어지면 끝."
         : "Step left/right on stairs; fall and it’s over.",
       tags: isKo ? ["게임", "아케이드", "계단"] : ["game", "arcade", "stairs"],
+    },
+    {
+      href: "https://neox.funnyfunny.cloud/",
+      icon: "🚀",
+      title: isKo ? "NEOX 네오 아케이드 슈터" : "NEOX Neo Arcade Shooter",
+      desc: isKo
+        ? "네온 탄막을 피하며 점수를 올리는 슈팅 게임."
+        : "An arcade shooter where you dodge neon barrages and climb the score.",
+      tags: isKo
+        ? ["게임", "아케이드", "슈팅", "네온"]
+        : ["game", "arcade", "shooter", "neon"],
     },
     {
       href: "https://tet.funnyfunny.cloud/",

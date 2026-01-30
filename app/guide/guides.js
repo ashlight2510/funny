@@ -3685,6 +3685,20 @@ const guideSeeds = [
     note: "힌트와 정답 보기 기능은 학습용입니다. 기록에 도전할 때는 사용을 최소화하세요.",
   },
   {
+    slug: "neox-arcade-shooter",
+    title: "NEOX 네오 아케이드 슈터 가이드",
+    description:
+      "네온 탄막을 피하고 콤보를 쌓아 점수 기록에 도전하는 NEOX 플레이 가이드",
+    category: "엔터테인먼트",
+    heroEmoji: "🚀",
+    serviceUrl: "https://neox.funnyfunny.cloud/",
+    keywords: ["NEOX", "아케이드 슈터", "네온", "탄막", "하이스코어"],
+    usage:
+      "이동으로 탄막을 피하고, 연속 회피·정확한 타이밍으로 점수를 쌓아보세요. 게임 리듬이 빨라지니 초반에는 안전한 경로를 우선하세요.",
+    note:
+      "아케이드 기록 도전용 게임입니다. 장시간 플레이 시 휴식을 권장합니다.",
+  },
+  {
     slug: "soccer-combo",
     title: "우리 둘의 조합이 낳을 축구선수는? 가이드",
     description:
