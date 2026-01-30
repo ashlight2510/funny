@@ -3649,6 +3649,19 @@ const guideSeeds = [
     note: "운영 수칙을 지키지 않는 글은 숨김/삭제될 수 있습니다.",
   },
   {
+    slug: "chat-random",
+    title: "랜덤 채팅 가이드",
+    description:
+      "익명으로 무작위 상대와 1:1 대화하는 랜덤 채팅 사용법과 활용 팁",
+    category: "커뮤니티",
+    heroEmoji: "💬",
+    serviceUrl: "https://chat.funnyfunny.cloud/",
+    keywords: ["랜덤 채팅", "익명", "1:1 대화", "채팅", "WebSocket"],
+    usage:
+      "매칭 하기를 누르면 랜덤으로 상대가 연결됩니다. 긍정적이고 착한 대화를 나누면 본인에게도 복이 돌아온답니다. 상대가 마음에 들지 않으면 '다른 상대 찾기'로 새로 매칭할 수 있습니다. 부적절한 대화는 신고하기로 제보해 주세요.",
+    note: "영문 페이지(en.html)에서 영어로도 이용할 수 있습니다.",
+  },
+  {
     slug: "emote-emotion",
     title: "희노애락 가이드",
     description:

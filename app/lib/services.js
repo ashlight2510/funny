@@ -195,6 +195,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "겨울 무너짐 패턴을 발견하고 10분 루틴으로 해결하세요." : "Spot your winter crash pattern and fix it with a 10-minute routine.",
   },
   {
+    slug: "chat-random",
+    emoji: "💬",
+    title: isKo ? "랜덤 채팅 가이드" : "Random Chat Guide",
+    desc: isKo ? "익명 1:1 랜덤 채팅. WebSocket 기반." : "Anonymous 1:1 random chat. WebSocket-based.",
+  },
+  {
     slug: "flow-community",
     emoji: "🧵",
     title: isKo ? "FLOW 커뮤니티 가이드" : "FLOW Community Guide",
@@ -459,6 +465,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["커뮤니티", "게시판", "토론"]
         : ["community", "board", "discussion"],
+    },
+    {
+      href: "https://chat.funnyfunny.cloud/",
+      icon: "💬",
+      title: isKo ? "랜덤 채팅" : "Random Chat",
+      desc: isKo
+        ? "익명으로 무작위 상대와 1:1 대화."
+        : "1:1 anonymous chat with random strangers.",
+      tags: isKo
+        ? ["채팅", "익명", "랜덤", "대화"]
+        : ["chat", "anonymous", "random", "conversation"],
     },
     {
       href: "https://coffee.funnyfunny.cloud",
