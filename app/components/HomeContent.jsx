@@ -485,7 +485,7 @@ export function HomeContent() {
                   {getServiceTitle("https://file.funnyfunny.cloud/")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  WebP/JPEG re-encode, auto-resize, file info, hash
+                  {t("top9FileDesc")}
                 </p>
               </a>
               <a
@@ -507,7 +507,7 @@ export function HomeContent() {
                   {getServiceTitle("https://meta.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Auto-generate SEO/OG/favicon and copy-paste
+                  {t("top9MetaDesc")}
                 </p>
               </a>
               <a
@@ -529,7 +529,7 @@ export function HomeContent() {
                   {getServiceTitle("https://image.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Drag to sort → one image or PDF
+                  {t("top9ImageDesc")}
                 </p>
               </a>
               <a
@@ -551,7 +551,7 @@ export function HomeContent() {
                   {getServiceTitle("https://ocr.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Copy text straight from photos
+                  {t("top9OcrDesc")}
                 </p>
               </a>
               <a
@@ -573,7 +573,7 @@ export function HomeContent() {
                   {getServiceTitle("https://time.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Accurate server time and time zones
+                  {t("top9TimeDesc")}
                 </p>
               </a>
               <a
@@ -595,7 +595,7 @@ export function HomeContent() {
                   {getServiceTitle("https://weather.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Feels-like temp, dust, and UV
+                  {t("top9WeatherDesc")}
                 </p>
               </a>
               <a
@@ -617,7 +617,7 @@ export function HomeContent() {
                   {getServiceTitle("https://news.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Quick IT news highlights
+                  {t("top9NewsDesc")}
                 </p>
               </a>
               <a
@@ -639,7 +639,7 @@ export function HomeContent() {
                   {getServiceTitle("https://audio.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Trim, merge, export
+                  {t("top9AudioDesc")}
                 </p>
               </a>
               <a
@@ -661,7 +661,7 @@ export function HomeContent() {
                   {getServiceTitle("https://emojicon.funnyfunny.cloud")}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Emoji to icons and favicons
+                  {t("top9EmojiconDesc")}
                 </p>
               </a>
             </div>
@@ -1832,41 +1832,16 @@ export function HomeContent() {
         </section>
 
         <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 pb-10 sm:pb-12">
-          <div className="mt-6 sm:mt-8">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              {t("guidesLabel")}
-            </div>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {seoGuides.map((guide) => (
-                <a
-                  key={guide.slug}
-                  href={`/guide/${guide.slug}`}
-                  aria-label={`${guide.title} - ${guide.desc}`}
-                  data-amp-service={guide.title}
-                  data-amp-section="guides"
-                  className="flex items-start gap-3 p-4 rounded-2xl bg-white text-slate-900 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition"
-                >
-                  <div className="text-xl">{guide.emoji}</div>
-                  <div>
-                    <h3 className="font-semibold text-base text-slate-900">
-                      {guide.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-1">{guide.desc}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div className="mt-3">
-              <a
-                href="/guide"
-                aria-label={t("viewAllGuides")}
-                data-amp-service={t("viewAllGuides")}
-                data-amp-section="guides"
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
-              >
-                {t("viewAllGuides")}
-              </a>
-            </div>
+          <div className="mt-6 sm:mt-8 flex justify-center">
+            <a
+              href="/guide"
+              aria-label={t("viewAllGuides")}
+              data-amp-service={t("viewAllGuides")}
+              data-amp-section="guides"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-slate-200 text-base font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 hover:shadow-md transition"
+            >
+              📚 {t("viewAllGuides")}
+            </a>
           </div>
         </section>
       </main>
