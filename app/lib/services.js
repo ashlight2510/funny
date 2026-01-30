@@ -350,6 +350,12 @@ export function getSeoGuides(lang = "en") {
     title: isKo ? "절 일일 명언 가이드" : "Temple Daily Quote Guide",
     desc: isKo ? "불교 가르침을 현대 언어로 표현한 일일 한 줄을 선택하고 공유하세요." : "Pick and share daily lines based on Buddhist teachings in modern language.",
   },
+  {
+    slug: "hairloss-roadmap",
+    emoji: "🌿",
+    title: isKo ? "탈모 개선 로드맵 가이드" : "Hairloss Improvement Roadmap Guide",
+    desc: isKo ? "설문으로 상태를 확인하고 오늘부터 바꿀 행동 TOP 3를 확인하세요." : "Check your status with a quick survey and get the top 3 actions to start today.",
+  },
   ];
 }
 
@@ -850,6 +856,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["건강", "은퇴", "장수"]
         : ["health", "retirement", "longevity"],
+    },
+    {
+      href: "https://hairloss.funnyfunny.cloud/",
+      icon: "🌿",
+      title: isKo ? "탈모 개선 로드맵" : "Hairloss Improvement Roadmap",
+      desc: isKo
+        ? "설문으로 상태를 파악하고 오늘부터 바꿀 행동 TOP 3 확인."
+        : "Use a quick survey to get the top 3 actions to start today.",
+      tags: isKo
+        ? ["탈모", "두피", "루틴", "개선", "건강"]
+        : ["hairloss", "scalp", "routine", "improvement", "health"],
     },
     {
       href: "https://bmi.funnyfunny.cloud/",

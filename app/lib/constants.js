@@ -38,6 +38,7 @@ export const randomTools = [
   "https://nospend.funnyfunny.cloud",
   "https://waste.funnyfunny.cloud",
   "https://health.funnyfunny.cloud",
+  "https://hairloss.funnyfunny.cloud/",
   "https://bmi.funnyfunny.cloud/",
   "https://cafe.funnyfunny.cloud",
   "https://drink.funnyfunny.cloud",
@@ -183,6 +184,13 @@ export const seoApplications = [
     description:
       "Check your products and features to find gaps, overloads, and a minimal plan.",
     category: "LifestyleApplication",
+  },
+  {
+    name: "Hairloss Improvement Roadmap",
+    url: "https://hairloss.funnyfunny.cloud/",
+    description:
+      "A short survey that suggests the top 3 habits to improve hair care routines.",
+    category: "HealthApplication",
   },
   {
     name: "Winter Trigger Top 1",

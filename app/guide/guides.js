@@ -3787,6 +3787,22 @@ const guideSeeds = [
     keywords: ["건강수명", "노후 준비", "생활습관", "건강 점검"],
   },
   {
+    slug: "hairloss-roadmap",
+    title: "탈모 개선 로드맵 가이드",
+    description:
+      "설문으로 두피/습관 상태를 점검하고 오늘부터 바꿀 행동 TOP 3를 받는 로드맵 안내",
+    category: "뷰티",
+    heroEmoji: "🌿",
+    serviceUrl: "https://hairloss.funnyfunny.cloud/",
+    keywords: ["탈모", "두피", "생활습관", "개선", "루틴"],
+    focus: "현재 상태 점검과 행동 우선순위",
+    benefit: "오늘부터 바꿀 핵심 습관 3가지를 바로 확인",
+    usage:
+      "간단한 설문을 완료하면 현재 상태와 함께 바꿔야 할 행동 TOP 3가 제안됩니다. 가장 쉬운 항목부터 시작하고, 2주 단위로 변화 체감을 기록해 보세요.",
+    disclaimer:
+      "본 서비스는 의료 진단이 아니며, 증상이 지속되면 전문가와 상담하세요.",
+  },
+  {
     slug: "cook-picker",
     title: "오늘 뭐 먹지? 가이드",
     description: "랜덤 메뉴 추천으로 식사 결정을 돕는 '오늘 뭐 먹지?' 사용법",
