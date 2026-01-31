@@ -47,10 +47,13 @@ function getInitialLang() {
 }
 
 export default function GuideIndexPage() {
-  const [lang, setLang] = useState(getInitialLang);
+  const [lang, setLang] = useState(defaultLang);
   const translationPack = guidePageCopy[lang] || guidePageCopy[defaultLang];
   const seoGuides = getSeoGuides(lang);
 
+  useEffect(() => {
+    setLang(getInitialLang());
+  }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);

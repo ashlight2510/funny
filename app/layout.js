@@ -143,11 +143,11 @@ export default function RootLayout({ children }) {
         {children}
       <div
         className="adsense-block"
-        style={{ margin: '16px 0', display: 'flex', justifyContent: 'center' }}
+        style={{ margin: '16px 0', display: 'flex', justifyContent: 'center', minWidth: 250 }}
       >
         <ins
           className="adsbygoogle"
-          style={{ display: 'block', margin: '0 auto' }}
+          style={{ display: 'block', margin: '0 auto', minWidth: 250 }}
           data-ad-format="fluid"
           data-ad-layout-key="-6t+ed+2i-1n-4w"
           data-ad-client="ca-pub-1204894220949193"

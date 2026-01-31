@@ -9,7 +9,7 @@ import { pageCopy } from "../../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../../lib/i18n";
 
 export function GuidePageClient({ guide }) {
-  const [lang, setLang] = useState(getInitialLang);
+  const [lang, setLang] = useState(defaultLang);
 
   const translationPack = pageCopy[lang] || pageCopy[defaultLang];
   const fallbackPack = pageCopy[defaultLang];
@@ -19,6 +19,9 @@ export function GuidePageClient({ guide }) {
   // 언어별로 가이드 데이터 가져오기
   const translatedGuide = getGuide(guide.slug, lang) || guide;
 
+  useEffect(() => {
+    setLang(getInitialLang());
+  }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
     window.localStorage?.setItem("preferredLang", lang);

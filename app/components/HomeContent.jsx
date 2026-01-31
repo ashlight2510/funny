@@ -14,7 +14,7 @@ import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
 
 export function HomeContent() {
-  const [lang, setLang] = useState(getInitialLang);
+  const [lang, setLang] = useState(defaultLang);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
   const [tagsExpanded, setTagsExpanded] = useState(false);
@@ -24,6 +24,9 @@ export function HomeContent() {
   const seoGuides = getSeoGuides(lang);
   const seoFaq = getSeoFaq(lang);
 
+  useEffect(() => {
+    setLang(getInitialLang());
+  }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
     window.localStorage?.setItem("preferredLang", lang);
