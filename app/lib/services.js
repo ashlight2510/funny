@@ -153,6 +153,12 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "이미지에서 텍스트를 추출하고 복사하는 빠른 OCR 워크플로우." : "Quick OCR workflow to extract and copy text from images.",
   },
   {
+    slug: "image-translate-how",
+    emoji: "🖼️",
+    title: isKo ? "이미지 번역기 사용법" : "Image Translator How-To",
+    desc: isKo ? "이미지 OCR 후 한·영 번역하는 방법. 스크린샷·메뉴판·문서 사진에 적합." : "How to extract text from images (OCR) and translate between Korean and English.",
+  },
+  {
     slug: "today-well-done",
     emoji: "🌱",
     title: isKo ? "오늘, 잘했어 가이드" : "Today, Well Done Guide",
@@ -1245,6 +1251,17 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["OCR", "텍스트", "사진", "변환"]
         : ["OCR", "text", "photo", "convert"],
+    },
+    {
+      href: "https://imtranslate.funnyfunny.cloud",
+      icon: "🖼️",
+      title: isKo ? "이미지 번역기" : "Image Translator",
+      desc: isKo
+        ? "이미지에서 글자 추출(OCR) 후 한·영 번역. 스크린샷·메뉴판·문서 사진에 적합."
+        : "Extract text from images (OCR) then translate between Korean and English.",
+      tags: isKo
+        ? ["이미지", "OCR", "번역", "한영"]
+        : ["image", "OCR", "translate", "Korean", "English"],
     },
     {
       href: "https://time.funnyfunny.cloud",

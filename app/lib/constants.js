@@ -14,6 +14,7 @@ export const randomTools = [
   `${TOOLS_BASE}/file/`,
   `${TOOLS_BASE}/meta/`,
   `${TOOLS_BASE}/ocr/`,
+  `${TOOLS_BASE}/imtranslate/`,
   `${TOOLS_BASE}/beauty/`,
   `${TOOLS_BASE}/cosmetics/`,
   `${TOOLS_BASE}/year/`,

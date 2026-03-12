@@ -32,6 +32,8 @@ const PRIORITY_PATHS = [
   "/tools/cafe/",
   "/tools/space/",
   "/tools/commute/",
+  "/tools/imtranslate/",
+  "/guide/image-translate-how/",
 ];
 
 function main() {
