@@ -1,0 +1,26 @@
+name: Audit tool meta
+
+on:
+  push:
+    branches: [main]
+    paths: ["public/tools/**", "app/lib/services.js", "scripts/audit-tool-meta.mjs"]
+  pull_request:
+    branches: [main]
+    paths: ["public/tools/**", "app/lib/services.js", "scripts/audit-tool-meta.mjs"]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Audit tool meta (og:title, description)
+        run: node scripts/audit-tool-meta.mjs

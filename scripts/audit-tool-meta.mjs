@@ -62,6 +62,11 @@ function main() {
   console.log("\n=== description 50자 미만 (" + shortDesc.length + ") ===");
   shortDesc.forEach((r) => console.log(r.slug));
   if (missingOg.length > 0) console.log("\n추가: node scripts/add-og-meta.mjs 로 OG 보강 가능");
+  if (missingDesc.length > 0) console.log("추가: node scripts/add-missing-description.mjs 로 description 보강 가능");
+  if (shortTitle.length > 0 || shortDesc.length > 0) console.log("보강: node scripts/sync-tool-meta-from-services.mjs 로 title/description 길이 보강 가능");
+
+  const fail = missingOg.length > 0 || missingDesc.length > 0;
+  process.exit(fail ? 1 : 0);
 }
 
 main();

@@ -5,7 +5,11 @@ export const metadata = {
   description:
     "FunnyFunny Cloud helps you review everyday spending, time, and habits with simple tests and calculators. Free tests, calculators, and utility tools for productivity, finance, and lifestyle.",
   alternates: { canonical: "/" },
-  openGraph: { url: "https://funnyfunny.cloud/" },
+  openGraph: {
+    url: "https://funnyfunny.cloud/",
+    title: "FunnyFunny Cloud — 무료 테스트·계산기·가이드",
+    description: "휴식 체크, 세금·N빵·평수 계산기, BMI·자산 방탄 지수 등 무료 테스트·계산기·사용 가이드 모음.",
+  },
   robots: { index: true, follow: true, googleBot: { "max-image-preview": "large" } },
   keywords: [
     "FunnyFunny",

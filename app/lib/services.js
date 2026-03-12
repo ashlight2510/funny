@@ -387,7 +387,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://todo.funnyfunny.cloud/",
       icon: "✅",
-      title: isKo ? "오늘의 할 일" : "Today's To-Do",
+      title: isKo ? "오늘의 할 일 · 집중할 일만 체크" : "Today's To-Do",
       desc: isKo
         ? "집중할 일만 남기고 깔끔하게 체크하자."
         : "Keep only focus tasks and check them off cleanly.",
@@ -398,7 +398,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://dream.funnyfunny.cloud/",
       icon: "💭",
-      title: isKo ? "꿈 일기" : "Dream Diary",
+      title: isKo ? "꿈 일기 — 꿈 기록·태그 정리" : "Dream Diary",
       desc: isKo
         ? "태그로 정리하는 로컬 꿈 기록장."
         : "A local dream journal with tagging.",
@@ -409,7 +409,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://happy.funnyfunny.cloud/",
       icon: "🌿",
-      title: isKo ? "처음처럼" : "Like the First Time",
+      title: isKo ? "처음처럼 — 하루 한 질문 기억" : "Like the First Time",
       desc: isKo
         ? "잊고 지냈던 순간을 다시 떠올리게 하는 하루 한 질문."
         : "One question a day to recall moments you've forgotten.",
@@ -464,7 +464,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://motivate.funnyfunny.cloud/",
       icon: "🔥",
-      title: isKo ? "동기부여 리셋" : "Motivation Reset",
+      title: isKo ? "동기부여 리셋 — 마음 한 문장" : "Motivation Reset",
       desc: isKo
         ? "마음을 리셋할 짧은 한 문장 받기."
         : "Get a short line to reset your mindset.",
@@ -762,7 +762,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://invest.funnyfunny.cloud",
       icon: "📈",
-      title: isKo ? "투자 확신 빌더" : "Investment Confidence Builder",
+      title: isKo ? "투자 확신 빌더 — 투자 심리 점검" : "Investment Confidence Builder",
       desc: isKo
         ? "수익률이 아니라 판단을 기록해 흔들림 줄이기."
         : "Log your judgment, not returns, to reduce wobbles.",
@@ -795,7 +795,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://n.funnyfunny.cloud/",
       icon: "🍽️",
-      title: isKo ? "N빵 계산기" : "Split-the-Bill Calculator",
+      title: isKo ? "N빵 계산기 — 1인당 비용 계산" : "Split-the-Bill Calculator",
       desc: isKo
         ? "장소, 인원, 총액 입력으로 1인당 비용 계산·복사."
         : "Enter venue, headcount, and total to calculate and copy per-person cost.",
@@ -828,7 +828,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://fridge.funnyfunny.cloud",
       icon: "🥕",
-      title: isKo ? "냉장고 구조대" : "Fridge Rescue",
+      title: isKo ? "냉장고 구조대 — 재료로 만드는 요리" : "Fridge Rescue",
       desc: isKo
         ? "냉장고에 있는 재료로 지금 가능한 요리를 구조합니다."
         : "Rescue recipes you can make right now with ingredients in your fridge.",
@@ -1381,7 +1381,7 @@ export function getAllServices(lang = "en") {
     {
       href: "https://random.funnyfunny.cloud/",
       icon: "🎱",
-      title: isKo ? "네온 핀볼 랜덤 뽑기" : "Neon Pinball Random Draw",
+      title: isKo ? "네온 핀볼 랜덤 뽑기 — 번호 추첨" : "Neon Pinball Random Draw",
       desc: isKo
         ? "굴러가는 핀볼로 랜덤 당첨자 선택."
         : "Rolling pinballs pick a random winner.",
