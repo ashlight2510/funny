@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Space — 평수 변환기</title>
+    <meta name="description" content="평 ↔ ㎡ ↔ ft² 빠른 변환 (Space)" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=Space"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b1020'/%3E%3Ctext x='50' y='62' font-size='60' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: rgba(17, 26, 51, 0.82);
+        --text: #e9eeff;
+        --muted: #9aa7c7;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #2b5cff;
+        --ok: #22c55e;
+        --warn: #f59e0b;
+        --radius: 18px;
+        --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+      * {
+        box-sizing: border-box;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Apple SD Gothic Neo, Noto Sans KR;
+      }
+      body {
+        margin: 0;
+        color: var(--text);
+        background: radial-gradient(1200px 700px at 20% 0%, #1a2b5a, var(--bg)),
+          radial-gradient(900px 600px at 90% 20%, #10224a, transparent);
+        min-height: 100vh;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+      .brand .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(
+          135deg,
+          rgba(43, 92, 255, 0.35),
+          rgba(255, 255, 255, 0.06)
+        );
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        font-size: 18px;
+      }
+      .brand .title {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+      .brand .title small {
+        font-weight: 600;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      button {
+        border: none;
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-weight: 800;
+        cursor: pointer;
+        color: white;
+        background: var(--accent);
+        box-shadow: 0 12px 30px rgba(43, 92, 255, 0.18);
+      }
+      button.ghost {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--text);
+        box-shadow: none;
+      }
+      .btn-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-weight: 800;
+        cursor: pointer;
+        color: white;
+        background: var(--accent);
+        box-shadow: 0 12px 30px rgba(43, 92, 255, 0.18);
+      }
+      .btn-link.ghost {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--text);
+        box-shadow: none;
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+      }
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+      .card h2,
+      .card h3 {
+        margin: 0 0 12px 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .row.between {
+        justify-content: space-between;
+      }
+      .pill {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--text);
+        font-size: 13px;
+      }
+      .pill strong {
+        font-size: 13px;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      @media (max-width: 520px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .field {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .field label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.2px;
+        margin-bottom: 8px;
+      }
+      .field label .unit {
+        color: var(--text);
+        font-weight: 900;
+      }
+      .input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        background: #0f1733;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        padding: 12px 12px;
+        border-radius: 12px;
+        outline: none;
+        font-size: 16px;
+        font-weight: 800;
+      }
+      input[type="text"]::placeholder {
+        color: rgba(154, 167, 199, 0.6);
+        font-weight: 700;
+      }
+      .mini {
+        padding: 9px 10px;
+        border-radius: 12px;
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--text);
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: none;
+        white-space: nowrap;
+      }
+      .mini.ok {
+        border-color: rgba(34, 197, 94, 0.45);
+      }
+      .mini.warn {
+        border-color: rgba(245, 158, 11, 0.45);
+      }
+      .mini:active {
+        transform: translateY(1px);
+      }
+      .help {
+        margin-top: 10px;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .quick {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .quick button {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--text);
+        box-shadow: none;
+        padding: 8px 10px;
+        border-radius: 999px;
+        font-weight: 900;
+      }
+      .sep {
+        height: 1px;
+        background: var(--line);
+        margin: 12px 0;
+      }
+      select {
+        width: 100%;
+        background: #0f1733;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        padding: 12px 12px;
+        border-radius: 12px;
+        outline: none;
+        font-weight: 800;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        background: rgba(17, 26, 51, 0.92);
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        border-radius: 999px;
+        color: var(--text);
+        box-shadow: var(--shadow);
+        display: none;
+        gap: 8px;
+        align-items: center;
+        font-weight: 900;
+        max-width: 92vw;
+      }
+      .toast.show {
+        display: inline-flex;
+      }
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          monospace;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        font-weight: 800;
+      }
+      footer {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      display: inline-flex;
+      gap: 4px;
+      padding: 2px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-switch button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .lang-switch button:hover {
+      background: rgba(43, 92, 255, 0.2);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/space/" />
+  </head>
+
+  <body><div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo">🛰️</div>
+          <div class="title">
+            <div>Space</div>
+            <small data-i18n="titleSmall">평 ↔ ㎡ ↔ ft² 변환기</small>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">KR</button>
+            <button type="button" data-lang="en">EN</button>
+          </div>
+          <a
+            class="btn-link ghost"
+            href="https://funnyfunny.cloud/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="viewMore"
+          >
+            🌐 다른 서비스 보기
+          </a>
+          <button id="btnSwap" class="ghost" data-i18n-title="btnSwapTitle" title="기준 입력칸 바꾸기">
+            ⇄ <span data-i18n="btnSwap">스왑</span>
+          </button>
+          <button id="btnShare" class="ghost" data-i18n-title="btnShareTitle" title="현재 값으로 링크 복사">
+            🔗 <span data-i18n="btnShare">공유</span>
+          </button>
+          <button id="btnReset" data-i18n-title="btnResetTitle" title="초기화" data-i18n="btnReset">초기화</button>
+        </div>
+      </header>
+
+      <div class="grid">
+        <section class="card">
+          <div class="row between">
+            <h2 style="margin: 0" data-i18n="sectionTitle">변환</h2>
+            <div class="row">
+              <span class="pill" data-i18n="pillRealtime">⚡ 실시간</span>
+              <span class="pill" data-i18n-html="pillConverter">⌛ 10분? <strong>아니고</strong> 변환기 😄</span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <div class="field" data-unit="pyeong">
+              <label>
+                <span data-i18n="labelInput">입력</span>
+                <span class="unit" data-i18n="unitPyeong">평 (pyeong)</span>
+              </label>
+              <div class="input">
+                <input
+                  id="inPyeong"
+                  type="text"
+                  inputmode="decimal"
+                  data-i18n-placeholder="placeholderExample"
+                  placeholder="예: 24"
+                />
+                <button class="mini ok" id="copyPyeong" data-i18n-title="btnCopy" title="복사" data-i18n="btnCopy">
+                  복사
+                </button>
+              </div>
+              <div class="help" data-i18n="helpPyeong">부동산에서 흔히 쓰는 평 단위.</div>
+            </div>
+
+            <div class="field" data-unit="sqm">
+              <label>
+                <span data-i18n="labelInput">입력</span>
+                <span class="unit" data-i18n="unitSqm">㎡ (m²)</span>
+              </label>
+              <div class="input">
+                <input
+                  id="inSqm"
+                  type="text"
+                  inputmode="decimal"
+                  data-i18n-placeholder="placeholderExample"
+                  placeholder="예: 84"
+                />
+                <button class="mini ok" id="copySqm" data-i18n-title="btnCopy" title="복사" data-i18n="btnCopy">복사</button>
+              </div>
+              <div class="help" data-i18n="helpSqm">국제 표준 면적 단위(제곱미터).</div>
+            </div>
+
+            <div class="field" data-unit="sqft">
+              <label>
+                <span data-i18n="labelInput">입력</span>
+                <span class="unit" data-i18n="unitSqft">ft² (sq ft)</span>
+              </label>
+              <div class="input">
+                <input
+                  id="inSqft"
+                  type="text"
+                  inputmode="decimal"
+                  data-i18n-placeholder="placeholderExample"
+                  placeholder="예: 904"
+                />
+                <button class="mini ok" id="copySqft" data-i18n-title="btnCopy" title="복사" data-i18n="btnCopy">복사</button>
+              </div>
+              <div class="help" data-i18n="helpSqft">해외에서 흔한 제곱피트.</div>
+            </div>
+
+            <div class="field">
+              <label>
+                <span data-i18n="labelDisplayOption">표시 옵션</span>
+                <span class="unit" data-i18n="unitRounding">반올림</span>
+              </label>
+              <div class="input">
+                <select id="rounding">
+                  <option value="0">소수 0자리</option>
+                  <option value="1">소수 1자리</option>
+                  <option value="2" selected>소수 2자리</option>
+                  <option value="3">소수 3자리</option>
+                  <option value="4">소수 4자리</option>
+                </select>
+              </div>
+              <div class="help" data-i18n="helpRounding">
+                입력은 자유롭게(콤마 포함 가능). 출력은 선택한 자리수로 정리돼.
+              </div>
+            </div>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="row between">
+            <div class="muted">
+              <span data-i18n="quickInput">빠른 입력</span>: <span class="kbd">Alt</span> +
+              <span class="kbd">1/2/3</span> (<span data-i18n="quickInputHint">평/㎡/ft² 포커스</span>)
+            </div>
+            <div class="row">
+              <button class="ghost" id="btnClean" data-i18n-title="btnCleanTitle" title="현재 입력칸만 비우기" data-i18n="btnClean">
+                🧹 현재칸 비우기
+              </button>
+            </div>
+          </div>
+
+          <div class="quick" data-i18n-aria-label="quickInputAria">
+            <button data-q="10" data-i18n="quick10">10평</button>
+            <button data-q="15" data-i18n="quick15">15평</button>
+            <button data-q="20" data-i18n="quick20">20평</button>
+            <button data-q="24" data-i18n="quick24">24평</button>
+            <button data-q="30" data-i18n="quick30">30평</button>
+            <button data-q="34" data-i18n="quick34">34평</button>
+            <button data-q="40" data-i18n="quick40">40평</button>
+            <button data-q="50" data-i18n="quick50">50평</button>
+          </div>
+
+          <div id="status" class="help" style="margin-top: 12px"></div>
+        </section>
+
+        <aside class="card">
+          <h3 data-i18n="summaryTitle">요약</h3>
+          <div class="row" style="margin-top: 8px">
+            <span class="pill"
+              >📌 <span data-i18n="labelPrimary">기준</span>: <strong id="primaryLabel">평</strong></span
+            >
+            <span class="pill"
+              >🧾 <span data-i18n="labelFormat">포맷</span>: <strong id="formatLabel">소수 2자리</strong></span
+            >
+          </div>
+
+          <div class="sep"></div>
+
+          <h3 style="margin-bottom: 10px" data-i18n="copyTitle">한 줄 복사</h3>
+          <div class="field">
+            <label>
+              <span data-i18n="labelResult">결과</span>
+              <span class="unit" data-i18n="unitText">텍스트</span>
+            </label>
+            <div class="input">
+              <input id="oneLine" type="text" readonly />
+              <button class="mini ok" id="copyOneLine" data-i18n="btnCopy">복사</button>
+            </div>
+            <div class="help" data-i18n="helpCopy">메신저/메모에 붙여넣기 좋게 정리해줘.</div>
+          </div>
+
+          <div class="sep"></div>
+
+          <h3 style="margin-bottom: 10px" data-i18n="referenceTitle">참고</h3>
+          <div class="help" data-i18n-html="referenceText">
+            • 1평 = 3.3057851239669㎡<br />
+            • 1㎡ = 10.76391ft²
+          </div>
+
+          <footer data-i18n="footerText">
+            "Space"는 단일 파일이라 서버 없이도 동작해. 파일로 저장해서 바로
+            열면 끝.
+          </footer>
+        </aside>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" data-i18n="toastCopy">
+      ✅ 복사했어
+    </div>
+
+    <script>
+      /* i18n */
+      const translations = {
+        ko: {
+          metaTitle: "Space — 평수 변환기",
+          metaDescription: "평 ↔ ㎡ ↔ ft² 빠른 변환 (Space)",
+          titleSmall: "평 ↔ ㎡ ↔ ft² 변환기",
+          viewMore: "🌐 다른 서비스 보기",
+          btnSwap: "스왑",
+          btnSwapTitle: "기준 입력칸 바꾸기",
+          btnShare: "공유",
+          btnShareTitle: "현재 값으로 링크 복사",
+          btnReset: "초기화",
+          btnResetTitle: "초기화",
+          sectionTitle: "변환",
+          btnCopy: "복사",
+          labelInput: "입력",
+          unitPyeong: "평 (pyeong)",
+          unitSqm: "㎡ (m²)",
+          unitSqft: "ft² (sq ft)",
+          helpPyeong: "부동산에서 흔히 쓰는 평 단위.",
+          helpSqm: "국제 표준 면적 단위(제곱미터).",
+          helpSqft: "해외에서 흔한 제곱피트.",
+          labelDisplayOption: "표시 옵션",
+          unitRounding: "반올림",
+          optionDecimal0: "소수 0자리",
+          optionDecimal1: "소수 1자리",
+          optionDecimal2: "소수 2자리",
+          optionDecimal3: "소수 3자리",
+          optionDecimal4: "소수 4자리",
+          helpRounding: "입력은 자유롭게(콤마 포함 가능). 출력은 선택한 자리수로 정리돼.",
+          quickInput: "빠른 입력",
+          quickInputHint: "평/㎡/ft² 포커스",
+          btnClean: "🧹 현재칸 비우기",
+          btnCleanTitle: "현재 입력칸만 비우기",
+          summaryTitle: "요약",
+          labelPrimary: "기준",
+          labelFormat: "포맷",
+          formatDecimal: "소수 {dp}자리",
+          copyTitle: "한 줄 복사",
+          labelResult: "결과",
+          unitText: "텍스트",
+          helpCopy: "메신저/메모에 붙여넣기 좋게 정리해줘.",
+          referenceTitle: "참고",
+          referenceText: "• 1평 = 3.3057851239669㎡<br />• 1㎡ = 10.76391ft²",
+          footerText: "\"Space\"는 단일 파일이라 서버 없이도 동작해. 파일로 저장해서 바로 열면 끝.",
+          toastCopy: "✅ 복사했어",
+          toastEmpty: "⚠️ 값이 비었어",
+          toastSwapChanged: "↔️ 기준을 바꿨어",
+          toastCleared: "🧹 비웠어",
+          toastReset: "🔄 초기화 완료",
+          toastNoValue: "⚠️ 공유할 값이 없어",
+          toastLinkCopied: "🔗 링크 복사 완료",
+          toastLinkLoaded: "📥 링크 값 불러왔어",
+          statusAutoConvert: "값을 입력하면 자동으로 변환돼.",
+          statusPyeong: "현재 기준: 평 입력 → ㎡/ft² 자동 계산 (소수 {dp}자리)",
+          statusSqm: "현재 기준: ㎡ 입력 → 평/ft² 자동 계산 (소수 {dp}자리)",
+          statusSqft: "현재 기준: ft² 입력 → ㎡/평 자동 계산 (소수 {dp}자리)",
+          unitPyeongLabel: "평",
+          unitSqmLabel: "㎡",
+          unitSqftLabel: "ft²",
+          oneLineFormat: "{p}평 = {m}㎡ = {f}ft²",
+          pillRealtime: "⚡ 실시간",
+          pillConverter: "⌛ 10분? <strong>아니고</strong> 변환기 😄",
+          placeholderExample: "예: 24",
+          quickInputAria: "빠른 평 입력",
+          quick10: "10평",
+          quick15: "15평",
+          quick20: "20평",
+          quick24: "24평",
+          quick30: "30평",
+          quick34: "34평",
+          quick40: "40평",
+          quick50: "50평",
+        },
+        en: {
+          metaTitle: "Space — Area Unit Converter",
+          metaDescription: "Pyeong ↔ m² ↔ ft² quick conversion (Space)",
+          titleSmall: "Pyeong ↔ m² ↔ ft² Converter",
+          viewMore: "🌐 View Other Services",
+          btnSwap: "Swap",
+          btnSwapTitle: "Swap input fields",
+          btnShare: "Share",
+          btnShareTitle: "Copy link with current value",
+          btnReset: "Reset",
+          btnResetTitle: "Reset",
+          sectionTitle: "Conversion",
+          btnCopy: "Copy",
+          labelInput: "Input",
+          unitPyeong: "Pyeong (pyeong)",
+          unitSqm: "m² (m²)",
+          unitSqft: "ft² (sq ft)",
+          helpPyeong: "Commonly used area unit in real estate.",
+          helpSqm: "International standard area unit (square meter).",
+          helpSqft: "Common square feet unit overseas.",
+          labelDisplayOption: "Display Option",
+          unitRounding: "Rounding",
+          optionDecimal0: "0 decimal places",
+          optionDecimal1: "1 decimal place",
+          optionDecimal2: "2 decimal places",
+          optionDecimal3: "3 decimal places",
+          optionDecimal4: "4 decimal places",
+          helpRounding: "Input freely (commas allowed). Output is formatted to the selected decimal places.",
+          quickInput: "Quick Input",
+          quickInputHint: "Focus pyeong/m²/ft²",
+          btnClean: "🧹 Clear Current Field",
+          btnCleanTitle: "Clear current input field only",
+          summaryTitle: "Summary",
+          labelPrimary: "Primary",
+          labelFormat: "Format",
+          formatDecimal: "{dp} decimal places",
+          copyTitle: "One-Line Copy",
+          labelResult: "Result",
+          unitText: "Text",
+          helpCopy: "Formatted for easy paste into messenger/memo.",
+          referenceTitle: "Reference",
+          referenceText: "• 1 pyeong = 3.3057851239669 m²<br />• 1 m² = 10.76391 ft²",
+          footerText: "\"Space\" is a single file that works without a server. Just save as a file and open it.",
+          toastCopy: "✅ Copied",
+          toastEmpty: "⚠️ Value is empty",
+          toastSwapChanged: "↔️ Swapped",
+          toastCleared: "🧹 Cleared",
+          toastReset: "🔄 Reset complete",
+          toastNoValue: "⚠️ No value to share",
+          toastLinkCopied: "🔗 Link copied",
+          toastLinkLoaded: "📥 Link value loaded",
+          statusAutoConvert: "Enter a value and it will be converted automatically.",
+          statusPyeong: "Current primary: pyeong input → m²/ft² auto-calculated ({dp} decimal places)",
+          statusSqm: "Current primary: m² input → pyeong/ft² auto-calculated ({dp} decimal places)",
+          statusSqft: "Current primary: ft² input → m²/pyeong auto-calculated ({dp} decimal places)",
+          unitPyeongLabel: "Pyeong",
+          unitSqmLabel: "m²",
+          unitSqftLabel: "ft²",
+          oneLineFormat: "{p}pyeong = {m}m² = {f}ft²",
+          pillRealtime: "⚡ Realtime",
+          pillConverter: "⌛ 10 min? <strong>No</strong>, converter 😄",
+          placeholderExample: "e.g. 24",
+          quickInputAria: "Quick pyeong input",
+          quick10: "10 pyeong",
+          quick15: "15 pyeong",
+          quick20: "20 pyeong",
+          quick24: "24 pyeong",
+          quick30: "30 pyeong",
+          quick34: "34 pyeong",
+          quick40: "40 pyeong",
+          quick50: "50 pyeong",
+        },
+      };
+
+      let currentLang = "ko";
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          // Skip elements that are inside summary pill (they are updated by setPrimaryLabel)
+          if (el.id === "primaryLabel" || el.id === "formatLabel") {
+            return;
+          }
+          el.textContent = t(el.dataset.i18n);
+        });
+        // Update label text for "기준" and "포맷" in summary pill
+        const labelPrimaryEl = document.querySelector('[data-i18n="labelPrimary"]');
+        const labelFormatEl = document.querySelector('[data-i18n="labelFormat"]');
+        if (labelPrimaryEl) labelPrimaryEl.textContent = t("labelPrimary");
+        if (labelFormatEl) labelFormatEl.textContent = t("labelFormat");
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+          el.setAttribute("title", t(el.dataset.i18nTitle));
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+        document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+          el.setAttribute("aria-label", t(el.dataset.i18nAriaLabel));
+        });
+        // Update select options
+        const roundingEl = document.getElementById("rounding");
+        if (roundingEl) {
+          Array.from(roundingEl.options).forEach((opt, idx) => {
+            const key = `optionDecimal${idx}`;
+            if (t(key) !== key) {
+              opt.textContent = t(key);
+            }
+          });
+        }
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : "ko";
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        setPrimaryLabel();
+        updateStatusFromPrimary(null, null, null);
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (translations[paramLang]) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (translations[stored]) return stored;
+        const browser = navigator.language?.toLowerCase() || "";
+        if (browser && browser.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return "ko";
+      }
+
+      // === Conversion constants (cited) ===
+      // 1 pyeong = 3.3057851239669 m²
+      const PYEONG_TO_SQM = 3.3057851239669;
+      // 1 m² = 10.76391 ft²
+      const SQM_TO_SQFT = 10.76391;
+
+      // DOM 요소들을 먼저 선언
+      const elP = document.getElementById("inPyeong");
+      const elM = document.getElementById("inSqm");
+      const elF = document.getElementById("inSqft");
+
+      const roundingEl = document.getElementById("rounding");
+      const statusEl = document.getElementById("status");
+      const oneLineEl = document.getElementById("oneLine");
+      const toastEl = document.getElementById("toast");
+
+      const primaryLabelEl = document.getElementById("primaryLabel");
+      const formatLabelEl = document.getElementById("formatLabel");
+
+      const btnSwap = document.getElementById("btnSwap");
+      const btnShare = document.getElementById("btnShare");
+      const btnReset = document.getElementById("btnReset");
+      const btnClean = document.getElementById("btnClean");
+
+      // primary 변수를 먼저 선언 (setLang 호출 전에)
+      let primary = "pyeong"; // pyeong | sqm | sqft
+      let updating = false;
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      function showToast(msg, kind = "ok") {
+        if (!toastEl) return;
+        toastEl.textContent = msg;
+        toastEl.style.borderColor =
+          kind === "warn" ? "rgba(245,158,11,.45)" : "rgba(34,197,94,.45)";
+        toastEl.classList.add("show");
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(() => toastEl.classList.remove("show"), 1400);
+      }
+
+      function cleanNumberInput(str) {
+        if (str == null) return "";
+        // allow digits, dot, minus; remove commas/spaces
+        return String(str).replace(/,/g, "").trim();
+      }
+
+      function parseNum(str) {
+        const s = cleanNumberInput(str);
+        if (s === "") return null;
+        const n = Number(s);
+        return Number.isFinite(n) ? n : null;
+      }
+
+      function fmt(n) {
+        if (!roundingEl) return String(n);
+        const dp = Number(roundingEl.value);
+        // Keep trailing zeros for consistent copy/display
+        const fixed = n.toFixed(dp);
+        // Add thousands separators without breaking decimals
+        const [a, b] = fixed.split(".");
+        const withComma = a.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return b != null ? `${withComma}.${b}` : withComma;
+      }
+
+      function setPrimaryLabel() {
+        if (!primaryLabelEl || !formatLabelEl) return; // 요소가 없으면 리턴
+        
+        // primary 변수를 안전하게 접근
+        const currentPrimary = (typeof primary !== "undefined" && primary) ? primary : "pyeong";
+        
+        const map = {
+          pyeong: t("unitPyeongLabel"),
+          sqm: t("unitSqmLabel"),
+          sqft: t("unitSqftLabel"),
+        };
+        primaryLabelEl.textContent = map[currentPrimary] || t("unitPyeongLabel");
+        if (roundingEl) {
+          formatLabelEl.textContent = t("formatDecimal", { dp: roundingEl.value });
+        }
+      }
+
+      function buildOneLine(p, m, f) {
+        if (!oneLineEl) return;
+        if (p == null || m == null || f == null) {
+          oneLineEl.value = "";
+          return;
+        }
+        oneLineEl.value = t("oneLineFormat", {
+          p: fmt(p),
+          m: fmt(m),
+          f: fmt(f),
+        });
+      }
+
+      function updateStatusFromPrimary(p, m, f) {
+        if (!roundingEl || !statusEl) return;
+        const dp = Number(roundingEl.value);
+        const map = {
+          pyeong: t("statusPyeong", { dp }),
+          sqm: t("statusSqm", { dp }),
+          sqft: t("statusSqft", { dp }),
+        };
+        statusEl.textContent = map[primary] || "";
+        buildOneLine(p, m, f);
+        setPrimaryLabel();
+      }
+
+      function computeFrom(unit) {
+        if (updating || !roundingEl) return;
+        updating = true;
+
+        const dp = Number(roundingEl.value);
+        let p = null,
+          m = null,
+          f = null;
+
+        if (unit === "pyeong" && elP) {
+          p = parseNum(elP.value);
+          if (p == null) {
+            if (elM) elM.value = "";
+            if (elF) elF.value = "";
+            updateStatusFromPrimary(null, null, null);
+            updating = false;
+            return;
+          }
+          m = p * PYEONG_TO_SQM;
+          f = m * SQM_TO_SQFT;
+          if (elM) elM.value = fmt(m);
+          if (elF) elF.value = fmt(f);
+          primary = "pyeong";
+        }
+
+        if (unit === "sqm" && elM) {
+          m = parseNum(elM.value);
+          if (m == null) {
+            if (elP) elP.value = "";
+            if (elF) elF.value = "";
+            updateStatusFromPrimary(null, null, null);
+            updating = false;
+            return;
+          }
+          p = m / PYEONG_TO_SQM;
+          f = m * SQM_TO_SQFT;
+          if (elP) elP.value = fmt(p);
+          if (elF) elF.value = fmt(f);
+          primary = "sqm";
+        }
+
+        if (unit === "sqft" && elF) {
+          f = parseNum(elF.value);
+          if (f == null) {
+            if (elP) elP.value = "";
+            if (elM) elM.value = "";
+            updateStatusFromPrimary(null, null, null);
+            updating = false;
+            return;
+          }
+          m = f / SQM_TO_SQFT;
+          p = m / PYEONG_TO_SQM;
+          if (elM) elM.value = fmt(m);
+          if (elP) elP.value = fmt(p);
+          primary = "sqft";
+        }
+
+        updateStatusFromPrimary(p, m, f);
+        updating = false;
+      }
+
+      function focusPrimary() {
+        if (primary === "pyeong" && elP) elP.focus();
+        else if (primary === "sqm" && elM) elM.focus();
+        else if (elF) elF.focus();
+      }
+
+      function currentInputEl() {
+        const active = document.activeElement;
+        if (active === elP) return elP;
+        if (active === elM) return elM;
+        if (active === elF) return elF;
+        // fallback to primary
+        return primary === "sqm" ? elM : primary === "sqft" ? elF : elP;
+      }
+
+      function setValueAndCompute(unit, value) {
+        if (unit === "pyeong" && elP) elP.value = String(value);
+        if (unit === "sqm" && elM) elM.value = String(value);
+        if (unit === "sqft" && elF) elF.value = String(value);
+        computeFrom(unit);
+      }
+
+      // Input listeners
+      elP.addEventListener("input", () => computeFrom("pyeong"));
+      elM.addEventListener("input", () => computeFrom("sqm"));
+      elF.addEventListener("input", () => computeFrom("sqft"));
+      roundingEl.addEventListener("change", () => computeFrom(primary));
+
+      // Copy helpers
+      async function copyText(txt) {
+        try {
+          await navigator.clipboard.writeText(txt);
+          showToast(t("toastCopy"));
+        } catch (e) {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = txt;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+          showToast(t("toastCopy"));
+        }
+      }
+
+      const copyPyeongBtn = document.getElementById("copyPyeong");
+      const copySqmBtn = document.getElementById("copySqm");
+      const copySqftBtn = document.getElementById("copySqft");
+      const copyOneLineBtn = document.getElementById("copyOneLine");
+      
+      if (copyPyeongBtn) {
+        copyPyeongBtn.onclick = () => {
+          const n = parseNum(elP?.value);
+          if (n == null) return showToast(t("toastEmpty"), "warn");
+          copyText(elP.value);
+        };
+      }
+      if (copySqmBtn) {
+        copySqmBtn.onclick = () => {
+          const n = parseNum(elM?.value);
+          if (n == null) return showToast(t("toastEmpty"), "warn");
+          copyText(elM.value);
+        };
+      }
+      if (copySqftBtn) {
+        copySqftBtn.onclick = () => {
+          const n = parseNum(elF?.value);
+          if (n == null) return showToast(t("toastEmpty"), "warn");
+          copyText(elF.value);
+        };
+      }
+      if (copyOneLineBtn) {
+        copyOneLineBtn.onclick = () => {
+          if (!oneLineEl?.value) return showToast(t("toastEmpty"), "warn");
+          copyText(oneLineEl.value);
+        };
+      }
+
+      // Quick buttons: set pyeong and compute
+      document.querySelectorAll(".quick button[data-q]").forEach((b) => {
+        b.addEventListener("click", () =>
+          setValueAndCompute("pyeong", b.dataset.q)
+        );
+      });
+
+      // Swap: rotate primary (pyeong -> sqm -> sqft -> pyeong)
+      if (btnSwap) {
+        btnSwap.onclick = () => {
+          primary =
+            primary === "pyeong" ? "sqm" : primary === "sqm" ? "sqft" : "pyeong";
+          computeFrom(primary);
+          focusPrimary();
+          showToast(t("toastSwapChanged"));
+        };
+      }
+
+      // Clean current field
+      if (btnClean) {
+        btnClean.onclick = () => {
+          const el = currentInputEl();
+          if (el) {
+            el.value = "";
+            if (el === elP) computeFrom("pyeong");
+            if (el === elM) computeFrom("sqm");
+            if (el === elF) computeFrom("sqft");
+            el.focus();
+            showToast(t("toastCleared"));
+          }
+        };
+      }
+
+      // Reset all
+      if (btnReset) {
+        btnReset.onclick = () => {
+          if (elP) elP.value = "";
+          if (elM) elM.value = "";
+          if (elF) elF.value = "";
+          if (oneLineEl) oneLineEl.value = "";
+          primary = "pyeong";
+          setPrimaryLabel();
+          if (statusEl) statusEl.textContent = t("statusAutoConvert");
+          showToast(t("toastReset"));
+          if (elP) elP.focus();
+          // clear URL params
+          history.replaceState(null, "", location.pathname);
+        };
+      }
+
+      // Share: store current primary value in URL (?u=pyeong&v=24&d=2)
+      if (btnShare) {
+        btnShare.onclick = async () => {
+          const unit = primary;
+          const val =
+            unit === "pyeong"
+              ? parseNum(elP?.value)
+              : unit === "sqm"
+              ? parseNum(elM?.value)
+              : parseNum(elF?.value);
+          if (val == null) return showToast(t("toastNoValue"), "warn");
+
+          const url = new URL(location.href);
+          url.searchParams.set("u", unit);
+          url.searchParams.set("v", String(val));
+          if (roundingEl) url.searchParams.set("d", roundingEl.value);
+
+          await copyText(url.toString());
+          showToast(t("toastLinkCopied"));
+        };
+      }
+
+      // Keyboard shortcuts
+      window.addEventListener("keydown", (e) => {
+        if (!e.altKey) return;
+        if (e.key === "1" && elP) {
+          elP.focus();
+          primary = "pyeong";
+          setPrimaryLabel();
+        }
+        if (e.key === "2" && elM) {
+          elM.focus();
+          primary = "sqm";
+          setPrimaryLabel();
+        }
+        if (e.key === "3" && elF) {
+          elF.focus();
+          primary = "sqft";
+          setPrimaryLabel();
+        }
+      });
+
+      // Load from URL params
+      (function initFromURL() {
+        const url = new URL(location.href);
+        const u = url.searchParams.get("u");
+        const v = url.searchParams.get("v");
+        const d = url.searchParams.get("d");
+        if (d != null && ["0", "1", "2", "3", "4"].includes(d) && roundingEl)
+          roundingEl.value = d;
+
+        if (!u || v == null) {
+          setPrimaryLabel();
+          if (statusEl) statusEl.textContent = t("statusAutoConvert");
+          return;
+        }
+        if (u === "pyeong" || u === "sqm" || u === "sqft") {
+          primary = u;
+          setValueAndCompute(u, v);
+          focusPrimary();
+          showToast(t("toastLinkLoaded"));
+        } else {
+          setPrimaryLabel();
+          if (statusEl) statusEl.textContent = t("statusAutoConvert");
+        }
+      })();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

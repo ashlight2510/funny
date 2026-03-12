@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지금 나에게 필요한 한마디</title>
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=NEED"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202512100101/show_ads_impl_fy2021.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+      <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/need/" />
+  </head>
+  <body
+    class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen flex flex-col items-center justify-center p-6"
+  >
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 text-center">
+      <h1 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="title">
+        🧭 지금 나에게 가장 필요한 한마디
+      </h1>
+      <p class="text-sm text-gray-600 mb-6" data-i18n-html="subtitle">
+        몇 가지 감정과 상황을 클릭하면,<br />오늘 너에게 필요한 말 한 줄을
+        전해줄게요.
+      </p>
+
+      <div id="question-container">
+        <!-- 질문 카드가 여기에 표시됩니다 -->
+      </div>
+
+      <div id="progress" class="text-sm text-gray-500 mt-4">1 / 4</div>
+
+      <div class="mt-6 flex justify-between gap-3">
+        <button
+          id="prev-btn"
+          class="bg-gray-200 text-gray-700 px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          <span data-i18n="prevBtn">이전</span>
+        </button>
+        <button
+          id="next-btn"
+          class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-5 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          data-i18n="nextBtn"
+        >
+          다음
+        </button>
+      </div>
+    </div>
+
+    <a
+      href="https://funnyfunny.cloud"
+      class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/80 px-5 py-2 text-sm font-semibold text-gray-700 shadow-md ring-1 ring-gray-200 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-gray-900"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span data-i18n="moreServices">다른 서비스 보기</span>
+      <span aria-hidden="true">→</span>
+    </a>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "지금 나에게 필요한 한마디",
+          metaDescription: "몇 가지 감정과 상황을 클릭하면, 오늘 너에게 필요한 말 한 줄을 전해줄게요.",
+          title: "🧭 지금 나에게 가장 필요한 한마디",
+          subtitle: "몇 가지 감정과 상황을 클릭하면,<br />오늘 너에게 필요한 말 한 줄을 전해줄게요.",
+          prevBtn: "이전",
+          nextBtn: "다음",
+          moreServices: "다른 서비스 보기",
+          resultTitle: "✨ 너에게 꼭 필요한 한마디",
+          retryBtn: "다시 해보기",
+          progressComplete: "완료!",
+          defaultMessage: "지금 네가 느끼는 감정은 틀린 게 아니야. 그걸 견디고 있는 너는 꽤 대단해.",
+          // 답변 기반 메시지
+          messageTired: "지친 건 당연해. 항상 강할 필요는 없어.",
+          messageFrustrated: "답답함은 네가 신경 쓰고 있다는 신호야. 그건 약점이 아니야.",
+          messageAngry: "화는 보통 채워지지 않은 욕구에서 와. 지금 네가 정말 필요한 건 뭐야?",
+          messageDepressed: "넌 망가진 게 아니야. 넌 사람이고, 그거면 충분해.",
+          messageSoSo: "그럭저럭인 날도 발전이야. 넌 잘하고 있어.",
+          messageGood: "괜찮다는 게 좋아. 힘들 때 이 느낌을 기억해.",
+          messageWork: "일이 널 정의하지 않아. 넌 생산성보다 더 큰 존재야.",
+          messageRelationships: "관계는 어렵지만, 넌 노력하고 있어. 그게 중요해.",
+          messageMoney: "돈 스트레스는 현실이지만, 네 행복을 통제하지는 않아.",
+          messageSelf: "넌 생각보다 잘하고 있어. 자신에게 더 친절해져도 돼.",
+          messageHealth: "건강을 챙기는 건 자기 사랑이야. 계속해.",
+          messageUnknown: "모르는 게 괜찮아. 모든 답을 가질 필요는 없어.",
+          messageDidWell: "오늘 잘했어. 그걸 축하해.",
+          messageRepetitive: "반복은 실패가 아니야. 연습이고, 연습은 발전이야.",
+          messageExploded: "때로는 무너져야 더 강하게 다시 세울 수 있어.",
+          messageWantComfort: "넌 위로받을 자격이 있어. 요청해도 괜찮아.",
+          messageWantChange: "변화를 원하는 게 첫걸음이야. 넌 이미 앞으로 가고 있어.",
+          messageComfort: "넌 혼자가 아니야. 많은 사람들이 같은 기분을 느껴, 그게 괜찮아.",
+          messageMotivation: "넌 여기까지 왔어. 그게 계속 갈 수 있다는 증거야.",
+          messageInsight: "때로는 모든 걸 고치는 게 답이 아니라, 있는 그대로 받아들이는 거야.",
+          messageReality: "현실을 직면하는 건 어렵지만, 그게 성장이 일어나는 곳이야.",
+          messageFunny: "인생은 진지하지만, 항상 진지할 필요는 없어. 웃을 수 있을 때 웃어.",
+        },
+        en: {
+          metaTitle: "What I Need Right Now",
+          metaDescription: "Click on a few emotions and situations, and I'll give you the one line you need today.",
+          title: "🧭 What I Need Right Now",
+          subtitle: "Click on a few emotions and situations,<br />and I'll give you the one line you need today.",
+          prevBtn: "Previous",
+          nextBtn: "Next",
+          moreServices: "View More Services",
+          resultTitle: "✨ The One Line You Need",
+          retryBtn: "Try Again",
+          progressComplete: "Complete!",
+          defaultMessage: "The emotions you're feeling right now aren't wrong. You're pretty amazing for enduring them.",
+          // Enhanced messages based on answers
+          messageTired: "It's okay to rest. You don't have to be strong all the time.",
+          messageFrustrated: "Frustration is a sign that you care. That's not a weakness.",
+          messageAngry: "Anger often comes from unmet needs. What do you really need right now?",
+          messageDepressed: "You're not broken. You're human, and that's enough.",
+          messageSoSo: "Even 'so-so' days are progress. You're doing fine.",
+          messageGood: "It's great that you're feeling good. Remember this feeling when things get tough.",
+          messageWork: "Work doesn't define your worth. You are more than your productivity.",
+          messageRelationships: "Relationships are hard, but you're trying. That matters.",
+          messageMoney: "Money stress is real, but it doesn't control your happiness.",
+          messageSelf: "You're doing better than you think. Be kinder to yourself.",
+          messageHealth: "Taking care of your health is an act of self-love. Keep going.",
+          messageUnknown: "Not knowing is okay. You don't have to have all the answers.",
+          messageDidWell: "You did well today. Celebrate that.",
+          messageRepetitive: "Repetition isn't failure. It's practice, and practice makes progress.",
+          messageExploded: "Sometimes we need to fall apart to rebuild stronger.",
+          messageWantComfort: "You deserve comfort. It's okay to ask for it.",
+          messageWantChange: "Wanting change is the first step. You're already moving forward.",
+          messageComfort: "You're not alone in this. Many people feel the same way, and that's okay.",
+          messageMotivation: "You've come this far. That proves you can keep going.",
+          messageInsight: "Sometimes the answer isn't to fix everything, but to accept what is.",
+          messageReality: "Facing reality is hard, but it's also where growth happens.",
+          messageFunny: "Life is serious, but you don't have to be serious all the time. Laugh when you can.",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const text = t(el.dataset.i18n);
+          // br 태그가 포함된 경우 innerHTML 사용
+          if (text.includes("<br") || text.includes("<BR")) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.forceUpdate && typeof window.renderQuestion === "function") {
+          window.renderQuestion();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true, forceUpdate: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false, forceUpdate: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      const QUESTIONS_BASE = [
+        {
+          title: "지금 기분을 고른다면?",
+          titleEn: "How are you feeling right now?",
+          options: [
+            "😴 지침",
+            "😕 답답함",
+            "😠 화남",
+            "😔 우울함",
+            "🙂 그럭저럭",
+            "😊 꽤 괜찮음",
+          ],
+          optionsEn: [
+            "😴 Exhausted",
+            "😕 Frustrated",
+            "😠 Angry",
+            "😔 Depressed",
+            "🙂 So-so",
+            "😊 Pretty good",
+          ],
+        },
+        {
+          title: "요즘 나를 제일 힘들게 하는 건?",
+          titleEn: "What's been hardest for me lately?",
+          options: [
+            "💼 일/학업",
+            "❤️ 인간관계",
+            "💰 돈",
+            "🧍‍♂️ 나 자신",
+            "😴 피로/건강",
+            "❓잘 모르겠음",
+          ],
+          optionsEn: [
+            "💼 Work/Studies",
+            "❤️ Relationships",
+            "💰 Money",
+            "🧍‍♂️ Myself",
+            "😴 Fatigue/Health",
+            "❓ Not sure",
+          ],
+        },
+        {
+          title: "오늘 하루는 어땠나요?",
+          titleEn: "How was your day today?",
+          options: [
+            "👍 잘 해냈어요",
+            "🔄 반복 같아요",
+            "💣 터졌어요",
+            "💬 위로받고 싶어요",
+            "🚀 변화 주고 싶어요",
+          ],
+          optionsEn: [
+            "👍 Did well",
+            "🔄 Feels repetitive",
+            "💣 Exploded",
+            "💬 Want comfort",
+            "🚀 Want change",
+          ],
+        },
+        {
+          title: "바라는 한마디 느낌은?",
+          titleEn: "What kind of message do you want?",
+          options: [
+            "🧸 위로",
+            "🔥 동기부여",
+            "💡 통찰",
+            "🪞 직면과 현실",
+            "🎈 가볍고 웃긴 말",
+          ],
+          optionsEn: [
+            "🧸 Comfort",
+            "🔥 Motivation",
+            "💡 Insight",
+            "🪞 Facing reality",
+            "🎈 Light and funny",
+          ],
+        },
+      ];
+
+      function getQuestions() {
+        const isEnglish = window.currentLang === "en";
+        return QUESTIONS_BASE.map(q => ({
+          ...q,
+          title: isEnglish ? q.titleEn : q.title,
+          options: isEnglish ? q.optionsEn : q.options
+        }));
+      }
+
+      window.getQuestions = getQuestions;
+
+      let current = 0;
+      const answers = [];
+
+      const questionContainer = document.getElementById("question-container");
+      const progress = document.getElementById("progress");
+      const nextBtn = document.getElementById("next-btn");
+      const prevBtn = document.getElementById("prev-btn");
+
+      function renderQuestion() {
+        const questions = getQuestions();
+        const q = questions[current];
+        progress.textContent = `${current + 1} / ${questions.length}`;
+
+        questionContainer.innerHTML = `
+          <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-5 mb-4 border border-blue-100">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">${q.title}</h2>
+            <div class="grid grid-cols-2 gap-3">
+              ${q.options
+                .map(
+                  (opt, idx) => `
+                <button
+                  class="option-btn border-2 border-gray-300 rounded-xl px-4 py-3 text-gray-700 hover:bg-blue-100 hover:border-blue-400 transition-all font-medium text-sm"
+                  data-idx="${idx}"
+                >
+                  ${opt}
+                </button>`
+                )
+                .join("")}
+            </div>
+          </div>
+        `;
+
+        document.querySelectorAll(".option-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            answers[current] = btn.textContent;
+            nextBtn.disabled = false;
+            document
+              .querySelectorAll(".option-btn")
+              .forEach((b) =>
+                b.classList.remove("bg-gradient-to-r", "from-blue-500", "to-purple-500", "text-white", "border-blue-500", "shadow-md")
+              );
+            btn.classList.add("bg-gradient-to-r", "from-blue-500", "to-purple-500", "text-white", "border-blue-500", "shadow-md");
+          });
+        });
+
+        nextBtn.disabled = !answers[current];
+        prevBtn.disabled = current === 0;
+      }
+
+      nextBtn.addEventListener("click", () => {
+        const questions = getQuestions();
+        if (current < questions.length - 1) {
+          current++;
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (current > 0) {
+          current--;
+          renderQuestion();
+        }
+      });
+
+      function showResult() {
+        const t = window.t || ((key, vars = {}) => key);
+        const message = generateMessage();
+        questionContainer.innerHTML = `
+          <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 mb-4 border border-blue-100">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">${t("resultTitle")}</h2>
+            <p class="text-lg text-gray-700 leading-relaxed font-medium">"${message}"</p>
+          </div>
+          <button 
+            class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all transform hover:scale-105" 
+            onclick="location.reload()"
+          >
+            ${t("retryBtn")}
+          </button>
+        `;
+        progress.textContent = t("progressComplete");
+        nextBtn.style.display = "none";
+        prevBtn.style.display = "none";
+      }
+
+      function generateMessage() {
+        const t = window.t || ((key, vars = {}) => key);
+        const isEnglish = window.currentLang === "en";
+        
+        // 답변 기반 메시지 생성
+        if (answers.length >= 1) {
+          const firstAnswer = answers[0].toLowerCase();
+          if (firstAnswer.includes(isEnglish ? "exhausted" : "지침")) {
+            return t("messageTired");
+          } else if (firstAnswer.includes(isEnglish ? "frustrated" : "답답")) {
+            return t("messageFrustrated");
+          } else if (firstAnswer.includes(isEnglish ? "angry" : "화")) {
+            return t("messageAngry");
+          } else if (firstAnswer.includes(isEnglish ? "depressed" : "우울")) {
+            return t("messageDepressed");
+          } else if (firstAnswer.includes(isEnglish ? "so-so" : "그럭저럭")) {
+            return t("messageSoSo");
+          } else if (firstAnswer.includes(isEnglish ? "pretty good" : "괜찮음")) {
+            return t("messageGood");
+          }
+        }
+        
+        if (answers.length >= 2) {
+          const secondAnswer = answers[1].toLowerCase();
+          if (secondAnswer.includes(isEnglish ? "work" : "일") || secondAnswer.includes(isEnglish ? "studies" : "학업")) {
+            return t("messageWork");
+          } else if (secondAnswer.includes(isEnglish ? "relationship" : "관계")) {
+            return t("messageRelationships");
+          } else if (secondAnswer.includes(isEnglish ? "money" : "돈")) {
+            return t("messageMoney");
+          } else if (secondAnswer.includes(isEnglish ? "myself" : "나 자신")) {
+            return t("messageSelf");
+          } else if (secondAnswer.includes(isEnglish ? "fatigue" : "피로") || secondAnswer.includes(isEnglish ? "health" : "건강")) {
+            return t("messageHealth");
+          } else if (secondAnswer.includes(isEnglish ? "not sure" : "모르겠음")) {
+            return t("messageUnknown");
+          }
+        }
+        
+        if (answers.length >= 3) {
+          const thirdAnswer = answers[2].toLowerCase();
+          if (thirdAnswer.includes(isEnglish ? "did well" : "잘 해냈")) {
+            return t("messageDidWell");
+          } else if (thirdAnswer.includes(isEnglish ? "repetitive" : "반복")) {
+            return t("messageRepetitive");
+          } else if (thirdAnswer.includes(isEnglish ? "exploded" : "터졌")) {
+            return t("messageExploded");
+          } else if (thirdAnswer.includes(isEnglish ? "comfort" : "위로")) {
+            return t("messageWantComfort");
+          } else if (thirdAnswer.includes(isEnglish ? "change" : "변화")) {
+            return t("messageWantChange");
+          }
+        }
+        
+        if (answers.length >= 4) {
+          const fourthAnswer = answers[3].toLowerCase();
+          if (fourthAnswer.includes(isEnglish ? "comfort" : "위로")) {
+            return t("messageComfort");
+          } else if (fourthAnswer.includes(isEnglish ? "motivation" : "동기부여")) {
+            return t("messageMotivation");
+          } else if (fourthAnswer.includes(isEnglish ? "insight" : "통찰")) {
+            return t("messageInsight");
+          } else if (fourthAnswer.includes(isEnglish ? "reality" : "현실")) {
+            return t("messageReality");
+          } else if (fourthAnswer.includes(isEnglish ? "funny" : "웃긴")) {
+            return t("messageFunny");
+          }
+        }
+        
+        // 기본 메시지
+        return t("defaultMessage");
+      }
+
+      // Make functions globally available for i18n
+      window.renderQuestion = renderQuestion;
+      window.showResult = showResult;
+
+      // 초기 렌더링
+      renderQuestion();
+    </script>
+  </body>
+</html>

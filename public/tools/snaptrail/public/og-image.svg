@@ -1,0 +1,60 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4285f4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ae8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 배경 -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <defs>
+    <radialGradient id="lensGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#4285f4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a56c7;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 카메라 아이콘 (왼쪽 중앙) -->
+  <g transform="translate(150, 180)">
+    <!-- 카메라 본체 -->
+    <rect x="0" y="0" width="200" height="150" rx="20" fill="white" opacity="0.95"/>
+    <!-- 상단 그립 부분 -->
+    <rect x="10" y="10" width="180" height="30" rx="8" fill="#f0f0f0" opacity="0.9"/>
+    <!-- 렌즈 외곽 링 -->
+    <circle cx="100" cy="85" r="50" fill="none" stroke="#c8c8c8" stroke-width="3" opacity="0.6"/>
+    <!-- 렌즈 외곽 -->
+    <circle cx="100" cy="85" r="45" fill="white" opacity="0.9"/>
+    <!-- 렌즈 내부 -->
+    <circle cx="100" cy="85" r="30" fill="url(#lensGradient)"/>
+    <!-- 렌즈 반사광 -->
+    <circle cx="90" cy="75" r="8" fill="white" opacity="0.4"/>
+    <!-- 플래시 -->
+    <rect x="160" y="15" width="15" height="20" rx="4" fill="white" opacity="0.95"/>
+    <rect x="163" y="18" width="9" height="14" rx="2" fill="#ffc800" opacity="0.6"/>
+    <!-- 타임라인 표시 -->
+    <rect x="30" y="130" width="25" height="10" rx="3" fill="white" opacity="0.85"/>
+    <rect x="65" y="130" width="25" height="10" rx="3" fill="white" opacity="0.85"/>
+    <rect x="100" y="130" width="25" height="10" rx="3" fill="white" opacity="0.85"/>
+    <rect x="135" y="130" width="25" height="10" rx="3" fill="white" opacity="0.85"/>
+  </g>
+  
+  <!-- 텍스트 영역 (오른쪽) -->
+  <g transform="translate(450, 160)">
+    <!-- 메인 제목 -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white">SnapTrail</text>
+    <!-- 부제목 (카메라 이모지 포함) -->
+    <text x="0" y="100" font-family="Arial, sans-serif" font-size="40" fill="white" opacity="0.95">📸 무료 사진 타임라인 뷰어</text>
+    <!-- 기능 설명 -->
+    <text x="0" y="180" font-family="Arial, sans-serif" font-size="30" fill="white" opacity="0.9">EXIF 분석 · GPS 지도 · HEIC 지원 · ZIP 다운로드</text>
+    <!-- 구분선 -->
+    <line x1="0" y1="250" x2="600" y2="250" stroke="white" stroke-width="2" opacity="0.25"/>
+  </g>
+  
+  <!-- 하단 URL -->
+  <text x="600" y="570" font-family="Arial, sans-serif" font-size="22" fill="white" text-anchor="middle" opacity="0.85">
+    snaptrail.funnyfunny.cloud
+  </text>
+</svg>
+

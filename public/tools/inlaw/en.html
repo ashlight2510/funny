@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>In-Law Translator | funnyfunny.cloud</title>
+  <meta name="description" content="We don't 'resolve' conflict. Instead, we translate words, organize emotions, and offer choices. (Anonymous · No storage)" />
+
+  <!-- OG (English + '+' rule for spaces) -->
+  <meta property="og:title" content="INLAW+TRANSLATOR" />
+  <meta property="og:description" content="Translate+meaning+offer+choices+stay+calm" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=INLAW+TRANSLATOR" />
+
+  <!-- Favicon (SVG data URI: single file) -->
+  <link rel="icon" type="image/svg+xml"
+    href='data:image/svg+xml;utf8,
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="%230b1220"/>
+      <path d="M16 22h32v6H16zM16 34h22v6H16zM16 46h32v6H16z" fill="%23ffffff" opacity="0.92"/>
+      <circle cx="45" cy="37" r="6" fill="%23ff6b6b"/>
+    </svg>' />
+
+  <style>
+    :root{
+      --bg:#f7f8fa;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#6b7280;
+      --primary:#0b1220;
+      --accent:#ff6b6b;
+      --line:#e5e7eb;
+      --soft:#f2f4f7;
+      --ok:#10b981;
+      --warn:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:920px;margin:0 auto;padding:18px 14px 92px;}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:10px;margin-bottom:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:900;letter-spacing:0.2px;
+    }
+    .brand-badge{
+      width:34px;height:34px;border-radius:10px;background:var(--primary);
+      display:grid;place-items:center;color:#fff;font-weight:950;
+    }
+    .top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      border:1px solid var(--line);
+      background:var(--card);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:750;
+      font-size:14px;
+      line-height:1;
+      display:inline-flex;gap:8px;align-items:center;justify-content:center;
+    }
+    .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
+    .btn.ghost{background:transparent}
+    .btn:active{transform:translateY(1px)}
+    .intro{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, #fff 0%, #fff 60%, rgba(255,255,255,0) 100%);
+      border-radius:18px;
+      padding:18px;
+      margin-bottom:14px;
+    }
+    h1{margin:0 0 8px;font-size:22px;line-height:1.25}
+    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+    .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+      background:#fff;font-size:12px;color:#374151;font-weight:750;
+    }
+
+    .grid{
+      display:grid;grid-template-columns:1fr;gap:14px;
+    }
+    @media (min-width:920px){
+      .grid{grid-template-columns:1.35fr 0.65fr}
+    }
+    .panel{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:18px;
+      padding:16px;
+    }
+    .panel h2{
+      margin:0 0 10px;font-size:16px;display:flex;align-items:center;gap:8px;
+    }
+    .hint{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 12px}
+    .tabs{
+      display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:850;
+      font-size:13px;
+    }
+    .tab.active{background:rgba(11,18,32,0.06);border-color:rgba(11,18,32,0.35)}
+    .section{display:none}
+    .section.show{display:block}
+
+    .field{display:grid;gap:6px;margin-bottom:10px}
+    .label{
+      display:flex;align-items:center;gap:6px;
+      font-size:13px;color:#374151;font-weight:800;
+    }
+    textarea, select, input[type="text"]{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:14px;
+      outline:none;
+      resize:vertical;
+      min-height:110px;
+      line-height:1.5;
+    }
+    select, input[type="text"]{min-height:auto}
+    textarea:focus, select:focus, input[type="text"]:focus{border-color:rgba(11,18,32,0.45)}
+    .row2{display:grid;grid-template-columns:1fr;gap:10px}
+    @media (min-width:720px){ .row2{grid-template-columns:1fr 1fr} }
+
+    .actions{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;
+    }
+
+    .result{
+      margin-top:12px;
+      border-top:1px solid var(--line);
+      padding-top:12px;
+      display:none;
+    }
+    .result.show{display:block}
+    .cards{
+      display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px;
+    }
+    @media (min-width:720px){ .cards{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      padding:14px;
+    }
+    .card .ct{
+      margin:0 0 10px;
+      font-weight:950;
+      font-size:14px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .box{
+      padding:10px 12px;border-radius:14px;background:var(--soft);border:1px solid #eef0f3;
+      font-size:14px;line-height:1.6;color:#111;
+    }
+    .list{margin:0;padding-left:18px;font-size:14px;line-height:1.65}
+    .list li{margin:6px 0}
+    .tone-row{
+      display:flex;gap:8px;flex-wrap:wrap;
+    }
+    .tone{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 10px;border-radius:999px;
+      cursor:pointer;font-weight:900;font-size:13px;
+    }
+    .tone.active{background:rgba(11,18,32,0.06);border-color:rgba(11,18,32,0.35)}
+    .divider{height:1px;background:var(--line);margin:12px 0}
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      background:#f5f7fa;
+      border:1px dashed var(--line);
+      border-radius:14px;
+      color:#374151;
+      font-size:13px;
+      line-height:1.55;
+    }
+    .aside{
+      border:1px solid var(--line);
+      background:#fff;border-radius:18px;
+      padding:16px;
+    }
+    .aside h3{margin:0 0 10px;font-size:14px;font-weight:950}
+    .aside .small{font-size:13px;color:#374151;line-height:1.6}
+    .shield{
+      border:1px solid rgba(245,158,11,0.25);
+      background:rgba(245,158,11,0.08);
+      padding:12px 12px;border-radius:16px;
+      color:#7c2d12;
+      font-weight:900;
+      line-height:1.55;
+      margin-bottom:10px;
+    }
+    .tiny{font-size:12px;color:var(--muted);line-height:1.5}
+    .footer-fixed{
+      position:fixed;left:0;right:0;bottom:0;
+      background:rgba(247,248,250,0.86);
+      backdrop-filter: blur(10px);
+      border-top:1px solid var(--line);
+      padding:10px 12px;
+    }
+    .footer-fixed .inner{
+      max-width:920px;margin:0 auto;display:flex;gap:10px;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .toast{
+      position:fixed;left:50%;transform:translateX(-50%);
+      bottom:76px;background:#111;color:#fff;
+      padding:10px 12px;border-radius:999px;
+      font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,0.22);
+      opacity:0;pointer-events:none;
+      transition:opacity .15s ease, transform .15s ease;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+  </style>
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brand-badge">FF</div>
+        <div>
+          <div style="font-weight:950">In-Law Translator</div>
+          <div class="tiny">Translate words · Organize emotions · Offer choices</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="btn ghost" id="btnReset">Reset</button>
+        <a class="btn" href="./index.html">🇰🇷 한국어</a>
+        <a class="btn ghost" href="https://funnyfunny.cloud" target="_blank" rel="noopener">View Other Services</a>
+      </div>
+    </header>
+
+    <section class="intro">
+      <h1>We don't "resolve" conflict. Instead, we translate.</h1>
+      <p class="sub">
+        This service is not counseling/therapy and does not judge who is right.<br/>
+        Instead, it breaks down spoken words into <b>surface</b> / <b>hidden meaning (possibility)</b> / <b>response options</b>
+        to reduce the current burden—a <b>quick tool</b>.
+      </p>
+      <div class="pillrow">
+        <span class="pill">Anonymous</span>
+        <span class="pill">No storage</span>
+        <span class="pill">No taking sides</span>
+        <span class="pill">Offers choices</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Select Tool</h2>
+        <p class="hint">Select one of the tabs below, paste a sentence, then click "Translate".</p>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="t1" type="button">① In-Law Translator</button>
+          <button class="tab" data-tab="t2" type="button">② Husband Mediator Translator</button>
+          <button class="tab" data-tab="t3" type="button">③ Today's Shield</button>
+        </div>
+
+        <!-- ① In-Law Translator -->
+        <div class="section show" id="t1">
+          <div class="row2">
+            <div class="field">
+              <div class="label">Quick Example (Optional)</div>
+              <select id="sample1">
+                <option value="">Select an example to auto-fill</option>
+                <option value="You haven't been home much lately.">You haven't been home much lately.</option>
+                <option value="If you're that busy, why did you get married?">If you're that busy, why did you get married?</option>
+                <option value="Mom is raising the child... I don't understand your ways.">Mom is raising the child... I don't understand your ways.</option>
+                <option value="Are you eating properly?">Are you eating properly?</option>
+                <option value="It's not that I dislike you—I'm worried.">It's not that I dislike you—I'm worried.</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <div class="label">Context (Optional)</div>
+              <select id="context1">
+                <option value="general">Daily/Conversation</option>
+                <option value="visit">Visit/Holiday/Event</option>
+                <option value="child">Parenting/Education</option>
+                <option value="house">Household/Lifestyle</option>
+                <option value="money">Financial/Support</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label">What they said</div>
+            <textarea id="input1" placeholder="e.g., You haven't been home much lately"></textarea>
+          </div>
+
+          <div class="field">
+            <div class="label">Desired direction (Tone selection)</div>
+            <div class="tone-row" id="toneRow1">
+              <button class="tone active" data-tone="peace" type="button">😌 Peaceful</button>
+              <button class="tone" data-tone="neutral" type="button">😐 Neutral</button>
+              <button class="tone" data-tone="boundary" type="button">🛡️ Boundary</button>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="btnRun1" type="button">Translate</button>
+            <button class="btn" id="btnCopy1" type="button">Copy Summary</button>
+          </div>
+
+          <div class="result" id="result1">
+            <div class="cards">
+              <div class="card">
+                <div class="ct">Surface Meaning</div>
+                <div class="box" id="surface1">-</div>
+              </div>
+              <div class="card">
+                <div class="ct">Hidden Meaning (Possibility)</div>
+                <ul class="list" id="hidden1"></ul>
+              </div>
+              <div class="card">
+                <div class="ct">3 Recommended Responses</div>
+                <ul class="list" id="responses1"></ul>
+              </div>
+              <div class="card">
+                <div class="ct">Action Guide Now</div>
+                <div class="box" id="guide1">-</div>
+              </div>
+            </div>
+
+            <div class="note">
+              <b>Note:</b> These results are not "answers" but "possible interpretations/options."
+              They may differ completely depending on situation/relationship/tone/accumulated emotions.
+            </div>
+          </div>
+        </div>
+
+        <!-- ② Husband Mediator Translator -->
+        <div class="section" id="t2">
+          <div class="row2">
+            <div class="field">
+              <div class="label">Quick Example (Optional)</div>
+              <select id="sample2">
+                <option value="">Select an example to auto-fill</option>
+                <option value="I'm so stressed because of your mother.">I'm so stressed because of your mother.</option>
+                <option value="I feel like I'm fighting alone.">I feel like I'm fighting alone.</option>
+                <option value="I wish you'd step in and help sort this out.">I wish you'd step in and help sort this out.</option>
+                <option value="I feel ignored.">I feel ignored.</option>
+              </select>
+            </div>
+            <div class="field">
+              <div class="label">Goal (Optional)</div>
+              <select id="goal2">
+                <option value="reduce">Reduce conflict</option>
+                <option value="ask">Ask for help</option>
+                <option value="boundary">Set boundaries</option>
+                <option value="plan">Create future rules</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label">What I want to say to my husband (Original)</div>
+            <textarea id="input2" placeholder="e.g., I'm so stressed because of your mother"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="btnRun2" type="button">Translate</button>
+            <button class="btn" id="btnCopy2" type="button">Copy Summary</button>
+          </div>
+
+          <div class="result" id="result2">
+            <div class="cards">
+              <div class="card">
+                <div class="ct">Emotion-removed Version</div>
+                <div class="box" id="v2a">-</div>
+              </div>
+              <div class="card">
+                <div class="ct">Persuasion-focused Version</div>
+                <div class="box" id="v2b">-</div>
+              </div>
+              <div class="card">
+                <div class="ct">Minimal Conflict Version</div>
+                <div class="box" id="v2c">-</div>
+              </div>
+              <div class="card">
+                <div class="ct">One-line Request (Ultra-short)</div>
+                <div class="box" id="v2d">-</div>
+              </div>
+            </div>
+
+            <div class="note">
+              <b>Tip:</b> The "your mother" frame tends to trigger defensiveness.
+              If possible, reframe as <b>my emotion (I)</b> + <b>desired action (request)</b> to increase success.
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ Today's Shield -->
+        <div class="section" id="t3">
+          <div class="shield" id="shieldText">-</div>
+          <div class="actions">
+            <button class="btn primary" id="btnNewShield" type="button">New Sentence</button>
+            <button class="btn" id="btnCopyShield" type="button">Copy Sentence</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="field">
+            <div class="label">Customize for situation (Optional)</div>
+            <input id="shieldHint" type="text" placeholder="e.g., holiday / visit / parenting / tone / money" />
+          </div>
+          <div class="actions">
+            <button class="btn" id="btnRewriteShield" type="button">Convert to My Situation</button>
+          </div>
+
+          <div class="result show" style="display:block">
+            <div class="note">
+              <b>Usage:</b> For increasing "options" for today.  
+              Rather than trying to end the fight, use it as a <b>sentence to keep your pace</b>.
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <b>Privacy Note:</b> This page does not send input to servers and does not store in the browser.  
+          (However, clicking "Copy" will copy to clipboard only.)
+        </div>
+      </section>
+
+      <aside class="aside">
+        <h3>Rules to Understand at Once</h3>
+        <div class="small">
+          <ul class="list">
+            <li>Goal is <b>increasing options</b>, not finding the "right answer"</li>
+            <li><b>Translation of possibility</b>, not taking sides</li>
+            <li>Often <b>buying time</b> is better than <b>immediate response</b></li>
+            <li>Separating words into "surface/hidden/request" reduces emotional drain</li>
+          </ul>
+        </div>
+        <div class="divider"></div>
+        <div class="tiny">
+          ⚠️ If there is threat/verbal abuse/physical danger or extreme stress persists, please consider seeking help from those around you (family/friends/professional organizations) first.
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="footer-fixed">
+    <div class="inner">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <a class="btn ghost" href="https://funnyfunny.cloud" target="_blank" rel="noopener">View Other Services</a>
+        <a class="btn" href="./index.html">🇰🇷 한국어</a>
+        <span class="tiny">© funnyfunny.cloud · single HTML</span>
+      </div>
+      <div class="tiny">In-Law Translator (tentative) · Mediation/Tool</div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Copied!</div>
+
+  <script>
+    // -----------------------------
+    // Utils
+    // -----------------------------
+    const $ = (id) => document.getElementById(id);
+
+    function toast(msg="Done!") {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 1100);
+    }
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copied!");
+      }catch{
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        toast("Copied!");
+      }
+    }
+
+    function pick(arr){
+      return arr[Math.floor(Math.random()*arr.length)];
+    }
+
+    function sanitize(s){
+      return String(s || "").trim().replace(/\s+/g," ");
+    }
+
+    // -----------------------------
+    // Tabs
+    // -----------------------------
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const sections = ["t1","t2","t3"].map(id => $(id));
+
+    tabs.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const target = btn.dataset.tab;
+        tabs.forEach(t=>t.classList.toggle("active", t===btn));
+        sections.forEach(sec=>sec.classList.toggle("show", sec.id===target));
+        window.scrollTo({top:0, behavior:"smooth"});
+      });
+    });
+
+    // -----------------------------
+    // Tone (t1)
+    // -----------------------------
+    let tone1 = "peace";
+    const toneButtons1 = Array.from(document.querySelectorAll("#toneRow1 .tone"));
+    toneButtons1.forEach(b=>{
+      b.addEventListener("click", ()=>{
+        tone1 = b.dataset.tone;
+        toneButtons1.forEach(x=>x.classList.toggle("active", x===b));
+      });
+    });
+
+    // -----------------------------
+    // Content DB (MVP: rule-based + pattern-based)
+    // -----------------------------
+    const SURFACE_FALLBACKS = {
+      general: ["A situation where observations/evaluations are verbalized", "A situation checking relationship distance through words", "A conversation revealing differences in habits/methods"],
+      visit: ["A situation checking relationships based on visit frequency/manners", "A situation checking closeness standards", "A situation where sensitivity rises around events/holidays"],
+      child: ["A situation showing generational differences in parenting styles", "A situation where control/worry mix through children", "A conversation where 'right answers' clash"],
+      house: ["A situation with different household/lifestyle standards", "A situation where role expectations arise", "A situation where 'that's how it always was' frame appears"],
+      money: ["A situation where authority/distance are intertwined with support/money issues", "A situation where the boundary between 'help' and 'interference' wavers", "A conversation where gratitude/burden arise simultaneously"]
+    };
+
+    function analyzeHiddenIntents(text, context){
+      const t = text.toLowerCase();
+
+      // lightweight heuristics
+      const flags = {
+        visit: /home|haven't|come|visit|often|holiday|event/.test(t),
+        worry: /worried|worri|health|eat|food|tired|body/.test(t),
+        compare: /lately|nowadays|before|when we|others|other|different/.test(t),
+        blame: /why|if|that|married|how/.test(t),
+        child: /child|kid|parent|raise|educat|school/.test(t),
+        boundary: /manner|famil|duty|responsib/.test(t),
+        soften: /dislike|don't mean|sorry|upset/.test(t),
+      };
+
+      const intents = [];
+
+      // core intents
+      if (flags.visit || context==="visit") {
+        intents.push("Disappointment: There may be underlying emotion that 'we don't see each other often.'");
+        intents.push("Relationship check: They may want to realign closeness standards.");
+      }
+
+      if (flags.worry) {
+        intents.push("Worry expression: More likely 'wanting to care for' than control.");
+      }
+
+      if (flags.compare) {
+        intents.push("Generational standard: May be a flow to secure safety through 'before/our time' standards.");
+      }
+
+      if (flags.child || context==="child") {
+        intents.push("Parenting intervention desire: A sensitive area where help and interference mix easily.");
+        intents.push("Identity clash: Standards of 'good mother/good adult' may collide.");
+      }
+
+      if (flags.boundary || context==="house" || context==="money") {
+        intents.push("Boundary issue: Role expectations (duty/manners/family) may implicitly appear.");
+      }
+
+      if (flags.blame) {
+        intents.push("Pressure/control possibility: May be a tone that induces guilt through questioning.");
+      }
+
+      if (flags.soften) {
+        intents.push("Defense mechanism: May be an attempt to lower conflict with 'not because I dislike'.");
+      }
+
+      // fallback if too few
+      if (intents.length < 2) {
+        intents.push("Emotion check: The other may be checking 'am I important'.");
+        intents.push("Distance adjustment: May be a signal wanting to readjust relationship temperature.");
+      }
+
+      // ensure uniqueness
+      return Array.from(new Set(intents)).slice(0, 5);
+    }
+
+    function surfaceMeaning(text, context){
+      const t = sanitize(text);
+      // try simple summary
+      if (!t) return pick(SURFACE_FALLBACKS[context] || SURFACE_FALLBACKS.general);
+      // short summary style
+      if (t.length <= 22) return `A situation mentioning current state/standard with "${t}"`;
+      return `A situation mentioning current state/standard with "${t.slice(0, 22)}…"`;
+    }
+
+    function buildResponses(text, context){
+      const t = sanitize(text);
+      // response bank (tone-based)
+      const peace = [
+        "My schedule has been tight lately. Next time, I'll contact you ahead and coordinate.",
+        "I've been distracted lately. Sorry if I worried you. Let me schedule something.",
+        "Thanks for saying that. Lately it's been like this, and I'll let you know when I'm available."
+      ];
+      const neutral = [
+        "I've been busy lately. I'll contact you when my schedule clears up.",
+        "This month has been packed. Let's match up next time.",
+        "I've been a bit distracted lately. I'll let you know ahead if needed."
+      ];
+      const boundary = [
+        "Let us coordinate our schedule first. I'll contact you once it's set.",
+        "It would be easier for both if visits are scheduled ahead.",
+        "My schedule is irregular now. We'll let you know when we're available."
+      ];
+
+      // context nuance
+      if (context === "child") {
+        peace[0] = "Thanks for saying that. We're trying to do it this way. I'll ask for help if needed.";
+        neutral[0] = "We're trying to do it this way for now.";
+        boundary[0] = "We'll set our parenting approach. I'll ask for help only where needed.";
+      }
+      if (context === "money") {
+        peace[0] = "Thanks for caring. We'll sort it out among ourselves first and let you know.";
+        neutral[0] = "We'll sort it out first.";
+        boundary[0] = "We'll set standards and manage financial matters ourselves.";
+      }
+      if (context === "visit") {
+        boundary[1] = "Let's schedule visits ahead so it's comfortable for both.";
+      }
+
+      // if text looks harsh, add time-buffer suggestion in list
+      const harsh = /(why|married|that|how|so|really)/i.test(t);
+
+      const guide = harsh
+        ? "Right now, 'buying time' is likely better than immediate response. Keep it short, and answer later after organizing your tone—safer that way."
+        : "Don't 'decide' the other's intent. If you only respond as much as needed, fatigue decreases. Keep it short today; you can organize more tomorrow.";
+
+      return { peace, neutral, boundary, guide };
+    }
+
+    // -----------------------------
+    // Feature ① In-law Translator
+    // -----------------------------
+    $("sample1").addEventListener("change", (e)=>{
+      const v = e.target.value;
+      if (v) $("input1").value = v;
+    });
+
+    $("btnRun1").addEventListener("click", ()=>{
+      const text = sanitize($("input1").value);
+      const context = $("context1").value;
+
+      if (!text){
+        toast("Please enter a sentence");
+        return;
+      }
+
+      // surface
+      $("surface1").textContent = surfaceMeaning(text, context);
+
+      // hidden intents
+      const intents = analyzeHiddenIntents(text, context);
+      $("hidden1").innerHTML = intents.map(x => `<li>${x}</li>`).join("");
+
+      // responses
+      const pack = buildResponses(text, context);
+      const list = (tone1 === "peace") ? pack.peace
+                : (tone1 === "neutral") ? pack.neutral
+                : pack.boundary;
+
+      // Always show 3, but make them feel varied
+      const three = [list[0], list[1], list[2]];
+      $("responses1").innerHTML = three.map(x => `<li>${x}</li>`).join("");
+
+      // guide
+      $("guide1").textContent = pack.guide;
+
+      $("result1").classList.add("show");
+      $("result1").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    $("btnCopy1").addEventListener("click", ()=>{
+      const text = sanitize($("input1").value);
+      if (!text){ toast("Please enter a sentence first"); return; }
+      if (!$("result1").classList.contains("show")){ toast("Please click Translate first"); return; }
+
+      const surface = $("surface1").textContent;
+      const intents = Array.from($("hidden1").querySelectorAll("li")).map(li=>`- ${li.textContent}`).join("\n");
+      const responses = Array.from($("responses1").querySelectorAll("li")).map((li,i)=>`${i+1}) ${li.textContent}`).join("\n");
+      const guide = $("guide1").textContent;
+
+      const out =
+`In-Law Translator (Summary)
+[Original]
+"${text}"
+
+[Surface Meaning]
+${surface}
+
+[Hidden Meaning (Possibility)]
+${intents}
+
+[3 Recommended Responses]
+${responses}
+
+[Guide]
+${guide}
+
+https://funnyfunny.cloud`;
+      copyText(out);
+    });
+
+    // -----------------------------
+    // Feature ② Husband Mediator Translator
+    // -----------------------------
+    $("sample2").addEventListener("change", (e)=>{
+      const v = e.target.value;
+      if (v) $("input2").value = v;
+    });
+
+    function husbandVariants(raw, goal){
+      const t = sanitize(raw);
+      const hasYouMom = /your\s?mother|mom|mother/i.test(t);
+      const baseFeeling = hasYouMom
+        ? "I'm getting really worn out in my relationship with your mother."
+        : "I'm getting really worn out with that issue lately.";
+
+      const goalLine =
+        goal==="ask" ? "If you could step in once and sort this out, things would get much better."
+      : goal==="boundary" ? "Let's set our standards first, then sort it out by those standards."
+      : goal==="plan" ? "I want to set standards going forward so this doesn't repeat."
+      : "Right now, I want to sort this out so the fight doesn't escalate.";
+
+      const vA = `${baseFeeling} I'm being careful because my emotions are running high and I'm worried I'll speak harshly.`;
+
+      const vB = `${baseFeeling} ${goalLine} What I want isn't 'taking sides'—it's 'sorting this out.'`;
+
+      const vC = `Right now I don't have the bandwidth to handle this directly. Could you step in once with a lower tone and mediate?`;
+
+      const vD = goal==="boundary"
+        ? "Please sort this out once according to our standards."
+        : goal==="plan"
+          ? "Let's set standards together for the future."
+          : "I need your help with this right now.";
+
+      return {vA, vB, vC, vD};
+    }
+
+    $("btnRun2").addEventListener("click", ()=>{
+      const text = sanitize($("input2").value);
+      const goal = $("goal2").value;
+
+      if (!text){
+        toast("Please enter original text");
+        return;
+      }
+
+      const {vA,vB,vC,vD} = husbandVariants(text, goal);
+      $("v2a").textContent = vA;
+      $("v2b").textContent = vB;
+      $("v2c").textContent = vC;
+      $("v2d").textContent = vD;
+
+      $("result2").classList.add("show");
+      $("result2").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    $("btnCopy2").addEventListener("click", ()=>{
+      const text = sanitize($("input2").value);
+      if (!text){ toast("Please enter original text first"); return; }
+      if (!$("result2").classList.contains("show")){ toast("Please click Translate first"); return; }
+
+      const out =
+`Husband Mediator Translator (Summary)
+[Original]
+"${text}"
+
+[Emotion-removed]
+- ${$("v2a").textContent}
+
+[Persuasion-focused]
+- ${$("v2b").textContent}
+
+[Minimal Conflict]
+- ${$("v2c").textContent}
+
+[Ultra-short]
+- ${$("v2d").textContent}
+
+https://funnyfunny.cloud`;
+      copyText(out);
+    });
+
+    // -----------------------------
+    // Feature ③ Daily Shield
+    // -----------------------------
+    const SHIELDS = [
+      "Today is about keeping my pace, not being understood.",
+      "Silence can be a choice, not avoidance.",
+      "Their emotions are not my responsibility.",
+      "Don't try to prove the right answer; let's reduce damage.",
+      "Before correcting words, let's set my boundaries first.",
+      "Keep it short today. I can speak better tomorrow.",
+      "Not all adults are wise. I live my way.",
+      "Relationships aren't about winning or losing; recovery possibility matters.",
+      "Right now I need time, not rebuttal.",
+      "It's not that I'm oversensitive; there may have been accumulation."
+    ];
+
+    function newShield(){
+      $("shieldText").textContent = pick(SHIELDS);
+    }
+
+    $("btnNewShield").addEventListener("click", newShield);
+
+    $("btnCopyShield").addEventListener("click", ()=>{
+      const s = $("shieldText").textContent.trim();
+      if (!s || s === "-"){ toast("Please draw a sentence first"); return; }
+      copyText(s);
+    });
+
+    $("btnRewriteShield").addEventListener("click", ()=>{
+      const s = $("shieldText").textContent.trim();
+      const hint = sanitize($("shieldHint").value);
+      if (!s || s === "-"){ toast("Please draw a sentence first"); return; }
+      if (!hint){ toast("Please enter one keyword for the situation"); return; }
+
+      // simple rewrite templates
+      const variants = [
+        `In (${hint}), "damage minimization" comes before "right answer."`,
+        `(${hint}) is a sensitive zone. Let's keep my pace today.`,
+        `(${hint}) is a day when short is fine. We can do better tomorrow.`,
+        `In (${hint}), boundaries can be courtesy.`,
+      ];
+      $("shieldText").textContent = `${s}  ${pick(variants)}`;
+      toast("Converted!");
+    });
+
+    // -----------------------------
+    // Reset
+    // -----------------------------
+    $("btnReset").addEventListener("click", ()=>{
+      // tabs back to t1
+      tabs.forEach(t=>t.classList.toggle("active", t.dataset.tab==="t1"));
+      sections.forEach(sec=>sec.classList.toggle("show", sec.id==="t1"));
+
+      // clear inputs/results
+      $("input1").value = "";
+      $("context1").value = "general";
+      $("sample1").value = "";
+      tone1 = "peace";
+      toneButtons1.forEach(b=>b.classList.toggle("active", b.dataset.tone==="peace"));
+      $("result1").classList.remove("show");
+      $("hidden1").innerHTML = "";
+      $("responses1").innerHTML = "";
+      $("surface1").textContent = "-";
+      $("guide1").textContent = "-";
+
+      $("input2").value = "";
+      $("sample2").value = "";
+      $("goal2").value = "reduce";
+      $("result2").classList.remove("show");
+      $("v2a").textContent = "-";
+      $("v2b").textContent = "-";
+      $("v2c").textContent = "-";
+      $("v2d").textContent = "-";
+
+      $("shieldHint").value = "";
+      newShield();
+
+      toast("Reset!");
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    // boot
+    newShield();
+  </script>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+</html>

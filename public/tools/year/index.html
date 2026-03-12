@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>올해 나의 인생 소비 보고서</title>
+
+    <!-- SEO / OG -->
+    <meta
+      name="description"
+      content="올해 내 돈·시간·감정은 어디에 가장 많이 쓰였을까? 3분 컷 인생 소비 리포트."
+    />
+    <meta
+      name="keywords"
+      content="인생 소비 보고서, 시간 관리, 감정 분석, 소비 패턴, 연말 정리, 라이프 로그"
+    />
+    <meta name="author" content="FunnyFunny" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/year/" />
+    <meta property="og:title" content="올해 나의 인생 소비 보고서" />
+    <meta
+      property="og:description"
+      content="나는 올해 무엇에 인생을 팔았을까? 돈·시간·감정 소비 패턴을 리포트로 보여드립니다."
+    />
+    <!-- 더미 이미지: 한글 넣지 말라는 룰 반영 (영어만) -->
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Life+Spending+Report"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://funnyfunny.cloud/" />
+    <meta property="og:site_name" content="FunnyFunny" />
+    <meta property="og:locale" content="ko_KR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="올해 나의 인생 소비 보고서" />
+    <meta
+      name="twitter:description"
+      content="나는 올해 무엇에 인생을 팔았을까? 돈·시간·감정 소비 패턴을 리포트로 보여드립니다."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Life+Spending+Report"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='14' fill='%23070a14'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-size='38'%3E%F0%9F%A7%BE%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pretendard:wght@400;600;700&display=swap");
+      :root {
+        --bg0: #070a14;
+        --bg1: #0b1224;
+        --card: #0b1224cc;
+        --txt: #e7eaf3;
+        --muted: #a7b0c2;
+        --line: #1f2a44;
+        --accent: #8b5cf6;
+        --accent2: #22c55e;
+        --warn: #f59e0b;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto,
+          sans-serif;
+        background: radial-gradient(
+            1200px 600px at 20% 20%,
+            rgba(139, 92, 246, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 80% 30%,
+            rgba(34, 197, 94, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 700px at 60% 90%,
+            rgba(245, 158, 11, 0.1),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), #050714 55%, #050614);
+        color: var(--txt);
+      }
+      .glass {
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+      }
+      .chip {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .btn {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .soft {
+        color: var(--muted);
+      }
+      .mono {
+        font-family: Space Grotesk, Pretendard, system-ui, sans-serif;
+      }
+      .fadeIn {
+        animation: fadeIn 0.22s ease both;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .bar {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .bar > div {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(
+          90deg,
+          rgba(139, 92, 246, 0.95),
+          rgba(34, 197, 94, 0.85)
+        );
+      }
+      .shake {
+        animation: shake 0.18s ease;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-3px);
+        }
+        50% {
+          transform: translateX(3px);
+        }
+        75% {
+          transform: translateX(-2px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(7, 10, 20, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(231, 234, 243, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(139, 92, 246, 0.3);
+      color: #e7eaf3;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: rgba(231, 234, 243, 0.9);
+    }
+  </style>
+</head>
+
+  <body class="min-h-screen">
+    <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+      <!-- Header -->
+      <header class="flex items-start justify-between gap-4">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 chip px-3 py-1.5 rounded-full text-sm"
+          >
+            <span>🧾</span>
+            <span class="mono font-semibold">Life Spending Report</span>
+            <span class="soft" data-i18n="threeMinCut">· 3분 컷</span>
+          </div>
+          <h1 class="mt-4 text-3xl sm:text-4xl font-extrabold leading-tight" data-i18n="title">
+            올해 나의 <span class="text-violet-300">인생 소비</span> 보고서
+          </h1>
+          <p class="mt-3 soft leading-relaxed" data-i18n-html="subtitle">
+            올해 내 <b>돈·시간·감정</b>이 어디로 흘렀는지,
+            <b>재미있게</b> 그리고 <b>쉽게</b> 정리해드립니다.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">KR</button>
+            <button type="button" data-lang="en">EN</button>
+          </div>
+          <a
+            href="https://funnyfunny.cloud/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-200 whitespace-nowrap"
+            data-i18n="otherServices"
+            >다른 서비스 보기</a
+          >
+        </div>
+      </header>
+
+      <!-- Card -->
+      <section id="card" class="glass rounded-3xl p-5 sm:p-7 mt-7">
+        <!-- Top row -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span id="phaseChip" class="chip rounded-full px-3 py-1.5 text-sm"
+              >준비</span
+            >
+            <span id="qCount" class="soft text-sm" data-i18n="qCountDefault">총 30문항</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              id="resetBtn"
+              class="btn rounded-full px-3 py-1.5 text-sm soft hover:text-white transition"
+              data-i18n="resetBtn"
+            >
+              처음으로
+            </button>
+            <button
+              id="skipBtn"
+              class="btn rounded-full px-3 py-1.5 text-sm soft hover:text-white transition hidden"
+              data-i18n="skipBtn"
+            >
+              이 질문 패스
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="mt-4">
+          <div class="bar">
+            <div id="progressFill"></div>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-xs soft">
+            <span id="progressText">0%</span>
+            <span class="mono" id="stepText">STEP 0/30</span>
+          </div>
+        </div>
+
+        <!-- Start screen -->
+        <div id="startScreen" class="mt-6 fadeIn">
+          <div class="rounded-3xl p-5 sm:p-6 bg-white/5 border border-white/10">
+            <h2 class="text-xl sm:text-2xl font-bold" data-i18n="startScreenTitle">
+              진짜로 3분 안에 끝나는 방식
+            </h2>
+            <ul class="mt-3 soft leading-relaxed space-y-1.5" data-i18n-html="startScreenList">
+              <li>• 질문은 1개씩, 버튼 누르면 바로 다음으로 넘어갑니다.</li>
+              <li>• 정답 없음. 느낌대로 찍어도 결과가 잘 나옵니다.</li>
+              <li>• 결과는 "보고서"로 나와서 공유하기 좋습니다.</li>
+            </ul>
+            <div class="mt-5 flex flex-col sm:flex-row gap-2">
+              <button
+                id="startBtn"
+                class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold bg-violet-500/90 hover:bg-violet-500 transition"
+                data-i18n="startBtn"
+              >
+                시작하기 🚀
+              </button>
+              <button
+                id="fastBtn"
+                class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold btn"
+                data-i18n="fastBtn"
+              >
+                15문항 빠른 모드 ⚡
+              </button>
+            </div>
+            <p class="mt-3 text-xs soft" data-i18n="fastModeNote">
+              * 빠른 모드는 각 영역(돈/시간/감정)에서 핵심 문항만 뽑아 더 빠르게
+              분석합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question screen -->
+        <div id="questionScreen" class="mt-6 hidden">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span
+                id="pillDim"
+                class="chip rounded-full px-3 py-1.5 text-sm"
+              ></span>
+              <span
+                id="pillTag"
+                class="chip rounded-full px-3 py-1.5 text-sm soft"
+              ></span>
+            </div>
+            <span class="text-xs soft" data-i18n="clickNext">클릭하면 바로 다음</span>
+          </div>
+
+          <h3
+            id="qText"
+            class="mt-4 text-xl sm:text-2xl font-extrabold leading-snug"
+          ></h3>
+
+          <div id="options" class="mt-5 grid grid-cols-1 gap-3"></div>
+
+          <div class="mt-5 flex items-center justify-between">
+            <button
+              id="backBtn"
+              class="btn rounded-2xl px-4 py-2 soft hover:text-white transition"
+              data-i18n="backBtn"
+            >
+              ← 이전
+            </button>
+            <div class="text-xs soft" id="hintText"></div>
+          </div>
+        </div>
+
+        <!-- Result screen -->
+        <div id="resultScreen" class="mt-6 hidden">
+          <div
+            class="rounded-3xl p-5 sm:p-6 bg-white/5 border border-white/10 fadeIn"
+          >
+            <div
+              class="flex flex-col sm:flex-row items-start justify-between gap-4"
+            >
+              <div>
+                <div
+                  class="inline-flex items-center gap-2 chip px-3 py-1.5 rounded-full text-sm"
+                >
+                  <span>📌</span
+                  ><span class="mono font-semibold">2025 Summary</span>
+                </div>
+                <h2
+                  id="resultTitle"
+                  class="mt-3 text-2xl sm:text-3xl font-extrabold"
+                ></h2>
+                <p id="resultSubtitle" class="mt-2 soft leading-relaxed"></p>
+              </div>
+              <div class="chip rounded-3xl px-4 py-3 w-full sm:w-auto">
+                <div class="text-xs soft" data-i18n="top3Spending">내 3대 소비</div>
+                <div class="mt-1 space-y-1">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="soft" data-i18n="moneyLabel">💰 돈</span
+                    ><span id="sumMoney" class="mono font-semibold"></span>
+                  </div>
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="soft" data-i18n="timeLabel">⏳ 시간</span
+                    ><span id="sumTime" class="mono font-semibold"></span>
+                  </div>
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="soft" data-i18n="emotionLabel">🧠 감정</span
+                    ><span id="sumEmotion" class="mono font-semibold"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="chip rounded-3xl p-4">
+                <div class="text-sm font-bold" data-i18n="resultInsightLabel">🔥 해석</div>
+                <p id="resultInsight" class="mt-2 soft leading-relaxed"></p>
+              </div>
+              <div class="chip rounded-3xl p-4">
+                <div class="text-sm font-bold" data-i18n="resultRxLabel">🧩 내년 한 줄 처방</div>
+                <p id="resultRx" class="mt-2 soft leading-relaxed"></p>
+              </div>
+            </div>
+
+            <div class="mt-4 chip rounded-3xl p-4">
+              <div class="text-sm font-bold" data-i18n="resultLuckLabel">🍀 행운 멘트</div>
+              <p id="resultLuck" class="mt-2 soft leading-relaxed"></p>
+            </div>
+
+            <div class="mt-5 flex flex-col sm:flex-row gap-2">
+              <button
+                id="copyBtn"
+                class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold bg-emerald-500/90 hover:bg-emerald-500 transition"
+                data-i18n="copyBtn"
+              >
+                결과 링크 복사 🔗
+              </button>
+              <button
+                id="shareBtn"
+                class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold btn"
+                data-i18n="shareBtn"
+              >
+                공유하기 📣
+              </button>
+              <button
+                id="againBtn"
+                class="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold btn"
+                data-i18n="againBtn"
+              >
+                한 번 더 🎲
+              </button>
+            </div>
+
+            <div class="mt-3 text-xs soft" id="copyToast"></div>
+          </div>
+
+          <!-- More -->
+          <div
+            class="mt-5 rounded-3xl p-5 sm:p-6 bg-white/5 border border-white/10"
+          >
+            <div
+              class="flex flex-col sm:flex-row items-start justify-between gap-4"
+            >
+              <div>
+                <p class="soft text-sm" data-i18n="moreTestsDesc1">다른 재밌는 것도 있는데</p>
+                <p class="text-lg font-bold mt-1" data-i18n="moreTestsTitle">더 많은 테스트 해보기</p>
+                <p class="soft text-sm mt-1" data-i18n="moreTestsDesc2">
+                  가볍게 하다 보면 의외로 통찰이 하나씩 생깁니다.
+                </p>
+              </div>
+              <a
+                href="https://funnyfunny.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto text-center"
+                data-i18n="moreTestsLink"
+              >
+                더 보러가기 →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-7 text-center text-xs soft" data-i18n="footer">
+        © AshLight / FunnyFunny · 결과는 재미+자기점검용입니다.
+      </footer>
+    </main>
+
+    <script>
+      /** =========================================================
+       * ✅ 질문 JSON 30개 패턴 설계 (돈 10 / 시간 10 / 감정 10)
+       * - 각 옵션은 score를 특정 카테고리에 +1~3
+       * - 최종적으로 영역별 Top 카테고리를 뽑아 결과 타입 생성
+       * ======================================================= */
+
+      const DIM_LABEL = {
+        money: { ko: "💰 돈 소비", en: "💰 Money Spending" },
+        time: { ko: "⏳ 시간 소비", en: "⏳ Time Spending" },
+        emotion: { ko: "🧠 감정 소비", en: "🧠 Emotion Spending" },
+      };
+
+      const CAT_LABEL = {
+        // money
+        coffee: { ko: "카페/배달", en: "Cafe/Delivery" },
+        social: { ko: "술/모임", en: "Drinks/Social" },
+        beauty: { ko: "꾸밈/쇼핑", en: "Beauty/Shopping" },
+        hobby: { ko: "취미/게임", en: "Hobby/Games" },
+        fixed: { ko: "고정비/주거", en: "Fixed/Housing" },
+        travel: { ko: "여행/경험", en: "Travel/Experience" },
+        learn: { ko: "자기계발", en: "Self-Development" },
+        unknown: { ko: "흘러감(미상)", en: "Unknown Flow" },
+
+        // time
+        phone: { ko: "폰/스크롤", en: "Phone/Scroll" },
+        work: { ko: "일/업무", en: "Work/Business" },
+        rest: { ko: "휴식/잠", en: "Rest/Sleep" },
+        people: { ko: "사람/관계", en: "People/Relations" },
+        goal: { ko: "목표/준비", en: "Goal/Preparation" },
+        drift: { ko: "멍때림/방황", en: "Drift/Wandering" },
+
+        // emotion
+        tired: { ko: "피로", en: "Tired" },
+        stress: { ko: "스트레스", en: "Stress" },
+        regret: { ko: "후회", en: "Regret" },
+        numb: { ko: "무감각", en: "Numb" },
+        passion: { ko: "열정", en: "Passion" },
+        content: { ko: "만족", en: "Content" },
+      };
+
+      const QUESTION_BANK = {
+        money: [
+          {
+            id: "m1",
+            tag: "지출 리듬",
+            tagEn: "Spending Rhythm",
+            text: "올해 지출의 느낌은?",
+            textEn: "How did your spending feel this year?",
+            options: [
+              {
+                label: "작게 자주 (나도 모르게 빠져나감)",
+                labelEn: "Small and frequent (disappears without me knowing)",
+                score: { coffee: 2, unknown: 1 },
+              },
+              {
+                label: "한 번에 크게 (한방 쇼핑)",
+                labelEn: "Big at once (one-time shopping)",
+                score: { beauty: 2, hobby: 1 },
+              },
+              {
+                label: "사람 만나면 지출 (모임이 곧 결제)",
+                labelEn: "Spend when meeting people (gathering = payment)",
+                score: { social: 3 },
+              },
+              { 
+                label: "고정비가 거의 전부",
+                labelEn: "Fixed costs are almost everything",
+                score: { fixed: 3 } 
+              },
+            ],
+          },
+          {
+            id: "m2",
+            tag: "먹는 돈",
+            tagEn: "Food Money",
+            text: "돈이 가장 자주 사라지는 곳은?",
+            textEn: "Where does your money disappear most often?",
+            options: [
+              { label: "카페/디저트/음료", labelEn: "Cafe/Dessert/Drinks", score: { coffee: 3 } },
+              { label: "배달/외식", labelEn: "Delivery/Eating out", score: { coffee: 2, social: 1 } },
+              { label: "술/안주", labelEn: "Drinks/Snacks", score: { social: 3 } },
+              {
+                label: "요리 재료 (집에서 해먹는 편)",
+                labelEn: "Cooking ingredients (prefer cooking at home)",
+                score: { fixed: 1, learn: 1 },
+              },
+            ],
+          },
+          {
+            id: "m3",
+            tag: "자기관리",
+            tagEn: "Self-Care",
+            text: "거울 앞에서 드는 생각은?",
+            textEn: "What do you think in front of the mirror?",
+            options: [
+              { label: "'이건 투자다' (꾸밈/관리)", labelEn: "'This is an investment' (beauty/care)", score: { beauty: 3 } },
+              { label: "'편하면 장땡' (기본템)", labelEn: "'Comfort is everything' (basics)", score: { fixed: 1 } },
+              {
+                label: "'내가 뭘 해도 괜찮지 않나'",
+                labelEn: "'I'm fine no matter what I do'",
+                score: { unknown: 2, numb: 1 },
+              },
+              {
+                label: "'나중에…' 하고 미루는 편",
+                labelEn: "Tend to postpone with 'later...'",
+                score: { unknown: 2, regret: 1 },
+              },
+            ],
+          },
+          {
+            id: "m4",
+            tag: "취미",
+            tagEn: "Hobby",
+            text: "올해 가장 자주 '결제 버튼' 누른 건?",
+            textEn: "What did you click 'pay' most often this year?",
+            options: [
+              { label: "게임/구독/아이템", labelEn: "Games/Subscriptions/Items", score: { hobby: 3 } },
+              { label: "전자기기/장비/도구", labelEn: "Electronics/Equipment/Tools", score: { hobby: 2, learn: 1 } },
+              { label: "옷/잡화/소품", labelEn: "Clothes/Accessories/Items", score: { beauty: 3 } },
+              { label: "모임/약속 잡을 때", labelEn: "When making appointments/plans", score: { social: 2, travel: 1 } },
+            ],
+          },
+          {
+            id: "m5",
+            tag: "경험",
+            tagEn: "Experience",
+            text: "지갑이 열릴 때 가장 설레는 건?",
+            textEn: "What excites you most when opening your wallet?",
+            options: [
+              { label: "여행/숙소/비행기", labelEn: "Travel/Accommodation/Plane", score: { travel: 3 } },
+              { label: "공연/전시/맛집", labelEn: "Shows/Exhibitions/Good restaurants", score: { travel: 2, social: 1 } },
+              { label: "강의/클래스/책", labelEn: "Lectures/Classes/Books", score: { learn: 3 } },
+              { label: "그냥… 클릭 (이유 없음)", labelEn: "Just... click (no reason)", score: { unknown: 3 } },
+            ],
+          },
+          {
+            id: "m6",
+            tag: "회피 지출",
+            tagEn: "Escape Spending",
+            text: "스트레스 받을 때 돈 쓰는 방식은?",
+            textEn: "How do you spend money when stressed?",
+            options: [
+              {
+                label: "달달한 거 + 카페인으로 봉합",
+                labelEn: "Sweet things + caffeine to seal",
+                score: { coffee: 2, stress: 1 },
+              },
+              { label: "쇼핑으로 리셋", labelEn: "Reset with shopping", score: { beauty: 2, stress: 1 } },
+              {
+                label: "사람 만나서 털어내기",
+                labelEn: "Meet people to vent",
+                score: { social: 2, stress: 1 },
+              },
+              {
+                label: "그냥 참고 버팀(돈은 안 씀)",
+                labelEn: "Just endure (don't spend money)",
+                score: { fixed: 1, tired: 1 },
+              },
+            ],
+          },
+          {
+            id: "m7",
+            tag: "고정비",
+            tagEn: "Fixed Costs",
+            text: "매달 자동으로 빠져나가는 돈을 떠올리면?",
+            textEn: "What comes to mind about monthly automatic expenses?",
+            options: [
+              { label: "숨이 막힌다(고정비가 무겁다)", labelEn: "Can't breathe (fixed costs are heavy)", score: { fixed: 3 } },
+              { label: "그럭저럭(관리되는 편)", labelEn: "So-so (manageable)", score: { fixed: 1 } },
+              { label: "어디로 나가는지 잘 모름", labelEn: "Don't know where it goes", score: { unknown: 3 } },
+              {
+                label: "구독이 많다(작게 많이)",
+                labelEn: "Many subscriptions (small but many)",
+                score: { hobby: 2, coffee: 1 },
+              },
+            ],
+          },
+          {
+            id: "m8",
+            tag: "미래 투자",
+            tagEn: "Future Investment",
+            text: "올해 '미래를 위해' 쓴 돈이 있다면?",
+            textEn: "If you spent money 'for the future' this year?",
+            options: [
+              { label: "강의/책/자격/학습", labelEn: "Lectures/Books/Certifications/Learning", score: { learn: 3 } },
+              { label: "헬스/장비/건강", labelEn: "Health/Equipment/Health", score: { learn: 1, fixed: 1 } },
+              { label: "여행(견문 확장)", labelEn: "Travel (expand horizons)", score: { travel: 2, learn: 1 } },
+              {
+                label: "…미래? 일단 오늘부터",
+                labelEn: "...Future? Let's start from today",
+                score: { unknown: 2, regret: 1 },
+              },
+            ],
+          },
+          {
+            id: "m9",
+            tag: "관계 비용",
+            tagEn: "Relationship Costs",
+            text: "모임 지출에 대한 태도는?",
+            textEn: "What's your attitude toward social spending?",
+            options: [
+              { label: "내가 쏘는 편(기분파)", labelEn: "I pay (mood-based)", score: { social: 3 } },
+              { label: "N빵 철저(합리파)", labelEn: "Split thoroughly (rational)", score: { fixed: 1 } },
+              {
+                label: "가능하면 피함(에너지 절약)",
+                labelEn: "Avoid if possible (save energy)",
+                score: { rest: 1, tired: 1 },
+              },
+              {
+                label: "약속 잡히면 기쁘지만 지갑이 울음",
+                labelEn: "Happy when plans are made but wallet cries",
+                score: { social: 2, regret: 1 },
+              },
+            ],
+          },
+          {
+            id: "m10",
+            tag: "정리",
+            tagEn: "Summary",
+            text: "올해 소비를 한 문장으로 요약하면?",
+            textEn: "Summarize this year's spending in one sentence?",
+            options: [
+              {
+                label: "'작은 행복을 자주 샀다'",
+                labelEn: "'Bought small happiness often'",
+                score: { coffee: 2, travel: 1 },
+              },
+              { label: "'사람 때문에 썼다'", labelEn: "'Spent because of people'", score: { social: 3 } },
+              { label: "'나를 위해 썼다'", labelEn: "'Spent for myself'", score: { beauty: 2, learn: 1 } },
+              { label: "'모르겠고 그냥 샜다'", labelEn: "'Don't know, just bought'", score: { unknown: 3 } },
+            ],
+          },
+        ],
+
+        time: [
+          {
+            id: "t1",
+            tag: "일과 삶",
+            tagEn: "Work and Life",
+            text: "올해 시간의 주인은 누구였나?",
+            textEn: "Who owned your time this year?",
+            options: [
+              { label: "회사/일정/업무", labelEn: "Company/Schedule/Work", score: { work: 3 } },
+              { label: "폰/스크롤/영상", labelEn: "Phone/Scroll/Videos", score: { phone: 3 } },
+              { label: "휴식/잠/회복", labelEn: "Rest/Sleep/Recovery", score: { rest: 3 } },
+              { label: "사람/약속/관계", labelEn: "People/Appointments/Relations", score: { people: 3 } },
+            ],
+          },
+          {
+            id: "t2",
+            tag: "집중",
+            tagEn: "Focus",
+            text: "집중이 깨질 때 가장 흔한 이유는?",
+            textEn: "What's the most common reason your focus breaks?",
+            options: [
+              { label: "알림/메신저/피드", labelEn: "Notifications/Messenger/Feed", score: { phone: 3 } },
+              { label: "할 일이 너무 많음", labelEn: "Too many things to do", score: { work: 2, goal: 1 } },
+              { label: "몸이 피곤함", labelEn: "Body is tired", score: { rest: 2, drift: 1 } },
+              { label: "생각이 많아짐", labelEn: "Too many thoughts", score: { drift: 2, goal: 1 } },
+            ],
+          },
+          {
+            id: "t3",
+            tag: "야근/확장",
+            tagEn: "Overtime/Extension",
+            text: "일이 끝나도 머리가 계속 일하는 편?",
+            textEn: "Does your mind keep working after work ends?",
+            options: [
+              { label: "그렇다(퇴근 후에도 일)", labelEn: "Yes (work after leaving)", score: { work: 3 } },
+              { label: "폰으로 도망간다", labelEn: "Escape with phone", score: { phone: 2, drift: 1 } },
+              { label: "쉰다(완전 OFF)", labelEn: "Rest (completely OFF)", score: { rest: 3 } },
+              {
+                label: "사람 만나서 환기한다",
+                labelEn: "Meet people to refresh",
+                score: { people: 2, travel: 1 },
+              },
+            ],
+          },
+          {
+            id: "t4",
+            tag: "목표",
+            tagEn: "Goal",
+            text: "올해 '준비 중인 것'이 있었나?",
+            textEn: "Was there something you were 'preparing' this year?",
+            options: [
+              { label: "있다(꾸준히 준비)", labelEn: "Yes (preparing steadily)", score: { goal: 3 } },
+              { label: "있었는데 중간에 흐려짐", labelEn: "Had it but faded in the middle", score: { goal: 1, drift: 2 } },
+              {
+                label: "늘 머릿속엔 있는데 실행이…",
+                labelEn: "Always in mind but execution...",
+                score: { drift: 2, phone: 1 },
+              },
+              { label: "딱히 없음(올해는 생존)", labelEn: "Not really (survival this year)", score: { rest: 1, work: 1 } },
+            ],
+          },
+          {
+            id: "t5",
+            tag: "관계 시간",
+            tagEn: "Relationship Time",
+            text: "사람 만나는 빈도는?",
+            textEn: "How often do you meet people?",
+            options: [
+              { label: "자주(약속이 삶)", labelEn: "Often (appointments are life)", score: { people: 3 } },
+              { label: "가끔(필요할 때만)", labelEn: "Sometimes (only when needed)", score: { people: 1 } },
+              { label: "거의 없음(혼자가 편함)", labelEn: "Almost none (prefer alone)", score: { rest: 2, goal: 1 } },
+              {
+                label: "있는데 만나고 나면 방전",
+                labelEn: "Have them but drained after meeting",
+                score: { people: 2, rest: 1 },
+              },
+            ],
+          },
+          {
+            id: "t6",
+            tag: "밤",
+            tagEn: "Night",
+            text: "밤에 가장 자주 하는 행동은?",
+            textEn: "What do you do most often at night?",
+            options: [
+              { label: "폰 보다가 잠듦", labelEn: "Fall asleep while on phone", score: { phone: 3 } },
+              { label: "일 마무리/내일 준비", labelEn: "Finish work/Prepare for tomorrow", score: { work: 2, goal: 1 } },
+              { label: "정리/독서/학습", labelEn: "Organize/Read/Learn", score: { goal: 2, rest: 1 } },
+              { label: "멍때리기(그냥 흘러감)", labelEn: "Zoning out (just flowing)", score: { drift: 3 } },
+            ],
+          },
+          {
+            id: "t7",
+            tag: "주말",
+            tagEn: "Weekend",
+            text: "주말은 대체로?",
+            textEn: "What are weekends generally like?",
+            options: [
+              { label: "회복(잠/침대/뒹굴)", labelEn: "Recovery (sleep/bed/lounge)", score: { rest: 3 } },
+              { label: "사람(약속/모임)", labelEn: "People (appointments/gatherings)", score: { people: 3 } },
+              { label: "개인 프로젝트/목표", labelEn: "Personal projects/goals", score: { goal: 3 } },
+              { label: "폰/영상/게임", labelEn: "Phone/Videos/Games", score: { phone: 2, drift: 1 } },
+            ],
+          },
+          {
+            id: "t8",
+            tag: "루틴",
+            tagEn: "Routine",
+            text: "하루 루틴이 잘 잡혀있나?",
+            textEn: "Is your daily routine well established?",
+            options: [
+              { label: "잘 잡혀있음(루틴 괴물)", labelEn: "Well established (routine monster)", score: { goal: 2, work: 1 } },
+              { label: "대충 굴러감(유연함)", labelEn: "Roughly rolls (flexible)", score: { drift: 1, people: 1 } },
+              { label: "자주 무너짐(알림/돌발)", labelEn: "Often breaks (notifications/surprises)", score: { phone: 2, work: 1 } },
+              { label: "루틴? 일단 살고 보자", labelEn: "Routine? Let's just live first", score: { drift: 2, rest: 1 } },
+            ],
+          },
+          {
+            id: "t9",
+            tag: "대화",
+            tagEn: "Conversation",
+            text: "대화에서 자주 하는 말은?",
+            textEn: "What do you often say in conversations?",
+            options: [
+              { label: "'바빠 죽겠어'", labelEn: "'So busy I could die'", score: { work: 3 } },
+              { label: "'요즘 아무것도 못 했어'", labelEn: "'Haven't done anything lately'", score: { drift: 3 } },
+              { label: "'요즘 이것 준비 중이야'", labelEn: "'Preparing for this lately'", score: { goal: 3 } },
+              { label: "'나 요즘 그냥 쉬는 중'", labelEn: "'I'm just resting lately'", score: { rest: 3 } },
+            ],
+          },
+          {
+            id: "t10",
+            tag: "정리",
+            tagEn: "Summary",
+            text: "올해 내 시간 사용의 핵심 키워드는?",
+            textEn: "What's the core keyword of your time usage this year?",
+            options: [
+              { label: "일", labelEn: "Work", score: { work: 3 } },
+              { label: "폰", labelEn: "Phone", score: { phone: 3 } },
+              { label: "회복", labelEn: "Recovery", score: { rest: 3 } },
+              { label: "목표", labelEn: "Goal", score: { goal: 3 } },
+            ],
+          },
+        ],
+
+        emotion: [
+          {
+            id: "e1",
+            tag: "기본 감정",
+            tagEn: "Basic Emotion",
+            text: "올해 가장 자주 깔린 감정은?",
+            textEn: "What emotion did you feel most often this year?",
+            options: [
+              { label: "피곤함(누적)", labelEn: "Tired (accumulated)", score: { tired: 3 } },
+              { label: "스트레스(압박)", labelEn: "Stress (pressure)", score: { stress: 3 } },
+              { label: "만족(괜찮았다)", labelEn: "Satisfied (was okay)", score: { content: 3 } },
+              { label: "무감각(감정이 얇아짐)", labelEn: "Numb (emotions thinned)", score: { numb: 3 } },
+            ],
+          },
+          {
+            id: "e2",
+            tag: "후회",
+            tagEn: "Regret",
+            text: "'올해 좀 아쉽다'가 있다면?",
+            textEn: "If there's something 'regrettable' this year?",
+            options: [
+              { label: "돈 관리", labelEn: "Money management", score: { regret: 2, stress: 1 } },
+              { label: "시간 관리", labelEn: "Time management", score: { regret: 2, tired: 1 } },
+              { label: "관계", labelEn: "Relationships", score: { regret: 2, numb: 1 } },
+              {
+                label: "딱히 없음(난 잘했다)",
+                labelEn: "Not really (I did well)",
+                score: { content: 2, passion: 1 },
+              },
+            ],
+          },
+          {
+            id: "e3",
+            tag: "회복법",
+            tagEn: "Recovery Method",
+            text: "기분이 꺾일 때 회복 루틴은?",
+            textEn: "What's your recovery routine when feeling down?",
+            options: [
+              { label: "잠/휴식", labelEn: "Sleep/Rest", score: { tired: 2, content: 1 } },
+              { label: "폰/영상으로 도망", labelEn: "Escape with phone/videos", score: { numb: 2, regret: 1 } },
+              {
+                label: "사람 만나서 털기",
+                labelEn: "Meet people to vent",
+                score: { stress: 1, content: 1, passion: 1 },
+              },
+              { label: "운동/산책/정리", labelEn: "Exercise/Walk/Organize", score: { passion: 2, content: 1 } },
+            ],
+          },
+          {
+            id: "e4",
+            tag: "자기평가",
+            tagEn: "Self-Evaluation",
+            text: "올해의 나는?",
+            textEn: "What was I like this year?",
+            options: [
+              { label: "열심히 버팀(대견)", labelEn: "Held on hard (proud)", score: { tired: 2, content: 1 } },
+              { label: "불타올랐음(전진)", labelEn: "Burned up (forward)", score: { passion: 3 } },
+              { label: "조급했음(쫓김)", labelEn: "Rushed (chased)", score: { stress: 3 } },
+              { label: "흘러갔음(멍)", labelEn: "Flowed away (zoned)", score: { numb: 2, regret: 1 } },
+            ],
+          },
+          {
+            id: "e5",
+            tag: "일",
+            tagEn: "Work",
+            text: "일/과제 앞에서 주로 드는 감정은?",
+            textEn: "What emotion do you mainly feel before work/tasks?",
+            options: [
+              { label: "압박", labelEn: "Pressure", score: { stress: 3 } },
+              { label: "피로", labelEn: "Fatigue", score: { tired: 3 } },
+              { label: "성취감", labelEn: "Achievement", score: { content: 2, passion: 1 } },
+              { label: "무감각(해야하니까 함)", labelEn: "Numb (doing because I have to)", score: { numb: 3 } },
+            ],
+          },
+          {
+            id: "e6",
+            tag: "관계",
+            tagEn: "Relationship",
+            text: "사람 만나고 집에 오면?",
+            textEn: "What happens when you meet people and come home?",
+            options: [
+              {
+                label: "충전됨(기분 좋아짐)",
+                labelEn: "Charged (feeling good)",
+                score: { content: 2, passion: 1 },
+              },
+              {
+                label: "방전됨(말하기도 힘듦)",
+                labelEn: "Drained (hard to even speak)",
+                score: { tired: 2, stress: 1 },
+              },
+              { label: "생각 많아짐(반추)", labelEn: "Many thoughts (rumination)", score: { regret: 2, stress: 1 } },
+              { label: "아무 느낌 없음", labelEn: "No feeling", score: { numb: 3 } },
+            ],
+          },
+          {
+            id: "e7",
+            tag: "내면",
+            tagEn: "Inner Self",
+            text: "올해 내 마음의 테마는?",
+            textEn: "What was the theme of your heart this year?",
+            options: [
+              { label: "회복이 필요했다", labelEn: "Needed recovery", score: { tired: 2, regret: 1 } },
+              { label: "버텨야 했다", labelEn: "Had to endure", score: { stress: 2, tired: 1 } },
+              { label: "성장하고 싶었다", labelEn: "Wanted to grow", score: { passion: 2, regret: 1 } },
+              { label: "그냥 편해지고 싶었다", labelEn: "Just wanted to be comfortable", score: { content: 2, numb: 1 } },
+            ],
+          },
+          {
+            id: "e8",
+            tag: "기쁨",
+            tagEn: "Joy",
+            text: "올해 기뻤던 순간을 떠올리면?",
+            textEn: "What comes to mind about happy moments this year?",
+            options: [
+              {
+                label: "사소한 행복(맛있는 거, 작은 성취)",
+                labelEn: "Small happiness (good food, small achievements)",
+                score: { content: 3 },
+              },
+              { label: "큰 성취/성과", labelEn: "Big achievements/results", score: { passion: 2, content: 1 } },
+              { label: "여행/경험", labelEn: "Travel/Experience", score: { content: 2, passion: 1 } },
+              { label: "잘 기억 안 남(바빴음)", labelEn: "Don't remember well (was busy)", score: { tired: 2, numb: 1 } },
+            ],
+          },
+          {
+            id: "e9",
+            tag: "불안",
+            tagEn: "Anxiety",
+            text: "불안할 때 가장 자주 떠오르는 건?",
+            textEn: "What comes to mind most often when anxious?",
+            options: [
+              { label: "돈", labelEn: "Money", score: { stress: 2, regret: 1 } },
+              { label: "미래/진로", labelEn: "Future/Career", score: { stress: 2, regret: 1 } },
+              { label: "관계/평판", labelEn: "Relationships/Reputation", score: { stress: 2, numb: 1 } },
+              { label: "딱히 없음(그냥 피곤)", labelEn: "Not really (just tired)", score: { tired: 3 } },
+            ],
+          },
+          {
+            id: "e10",
+            tag: "정리",
+            tagEn: "Summary",
+            text: "올해 감정의 결론은?",
+            textEn: "What's the conclusion of your emotions this year?",
+            options: [
+              {
+                label: "피로했지만 잘 버텼다",
+                labelEn: "Was tired but endured well",
+                score: { tired: 2, content: 1 },
+              },
+              {
+                label: "스트레스가 컸지만 성장했다",
+                labelEn: "Had a lot of stress but grew",
+                score: { stress: 2, passion: 1 },
+              },
+              { label: "아쉽지만 다음엔 더 잘한다", labelEn: "Regrettable but will do better next time", score: { regret: 3 } },
+              {
+                label: "무뎌졌지만 다시 살아날 수 있다",
+                labelEn: "Became numb but can come alive again",
+                score: { numb: 2, passion: 1 },
+              },
+            ],
+          },
+        ],
+      };
+
+      /** =========================================================
+       * ✅ 결과 유형 16개 풀세트
+       * - key 매칭 우선(돈|시간|감정) → 없으면 fallback
+       * ======================================================= */
+
+      const RESULT_TYPES = [
+        {
+          key: "coffee|phone|tired",
+          title: "☕📱 카페인 & 스크롤 회복형",
+          titleEn: "☕📱 Caffeine & Scroll Recovery Type",
+          subtitle:
+            "작게 자주 회복을 사는 타입. 올해 당신은 '잠깐만 쉬자'를 정말 많이 했습니다.",
+          subtitleEn:
+            "A type that buys recovery small and often. This year you really did 'let's rest for a moment' a lot.",
+          insight:
+            "이건 사치가 아니라 '회복을 쪼개서 사는 패턴'이에요. 문제는 회복이 '짧아서' 회복이 안 된다는 것. 커피를 줄이기보다, 회복 시간을 '의도적으로' 길게 잡아보면 인생이 바로 정돈됩니다.",
+          insightEn:
+            "This isn't luxury but a 'pattern of buying recovery in pieces.' The problem is recovery is 'too short' to actually recover. Rather than reducing coffee, try intentionally making recovery time longer, and life will be organized.",
+          rx: "커피 1잔 = 휴식 20분을 세트로. '마시는 회복'에 '시간 회복'을 붙여주세요.",
+          rxEn: "One coffee = 20 minutes of rest as a set. Attach 'time recovery' to 'drinking recovery'.",
+          luck: "올해 버틴 것만으로도 충분히 잘한 겁니다. 내년엔 '짧은 회복'이 '진짜 회복'으로 업그레이드될 운이 들어옵니다 🍀",
+          luckEn: "You did well enough just by enduring this year. Next year, luck comes in to upgrade 'short recovery' to 'real recovery' 🍀",
+        },
+        {
+          key: "social|people|stress",
+          title: "🍻👥 모임 과몰입 & 압박형",
+          titleEn: "🍻👥 Social Over-Immersion & Pressure Type",
+          subtitle:
+            "사람과 약속이 인생의 엔진이었지만, 동시에 압박도 같이 따라왔던 한 해.",
+          subtitleEn:
+            "People and appointments were the engine of life, but pressure also followed this year.",
+          insight:
+            "관계는 에너지가 되지만, 일정이 과밀해지면 '나'가 사라져요. 올해 당신의 지출/시간은 사회적 연결에 강하게 붙어있고, 감정은 그걸 유지하려는 압박이었을 가능성이 큽니다.",
+          insightEn:
+            "Relationships become energy, but when schedules get too packed, 'I' disappears. This year your spending/time was strongly tied to social connections, and emotions were likely pressure to maintain that.",
+          rx: "약속 하나를 '리셋 약속'으로 바꾸기: 만남 1회는 산책/카페/낮 약속으로 가볍게.",
+          rxEn: "Change one appointment to a 'reset appointment': Make one meeting light with a walk/cafe/daytime appointment.",
+          luck: "사람복 있는 타입입니다. 내년엔 '좋은 사람만 남는 정리 운'이 따라옵니다 🍀",
+          luckEn: "You have good people luck. Next year, 'luck to keep only good people' follows 🍀",
+        },
+        {
+          key: "beauty|phone|regret",
+          title: "💄📱 꾸밈 & 후회 스와이프형",
+          titleEn: "💄📱 Beauty & Regret Swipe Type",
+          subtitle:
+            "오늘 기분을 리셋하려고 결제하고, 다음날 '왜 샀지'가 따라오는 타입.",
+          subtitleEn:
+            "A type that pays to reset today's mood, then 'why did I buy this' follows the next day.",
+          insight:
+            "후회는 당신이 나쁘다는 뜻이 아니라, '결제 전에 감정이 앞서는 순간'이 잦다는 신호예요. 올해는 감정 리셋을 '구매'로 처리했을 수 있어요.",
+          insightEn:
+            "Regret doesn't mean you're bad, but signals that 'moments when emotions come before payment' are frequent. This year you may have handled emotional resets through 'purchases'.",
+          rx: "장바구니 24시간 룰: 담고 하루 뒤에 결제. 대신 그 하루는 '작은 산책/정리'로 기분 리셋.",
+          rxEn: "Cart 24-hour rule: Add and pay a day later. Instead, use that day for 'small walk/organizing' to reset mood.",
+          luck: "내년엔 '충동을 이기는 타이밍 감각'이 생깁니다. 그 감각 하나로 돈도 마음도 남습니다 🍀",
+          luckEn: "Next year, 'timing sense to overcome impulses' develops. With that sense alone, both money and mind remain 🍀",
+        },
+        {
+          key: "hobby|phone|numb",
+          title: "🎮📱 취미 도피 & 무감각형",
+          titleEn: "🎮📱 Hobby Escape & Numb Type",
+          subtitle: "재미로 버텼는데, 어느 순간 감정이 얇아진 타입.",
+          subtitleEn: "Endured through fun, but at some point emotions thinned.",
+          insight:
+            "재미는 생존 도구였어요. 다만 재미가 '도망'이 되면 무감각이 따라옵니다. 올해 당신은 즐기면서도 동시에 '과부하를 끄는' 방향으로 시간을 썼을 수 있어요.",
+          insightEn:
+            "Fun was a survival tool. But when fun becomes 'escape', numbness follows. This year you may have spent time enjoying while also 'turning off overload'.",
+          rx: "취미를 '콘텐츠 소비'에서 '작은 제작'으로: 플레이 30분 → 기록/정리 5분.",
+          rxEn: "Change hobby from 'content consumption' to 'small creation': Play 30 min → Record/organize 5 min.",
+          luck: "내년엔 취미가 '현실 도망'이 아니라 '현실 업그레이드'가 되는 운이 옵니다 🍀",
+          luckEn: "Next year, luck comes for hobby to become 'reality upgrade' rather than 'reality escape' 🍀",
+        },
+        {
+          key: "fixed|work|tired",
+          title: "🏠💼 고정비 & 노동 피로형",
+          titleEn: "🏠💼 Fixed Costs & Labor Fatigue Type",
+          subtitle: "현실을 굴리는 힘은 강한데, 체력이 먼저 닳아버린 타입.",
+          subtitleEn: "Strong power to run reality, but stamina wore out first.",
+          insight:
+            "당신은 올해 '삶을 운영'했습니다. 이런 해는 돈이든 시간이든 여유가 줄고 피로가 쌓여요. 문제는 의지가 아니라, 회복 슬롯이 부족한 것.",
+          insightEn:
+            "You 'operated life' this year. In such years, whether money or time, margins decrease and fatigue accumulates. The problem isn't willpower, but lack of recovery slots.",
+          rx: "회복을 일정에 '예약'하세요: 주 2회 40분 '아무것도 안 하기' 고정.",
+          rxEn: "Schedule 'recovery' in your calendar: Twice a week, 40 minutes of 'doing nothing' fixed.",
+          luck: "이 타입은 한 번 리듬만 잡히면 쭉 올라갑니다. 내년엔 '수월해지는 구간'이 반드시 옵니다 🍀",
+          luckEn: "This type goes up once rhythm is established. Next year, an 'easier section' definitely comes 🍀",
+        },
+        {
+          key: "travel|people|content",
+          title: "✈️👥 경험 수집 & 만족형",
+          titleEn: "✈️👥 Experience Collection & Satisfaction Type",
+          subtitle: "올해 당신은 '살아있는 느낌'을 꽤 잘 챙겼습니다.",
+          subtitleEn: "This year you captured the 'feeling of being alive' quite well.",
+          insight:
+            "돈과 시간이 경험/사람으로 흘렀고 감정이 만족 쪽이면, 올해는 '재미와 회복을 제대로 얻은' 편입니다. 다만 과열되면 지출이 흔들릴 수 있어요.",
+          insightEn:
+            "If money and time flowed to experiences/people and emotions leaned toward satisfaction, this year you 'properly gained fun and recovery.' However, if overheated, spending can shake.",
+          rx: "경험의 '잔상'을 남기기: 사진 3장 + 한 줄 기록만 해도 내년 만족도가 더 커집니다.",
+          rxEn: "Leave 'afterimages' of experiences: Just 3 photos + one line of notes increases next year's satisfaction.",
+          luck: "좋은 기억을 만드는 운이 강합니다. 내년엔 더 '가성비 좋은 행복'이 들어옵니다 🍀",
+          luckEn: "Strong luck for creating good memories. Next year, more 'cost-effective happiness' comes in 🍀",
+        },
+        {
+          key: "learn|goal|passion",
+          title: "📚🎯 성장 몰입 & 열정형",
+          titleEn: "📚🎯 Growth Immersion & Passion Type",
+          subtitle: "올해 당신은 '업그레이드'에 진심이었습니다.",
+          subtitleEn: "This year you were serious about 'upgrade'.",
+          insight:
+            "돈은 학습/투자, 시간은 목표/준비, 감정은 열정. 이 조합은 '결과가 늦게 오는 대신 크게 오는' 조합이에요. 올해 뿌린 씨앗이 내년에 싹 틉니다.",
+          insightEn:
+            "Money is learning/investment, time is goals/preparation, emotion is passion. This combination is 'results come late but big.' Seeds planted this year sprout next year.",
+          rx: "내년엔 '기록'만 붙이면 완성: 주 1회 10분, 진행률을 숫자로 남기기.",
+          rxEn: "Next year, just add 'records': Once a week 10 minutes, leave progress as numbers.",
+          luck: "이 타입은 운이 '노력에 붙는' 타입입니다. 내년엔 도와주는 사람/기회가 한 번 크게 옵니다 🍀",
+          luckEn: "This type has luck that 'sticks to effort.' Next year, helping people/opportunities come once big 🍀",
+        },
+        {
+          key: "unknown|drift|regret",
+          title: "🌀🧾 어디로 갔는지 모르겠형",
+          titleEn: "🌀🧾 Don't Know Where It Went Type",
+          subtitle: "올해는 '흐름'이 많았고, 정리 욕구가 커진 타입.",
+          subtitleEn: "This year had a lot of 'flow', and the desire to organize grew.",
+          insight:
+            "이건 자기혐오가 아니라, '정산 시즌이 온 사람'이에요. 올해는 변수가 많았거나 에너지가 분산됐을 확률이 큽니다. 지금 이 결과를 본 것 자체가 이미 방향 전환의 시작입니다.",
+          insightEn:
+            "This isn't self-hatred, but a 'person whose settlement season has come.' This year likely had many variables or dispersed energy. Just seeing this result is already the start of a direction change.",
+          rx: "딱 2개만 적으세요: ① 끊을 것 1개 ② 늘릴 것 1개. 그걸로도 내년이 바뀝니다.",
+          rxEn: "Write just 2 things: ① One thing to cut ② One thing to increase. That alone changes next year.",
+          luck: "정리 운이 들어옵니다. 내년엔 '생각보다 쉽게 정돈되는 순간'이 한 번 크게 옵니다 🍀",
+          luckEn: "Organization luck comes in. Next year, a moment of 'easier organization than expected' comes once big 🍀",
+        },
+
+        /* 나머지 8개(총 16개) - 조합/대체용 */
+        {
+          key: "coffee|work|stress",
+          title: "☕💼 카페인 노동 & 압박형",
+          titleEn: "☕💼 Caffeine Labor & Pressure Type",
+          subtitle: "커피로 밀고, 일로 끌고, 스트레스로 버틴 한 해.",
+          subtitleEn: "Pushed with coffee, pulled by work, endured with stress this year.",
+          insight:
+            "'버티기 장치'가 잘 작동한 대신, 회복이 얇아졌을 수 있어요. 버틴 건 능력입니다. 이제는 같은 능력을 '편해지는 방향'으로 쓰면 됩니다.",
+          insightEn:
+            "The 'endurance device' worked well, but recovery may have thinned. Enduring is ability. Now use the same ability in the 'direction of comfort'.",
+          rx: "업무 시작 전 3분: 오늘 할 일 3개만. 나머지는 내일의 내가 한다.",
+          rxEn: "3 minutes before work starts: Just 3 things to do today. The rest, tomorrow's me does.",
+          luck: "내년엔 일의 난이도가 내려가는 운이 옵니다. 작은 자동화/정리가 큰 차이를 냅니다 🍀",
+          luckEn: "Next year, luck comes for work difficulty to decrease. Small automation/organization makes a big difference 🍀",
+        },
+        {
+          key: "beauty|people|content",
+          title: "💄👥 사람을 빛내는 만족형",
+          titleEn: "💄👥 People-Brightening Satisfaction Type",
+          subtitle: "나와 사람을 '좋게 만드는 데' 돈과 시간을 쓴 타입.",
+          subtitleEn: "A type that spent money and time on 'making me and people better'.",
+          insight:
+            "꾸밈은 낭비가 아니라 '컨디션 관리'가 될 때 가치가 커져요. 올해 당신은 관계/분위기를 잘 만들었습니다.",
+          insightEn:
+            "Beauty isn't waste but becomes valuable when it's 'condition management.' This year you created relationships/atmosphere well.",
+          rx: "내년엔 '기본템 규칙'만: 충동 구매 대신, 오래 쓰는 베스트 3개에 집중.",
+          rxEn: "Next year, just 'basics rule': Instead of impulse purchases, focus on best 3 that last long.",
+          luck: "좋은 인상/좋은 기회가 붙는 운이 강해집니다. 소개/연결운 기대해도 좋습니다 🍀",
+          luckEn: "Strong luck for good impressions/good opportunities to stick. Can expect introduction/connection luck 🍀",
+        },
+        {
+          key: "hobby|goal|passion",
+          title: "🎮🎯 취미를 무기로 만든 열정형",
+          titleEn: "🎮🎯 Hobby-as-Weapon Passion Type",
+          subtitle: "즐기는 걸 '성장'으로 연결하려는 타입.",
+          subtitleEn: "A type that tries to connect enjoyment to 'growth'.",
+          insight:
+            "취미-목표-열정 조합은 '찐재능'이 터질 때가 있어요. 다만 과열되면 번아웃이 와요.",
+          insightEn:
+            "Hobby-goal-passion combination can have 'true talent' explode. However, if overheated, burnout comes.",
+          rx: "주 1회 휴식 룰: 열정이 클수록 휴식도 '기술'입니다.",
+          rxEn: "Once a week rest rule: The greater the passion, the more rest is also 'technique'.",
+          luck: "내년엔 취미가 '성과/수익/작품'으로 이어질 운이 옵니다 🍀",
+          luckEn: "Next year, luck comes for hobby to lead to 'results/profit/works' 🍀",
+        },
+        {
+          key: "fixed|rest|content",
+          title: "🏠😴 안정 회복 & 만족형",
+          titleEn: "🏠😴 Stable Recovery & Satisfaction Type",
+          subtitle: "올해는 무리하지 않고 '기반을 다진' 타입.",
+          subtitleEn: "This year, a type that didn't overdo and 'built foundation'.",
+          insight:
+            "눈에 띄는 이벤트가 적어도, 안정은 가장 강한 자산입니다. 당신은 올해 기반 체력을 만들었어요.",
+          insightEn:
+            "Even if eye-catching events are few, stability is the strongest asset. You built foundational stamina this year.",
+          rx: "내년엔 '작은 도전' 하나만 추가: 주 1회 새로운 장소/활동.",
+          rxEn: "Next year, add just one 'small challenge': Once a week new place/activity.",
+          luck: "평온 속에서 운이 커지는 타입입니다. 내년엔 '좋은 일이 조용히 커지는 운'이 옵니다 🍀",
+          luckEn: "A type where luck grows in tranquility. Next year, 'luck for good things to quietly grow' comes 🍀",
+        },
+        {
+          key: "travel|phone|regret",
+          title: "✈️📱 여행 갈망 & 아쉬움형",
+          titleEn: "✈️📱 Travel Longing & Regret Type",
+          subtitle: "경험을 원했는데, 현실이 자꾸 스크롤로 흘러간 타입.",
+          subtitleEn: "Wanted experiences, but reality kept flowing to scrolling.",
+          insight:
+            "당신에게 필요한 건 큰 여행이 아니라 '작은 탈출'이에요. 그 욕구를 스크롤이 대신한 거죠.",
+          insightEn:
+            "What you need isn't a big trip but 'small escape.' Scrolling replaced that desire.",
+          rx: "월 1회 '로컬 여행': 집에서 30분 거리 카페/산책 코스만 가도 효과 큼.",
+          rxEn: "Once a month 'local travel': Just going to a cafe/walk course 30 minutes from home is very effective.",
+          luck: "내년엔 '짧고 확실한 행복'이 생기는 운이 옵니다. 작은 여행이 큰 전환이 됩니다 🍀",
+          luckEn: "Next year, luck comes for 'short and certain happiness' to arise. Small trips become big transitions 🍀",
+        },
+        {
+          key: "learn|phone|tired",
+          title: "📚📱 배움 과부하 & 피로형",
+          titleEn: "📚📱 Learning Overload & Fatigue Type",
+          subtitle: "배우고 싶어서 저장은 했는데, 피로가 쌓인 타입.",
+          subtitleEn: "Wanted to learn so saved, but fatigue accumulated.",
+          insight:
+            "정보는 많은데 실행이 적으면 피로가 올라가요. 당신이 게으른 게 아니라, 입력이 과한 겁니다.",
+          insightEn:
+            "When information is abundant but execution is little, fatigue rises. It's not that you're lazy, but input is excessive.",
+          rx: "저장 금지 7일: 대신 '읽은 것 1개 실행'만. 실행이 피로를 줄입니다.",
+          rxEn: "No saving for 7 days: Instead, just 'execute 1 thing read'. Execution reduces fatigue.",
+          luck: "내년엔 '딱 맞는 한 줄'이 당신을 움직이게 하는 운이 옵니다 🍀",
+          luckEn: "Next year, luck comes for 'just the right one line' to move you 🍀",
+        },
+        {
+          key: "social|drift|numb",
+          title: "🍻🌀 흥과 공허가 번갈아형",
+          titleEn: "🍻🌀 Excitement and Emptiness Alternating Type",
+          subtitle: "재밌을 땐 최고인데, 끝나면 멍해지는 타입.",
+          subtitleEn: "Best when fun, but zoned out when it ends.",
+          insight:
+            "흥은 에너지지만, 회복 없이 반복되면 공허가 와요. 올해는 그 사이클이 잦았을 수 있습니다.",
+          insightEn:
+            "Excitement is energy, but when repeated without recovery, emptiness comes. This year that cycle may have been frequent.",
+          rx: "모임 다음날 '회복 예약': 낮 산책 20분만 해도 공허가 줄어요.",
+          rxEn: "Day after gathering 'recovery reservation': Just 20 minutes of daytime walk reduces emptiness.",
+          luck: "내년엔 '더 건강한 흥'이 들어옵니다. 즐거움이 후유증 없이 남는 운 🍀",
+          luckEn: "Next year, 'healthier excitement' comes in. Luck for joy to remain without aftereffects 🍀",
+        },
+        {
+          key: "unknown|work|stress",
+          title: "📎💼 정신없이 버틴 운영형",
+          titleEn: "📎💼 Frantically Endured Operation Type",
+          subtitle: "돈도 시간도 '운영'에 들어가서, 내가 사라진 한 해.",
+          subtitleEn: "Both money and time went into 'operation', and I disappeared this year.",
+          insight:
+            "운영형은 멋있습니다. 다만 '나'가 빠지면 삶이 메마를 수 있어요. 올해는 운영을 했고, 내년엔 '나를 넣는 운영'을 하면 됩니다.",
+          insightEn:
+            "Operation type is cool. But when 'I' is missing, life can become barren. This year you operated, next year do 'operation that includes me'.",
+          rx: "주 1회 '나를 위한 슬롯' 고정: 60분만. 그 60분이 모든 걸 바꿉니다.",
+          rxEn: "Once a week fixed 'slot for me': Just 60 minutes. That 60 minutes changes everything.",
+          luck: "내년엔 숨통 트이는 기회가 옵니다. 생각보다 빠르게 정리될 운 🍀",
+          luckEn: "Next year, an opportunity to breathe comes. Luck to be organized faster than expected 🍀",
+        },
+      ];
+
+      function findResultKey(mKey, tKey, eKey) {
+        const exact = `${mKey}|${tKey}|${eKey}`;
+        if (RESULT_TYPES.some((r) => r.key === exact)) return exact;
+
+        // fallback 우선순위: (money|time|emotion) → (money|time|any) → (money|any|emotion) → (any|time|emotion)
+        const candidates = [
+          `${mKey}|${tKey}|tired`,
+          `${mKey}|${tKey}|stress`,
+          `${mKey}|${tKey}|content`,
+          `${mKey}|${tKey}|numb`,
+          `${mKey}|${tKey}|regret`,
+          `${mKey}|${tKey}|passion`,
+          `${mKey}|phone|${eKey}`,
+          `${mKey}|work|${eKey}`,
+          `${mKey}|rest|${eKey}`,
+          `${mKey}|people|${eKey}`,
+          `${mKey}|goal|${eKey}`,
+          `${mKey}|drift|${eKey}`,
+          `coffee|${tKey}|${eKey}`,
+          `social|${tKey}|${eKey}`,
+          `fixed|${tKey}|${eKey}`,
+          `unknown|${tKey}|${eKey}`,
+        ];
+        for (const k of candidates) {
+          if (RESULT_TYPES.some((r) => r.key === k)) return k;
+        }
+        // 최종 fallback: 첫 결과
+        return RESULT_TYPES[0].key;
+      }
+
+      /** =========================================================
+       * UI / State
+       * ======================================================= */
+
+      const els = {
+        phaseChip: document.getElementById("phaseChip"),
+        qCount: document.getElementById("qCount"),
+        progressFill: document.getElementById("progressFill"),
+        progressText: document.getElementById("progressText"),
+        stepText: document.getElementById("stepText"),
+        startScreen: document.getElementById("startScreen"),
+        questionScreen: document.getElementById("questionScreen"),
+        resultScreen: document.getElementById("resultScreen"),
+        startBtn: document.getElementById("startBtn"),
+        fastBtn: document.getElementById("fastBtn"),
+        resetBtn: document.getElementById("resetBtn"),
+        skipBtn: document.getElementById("skipBtn"),
+        backBtn: document.getElementById("backBtn"),
+        pillDim: document.getElementById("pillDim"),
+        pillTag: document.getElementById("pillTag"),
+        qText: document.getElementById("qText"),
+        options: document.getElementById("options"),
+        hintText: document.getElementById("hintText"),
+
+        resultTitle: document.getElementById("resultTitle"),
+        resultSubtitle: document.getElementById("resultSubtitle"),
+        resultInsight: document.getElementById("resultInsight"),
+        resultRx: document.getElementById("resultRx"),
+        resultLuck: document.getElementById("resultLuck"),
+        sumMoney: document.getElementById("sumMoney"),
+        sumTime: document.getElementById("sumTime"),
+        sumEmotion: document.getElementById("sumEmotion"),
+
+        copyBtn: document.getElementById("copyBtn"),
+        shareBtn: document.getElementById("shareBtn"),
+        againBtn: document.getElementById("againBtn"),
+        copyToast: document.getElementById("copyToast"),
+      };
+
+      let mode = "full"; // full | fast
+      let questions = []; // flattened
+      let idx = 0;
+      let history = []; // {qid, dim, chosenIndex, scoreObj}
+      let scores = {}; // per dim: {cat: points}
+
+      function buildQuestions(selectedMode) {
+        mode = selectedMode;
+        const full = [
+          ...QUESTION_BANK.money.map((q) => ({ ...q, dim: "money" })),
+          ...QUESTION_BANK.time.map((q) => ({ ...q, dim: "time" })),
+          ...QUESTION_BANK.emotion.map((q) => ({ ...q, dim: "emotion" })),
+        ];
+
+        // 빠른 모드: 핵심 문항 (각 5개씩 = 15)
+        if (mode === "fast") {
+          const pick = (arr, ids) =>
+            arr.filter((q) => ids.includes(q.id)).map((q) => ({ ...q }));
+          const m = pick(QUESTION_BANK.money, [
+            "m1",
+            "m2",
+            "m5",
+            "m6",
+            "m10",
+          ]).map((q) => ({ ...q, dim: "money" }));
+          const t = pick(QUESTION_BANK.time, [
+            "t1",
+            "t2",
+            "t4",
+            "t7",
+            "t10",
+          ]).map((q) => ({ ...q, dim: "time" }));
+          const e = pick(QUESTION_BANK.emotion, [
+            "e1",
+            "e3",
+            "e4",
+            "e8",
+            "e10",
+          ]).map((q) => ({ ...q, dim: "emotion" }));
+          // 섞어서 리듬감
+          return shuffle([...m, ...t, ...e]);
+        }
+
+        // 풀 모드: 섞어서 진행감
+        return shuffle(full);
+      }
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function resetState() {
+        idx = 0;
+        history = [];
+        scores = { money: {}, time: {}, emotion: {} };
+        els.copyToast.textContent = "";
+      }
+
+      function showStart() {
+        els.phaseChip.textContent = t("phaseReady");
+        els.qCount.textContent = t("qCountFull");
+        els.startScreen.classList.remove("hidden");
+        els.questionScreen.classList.add("hidden");
+        els.resultScreen.classList.add("hidden");
+        els.skipBtn.classList.add("hidden");
+        updateProgress();
+      }
+
+      function start(selectedMode) {
+        resetState();
+        questions = buildQuestions(selectedMode);
+        els.qCount.textContent =
+          selectedMode === "fast" ? t("qCountFast") : t("qCountFullMode");
+        els.startScreen.classList.add("hidden");
+        els.resultScreen.classList.add("hidden");
+        els.questionScreen.classList.remove("hidden");
+        els.skipBtn.classList.remove("hidden");
+        renderQuestion();
+      }
+
+      function updateProgress() {
+        const total = questions.length || 30;
+        const pct = total ? Math.round((idx / total) * 100) : 0;
+        els.progressFill.style.width = `${pct}%`;
+        els.progressText.textContent = `${pct}%`;
+        els.stepText.textContent = t("stepText", { current: Math.min(idx, total), total });
+      }
+
+      function renderQuestion() {
+        const q = questions[idx];
+        if (!q) {
+          return showResult();
+        }
+
+        els.phaseChip.textContent = t("phaseInProgress");
+        const dimLabel = DIM_LABEL[q.dim];
+        els.pillDim.textContent = dimLabel ? (currentLang === "en" ? dimLabel.en : dimLabel.ko) : q.dim;
+        els.pillTag.textContent = q.tag ? `# ${currentLang === "en" ? (q.tagEn || q.tag) : q.tag}` : "";
+        els.qText.textContent = currentLang === "en" ? (q.textEn || q.text) : q.text;
+
+        els.hintText.textContent =
+          mode === "fast"
+            ? t("hintFastMode")
+            : t("hintFullMode");
+
+        els.options.innerHTML = "";
+        q.options.forEach((opt, optIdx) => {
+          const btn = document.createElement("button");
+          btn.className =
+            "btn rounded-2xl px-4 py-4 text-left transition fadeIn";
+          const optLabel = currentLang === "en" ? (opt.labelEn || opt.label) : opt.label;
+          btn.innerHTML = `
+      <div class="flex items-start justify-between gap-3">
+        <div class="font-semibold">${escapeHtml(optLabel)}</div>
+        <div class="soft text-xs">${t("optionSelect")}</div>
+      </div>
+    `;
+          btn.addEventListener("click", () => chooseOption(optIdx));
+          els.options.appendChild(btn);
+        });
+
+        els.backBtn.disabled = idx === 0;
+        els.backBtn.classList.toggle("opacity-40", idx === 0);
+        updateProgress();
+      }
+
+      function chooseOption(optIdx) {
+        const q = questions[idx];
+        const chosen = q.options[optIdx];
+        applyScore(q.dim, chosen.score);
+
+        history.push({
+          qid: q.id,
+          dim: q.dim,
+          chosenIndex: optIdx,
+          scoreObj: chosen.score,
+        });
+
+        idx++;
+        renderQuestion();
+      }
+
+      function applyScore(dim, scoreObj) {
+        const bucket = scores[dim] || (scores[dim] = {});
+        for (const [cat, val] of Object.entries(scoreObj || {})) {
+          bucket[cat] = (bucket[cat] || 0) + val;
+        }
+      }
+
+      function rollbackScore(dim, scoreObj) {
+        const bucket = scores[dim] || {};
+        for (const [cat, val] of Object.entries(scoreObj || {})) {
+          bucket[cat] = (bucket[cat] || 0) - val;
+          if (bucket[cat] <= 0) delete bucket[cat];
+        }
+      }
+
+      function back() {
+        if (idx <= 0) return;
+        idx--;
+        const last = history.pop();
+        if (last) rollbackScore(last.dim, last.scoreObj);
+        renderQuestion();
+      }
+
+      function skip() {
+        // 스킵은 점수 부여 없이 다음으로
+        history.push({
+          qid: questions[idx].id,
+          dim: questions[idx].dim,
+          chosenIndex: -1,
+          scoreObj: {},
+        });
+        idx++;
+        renderQuestion();
+      }
+
+      function topCat(dim) {
+        const bucket = scores[dim] || {};
+        const entries = Object.entries(bucket);
+        if (!entries.length) {
+          // 아무것도 없으면 랜덤 기본값(부드러운 fallback)
+          if (dim === "money") return "unknown";
+          if (dim === "time") return "drift";
+          return "content";
+        }
+        entries.sort((a, b) => b[1] - a[1]);
+        return entries[0][0];
+      }
+
+      function showResult() {
+        els.phaseChip.textContent = t("phaseResult");
+        els.questionScreen.classList.add("hidden");
+        els.resultScreen.classList.remove("hidden");
+
+        const mKey = topCat("money");
+        const tKey = topCat("time");
+        const eKey = topCat("emotion");
+
+        const moneyLabel = CAT_LABEL[mKey];
+        const timeLabel = CAT_LABEL[tKey];
+        const emotionLabel = CAT_LABEL[eKey];
+        els.sumMoney.textContent = moneyLabel ? (currentLang === "en" ? moneyLabel.en : moneyLabel.ko) : mKey;
+        els.sumTime.textContent = timeLabel ? (currentLang === "en" ? timeLabel.en : timeLabel.ko) : tKey;
+        els.sumEmotion.textContent = emotionLabel ? (currentLang === "en" ? emotionLabel.en : emotionLabel.ko) : eKey;
+
+        const key = findResultKey(mKey, tKey, eKey);
+        const result =
+          RESULT_TYPES.find((r) => r.key === key) || RESULT_TYPES[0];
+
+        els.resultTitle.textContent = currentLang === "en" ? (result.titleEn || result.title) : result.title;
+        els.resultSubtitle.textContent = currentLang === "en" ? (result.subtitleEn || result.subtitle) : result.subtitle;
+        els.resultInsight.textContent = currentLang === "en" ? (result.insightEn || result.insight) : result.insight;
+        els.resultRx.textContent = currentLang === "en" ? (result.rxEn || result.rx) : result.rx;
+        els.resultLuck.textContent = currentLang === "en" ? (result.luckEn || result.luck) : result.luck;
+
+        updateProgress();
+
+        // URL에 결과 키 넣기 (공유용)
+        const url = new URL(window.location.href);
+        url.searchParams.set("r", key);
+        window.history.replaceState({}, "", url);
+      }
+
+      /** Share / Copy */
+      async function copyLink() {
+        const url = window.location.href;
+        try {
+          await navigator.clipboard.writeText(url);
+          toast(t("msgCopySuccess"), true);
+        } catch (e) {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = url;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          toast(t("msgCopySuccess"), true);
+        }
+      }
+
+      async function share() {
+        const title = t("shareTitle");
+        const text = `${title}\n${t("shareText")}\n\n`;
+        const url = window.location.href;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, text, url });
+            toast(t("msgShareSuccess"), true);
+            return;
+          } catch (e) {}
+        }
+        await copyLink();
+      }
+
+      function toast(msg, ok = false) {
+        els.copyToast.textContent = msg;
+        els.copyToast.className =
+          "mt-3 text-xs " + (ok ? "text-emerald-300" : "text-amber-300");
+      }
+
+      /** On load: query param으로 결과 바로 보기 */
+      function tryLoadSharedResult() {
+        const sp = new URLSearchParams(window.location.search);
+        const r = sp.get("r");
+        if (!r) return false;
+        const found = RESULT_TYPES.find((x) => x.key === r);
+        if (!found) return false;
+
+        // URL의 lang 파라미터 확인 및 언어 설정
+        const urlLang = sp.get("lang");
+        if (urlLang && supportedLangs.includes(urlLang)) {
+          setLang(urlLang, { updateUrl: false });
+        }
+
+        // 공유 링크로 들어오면 결과 화면 바로
+        resetState();
+        questions = buildQuestions("fast"); // 굳이 풀로 안 돌림
+        idx = questions.length;
+        els.startScreen.classList.add("hidden");
+        els.questionScreen.classList.add("hidden");
+        els.resultScreen.classList.remove("hidden");
+        els.skipBtn.classList.add("hidden");
+        els.phaseChip.textContent = t("phaseShared");
+
+        // 요약 레이블은 key 파싱
+        const [mKey, tKey, eKey] = r.split("|");
+        const moneyLabel = CAT_LABEL[mKey];
+        const timeLabel = CAT_LABEL[tKey];
+        const emotionLabel = CAT_LABEL[eKey];
+        els.sumMoney.textContent = moneyLabel ? (currentLang === "en" ? moneyLabel.en : moneyLabel.ko) : mKey;
+        els.sumTime.textContent = timeLabel ? (currentLang === "en" ? timeLabel.en : timeLabel.ko) : tKey;
+        els.sumEmotion.textContent = emotionLabel ? (currentLang === "en" ? emotionLabel.en : emotionLabel.ko) : eKey;
+
+        els.resultTitle.textContent = currentLang === "en" ? (found.titleEn || found.title) : found.title;
+        els.resultSubtitle.textContent = currentLang === "en" ? (found.subtitleEn || found.subtitle) : found.subtitle;
+        els.resultInsight.textContent = currentLang === "en" ? (found.insightEn || found.insight) : found.insight;
+        els.resultRx.textContent = currentLang === "en" ? (found.rxEn || found.rx) : found.rx;
+        els.resultLuck.textContent = currentLang === "en" ? (found.luckEn || found.luck) : found.luck;
+
+        // progress 100
+        const total = 15;
+        els.progressFill.style.width = "100%";
+        els.progressText.textContent = "100%";
+        els.stepText.textContent = t("stepText", { current: total, total });
+
+        return true;
+      }
+
+      /** Utils */
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      /** Events */
+      els.startBtn.addEventListener("click", () => start("full"));
+      els.fastBtn.addEventListener("click", () => start("fast"));
+      els.resetBtn.addEventListener("click", () => {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("r");
+        window.history.replaceState({}, "", url);
+        showStart();
+      });
+      els.backBtn.addEventListener("click", back);
+      els.skipBtn.addEventListener("click", skip);
+
+      els.copyBtn.addEventListener("click", copyLink);
+      els.shareBtn.addEventListener("click", share);
+      els.againBtn.addEventListener("click", () => start(mode));
+
+      // ---------- i18n ----------
+      const translations = {
+        ko: {
+          title: "올해 나의 <span class=\"text-violet-300\">인생 소비</span> 보고서",
+          subtitle: "올해 내 <b>돈·시간·감정</b>이 어디로 흘렀는지, <b>재미있게</b> 그리고 <b>쉽게</b> 정리해드립니다.",
+          startBtn: "시작하기 🚀",
+          fastBtn: "15문항 빠른 모드 ⚡",
+          resetBtn: "처음으로",
+          skipBtn: "이 질문 패스",
+          backBtn: "← 이전",
+          otherServices: "다른 서비스 보기",
+          startScreenTitle: "진짜로 3분 안에 끝나는 방식",
+          startScreenList: "• 질문은 1개씩, 버튼 누르면 바로 다음으로 넘어갑니다.<br>• 정답 없음. 느낌대로 찍어도 결과가 잘 나옵니다.<br>• 결과는 \"보고서\"로 나와서 공유하기 좋습니다.",
+          fastModeNote: "* 빠른 모드는 각 영역(돈/시간/감정)에서 핵심 문항만 뽑아 더 빠르게 분석합니다.",
+          clickNext: "클릭하면 바로 다음",
+          top3Spending: "내 3대 소비",
+          moneyLabel: "💰 돈",
+          timeLabel: "⏳ 시간",
+          emotionLabel: "🧠 감정",
+          resultInsightLabel: "🔥 해석",
+          resultRxLabel: "🧩 내년 한 줄 처방",
+          resultLuckLabel: "🍀 행운 멘트",
+          copyBtn: "결과 링크 복사 🔗",
+          shareBtn: "공유하기 📣",
+          againBtn: "한 번 더 🎲",
+          moreTestsDesc1: "다른 재밌는 것도 있는데",
+          moreTestsTitle: "더 많은 테스트 해보기",
+          moreTestsDesc2: "가볍게 하다 보면 의외로 통찰이 하나씩 생깁니다.",
+          moreTestsLink: "더 보러가기 →",
+          footer: "© AshLight / FunnyFunny · 결과는 재미+자기점검용입니다.",
+          qCountDefault: "총 30문항",
+          phaseReady: "준비",
+          phaseInProgress: "진행 중",
+          phaseResult: "결과",
+          phaseShared: "공유 결과",
+          qCountFull: "총 30문항 (빠른 모드 15문항 가능)",
+          qCountFast: "빠른 모드 · 15문항",
+          qCountFullMode: "풀 모드 · 30문항",
+          hintFastMode: "빠른 모드: 핵심만 뽑아 분석 중",
+          hintFullMode: "풀 모드: 더 정확하게 패턴 분류 중",
+          optionSelect: "선택",
+          stepText: "STEP {current}/{total}",
+          shareTitle: "올해 나의 인생 소비 보고서",
+          shareText: "내 돈·시간·감정이 어디로 갔는지 한 번에 정리됨 😄",
+          msgCopySuccess: "복사 완료! 친구한테 던져요 📣",
+          msgShareSuccess: "공유 성공! 🔥",
+        },
+        en: {
+          title: "My Life Spending Report <span class=\"text-violet-300\">This Year</span>",
+          subtitle: "Where did my <b>money·time·emotions</b> flow this year? We'll organize it <b>fun</b> and <b>easy</b>.",
+          threeMinCut: "· 3 min cut",
+          startBtn: "Start 🚀",
+          fastBtn: "15 questions fast mode ⚡",
+          resetBtn: "Reset",
+          skipBtn: "Skip this question",
+          backBtn: "← Previous",
+          otherServices: "View other services",
+          startScreenTitle: "Really finishes in 3 minutes",
+          startScreenList: "• One question at a time, click to move to the next.<br>• No right answers. Feel free to choose, results will be good.<br>• Results come as a \"report\" that's easy to share.",
+          fastModeNote: "* Fast mode picks only key questions from each area (money/time/emotion) for faster analysis.",
+          clickNext: "Click to proceed",
+          top3Spending: "My Top 3 Spending",
+          moneyLabel: "💰 Money",
+          timeLabel: "⏳ Time",
+          emotionLabel: "🧠 Emotion",
+          resultInsightLabel: "🔥 Insight",
+          resultRxLabel: "🧩 One-line prescription for next year",
+          resultLuckLabel: "🍀 Luck message",
+          copyBtn: "Copy result link 🔗",
+          shareBtn: "Share 📣",
+          againBtn: "Try again 🎲",
+          moreTestsDesc1: "There are other fun things too",
+          moreTestsTitle: "Try more tests",
+          moreTestsDesc2: "When you do them lightly, insights emerge one by one.",
+          moreTestsLink: "See more →",
+          footer: "© AshLight / FunnyFunny · Results are for fun and self-reflection.",
+          qCountDefault: "Total 30 questions",
+          phaseReady: "Ready",
+          phaseInProgress: "In Progress",
+          phaseResult: "Result",
+          phaseShared: "Shared Result",
+          qCountFull: "Total 30 questions (15 questions in fast mode)",
+          qCountFast: "Fast mode · 15 questions",
+          qCountFullMode: "Full mode · 30 questions",
+          hintFastMode: "Fast mode: Analyzing key points only",
+          hintFullMode: "Full mode: More accurately classifying patterns",
+          optionSelect: "Select",
+          stepText: "STEP {current}/{total}",
+          shareTitle: "My Life Spending Report This Year",
+          shareText: "See where my money·time·emotions went, all organized in one place 😄",
+          msgCopySuccess: "Copied! Share with friends 📣",
+          msgShareSuccess: "Share successful! 🔥",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") {
+          return template;
+        }
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = currentLang === "ko" ? "올해 나의 인생 소비 보고서" : "My Life Spending Report This Year";
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.dataset.i18n;
+          const translated = t(key);
+          if (translated.includes("<span")) {
+            el.innerHTML = translated;
+          } else {
+            el.textContent = translated;
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        // Re-render question if active
+        if (questions && questions.length > 0 && idx < questions.length) {
+          renderQuestion();
+        }
+        // Re-render result if active
+        if (els.resultScreen && !els.resultScreen.classList.contains("hidden")) {
+          const mKey = topCat("money");
+          const tKey = topCat("time");
+          const eKey = topCat("emotion");
+          const moneyLabel = CAT_LABEL[mKey];
+          const timeLabel = CAT_LABEL[tKey];
+          const emotionLabel = CAT_LABEL[eKey];
+          els.sumMoney.textContent = moneyLabel ? (currentLang === "en" ? moneyLabel.en : moneyLabel.ko) : mKey;
+          els.sumTime.textContent = timeLabel ? (currentLang === "en" ? timeLabel.en : timeLabel.ko) : tKey;
+          els.sumEmotion.textContent = emotionLabel ? (currentLang === "en" ? emotionLabel.en : emotionLabel.ko) : eKey;
+          const key = findResultKey(mKey, tKey, eKey);
+          const result = RESULT_TYPES.find((r) => r.key === key) || RESULT_TYPES[0];
+          els.resultTitle.textContent = currentLang === "en" ? (result.titleEn || result.title) : result.title;
+          els.resultSubtitle.textContent = currentLang === "en" ? (result.subtitleEn || result.subtitle) : result.subtitle;
+          els.resultInsight.textContent = currentLang === "en" ? (result.insightEn || result.insight) : result.insight;
+          els.resultRx.textContent = currentLang === "en" ? (result.rxEn || result.rx) : result.rx;
+          els.resultLuck.textContent = currentLang === "en" ? (result.luckEn || result.luck) : result.luck;
+        }
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      /** Init */
+      (function init() {
+        setLang(detectLang(), { updateUrl: false });
+        if (!tryLoadSharedResult()) {
+          showStart();
+        }
+      })();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

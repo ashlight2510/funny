@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HEIC to JPG 변환기 · 이미지 변환/압축/리사이즈</title>
+
+    <!-- 파비콘(메타 안에 SVG 코드) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>"
+    />
+
+    <!-- OG -->
+    <meta
+      property="og:title"
+      content="HEIC to JPG · 이미지 변환/압축/리사이즈"
+    />
+    <meta
+      property="og:description"
+      content="HEIC를 JPG로 변환하고 WebP/PNG 변환, 압축, 리사이즈까지 한 번에."
+    />
+    <meta property="og:type" content="website" />
+    <!-- OG 이미지: 사용 중인 규칙대로 더미 이미지 텍스트를 서비스에 맞는 영어로 -->
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=HEIC%20to%20JPG%20Converter"
+    />
+
+    <!-- (선택) 애드센스: 원하면 주석 해제
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+  -->
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/heic2any/dist/heic2any.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+          Arial, sans-serif;
+        background: #0b1220;
+        color: #e7eefc;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 16px auto;
+        padding: 28px 16px 60px;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 10px;
+      }
+      p {
+        margin: 8px 0 0;
+        color: #b9c7e6;
+        line-height: 1.5;
+      }
+      .topbar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+      .badge {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #dbe7ff;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 12px;
+      }
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .drop {
+        border: 1.5px dashed rgba(255, 255, 255, 0.22);
+        border-radius: 16px;
+        padding: 22px;
+        min-height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.04);
+        transition: 0.15s ease;
+      }
+      .drop.drag {
+        background: rgba(120, 180, 255, 0.1);
+        border-color: rgba(120, 180, 255, 0.6);
+      }
+      .drop strong {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .drop small {
+        color: #b9c7e6;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .btnrow {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      button {
+        background: rgba(255, 255, 255, 0.1);
+        color: #e7eefc;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 12px;
+        padding: 10px 12px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      button:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+      button.primary {
+        background: rgba(120, 180, 255, 0.22);
+        border-color: rgba(120, 180, 255, 0.35);
+      }
+      button.danger {
+        background: rgba(255, 120, 120, 0.18);
+        border-color: rgba(255, 120, 120, 0.28);
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      .opts {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .row label {
+        color: #cfe0ff;
+        font-size: 13px;
+      }
+      select,
+      input[type="number"],
+      input[type="range"] {
+        width: 180px;
+        background: rgba(0, 0, 0, 0.22);
+        color: #e7eefc;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+      input[type="range"] {
+        padding: 0;
+        height: 28px;
+      }
+      .hint {
+        font-size: 12px;
+        color: #a8b8dc;
+      }
+      .list {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+      .meta b {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 520px;
+      }
+      .meta span {
+        font-size: 12px;
+        color: #a8b8dc;
+      }
+      .right {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .progress {
+        font-size: 12px;
+        color: #cfe0ff;
+      }
+      .footer {
+        margin-top: 14px;
+        color: #9fb2db;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      a {
+        color: #9fd0ff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .lang-switch {
+        display: inline-flex;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(10, 16, 28, 0.7);
+        padding: 4px;
+        gap: 4px;
+        font-size: 12px;
+      }
+      .lang-switch button {
+        border-radius: 999px;
+        padding: 6px 10px;
+        color: #c6d6f7;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: rgba(120, 180, 255, 0.25);
+        color: #eaf2ff;
+      }
+    </style>
+    <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/heic/" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="topbar">
+        <div>
+          <h1 data-i18n="title">
+            HEIC → JPG 변환기 (WebP/PNG 변환 · 압축 · 리사이즈 · ZIP)
+          </h1>
+          <p data-i18n="subtitle">
+            업로드 없이 브라우저에서 바로 변환돼. 여러 장 넣고 한 번에 ZIP으로
+            받을 수도 있어.
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center">
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+          <a href="https://funnyfunny.cloud" target="_blank" rel="noreferrer">
+            <div class="badge">funnyfunny.cloud</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div id="drop" class="drop">
+            <div>
+              <strong data-i18n="dropTitle">드래그&드롭 또는 파일 선택</strong>
+              <small data-i18n="dropHint"
+                >HEIC / JPG / PNG / WebP 지원 (여러 장 가능)</small
+              >
+              <div class="btnrow" style="justify-content: center">
+                <button
+                  id="btnFileSelect"
+                  class="primary"
+                  type="button"
+                  data-i18n="btnSelect"
+                >
+                  파일 선택
+                </button>
+                <button id="btnConvert" type="button" disabled data-i18n="btnConvert">
+                  변환 시작
+                </button>
+                <button id="btnZip" type="button" disabled data-i18n="btnZip">
+                  ZIP 다운로드
+                </button>
+                <button
+                  id="btnClear"
+                  type="button"
+                  class="danger"
+                  disabled
+                  data-i18n="btnClear"
+                >
+                  비우기
+                </button>
+              </div>
+              <input
+                id="file"
+                type="file"
+                multiple
+                accept=".heic,image/heic,image/heif,image/jpeg,image/png,image/webp"
+              />
+            </div>
+          </div>
+
+          <div id="list" class="list"></div>
+
+          <div class="footer" data-i18n-html="footerNotes">
+            · HEIC 변환은 기기/브라우저에 따라 처리 시간이 조금 걸릴 수 있어.<br />
+            · 변환은 로컬에서만 진행돼(서버 업로드 없음).<br />
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="opts">
+            <div class="row">
+              <label data-i18n="labelFormat">출력 포맷</label>
+              <select id="fmt">
+                <option value="image/jpeg" data-i18n="optJpg">JPG (추천)</option>
+                <option value="image/webp" data-i18n="optWebp">
+                  WebP (용량↓)
+                </option>
+                <option value="image/png" data-i18n="optPng">
+                  PNG (무손실)
+                </option>
+              </select>
+            </div>
+
+            <div class="row">
+              <label data-i18n="labelQuality">품질(압축)</label>
+              <input id="quality" type="range" min="30" max="100" value="85" />
+            </div>
+            <div class="hint" data-i18n="qualityHint">
+              JPG/WebP에 적용(높을수록 품질↑ 용량↑). PNG는 무시됨.
+            </div>
+
+            <div class="row">
+              <label data-i18n="labelResize">리사이즈(긴변 px)</label>
+              <input id="maxSide" type="number" min="0" step="10" value="0" />
+            </div>
+            <div class="hint" data-i18n="resizeHint">
+              0이면 원본 유지. 예: 1600 입력 시 긴 변이 1600px로 축소.
+            </div>
+
+            <hr
+              style="
+                border: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+              "
+            />
+
+            <div class="hint" data-i18n-html="rulesHint">
+              ✔ 변환 규칙<br />
+              - HEIC/HEIF: heic2any로 디코딩 후 캔버스로 재인코딩<br />
+              - JPG/PNG/WebP: 캔버스로 출력 포맷에 맞게 재인코딩<br /><br />
+              ✔ 추천 세팅<br />
+              - HEIC → JPG: 품질 85 / 리사이즈 0<br />
+              - 용량 줄이기: WebP + 품질 75 + 리사이즈 1600
+            </div>
+
+            <div
+              style="
+                margin-top: 10px;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+              "
+            >
+              <a
+                href="https://funnyfunny.cloud"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button type="button" data-i18n="btnOtherServices">
+                  다른 서비스 보기
+                </button>
+              </a>
+              <button id="btnDemo" type="button" data-i18n="btnTips">
+                사용 팁
+              </button>
+            </div>
+
+            <div
+              id="tips"
+              class="hint"
+              style="display: none; margin-top: 10px"
+              data-i18n-html="tipsContent"
+            >
+              · 아이폰 사진(HEIC) 여러 장 넣고 “변환 시작” → “ZIP 다운로드”로
+              끝.<br />
+              · PC에서 웹용으로 최적화: WebP + 리사이즈 1600 + 품질 75 추천.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "HEIC to JPG 변환기 · 이미지 변환/압축/리사이즈",
+          metaOgTitle: "HEIC to JPG · 이미지 변환/압축/리사이즈",
+          metaOgDescription:
+            "HEIC를 JPG로 변환하고 WebP/PNG 변환, 압축, 리사이즈까지 한 번에.",
+          title: "HEIC → JPG 변환기 (WebP/PNG 변환 · 압축 · 리사이즈 · ZIP)",
+          subtitle:
+            "업로드 없이 브라우저에서 바로 변환돼. 여러 장 넣고 한 번에 ZIP으로 받을 수도 있어.",
+          dropTitle: "드래그&드롭 또는 파일 선택",
+          dropHint: "HEIC / JPG / PNG / WebP 지원 (여러 장 가능)",
+          btnSelect: "파일 선택",
+          btnConvert: "변환 시작",
+          btnZip: "ZIP 다운로드",
+          btnClear: "비우기",
+          footerNotes:
+            "· HEIC 변환은 기기/브라우저에 따라 처리 시간이 조금 걸릴 수 있어.<br />· 변환은 로컬에서만 진행돼(서버 업로드 없음).<br />",
+          labelFormat: "출력 포맷",
+          optJpg: "JPG (추천)",
+          optWebp: "WebP (용량↓)",
+          optPng: "PNG (무손실)",
+          labelQuality: "품질(압축)",
+          qualityHint:
+            "JPG/WebP에 적용(높을수록 품질↑ 용량↑). PNG는 무시됨.",
+          labelResize: "리사이즈(긴변 px)",
+          resizeHint:
+            "0이면 원본 유지. 예: 1600 입력 시 긴 변이 1600px로 축소.",
+          rulesHint:
+            "✔ 변환 규칙<br />- HEIC/HEIF: heic2any로 디코딩 후 캔버스로 재인코딩<br />- JPG/PNG/WebP: 캔버스로 출력 포맷에 맞게 재인코딩<br /><br />✔ 추천 세팅<br />- HEIC → JPG: 품질 85 / 리사이즈 0<br />- 용량 줄이기: WebP + 품질 75 + 리사이즈 1600",
+          btnOtherServices: "다른 서비스 보기",
+          btnTips: "사용 팁",
+          tipsContent:
+            "· 아이폰 사진(HEIC) 여러 장 넣고 “변환 시작” → “ZIP 다운로드”로 끝.<br />· PC에서 웹용으로 최적화: WebP + 리사이즈 1600 + 품질 75 추천.",
+          statusWaiting: "대기",
+          statusProcessing: "처리중",
+          statusDone: "완료",
+          statusFailed: "실패",
+          logDecoding: "HEIC 디코딩",
+          logEncoding: "인코딩",
+          logOk: "OK",
+          logError: "변환 오류",
+          btnDownload: "다운로드",
+          btnRemove: "삭제",
+        },
+        en: {
+          metaTitle: "HEIC to JPG Converter · Convert/Compress/Resize",
+          metaOgTitle: "HEIC to JPG · Convert/Compress/Resize",
+          metaOgDescription:
+            "Convert HEIC to JPG and batch convert to WebP/PNG with compression and resizing.",
+          title: "HEIC → JPG Converter (WebP/PNG · Compress · Resize · ZIP)",
+          subtitle:
+            "Convert directly in your browser with no uploads. Batch files and download as ZIP.",
+          dropTitle: "Drag & drop or choose files",
+          dropHint: "HEIC / JPG / PNG / WebP supported (batch upload)",
+          btnSelect: "Select files",
+          btnConvert: "Start conversion",
+          btnZip: "Download ZIP",
+          btnClear: "Clear",
+          footerNotes:
+            "· HEIC conversion can take a bit depending on device/browser.<br />· Conversion happens locally (no uploads).<br />",
+          labelFormat: "Output format",
+          optJpg: "JPG (recommended)",
+          optWebp: "WebP (smaller size)",
+          optPng: "PNG (lossless)",
+          labelQuality: "Quality (compression)",
+          qualityHint:
+            "Applies to JPG/WebP (higher = better quality, larger size). PNG ignores this.",
+          labelResize: "Resize (long edge px)",
+          resizeHint:
+            "0 keeps original size. Example: 1600 shrinks long edge to 1600px.",
+          rulesHint:
+            "✔ Conversion rules<br />- HEIC/HEIF: decode with heic2any → re-encode via canvas<br />- JPG/PNG/WebP: re-encode to output format via canvas<br /><br />✔ Recommended settings<br />- HEIC → JPG: quality 85 / resize 0<br />- Reduce size: WebP + quality 75 + resize 1600",
+          btnOtherServices: "See other services",
+          btnTips: "Usage tips",
+          tipsContent:
+            "· Add multiple iPhone photos (HEIC) → “Start conversion” → “Download ZIP”.<br />· For web: WebP + resize 1600 + quality 75.",
+          statusWaiting: "Waiting",
+          statusProcessing: "Processing",
+          statusDone: "Done",
+          statusFailed: "Failed",
+          logDecoding: "HEIC decoding",
+          logEncoding: "Encoding",
+          logOk: "OK",
+          logError: "Conversion error",
+          btnDownload: "Download",
+          btnRemove: "Remove",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key) {
+        const langTable = translations[currentLang] || translations.ko;
+        return langTable[key] ?? translations.ko[key] ?? key;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", t("metaOgTitle"));
+        const ogDesc = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        if (ogDesc) ogDesc.setAttribute("content", t("metaOgDescription"));
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        render();
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      const $ = (s) => document.querySelector(s);
+
+      const drop = $("#drop");
+      const fileInput = $("#file");
+      const listEl = $("#list");
+
+      const btnFileSelect = $("#btnFileSelect");
+      const btnConvert = $("#btnConvert");
+      const btnZip = $("#btnZip");
+      const btnClear = $("#btnClear");
+      const btnDemo = $("#btnDemo");
+
+      const fmtEl = $("#fmt");
+      const qualityEl = $("#quality");
+      const maxSideEl = $("#maxSide");
+
+      let queue = []; // { file, status, outBlob, outName, log }
+      let converted = 0;
+
+      function bytes(n) {
+        const u = ["B", "KB", "MB", "GB"];
+        let i = 0,
+          v = n;
+        while (v >= 1024 && i < u.length - 1) {
+          v /= 1024;
+          i++;
+        }
+        return `${v.toFixed(i === 0 ? 0 : 1)} ${u[i]}`;
+      }
+
+      function extFromMime(m) {
+        if (m === "image/jpeg") return "jpg";
+        if (m === "image/png") return "png";
+        if (m === "image/webp") return "webp";
+        return "bin";
+      }
+
+      function baseName(name) {
+        const i = name.lastIndexOf(".");
+        return i >= 0 ? name.slice(0, i) : name;
+      }
+
+      function isHeic(file) {
+        const n = (file.name || "").toLowerCase();
+        return (
+          n.endsWith(".heic") ||
+          n.endsWith(".heif") ||
+          file.type === "image/heic" ||
+          file.type === "image/heif"
+        );
+      }
+
+      function setButtons() {
+        const has = queue.length > 0;
+        btnConvert.disabled = !has;
+        btnClear.disabled = !has;
+        btnZip.disabled = converted === 0;
+      }
+
+      function render() {
+        listEl.innerHTML = "";
+        queue.forEach((q, idx) => {
+          const el = document.createElement("div");
+          el.className = "item";
+
+          const meta = document.createElement("div");
+          meta.className = "meta";
+
+          const title = document.createElement("b");
+          title.textContent = q.file.name;
+
+          const sub = document.createElement("span");
+          const outInfo = q.outBlob
+            ? ` → ${q.outName} (${bytes(q.outBlob.size)})`
+            : "";
+          const statusText = q.statusKey ? t(q.statusKey) : q.status;
+          sub.textContent = `${bytes(q.file.size)} · ${statusText}${outInfo}`;
+
+          meta.appendChild(title);
+          meta.appendChild(sub);
+
+          const right = document.createElement("div");
+          right.className = "right";
+
+          const prog = document.createElement("span");
+          prog.className = "progress";
+          const logText = q.logKey ? t(q.logKey) : q.log;
+          prog.textContent = logText || "";
+
+          const dl = document.createElement("button");
+          dl.type = "button";
+          dl.textContent = t("btnDownload");
+          dl.disabled = !q.outBlob;
+          dl.onclick = () => downloadBlob(q.outBlob, q.outName);
+
+          const rm = document.createElement("button");
+          rm.type = "button";
+          rm.textContent = t("btnRemove");
+          rm.onclick = () => {
+            queue.splice(idx, 1);
+            if (q.outBlob) converted = Math.max(0, converted - 1);
+            render();
+            setButtons();
+          };
+
+          right.appendChild(prog);
+          right.appendChild(dl);
+          right.appendChild(rm);
+
+          el.appendChild(meta);
+          el.appendChild(right);
+          listEl.appendChild(el);
+        });
+      }
+
+      function downloadBlob(blob, filename) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function addFiles(files) {
+        const arr = Array.from(files || []);
+        arr.forEach((f) =>
+          queue.push({
+            file: f,
+            statusKey: "statusWaiting",
+            status: "",
+            outBlob: null,
+            outName: "",
+            log: "",
+            logKey: "",
+          })
+        );
+        render();
+        setButtons();
+      }
+
+      // Drag & drop
+      ["dragenter", "dragover"].forEach((ev) => {
+        drop.addEventListener(ev, (e) => {
+          e.preventDefault();
+          drop.classList.add("drag");
+        });
+      });
+      ["dragleave", "drop"].forEach((ev) => {
+        drop.addEventListener(ev, (e) => {
+          e.preventDefault();
+          drop.classList.remove("drag");
+        });
+      });
+      drop.addEventListener("drop", (e) => addFiles(e.dataTransfer.files));
+
+      fileInput.addEventListener("change", (e) => addFiles(e.target.files));
+
+      btnFileSelect.addEventListener("click", () => fileInput.click());
+
+      btnClear.addEventListener("click", () => {
+        queue = [];
+        converted = 0;
+        render();
+        setButtons();
+      });
+
+      btnDemo.addEventListener("click", () => {
+        const t = $("#tips");
+        t.style.display = t.style.display === "none" ? "block" : "none";
+      });
+
+      async function fileToImageBitmap(blob) {
+        // createImageBitmap이 더 빠른 편
+        return await createImageBitmap(blob);
+      }
+
+      function resizeDims(w, h, maxSide) {
+        if (!maxSide || maxSide <= 0) return { w, h };
+        const long = Math.max(w, h);
+        if (long <= maxSide) return { w, h };
+        const scale = maxSide / long;
+        return { w: Math.round(w * scale), h: Math.round(h * scale) };
+      }
+
+      async function canvasEncode(blob, outMime, quality, maxSide) {
+        const bmp = await fileToImageBitmap(blob);
+        const { w, h } = resizeDims(bmp.width, bmp.height, maxSide);
+
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(bmp, 0, 0, w, h);
+
+        const q = Math.max(0.3, Math.min(1, (quality || 85) / 100));
+        const outBlob = await new Promise((resolve) => {
+          if (outMime === "image/png") {
+            canvas.toBlob(resolve, outMime);
+          } else {
+            canvas.toBlob(resolve, outMime, q);
+          }
+        });
+
+        return outBlob;
+      }
+
+      async function convertOne(item) {
+        const outMime = fmtEl.value;
+        const quality = Number(qualityEl.value || 85);
+        const maxSide = Number(maxSideEl.value || 0);
+
+        item.statusKey = "statusProcessing";
+        item.status = "";
+        item.logKey = "";
+        item.log = "…";
+        render();
+
+        let srcBlob;
+
+        try {
+          if (isHeic(item.file)) {
+            item.logKey = "logDecoding";
+            item.log = "";
+            render();
+
+            // heic2any: 결과는 Blob 또는 Blob[] (여러 프레임/사진인 경우)
+            const res = await heic2any({
+              blob: item.file,
+              toType: "image/jpeg",
+              quality: 0.92,
+            });
+            srcBlob = Array.isArray(res) ? res[0] : res; // 기본은 첫 번째만
+          } else {
+            srcBlob = item.file;
+          }
+
+          item.logKey = "logEncoding";
+          item.log = "";
+          render();
+
+          const outBlob = await canvasEncode(
+            srcBlob,
+            outMime,
+            quality,
+            maxSide
+          );
+          const ext = extFromMime(outMime);
+          const name = `${baseName(item.file.name)}.${ext}`;
+
+          item.outBlob = outBlob;
+          item.outName = name;
+          item.statusKey = "statusDone";
+          item.status = "";
+          item.logKey = "logOk";
+          item.log = "";
+          converted += 1;
+          render();
+          setButtons();
+        } catch (err) {
+          item.statusKey = "statusFailed";
+          item.status = "";
+          item.logKey = err && err.message ? "" : "logError";
+          item.log = err && err.message ? err.message : "";
+          render();
+        }
+      }
+
+      btnConvert.addEventListener("click", async () => {
+        btnConvert.disabled = true;
+        for (const item of queue) {
+          if (item.outBlob) continue; // 이미 변환된 건 스킵
+          await convertOne(item);
+        }
+        btnConvert.disabled = false;
+        setButtons();
+      });
+
+      btnZip.addEventListener("click", async () => {
+        const zip = new JSZip();
+        let count = 0;
+
+        for (const item of queue) {
+          if (!item.outBlob) continue;
+          const buf = await item.outBlob.arrayBuffer();
+          zip.file(item.outName, buf);
+          count++;
+        }
+        if (count === 0) return;
+
+        const blob = await zip.generateAsync({ type: "blob" });
+        downloadBlob(blob, `converted_${Date.now()}.zip`);
+      });
+
+      setButtons();
+    </script>
+  </body>
+</html>

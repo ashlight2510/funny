@@ -1,0 +1,1970 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HWPX 텍스트 추출기 | Quick Text Extractor</title>
+    <meta
+      name="description"
+      content="HWPX 파일에서 텍스트를 빠르게 추출하고 PDF/DOCX로 저장하세요. 표/레이아웃은 지원하지 않으며 파일은 로컬에서만 처리됩니다."
+    />
+    <meta
+      name="description"
+      lang="en"
+      content="Extract text from HWPX and export to PDF/DOCX. Tables/layouts are not supported. All processing stays on your device."
+    />
+    <meta
+      name="keywords"
+      content="HWPX, HWP, PDF, DOCX, text extractor, converter, 한글, hwpx 텍스트"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/hwp/" />
+    <link
+      rel="alternate"
+      hreflang="ko"
+      href="https://hwp.funnyfunny.cloud/?lang=ko"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://hwp.funnyfunny.cloud/?lang=en"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://hwp.funnyfunny.cloud/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FunnyFunny Tools" />
+    <meta
+      property="og:title"
+      content="HWPX 텍스트 추출기 | Quick Text Extractor"
+    />
+    <meta
+      property="og:description"
+      content="HWPX 텍스트를 빠르게 추출하고 PDF/DOCX로 저장하세요. 표/레이아웃은 지원하지 않습니다."
+    />
+    <meta property="og:url" content="https://hwp.funnyfunny.cloud/" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/111827/ffffff.png&amp;text=HWPX+TEXT"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="HWPX Editor preview" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="HWPX 텍스트 추출기 | Quick Text Extractor"
+    />
+    <meta
+      name="twitter:description"
+      content="HWPX 텍스트를 빠르게 추출하고 PDF/DOCX로 저장하세요. 표/레이아웃은 지원하지 않습니다."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/111827/ffffff.png&amp;text=HWPX+Editor"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "HWPX Text Extractor",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Extract HWPX text in the browser and export to PDF/DOCX without installing software. Tables and layouts are not preserved."
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+          sans-serif;
+        background: #f5f5f5;
+        color: #333;
+      }
+
+      .header {
+        background: #fff;
+        padding: 16px 24px;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .header-text {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .header h1 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .header .subtitle {
+        font-size: 13px;
+        color: #666;
+      }
+
+      .lang-switch {
+        display: inline-flex;
+        gap: 6px;
+        background: #f1f5f9;
+        border-radius: 999px;
+        padding: 4px;
+        border: 1px solid #e2e8f0;
+        flex-shrink: 0;
+      }
+
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        color: #475569;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .lang-switch button.active {
+        background: #0f172a;
+        color: #fff;
+      }
+
+      @media (max-width: 720px) {
+        .header-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      .warning {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 12px 16px;
+        margin: 16px 24px;
+        border-radius: 4px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .warning strong {
+        color: #856404;
+      }
+
+      .container {
+        display: flex;
+        height: calc(100vh - 140px);
+        gap: 16px;
+        padding: 16px 24px;
+      }
+
+      .preview-panel {
+        flex: 1;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        padding: 24px;
+      }
+
+      .preview-panel h2 {
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #555;
+      }
+
+      .editor-panel {
+        width: 400px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+        overflow-y: auto;
+      }
+
+      .editor-panel h2 {
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #555;
+      }
+
+      .upload-area {
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        padding: 48px 24px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: #fafafa;
+      }
+
+      .upload-area:hover {
+        border-color: #4caf50;
+        background: #f0f8f0;
+      }
+
+      .upload-area.dragover {
+        border-color: #4caf50;
+        background: #e8f5e9;
+      }
+
+      .upload-area input {
+        display: none;
+      }
+
+      .upload-area .icon {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .upload-area .text {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .upload-area .hint {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 20mm;
+        margin: 0 auto 16px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        overflow: hidden;
+        page-break-after: always;
+      }
+
+      .page p {
+        margin: 0 0 6mm 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+        font-size: 12pt;
+        color: #000;
+      }
+
+      .doc-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0 0 6mm 0;
+        font-size: 11pt;
+        color: #111;
+      }
+
+      .doc-table td,
+      .doc-table th {
+        border: 1px solid #cbd5f5;
+        padding: 6px 8px;
+        vertical-align: top;
+        min-width: 40px;
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
+
+      .replace-tool {
+        margin-bottom: 24px;
+      }
+
+      .replace-tool label {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .replace-tool input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .replace-tool button {
+        width: 100%;
+        padding: 10px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .replace-tool button:hover {
+        background: #45a049;
+      }
+
+      .replace-tool button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      .presets {
+        margin-bottom: 24px;
+      }
+
+      .presets h3 {
+        font-size: 14px;
+        margin-bottom: 12px;
+        color: #555;
+      }
+
+      .preset-item {
+        padding: 8px 12px;
+        background: #f5f5f5;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-size: 13px;
+      }
+
+      .preset-item:hover {
+        background: #e0e0e0;
+      }
+
+      .export-buttons {
+        display: flex;
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .export-buttons button {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+
+      .btn-pdf {
+        background: #2196f3;
+        color: white;
+      }
+
+      .btn-pdf:hover {
+        background: #1976d2;
+      }
+
+      .btn-docx {
+        background: #ff9800;
+        color: white;
+      }
+
+      .btn-docx:hover {
+        background: #f57c00;
+      }
+
+      .export-buttons button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      .status {
+        margin-top: 16px;
+        padding: 12px;
+        background: #e3f2fd;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #1976d2;
+        display: none;
+      }
+
+      .status.show {
+        display: block;
+      }
+
+      .status.error {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 48px;
+        color: #666;
+      }
+
+      .loading::after {
+        content: "...";
+        animation: dots 1.5s steps(4, end) infinite;
+      }
+
+      @keyframes dots {
+        0%,
+        20% {
+          content: ".";
+        }
+        40% {
+          content: "..";
+        }
+        60%,
+        100% {
+          content: "...";
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .container {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .preview-panel {
+          order: 1;
+          max-height: 70vh;
+        }
+
+        .editor-panel {
+          order: 2;
+          width: 100%;
+          max-height: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .header {
+          padding: 14px 16px;
+        }
+
+        .warning {
+          margin: 12px 16px;
+        }
+
+        .container {
+          padding: 12px 16px 20px;
+          gap: 12px;
+        }
+
+        .preview-panel,
+        .editor-panel {
+          padding: 16px;
+          border-radius: 10px;
+        }
+
+        .page {
+          width: 100%;
+          min-height: auto;
+          padding: 16px;
+        }
+
+        .doc-table {
+          font-size: 10pt;
+        }
+
+        .export-buttons {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .header h1 {
+          font-size: 18px;
+        }
+
+        .upload-area {
+          padding: 32px 16px;
+        }
+      }
+
+      @media print {
+        .header,
+        .editor-panel,
+        .warning {
+          display: none;
+        }
+        .preview-panel {
+          padding: 0;
+        }
+        .page {
+          margin: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-row">
+        <div class="header-text">
+          <h1 data-i18n="heroTitle">
+            HWPX 파일을 바로 고쳐서 PDF로 제출하세요
+          </h1>
+          <div class="subtitle" data-i18n="heroSubtitle">
+            한글 설치 없이, 업로드한 파일은 내 PC에서만 처리됩니다
+          </div>
+        </div>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+          <button type="button" class="lang-btn" data-lang="en">English</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="warning">
+      <strong data-i18n="warningTitle">⚠️ 안내</strong><br />
+      <span data-i18n="warningBody"
+        >본 도구는 HWPX 원본을 직접 수정하지 않습니다. 편집 결과는 새
+        문서(PDF/DOCX)로 생성됩니다.</span
+      >
+    </div>
+
+    <div class="container">
+      <div class="preview-panel" id="previewPanel">
+        <div class="upload-area" id="uploadArea"></div>
+      </div>
+
+      <div class="editor-panel">
+        <h2 data-i18n="editorTitle">편집 도구</h2>
+
+        <div class="replace-tool">
+          <label data-i18n="replaceLabel">문구 일괄 변경</label>
+          <input
+            type="text"
+            id="findText"
+            placeholder="찾을 문구"
+            data-i18n-placeholder="findPlaceholder"
+          />
+          <input
+            type="text"
+            id="replaceText"
+            placeholder="바꿀 문구"
+            data-i18n-placeholder="replacePlaceholder"
+          />
+          <button id="replaceBtn" disabled data-i18n="replaceButton">
+            일괄 변경
+          </button>
+        </div>
+
+        <div class="presets">
+          <h3 data-i18n="presetsTitle">빠른 치환 프리셋</h3>
+          <div class="preset-item" data-preset="date" data-i18n="presetDate">
+            오늘 날짜로 변경
+          </div>
+          <div
+            class="preset-item"
+            data-preset="company"
+            data-i18n="presetCompany"
+          >
+            회사명 변경
+          </div>
+          <div class="preset-item" data-preset="name" data-i18n="presetName">
+            담당자명 변경
+          </div>
+        </div>
+
+        <div class="export-buttons">
+          <button class="btn-pdf" id="exportPdf" disabled data-i18n="exportPdf">
+            PDF 다운로드
+          </button>
+          <button
+            class="btn-docx"
+            id="exportDocx"
+            disabled
+            data-i18n="exportDocx"
+          >
+            DOCX 다운로드
+          </button>
+        </div>
+
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+
+    <!-- 외부 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cfb@1.2.2/dist/cfb.min.js"></script>
+
+    <script>
+      // 라이브러리 로딩 체크
+      function checkLibraries() {
+        const required = {
+          pako: typeof pako !== "undefined",
+          JSZip: typeof JSZip !== "undefined",
+          html2canvas: typeof html2canvas !== "undefined",
+          jspdf: typeof jspdf !== "undefined",
+          saveAs: typeof saveAs !== "undefined",
+        };
+
+        const missing = Object.entries(required)
+          .filter(([name, loaded]) => !loaded)
+          .map(([name]) => name);
+
+        if (missing.length > 0) {
+          console.warn("일부 라이브러리가 로드되지 않았습니다:", missing);
+          showStatus(t("status.libraryLimited"), true);
+        }
+
+        return missing.length === 0;
+      }
+
+      // ==================== i18n ====================
+      const i18n = {
+        ko: {
+          documentTitle: "HWPX 텍스트 추출기 | Quick Text Extractor",
+          heroTitle: "HWPX 텍스트를 빠르게 추출하세요",
+          heroSubtitle:
+            "표/레이아웃은 지원하지 않습니다. 업로드한 파일은 내 PC에서만 처리됩니다",
+          warningTitle: "⚠️ 안내",
+          warningBody:
+            "본 도구는 텍스트만 추출합니다. 표/레이아웃은 재현되지 않으며 결과는 새 문서(PDF/DOCX)로 생성됩니다.",
+          editorTitle: "텍스트 편집",
+          replaceLabel: "문구 일괄 변경",
+          findPlaceholder: "찾을 문구",
+          replacePlaceholder: "바꿀 문구",
+          replaceButton: "일괄 변경",
+          presetsTitle: "빠른 치환 프리셋",
+          presetDate: "오늘 날짜로 변경",
+          presetCompany: "회사명 변경",
+          presetName: "담당자명 변경",
+          exportPdf: "PDF 다운로드",
+          exportDocx: "DOCX 다운로드",
+          uploadLine1: "HWPX 파일을 여기에 드래그하세요",
+          uploadLine2: "또는 클릭하여 파일 선택",
+          uploadHint:
+            "✔ 파일은 서버로 전송되지 않습니다<br>✔ 브라우저에서만 처리됩니다",
+          parsingFile: "파일 파싱 중",
+          noParagraphs: "내용이 없습니다",
+          placeholders: {
+            companyOld: "기존 회사명",
+            companyNew: "새 회사명",
+            nameOld: "기존 담당자명",
+            nameNew: "새 담당자명",
+          },
+          status: {
+            libraryLimited:
+              "일부 기능이 제한될 수 있습니다. 페이지를 새로고침해주세요.",
+            noPagesToExport: "내보낼 내용이 없습니다.",
+            pdfGenerating: "PDF 생성 중...",
+            pdfDone: "PDF 다운로드 완료!",
+            pdfError: (vars) =>
+              `PDF 생성 중 오류가 발생했습니다: ${vars.message}`,
+            docxGenerating: "DOCX 생성 중...",
+            docxDone: "DOCX 다운로드 완료!",
+            docxFallback: "DOCX 생성 실패. 텍스트 파일로 저장했습니다.",
+            onlyHwpx: "HWPX 파일만 업로드 가능합니다.",
+            hwpUnsupported:
+              "HWP는 브라우저에서 완전 복원이 어렵습니다. 한글에서 HWPX로 저장 후 업로드해주세요.",
+            extractFail:
+              "텍스트를 추출할 수 없습니다. 파일이 손상되었거나 암호화되어 있을 수 있습니다.",
+            fileError: (vars) =>
+              `파일 처리 중 오류가 발생했습니다: ${vars.message}`,
+            replaceSummary: (vars) =>
+              `"${vars.from}" → "${vars.to}" (${vars.count}개 항목에서 변경됨)`,
+            extractDone: (vars) =>
+              `${vars.count}개 항목 추출 완료 (${vars.type})`,
+            pdfLibMissing:
+              "PDF 생성 라이브러리가 로드되지 않았습니다. 페이지를 새로고침해주세요.",
+            docxLibMissing:
+              "DOCX 생성 라이브러리가 로드되지 않았습니다. 페이지를 새로고침해주세요.",
+          },
+        },
+        en: {
+          documentTitle: "HWPX Text Extractor | Quick Export",
+          heroTitle: "Extract HWPX text instantly",
+          heroSubtitle:
+            "Tables/layouts are not supported. Files stay on your device.",
+          warningTitle: "⚠️ Notice",
+          warningBody:
+            "This tool extracts text only. Tables/layouts are not preserved. Results are exported as a new PDF/DOCX.",
+          editorTitle: "Text Editing",
+          replaceLabel: "Bulk Replace",
+          findPlaceholder: "Find text",
+          replacePlaceholder: "Replace with",
+          replaceButton: "Replace All",
+          presetsTitle: "Quick Replace Presets",
+          presetDate: "Replace with today’s date",
+          presetCompany: "Change company name",
+          presetName: "Change contact name",
+          exportPdf: "Download PDF",
+          exportDocx: "Download DOCX",
+          uploadLine1: "Drag your HWPX file here",
+          uploadLine2: "or click to choose a file",
+          uploadHint:
+            "✔ Files are never uploaded<br>✔ Processed in your browser only",
+          parsingFile: "Parsing file",
+          noParagraphs: "No content found",
+          placeholders: {
+            companyOld: "Current company name",
+            companyNew: "New company name",
+            nameOld: "Current contact name",
+            nameNew: "New contact name",
+          },
+          status: {
+            libraryLimited:
+              "Some features may be limited. Please refresh the page.",
+            noPagesToExport: "There is no content to export.",
+            pdfGenerating: "Generating PDF...",
+            pdfDone: "PDF download ready!",
+            pdfError: (vars) => `Error while creating PDF: ${vars.message}`,
+            docxGenerating: "Generating DOCX...",
+            docxDone: "DOCX download ready!",
+            docxFallback: "DOCX failed. Saved as a text file instead.",
+            onlyHwpx: "Only HWPX files are supported.",
+            hwpUnsupported:
+              "HWP is difficult to recover in-browser. Save as HWPX in Hangul and upload.",
+            extractFail:
+              "Unable to extract text. The file may be corrupted or encrypted.",
+            fileError: (vars) => `File processing error: ${vars.message}`,
+            replaceSummary: (vars) =>
+              `"${vars.from}" → "${vars.to}" (updated in ${vars.count} items)`,
+            extractDone: (vars) =>
+              `${vars.count} items extracted (${vars.type})`,
+            pdfLibMissing: "PDF libraries are not loaded. Please refresh.",
+            docxLibMissing: "DOCX libraries are not loaded. Please refresh.",
+          },
+        },
+      };
+
+      let currentLang = "ko";
+
+      function getLangFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get("lang");
+        return lang === "en" || lang === "ko" ? lang : "";
+      }
+
+      function t(key, vars = {}) {
+        const dict = i18n[currentLang] || i18n.ko;
+        const parts = key.split(".");
+        let value = dict;
+        for (const part of parts) {
+          value = value && value[part];
+        }
+        if (typeof value === "function") {
+          return value(vars);
+        }
+        if (typeof value !== "string") {
+          return key;
+        }
+        return value.replace(/\{(\w+)\}/g, (match, token) => {
+          return Object.prototype.hasOwnProperty.call(vars, token)
+            ? vars[token]
+            : "";
+        });
+      }
+
+      function applyTranslations() {
+        document.title = t("documentTitle");
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          el.textContent = t(key);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-html");
+          el.innerHTML = t(key);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-placeholder");
+          el.setAttribute("placeholder", t(key));
+        });
+      }
+
+      function updateLangButtons() {
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          const isActive = btn.dataset.lang === currentLang;
+          btn.classList.toggle("active", isActive);
+          btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+      }
+
+      function setLanguage(lang, persist) {
+        if (!i18n[lang]) return;
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        if (persist) {
+          localStorage.setItem("lang", lang);
+        }
+        applyTranslations();
+        updateLangButtons();
+        renderUploadArea();
+      }
+
+      function renderUploadArea() {
+        const uploadArea = document.getElementById("uploadArea");
+        if (!uploadArea) return;
+        uploadArea.innerHTML = `
+        <div class="icon">📄</div>
+        <div class="text" data-i18n="uploadLine1"></div>
+        <div class="text" data-i18n="uploadLine2"></div>
+        <div class="hint" data-i18n-html="uploadHint"></div>
+        <input type="file" id="fileInput" accept=".hwpx">
+      `;
+        applyTranslations();
+        bindFileInput();
+      }
+
+      function bindFileInput() {
+        const fileInput = document.getElementById("fileInput");
+        if (!fileInput) return;
+        fileInput.addEventListener("change", (e) => {
+          if (e.target.files.length > 0) {
+            handleFile(e.target.files[0]);
+          }
+        });
+      }
+
+      // 전역 상태
+      const state = {
+        originalFileName: "",
+        blocks: [],
+        edited: false,
+      };
+
+      let blockIdCounter = 0;
+
+      function nextBlockId() {
+        const id = blockIdCounter;
+        blockIdCounter += 1;
+        return id;
+      }
+
+      // A4 페이지 크기 (mm)
+      const A4_WIDTH_MM = 210;
+      const A4_HEIGHT_MM = 297;
+      const A4_PADDING_MM = 20;
+      const CONTENT_WIDTH_MM = A4_WIDTH_MM - A4_PADDING_MM * 2;
+      const CONTENT_HEIGHT_MM = A4_HEIGHT_MM - A4_PADDING_MM * 2;
+
+      // mm를 px로 변환 (96 DPI 기준)
+      function mmToPx(mm) {
+        return (mm / 25.4) * 96;
+      }
+
+      // ==================== HWP 파서 ====================
+      async function parseHwpOrHwpx(file) {
+        const buf = await file.arrayBuffer();
+        const u8 = new Uint8Array(buf);
+
+        // ZIP 시그니처 확인 (HWPX)
+        const isZip = u8.length >= 4 && u8[0] === 0x50 && u8[1] === 0x4b;
+
+        if (isZip) {
+          const hwpx = await tryParseHwpX(u8);
+          if (hwpx && hwpx.blocks.length) return hwpx;
+        }
+
+        // HWP (OLE) 시도
+        const hwp = await tryParseHwpOle(u8);
+        if (hwp && hwp.blocks.length) return hwp;
+
+        // Fallback: 바이너리에서 가시문자만 추출
+        const fallbackText = sanitizeExtractedText(extractPrintableText(u8));
+        return {
+          type: "fallback",
+          blocks: normalizeToBlocks(fallbackText),
+        };
+      }
+
+      // HWPX (ZIP + XML) 파싱
+      async function tryParseHwpX(u8) {
+        try {
+          const zip = await JSZip.loadAsync(u8);
+          const sectionFiles = Object.keys(zip.files)
+            .filter((n) => /Contents\/section\d+\.xml$/i.test(n))
+            .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+          const xmlFiles = sectionFiles.length
+            ? sectionFiles
+            : Object.keys(zip.files).filter((n) => /\.xml$/i.test(n));
+
+          let blocks = [];
+          for (const name of xmlFiles) {
+            try {
+              const xml = await zip.files[name].async("string");
+              const xmlBlocks = extractBlocksFromXml(xml);
+              if (xmlBlocks.length) {
+                blocks = blocks.concat(xmlBlocks);
+              }
+            } catch (e) {
+              console.warn(`XML 파일 읽기 실패: ${name}`, e);
+            }
+          }
+
+          if (!blocks.length) {
+            let allText = "";
+            for (const name of xmlFiles) {
+              try {
+                const xml = await zip.files[name].async("string");
+                allText += "\n" + extractTextFromXml(xml);
+              } catch {
+                // ignore
+              }
+            }
+            blocks = normalizeToBlocks(allText);
+          }
+
+          return { type: "hwpx", blocks };
+        } catch (e) {
+          console.warn("HWPX 파싱 실패:", e);
+          return null;
+        }
+      }
+
+      function extractTextFromXml(xml) {
+        // HWPX XML에서 텍스트 추출 (더 정교하게)
+        let text = xml;
+
+        // CDATA 섹션 보존
+        text = text.replace(/<!\[CDATA\[(.*?)\]\]>/gs, "$1");
+
+        // 텍스트 노드 추출 (다양한 태그 패턴 지원)
+        text = text
+          .replace(/<[^>]+>/g, "\n") // 태그를 줄바꿈으로
+          .replace(/&nbsp;|&#160;|&#xA0;/g, " ")
+          .replace(/&amp;/g, "&")
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
+          .replace(/&quot;|&#34;/g, '"')
+          .replace(/&apos;|&#39;|&#x27;/g, "'")
+          .replace(/&#(\d+);/g, (match, dec) =>
+            String.fromCharCode(parseInt(dec, 10)),
+          )
+          .replace(/&#x([0-9A-Fa-f]+);/g, (match, hex) =>
+            String.fromCharCode(parseInt(hex, 16)),
+          );
+
+        return text;
+      }
+
+      function extractBlocksFromXml(xml) {
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(xml, "application/xml");
+          if (doc.getElementsByTagName("parsererror").length) {
+            return [];
+          }
+
+          const blocks = [];
+          const root = doc.documentElement;
+
+          function isWithinTable(node) {
+            let cur = node.parentNode;
+            while (cur && cur.nodeType === 1) {
+              if (cur.localName === "tbl") return true;
+              cur = cur.parentNode;
+            }
+            return false;
+          }
+
+          function extractTextFromNode(node) {
+            let out = "";
+            const walker = (node.ownerDocument || document).createTreeWalker(
+              node,
+              NodeFilter.SHOW_TEXT,
+              null,
+            );
+            while (walker.nextNode()) {
+              out += walker.currentNode.nodeValue;
+            }
+            return out;
+          }
+
+          function parseTable(tblNode) {
+            const rows = [];
+            const rowNodes = Array.from(
+              tblNode.getElementsByTagName("*"),
+            ).filter((n) => n.localName === "tr");
+
+            rowNodes.forEach((rowNode) => {
+              const cellNodes = Array.from(
+                rowNode.getElementsByTagName("*"),
+              ).filter((n) => n.localName === "tc");
+              if (!cellNodes.length) return;
+
+              const row = cellNodes.map((cellNode) => {
+                const rawText = extractTextFromNode(cellNode);
+                const cleaned = cleanupControlChars(rawText)
+                  .replace(/[ \t]{2,}/g, " ")
+                  .trim();
+                const colSpanAttr =
+                  cellNode.getAttribute("colSpan") ||
+                  cellNode.getAttribute("colspan");
+                const rowSpanAttr =
+                  cellNode.getAttribute("rowSpan") ||
+                  cellNode.getAttribute("rowspan");
+                const colSpan = colSpanAttr ? parseInt(colSpanAttr, 10) : 1;
+                const rowSpan = rowSpanAttr ? parseInt(rowSpanAttr, 10) : 1;
+                return {
+                  text: cleaned,
+                  colSpan:
+                    Number.isFinite(colSpan) && colSpan > 1 ? colSpan : 1,
+                  rowSpan:
+                    Number.isFinite(rowSpan) && rowSpan > 1 ? rowSpan : 1,
+                };
+              });
+
+              if (row.length) rows.push(row);
+            });
+
+            if (!rows.length) return null;
+
+            return {
+              id: nextBlockId(),
+              type: "table",
+              rows,
+            };
+          }
+
+          function walk(node) {
+            if (!node || node.nodeType !== 1) return;
+            const local = node.localName;
+
+            if (local === "tbl") {
+              const tableBlock = parseTable(node);
+              if (tableBlock) blocks.push(tableBlock);
+              return;
+            }
+
+            if (local === "p" && !isWithinTable(node)) {
+              const rawText = extractTextFromNode(node);
+              const cleaned = cleanupControlChars(rawText)
+                .replace(/[ \t]{2,}/g, " ")
+                .trim();
+              if (cleaned) {
+                blocks.push({
+                  id: nextBlockId(),
+                  type: "text",
+                  text: cleaned,
+                });
+              }
+              return;
+            }
+
+            Array.from(node.children || []).forEach((child) => walk(child));
+          }
+
+          walk(root);
+          return blocks;
+        } catch (e) {
+          console.warn("XML 파싱 실패:", e);
+          return [];
+        }
+      }
+
+      // HWP (OLE) 파싱
+      async function tryParseHwpOle(u8) {
+        try {
+          // CFB 라이브러리 사용 시도
+          if (typeof CFB !== "undefined") {
+            const cfb = CFB.read(u8.buffer, { type: "buffer" });
+            const paths = (cfb.FullPaths || []).filter(Boolean);
+
+            console.log("CFB 경로들:", paths);
+
+            // BodyText/Section 스트림 찾기 (우선순위)
+            // 경로는 "/" 또는 "\"로 구분될 수 있음
+            const sectionPaths = paths
+              .filter((p) => {
+                const normalized = p.replace(/\\/g, "/");
+                return (
+                  /BodyText\/Section\d+/i.test(normalized) ||
+                  /BodyText\/Section\d+/i.test(p)
+                );
+              })
+              .sort((a, b) => {
+                const numA = parseInt((a.match(/\d+/) || ["0"])[0]);
+                const numB = parseInt((b.match(/\d+/) || ["0"])[0]);
+                return numA - numB;
+              });
+
+            let text = "";
+
+            if (sectionPaths.length > 0) {
+              console.log("BodyText 섹션 찾음:", sectionPaths);
+              for (const p of sectionPaths) {
+                try {
+                  // 경로 정규화 (백슬래시를 슬래시로)
+                  const normalizedPath = p.replace(/\\/g, "/");
+                  let entry = CFB.find(cfb, normalizedPath);
+
+                  // 정규화된 경로로 못 찾으면 원본 경로로 시도
+                  if (!entry) {
+                    entry = CFB.find(cfb, p);
+                  }
+
+                  if (entry && entry.content) {
+                    const streamU8 =
+                      entry.content instanceof Uint8Array
+                        ? entry.content
+                        : new Uint8Array(entry.content);
+
+                    console.log(`섹션 ${p} 크기:`, streamU8.length);
+
+                    const extracted = extractTextFromHwpStream(streamU8);
+                    if (
+                      extracted &&
+                      hasKoreanText(extracted) &&
+                      extracted.length > 20
+                    ) {
+                      console.log(
+                        `섹션 ${p}에서 텍스트 추출 성공:`,
+                        extracted.substring(0, 100),
+                      );
+                      text += "\n" + extracted;
+                    }
+                  } else {
+                    console.warn(`섹션 ${p} 엔트리를 찾을 수 없음`);
+                  }
+                } catch (e) {
+                  console.warn(`섹션 ${p} 처리 실패:`, e);
+                }
+              }
+            } else {
+              console.log(
+                "BodyText 섹션을 찾지 못함. 사용 가능한 경로:",
+                paths,
+              );
+            }
+
+            // BodyText 섹션에서 텍스트를 못 찾으면 다른 스트림 시도
+            if (!text || text.replace(/\s/g, "").length < 20) {
+              // BinData, PrvText 등 다른 텍스트 스트림 시도
+              const textStreamPaths = paths.filter(
+                (p) =>
+                  /(BinData|PrvText|Scripts)/i.test(p) && !/BodyText/i.test(p),
+              );
+
+              for (const p of textStreamPaths) {
+                try {
+                  const entry = CFB.find(cfb, p);
+                  if (entry && entry.content) {
+                    const streamU8 =
+                      entry.content instanceof Uint8Array
+                        ? entry.content
+                        : new Uint8Array(entry.content);
+
+                    const extracted = extractTextFromHwpStream(streamU8);
+                    if (
+                      extracted &&
+                      hasKoreanText(extracted) &&
+                      extracted.length > 50
+                    ) {
+                      text += "\n" + extracted;
+                      break; // 하나만 찾으면 충분
+                    }
+                  }
+                } catch (e) {
+                  // 무시
+                }
+              }
+            }
+
+            if (text && text.replace(/\s/g, "").length > 20) {
+              const blocks = normalizeToBlocks(text);
+              return { type: "hwp", blocks };
+            }
+          }
+
+          // CFB가 없거나 실패하면 직접 바이너리에서 텍스트 패턴 찾기
+          const text = extractTextFromHwpBinary(u8);
+          if (text && text.replace(/\s/g, "").length > 20) {
+            const blocks = normalizeToBlocks(text);
+            return { type: "hwp", blocks };
+          }
+          return null;
+        } catch (e) {
+          console.warn("HWP 파싱 실패:", e);
+          return null;
+        }
+      }
+
+      // HWP 스트림에서 텍스트 추출 (HWP 특화)
+      function extractTextFromHwpStream(u8) {
+        if (!u8 || u8.length < 4) return "";
+
+        // HWP 스트림은 보통 헤더 + 압축된 데이터 구조
+        // 먼저 압축 해제 시도
+        let raw = u8;
+
+        // zlib 압축 체크 및 해제
+        if (u8.length > 2 && u8[0] === 0x78) {
+          try {
+            if (typeof pako !== "undefined") {
+              raw = pako.inflate(u8);
+            }
+          } catch (e) {
+            // 압축이 아니거나 실패하면 원본 사용
+            raw = u8;
+          }
+        }
+
+        const candidates = [
+          tryDecodeUtf16le(raw),
+          tryDecodeUtf16leWithDecoder(raw),
+          tryDecodeCp949(raw),
+          tryDecodeEucKr(raw),
+          tryDecodeUtf8(raw),
+        ];
+
+        const best = pickBestDecodedText(candidates);
+        if (best && best.length > 20 && hasKoreanText(best)) {
+          return best;
+        }
+
+        return "";
+      }
+
+      // HWP 바이너리에서 직접 텍스트 패턴 찾기
+      function extractTextFromHwpBinary(u8) {
+        // HWP 파일에서 UTF-16LE 텍스트 패턴 찾기
+        // 한글 유니코드 범위: AC00-D7AF
+        let text = "";
+        let inTextBlock = false;
+        let textBuffer = [];
+
+        for (let i = 0; i < u8.length - 1; i += 2) {
+          const code = (u8[i + 1] << 8) | u8[i]; // Little Endian
+
+          // 한글 또는 일반 텍스트 범위
+          if (
+            (code >= 0xac00 && code <= 0xd7af) || // 한글 완성형
+            (code >= 0x1100 && code <= 0x11ff) || // 한글 자모
+            (code >= 0x3130 && code <= 0x318f) || // 한글 호환 자모
+            (code >= 32 && code <= 126) || // ASCII
+            (code >= 0x0020 && code <= 0x007e) || // 기본 라틴
+            code === 0x000a ||
+            code === 0x000d
+          ) {
+            // 줄바꿈
+
+            if (code === 0x000a || code === 0x000d) {
+              if (textBuffer.length > 0) {
+                text += String.fromCharCode(...textBuffer) + "\n";
+                textBuffer = [];
+              }
+            } else if (code !== 0x0000) {
+              textBuffer.push(code);
+            }
+          } else {
+            // 텍스트 블록이 끝나면 버퍼 비우기
+            if (textBuffer.length > 10) {
+              text += String.fromCharCode(...textBuffer) + " ";
+              textBuffer = [];
+            } else {
+              textBuffer = [];
+            }
+          }
+        }
+
+        // 마지막 버퍼 처리
+        if (textBuffer.length > 0) {
+          text += String.fromCharCode(...textBuffer);
+        }
+
+        return sanitizeExtractedText(text);
+      }
+
+      // HWP 텍스트 정리 (깨짐 문자를 최대한 제거)
+      function sanitizeExtractedText(text) {
+        if (!text) return "";
+        const normalized = text
+          .replace(/\r\n/g, "\n")
+          .replace(/\r/g, "\n")
+          .replace(
+            /Root Entry|FileHeader|HwpSummaryInformation|DocInfo|BinData/gi,
+            "",
+          );
+
+        // 허용 문자 외는 줄바꿈으로 분리 (이상한 유니코드 군집 제거 목적)
+        const disallowed =
+          /[^\u0009\u000A\u000D\u0020-\u007E\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F\u4E00-\u9FFF\u3000-\u303F\uFF00-\uFFEF]/g;
+        const replaced = normalized.replace(disallowed, "\n");
+
+        const lines = replaced
+          .split(/\n+/)
+          .map((l) => l.replace(/[ \t]{2,}/g, " ").trim())
+          .filter(Boolean);
+
+        const koreanRe = /[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]/g;
+        const asciiRe = /[A-Za-z0-9]/g;
+
+        const filtered = lines.filter((line) => {
+          if (line.length < 2) return false;
+          const koreanCount = (line.match(koreanRe) || []).length;
+          const asciiCount = (line.match(asciiRe) || []).length;
+          const total = line.length;
+          const angleBracketCount = (line.match(/[<>]/g) || []).length;
+          const koreanRatio = koreanCount / total;
+          const alphaNumRatio = (koreanCount + asciiCount) / total;
+
+          // 긴 줄인데 한글/숫자가 거의 없으면 노이즈로 간주
+          if (total >= 20 && koreanCount < 2 && asciiCount < 4) return false;
+          if (total >= 40 && koreanCount === 0 && asciiCount / total < 0.15)
+            return false;
+          // 한글 비율이 낮고 길이가 긴 줄은 노이즈로 간주
+          if (total >= 12 && koreanRatio < 0.08 && asciiCount < 6) return false;
+          // 읽을 수 있는 문자 비율이 낮으면 제거
+          if (total >= 20 && alphaNumRatio < 0.2) return false;
+          // 각괄호가 과도한 라인 제거 (태그/바이너리 잔여)
+          if (total >= 20 && angleBracketCount / total > 0.1) return false;
+          return true;
+        });
+
+        return filtered.join("\n").trim();
+      }
+
+      function scoreReadableText(text) {
+        if (!text) return 0;
+        const koreanCount = (
+          text.match(/[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]/g) || []
+        ).length;
+        const asciiCount = (text.match(/[A-Za-z0-9]/g) || []).length;
+        const total = text.length || 1;
+        const ratio = (koreanCount + asciiCount) / total;
+        return koreanCount * 3 + asciiCount + ratio * 50;
+      }
+
+      function pickBestDecodedText(candidates) {
+        let best = "";
+        let bestScore = 0;
+        for (const raw of candidates) {
+          if (!raw) continue;
+          const cleaned = sanitizeExtractedText(raw);
+          const score = scoreReadableText(cleaned);
+          if (score > bestScore) {
+            bestScore = score;
+            best = cleaned;
+          }
+        }
+        return best;
+      }
+
+      // 이 함수는 더 이상 사용하지 않음 (extractTextFromHwpStream으로 대체)
+      function extractTextFromPossiblyCompressedStream(u8) {
+        return extractTextFromHwpStream(u8);
+      }
+
+      function hasKoreanText(text) {
+        // 한글 유니코드 범위: AC00-D7AF (완성형), 1100-11FF (자모)
+        return /[\uAC00-\uD7AF\u1100-\u11FF]/.test(text);
+      }
+
+      function tryDecodeUtf16le(u8) {
+        try {
+          if (u8.length < 4) return "";
+          const len = u8.length - (u8.length % 2);
+          const view = new DataView(u8.buffer, u8.byteOffset, len);
+          let out = "";
+          let hasKorean = false;
+
+          for (let i = 0; i < len; i += 2) {
+            const code = view.getUint16(i, true);
+
+            // NULL 문자는 스킵하되 중단하지 않음
+            if (code === 0) {
+              out += " ";
+              continue;
+            }
+
+            // 서로게이트 페어 처리 (0xD800-0xDFFF)
+            if (code >= 0xd800 && code <= 0xdbff && i + 2 < len) {
+              const low = view.getUint16(i + 2, true);
+              if (low >= 0xdc00 && low <= 0xdfff) {
+                const surrogate =
+                  (code - 0xd800) * 0x400 + (low - 0xdc00) + 0x10000;
+                out += String.fromCodePoint(surrogate);
+                i += 2;
+                continue;
+              }
+            }
+
+            // 일반 문자
+            if (code >= 0xac00 && code <= 0xd7af) hasKorean = true;
+            out += String.fromCharCode(code);
+          }
+
+          // 한글이 포함되어 있으면 반환
+          return hasKorean ? out : "";
+        } catch {
+          return "";
+        }
+      }
+
+      function tryDecodeUtf16leWithDecoder(u8) {
+        try {
+          // TextDecoder를 사용한 UTF-16LE 디코딩
+          const decoder = new TextDecoder("utf-16le", {
+            fatal: false,
+            ignoreBOM: true,
+          });
+          return decoder.decode(u8);
+        } catch {
+          return "";
+        }
+      }
+
+      function tryDecodeEucKr(u8) {
+        try {
+          // EUC-KR 디코딩 시도
+          const decoder = new TextDecoder("euc-kr", { fatal: false });
+          return decoder.decode(u8);
+        } catch {
+          return "";
+        }
+      }
+
+      function tryDecodeCp949(u8) {
+        try {
+          // CP949 (Windows 한글 코드페이지) 디코딩 시도
+          const decoder = new TextDecoder("x-windows-949", { fatal: false });
+          return decoder.decode(u8);
+        } catch {
+          return "";
+        }
+      }
+
+      function tryDecodeUtf8(u8) {
+        try {
+          return new TextDecoder("utf-8", { fatal: false }).decode(u8);
+        } catch {
+          return "";
+        }
+      }
+
+      function extractPrintableText(u8) {
+        let out = "";
+        // 2바이트씩 읽어서 UTF-16LE로 해석 시도
+        for (let i = 0; i < u8.length - 1; i += 2) {
+          const code = (u8[i + 1] << 8) | u8[i]; // Little Endian
+          if (code >= 32 && code !== 0 && code < 0xfffe) {
+            // 제어 문자 제외
+            if (code !== 0x0000 && code !== 0x000d && code !== 0x000a) {
+              try {
+                out += String.fromCharCode(code);
+              } catch {
+                out += " ";
+              }
+            } else if (code === 0x000a) {
+              out += "\n";
+            }
+          }
+        }
+        return out;
+      }
+
+      function cleanupControlChars(s) {
+        return s
+          .replace(/\u0000/g, " ")
+          .replace(/[\u0001-\u0008\u000B\u000C\u000E-\u001F]/g, " ")
+          .replace(/[ \t]+\n/g, "\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim();
+      }
+
+      function normalizeToParagraphs(text) {
+        const cleaned = cleanupControlChars(text);
+        const parts = cleaned
+          .split(/\n\s*\n/g)
+          .map((t) => t.trim())
+          .filter(Boolean);
+
+        if (parts.length === 0 && cleaned.length > 0) {
+          // 문단이 없으면 전체를 하나의 문단으로
+          return [{ id: 0, text: cleaned }];
+        }
+
+        return parts.map((t, i) => ({ id: i, text: t }));
+      }
+
+      function normalizeToBlocks(text) {
+        const paragraphs = normalizeToParagraphs(text);
+        return paragraphs.map((p) => ({
+          id: nextBlockId(),
+          type: "text",
+          text: p.text,
+        }));
+      }
+
+      // ==================== 페이지 렌더러 ====================
+      function renderPages(container, blocks) {
+        container.innerHTML = "";
+
+        if (blocks.length === 0) {
+          container.innerHTML = `<div class="loading">${t("noParagraphs")}</div>`;
+          return;
+        }
+
+        let currentPage = createPage();
+        container.appendChild(currentPage);
+
+        const pageHeightPx = mmToPx(CONTENT_HEIGHT_MM);
+        const contentWidthPx = mmToPx(CONTENT_WIDTH_MM);
+        const marginBottomPx = mmToPx(6);
+
+        blocks.forEach((block) => {
+          let blockEl;
+          if (block.type === "table") {
+            const table = document.createElement("table");
+            table.className = "doc-table";
+            block.rows.forEach((row, rowIdx) => {
+              const tr = document.createElement("tr");
+              row.forEach((cell, colIdx) => {
+                const td = document.createElement("td");
+                td.textContent = cell.text || "";
+                td.contentEditable = true;
+                td.dataset.row = String(rowIdx);
+                td.dataset.col = String(colIdx);
+                if (cell.colSpan && cell.colSpan > 1) td.colSpan = cell.colSpan;
+                if (cell.rowSpan && cell.rowSpan > 1) td.rowSpan = cell.rowSpan;
+                td.addEventListener("input", () => {
+                  const r = parseInt(td.dataset.row, 10);
+                  const c = parseInt(td.dataset.col, 10);
+                  if (block.rows[r] && block.rows[r][c]) {
+                    block.rows[r][c].text = td.textContent;
+                    state.edited = true;
+                  }
+                });
+                tr.appendChild(td);
+              });
+              table.appendChild(tr);
+            });
+            blockEl = table;
+          } else {
+            const paraEl = document.createElement("p");
+            paraEl.textContent = block.text;
+            paraEl.dataset.paraId = block.id;
+            paraEl.contentEditable = true;
+            paraEl.style.marginBottom = `${marginBottomPx}px`;
+            paraEl.style.width = `${contentWidthPx}px`;
+            paraEl.style.wordWrap = "break-word";
+            paraEl.style.whiteSpace = "pre-wrap";
+            paraEl.style.lineHeight = "1.6";
+            paraEl.style.fontSize = "12pt";
+
+            paraEl.addEventListener("input", () => {
+              block.text = paraEl.textContent;
+              state.edited = true;
+            });
+            blockEl = paraEl;
+          }
+
+          if (blockEl) {
+            if (blockEl.tagName === "TABLE") {
+              blockEl.style.marginBottom = `${marginBottomPx}px`;
+              blockEl.style.width = `${contentWidthPx}px`;
+            }
+            currentPage.appendChild(blockEl);
+          }
+
+          const currentPageContentHeight = Array.from(
+            currentPage.children,
+          ).reduce((sum, el) => sum + el.offsetHeight + marginBottomPx, 0);
+
+          if (
+            currentPageContentHeight > pageHeightPx &&
+            currentPage.children.length > 1
+          ) {
+            currentPage.removeChild(blockEl);
+            currentPage = createPage();
+            container.appendChild(currentPage);
+            currentPage.appendChild(blockEl);
+          }
+        });
+      }
+
+      function createPage() {
+        const page = document.createElement("div");
+        page.className = "page";
+        page.style.width = `${A4_WIDTH_MM}mm`;
+        page.style.minHeight = `${A4_HEIGHT_MM}mm`;
+        page.style.padding = `${A4_PADDING_MM}mm`;
+        return page;
+      }
+
+      // ==================== 문구 치환 ====================
+      function replaceAll(from, to) {
+        if (!from) return;
+
+        let count = 0;
+        state.blocks.forEach((block) => {
+          if (block.type === "table") {
+            block.rows.forEach((row) => {
+              row.forEach((cell) => {
+                const before = cell.text || "";
+                const after = before.split(from).join(to);
+                if (before !== after) {
+                  cell.text = after;
+                  count++;
+                }
+              });
+            });
+            return;
+          }
+          const before = block.text;
+          block.text = block.text.split(from).join(to);
+          if (before !== block.text) count++;
+        });
+
+        state.edited = true;
+        renderPages(document.getElementById("previewPanel"), state.blocks);
+
+        showStatus(t("status.replaceSummary", { from, to, count }), false);
+        return count;
+      }
+
+      // ==================== PDF Export ====================
+      async function exportPagesToPDF(fileName = "output.pdf") {
+        const pages = Array.from(document.querySelectorAll(".page"));
+        if (!pages.length) {
+          showStatus(t("status.noPagesToExport"), true);
+          return;
+        }
+
+        showStatus(t("status.pdfGenerating"), false);
+
+        try {
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF({
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          });
+
+          for (let i = 0; i < pages.length; i++) {
+            const pageEl = pages[i];
+
+            const canvas = await html2canvas(pageEl, {
+              scale: 2,
+              useCORS: true,
+              backgroundColor: "#ffffff",
+              logging: false,
+              width: mmToPx(A4_WIDTH_MM),
+              height: mmToPx(A4_HEIGHT_MM),
+            });
+
+            const imgData = canvas.toDataURL("image/jpeg", 0.92);
+            const pageWidth = A4_WIDTH_MM;
+            const pageHeight = A4_HEIGHT_MM;
+
+            if (i > 0) pdf.addPage();
+            pdf.addImage(imgData, "JPEG", 0, 0, pageWidth, pageHeight);
+          }
+
+          pdf.save(fileName);
+          showStatus(t("status.pdfDone"), false);
+        } catch (error) {
+          console.error("PDF 생성 오류:", error);
+          showStatus(t("status.pdfError", { message: error.message }), true);
+        }
+      }
+
+      // ==================== DOCX Export ====================
+      async function exportToDocx(fileName = "output.docx") {
+        if (!state.blocks.length) {
+          showStatus(t("status.noPagesToExport"), true);
+          return;
+        }
+
+        showStatus(t("status.docxGenerating"), false);
+
+        try {
+          // 간단한 DOCX 생성 (ZIP 기반)
+          const zip = new JSZip();
+
+          // [Content_Types].xml
+          zip.file(
+            "[Content_Types].xml",
+            `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`,
+          );
+
+          // _rels/.rels
+          zip.folder("_rels").file(
+            ".rels",
+            `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`,
+          );
+
+          // word/_rels/document.xml.rels
+          zip
+            .folder("word")
+            .folder("_rels")
+            .file(
+              "document.xml.rels",
+              `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"></Relationships>`,
+            );
+
+          // word/document.xml
+          const paragraphsXml = state.blocks
+            .map((block) => {
+              if (block.type === "table") {
+                const rows = block.rows.map((row) =>
+                  row.map((cell) => cell.text || "").join(" | "),
+                );
+                return rows
+                  .map((line) => {
+                    const escaped = line
+                      .replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/"/g, "&quot;")
+                      .replace(/'/g, "&apos;");
+                    return `<w:p><w:r><w:t>${escaped}</w:t></w:r></w:p>`;
+                  })
+                  .join("");
+              }
+              const escaped = block.text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&apos;");
+              return `<w:p><w:r><w:t>${escaped}</w:t></w:r></w:p>`;
+            })
+            .join("");
+
+          zip.file(
+            "word/document.xml",
+            `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    ${paragraphsXml}
+  </w:body>
+</w:document>`,
+          );
+
+          const blob = await zip.generateAsync({
+            type: "blob",
+            mimeType:
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          });
+          saveAs(blob, fileName);
+          showStatus(t("status.docxDone"), false);
+        } catch (error) {
+          console.error("DOCX 생성 오류:", error);
+          // 실패하면 텍스트 파일로 대체
+          const text = state.blocks
+            .map((block) => {
+              if (block.type === "table") {
+                return block.rows
+                  .map((row) => row.map((cell) => cell.text || "").join(" | "))
+                  .join("\n");
+              }
+              return block.text;
+            })
+            .join("\n\n");
+          const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+          saveAs(blob, fileName.replace(".docx", ".txt"));
+          showStatus(t("status.docxFallback"), true);
+        }
+      }
+
+      // ==================== UI 이벤트 ====================
+      function showStatus(message, isError) {
+        const statusEl = document.getElementById("status");
+        statusEl.textContent = message;
+        statusEl.className = "status show" + (isError ? " error" : "");
+        setTimeout(() => {
+          statusEl.className = "status";
+        }, 5000);
+      }
+
+      // 파일 업로드
+      const uploadArea = document.getElementById("uploadArea");
+
+      renderUploadArea();
+
+      uploadArea.addEventListener("click", () => {
+        const fileInput = document.getElementById("fileInput");
+        if (fileInput) fileInput.click();
+      });
+
+      uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("dragover");
+      });
+
+      uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+      });
+
+      uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("dragover");
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFile(files[0]);
+        }
+      });
+
+      async function handleFile(file) {
+        if (!file.name.match(/\.(hwp|hwpx)$/i)) {
+          showStatus(t("status.onlyHwpx"), true);
+          return;
+        }
+
+        if (file.name.match(/\.hwp$/i)) {
+          showStatus(t("status.hwpUnsupported"), true);
+          return;
+        }
+
+        state.originalFileName = file.name;
+        state.edited = false;
+        blockIdCounter = 0;
+
+        uploadArea.innerHTML = `<div class="loading">${t("parsingFile")}</div>`;
+
+        try {
+          const result = await parseHwpOrHwpx(file);
+          state.blocks = result.blocks;
+
+          if (state.blocks.length === 0) {
+            showStatus(t("status.extractFail"), true);
+            renderUploadArea();
+            return;
+          }
+
+          renderPages(document.getElementById("previewPanel"), state.blocks);
+          document.getElementById("replaceBtn").disabled = false;
+          document.getElementById("exportPdf").disabled = false;
+          document.getElementById("exportDocx").disabled = false;
+
+          showStatus(
+            t("status.extractDone", {
+              count: state.blocks.length,
+              type: result.type || "unknown",
+            }),
+            false,
+          );
+        } catch (error) {
+          console.error("파일 처리 오류:", error);
+          showStatus(t("status.fileError", { message: error.message }), true);
+          renderUploadArea();
+        }
+      }
+
+      // 문구 치환
+      document.getElementById("replaceBtn").addEventListener("click", () => {
+        const find = document.getElementById("findText").value;
+        const replace = document.getElementById("replaceText").value;
+        if (find) {
+          replaceAll(find, replace);
+        }
+      });
+
+      // 프리셋
+      document.querySelectorAll(".preset-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          const preset = item.dataset.preset;
+          const findInput = document.getElementById("findText");
+          const replaceInput = document.getElementById("replaceText");
+
+          switch (preset) {
+            case "date":
+              findInput.value = "YYYY-MM-DD";
+              replaceInput.value = new Date().toISOString().split("T")[0];
+              break;
+            case "company":
+              findInput.value = "";
+              replaceInput.value = "";
+              findInput.placeholder = t("placeholders.companyOld");
+              replaceInput.placeholder = t("placeholders.companyNew");
+              break;
+            case "name":
+              findInput.value = "";
+              replaceInput.value = "";
+              findInput.placeholder = t("placeholders.nameOld");
+              replaceInput.placeholder = t("placeholders.nameNew");
+              break;
+          }
+        });
+      });
+
+      // PDF Export
+      document.getElementById("exportPdf").addEventListener("click", () => {
+        if (
+          typeof html2canvas === "undefined" ||
+          typeof jspdf === "undefined"
+        ) {
+          showStatus(t("status.pdfLibMissing"), true);
+          return;
+        }
+        const fileName = state.originalFileName
+          ? state.originalFileName.replace(/\.(hwp|hwpx)$/i, ".pdf")
+          : "output.pdf";
+        exportPagesToPDF(fileName);
+      });
+
+      // DOCX Export
+      document.getElementById("exportDocx").addEventListener("click", () => {
+        if (typeof JSZip === "undefined" || typeof saveAs === "undefined") {
+          showStatus(t("status.docxLibMissing"), true);
+          return;
+        }
+        const fileName = state.originalFileName
+          ? state.originalFileName.replace(/\.(hwp|hwpx)$/i, ".docx")
+          : "output.docx";
+        exportToDocx(fileName);
+      });
+
+      // 페이지 로드 시 라이브러리 체크
+      window.addEventListener("load", () => {
+        const storedLang = localStorage.getItem("lang");
+        const urlLang = getLangFromUrl();
+        const browserLang = (navigator.language || "")
+          .toLowerCase()
+          .startsWith("en")
+          ? "en"
+          : "ko";
+        setLanguage(urlLang || storedLang || browserLang, false);
+        updateLangButtons();
+        setTimeout(checkLibraries, 1000); // 라이브러리 로딩 대기
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setLanguage(btn.dataset.lang, true);
+        });
+      });
+    </script>
+  </body>
+</html>

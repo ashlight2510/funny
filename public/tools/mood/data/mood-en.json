@@ -1,0 +1,71 @@
+{
+  "intro": [
+    "When you can't be bothered to explain how you feel",
+    "That moment you don't want to think at all",
+    "When everything just feels blah for no reason"
+  ],
+  "choices": [
+    { "id": "empty", "label": "I don't want to think about anything" },
+    { "id": "weird", "label": "Feel off for no reason" },
+    { "id": "laugh", "label": "I just want to laugh" },
+    { "id": "blank", "label": "I want to zone out" },
+    { "id": "oneword", "label": "I need someone to say one thing" }
+  ],
+  "results": {
+    "laugh": [
+      "Your mood right now:<br>microwave with 17 seconds left",
+      "Today is a no-productivity day. That's fine.",
+      "Coffee won't fix this. Just accept it.",
+      "Your energy is at 3% battery.",
+      "Today you're on one bar of Wi‑Fi.",
+      "Opening a new tab won't fix this.",
+      "It's just one of those days.",
+      "It's okay to do nothing today.",
+      "Getting through the day like this still counts."
+    ],
+    "blank": [
+      "Don't think about anything.",
+      "It's okay to zone out here.",
+      "Judgment is on hold.",
+      "Don't look for meaning. Just let it be.",
+      "You don't have to do anything right now."
+    ],
+    "oneword": [
+      "Feeling like this isn't weird.",
+      "Lots of people feel off today. Really.",
+      "Getting through the day like this is enough.",
+      "Feeling low isn't strange.",
+      "Many people feel blah today. Seriously.",
+      "Some days don't need an explanation.",
+      "Some days just feel in-between.",
+      "This is fine for now."
+    ],
+    "empty": [
+      "You don't have to do anything right now.",
+      "Don't look for meaning. Just let it be.",
+      "Your energy is in power‑save mode.",
+      "You don't have to decide anything.",
+      "Not thinking is allowed."
+    ],
+    "weird": [
+      "Some days just feel in-between.",
+      "Some days don't need an explanation.",
+      "This is fine for now.",
+      "That off feeling has a reason; you just don't need to find it.",
+      "Some days are just like that."
+    ]
+  },
+  "actions": [
+    "Drink a glass of water",
+    "Change how you're sitting",
+    "Look out the window for 10 seconds",
+    "Just stop scrolling"
+  ],
+  "actionLabels": [
+    "Try something else",
+    "Maybe this instead",
+    "One more click"
+  ],
+  "banner": "If you've made it here, you're done for today.",
+  "pickUrl": "https://pick.funnyfunny.cloud"
+}

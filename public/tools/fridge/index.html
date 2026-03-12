@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>냉장고 구조대</title>
+
+  <!-- OG -->
+  <meta property="og:title" content="냉장고 구조대" />
+  <meta property="og:description" content="냉장고 재료로 지금 가능한 요리를 구조합니다" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Fridge+Rescue" />
+
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1220'/><text x='50' y='62' font-size='50' text-anchor='middle' fill='white'>🥕</text></svg>">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin:0; background:#f7f7f7; }
+    header { background:#0b1220; color:#fff; padding:20px; text-align:center; }
+    main { max-width:900px; margin:0 auto; padding:20px; }
+    .step { display:none; background:#fff; padding:24px; margin-bottom:20px; border-radius:12px; }
+    .step.active { display:block; }
+    .step-progress { background:#e5e7eb; height:4px; border-radius:2px; margin-bottom:20px; }
+    .step-progress-bar { background:#0b1220; height:100%; border-radius:2px; transition:width 0.3s; }
+    .step-label { text-align:center; color:#666; font-size:14px; margin-bottom:16px; }
+    h2 { margin-top:0; margin-bottom:16px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:10px; margin-bottom:16px; }
+    .category { margin-bottom:24px; }
+    .category-title { font-weight:600; color:#333; margin-bottom:12px; font-size:15px; }
+    button { padding:12px 16px; border-radius:10px; border:none; background:#0b1220; color:#fff; cursor:pointer; font-size:14px; transition:all 0.2s; }
+    button:hover { opacity:0.9; transform:translateY(-1px); }
+    button.secondary { background:#e5e7eb; color:#111; }
+    button.secondary.active { background:#0b1220; color:#fff; }
+    button.next-btn { width:100%; margin-top:16px; padding:14px; font-size:16px; font-weight:600; }
+    button.next-btn:disabled { background:#ccc; cursor:not-allowed; opacity:0.6; }
+    .card { border:1px solid #e5e7eb; padding:16px; border-radius:12px; margin-bottom:12px; }
+    .warn { color:#dc2626; margin-top:8px; font-size:13px; display:none; }
+    footer { text-align:center; padding:20px; font-size:14px; color:#666; }
+    .footer-link { display:inline-block; padding:10px 20px; background:#0b1220; color:#fff; text-decoration:none; border-radius:8px; font-weight:500; transition:all 0.2s; }
+    .footer-link:hover { background:#1a2332; transform:translateY(-2px); box-shadow:0 4px 12px rgba(11,18,32,0.2); }
+    .lang-switch { position:absolute; top:20px; right:20px; }
+    .lang-switch a { display:inline-block; padding:8px 16px; background:rgba(255,255,255,0.2); color:#fff; text-decoration:none; border-radius:6px; font-size:13px; transition:all 0.2s; }
+    .lang-switch a:hover { background:rgba(255,255,255,0.3); }
+    header { position:relative; }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/fridge/" />
+  </head>
+<body>
+
+<header>
+  <div class="lang-switch">
+    <a href="./en.html">🇺🇸 English</a>
+  </div>
+  <h1>냉장고 구조대</h1>
+  <p>냉장고에 있는 재료로 지금 가능한 요리를 구조합니다</p>
+</header>
+
+<main>
+
+<div class="step-progress">
+  <div class="step-progress-bar" id="progressBar" style="width:0%"></div>
+</div>
+<div class="step-label" id="stepLabel">STEP 1 / 3</div>
+
+<!-- STEP 1: 재료 선택 -->
+<section class="step active" data-step="1">
+  <h2>STEP 1. 냉장고에 뭐가 있나요? 🥕</h2>
+  <p style="color:#666; margin-bottom:16px;">지금 냉장고에 있는 재료들을 선택해주세요. 여러 개 선택 가능해요!</p>
+  <div id="ingredients"></div>
+  <div class="warn" id="warn1">아직 재료를 선택하지 않으셨어요. 최소 1개는 선택해주세요! 😊</div>
+  <button class="next-btn" id="nextBtn1" onclick="goNext(1)" disabled>다음 단계로 가기 →</button>
+</section>
+
+<!-- STEP 2: 오늘의 상태 -->
+<section class="step" data-step="2">
+  <h2>STEP 2. 오늘 뭘 먹고 싶으세요? 🍽️</h2>
+  <p style="color:#666; margin-bottom:16px;">지금 기분에 맞는 걸 선택해주세요!</p>
+  <div class="grid">
+    <button class="secondary" onclick="setGoal('heavy')">든든하게</button>
+    <button class="secondary" onclick="setGoal('light')">가볍게</button>
+    <button class="secondary" onclick="setGoal('protein')">단백질</button>
+    <button class="secondary" onclick="setGoal('vitamin')">야채·비타민</button>
+  </div>
+</section>
+
+<!-- STEP 3: 맛 방향 -->
+<section class="step" data-step="3">
+  <h2>STEP 3. 어떤 맛이 땡기세요? 👅</h2>
+  <p style="color:#666; margin-bottom:16px;">원하는 맛을 선택해주세요!</p>
+  <div class="grid">
+    <button class="secondary" onclick="setTaste('spicy')">매콤</button>
+    <button class="secondary" onclick="setTaste('mild')">담백</button>
+    <button class="secondary" onclick="setTaste('home')">집밥</button>
+    <button class="secondary" onclick="setTaste('any')">상관없음</button>
+  </div>
+</section>
+
+<!-- STEP 4: 결과 -->
+<section class="step" data-step="4">
+  <h2>구조 완료! 이 요리들은 어떠세요? 🎉</h2>
+  <p style="color:#666; margin-bottom:16px;">냉장고 재료로 지금 바로 만들 수 있는 요리들을 찾아봤어요!</p>
+  <div id="result"></div>
+  <hr style="margin:20px 0;" />
+  <h3>최근 구조 기록</h3>
+  <div id="history"></div>
+  <button onclick="resetSteps()" style="margin-top:16px; background:#666; width:100%;">🔄 처음부터 다시 시작하기</button>
+</section>
+
+</main>
+
+<footer>
+  <a href="https://funnyfunny.cloud" target="_blank" class="footer-link">✨ 다른 서비스 보기</a>
+</footer>
+
+<script>
+/* =====================
+   재료 사전 (카테고리별)
+===================== */
+const ingredientCategories = {
+  '주식류': ['밥', '빵', '면', '라면', '파스타면'],
+  '단백질': ['달걀', '참치', '참치캔', '햄', '베이컨', '닭가슴살', '어묵', '돼지고기', '냉동만두'],
+  '야채': ['김치', '양파', '콩나물', '샐러드채소', '양배추', '토마토', '당근', '오이', '파프리카', '버섯', '브로콜리', '애호박', '대파'],
+  '기타': ['두부', '감자', '치즈', '된장', '요거트', '오트', '과일', '견과']
+};
+
+/* =====================
+   레시피 DB
+===================== */
+const recipes = [
+  {"id":"R001","name":"달걀볶음밥","required":["밥","달걀"],"optional":["대파","양파","햄","김치"],"assume":["소금","식용유","간장"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["집밥","담백"],"time":10,"steps":["팬에 기름 두르기","달걀 스크램블","밥 넣고 볶기","간장/소금 간","파·토핑 넣기"],"missing_ok":["대파","햄"]},
+  {"id":"R002","name":"참치마요덮밥","required":["밥","참치캔"],"optional":["김","양파","오이"],"assume":["마요네즈","간장","후추"],"macro":{"carb":3,"protein":2,"fat":2,"vitamin":1},"taste":["집밥","고기느낌"],"time":8,"steps":["참치 기름 빼기","마요+간장+후추 섞기","밥 위에 올리기","김/야채 얹기"],"missing_ok":["김","오이"]},
+  {"id":"R003","name":"두부부침(간장소스)","required":["두부"],"optional":["대파","양파"],"assume":["간장","식용유","고춧가루","식초"],"macro":{"carb":0,"protein":3,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":12,"steps":["두부 물기 제거","팬에 노릇하게 굽기","간장소스 만들기","찍어 먹기"],"missing_ok":["고춧가루","식초"]},
+  {"id":"R004","name":"김치볶음","required":["김치"],"optional":["돼지고기","햄","양파"],"assume":["식용유","설탕","간장"],"macro":{"carb":1,"protein":1,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":10,"steps":["김치 썰기","팬에 볶기","단맛/간 맞추기","토핑 추가 볶기"],"missing_ok":["설탕"]},
+  {"id":"R005","name":"토마토달걀볶음","required":["달걀","토마토"],"optional":["양파","대파"],"assume":["소금","식용유","후추"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":3},"taste":["깔끔","담백"],"time":10,"steps":["달걀 대충 풀기","달걀 먼저 볶아 꺼내기","토마토 볶기","달걀 다시 합치기","소금/후추"],"missing_ok":["양파"]},
+  {"id":"R006","name":"감자채전","required":["감자"],"optional":["양파","달걀"],"assume":["소금","식용유"],"macro":{"carb":3,"protein":1,"fat":1,"vitamin":1},"taste":["집밥","담백"],"time":15,"steps":["감자 채 썰기","물에 헹궈 전분 조절","소금 간","팬에 넓게 부치기","뒤집어 노릇하게"],"missing_ok":["달걀"]},
+  {"id":"R007","name":"감자버터구이","required":["감자"],"optional":["파슬리","치즈"],"assume":["버터","소금","후추"],"macro":{"carb":3,"protein":0,"fat":2,"vitamin":1},"taste":["고기느낌","담백"],"time":18,"steps":["감자 전자레인지로 익히기","팬에 버터 녹이기","감자 넣고 굽기","소금/후추","치즈 옵션"],"missing_ok":["치즈"]},
+  {"id":"R008","name":"두부스크램블","required":["두부"],"optional":["양파","파프리카","버섯"],"assume":["소금","식용유","후추"],"macro":{"carb":0,"protein":3,"fat":1,"vitamin":2},"taste":["깔끔","담백"],"time":10,"steps":["두부 으깨기","야채 볶기","두부 넣고 볶기","소금/후추 간"],"missing_ok":["버섯","파프리카"]},
+  {"id":"R009","name":"계란찜(전자레인지)","required":["달걀"],"optional":["대파","우유"],"assume":["소금","참기름"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":7,"steps":["달걀 풀기","물/우유 약간","소금 간","전자레인지 2~3회 나눠 가열","참기름/파"],"missing_ok":["우유"]},
+  {"id":"R010","name":"야채계란말이","required":["달걀"],"optional":["당근","양파","대파"],"assume":["소금","식용유"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":2},"taste":["집밥","담백"],"time":12,"steps":["야채 잘게 썰기","달걀에 섞기","팬에 얇게 부치며 말기","한김 식혀 썰기"],"missing_ok":["당근"]},
+  {"id":"R011","name":"김치찌개(초간단)","required":["김치"],"optional":["돼지고기","두부","대파"],"assume":["물","고춧가루","간장"],"macro":{"carb":1,"protein":2,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":20,"steps":["김치 볶기","물 붓기","간 맞추기","두부/고기 넣기","파로 마무리"],"missing_ok":["돼지고기"]},
+  {"id":"R012","name":"된장국(맑게)","required":["된장"],"optional":["두부","양파","감자","애호박"],"assume":["물","마늘"],"macro":{"carb":1,"protein":2,"fat":0,"vitamin":2},"taste":["깔끔","집밥"],"time":18,"steps":["물 끓이기","된장 풀기","재료 넣기","한소끔","간 조절"],"missing_ok":["마늘"]},
+  {"id":"R013","name":"양배추볶음","required":["양배추"],"optional":["햄","양파"],"assume":["소금","식용유","간장"],"macro":{"carb":1,"protein":1,"fat":1,"vitamin":3},"taste":["깔끔","담백"],"time":10,"steps":["양배추 썰기","센불에 빠르게 볶기","소금/간장 간","토핑 넣기"],"missing_ok":["햄"]},
+  {"id":"R014","name":"닭가슴살야채볶음","required":["닭가슴살"],"optional":["양파","파프리카","브로콜리"],"assume":["소금","후추","식용유"],"macro":{"carb":0,"protein":3,"fat":1,"vitamin":2},"taste":["깔끔","고기느낌"],"time":15,"steps":["닭가슴살 한입컷","야채 준비","닭 먼저 굽기","야채 넣고 볶기","소금/후추"],"missing_ok":["브로콜리"]},
+  {"id":"R015","name":"오트/요거트볼","required":["요거트"],"optional":["오트","과일","견과"],"assume":["꿀"],"macro":{"carb":2,"protein":2,"fat":1,"vitamin":2},"taste":["깔끔"],"time":5,"steps":["요거트 담기","오트/과일 올리기","견과 뿌리기","꿀 한 바퀴"],"missing_ok":["오트","견과"]},
+  {"id":"R016","name":"파스타 알리오올리오(초간단)","required":["파스타면"],"optional":["마늘","베이컨","페퍼론치노"],"assume":["올리브오일","소금","후추"],"macro":{"carb":3,"protein":1,"fat":2,"vitamin":0},"taste":["깔끔","고기느낌"],"time":15,"steps":["면 삶기","오일에 마늘 볶기","면 넣고 볶기","소금/후추","토핑"],"missing_ok":["베이컨","페퍼론치노"]},
+  {"id":"R017","name":"비빔국수(간단)","required":["면"],"optional":["오이","김치","달걀"],"assume":["고추장","식초","설탕","간장"],"macro":{"carb":3,"protein":1,"fat":0,"vitamin":2},"taste":["매콤"],"time":12,"steps":["면 삶기","양념장 만들기","면+양념 비비기","토핑 올리기"],"missing_ok":["오이","달걀"]},
+  {"id":"R018","name":"만두국","required":["냉동만두"],"optional":["대파","달걀"],"assume":["물","간장","소금"],"macro":{"carb":2,"protein":2,"fat":2,"vitamin":1},"taste":["집밥"],"time":12,"steps":["물 끓이기","만두 넣기","간 맞추기","달걀 풀기(옵션)","파"],"missing_ok":["달걀"]},
+  {"id":"R019","name":"햄감자볶음","required":["감자"],"optional":["햄","양파","당근"],"assume":["소금","식용유","간장"],"macro":{"carb":3,"protein":1,"fat":1,"vitamin":1},"taste":["집밥","고기느낌"],"time":15,"steps":["감자 채 썰기","감자 먼저 볶기","햄/야채 넣기","간 맞추기"],"missing_ok":["당근"]},
+  {"id":"R020","name":"오믈렛(냉장고털이)","required":["달걀"],"optional":["치즈","햄","양파","버섯"],"assume":["소금","버터","후추"],"macro":{"carb":0,"protein":2,"fat":2,"vitamin":1},"taste":["담백","고기느낌"],"time":12,"steps":["속재료 볶기","달걀 풀기","팬에 부어 익히기","접어 마무리"],"missing_ok":["치즈"]},
+  {"id":"R021","name":"두부김치","required":["두부","김치"],"optional":["돼지고기","대파"],"assume":["식용유","설탕"],"macro":{"carb":1,"protein":3,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":15,"steps":["두부 데치기","김치 볶기","접시에 담기","함께 먹기"],"missing_ok":["돼지고기"]},
+  {"id":"R022","name":"간장계란밥","required":["밥","달걀"],"optional":["버터","김"],"assume":["간장","참기름"],"macro":{"carb":3,"protein":2,"fat":2,"vitamin":0},"taste":["집밥","담백"],"time":5,"steps":["따뜻한 밥 준비","달걀 올리기","간장+참기름","잘 비비기","김"],"missing_ok":["버터","김"]},
+  {"id":"R023","name":"샐러드+단백질 토핑","required":["샐러드채소"],"optional":["닭가슴살","달걀","참치캔","요거트"],"assume":["소금","올리브오일","식초"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":3},"taste":["깔끔"],"time":8,"steps":["채소 씻기","토핑 준비","드레싱 만들기","섞어 먹기"],"missing_ok":["올리브오일"]},
+  {"id":"R024","name":"고추장돼지볶음(간단)","required":["돼지고기"],"optional":["양파","대파","양배추"],"assume":["고추장","간장","설탕","마늘","식용유"],"macro":{"carb":1,"protein":3,"fat":2,"vitamin":2},"taste":["매콤","고기느낌"],"time":15,"steps":["고기 볶기","야채 넣기","양념 넣고 볶기","간 조절"],"missing_ok":["양배추"]},
+  {"id":"R025","name":"어묵볶음","required":["어묵"],"optional":["양파","대파","당근"],"assume":["간장","설탕","식용유"],"macro":{"carb":1,"protein":2,"fat":1,"vitamin":1},"taste":["집밥"],"time":10,"steps":["어묵 썰기","야채 볶기","어묵 넣기","간장/설탕 간"],"missing_ok":["당근"]},
+  {"id":"R026","name":"치즈토스트(초간단)","required":["빵","치즈"],"optional":["햄","달걀"],"assume":["버터"],"macro":{"carb":2,"protein":2,"fat":2,"vitamin":0},"taste":["고기느낌","담백"],"time":7,"steps":["빵 굽기","치즈/토핑 올리기","녹을 때까지 가열","완성"],"missing_ok":["햄"]},
+  {"id":"R027","name":"김치볶음밥","required":["밥","김치"],"optional":["달걀","햄","치즈"],"assume":["식용유","간장"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":12,"steps":["김치 볶기","밥 넣고 볶기","간 맞추기","달걀/치즈 추가"],"missing_ok":["치즈"]},
+  {"id":"R028","name":"콩나물국(간단)","required":["콩나물"],"optional":["대파","달걀"],"assume":["물","소금","마늘"],"macro":{"carb":0,"protein":1,"fat":0,"vitamin":3},"taste":["깔끔","집밥"],"time":15,"steps":["물 끓이기","콩나물 넣기","소금/마늘","파로 마무리"],"missing_ok":["마늘"]},
+  {"id":"R029","name":"간장버터감자밥(감자 덮밥)","required":["감자","밥"],"optional":["달걀","양파"],"assume":["간장","버터","후추"],"macro":{"carb":3,"protein":1,"fat":2,"vitamin":1},"taste":["집밥","담백"],"time":15,"steps":["감자 잘게 썰기","팬에 익히기","간장/버터 넣기","밥 위에 올리기"],"missing_ok":["달걀"]},
+  {"id":"R030","name":"야채라면(업그레이드)","required":["라면"],"optional":["양파","대파","달걀","김치"],"assume":["물"],"macro":{"carb":3,"protein":1,"fat":2,"vitamin":1},"taste":["매콤"],"time":8,"steps":["물 끓이기","야채 먼저 넣기","면/스프","달걀 넣기","파/김치"],"missing_ok":["달걀"]},
+  {"id":"R041","name":"계란후라이밥","required":["밥","달걀"],"optional":["김","버터"],"assume":["소금","식용유"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":0},"taste":["집밥","담백"],"time":5,"steps":["달걀 후라이","밥 위에 올리기","간장/소금","김"],"missing_ok":["김"]},
+  {"id":"R042","name":"김치계란밥","required":["밥","김치","달걀"],"optional":["참기름"],"assume":["식용유"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":8,"steps":["김치 볶기","달걀 스크램블","밥 넣고 볶기","참기름"],"missing_ok":[]},
+  {"id":"R043","name":"두부김밥","required":["밥","두부"],"optional":["김","당근","오이"],"assume":["소금","참기름"],"macro":{"carb":3,"protein":3,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":15,"steps":["두부 데치기","밥 준비","김에 밥/두부 올리기","말기"],"missing_ok":["당근","오이"]},
+  {"id":"R044","name":"베이컨에그","required":["베이컨","달걀"],"optional":["빵","치즈"],"assume":["소금","후추"],"macro":{"carb":1,"protein":2,"fat":2,"vitamin":0},"taste":["고기느낌","담백"],"time":10,"steps":["베이컨 굽기","달걀 후라이","소금/후추","빵에 올리기"],"missing_ok":["빵"]},
+  {"id":"R045","name":"콩나물밥","required":["밥","콩나물"],"optional":["달걀","대파"],"assume":["소금","참기름"],"macro":{"carb":3,"protein":1,"fat":0,"vitamin":3},"taste":["깔끔","집밥"],"time":12,"steps":["콩나물 볶기","밥 넣고 볶기","소금 간","참기름/파"],"missing_ok":["달걀"]},
+  {"id":"R046","name":"어묵탕","required":["어묵"],"optional":["대파","달걀","라면"],"assume":["물","소금","간장"],"macro":{"carb":1,"protein":2,"fat":1,"vitamin":1},"taste":["집밥"],"time":10,"steps":["물 끓이기","어묵 넣기","간 맞추기","파/달걀"],"missing_ok":["달걀"]},
+  {"id":"R047","name":"치즈계란말이","required":["달걀","치즈"],"optional":["햄","양파"],"assume":["소금","식용유"],"macro":{"carb":0,"protein":2,"fat":2,"vitamin":0},"taste":["고기느낌","담백"],"time":10,"steps":["달걀 풀기","치즈 넣기","팬에 부치며 말기","토핑 추가"],"missing_ok":["햄"]},
+  {"id":"R048","name":"감자스프","required":["감자"],"optional":["양파","우유"],"assume":["소금","버터"],"macro":{"carb":3,"protein":0,"fat":1,"vitamin":2},"taste":["담백"],"time":20,"steps":["감자 익히기","으깨기","우유 넣기","간 맞추기"],"missing_ok":["우유"]},
+  {"id":"R049","name":"김치두부국","required":["김치","두부"],"optional":["대파","돼지고기"],"assume":["물","고춧가루"],"macro":{"carb":1,"protein":3,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":15,"steps":["김치 볶기","물 붓기","두부 넣기","간 맞추기"],"missing_ok":["돼지고기"]},
+  {"id":"R050","name":"야채볶음밥","required":["밥"],"optional":["양파","당근","양배추","달걀"],"assume":["식용유","소금","간장"],"macro":{"carb":3,"protein":1,"fat":1,"vitamin":2},"taste":["깔끔","집밥"],"time":12,"steps":["야채 볶기","밥 넣고 볶기","간 맞추기","달걀 추가"],"missing_ok":["당근"]},
+  {"id":"R051","name":"참치김밥","required":["밥","참치캔"],"optional":["김","오이","당근"],"assume":["참기름","소금"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["집밥"],"time":15,"steps":["참치 기름 빼기","밥 준비","김에 밥/참치 올리기","말기"],"missing_ok":["오이"]},
+  {"id":"R052","name":"달걀국수","required":["면","달걀"],"optional":["대파","김치"],"assume":["물","소금"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":10,"steps":["물 끓이기","면 넣기","달걀 풀기","파/김치"],"missing_ok":["김치"]},
+  {"id":"R053","name":"치즈라면","required":["라면","치즈"],"optional":["달걀","대파"],"assume":["물"],"macro":{"carb":3,"protein":2,"fat":3,"vitamin":0},"taste":["고기느낌","매콤"],"time":8,"steps":["라면 끓이기","치즈 넣기","달걀 넣기","파"],"missing_ok":["달걀"]},
+  {"id":"R054","name":"두부볶음밥","required":["밥","두부"],"optional":["양파","대파"],"assume":["식용유","간장","소금"],"macro":{"carb":3,"protein":3,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":12,"steps":["두부 으깨기","밥 넣고 볶기","간장/소금 간","파"],"missing_ok":["양파"]},
+  {"id":"R055","name":"햄볶음밥","required":["밥","햄"],"optional":["양파","달걀","치즈"],"assume":["식용유","간장"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["집밥","고기느낌"],"time":10,"steps":["햄 볶기","밥 넣고 볶기","간장 간","달걀/치즈 추가"],"missing_ok":["치즈"]}
+];
+
+/* =====================
+   상태값
+===================== */
+let currentStep = 1;
+let selectedIngredients = JSON.parse(localStorage.getItem('fridge.ingredients')||'[]');
+let goal = localStorage.getItem('fridge.goal') || null;
+let taste = localStorage.getItem('fridge.taste') || null;
+let favorites = JSON.parse(localStorage.getItem('fridge.favorites')||'[]');
+let history = JSON.parse(localStorage.getItem('fridge.history')||'[]');
+
+/* =====================
+   UI 생성
+===================== */
+function renderIngredients() {
+  const ingWrap = document.getElementById('ingredients');
+  ingWrap.innerHTML = '';
+  
+  Object.entries(ingredientCategories).forEach(([category, items]) => {
+    const categoryDiv = document.createElement('div');
+    categoryDiv.className = 'category';
+    
+    const title = document.createElement('div');
+    title.className = 'category-title';
+    title.textContent = category;
+    categoryDiv.appendChild(title);
+    
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    
+    items.forEach(i => {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.className = 'secondary';
+      if(selectedIngredients.includes(i)) btn.classList.add('active');
+      btn.onclick = () => {
+        btn.classList.toggle('active');
+        if (selectedIngredients.includes(i)) {
+          selectedIngredients = selectedIngredients.filter(x => x !== i);
+        } else {
+          selectedIngredients.push(i);
+        }
+        localStorage.setItem('fridge.ingredients', JSON.stringify(selectedIngredients));
+        updateNextButton(1);
+        hideWarn(1);
+      };
+      grid.appendChild(btn);
+    });
+    
+    categoryDiv.appendChild(grid);
+    ingWrap.appendChild(categoryDiv);
+  });
+}
+
+function showStep(n) {
+  currentStep = n;
+  document.querySelectorAll('.step').forEach(s => {
+    s.classList.toggle('active', Number(s.dataset.step) === n);
+  });
+  
+  const progress = Math.round(((n - 1) / 3) * 100);
+  document.getElementById('progressBar').style.width = progress + '%';
+  
+  // STEP 4는 결과 화면이므로 다른 텍스트 표시
+  if(n === 4) {
+    const funMessages = [
+      '🚀 구조하러 가볼까요?',
+      '🎯 냉장고 구조 작전 시작!',
+      '🍳 지금 바로 요리 시작해볼까요?',
+      '✨ 요리할 준비 됐어요!',
+      '🎉 냉장고 구조 성공!',
+      '👨‍🍳 요리사 모드 ON!',
+      '🔥 지금 요리하면 딱이에요!'
+    ];
+    document.getElementById('stepLabel').textContent = funMessages[Math.floor(Math.random() * funMessages.length)];
+    document.getElementById('progressBar').style.width = '100%';
+  } else {
+    document.getElementById('stepLabel').textContent = `STEP ${n} / 3`;
+  }
+  
+  // STEP 2, 3은 선택된 버튼 표시
+  if(n === 2) updateGoalButtons();
+  if(n === 3) updateTasteButtons();
+  
+  // STEP 4는 자동으로 결과 표시
+  if(n === 4) {
+    recommend();
+  }
+}
+
+function updateGoalButtons() {
+  document.querySelectorAll('[data-step="2"] .secondary').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if(goal) {
+    const btn = [...document.querySelectorAll('[data-step="2"] .secondary')]
+      .find(b => b.onclick.toString().includes(`'${goal}'`));
+    if(btn) btn.classList.add('active');
+  }
+}
+
+function updateTasteButtons() {
+  document.querySelectorAll('[data-step="3"] .secondary').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if(taste) {
+    const btn = [...document.querySelectorAll('[data-step="3"] .secondary')]
+      .find(b => b.onclick.toString().includes(`'${taste}'`));
+    if(btn) btn.classList.add('active');
+  }
+}
+
+function setGoal(g) {
+  goal = g;
+  localStorage.setItem('fridge.goal', g);
+  updateGoalButtons();
+  setTimeout(() => goNext(2), 300);
+}
+
+function setTaste(t) {
+  taste = t;
+  localStorage.setItem('fridge.taste', t);
+  updateTasteButtons();
+  setTimeout(() => goNext(3), 300);
+}
+
+function updateNextButton(step) {
+  if(step === 1) {
+    const btn = document.getElementById('nextBtn1');
+    btn.disabled = selectedIngredients.length === 0;
+  }
+}
+
+function hideWarn(step) {
+  const warn = document.getElementById(`warn${step}`);
+  if(warn) warn.style.display = 'none';
+}
+
+function goNext(step) {
+  if(step === 1) {
+    if(selectedIngredients.length === 0) {
+      document.getElementById('warn1').style.display = 'block';
+      return;
+    }
+  }
+  showStep(step + 1);
+}
+
+function resetSteps() {
+  currentStep = 1;
+  goal = null;
+  taste = null;
+  selectedIngredients = [];
+  localStorage.removeItem('fridge.ingredients');
+  localStorage.removeItem('fridge.goal');
+  localStorage.removeItem('fridge.taste');
+  renderIngredients();
+  showStep(1);
+}
+
+/* =====================
+   추천 로직
+===================== */
+function scoreRecipe(r){
+  // 필수 재료 체크 (참치캔은 참치로도 인정)
+  for(const req of r.required){
+    if(req === '참치캔') {
+      if(!selectedIngredients.includes('참치캔') && !selectedIngredients.includes('참치')) {
+        return -1;
+      }
+    } else {
+      if(!selectedIngredients.includes(req)) {
+        return -1;
+      }
+    }
+  }
+  let score = 10;
+
+  // 영양 가중치
+  if(goal==='protein') score += r.macro.protein * 3;
+  if(goal==='vitamin') score += r.macro.vitamin * 3;
+  if(goal==='light') score += r.macro.fat * -1;
+
+  // 맛 매핑 (한글 -> 영문)
+  const tasteMap = {
+    'spicy': ['매콤', 'spicy'],
+    'mild': ['담백', 'mild'],
+    'home': ['집밥', 'home'],
+    'any': ['상관없음', 'any']
+  };
+  
+  // 맛 매칭 체크
+  if(taste && taste !== 'any') {
+    const matched = r.taste.some(t => {
+      if(tasteMap[taste]) {
+        return tasteMap[taste].includes(t);
+      }
+      return t === taste;
+    });
+    if(matched) score += 5;
+  }
+
+  // 시간
+  if(r.time <= 10) score += 3;
+
+  return score;
+}
+
+function getReason(r){
+  const reasons = {
+    'protein': ['단백질 보충하기 딱 좋아요! 💪', '근육 만들기에 최고예요!', '단백질 듬뿍 들어있어요'],
+    'vitamin': ['야채·비타민 가득해요! 🥬', '건강하게 먹기 좋아요', '비타민 충전 완료!'],
+    'light': ['가볍게 먹기 딱이에요! ✨', '부담 없이 즐길 수 있어요', '가벼운 한 끼로 좋아요'],
+    'heavy': ['든든하게 배 채우기 좋아요! 🍖', '포만감 만족!', '배부르게 먹을 수 있어요']
+  };
+  
+  if(goal && reasons[goal]) {
+    return reasons[goal][Math.floor(Math.random() * reasons[goal].length)];
+  }
+  return '냉장고 재료로 지금 만들기 좋은 요리예요! 👍';
+}
+
+function copyRecipe(r){
+  const text = `🍳 ${r.name}
+추천 이유: ${getReason(r)}
+조리시간: ${r.time}분
+${r.steps ? `조리 방법:\n${r.steps.map((s, i) => `${i+1}. ${s}`).join('\n')}` : ''}
+#냉장고구조대 #fridge`; 
+  navigator.clipboard.writeText(text);
+  const messages = ['복사 완료! 📋', '레시피가 복사되었어요! ✨', '저장했어요! 👍'];
+  alert(messages[Math.floor(Math.random() * messages.length)]);
+}
+
+function toggleFavorite(name){
+  if(favorites.includes(name)){
+    favorites = favorites.filter(f=>f!==name);
+  } else {
+    favorites.push(name);
+  }
+  localStorage.setItem('fridge.favorites', JSON.stringify(favorites));
+  recommend();
+}
+
+function renderHistory(){
+  const wrap = document.getElementById('history');
+  wrap.innerHTML='';
+  history.slice(-7).reverse().forEach(h=>{
+    const d=document.createElement('div');
+    d.className='card';
+    d.innerHTML=`<strong>${h.name}</strong><br/><small>${h.date}</small>`;
+    wrap.appendChild(d);
+  });
+}
+
+function recommend(){
+  if(selectedIngredients.length === 0) {
+    document.getElementById('result').innerHTML = '<p style="color:#dc2626; padding:20px; background:#fee2e2; border-radius:8px;">😅 아직 재료를 선택하지 않으셨어요!<br/>STEP 1로 돌아가서 냉장고에 있는 재료를 체크해주세요.</p>';
+    return;
+  }
+  
+  const perishables = ['두부','콩나물','양배추','버섯','시금치','상추'];
+  const ranked = recipes
+    .map(r => {
+      let s = scoreRecipe(r);
+      if(s < 0) return null;
+      if(r.required.some(x=>perishables.includes(x))) s += 4;
+      if(favorites.includes(r.name)) s += 5;
+      // 선택 재료가 많을수록 점수 추가
+      if(r.optional) {
+        const matchedOptional = r.optional.filter(opt => selectedIngredients.includes(opt)).length;
+        s += matchedOptional * 2;
+      }
+      return {...r, score:s};
+    })
+    .filter(r => r !== null && r.score > 0)
+    .sort((a,b)=>b.score-a.score)
+    .slice(0,5); // 5개까지 표시
+
+  const res = document.getElementById('result');
+  res.innerHTML = '';
+  
+  if(!ranked.length) {
+    const messages = [
+      '😢 아쉽게도 선택하신 재료로는 만들 수 있는 요리가 없어요...<br/>재료를 더 추가해보시거나 STEP 1로 돌아가서 다시 선택해볼까요?',
+      '🤔 선택하신 재료만으로는 요리를 만들기 어려워요...<br/>냉장고에 다른 재료도 있나요? 다시 체크해볼까요?',
+      '💔 구조 실패... 하지만 포기하지 마세요!<br/>재료를 조금 더 추가하면 맛있는 요리를 만들 수 있을 거예요!'
+    ];
+    res.innerHTML = `<p style="color:#dc2626; padding:20px; background:#fee2e2; border-radius:8px;">${messages[Math.floor(Math.random() * messages.length)]}</p>`;
+    renderHistory();
+    return;
+  }
+
+  // 성공 메시지
+  const successMessages = [
+    `좋은 소식이에요! ${ranked.length}개의 요리를 찾았어요! 🎉`,
+    `냉장고 구조 성공! ${ranked.length}가지 요리를 추천해드릴게요! ✨`,
+    `와! ${ranked.length}개의 맛있는 요리를 발견했어요! 🍳`
+  ];
+  res.innerHTML = `<p style="color:#059669; padding:12px; background:#d1fae5; border-radius:8px; margin-bottom:16px; font-weight:500;">${successMessages[Math.floor(Math.random() * successMessages.length)]}</p>`;
+  
+  ranked.forEach((r, idx) => {
+    // 히스토리에 중복 추가 방지
+    const exists = history.some(h => h.name === r.name && h.date === new Date().toLocaleDateString());
+    if(!exists) {
+      history.push({name:r.name, date:new Date().toLocaleDateString()});
+    }
+    localStorage.setItem('fridge.history', JSON.stringify(history));
+
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.style.borderLeft = idx === 0 ? '4px solid #059669' : '1px solid #e5e7eb';
+    div.style.background = idx === 0 ? '#f0fdf4' : '#fff';
+    
+    // 선택 재료 표시
+    const hasOptional = r.optional && r.optional.some(opt => selectedIngredients.includes(opt));
+    const optionalText = r.optional && hasOptional 
+      ? `<br/><small style="color:#059669;">✨ 보너스 재료: ${r.optional.filter(opt => selectedIngredients.includes(opt)).join(', ')}</small>`
+      : '';
+    
+    // 조리 단계 표시
+    const stepsText = r.steps ? `<br/><details style="margin-top:8px;"><summary style="cursor:pointer; color:#666; font-weight:500;">📝 조리 방법 보기 (${r.steps.length}단계)</summary><ol style="margin:8px 0; padding-left:20px; color:#666; font-size:13px; line-height:1.8;">${r.steps.map(s => `<li>${s}</li>`).join('')}</ol></details>` : '';
+    
+    const rankEmoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : '👍';
+    
+    div.innerHTML = `
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="font-size:20px;">${rankEmoji}</span>
+        <strong style="font-size:18px;">${r.name}</strong> ${favorites.includes(r.name)?'❤️':''}
+      </div>
+      ⏱ ${r.time}분 · 추천도 ${r.score}점<br/>
+      <small style="color:#666;">${getReason(r)}</small>${optionalText}${stepsText}<br/>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button onclick="copyRecipe(${JSON.stringify(r).replace(/"/g, '&quot;')})" style="flex:1; min-width:100px;">📋 복사하기</button>
+        <button onclick="toggleFavorite('${r.name.replace(/'/g, "\\'")}')" class="secondary" style="flex:1; min-width:100px;">${favorites.includes(r.name)?'❤️ 즐겨찾기 해제':'🤍 즐겨찾기'}</button>
+      </div>
+    `;
+    res.appendChild(div);
+  });
+  
+  renderHistory();
+}
+
+// 초기화
+renderIngredients();
+updateNextButton(1);
+if(goal) updateGoalButtons();
+if(taste) updateTasteButtons();
+</script>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+</html>

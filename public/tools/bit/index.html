@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="비트코인 안 산 죄 계산기 - 그때 샀다면 지금 얼마일까?"
+    />
+    <meta
+      property="og:description"
+      content="과거의 나를 소환 중... 그때 비트코인 샀으면 지금 얼마였을까?"
+    />
+    <title>비트코인 안 산 죄 계산기 💸</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 100%);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 16px auto;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 8px;
+        background: linear-gradient(45deg, #ff8a00, #ffd257);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        opacity: 0.7;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: rgba(28, 28, 28, 0.9);
+        padding: 24px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        margin-bottom: 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      label {
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-size: 15px;
+        text-align: left;
+        font-weight: 500;
+      }
+
+      .preset-buttons {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+
+      .preset-btn {
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background: #2a2a2a;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .preset-btn:hover {
+        background: #3a3a3a;
+        border-color: #ff8a00;
+      }
+
+      .preset-btn.active {
+        background: #ff8a00;
+        border-color: #ff8a00;
+      }
+
+      input[type="date"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 14px;
+        border-radius: 10px;
+        border: 2px solid #333;
+        background: #1a1a1a;
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 12px;
+        transition: border-color 0.2s;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #ff8a00;
+      }
+
+      .amount-presets {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .amount-preset {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background: #2a2a2a;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .amount-preset:hover {
+        background: #3a3a3a;
+        border-color: #ff8a00;
+      }
+
+      .amount-preset.active {
+        background: #ff8a00;
+        border-color: #ff8a00;
+      }
+
+      button {
+        width: 100%;
+        padding: 16px;
+        font-size: 18px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #ff8a00, #ff9e28);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(255, 138, 0, 0.4);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      #result {
+        margin-top: 30px;
+        padding: 30px;
+        background: rgba(26, 26, 26, 0.95);
+        border-radius: 20px;
+        display: none;
+        border: 2px solid rgba(255, 138, 0, 0.3);
+      }
+
+      .loading-text {
+        font-size: 18px;
+        opacity: 0.7;
+        font-style: italic;
+      }
+
+      .result-main {
+        display: none;
+      }
+
+      .big-number {
+        font-size: 42px;
+        font-weight: bold;
+        margin: 16px 0;
+        color: #ffd257;
+        text-shadow: 0 0 20px rgba(255, 210, 87, 0.5);
+      }
+
+      .profit-rate {
+        font-size: 28px;
+        color: #4ade80;
+        margin: 12px 0;
+        font-weight: bold;
+      }
+
+      .regret-text {
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 24px 0;
+        padding: 20px;
+        background: rgba(255, 138, 0, 0.1);
+        border-radius: 12px;
+        border-left: 4px solid #ff8a00;
+      }
+
+      .comparison {
+        margin: 24px 0;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+      }
+
+      .comparison-item {
+        margin: 12px 0;
+        font-size: 16px;
+        opacity: 0.9;
+      }
+
+      .comparison-item strong {
+        color: #ffd257;
+      }
+
+      .what-did-you-do {
+        margin: 24px 0;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+      }
+
+      .what-did-you-do select {
+        margin-top: 12px;
+      }
+
+      .what-did-you-do-result {
+        margin-top: 16px;
+        font-style: italic;
+        color: #ffd257;
+        font-size: 16px;
+        display: none;
+      }
+
+      .share-section {
+        margin-top: 30px;
+        padding-top: 24px;
+        border-top: 1px solid #333;
+      }
+
+      .share-title {
+        font-size: 18px;
+        margin-bottom: 16px;
+        opacity: 0.9;
+      }
+
+      .share-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .share-btn {
+        padding: 12px 24px;
+        border-radius: 10px;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .share-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .share-btn.kakao {
+        background: #fee500;
+        color: #000;
+      }
+
+      .share-btn.twitter {
+        background: #1da1f2;
+        color: #fff;
+      }
+
+      .share-btn.link {
+        background: #444;
+        color: #fff;
+      }
+
+      .stats {
+        margin-top: 24px;
+        padding: 20px;
+        background: rgba(74, 222, 128, 0.1);
+        border-radius: 12px;
+        border-left: 4px solid #4ade80;
+        display: none;
+      }
+
+      .stats-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+        color: #4ade80;
+      }
+
+      .stats-content {
+        font-size: 15px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      footer {
+        margin-top: 50px;
+        font-size: 13px;
+        opacity: 0.4;
+        padding: 20px;
+      }
+
+      /* 광고 영역 스타일 */
+      .ad-container {
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        background: rgba(28, 28, 28, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .ad-container.horizontal {
+        min-height: 250px;
+      }
+
+      .ad-container.vertical {
+        min-height: 300px;
+      }
+
+      .ad-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 24px;
+        }
+
+        .big-number {
+          font-size: 32px;
+        }
+
+        .card {
+          padding: 20px;
+        }
+
+        .ad-container {
+          margin: 20px auto;
+          padding: 15px;
+        }
+      }
+    </style>
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Bitcoin+Missed+Gains+Calculator"
+    />
+    <meta property="og:image:alt" content="Bitcoin Missed Gains Calculator" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%82%BF%3C/text%3E%3C/svg%3E"
+    />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(13, 13, 13, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(255, 138, 0, 0.2);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: linear-gradient(45deg, #ff8a00, #ffd257);
+      color: #111;
+      box-shadow: 0 2px 8px rgba(255, 138, 0, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(255, 138, 0, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/bit/" />
+  </head>
+
+  <body><div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <div class="container">
+      <h1 data-i18n="title">💸 비트코인 안 산 죄 계산기</h1>
+      <p class="subtitle" data-i18n="subtitle">그때 샀다면 지금 얼마일까? 과거의 나를 소환 중...</p>
+
+      <div class="card">
+        <label>언제 살 수 있었나? 📅</label>
+        <div class="preset-buttons">
+          <button
+            class="preset-btn"
+            onclick="setPresetDate('2017-12-15', '2017년 불장 때')"
+          >
+            2017년 불장
+          </button>
+          <button
+            class="preset-btn"
+            onclick="setPresetDate('2020-03-12', '2020년 코로나 폭락장')"
+          >
+            2020년 폭락장
+          </button>
+          <button
+            class="preset-btn"
+            onclick="setPresetDate('2021-11-10', '2021년 신고가')"
+          >
+            2021년 신고가
+          </button>
+          <button
+            class="preset-btn"
+            onclick="setPresetDate('2015-01-01', '2015년 초기')"
+          >
+            2015년 초기
+          </button>
+        </div>
+        <input type="date" id="dateInput" min="2010-01-01" />
+
+        <label>그때 얼마 넣었을 수 있나? 💰</label>
+        <div class="amount-presets">
+          <div class="amount-preset" onclick="setAmount(100000)">10만원</div>
+          <div class="amount-preset" onclick="setAmount(500000)">50만원</div>
+          <div class="amount-preset" onclick="setAmount(1000000)">100만원</div>
+          <div class="amount-preset" onclick="setAmount(5000000)">500만원</div>
+          <div class="amount-preset" onclick="setAmount(10000000)">
+            1000만원
+          </div>
+        </div>
+        <input
+          type="number"
+          id="amountInput"
+          placeholder="직접 입력 (원)"
+          min="0"
+        />
+
+        <label>매수 방식 📊</label>
+        <select id="buyMode">
+          <option value="lump">딱 한 번 물량 몰빵</option>
+          <option value="dca">매달 나눠서 샀다면? (적립식 DCA)</option>
+        </select>
+
+        <div id="dcaOptions" style="display: none">
+          <label>적립 기간 (개월)</label>
+          <input
+            type="number"
+            id="dcaMonths"
+            placeholder="예: 12"
+            min="1"
+            max="60"
+            value="12"
+          />
+        </div>
+
+        <button onclick="calculate()">🔍 계산하기 - 인생의 타이밍 확인</button>
+      </div>
+
+      <div id="result" class="card">
+        <div id="loading" class="loading-text">
+          <div style="margin-bottom: 12px">
+            과거의 나를 소환 중... 그때의 나는 왜 그랬을까 로딩 중...
+          </div>
+          <div
+            style="font-size: 14px; opacity: 0.6; margin-top: 8px"
+            id="loadingDetail"
+          ></div>
+        </div>
+
+        <div id="output" class="result-main">
+          <h2 style="margin-top: 0">결과</h2>
+
+          <p style="margin-bottom: 8px; opacity: 0.8">지금 가치</p>
+          <div class="big-number" id="nowValue">-</div>
+
+          <p style="margin-bottom: 8px; opacity: 0.8">수익률</p>
+          <div class="profit-rate" id="profitRate">-</div>
+
+          <div class="regret-text">
+            <strong
+              >당신은 이때 비트코인을 사지 않음으로써<br />
+              인생에서 <span id="profitAmount">-</span>를 놓쳤습니다.</strong
+            >
+          </div>
+
+          <div class="comparison">
+            <p style="margin-bottom: 12px; font-weight: 600">
+              그 돈이면 살 수 있었던 것들:
+            </p>
+            <div class="comparison-item" id="chicken">
+              치킨 <strong id="chickenCount">-</strong>마리
+            </div>
+            <div class="comparison-item" id="macbook">
+              맥북 프로 <strong id="macbookCount">-</strong>대
+            </div>
+            <div class="comparison-item" id="flight">
+              서울-뉴욕 왕복 <strong id="flightCount">-</strong>번
+            </div>
+            <div class="comparison-item" id="apartment">
+              서울 아파트 전세금 <strong id="apartmentText">-</strong>
+            </div>
+          </div>
+
+          <div class="what-did-you-do">
+            <p style="margin-bottom: 12px">그때 대신 실제로 뭘 했나? 🤔</p>
+            <select id="whatDidYouDo">
+              <option value="">선택하세요...</option>
+              <option value="chicken">치킨 시켜 먹었다</option>
+              <option value="pcbang">PC방에서 롤했다</option>
+              <option value="card">카드값 메꾸느라 못 샀다</option>
+              <option value="savings">코인 사기 싫어서 예금했다</option>
+              <option value="nothing">그냥 놀았다</option>
+            </select>
+            <div class="what-did-you-do-result" id="whatDidYouDoResult"></div>
+          </div>
+
+          <div class="stats" id="stats">
+            <div class="stats-title">📊 통계</div>
+            <div class="stats-content" id="statsContent"></div>
+          </div>
+
+          <div class="share-section">
+            <div class="share-title">나만 억울할 수 없다 😂 공유하기</div>
+            <div class="share-buttons">
+              <button class="share-btn kakao" onclick="shareKakao()">
+                💬 카카오톡
+              </button>
+              <button class="share-btn twitter" onclick="shareTwitter()">
+                🐦 트위터
+              </button>
+              <button class="share-btn link" onclick="copyLink()">
+                📋 링크 복사
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하단 광고 -->
+      <div class="ad-container horizontal">
+        <div style="text-align: center; width: 100%">
+          <div class="ad-label">광고</div>
+          </div>
+      </div>
+
+      <footer>
+        <p>© 2025 비트코인 안 산 죄 연구소</p>
+        <p style="margin-top: 8px; font-size: 11px">
+          투자 권유가 아닙니다. 인생의 타이밍이 얼마나 잔인한지 보여주는 재미
+          사이트입니다.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      /* i18n */
+      const translations = {
+        ko: {
+          metaTitle: "비트코인 안 산 죄 계산기 💸",
+          metaDescription: "과거의 나를 소환 중... 그때 비트코인 샀으면 지금 얼마였을까?",
+          title: "💸 비트코인 안 산 죄 계산기",
+          subtitle: "그때 샀다면 지금 얼마일까? 과거의 나를 소환 중..."
+        },
+        en: {
+          metaTitle: "Bitcoin Missed Gains Calculator 💸",
+          metaDescription: "Summoning my past self... How much would it be worth now if I had bought Bitcoin back then?",
+          title: "💸 Bitcoin Missed Gains Calculator",
+          subtitle: "How much would it be worth now if I had bought it then? Summoning my past self..."
+        }
+      };
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+      }
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+      setLang(detectLang(), { updateUrl: false });
+
+      const USD_KRW = 1400; // USD → KRW 환율 (실제로는 API에서 가져오는 게 좋음)
+
+      // 비교 기준 가격들
+      const PRICES = {
+        chicken: 20000, // 치킨 1마리
+        macbook: 3000000, // 맥북 프로
+        flight: 2000000, // 서울-뉴욕 왕복
+        apartment: 500000000, // 서울 아파트 전세금 (5억)
+      };
+
+      // 더미 통계 데이터 (실제로는 서버에서 가져오는 게 좋음)
+      const DUMMY_STATS = {
+        "20대": { avg: 5000000, percentile: 0.15 },
+        "30대": { avg: 15000000, percentile: 0.12 },
+        "40대": { avg: 30000000, percentile: 0.08 },
+        "50대": { avg: 50000000, percentile: 0.05 },
+      };
+
+      // 비트코인 과거 가격 데이터 (USD, 주요 날짜별)
+      // CORS 문제를 피하기 위해 정적 데이터로 포함
+      const BTC_HISTORY_PRICES = {
+        "2010-01-01": 0.003,
+        "2011-01-01": 0.3,
+        "2012-01-01": 5.27,
+        "2013-01-01": 13.3,
+        "2013-12-01": 946.92,
+        "2014-01-01": 770.44,
+        "2015-01-01": 314.24,
+        "2015-12-01": 362.73,
+        "2016-01-01": 434.46,
+        "2016-12-01": 963.74,
+        "2017-01-01": 998.33,
+        "2017-06-01": 2452.18,
+        "2017-12-15": 17568.0, // 불장 시점
+        "2017-12-31": 14156.4,
+        "2018-01-01": 14156.4,
+        "2018-12-01": 4103.46,
+        "2019-01-01": 3843.52,
+        "2019-12-01": 7564.0,
+        "2020-01-01": 7200.0,
+        "2020-03-12": 4970.0, // 코로나 폭락장
+        "2020-12-01": 19645.0,
+        "2021-01-01": 29374.15,
+        "2021-04-01": 58750.0,
+        "2021-11-10": 67500.0, // 신고가
+        "2021-12-01": 57292.0,
+        "2022-01-01": 47734.0,
+        "2022-12-01": 17150.0,
+        "2023-01-01": 16600.0,
+        "2023-12-01": 37700.0,
+        "2024-01-01": 42200.0,
+        "2024-12-01": 63000.0,
+      };
+
+      // 날짜로부터 비트코인 가격 가져오기 (보간법 사용)
+      function getBTCPriceForDate(dateStr) {
+        const targetDate = new Date(dateStr);
+
+        // 정확한 날짜 매칭
+        if (BTC_HISTORY_PRICES[dateStr]) {
+          return BTC_HISTORY_PRICES[dateStr];
+        }
+
+        // 가장 가까운 과거 날짜 찾기
+        let closestDate = null;
+        let closestPrice = null;
+        let minDiff = Infinity;
+
+        for (const [dateKey, price] of Object.entries(BTC_HISTORY_PRICES)) {
+          const date = new Date(dateKey);
+          if (date <= targetDate) {
+            const diff = targetDate - date;
+            if (diff < minDiff) {
+              minDiff = diff;
+              closestDate = date;
+              closestPrice = price;
+            }
+          }
+        }
+
+        // 가장 가까운 미래 날짜 찾기 (보간을 위해)
+        let nextDate = null;
+        let nextPrice = null;
+        let minFutureDiff = Infinity;
+
+        for (const [dateKey, price] of Object.entries(BTC_HISTORY_PRICES)) {
+          const date = new Date(dateKey);
+          if (date > targetDate) {
+            const diff = date - targetDate;
+            if (diff < minFutureDiff) {
+              minFutureDiff = diff;
+              nextDate = date;
+              nextPrice = price;
+            }
+          }
+        }
+
+        // 보간법으로 가격 계산
+        if (closestDate && nextDate && closestPrice && nextPrice) {
+          const totalDiff = nextDate - closestDate;
+          const targetDiff = targetDate - closestDate;
+          const ratio = targetDiff / totalDiff;
+          return closestPrice + (nextPrice - closestPrice) * ratio;
+        }
+
+        // 보간 불가능하면 가장 가까운 과거 가격 반환
+        if (closestPrice) {
+          return closestPrice;
+        }
+
+        // 모든 데이터가 미래면 첫 번째 데이터 반환
+        const firstDate = Object.keys(BTC_HISTORY_PRICES).sort()[0];
+        return BTC_HISTORY_PRICES[firstDate];
+      }
+
+      // 프리셋 날짜 설정
+      function setPresetDate(date, label) {
+        document.getElementById("dateInput").value = date;
+        // 프리셋 버튼 활성화 표시
+        document.querySelectorAll(".preset-btn").forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.textContent.includes(label.split(" ")[0])) {
+            btn.classList.add("active");
+          }
+        });
+      }
+
+      // 금액 프리셋 설정
+      function setAmount(amount) {
+        document.getElementById("amountInput").value = amount;
+        // 프리셋 버튼 활성화 표시
+        document.querySelectorAll(".amount-preset").forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.textContent.includes(amount / 10000 + "만원")) {
+            btn.classList.add("active");
+          }
+        });
+      }
+
+      // DCA 옵션 표시/숨김
+      document
+        .getElementById("buyMode")
+        .addEventListener("change", function () {
+          const dcaOptions = document.getElementById("dcaOptions");
+          dcaOptions.style.display = this.value === "dca" ? "block" : "none";
+        });
+
+      // "그때 대신 뭘 했나" 선택 이벤트
+      document
+        .getElementById("whatDidYouDo")
+        .addEventListener("change", function () {
+          const resultDiv = document.getElementById("whatDidYouDoResult");
+          if (this.value) {
+            const messages = {
+              chicken: "그 치킨이 지금쯤 황금 치킨이 되어 돌아왔을 텐데... 🍗",
+              pcbang:
+                "그 롤 게임이 지금쯤 다이아 티어가 되어 돌아왔을 텐데... 🎮",
+              card: "그 카드값이 지금쯤... 아니 잠깐, 그건 그래도 맞는 선택이었을 수도... 💳",
+              savings:
+                "그 예금이 지금쯤... 음, 그래도 안전했으니까 괜찮아요... 🏦",
+              nothing:
+                "그 시간이 지금쯤... 아니 잠깐, 그냥 놀았으면 그냥 놀았지 뭐... 😅",
+            };
+            resultDiv.textContent = messages[this.value];
+            resultDiv.style.display = "block";
+          } else {
+            resultDiv.style.display = "none";
+          }
+        });
+
+      // 과거 가격 가져오기 (정적 데이터 사용, CORS 문제 없음)
+      async function fetchBTCPrice(date) {
+        try {
+          // 입력된 날짜 검증
+          const dateObj = new Date(date);
+          if (isNaN(dateObj.getTime())) {
+            console.error("Invalid date:", date);
+            return null;
+          }
+
+          // 2010년 이전이면 null 반환
+          if (dateObj < new Date("2010-01-01")) {
+            console.warn("Date is too early, before Bitcoin existed");
+            return null;
+          }
+
+          // 오늘 이후면 null 반환
+          if (dateObj > new Date()) {
+            console.warn("Date is in the future");
+            return null;
+          }
+
+          // 정적 데이터에서 가격 가져오기
+          const price = getBTCPriceForDate(date);
+
+          if (!price || price <= 0) {
+            console.error("Could not find price for date:", date);
+            return null;
+          }
+
+          return price;
+        } catch (error) {
+          console.error("Error fetching BTC price:", error);
+          return null;
+        }
+      }
+
+      // 현재 BTC 가격 가져오기 (Binance API만 사용, CORS 문제 없음)
+      async function fetchCurrentBTCPrice() {
+        try {
+          const binanceResponse = await fetch(
+            "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+          );
+
+          if (!binanceResponse.ok) {
+            throw new Error(`HTTP error! status: ${binanceResponse.status}`);
+          }
+
+          const binanceData = await binanceResponse.json();
+          const price = parseFloat(binanceData.price);
+
+          if (price && price > 0) {
+            return price;
+          }
+
+          throw new Error("Invalid price from Binance");
+        } catch (error) {
+          console.error("Error fetching current BTC price:", error);
+          // 재시도
+          return await fetchCurrentBTCPriceAlternative();
+        }
+      }
+
+      // 대체 방법으로 현재 가격 가져오기 (Binance만 사용)
+      async function fetchCurrentBTCPriceAlternative() {
+        try {
+          // Binance 공개 API (CORS 허용, 가장 안정적)
+          const binanceResponse = await fetch(
+            "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+          );
+          if (binanceResponse.ok) {
+            const binanceData = await binanceResponse.json();
+            const price = parseFloat(binanceData.price);
+            if (price && price > 0) {
+              return price;
+            }
+          }
+          return null;
+        } catch (error) {
+          console.error(
+            "Error fetching current BTC price (alternative):",
+            error
+          );
+          return null;
+        }
+      }
+
+      // DCA 계산 (매달 투자)
+      async function calculateDCA(startDate, monthlyAmount, months) {
+        let totalBTC = 0;
+        const start = new Date(startDate);
+
+        for (let i = 0; i < months; i++) {
+          const currentDate = new Date(start);
+          currentDate.setMonth(start.getMonth() + i);
+          const dateStr = currentDate.toISOString().split("T")[0];
+
+          // 정적 데이터에서 가격 가져오기 (비동기지만 즉시 반환)
+          const price = await fetchBTCPrice(dateStr);
+          if (price && price > 0) {
+            // 원화를 USD로 환산한 후 BTC 가격으로 나눔
+            const monthlyAmountUSD = monthlyAmount / USD_KRW;
+            totalBTC += monthlyAmountUSD / price;
+          }
+        }
+
+        return totalBTC;
+      }
+
+      // 숫자 포맷팅
+      function formatKRW(num) {
+        return num.toLocaleString("ko-KR") + "원";
+      }
+
+      // 비교 항목 계산
+      function calculateComparisons(profit) {
+        return {
+          chicken: Math.floor(profit / PRICES.chicken),
+          macbook: Math.floor(profit / PRICES.macbook),
+          flight: Math.floor(profit / PRICES.flight),
+          apartment: profit >= PRICES.apartment ? "일부" : "없음",
+        };
+      }
+
+      // 통계 생성
+      function generateStats(profit) {
+        // 더미 나이대 (실제로는 사용자 입력 또는 추정)
+        const ageGroup = "30대";
+        const stats = DUMMY_STATS[ageGroup];
+
+        const percentile =
+          profit > stats.avg * 2 ? stats.percentile * 0.5 : stats.percentile;
+        const percentileText = Math.floor(percentile * 100);
+
+        return `당신 또래(${ageGroup})의 평균 '놓친 돈'은 ${formatKRW(
+          stats.avg
+        )}입니다.\n당신은 그 중 상위 ${percentileText}% 수준으로 많이 놓쳤습니다. 😭`;
+      }
+
+      // 메인 계산 함수
+      async function calculate() {
+        const dateInput = document.getElementById("dateInput").value;
+        const amount = Number(document.getElementById("amountInput").value);
+        const buyMode = document.getElementById("buyMode").value;
+        const dcaMonths =
+          Number(document.getElementById("dcaMonths").value) || 12;
+
+        if (!dateInput || !amount || amount <= 0) {
+          alert("날짜와 금액을 올바르게 입력해주세요! 😅");
+          return;
+        }
+
+        // 결과 영역 표시
+        document.getElementById("result").style.display = "block";
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("output").classList.remove("result-main");
+        document.getElementById("output").style.display = "none";
+
+        const loadingDetail = document.getElementById("loadingDetail");
+        if (loadingDetail) {
+          loadingDetail.textContent = "";
+        }
+
+        try {
+          let btcAmount;
+          let btcPast;
+
+          if (buyMode === "lump") {
+            // 일시 매수
+            if (loadingDetail)
+              loadingDetail.textContent = "과거 비트코인 가격 조회 중...";
+            btcPast = await fetchBTCPrice(dateInput);
+            if (!btcPast) {
+              document.getElementById("loading").innerHTML = `
+              <div style="color: #ff6b6b; margin: 20px 0;">
+                <p style="font-size: 18px; margin-bottom: 12px;">⚠️ 해당 날짜의 가격 데이터를 찾을 수 없습니다</p>
+                <p style="font-size: 14px; opacity: 0.8;">
+                  날짜를 확인하거나 다른 날짜를 선택해주세요.
+                </p>
+              </div>
+            `;
+              return;
+            }
+            // 원화를 USD로 환산한 후 BTC 가격으로 나눔
+            const amountUSD = amount / USD_KRW;
+            btcAmount = amountUSD / btcPast;
+          } else {
+            // DCA 적립식
+            if (loadingDetail)
+              loadingDetail.textContent = `적립식 투자 계산 중... (${dcaMonths}개월)`;
+            const monthlyAmount = amount / dcaMonths;
+            btcAmount = await calculateDCA(dateInput, monthlyAmount, dcaMonths);
+            // 평균 가격 계산 (대략적으로)
+            const amountUSD = amount / USD_KRW;
+            btcPast = amountUSD / btcAmount;
+          }
+
+          // 현재 가격 가져오기 (재시도 포함)
+          if (loadingDetail)
+            loadingDetail.textContent = "현재 비트코인 가격 조회 중...";
+          let btcNow = await fetchCurrentBTCPrice();
+          if (!btcNow) {
+            // 재시도 (최대 3번)
+            document.getElementById("loading").innerHTML =
+              "가격 정보를 다시 불러오는 중... (재시도 중)";
+            for (let retry = 0; retry < 3; retry++) {
+              await new Promise((resolve) => setTimeout(resolve, 1000)); // 1초 대기
+              btcNow = await fetchCurrentBTCPrice();
+              if (btcNow) break;
+            }
+          }
+
+          if (!btcNow) {
+            document.getElementById("loading").innerHTML = `
+            <div style="color: #ff6b6b; margin: 20px 0;">
+              <p style="font-size: 18px; margin-bottom: 12px;">⚠️ 현재 가격을 가져올 수 없습니다</p>
+              <p style="font-size: 14px; opacity: 0.8; margin-bottom: 16px;">
+                네트워크 문제이거나 API 제한일 수 있습니다.<br>
+                잠시 후 다시 시도해주세요.
+              </p>
+              <button onclick="calculate()" style="padding: 12px 24px; background: #ff8a00; border: none; border-radius: 10px; color: white; cursor: pointer; font-weight: bold; font-size: 15px; margin-top: 8px;">
+                🔄 다시 시도
+              </button>
+              <p style="font-size: 12px; opacity: 0.6; margin-top: 12px;">
+                팁: 브라우저를 새로고침하거나 잠시 후 다시 시도해보세요.
+              </p>
+            </div>
+          `;
+            return;
+          }
+
+          const nowValue = btcAmount * btcNow * USD_KRW;
+          const profit = nowValue - amount;
+          const profitRate = ((nowValue / amount - 1) * 100).toFixed(1);
+
+          // 결과 표시
+          document.getElementById("nowValue").innerText = formatKRW(
+            Math.floor(nowValue)
+          );
+          document.getElementById("profitRate").innerText = `+${profitRate}%`;
+          document.getElementById("profitAmount").innerText = formatKRW(
+            Math.floor(profit)
+          );
+
+          // 비교 항목 표시
+          const comparisons = calculateComparisons(profit);
+          document.getElementById("chickenCount").textContent =
+            comparisons.chicken;
+          document.getElementById("macbookCount").textContent =
+            comparisons.macbook;
+          document.getElementById("flightCount").textContent =
+            comparisons.flight;
+          document.getElementById("apartmentText").textContent =
+            comparisons.apartment;
+
+          // 통계 표시
+          const statsContent = generateStats(profit);
+          document.getElementById("statsContent").textContent = statsContent;
+          document.getElementById("stats").style.display = "block";
+
+          // 결과 저장 (공유용)
+          window.calculationResult = {
+            date: dateInput,
+            amount: amount,
+            nowValue: nowValue,
+            profit: profit,
+            profitRate: profitRate,
+          };
+
+          // 로딩 숨기고 결과 표시
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("output").style.display = "block";
+          document.getElementById("output").classList.add("result-main");
+
+          // 결과로 스크롤
+          document
+            .getElementById("result")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch (error) {
+          console.error("Calculation error:", error);
+          document.getElementById("loading").innerHTML = `
+          <div style="color: #ff6b6b; margin: 20px 0;">
+            <p style="font-size: 18px; margin-bottom: 12px;">❌ 계산 중 오류가 발생했습니다</p>
+            <p style="font-size: 14px; opacity: 0.8; margin-bottom: 16px;">
+              ${error.message || "알 수 없는 오류가 발생했습니다."}
+            </p>
+            <button onclick="calculate()" style="padding: 12px 24px; background: #ff8a00; border: none; border-radius: 10px; color: white; cursor: pointer; font-weight: bold; font-size: 15px; margin-top: 8px;">
+              🔄 다시 시도
+            </button>
+          </div>
+        `;
+        }
+      }
+
+      // 공유 함수들
+      function shareKakao() {
+        if (!window.calculationResult) {
+          alert("먼저 계산을 완료해주세요!");
+          return;
+        }
+
+        const { date, amount, nowValue, profit } = window.calculationResult;
+        const text = `${date}에 ${formatKRW(
+          amount
+        )}만 비트코인 샀으면 지금 ${formatKRW(
+          Math.floor(nowValue)
+        )}였대... 나 대신 울어줄 사람... 😭\n\n놓친 수익: ${formatKRW(
+          Math.floor(profit)
+        )}\n\n비트코인 안 산 죄 계산기: ${window.location.href}`;
+
+        // 카카오톡 공유 (실제로는 카카오 SDK 필요)
+        if (navigator.share) {
+          navigator
+            .share({
+              title: "비트코인 안 산 죄 계산기",
+              text: text,
+              url: window.location.href,
+            })
+            .catch(() => {
+              copyToClipboard(text);
+            });
+        } else {
+          copyToClipboard(text);
+          alert(
+            "카카오톡 메시지가 클립보드에 복사되었습니다! 붙여넣기 해주세요! 💬"
+          );
+        }
+      }
+
+      function shareTwitter() {
+        if (!window.calculationResult) {
+          alert("먼저 계산을 완료해주세요!");
+          return;
+        }
+
+        const { date, amount, nowValue, profit } = window.calculationResult;
+        const text = `${date}에 ${formatKRW(
+          amount
+        )}만 비트코인 샀으면 지금 ${formatKRW(
+          Math.floor(nowValue)
+        )}였대... 😭\n\n비트코인 안 산 죄 계산기`;
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          text
+        )}&url=${encodeURIComponent(window.location.href)}`;
+        window.open(url, "_blank");
+      }
+
+      function copyLink() {
+        const url = window.location.href;
+        copyToClipboard(url);
+        alert("링크가 클립보드에 복사되었습니다! 📋");
+      }
+
+      function copyToClipboard(text) {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text);
+        } else {
+          // Fallback
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+        }
+      }
+    </script>
+
+    <script>
+      (function () {
+        "use strict";
+        const targetUrl = "https://funnyfunny.cloud/";
+        function addMoreTestsButton() {
+          if (document.getElementById("more-tests-btn")) return;
+          const moreBtn = document.createElement("button");
+          moreBtn.id = "more-tests-btn";
+          moreBtn.type = "button";
+          moreBtn.dataset.url = targetUrl;
+          moreBtn.textContent = "더 많은 테스트 해보기";
+          moreBtn.className =
+            "w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3";
+          moreBtn.addEventListener("click", function () {
+            window.open(targetUrl, "_blank", "noopener");
+          });
+          const shareButton = document.querySelector(
+            'button#share-btn, button#shareBtn, button[id*="share"]'
+          );
+          if (shareButton) {
+            shareButton.insertAdjacentElement("afterend", moreBtn);
+          } else if (document.body) {
+            document.body.appendChild(moreBtn);
+          }
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", addMoreTestsButton);
+        } else {
+          addMoreTestsButton();
+        }
+      })();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

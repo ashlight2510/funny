@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hair Care Roadmap | hairloss.funnyfunny.cloud</title>
+  <meta name="description" content="Get your personalized Top 3 actions based on a quick survey. Not a diagnosis — a lifestyle improvement guide." />
+  <link rel="canonical" href="https://hairloss.funnyfunny.cloud/en.html" />
+  <link rel="alternate" hreflang="ko" href="https://hairloss.funnyfunny.cloud/" />
+  <link rel="alternate" hreflang="en" href="https://hairloss.funnyfunny.cloud/en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://hairloss.funnyfunny.cloud/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hairloss.funnyfunny.cloud/en.html" />
+  <meta property="og:title" content="Hair Care Roadmap" />
+  <meta property="og:description" content="See what to change, starting today. Action-focused hair care guide." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%234a7c59'/><stop offset='100%25' style='stop-color:%236b9b7a'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='%23f8f6f1'/><path d='M50 25 C65 35 70 55 50 75 C30 55 35 35 50 25 Z' fill='url(%23g)' opacity='0.95'/></svg>" />
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --card: #ffffff;
+      --text: #2c2a26;
+      --muted: #6b6560;
+      --primary: #4a7c59;
+      --primary-light: #6b9b7a;
+      --accent: #8b7355;
+      --line: #e8e4dc;
+      --soft: #f0ede8;
+      --success: #4a7c59;
+      --warn: #b8860b;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .wrap {
+      position: relative;
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-top: 12px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      font-size: 26px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 14px rgba(74, 124, 89, 0.25);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .tagline {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .progress-wrap {
+      margin-bottom: 24px;
+    }
+    .progress-bar {
+      height: 5px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+    .progress-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+    .step {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(44, 42, 38, 0.06);
+      border: 1px solid var(--line);
+    }
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .card .hint {
+      margin: 0 0 20px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .opt {
+      display: block;
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      background: var(--card);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      font-family: inherit;
+    }
+    .opt:hover {
+      border-color: rgba(74, 124, 89, 0.4);
+      background: var(--soft);
+    }
+    .opt.selected {
+      border-color: var(--primary);
+      background: rgba(74, 124, 89, 0.08);
+      color: var(--primary);
+    }
+    .opt:last-child { margin-bottom: 0; }
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .btn {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(74, 124, 89, 0.3);
+    }
+    .btn.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(74, 124, 89, 0.35);
+    }
+    .btn.primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .btn.ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 2px solid var(--line);
+    }
+    .btn.ghost:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+    /* Result */
+    .result-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .result-header .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(74, 124, 89, 0.12);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .result-header h2 { margin: 0 0 8px; }
+    .result-header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .profile-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+    .profile-pill {
+      padding: 10px 14px;
+      background: var(--soft);
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .action-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 2px 10px rgba(44, 42, 38, 0.04);
+    }
+    .action-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-card .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+    .action-card .current {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .action-card .goal {
+      font-size: 0.9rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .action-card .why {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .action-card ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .action-card li { margin-bottom: 4px; }
+    .disclaimer {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--soft);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .result-hero {
+      background: linear-gradient(160deg, rgba(74, 124, 89, 0.12) 0%, rgba(107, 155, 122, 0.06) 50%, transparent 100%);
+      border-radius: 20px;
+      padding: 28px 20px;
+      margin-bottom: 24px;
+      text-align: center;
+      border: 1px solid rgba(74, 124, 89, 0.15);
+    }
+    .result-hero .one-liner {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 4px;
+      line-height: 1.4;
+    }
+    .result-hero .sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .result-actions-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .result-actions-bar .btn-icon {
+      flex: 1;
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .result-actions-bar .btn-icon:hover {
+      border-color: var(--primary);
+      background: rgba(74, 124, 89, 0.06);
+      color: var(--primary);
+    }
+    .result-actions-bar .btn-icon.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-color: transparent;
+      color: #fff;
+    }
+    .result-actions-bar .btn-icon.primary:hover { filter: brightness(1.08); }
+    .profile-visual {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .profile-item {
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+      padding: 14px 12px;
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(44, 42, 38, 0.04);
+    }
+    .profile-item .label { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; }
+    .profile-item .val { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .profile-item.high .val { color: #c2410c; }
+    .profile-item.mid .val { color: var(--warn); }
+    .profile-item.low .val { color: var(--primary); }
+    .action-card .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 0.9rem;
+    }
+    .action-card .tip-item:last-child { border-bottom: none; }
+    .action-card .tip-item::before {
+      content: "☐";
+      font-size: 1.1rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      padding: 12px 20px;
+      background: var(--text);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      z-index: 100;
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+    }
+    .footer-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(74, 124, 89, 0.25);
+    }
+    .footer-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(74, 124, 89, 0.3);
+    }
+    .footer-meta {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .footer-meta a { color: var(--primary); text-decoration: none; }
+    .lang-link { margin-left: 12px; }
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .lang-switch a {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .lang-switch a:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body data-lang="en">
+  <div class="wrap">
+    <div class="lang-switch">
+      <a href="./index.html" id="langSwitchTop">한국어</a>
+    </div>
+    <header>
+      <div class="logo">🌿</div>
+      <h1 id="i18n-title">탈모 개선 로드맵</h1>
+      <p class="tagline" id="i18n-tagline">오늘부터 뭘 바꾸면 되는지가 바로 보여요</p>
+    </header>
+
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">1 / 5</div>
+    </div>
+
+    <!-- INTRO -->
+    <section class="step active" id="step0" data-step="0">
+      <div class="card">
+        <h2 id="i18n-introTitle">간단한 설문으로 시작해요</h2>
+        <p class="hint" id="i18n-introHint">진단이 아니라, <strong>지금 이 사람에게 맞는 행동</strong>을 정리해드려요. 2~3분이면 끝나요.</p>
+        <button class="btn primary" id="btnStart" style="width:100%;">설문 시작하기</button>
+      </div>
+    </section>
+
+    <!-- 1차 설문 -->
+    <section class="step" id="step1" data-step="1">
+      <div class="card">
+        <h2 id="i18n-q1">최근 6개월간 머리카락 빠짐 정도는?</h2>
+        <p class="hint" id="i18n-q1h">체감하시는 대로 선택해주세요.</p>
+        <button class="opt" data-q="loss" data-v="none" data-t="lossNone">거의 없음</button>
+        <button class="opt" data-q="loss" data-v="more" data-t="lossMore">예전보다 늘어남</button>
+        <button class="opt" data-q="loss" data-v="noticeable" data-t="lossNotice">눈에 띄게 많음</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="goStep(0)" data-t="btnPrev">이전</button>
+        <button class="btn primary" id="btn1" disabled onclick="goStep(2)" data-t="btnNext">다음</button>
+      </div>
+    </section>
+
+    <section class="step" id="step2" data-step="2">
+      <div class="card">
+        <h2 id="i18n-q2">하루 평균 수면 시간은?</h2>
+        <p class="hint" id="i18n-q2h">평소 기준으로 골라주세요.</p>
+        <button class="opt" data-q="sleep" data-v="low" data-t="sleepLow">5시간 미만</button>
+        <button class="opt" data-q="sleep" data-v="mid" data-t="sleepMid">5~6시간</button>
+        <button class="opt" data-q="sleep" data-v="ok" data-t="sleepOk">7시간 이상</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="goStep(1)" data-t="btnPrev">이전</button>
+        <button class="btn primary" id="btn2" disabled onclick="goStep(3)" data-t="btnNext">다음</button>
+      </div>
+    </section>
+
+    <section class="step" id="step3" data-step="3">
+      <div class="card">
+        <h2 id="i18n-q3">가족 중 탈모 경험자는?</h2>
+        <p class="hint" id="i18n-q3h">부모, 조부모 등 직계 가족 기준이에요.</p>
+        <button class="opt" data-q="family" data-v="none" data-t="famNone">없음</button>
+        <button class="opt" data-q="family" data-v="one" data-t="famOne">부/모 중 1명</button>
+        <button class="opt" data-q="family" data-v="both" data-t="famBoth">양가 다수</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="goStep(2)" data-t="btnPrev">이전</button>
+        <button class="btn primary" id="btn3" disabled onclick="nextAfter1st()" data-t="btnNext">다음</button>
+      </div>
+    </section>
+
+    <!-- 2차 미니 설문 A: 호르몬/유전 -->
+    <section class="step" id="stepA" data-step="A">
+      <div class="card">
+        <h2 id="i18n-qA">이마·정수리 변화가 있으신가요?</h2>
+        <p class="hint" id="i18n-qAh">체감하시는 정도를 골라주세요.</p>
+        <button class="opt" data-q="hormone" data-v="m" data-t="hormM">M자 이마 후퇴가 느껴져요</button>
+        <button class="opt" data-q="hormone" data-v="top" data-t="hormTop">정수리 가르마가 넓어졌어요</button>
+        <button class="opt" data-q="hormone" data-v="both" data-t="hormBoth">둘 다 해당해요</button>
+        <button class="opt" data-q="hormone" data-v="none" data-t="hormNone">특별히 없어요</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="goStep(3)" data-t="btnPrev">이전</button>
+        <button class="btn primary" id="btnA" disabled onclick="nextAfter2nd('A')" data-t="btnNext">다음</button>
+      </div>
+    </section>
+
+    <!-- 2차 미니 설문 B: 생활습관 -->
+    <section class="step" id="stepB" data-step="B">
+      <div class="card">
+        <h2 id="i18n-qB">생활 습관은 어떠세요?</h2>
+        <p class="hint" id="i18n-qBh">가장 가깝다고 느끼는 항목을 골라주세요.</p>
+        <button class="opt" data-q="lifestyle" data-v="late" data-t="lifeLate">주 3회 이상 야식을 먹어요</button>
+        <button class="opt" data-q="lifestyle" data-v="drink" data-t="lifeDrink">잦은 음주가 있어요</button>
+        <button class="opt" data-q="lifestyle" data-v="caffeine" data-t="lifeCaff">하루 카페인을 많이 마셔요 (3잔 이상)</button>
+        <button class="opt" data-q="lifestyle" data-v="none" data-t="lifeNone">해당 없어요</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="prev2nd()" data-t="btnPrev">이전</button>
+        <button class="btn primary" id="btnB" disabled onclick="nextAfter2nd('B')" data-t="btnNext">다음</button>
+      </div>
+    </section>
+
+    <!-- 2차 미니 설문 C: 두피 -->
+    <section class="step" id="stepC" data-step="C">
+      <div class="card">
+        <h2 id="i18n-qC">두피 상태는 어떠세요?</h2>
+        <p class="hint" id="i18n-qCh">해당하는 것을 골라주세요.</p>
+        <button class="opt" data-q="scalp" data-v="itch" data-t="scalpItch">두피가 가렵거나 붉어요</button>
+        <button class="opt" data-q="scalp" data-v="tight" data-t="scalpTight">샴푸 후 당김이 느껴져요</button>
+        <button class="opt" data-q="scalp" data-v="dandruff" data-t="scalpDand">비듬이 있어요</button>
+        <button class="opt" data-q="scalp" data-v="none" data-t="scalpNone">특별한 문제 없어요</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="prev2nd()" data-t="btnPrev">이전</button>
+        <button class="btn primary" id="btnC" disabled onclick="showResult()" data-t="btnResult">결과 보기</button>
+      </div>
+    </section>
+
+    <!-- 결과 -->
+    <section class="step" id="stepResult" data-step="result">
+      <div class="result-header">
+        <span class="badge" id="i18n-badge">맞춤 개선 로드맵</span>
+        <h2 id="i18n-resultTitle">오늘부터 바꾸면 좋은 것 TOP 3</h2>
+      </div>
+      <div id="resultHero" class="result-hero"></div>
+      <div id="resultActionsBar" class="result-actions-bar"></div>
+      <div id="profileSummary" class="profile-summary"></div>
+      <div id="actionList"></div>
+      <div class="disclaimer" id="i18n-disclaimer">
+        ⚠️ 본 서비스는 의학적 진단이 아닙니다. 생활 개선 가이드로만 참고해 주시고, 심한 탈모·두피 문제가 있다면 피부과 상담을 권장드려요.
+      </div>
+      <div class="btn-row" style="margin-top:24px">
+        <button class="btn primary" onclick="resetAll()" style="width:100%" data-t="btnReset">처음부터 다시 하기</button>
+      </div>
+    </section>
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <footer>
+    <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" class="footer-link" id="footerLink">✨ 다른 서비스 보기</a>
+    <div class="footer-meta">
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a>
+      <a href="./en.html" class="lang-link" id="langLink">English</a>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  'use strict';
+  const LANG = (document.body && document.body.getAttribute('data-lang')) === 'en' ? 'en' : 'ko';
+  const STR = {
+    ko: {
+      title: '탈모 개선 로드맵', tagline: '오늘부터 뭘 바꾸면 되는지가 바로 보여요',
+      introTitle: '간단한 설문으로 시작해요', introHint: '진단이 아니라, <strong>지금 이 사람에게 맞는 행동</strong>을 정리해드려요. 2~3분이면 끝나요.', btnStart: '설문 시작하기',
+      btnPrev: '이전', btnNext: '다음', btnResult: '결과 보기', btnReset: '처음부터 다시 하기',
+      q1: '최근 6개월간 머리카락 빠짐 정도는?', q1h: '체감하시는 대로 선택해주세요.',
+      lossNone: '거의 없음', lossMore: '예전보다 늘어남', lossNotice: '눈에 띄게 많음',
+      q2: '하루 평균 수면 시간은?', q2h: '평소 기준으로 골라주세요.',
+      sleepLow: '5시간 미만', sleepMid: '5~6시간', sleepOk: '7시간 이상',
+      q3: '가족 중 탈모 경험자는?', q3h: '부모, 조부모 등 직계 가족 기준이에요.',
+      famNone: '없음', famOne: '부/모 중 1명', famBoth: '양가 다수',
+      qA: '이마·정수리 변화가 있으신가요?', qAh: '체감하시는 정도를 골라주세요.',
+      hormM: 'M자 이마 후퇴가 느껴져요', hormTop: '정수리 가르마가 넓어졌어요', hormBoth: '둘 다 해당해요', hormNone: '특별히 없어요',
+      qB: '생활 습관은 어떠세요?', qBh: '가장 가깝다고 느끼는 항목을 골라주세요.',
+      lifeLate: '주 3회 이상 야식을 먹어요', lifeDrink: '잦은 음주가 있어요', lifeCaff: '하루 카페인을 많이 마셔요 (3잔 이상)', lifeNone: '해당 없어요',
+      qC: '두피 상태는 어떠세요?', qCh: '해당하는 것을 골라주세요.',
+      scalpItch: '두피가 가렵거나 붉어요', scalpTight: '샴푸 후 당김이 느껴져요', scalpDand: '비듬이 있어요', scalpNone: '특별한 문제 없어요',
+      badge: '맞춤 개선 로드맵', resultTitle: '오늘부터 바꾸면 좋은 것 TOP 3',
+      oneHigh: '지금 습관만 바꿔도 체감 변화를 기대할 수 있어요', oneLow: '지금도 괜찮아요. 이대로 유지·관리해 보세요', oneSub: '내 상태에 맞춰 정리했어요',
+      copy: '복사하기', share: '공유하기', toastCopy: '복사됐어요 📋', toastShare: '공유됐어요 ✨', toastFail: '복사 실패',
+      genetic: '유전', lifestyle: '생활습관', scalp: '두피', high: '높음', mid: '중간', low: '낮음', needCare: '개선 필요', ok: '양호',
+      disclaimer: '⚠️ 본 서비스는 의학적 진단이 아닙니다. 생활 개선 가이드로만 참고해 주시고, 심한 탈모·두피 문제가 있다면 피부과 상담을 권장드려요.',
+      footerLink: '✨ 다른 서비스 보기', langLink: 'English',
+      shareHead: '🌿 탈모 개선 로드맵 결과', shareState: '【내 상태】', shareTop: '【오늘부터 바꿀 것 TOP 3】', shareGoal: '목표',
+      actSleep: '수면', actShampoo: '샴푸 습관', actLife: '영양·생활', actKeep: '꾸준한 관리',
+      curLabel: '현재', goalLabel: '목표',
+      whySleep: '모낭 성장 호르몬이 분비되는 시간대를 확보하는 게 중요해요.',
+      tipScreen: '잠들기 1시간 전 화면 끄기', tipRoom: '방을 어둡게, 시원하게 유지',
+      shampoo2to1: '하루 2회 → 1회로 조정', shampooTemp: '미지근한 물 사용', shampooNail: '손톱 ❌ 손끝 ⭕',
+      scalpItchSt: '가려움/붉음', scalpTightSt: '당김', scalpDandSt: '비듬',
+      shampooDand: '비듬 전용 샴푸 고려', scalpMassage: '두피 마사지로 혈액순환',
+      whyScalp: '두피가 건강해야 모낭도 안정적으로 유지돼요.',
+      lateSnack: '야식 대신 가벼운 간식', beforeBed: '취침 2~3시간 전 식사 마치기',
+      lessDrink: '음주 빈도 줄이기', moreWater: '수분 충분히 보충',
+      lessCaff: '오후 늦은 카페인 줄이기', herbTea: '녹차·허브티로 대체',
+      addProtein: '달걀 / 콩 / 생선 중 하루 1가지 추가', checkProtein: '단백질 섭취 빈도 점검',
+      whyLife: '모발은 단백질로 만들어져요. 영양이 골고루 들어와야 해요.',
+      curOk: '현재 상태 양호', goalKeep: '유지하기', whyKeep: '지금 습관을 유지하시면 돼요.',
+      tipSleep7: '수면 7시간 이상 유지', tipScalp: '두피 자극 줄이기', tipStress: '스트레스 관리',
+      goalMin: '최소 6~7시간', goal7: '최소 7시간', goalLess: '자극 최소화', goalBalance: '균형 잡힌 식습관',
+      curLate: '야식 빈번', curDrink: '음주', curCaff: '카페인 과다', curCheck: '영양 균형 점검'
+    },
+    en: {
+      title: 'Hair Care Roadmap', tagline: 'See what to change, starting today',
+      introTitle: 'Start with a quick survey', introHint: 'Not a diagnosis — we\'ll give you <strong>actions that fit you</strong>. Takes 2–3 minutes.', btnStart: 'Start survey',
+      btnPrev: 'Back', btnNext: 'Next', btnResult: 'View result', btnReset: 'Start over',
+      q1: 'Hair loss in the last 6 months?', q1h: 'Choose what fits your experience.',
+      lossNone: 'Almost none', lossMore: 'More than before', lossNotice: 'Noticeably more',
+      q2: 'Average sleep per night?', q2h: 'Pick your usual pattern.',
+      sleepLow: 'Under 5 hrs', sleepMid: '5–6 hrs', sleepOk: '7+ hrs',
+      q3: 'Family history of hair loss?', q3h: 'Parents, grandparents, etc.',
+      famNone: 'None', famOne: 'One parent', famBoth: 'Both sides',
+      qA: 'Forehead or crown changes?', qAh: 'Pick what you notice.',
+      hormM: 'Receding hairline (M-shaped)', hormTop: 'Widening part on crown', hormBoth: 'Both', hormNone: 'Nothing specific',
+      qB: 'Lifestyle habits?', qBh: 'Pick the closest match.',
+      lifeLate: 'Late-night meals 3+ times/week', lifeDrink: 'Frequent drinking', lifeCaff: 'Heavy caffeine (3+ cups/day)', lifeNone: 'None',
+      qC: 'Scalp condition?', qCh: 'Pick what applies.',
+      scalpItch: 'Itchy or red scalp', scalpTight: 'Tightness after shampoo', scalpDand: 'Dandruff', scalpNone: 'No issues',
+      badge: 'Your improvement roadmap', resultTitle: 'Top 3 changes to make today',
+      oneHigh: 'Changing habits now can bring noticeable improvement', oneLow: 'You\'re doing fine. Keep it up.',
+      oneSub: 'Tailored to your answers',
+      copy: 'Copy', share: 'Share', toastCopy: 'Copied 📋', toastShare: 'Shared ✨', toastFail: 'Copy failed',
+      genetic: 'Genetic', lifestyle: 'Lifestyle', scalp: 'Scalp', high: 'High', mid: 'Medium', low: 'Low', needCare: 'Needs care', ok: 'OK',
+      disclaimer: '⚠️ This is not medical advice. Use as a lifestyle guide only. See a dermatologist for severe hair/scalp issues.',
+      footerLink: '✨ View other services', langLink: '한국어',
+      shareHead: '🌿 Hair Care Roadmap', shareState: '【My Status】', shareTop: '【Top 3 to change】', shareGoal: 'Goal',
+      actSleep: 'Sleep', actShampoo: 'Shampoo habit', actLife: 'Nutrition & lifestyle', actKeep: 'Keep it up',
+      curLabel: 'Current', goalLabel: 'Goal',
+      whySleep: 'Hair growth hormone peaks during sleep. 7+ hours matters.',
+      tipScreen: 'No screens 1 hr before bed', tipRoom: 'Dark, cool room',
+      shampoo2to1: '2x/day → 1x/day', shampooTemp: 'Use lukewarm water', shampooNail: 'Fingertips only, not nails',
+      scalpItchSt: 'itchy/red', scalpTightSt: 'tightness', scalpDandSt: 'dandruff',
+      shampooDand: 'Try dandruff shampoo', scalpMassage: 'Scalp massage for circulation',
+      whyScalp: 'Healthy scalp = healthier follicles.',
+      lateSnack: 'Light snack instead of late meals', beforeBed: 'Finish eating 2–3 hrs before bed',
+      lessDrink: 'Cut back on alcohol', moreWater: 'Stay hydrated',
+      lessCaff: 'Less caffeine in the afternoon', herbTea: 'Try green/herb tea',
+      addProtein: 'Add egg, beans, or fish daily', checkProtein: 'Check protein intake',
+      whyLife: 'Hair is protein. You need enough in your diet.',
+      curOk: 'Doing OK', goalKeep: 'Maintain', whyKeep: 'Keep up your current habits.',
+      tipSleep7: 'Sleep 7+ hrs', tipScalp: 'Reduce scalp irritation', tipStress: 'Manage stress',
+      goalMin: 'At least 6–7 hrs', goal7: 'At least 7 hrs', goalLess: 'Minimize irritation', goalBalance: 'Balanced diet',
+      curLate: 'Late meals', curDrink: 'Alcohol', curCaff: 'Excess caffeine', curCheck: 'Nutrition check'
+    }
+  };
+  function t(k) { return (STR[LANG] || STR.ko)[k] || STR.ko[k]; }
+
+  function initI18n() {
+    var map = { title:'i18n-title', tagline:'i18n-tagline', introTitle:'i18n-introTitle', introHint:'i18n-introHint',
+      q1:'i18n-q1', q1h:'i18n-q1h', q2:'i18n-q2', q2h:'i18n-q2h', q3:'i18n-q3', q3h:'i18n-q3h',
+      qA:'i18n-qA', qAh:'i18n-qAh', qB:'i18n-qB', qBh:'i18n-qBh', qC:'i18n-qC', qCh:'i18n-qCh',
+      badge:'i18n-badge', resultTitle:'i18n-resultTitle', disclaimer:'i18n-disclaimer', footerLink:'footerLink', langLink:'langLink' };
+    for (var k in map) {
+      var el = document.getElementById(map[k]) || (map[k]==='footerLink' ? document.getElementById('footerLink') : null) || (map[k]==='langLink' ? document.getElementById('langLink') : null);
+      if (el) { if (k === 'introHint') el.innerHTML = t(k); else el.textContent = t(k); }
+    }
+    document.getElementById('btnStart').textContent = t('btnStart');
+    document.querySelectorAll('[data-t]').forEach(function (el) { el.textContent = t(el.dataset.t); });
+    var langLink = document.getElementById('langLink');
+    if (langLink) { langLink.href = LANG === 'en' ? './index.html' : './en.html'; }
+  }
+
+  const state = { loss: '', sleep: '', family: '', hormone: '', lifestyle: '', scalp: '' };
+  let secondSteps = []; // e.g. ['A','C'] or ['B','C']
+
+  function selectOpt(stepId, q, v) {
+    const step = document.getElementById(stepId);
+    if (!step) return;
+    step.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (el) {
+      el.classList.toggle('selected', el.dataset.v === v);
+    });
+    state[q] = v;
+    var nextFn = null;
+    if (stepId === 'step1') nextFn = function () { goStep(2); };
+    else if (stepId === 'step2') nextFn = function () { goStep(3); };
+    else if (stepId === 'step3') nextFn = nextAfter1st;
+    else if (stepId === 'stepA') nextFn = function () { nextAfter2nd('A'); };
+    else if (stepId === 'stepB') nextFn = function () { nextAfter2nd('B'); };
+    else if (stepId === 'stepC') nextFn = showResult;
+    if (nextFn) setTimeout(nextFn, 350);
+  }
+
+  function goStep(n) {
+    const stepMap = { 0: 'step0', 1: 'step1', 2: 'step2', 3: 'step3', A: 'stepA', B: 'stepB', C: 'stepC', result: 'stepResult', stepResult: 'stepResult' };
+    const id = (typeof n === 'number' ? stepMap[n] : stepMap[n]) || n;
+    document.querySelectorAll('.step').forEach(function (s) { s.classList.remove('active'); });
+    const el = document.getElementById(id);
+    if (el) el.classList.add('active');
+    updateProgress(id);
+    if (id === 'stepResult') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress(activeId) {
+    const order = ['step0','step1','step2','step3'];
+    const idx = order.indexOf(activeId);
+    let total = 5;
+    let current = 0;
+    if (activeId === 'step0') { total = 5; current = 0; }
+    else if (idx >= 0) { current = idx + 1; }
+    else if (['stepA','stepB','stepC'].indexOf(activeId) >= 0) {
+      const pos = secondSteps.indexOf(activeId.replace('step','')) + 1;
+      current = 4 + pos;
+      total = 4 + secondSteps.length;
+    }
+    else if (activeId === 'stepResult') { current = total = 4 + secondSteps.length; }
+    document.getElementById('progressFill').style.width = (current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = current + ' / ' + total;
+  }
+
+  function nextAfter1st() {
+    if (!state.loss || !state.sleep || !state.family) return;
+    secondSteps = ['C'];
+    if (state.family !== 'none') secondSteps.unshift('A');
+    if (state.sleep !== 'ok' || state.loss !== 'none') secondSteps.push('B');
+    secondSteps = secondSteps.slice(0, 3);
+    goStep('step' + secondSteps[0]);
+  }
+
+  function prev2nd() {
+    const curr = secondSteps.find(function (s) {
+      const el = document.getElementById('step' + s);
+      return el && el.classList.contains('active');
+    });
+    if (!curr) { goStep(3); return; }
+    const i = secondSteps.indexOf(curr);
+    if (i <= 0) goStep(3);
+    else goStep('step' + secondSteps[i - 1]);
+  }
+
+  function nextAfter2nd(which) {
+    const i = secondSteps.indexOf(which);
+    if (i < 0 || i >= secondSteps.length - 1) showResult();
+    else goStep('step' + secondSteps[i + 1]);
+  }
+
+  function showResult() {
+    goStep('stepResult');
+    renderResult();
+  }
+
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function () { t.classList.remove('show'); }, 2000);
+  }
+
+  function getShareText() {
+    var genetic = state.family === 'both' ? t('high') : state.family === 'one' ? t('mid') : t('low');
+    var lifeVal = (state.sleep !== 'ok' || state.lifestyle !== 'none') ? t('high') : t('low');
+    var scalpVal = (state.scalp && state.scalp !== 'none') ? t('needCare') : t('ok');
+    var lines = [
+      t('shareHead'),
+      '',
+      t('shareState'),
+      t('genetic') + ': ' + genetic + ' · ' + t('lifestyle') + ': ' + lifeVal + ' · ' + t('scalp') + ': ' + scalpVal,
+      '',
+      t('shareTop')
+    ];
+    lastRenderedActions.forEach(function (a, i) {
+      lines.push((i + 1) + '. ' + a.title + ' → ' + t('shareGoal') + ': ' + a.goal);
+      a.tips.forEach(function (tip) { lines.push('   ☐ ' + tip); });
+    });
+    lines.push('', '📱 hairloss.funnyfunny.cloud');
+    return lines.join('\n');
+  }
+
+  function copyResult() {
+    var text = getShareText();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { showToast(t('toastCopy')); }).catch(function () { fallbackCopy(text); });
+    } else fallbackCopy(text);
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showToast(t('toastCopy')); } catch (e) { showToast(t('toastFail')); }
+    document.body.removeChild(ta);
+  }
+
+  function shareResult() {
+    var text = getShareText();
+    if (navigator.share) {
+      navigator.share({
+        title: t('title'),
+        text: text,
+        url: 'https://hairloss.funnyfunny.cloud/' + (LANG === 'en' ? 'en.html' : '')
+      }).then(function () { showToast(t('toastShare')); }).catch(function () { copyResult(); });
+    } else {
+      copyResult();
+    }
+  }
+
+  var lastRenderedActions = [];
+
+  function renderResult() {
+    var gVal = state.family === 'both' ? 'high' : state.family === 'one' ? 'mid' : 'low';
+    var lVal = (state.sleep !== 'ok' || state.lifestyle !== 'none') ? 'high' : 'low';
+    var sVal = (state.scalp && state.scalp !== 'none') ? 'needCare' : 'ok';
+    var genetic = t(gVal), lifestyle = t(lVal), scalp = t(sVal);
+    var oneLiner = (gVal === 'high' || lVal === 'high' || sVal === 'needCare') ? t('oneHigh') : t('oneLow');
+    document.getElementById('resultHero').innerHTML =
+      '<p class="one-liner">' + oneLiner + '</p>' +
+      '<p class="sub">' + t('oneSub') + '</p>';
+
+    document.getElementById('resultActionsBar').innerHTML =
+      '<button type="button" class="btn-icon" onclick="copyResult()">📋 ' + t('copy') + '</button>' +
+      '<button type="button" class="btn-icon primary" onclick="shareResult()">✉️ ' + t('share') + '</button>';
+
+    document.getElementById('profileSummary').innerHTML =
+      '<div class="profile-item ' + gVal + '">' +
+        '<div class="label">' + t('genetic') + '</div><div class="val">' + genetic + '</div></div>' +
+      '<div class="profile-item ' + lVal + '">' +
+        '<div class="label">' + t('lifestyle') + '</div><div class="val">' + lifestyle + '</div></div>' +
+      '<div class="profile-item ' + (sVal === 'needCare' ? 'mid' : 'low') + '">' +
+        '<div class="label">' + t('scalp') + '</div><div class="val">' + scalp + '</div></div>';
+
+    const actions = [];
+    if (state.sleep !== 'ok') {
+      const goal = state.sleep === 'low' ? t('goalMin') : t('goal7');
+      actions.push({
+        title: t('actSleep'),
+        current: state.sleep === 'low' ? t('sleepLow') : t('sleepMid'),
+        goal: goal,
+        why: t('whySleep'),
+        tips: [t('tipScreen'), t('tipRoom')]
+      });
+    }
+    if (state.scalp && state.scalp !== 'none') {
+      var tips = [];
+      if (state.scalp === 'itch' || state.scalp === 'tight') tips = [t('shampoo2to1'), t('shampooTemp'), t('shampooNail')];
+      else if (state.scalp === 'dandruff') tips = [t('shampooDand'), t('scalpMassage')];
+      else tips = [t('shampoo2to1'), t('shampooTemp')];
+      var scalpCur = state.scalp === 'itch' ? t('scalpItchSt') : state.scalp === 'tight' ? t('scalpTightSt') : t('scalpDandSt');
+      actions.push({
+        title: t('actShampoo'),
+        current: scalpCur,
+        goal: t('goalLess'),
+        why: t('whyScalp'),
+        tips: tips
+      });
+    }
+    if (state.lifestyle && state.lifestyle !== 'none' || (state.sleep === 'ok' && actions.length < 2)) {
+      var tips = [];
+      if (state.lifestyle === 'late') tips = [t('lateSnack'), t('beforeBed')];
+      else if (state.lifestyle === 'drink') tips = [t('lessDrink'), t('moreWater')];
+      else if (state.lifestyle === 'caffeine') tips = [t('lessCaff'), t('herbTea')];
+      else tips = [t('addProtein'), t('checkProtein')];
+      var curLife = state.lifestyle === 'late' ? t('curLate') : state.lifestyle === 'drink' ? t('curDrink') : state.lifestyle === 'caffeine' ? t('curCaff') : t('curCheck');
+      actions.push({
+        title: t('actLife'),
+        current: curLife,
+        goal: t('goalBalance'),
+        why: t('whyLife'),
+        tips: tips
+      });
+    }
+    if (actions.length === 0) {
+      actions.push({
+        title: t('actKeep'),
+        current: t('curOk'),
+        goal: t('goalKeep'),
+        why: t('whyKeep'),
+        tips: [t('tipSleep7'), t('tipScalp'), t('tipStress')]
+      });
+    }
+    const top3 = actions.slice(0, 3);
+    lastRenderedActions = top3;
+    document.getElementById('actionList').innerHTML = top3.map(function (a, i) {
+      var tipsHtml = a.tips.map(function (tip) { return '<div class="tip-item">' + tip + '</div>'; }).join('');
+      return '<div class="action-card">' +
+        '<h3><span class="num">' + (i + 1) + '</span> ' + a.title + '</h3>' +
+        '<div class="current">' + t('curLabel') + ': ' + a.current + '</div>' +
+        '<div class="goal">' + t('goalLabel') + ': ' + a.goal + '</div>' +
+        '<div class="why">' + a.why + '</div>' +
+        '<div class="tip-list">' + tipsHtml + '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function resetAll() {
+    state.loss = state.sleep = state.family = state.hormone = state.lifestyle = state.scalp = '';
+    secondSteps = [];
+    document.querySelectorAll('.opt').forEach(function (el) { el.classList.remove('selected'); });
+    document.querySelectorAll('.btn.primary').forEach(function (b) { b.disabled = true; });
+    goStep(0);
+  }
+
+  document.getElementById('btnStart').addEventListener('click', function () { goStep(1); });
+  document.querySelectorAll('.step').forEach(function (step) {
+    step.querySelectorAll('.opt').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        const q = opt.dataset.q, v = opt.dataset.v;
+        if (q && v) selectOpt(step.id, q, v);
+      });
+    });
+  });
+
+  initI18n();
+  updateProgress('step0');
+  window.goStep = goStep;
+  window.nextAfter1st = nextAfter1st;
+  window.prev2nd = prev2nd;
+  window.nextAfter2nd = nextAfter2nd;
+  window.showResult = showResult;
+  window.resetAll = resetAll;
+  window.copyResult = copyResult;
+  window.shareResult = shareResult;
+})();
+  </script>
+</body>
+</html>

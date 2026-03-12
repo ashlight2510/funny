@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n-title="metaTitle">자산 비중 진단 · 포트폴리오 타입</title>
+
+    <!-- Favicon: 자동 생성(SVG data URI) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'22'%20fill%3D'%230b1220'/%3E%3Ctext%20x%3D'50'%20y%3D'63'%20font-size%3D'52'%20text-anchor%3D'middle'%3E%F0%9F%93%8A%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- OG -->
+    <meta property="og:title" content="Asset Allocation Check" />
+    <meta
+      property="og:description"
+      content="현금·금·부동산·주식·코인 비중을 한눈에 보고, 가볍게 포트폴리오 타입을 진단합니다."
+      data-i18n-content="metaDescription"
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Asset%20Allocation%20Check"
+    />
+
+    <!-- Google AdSense (기본 스크립트만) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      :root {
+        --bg: #0b1220;
+        --card: #121b2f;
+        --card2: #0f172a;
+        --text: #e7eefc;
+        --muted: #a9b6d3;
+        --line: rgba(255, 255, 255, 0.08);
+        --good: #48d597;
+        --warn: #ffcc66;
+        --bad: #ff6b6b;
+        --accent: #7aa7ff;
+        --shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+        --radius: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system,
+          "Apple SD Gothic Neo", "Noto Sans KR", Segoe UI, Roboto, Arial;
+        background: radial-gradient(
+            1200px 600px at 30% -10%,
+            rgba(122, 167, 255, 0.22),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 90% 10%,
+            rgba(72, 213, 151, 0.14),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+      header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: linear-gradient(
+          135deg,
+          rgba(122, 167, 255, 0.25),
+          rgba(72, 213, 151, 0.18)
+        );
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+      .logo span {
+        font-size: 22px;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 6px;
+        letter-spacing: -0.2px;
+      }
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .btn {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 14px;
+        cursor: pointer;
+        font-weight: 650;
+        letter-spacing: -0.1px;
+        transition: transform 0.08s ease, background 0.2s ease;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        user-select: none;
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn.primary {
+        background: linear-gradient(
+          135deg,
+          rgba(122, 167, 255, 0.24),
+          rgba(122, 167, 255, 0.1)
+        );
+        border-color: rgba(122, 167, 255, 0.25);
+      }
+      .btn.good {
+        background: linear-gradient(
+          135deg,
+          rgba(72, 213, 151, 0.22),
+          rgba(72, 213, 151, 0.08)
+        );
+        border-color: rgba(72, 213, 151, 0.25);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+      @media (max-width: 980px) {
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .top-actions {
+          justify-content: flex-start;
+          width: 100%;
+        }
+      }
+      .panel {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .panel .hd {
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.02);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .panel .hd strong {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.1px;
+      }
+      .panel .bd {
+        padding: 20px;
+      }
+      .field {
+        display: grid;
+        grid-template-columns: 1fr 160px;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+      .field label {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      @media (max-width: 600px) {
+        .field {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+      input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.15);
+        color: var(--text);
+        outline: none;
+        font-weight: 650;
+      }
+      input[type="number"]::placeholder {
+        color: rgba(231, 238, 252, 0.35);
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 9px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        color: var(--muted);
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+      }
+      .chip input {
+        accent-color: var(--accent);
+      }
+      .note {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      /* Result side */
+      .summary {
+        display: grid;
+        gap: 20px;
+      }
+      .summary-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 700px) {
+        .summary-top {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+      .kpi-title {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .kpi-value {
+        font-size: 26px;
+        font-weight: 850;
+        letter-spacing: -0.6px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.12);
+        font-weight: 850;
+        margin-top: 10px;
+        letter-spacing: -0.2px;
+      }
+      .badge small {
+        font-weight: 750;
+        color: var(--muted);
+      }
+      .asset-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      @media (max-width: 900px) {
+        .asset-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 520px) {
+        .asset-cards {
+          grid-template-columns: 1fr;
+        }
+      }
+      .asset {
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.12);
+      }
+      .asset .t {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .asset .name {
+        font-weight: 850;
+        letter-spacing: -0.2px;
+      }
+      .asset .pct {
+        font-weight: 900;
+      }
+      .asset .amt {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      .bars {
+        margin-top: 10px;
+        display: grid;
+        gap: 8px;
+      }
+      .bar {
+        display: grid;
+        grid-template-columns: 92px 1fr 62px;
+        gap: 10px;
+        align-items: center;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .track {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(
+          90deg,
+          rgba(122, 167, 255, 0.85),
+          rgba(72, 213, 151, 0.75)
+        );
+        border-radius: 999px;
+        transition: width 0.6s ease;
+      }
+
+      .diag-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+      }
+      @media (max-width: 900px) {
+        .diag-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+      .diag {
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.12);
+        border-radius: 16px;
+        padding: 18px;
+      }
+      .diag .title {
+        font-weight: 900;
+        margin-bottom: 8px;
+      }
+      .diag .big {
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: -0.4px;
+        margin-bottom: 8px;
+      }
+      .diag .desc {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .one-liner {
+        margin-top: 20px;
+        border: 1px solid rgba(122, 167, 255, 0.25);
+        background: linear-gradient(
+          135deg,
+          rgba(122, 167, 255, 0.12),
+          rgba(72, 213, 151, 0.06)
+        );
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .one-liner .ttl {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .one-liner .txt {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -0.1px;
+        line-height: 1.5;
+      }
+
+      .action-card {
+        margin-top: 16px;
+        border: 1px solid rgba(72, 213, 151, 0.25);
+        background: linear-gradient(
+          135deg,
+          rgba(72, 213, 151, 0.12),
+          rgba(122, 167, 255, 0.06)
+        );
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .action-card .ttl {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .action-card .txt {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: -0.1px;
+        line-height: 1.5;
+      }
+
+      .footer-note {
+        margin-top: 12px;
+        font-size: 12px;
+        color: rgba(231, 238, 252, 0.55);
+        line-height: 1.35;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.68);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease, transform 0.22s ease;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-6px);
+      }
+    </style>
+    <style>
+      .adsense-block {
+        margin: 16px 0;
+        display: flex;
+        justify-content: center;
+      }
+      .adsbygoogle {
+        display: block;
+        margin: 16px auto;
+        text-align: center;
+      }
+    </style>
+    <style>
+      .lang-switch {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: inline-flex;
+        gap: 0;
+        padding: 3px;
+        border-radius: 999px;
+        background: rgba(11, 18, 32, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        border: 1px solid rgba(122, 167, 255, 0.3);
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 44px;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+      .lang-switch button.active {
+        background: rgba(122, 167, 255, 0.2);
+        color: #7aa7ff;
+        box-shadow: 0 2px 8px rgba(122, 167, 255, 0.4);
+      }
+      .lang-switch button:not(.active):hover {
+        background: rgba(122, 167, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+      }
+    </style>
+      <link rel="canonical" href="https://funnyfunny.cloud/tools/specific/" />
+  </head>
+
+  <body>
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo"><span>📊</span></div>
+          <div>
+            <h1 data-i18n="title">자산 비중 진단</h1>
+            <p class="sub" data-i18n="subtitle">
+              현금·금(현물)·부동산·주식·코인 비중을 한눈에 보고, 포트폴리오
+              타입을 가볍게 점검합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button
+            class="btn primary"
+            id="btnCalc"
+            type="button"
+            data-i18n="btnCalc"
+          >
+            ⚙️ 계산하기
+          </button>
+          <button class="btn" id="btnReset" type="button" data-i18n="btnReset">
+            🔄 초기화
+          </button>
+          <button class="btn" id="btnShare" type="button" data-i18n="btnShare">
+            📎 결과 요약 복사
+          </button>
+          <a
+            class="btn good"
+            href="https://funnyfunny.cloud"
+            target="_blank"
+            rel="noopener"
+            data-i18n="btnOtherService"
+            >➡️ 다른 서비스 보기</a
+          >
+        </div>
+      </header>
+
+      <div class="grid">
+        <!-- INPUT PANEL -->
+        <section class="panel">
+          <div class="hd">
+            <strong data-i18n="inputTitle">입력</strong>
+            <span
+              style="color: var(--muted); font-size: 12px"
+              data-i18n="inputUnit"
+              >단위: 만원 또는 원(자유)</span
+            >
+          </div>
+          <div class="bd">
+            <div class="field">
+              <label for="cash" data-i18n="assetCash">💰 현금/예금</label>
+              <input
+                id="cash"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 10000000"
+              />
+            </div>
+
+            <div class="field">
+              <label for="gold" data-i18n="assetGold">🪙 금(현물)</label>
+              <input
+                id="gold"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 3000000"
+              />
+            </div>
+
+            <div class="field">
+              <label for="realestate" data-i18n="assetRealestate"
+                >🏠 부동산</label
+              >
+              <input
+                id="realestate"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 30000000"
+              />
+            </div>
+
+            <div class="field">
+              <label for="stocks" data-i18n="assetStocks">📈 주식</label>
+              <input
+                id="stocks"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 15000000"
+              />
+            </div>
+
+            <div class="field">
+              <label for="crypto" data-i18n="assetCrypto">🚀 코인</label>
+              <input
+                id="crypto"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 2000000"
+              />
+            </div>
+
+            <div class="field">
+              <label for="bonds" data-i18n="assetBonds"
+                >🛡️ 채권/안전자산(선택)</label
+              >
+              <input
+                id="bonds"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 5000000"
+              />
+            </div>
+
+            <div class="field" style="margin-bottom: 2px">
+              <label for="other" data-i18n="assetOther">🧩 기타(선택)</label>
+              <input
+                id="other"
+                type="number"
+                min="0"
+                step="1"
+                data-i18n-placeholder="placeholderExample"
+                placeholder="예: 0"
+              />
+            </div>
+
+            <div class="row" style="margin-top: 12px">
+              <label class="chip" data-i18n-title="optReAsRiskTitle">
+                <input type="checkbox" id="optReAsRisk" />
+                <span data-i18n="optReAsRisk">부동산을 위험자산에 포함</span>
+              </label>
+
+              <label class="chip" data-i18n-title="optShareUrlTitle">
+                <input type="checkbox" id="optShareUrl" />
+                <span data-i18n="optShareUrl">URL 공유용 파라미터 생성</span>
+              </label>
+            </div>
+
+            <div class="note" data-i18n="inputNote">
+              ※ 이 결과는 투자 권유가 아닌 자산 구조 점검용입니다. 입력값을
+              바꾸며 "가정 시뮬레이션"처럼 써도 좋아요.
+            </div>
+          </div>
+        </section>
+
+        <!-- RESULT PANEL -->
+        <section class="summary">
+          <div class="summary-top">
+            <div class="card">
+              <div class="kpi-title" data-i18n="resultTotalAssets">
+                내 총 자산
+              </div>
+              <div class="kpi-value" id="totalText">—</div>
+              <div class="badge" id="typeBadge">
+                <span id="typeIcon">🧾</span>
+                <span id="typeName" data-i18n="resultBeforeCalc"
+                  >아직 계산 전</span
+                >
+                <small
+                  id="typeHint"
+                  style="margin-left: 6px"
+                  data-i18n="resultBeforeCalcHint"
+                  >입력 후 계산하기를 눌러주세요</small
+                >
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="kpi-title" data-i18n="resultMiniBarChart">
+                비중 미니 바 차트
+              </div>
+              <div class="bars" id="barList">
+                <!-- filled by JS -->
+              </div>
+              <div class="footer-note" data-i18n="resultMiniBarChartNote">
+                숫자보다 "구조"가 먼저 보이도록, 큰 비중부터 정렬해 표시합니다.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-title" data-i18n="resultAssetCards">
+              자산 비중 카드
+            </div>
+            <div class="asset-cards" id="assetCards">
+              <!-- filled by JS -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-title" data-i18n="resultDiagnosis">
+              핵심 진단(3가지)
+            </div>
+            <div class="diag-grid">
+              <div class="diag">
+                <div class="title" data-i18n="diagRiskTitle">
+                  ⚠️ 위험자산 비중
+                </div>
+                <div class="big" id="riskPctText">—</div>
+                <div class="desc" id="riskDesc" data-i18n="diagRiskDesc">
+                  주식·코인(옵션에 따라 부동산 포함) 비중을 기준으로 변동성 체감
+                  가능성을 점검합니다.
+                </div>
+              </div>
+
+              <div class="diag">
+                <div class="title" data-i18n="diagLiquidityTitle">
+                  💧 현금 여유도
+                </div>
+                <div class="big" id="liqText">—</div>
+                <div class="desc" id="liqDesc" data-i18n="diagLiquidityDesc">
+                  현금/예금 비중을 기준으로 급한 상황 또는 기회 대응력을 가볍게
+                  점검합니다.
+                </div>
+              </div>
+
+              <div class="diag">
+                <div class="title" data-i18n="diagConcentrationTitle">
+                  🎯 자산 집중도
+                </div>
+                <div class="big" id="concText">—</div>
+                <div
+                  class="desc"
+                  id="concDesc"
+                  data-i18n="diagConcentrationDesc"
+                >
+                  한 자산이 너무 커지면 장점도 커지지만, 예상 밖 상황에서
+                  불편함이 생길 수 있습니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="one-liner">
+              <div class="ttl" data-i18n="resultOneLinerTitle">
+                오늘의 한 줄
+              </div>
+              <div class="txt" id="oneLiner">—</div>
+            </div>
+
+            <div class="action-card">
+              <div class="ttl" data-i18n="resultActionTitle">
+                👉 이런 선택은 어때요?
+              </div>
+              <div class="txt" id="oneAction">—</div>
+            </div>
+
+            <div class="footer-note" data-i18n="resultFooter">
+              * 이 진단은 "성향 평가"가 아니라, 현재 입력한 자산 비중만으로 나온
+              결과입니다.
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" data-i18n="toastCopy">복사했어요</div>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "자산 비중 진단 · 포트폴리오 타입",
+          metaDescription:
+            "현금·금·부동산·주식·코인 비중을 한눈에 보고, 가볍게 포트폴리오 타입을 진단합니다.",
+          title: "자산 비중 진단",
+          subtitle:
+            "현금·금(현물)·부동산·주식·코인 비중을 한눈에 보고, 포트폴리오 타입을 가볍게 점검합니다.",
+          btnCalc: "⚙️ 계산하기",
+          btnReset: "🔄 초기화",
+          btnShare: "📎 결과 요약 복사",
+          btnOtherService: "➡️ 다른 서비스 보기",
+          toastCopy: "복사했어요",
+          toastReset: "초기화했어요",
+          toastCopySummary: "결과 요약을 복사했어요",
+          inputTitle: "입력",
+          inputUnit: "단위: 만원 또는 원(자유)",
+          assetCash: "💰 현금/예금",
+          assetGold: "🪙 금(현물)",
+          assetRealestate: "🏠 부동산",
+          assetStocks: "📈 주식",
+          assetCrypto: "🚀 코인",
+          assetBonds: "🛡️ 채권/안전자산(선택)",
+          assetOther: "🧩 기타(선택)",
+          optReAsRisk: "부동산을 위험자산에 포함",
+          optReAsRiskTitle: "투자용 부동산을 위험자산 계산에 포함",
+          optShareUrl: "URL 공유용 파라미터 생성",
+          optShareUrlTitle:
+            "결과를 입력값과 함께 URL로 공유(민감하면 사용하지 마세요)",
+          inputNote:
+            '※ 이 결과는 투자 권유가 아닌 자산 구조 점검용입니다. 입력값을 바꾸며 "가정 시뮬레이션"처럼 써도 좋아요.',
+          resultTotalAssets: "내 총 자산",
+          resultBeforeCalc: "아직 계산 전",
+          resultBeforeCalcHint: "입력 후 계산하기를 눌러주세요",
+          resultNoInput: "입력값이 없어요",
+          resultNoInputHint: "금액을 입력한 뒤 계산해보세요",
+          resultMiniBarChart: "비중 미니 바 차트",
+          resultMiniBarChartNote:
+            '숫자보다 "구조"가 먼저 보이도록, 큰 비중부터 정렬해 표시합니다.',
+          resultAssetCards: "자산 비중 카드",
+          resultDiagnosis: "핵심 진단(3가지)",
+          diagRiskTitle: "⚠️ 위험자산 비중",
+          diagRiskDesc:
+            "주식·코인(옵션에 따라 부동산 포함) 비중을 기준으로 변동성 체감 가능성을 점검합니다.",
+          diagLiquidityTitle: "💧 현금 여유도",
+          diagLiquidityDesc:
+            "현금/예금 비중을 기준으로 급한 상황 또는 기회 대응력을 가볍게 점검합니다.",
+          diagConcentrationTitle: "🎯 자산 집중도",
+          diagConcentrationDesc:
+            "한 자산이 너무 커지면 장점도 커지지만, 예상 밖 상황에서 불편함이 생길 수 있습니다.",
+          resultOneLinerTitle: "오늘의 한 줄",
+          resultActionTitle: "👉 이런 선택은 어때요?",
+          resultFooter:
+            '* 이 진단은 "성향 평가"가 아니라, 현재 입력한 자산 비중만으로 나온 결과입니다.',
+          copySummaryTitle: "자산 비중 진단 결과",
+          copySummaryTotal: "총 자산",
+          copySummaryType: "타입",
+          copySummaryRisk: "위험자산 비중",
+          copySummaryLiquidity: "현금 여유도",
+          copySummaryConcentration: "집중도",
+          copySummaryOneLiner: "한 줄",
+          copySummaryOtherServices: "다른 서비스",
+          placeholderExample: "예: 10000000",
+          resultBarListEmpty: "입력 후 계산하면 비중이 표시됩니다.",
+          resultBarListNoItems: "표시할 항목이 없어요.",
+          currencySymbol: "₩ ",
+          riskDescPrefix: "현재 위험자산 비중은 {pct}%입니다. {msg}",
+        },
+        en: {
+          metaTitle: "Asset Allocation Check · Portfolio Type",
+          metaDescription:
+            "View cash, gold, real estate, stocks, and crypto allocations at a glance, and easily diagnose your portfolio type.",
+          title: "Asset Allocation Check",
+          subtitle:
+            "View cash, gold (physical), real estate, stocks, and crypto allocations at a glance, and easily check your portfolio type.",
+          btnCalc: "⚙️ Calculate",
+          btnReset: "🔄 Reset",
+          btnShare: "📎 Copy Summary",
+          btnOtherService: "➡️ View More Services",
+          toastCopy: "Copied",
+          toastReset: "Reset",
+          toastCopySummary: "Summary copied",
+          inputTitle: "Input",
+          inputUnit: "Unit: 10,000 KRW or KRW (flexible)",
+          assetCash: "💰 Cash/Deposits",
+          assetGold: "🪙 Gold (Physical)",
+          assetRealestate: "🏠 Real Estate",
+          assetStocks: "📈 Stocks",
+          assetCrypto: "🚀 Crypto",
+          assetBonds: "🛡️ Bonds/Safe Assets (Optional)",
+          assetOther: "🧩 Other (Optional)",
+          optReAsRisk: "Include real estate in risk assets",
+          optReAsRiskTitle:
+            "Include investment real estate in risk asset calculation",
+          optShareUrl: "Generate URL sharing parameters",
+          optShareUrlTitle:
+            "Share results with input values via URL (don't use if sensitive)",
+          inputNote:
+            "※ This result is for asset structure checking, not investment advice. You can use it like a 'scenario simulation' by changing input values.",
+          resultTotalAssets: "Total Assets",
+          resultBeforeCalc: "Not calculated yet",
+          resultBeforeCalcHint: "Enter values and click Calculate",
+          resultNoInput: "No input",
+          resultNoInputHint: "Enter amounts and calculate",
+          resultMiniBarChart: "Mini Bar Chart",
+          resultMiniBarChartNote:
+            "Sorted by largest allocation first to show 'structure' before numbers.",
+          resultAssetCards: "Asset Allocation Cards",
+          resultDiagnosis: "Core Diagnosis (3 items)",
+          diagRiskTitle: "⚠️ Risk Asset Ratio",
+          diagRiskDesc:
+            "Checks volatility potential based on stocks and crypto (optionally including real estate) ratio.",
+          diagLiquidityTitle: "💧 Cash Reserves",
+          diagLiquidityDesc:
+            "Checks responsiveness to urgent situations or opportunities based on cash/deposits ratio.",
+          diagConcentrationTitle: "🎯 Asset Concentration",
+          diagConcentrationDesc:
+            "If one asset grows too large, advantages grow but unexpected situations can cause discomfort.",
+          resultOneLinerTitle: "Today's One-Liner",
+          resultActionTitle: "👉 What about this option?",
+          resultFooter:
+            "* This diagnosis is not a 'trait assessment' but a result based only on the currently entered asset allocation.",
+          copySummaryTitle: "Asset Allocation Check Result",
+          copySummaryTotal: "Total Assets",
+          copySummaryType: "Type",
+          copySummaryRisk: "Risk Asset Ratio",
+          copySummaryLiquidity: "Cash Reserves",
+          copySummaryConcentration: "Concentration",
+          copySummaryOneLiner: "One-Liner",
+          copySummaryOtherServices: "Other Services",
+          placeholderExample: "e.g. 10000000",
+          resultBarListEmpty: "Allocations will be shown after calculation.",
+          resultBarListNoItems: "No items to display.",
+          currencySymbol: "$ ",
+          riskDescPrefix: "Current risk asset ratio is {pct}%. {msg}",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+        const ogDescMeta = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        if (ogDescMeta)
+          ogDescMeta.setAttribute("content", t("metaDescription"));
+        document.querySelectorAll("[data-i18n-content]").forEach((el) => {
+          el.setAttribute("content", t(el.dataset.i18nContent));
+        });
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+          if (el.tagName === "TITLE") {
+            el.textContent = t(el.dataset.i18nTitle);
+          } else {
+            el.setAttribute("title", t(el.dataset.i18nTitle));
+          }
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.forceUpdate && typeof window.render === "function") {
+          window.render();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true, forceUpdate: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false, forceUpdate: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      // =========================
+      // ---------- Helpers ----------
+      const fmt = (n) => {
+        if (!isFinite(n)) return "—";
+        // KRW 스타일로 보기 좋게
+        return new Intl.NumberFormat("ko-KR").format(Math.round(n));
+      };
+      const pct = (x) => (isFinite(x) ? (x * 100).toFixed(1) + "%" : "—");
+      const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+      const toast = (msg) => {
+        const el = document.getElementById("toast");
+        const t = window.t || ((key, vars = {}) => key);
+        el.textContent =
+          typeof msg === "string" && msg.startsWith("toast") ? t(msg) : msg;
+        el.classList.add("show");
+        setTimeout(() => el.classList.remove("show"), 1200);
+      };
+
+      const getNum = (id) => {
+        const v = Number(document.getElementById(id).value || 0);
+        return isFinite(v) && v > 0 ? v : 0;
+      };
+
+      function getAssets() {
+        const tFunc = window.t || ((key) => key);
+        return [
+          {
+            key: "cash",
+            label: tFunc("assetCash").replace("💰 ", ""),
+            icon: "💰",
+          },
+          {
+            key: "gold",
+            label: tFunc("assetGold").replace("🪙 ", ""),
+            icon: "🪙",
+          },
+          {
+            key: "realestate",
+            label: tFunc("assetRealestate").replace("🏠 ", ""),
+            icon: "🏠",
+          },
+          {
+            key: "stocks",
+            label: tFunc("assetStocks").replace("📈 ", ""),
+            icon: "📈",
+          },
+          {
+            key: "crypto",
+            label: tFunc("assetCrypto").replace("🚀 ", ""),
+            icon: "🚀",
+          },
+          {
+            key: "bonds",
+            label: tFunc("assetBonds").replace("🛡️ ", ""),
+            icon: "🛡️",
+          },
+          {
+            key: "other",
+            label: tFunc("assetOther").replace("🧩 ", ""),
+            icon: "🧩",
+          },
+        ];
+      }
+
+      // ---------- Core diagnosis rules ----------
+      function portfolioType(riskRatio) {
+        const tFunc = window.t || ((key) => key);
+        const isKo = currentLang === "ko";
+        // riskRatio: 0~1
+        if (riskRatio < 0.25)
+          return {
+            icon: "🛡️",
+            name: isKo ? "안정형" : "Conservative",
+            hint: isKo
+              ? "변동성보다 안정이 우선인 구조"
+              : "Structure prioritizing stability over volatility",
+          };
+        if (riskRatio < 0.6)
+          return {
+            icon: "⚖️",
+            name: isKo ? "균형형" : "Balanced",
+            hint: isKo
+              ? "성장과 안정이 섞인 구조"
+              : "Structure mixing growth and stability",
+          };
+        if (riskRatio < 0.85)
+          return {
+            icon: "🚀",
+            name: isKo ? "공격형" : "Aggressive",
+            hint: isKo
+              ? "성장을 우선하는 구조"
+              : "Structure prioritizing growth",
+          };
+        return {
+          icon: "🌪️",
+          name: isKo ? "고변동 집중형" : "High Volatility",
+          hint: isKo
+            ? "수익과 변동성이 함께 큰 구조"
+            : "Structure with high returns and volatility",
+        };
+      }
+
+      function liquidityStatus(cashRatio) {
+        const isKo = currentLang === "ko";
+        // cashRatio: 0~1
+        if (cashRatio < 0.05)
+          return {
+            big: isKo ? "낮은 편" : "Low",
+            desc: isKo
+              ? "현금이 적은 편이에요. 갑작스러운 상황이나 기회 대응이 불편할 수 있어요."
+              : "Cash is relatively low. May be inconvenient for sudden situations or opportunity responses.",
+          };
+        if (cashRatio < 0.2)
+          return {
+            big: isKo ? "보통 수준" : "Moderate",
+            desc: isKo
+              ? "일상과 투자 모두 무난한 수준이에요. 필요하면 조금씩 조정해도 좋아요."
+              : "Comfortable level for daily life and investment. Can adjust slightly if needed.",
+          };
+        if (cashRatio < 0.5)
+          return {
+            big: isKo ? "여유 있는 편" : "Comfortable",
+            desc: isKo
+              ? "안정감이 좋아요. 다만 너무 과하면 성장 속도는 느려질 수 있어요."
+              : "Good stability. However, too much may slow growth rate.",
+          };
+        return {
+          big: isKo ? "매우 높은 편" : "Very High",
+          desc: isKo
+            ? "안정감은 크지만, 자산이 일하지 않는 구간이 길어질 수 있어요."
+            : "High stability, but assets may sit idle for longer periods.",
+        };
+      }
+
+      function concentration(top) {
+        const isKo = currentLang === "ko";
+        // top: {label, ratio}
+        if (!top) return { big: "—", desc: "—" };
+        const r = top.ratio;
+        if (r >= 0.5)
+          return {
+            big: isKo
+              ? `${top.label} 비중이 가장 큽니다 (${(r * 100).toFixed(1)}%)`
+              : `${top.label} is largest (${(r * 100).toFixed(1)}%)`,
+            desc: isKo
+              ? "한 자산에 비중이 큰 구조예요. 장점도 크지만, 예상 밖 상황에선 불편함이 생길 수 있어요."
+              : "Structure with large allocation to one asset. Advantages are big, but unexpected situations can cause discomfort.",
+          };
+        if (r >= 0.35)
+          return {
+            big: isKo
+              ? `${top.label} 비중이 가장 큽니다 (${(r * 100).toFixed(1)}%)`
+              : `${top.label} is largest (${(r * 100).toFixed(1)}%)`,
+            desc: isKo
+              ? "특정 자산에 힘이 실린 편이에요. 유지해도 좋고, 부담되면 분산을 고려해볼 만해요."
+              : "Relatively concentrated on a specific asset. Can maintain, or consider diversification if concerned.",
+          };
+        return {
+          big: isKo
+            ? `${top.label} 비중이 가장 큽니다 (${(r * 100).toFixed(1)}%)`
+            : `${top.label} is largest (${(r * 100).toFixed(1)}%)`,
+          desc: isKo
+            ? "자산이 비교적 고르게 분산되어 있어요. 큰 쏠림은 적은 편입니다."
+            : "Assets are relatively evenly distributed. Large concentration is minimal.",
+        };
+      }
+
+      function oneLinerBy(typeName, cashRatio, top) {
+        const isKo = currentLang === "ko";
+        const topLabel = top?.label || (isKo ? "특정 자산" : "specific asset");
+        const conservative = isKo ? "안정형" : "Conservative";
+        const balanced = isKo ? "균형형" : "Balanced";
+        const aggressive = isKo ? "공격형" : "Aggressive";
+
+        if (typeName === conservative || typeName === "Conservative") {
+          if (cashRatio < 0.1)
+            return isKo
+              ? "전체적으로 안정 중심이에요. 다만 현금 여유가 얇으면 마음이 흔들릴 수 있어요."
+              : "Overall conservative focus. However, thin cash reserves may cause emotional volatility.";
+          return isKo
+            ? "안정감이 강한 구조예요. 큰 실수 가능성은 낮은 편입니다."
+            : "Strong stable structure. Low probability of major mistakes.";
+        }
+        if (typeName === balanced || typeName === "Balanced") {
+          if (cashRatio < 0.05)
+            return isKo
+              ? "균형은 좋은데 포션(현금)이 부족해 보여요. 작은 보강만 해도 편해질 수 있어요."
+              : "Balance is good but cash reserves seem low. A small boost can help.";
+          if (top && top.ratio >= 0.5)
+            return isKo
+              ? `균형 속에서도 ${topLabel} 쏠림이 커요. 장점은 크고, 단점도 분명해요.`
+              : `Even within balance, ${topLabel} concentration is high. Advantages are big, disadvantages are clear.`;
+          return isKo
+            ? "성장과 안정이 적절히 섞인 구조예요. 유지하면서 미세 조정하기 좋은 상태입니다."
+            : "Well-mixed structure of growth and stability. Good state for maintaining and fine-tuning.";
+        }
+        if (typeName === aggressive || typeName === "Aggressive") {
+          if (cashRatio < 0.05)
+            return isKo
+              ? "성장 중심이에요. 수익 기회는 크지만, 현금이 얇으면 체감 변동성이 커질 수 있어요."
+              : "Growth-focused. Profit opportunities are big, but thin cash may increase perceived volatility.";
+          return isKo
+            ? "성장 속도가 빠를 수 있는 구조예요. 흔들릴 때를 대비한 규칙이 있으면 더 좋아요."
+            : "Structure that can grow quickly. Having rules for volatility helps.";
+        }
+        // High volatility
+        if (cashRatio < 0.08)
+          return isKo
+            ? "변동성이 크게 체감될 수 있어요. 현금 버퍼와 원칙이 포트폴리오의 안전벨트가 됩니다."
+            : "Volatility can be felt strongly. Cash buffer and principles are the portfolio's safety belt.";
+        return isKo
+          ? "수익도 변동성도 큰 조합이에요. '기준'을 세워두면 멘탈 소모가 줄어들 수 있어요."
+          : "Combination with high returns and volatility. Setting 'benchmarks' can reduce mental drain.";
+      }
+
+      function oneAction(typeName, cashRatio, riskRatio, top) {
+        const isKo = currentLang === "ko";
+        const conservative = isKo ? "안정형" : "Conservative";
+
+        // 추천 행동은 "딱 1개"
+        if (cashRatio < 0.05)
+          return isKo
+            ? "현금 비중을 5%p만 올려도 '급할 때'와 '기회가 올 때' 대응이 훨씬 쉬워질 수 있어요."
+            : "Just raising cash ratio by 5%p can make it much easier to respond to urgent situations and opportunities.";
+        if (top && top.ratio >= 0.5)
+          return isKo
+            ? "한 자산 비중이 큰 편이라, 목표 비중(예: 50% → 45%)처럼 '상한선' 한 줄만 정해두면 편해요."
+            : "Since one asset has a large ratio, setting a 'ceiling' target ratio (e.g., 50% → 45%) can help.";
+        if (riskRatio >= 0.85)
+          return isKo
+            ? "리밸런싱 기준을 하나만 정해보세요. 예: 위험자산 비중이 목표에서 ±5% 벗어나면 조정."
+            : "Set one rebalancing rule. For example: adjust when risk asset ratio deviates ±5% from target.";
+        if (typeName === conservative || typeName === "Conservative")
+          return isKo
+            ? "성장 속도가 아쉽다면 '아주 작은 성장 비중'(예: 주식 5%p 추가)처럼 부담 낮은 실험부터 해보는 것도 방법이에요."
+            : "If growth feels slow, starting with low-burden experiments like 'very small growth allocation' (e.g., add 5%p stocks) can help.";
+        return isKo
+          ? "지금 구조는 무난해요. 다음 단계는 '내가 버틸 수 있는 낙폭'을 문장으로 적어두는 것만으로도 도움이 됩니다."
+          : "Current structure is fine. Next step: just writing down 'the drop I can handle' in words helps.";
+      }
+
+      // ---------- UI rendering ----------
+      function render() {
+        const tFunc = window.t || ((key, vars = {}) => key);
+        const ASSETS = getAssets();
+        const values = {};
+        ASSETS.forEach((a) => (values[a.key] = getNum(a.key)));
+
+        const total = Object.values(values).reduce((s, v) => s + v, 0);
+
+        // Guard
+        if (total <= 0) {
+          document.getElementById("totalText").textContent = "—";
+          document.getElementById("typeIcon").textContent = "🧾";
+          document.getElementById("typeName").textContent =
+            tFunc("resultNoInput");
+          document.getElementById("typeHint").textContent =
+            tFunc("resultNoInputHint");
+          document.getElementById("assetCards").innerHTML = "";
+          const isKo = currentLang === "ko";
+          document.getElementById(
+            "barList"
+          ).innerHTML = `<div style="color:var(--muted);font-size:12px;">${tFunc(
+            "resultBarListEmpty"
+          )}</div>`;
+          document.getElementById("riskPctText").textContent = "—";
+          document.getElementById("liqText").textContent = "—";
+          document.getElementById("concText").textContent = "—";
+          document.getElementById("oneLiner").textContent = "—";
+          document.getElementById("oneAction").textContent = "—";
+          return;
+        }
+
+        const ratios = {};
+        ASSETS.forEach((a) => (ratios[a.key] = values[a.key] / total));
+
+        // Risk assets: stocks + crypto (+ realestate option)
+        const includeReAsRisk = document.getElementById("optReAsRisk").checked;
+        const riskValue =
+          values.stocks +
+          values.crypto +
+          (includeReAsRisk ? values.realestate : 0);
+        const riskRatio = riskValue / total;
+
+        // Liquidity: cash only for simple rule
+        const cashRatio = ratios.cash;
+
+        // Concentration: top asset (ignore zero)
+        const nonZero = ASSETS.map((a) => ({
+          ...a,
+          value: values[a.key],
+          ratio: ratios[a.key],
+        }))
+          .filter((x) => x.value > 0)
+          .sort((a, b) => b.ratio - a.ratio);
+        const top = nonZero[0]
+          ? { label: nonZero[0].label, ratio: nonZero[0].ratio }
+          : null;
+
+        // Type
+        const typeInfo = portfolioType(riskRatio);
+
+        // Update KPI
+        const currency = tFunc("currencySymbol");
+        document.getElementById("totalText").textContent =
+          currency + fmt(total);
+        document.getElementById("typeIcon").textContent = typeInfo.icon;
+        document.getElementById("typeName").textContent = typeInfo.name;
+        document.getElementById("typeHint").textContent = typeInfo.hint;
+
+        // Asset cards (sort by ratio desc, show only >0)
+        const assetCards = nonZero
+          .map((a) => {
+            return `
+          <div class="asset">
+            <div class="t">
+              <div class="name">${a.icon} ${a.label}</div>
+              <div class="pct">${(a.ratio * 100).toFixed(1)}%</div>
+            </div>
+            <div class="amt">${currency}${fmt(a.value)}</div>
+          </div>
+        `;
+          })
+          .join("");
+        document.getElementById("assetCards").innerHTML = assetCards;
+
+        // Bar list
+        const bars = nonZero
+          .slice(0, 6)
+          .map((a) => {
+            const w = clamp(a.ratio * 100, 0, 100);
+            return `
+        <div class="bar">
+          <div>${a.icon} ${a.label}</div>
+          <div class="track"><div class="fill" data-w="${w}"></div></div>
+          <div style="text-align:right">${w.toFixed(1)}%</div>
+        </div>
+      `;
+          })
+          .join("");
+        document.getElementById("barList").innerHTML =
+          bars ||
+          `<div style="color:var(--muted);font-size:12px;">${tFunc(
+            "resultBarListNoItems"
+          )}</div>`;
+        // animate fills
+        requestAnimationFrame(() => {
+          document
+            .querySelectorAll(".fill")
+            .forEach((el) => (el.style.width = el.dataset.w + "%"));
+        });
+
+        // Diagnostics
+        const isKo = currentLang === "ko";
+        document.getElementById("riskPctText").textContent =
+          (riskRatio * 100).toFixed(1) + "%";
+        const riskMsg = isKo
+          ? riskRatio < 0.25
+            ? "변동성보다 안정이 우선인 구간이에요."
+            : riskRatio < 0.6
+            ? "성장과 안정이 함께 섞인 구간이에요."
+            : riskRatio < 0.85
+            ? "성장에 무게가 실린 상태예요. 흔들림도 체감될 수 있어요."
+            : "고변동 구간이에요. 규칙(상한/하한)이 있으면 훨씬 편해질 수 있어요."
+          : riskRatio < 0.25
+          ? "Zone prioritizing stability over volatility."
+          : riskRatio < 0.6
+          ? "Zone mixing growth and stability."
+          : riskRatio < 0.85
+          ? "State with weight on growth. Volatility can be felt."
+          : "High volatility zone. Having rules (upper/lower limits) helps.";
+        const riskPct = (riskRatio * 100).toFixed(1);
+        document.getElementById("riskDesc").textContent = tFunc(
+          "riskDescPrefix",
+          { pct: riskPct, msg: riskMsg }
+        );
+
+        const liq = liquidityStatus(cashRatio);
+        document.getElementById("liqText").textContent =
+          liq.big + ` (${(cashRatio * 100).toFixed(1)}%)`;
+        document.getElementById("liqDesc").textContent = liq.desc;
+
+        const conc = concentration(top);
+        document.getElementById("concText").textContent = conc.big;
+        document.getElementById("concDesc").textContent = conc.desc;
+
+        // One-liner + One action
+        document.getElementById("oneLiner").textContent = oneLinerBy(
+          typeInfo.name,
+          cashRatio,
+          top
+        );
+        document.getElementById("oneAction").textContent = oneAction(
+          typeInfo.name,
+          cashRatio,
+          riskRatio,
+          top
+        );
+
+        // Optional: URL share params (be careful with sensitive data)
+        const shareUrl = document.getElementById("optShareUrl").checked;
+        if (shareUrl) {
+          const params = new URLSearchParams({
+            cash: String(values.cash),
+            gold: String(values.gold),
+            re: String(values.realestate),
+            st: String(values.stocks),
+            cr: String(values.crypto),
+            bd: String(values.bonds),
+            ot: String(values.other),
+            reRisk: includeReAsRisk ? "1" : "0",
+          });
+          history.replaceState(
+            null,
+            "",
+            `${location.pathname}?${params.toString()}`
+          );
+        } else {
+          history.replaceState(null, "", `${location.pathname}`);
+        }
+      }
+
+      // Expose render function globally for language switching
+      window.render = render;
+
+      function resetAll() {
+        [
+          "cash",
+          "gold",
+          "realestate",
+          "stocks",
+          "crypto",
+          "bonds",
+          "other",
+        ].forEach((id) => {
+          document.getElementById(id).value = "";
+        });
+        document.getElementById("optReAsRisk").checked = false;
+        document.getElementById("optShareUrl").checked = false;
+        history.replaceState(null, "", `${location.pathname}`);
+        render();
+        toast("toastReset");
+      }
+
+      async function copySummary() {
+        const tFunc = window.t || ((key) => key);
+        const totalText = document.getElementById("totalText").textContent;
+        const typeName = document.getElementById("typeName").textContent;
+        const riskPctText = document.getElementById("riskPctText").textContent;
+        const liqText = document.getElementById("liqText").textContent;
+        const concText = document.getElementById("concText").textContent;
+        const oneLiner = document.getElementById("oneLiner").textContent;
+
+        const lines = [
+          tFunc("copySummaryTitle"),
+          `${tFunc("copySummaryTotal")}: ${totalText}`,
+          `${tFunc("copySummaryType")}: ${typeName}`,
+          `${tFunc("copySummaryRisk")}: ${riskPctText}`,
+          `${tFunc("copySummaryLiquidity")}: ${liqText}`,
+          `${tFunc("copySummaryConcentration")}: ${concText}`,
+          `${tFunc("copySummaryOneLiner")}: ${oneLiner}`,
+          ``,
+          `${tFunc("copySummaryOtherServices")}: https://funnyfunny.cloud`,
+        ].join("\n");
+
+        try {
+          await navigator.clipboard.writeText(lines);
+          toast("toastCopySummary");
+        } catch (e) {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = lines;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+          toast("toastCopy");
+        }
+      }
+
+      // ---------- Wire up ----------
+      document.getElementById("btnCalc").addEventListener("click", render);
+      document.getElementById("btnReset").addEventListener("click", resetAll);
+      document
+        .getElementById("btnShare")
+        .addEventListener("click", copySummary);
+
+      // Auto-calc on Enter
+      document.querySelectorAll("input[type='number']").forEach((inp) => {
+        inp.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") render();
+        });
+      });
+
+      // Load from URL params if present (only when optShareUrl is used)
+      (function initFromUrl() {
+        const p = new URLSearchParams(location.search);
+        if ([...p.keys()].length === 0) {
+          render();
+          return;
+        }
+
+        const map = {
+          cash: "cash",
+          gold: "gold",
+          re: "realestate",
+          st: "stocks",
+          cr: "crypto",
+          bd: "bonds",
+          ot: "other",
+        };
+        let hasAny = false;
+        for (const [k, id] of Object.entries(map)) {
+          if (p.has(k)) {
+            document.getElementById(id).value = p.get(k) || "";
+            hasAny = true;
+          }
+        }
+        if (p.get("reRisk") === "1")
+          document.getElementById("optReAsRisk").checked = true;
+        if (hasAny) {
+          // 공유로 들어온 경우는 민감하니 사용자가 원할 때만 URL 유지하도록 opt는 꺼둔다
+          document.getElementById("optShareUrl").checked = false;
+        }
+        render();
+      })();
+    </script>
+  </body>
+</html>

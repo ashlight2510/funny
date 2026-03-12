@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>지금 이 시간에 어울리는 음악</title>
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&amp;text=Music"
+    />
+    <meta
+      name="favicon"
+      content="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%0A%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2724%27%20fill%3D%27%23f5b63a%27/%3E%0A%3Cpath%20d%3D%27M62%2022v38.5a13%2013%200%201%201-8-12V34l-18%204v24.5a13%2013%200%201%201-8-12V30l34-8z%27%20fill%3D%27%230f172a%27/%3E%0A%3C/svg%3E"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%0A%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2724%27%20fill%3D%27%23f5b63a%27/%3E%0A%3Cpath%20d%3D%27M62%2022v38.5a13%2013%200%201%201-8-12V34l-18%204v24.5a13%2013%200%201%201-8-12V30l34-8z%27%20fill%3D%27%230f172a%27/%3E%0A%3C/svg%3E"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Work+Sans:wght@400;600&display=swap");
+
+      :root {
+        --ink: #0f172a;
+        --mint: #4cc9a6;
+        --sun: #f5b63a;
+        --sand: #fff7e6;
+        --card: #fffdf6;
+        --accent: #2a5b9e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Work Sans", system-ui, sans-serif;
+        color: var(--ink);
+        background: radial-gradient(
+            1200px 600px at 20% -10%,
+            #fef0c7 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 90% 10%,
+            #d2f3ea 0%,
+            transparent 55%
+          ),
+          linear-gradient(180deg, #f9fafb 0%, #fff 100%);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 48px 20px 60px;
+      }
+
+      .card {
+        position: relative;
+        background: var(--card);
+        border-radius: 24px;
+        padding: 32px 28px 30px;
+        max-width: 520px;
+        width: min(92vw, 520px);
+        text-align: center;
+        border: 1px solid #f1e6c8;
+        box-shadow: 0 18px 40px rgba(30, 41, 59, 0.12);
+        overflow: hidden;
+        animation: float-in 700ms ease-out both;
+      }
+
+      .card::before,
+      .card::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        opacity: 0.25;
+        z-index: 0;
+        filter: blur(2px);
+      }
+
+      .card::before {
+        background: #f5b63a;
+        top: -80px;
+        left: -60px;
+      }
+
+      .card::after {
+        background: #4cc9a6;
+        bottom: -90px;
+        right: -60px;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+
+      h2 {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-size: clamp(24px, 4vw, 30px);
+        margin: 0 0 6px;
+        letter-spacing: -0.3px;
+      }
+
+      .subtitle {
+        margin: 0 0 18px;
+        color: #475569;
+        font-size: 14px;
+      }
+
+      #timeText {
+        margin: 0 0 18px;
+        padding: 10px 12px;
+        background: #fff2d5;
+        border-radius: 999px;
+        display: inline-block;
+        font-size: 13px;
+      }
+
+      button {
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 0;
+        background: var(--accent);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 10px 18px rgba(42, 91, 158, 0.2);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 24px rgba(42, 91, 158, 0.25);
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .secondary-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border-radius: 999px;
+        border: 1px solid #e5d6b2;
+        color: #8a5b1e;
+        background: #fff7e6;
+        font-size: 15px;
+        text-decoration: none;
+        transition: transform 180ms ease, background 180ms ease;
+      }
+
+      .secondary-link:hover {
+        transform: translateY(-1px);
+        background: #ffecc2;
+      }
+
+      .result {
+        margin-top: 20px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #1f2937;
+      }
+
+      .result a {
+        color: #1d4ed8;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .result a:hover {
+        text-decoration: underline;
+      }
+
+      @keyframes float-in {
+        0% {
+          transform: translateY(12px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 28px 22px;
+        }
+        .actions {
+          gap: 8px;
+        }
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(15, 23, 42, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/music/" />
+  </head>
+  <body>
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="card">
+      <div class="content">
+        <h2 data-i18n="heroTitle">🎵 지금 이 시간에 어울리는 음악</h2>
+        <p class="subtitle" data-i18n="heroSubtitle">하루의 리듬에 맞춰 오늘의 무드를 골라줘요.</p>
+        <p id="timeText"></p>
+        <div class="actions">
+          <button onclick="recommend()" data-i18n="recommendButton">추천받기</button>
+          <a
+            class="secondary-link"
+            href="https://funnyfunny.cloud/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="viewMore"
+            >다른 서비스 보기</a
+          >
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+    </div>
+
+    <script>
+      /* i18n */
+      const translations = {
+        ko: {
+          metaTitle: "지금 이 시간에 어울리는 음악",
+          metaDescription: "하루의 리듬에 맞춰 오늘의 무드를 골라주는 음악 추천 서비스.",
+          heroTitle: "🎵 지금 이 시간에 어울리는 음악",
+          heroSubtitle: "하루의 리듬에 맞춰 오늘의 무드를 골라줘요.",
+          recommendButton: "추천받기",
+          viewMore: "다른 서비스 보기",
+          currentTime: "현재 시각: ",
+          timeLabel: "지금은",
+          timeSuffix: "시간이에요",
+          recommendKeyword: "추천 키워드:",
+          listenOnYouTube: "👉 유튜브에서 듣기"
+        },
+        en: {
+          metaTitle: "Music for This Time",
+          metaDescription: "Get music recommendations that match today's mood based on the rhythm of the day.",
+          heroTitle: "🎵 Music for This Time",
+          heroSubtitle: "Choose today's mood based on the rhythm of the day.",
+          recommendButton: "Get Recommendation",
+          viewMore: "View other services",
+          currentTime: "Current time: ",
+          timeLabel: "It's",
+          timeSuffix: "time",
+          recommendKeyword: "Recommended keyword:",
+          listenOnYouTube: "👉 Listen on YouTube"
+        }
+      };
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+      }
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        updateTimeText();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (translations[paramLang]) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (translations[stored]) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+      setLang(detectLang(), { updateUrl: false });
+
+      function getTimeMood(hour) {
+        const moods = currentLang === "en" ? {
+          morning: { label: "morning", tags: ["acoustic", "indie pop", "morning jazz"] },
+          lunch: { label: "lunch", tags: ["city pop", "chill pop", "cafe music"] },
+          evening: { label: "evening", tags: ["r&b", "mellow pop", "sunset vibes"] },
+          night: { label: "night", tags: ["lofi", "ambient", "late night jazz"] }
+        } : {
+          morning: { label: "아침", tags: ["acoustic", "indie pop", "morning jazz"] },
+          lunch: { label: "점심", tags: ["city pop", "chill pop", "cafe music"] },
+          evening: { label: "저녁", tags: ["r&b", "mellow pop", "sunset vibes"] },
+          night: { label: "밤", tags: ["lofi", "ambient", "late night jazz"] }
+        };
+        if (hour >= 5 && hour <= 10) return moods.morning;
+        if (hour >= 11 && hour <= 14) return moods.lunch;
+        if (hour >= 17 && hour <= 20) return moods.evening;
+        return moods.night;
+      }
+
+      function weightedRandom(tags) {
+        const pool = [
+          ...tags,
+          ...tags,
+          ...tags,
+          "indie",
+          "playlist",
+          "new music",
+        ];
+        return pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function updateTimeText() {
+        const now = new Date();
+        const timeStr = currentLang === "en" 
+          ? now.toLocaleTimeString("en-US")
+          : now.toLocaleTimeString("ko-KR");
+        document.getElementById("timeText").innerText = t("currentTime") + timeStr;
+      }
+
+      function recommend() {
+        const now = new Date();
+        const hour = now.getHours();
+        const mood = getTimeMood(hour);
+        const keyword = weightedRandom(mood.tags);
+        const query = `${mood.label} ${keyword} music`;
+
+        document.getElementById("result").innerHTML = `
+    <p>🕒 ${t("timeLabel")} <b>${mood.label}</b> ${t("timeSuffix")}</p>
+    <p>🎧 ${t("recommendKeyword")} <b>${query}</b></p>
+    <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(
+      query
+    )}"
+       target="_blank">${t("listenOnYouTube")}</a>
+  `;
+      }
+
+      updateTimeText();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>핀볼 랜덤 뽑기</title>
+
+    <!-- OG -->
+    <meta property="og:title" content="핀볼 랜덤 뽑기" />
+    <meta
+      property="og:description"
+      content="핀볼 기계로 무작위 우승자를 뽑아보세요! 🎱"
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1e293b/ffffff&text=Random"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20x='50'%20y='72'%20text-anchor='middle'%20font-size='80'%3E%F0%9F%8E%B1%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(34, 211, 238, 0.5);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(34, 211, 238, 0.2);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/random/" />
+  </head>
+
+  <body
+    class="bg-black text-white min-h-screen flex flex-col items-center py-6 overflow-y-auto"
+    style="
+      background: linear-gradient(
+        180deg,
+        #0a0a0f 0%,
+        #1a0a2e 50%,
+        #0a0a0f 100%
+      );
+    "
+  >
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <div class="w-full max-w-4xl flex flex-col items-center gap-5">
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3"
+      >
+        <div>
+          <h1
+            class="text-4xl font-extrabold mb-8 bg-gradient-to-r from-pink-500 via-cyan-500 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+            data-i18n="title"
+          >
+            🎱 네온 핀볼 랜덤 뽑기
+          </h1>
+        </div>
+        <a
+          href="https://funnyfunny.cloud/"
+          target="_blank"
+          rel="noreferrer"
+          class="self-start md:self-center inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border border-cyan-400/60 bg-white/5 hover:bg-white/10 transition shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+        >
+          <span data-i18n="moreServices">✨ 다른 서비스 보기</span>
+        </a>
+      </div>
+
+      <!-- 입력 영역 -->
+      <div
+        class="w-full max-w-md p-5 rounded-xl mb-4 border-2 border-cyan-500/30 shadow-[0_0_30px_rgba(34,211,238,0.3)]"
+        style="
+          background: linear-gradient(
+            135deg,
+            rgba(6, 182, 212, 0.1) 0%,
+            rgba(168, 85, 247, 0.1) 100%
+          );
+        "
+      >
+        <label class="block mb-2 text-sm text-cyan-300 font-bold" data-i18n="labelParticipants">
+          참가자 이름 입력 (공백으로 구분)
+        </label>
+        <textarea
+          id="participantsInput"
+          data-i18n-placeholder="placeholderParticipants"
+          placeholder="예: 철수 영희 민수&#10;또는 개수 지정: 철수2 영희*3 민수/5"
+          class="w-full h-24 p-3 rounded text-sm mb-3 resize-none bg-black/50 border border-cyan-500/50 text-cyan-100 placeholder-cyan-500/50 focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(34,211,238,0.5)] focus:outline-none"
+        ></textarea>
+        <p class="text-xs text-pink-300 mb-4" data-i18n="hintCount">
+          💡 이름 뒤에 숫자(철수2) 또는 별표(영희*3)로 공 개수 지정 가능
+        </p>
+        <button
+          id="startBtn"
+          class="w-full py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
+          style="background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)"
+          data-i18n="startBtn"
+        >
+          게임 시작 🚀
+        </button>
+      </div>
+    </div>
+
+    <!-- Canvas Container -->
+    <div
+      id="canvasContainer"
+      class="hidden relative w-full max-w-lg overflow-hidden rounded-xl border-2 border-cyan-500/50 shadow-[0_0_50px_rgba(34,211,238,0.4)]"
+      style="height: 80vh"
+    >
+      <canvas
+        id="pinballCanvas"
+        width="500"
+        height="2000"
+        class="block"
+        style="
+          background: linear-gradient(
+            180deg,
+            #0a0a0f 0%,
+            #1a0a2e 30%,
+            #0a0a0f 60%,
+            #1a0a2e 100%
+          );
+        "
+      ></canvas>
+    </div>
+
+    <!-- 결과 -->
+    <div
+      id="result"
+      class="hidden mt-6 bg-slate-800 p-5 rounded-xl w-full max-w-md max-h-[80vh] overflow-y-auto"
+    ></div>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "핀볼 랜덤 뽑기",
+          metaDescription: "핀볼 기계로 무작위 우승자를 뽑아보세요! 🎱",
+          title: "🎱 네온 핀볼 랜덤 뽑기",
+          moreServices: "✨ 다른 서비스 보기",
+          labelParticipants: "참가자 이름 입력 (공백으로 구분)",
+          placeholderParticipants: "예: 철수 영희 민수\n또는 개수 지정: 철수2 영희*3 민수/5",
+          hintCount: "💡 이름 뒤에 숫자(철수2) 또는 별표(영희*3)로 공 개수 지정 가능",
+          startBtn: "게임 시작 🚀",
+          alertNoInput: "참가자 이름을 입력해주세요!",
+          alertNoParticipants: "참가자를 입력해주세요!",
+          resultTitle: "🏁 완주 순위",
+          resultFinishOrder: "번째로 완주",
+          resultRank: "위",
+          retryBtn: "다시 하기 🔄",
+        },
+        en: {
+          metaTitle: "Pinball Random Draw",
+          metaDescription: "Draw a random winner with a pinball machine! 🎱",
+          title: "🎱 Neon Pinball Random Draw",
+          moreServices: "✨ View More Services",
+          labelParticipants: "Enter participant names (separated by spaces)",
+          placeholderParticipants: "Ex: Alice Bob Charlie\nOr specify count: Alice2 Bob*3 Charlie/5",
+          hintCount: "💡 You can specify ball count with numbers (Alice2) or asterisks (Bob*3)",
+          startBtn: "Start Game 🚀",
+          alertNoInput: "Please enter participant names!",
+          alertNoParticipants: "Please enter participants!",
+          resultTitle: "🏁 Finish Ranking",
+          resultFinishOrder: "th to finish",
+          resultRank: "",
+          retryBtn: "Try Again 🔄",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const descMeta = document.querySelector('meta[property="og:description"]');
+        if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+        const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+        if (ogTitleMeta) ogTitleMeta.setAttribute("content", t("metaTitle"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      /* ---------------- 오디오 컨텍스트 ---------------- */
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      /* ---------------- 효과음 함수 ---------------- */
+      function playSound(type = "bounce") {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === "bounce") {
+          osc.frequency.value = 400;
+          osc.type = "square";
+          gain.gain.value = 0.05;
+          osc.start();
+          osc.frequency.exponentialRampToValueAtTime(
+            200,
+            audioCtx.currentTime + 0.1
+          );
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioCtx.currentTime + 0.1
+          );
+          osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        if (type === "finish") {
+          osc.frequency.value = 300;
+          osc.type = "sawtooth";
+          gain.gain.value = 0.12;
+          osc.start();
+          osc.frequency.exponentialRampToValueAtTime(
+            80,
+            audioCtx.currentTime + 0.4
+          );
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioCtx.currentTime + 0.4
+          );
+          osc.stop(audioCtx.currentTime + 0.4);
+        }
+      }
+
+      /* ---------------- 진동 함수 ---------------- */
+      function vibrate(ms = 20) {
+        if (navigator.vibrate) {
+          navigator.vibrate(ms);
+        }
+      }
+
+      /* ---------------- 상태 ---------------- */
+      let balls = [];
+      let pins = [];
+      let finishedBalls = [];
+      let animationId;
+      let participants = [];
+      let bird = null; // 엑스트라 새
+      let cameraY = 0;
+      let targetCameraY = 0;
+      let gameStartTime = 0;
+      const MAX_GAME_TIME = 60000; // 최대 60초
+      const MIN_BALL_SPEED = 0.5; // 공의 최소 속도
+      const canvasContainer = document.getElementById("canvasContainer");
+
+      /* ---------------- DOM ---------------- */
+      const canvas = document.getElementById("pinballCanvas");
+      const ctx = canvas.getContext("2d");
+      const resultEl = document.getElementById("result");
+      const participantsInput = document.getElementById("participantsInput");
+
+      /* ---------------- 랜덤 이름 생성 ---------------- */
+      function generateRandomNames(count = 3) {
+        const lang = window.currentLang || "ko";
+        const funnyNames = lang === "en" ? [
+          "Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry",
+          "Ivy", "Jack", "Kate", "Leo", "Mia", "Noah", "Olivia", "Paul",
+          "Quinn", "Ruby", "Sam", "Tina", "Uma", "Victor", "Wendy", "Xander",
+          "Yuki", "Zoe", "Alex", "Ben", "Chris", "Diana", "Ethan", "Fiona",
+          "George", "Hannah", "Ian", "Julia", "Kevin", "Luna", "Max", "Nina",
+          "Oscar", "Penny", "Quinn", "Rose", "Steve", "Tara", "Ursula", "Vince",
+          "Will", "Xara", "Yara", "Zack", "Amy", "Blake", "Cara", "Drew",
+          "Eve", "Finn", "Gina", "Hugo", "Iris", "Jake", "Kara", "Luke",
+          "Maya", "Nate", "Owen", "Pam", "Quin", "Rex", "Sue", "Tom",
+          "Uma", "Vera", "Wade", "Xena", "Yuki", "Zane"
+        ] : [
+          "똑똑",
+          "멍멍",
+          "야옹",
+          "꼬꼬",
+          "짹짹",
+          "폭풍",
+          "번개",
+          "불꽃",
+          "구름",
+          "별빛",
+          "달님",
+          "태양",
+          "바람",
+          "우주",
+          "로봇",
+          "토르",
+          "헐크",
+          "블랙",
+          "레드",
+          "블루",
+          "그린",
+          "핑크",
+          "골드",
+          "실버",
+          "다이아",
+          "라면",
+          "김치",
+          "치킨",
+          "피자",
+          "콜라",
+          "커피",
+          "주스",
+          "우유",
+          "포도",
+          "사과",
+          "딸기",
+          "수박",
+          "멜론",
+          "복숭",
+          "체리",
+          "호랑",
+          "사자",
+          "곰돌",
+          "펭귄",
+          "다람",
+          "고양",
+          "강아",
+          "햄스",
+          "토끼",
+          "돌고래",
+          "상어",
+          "문어",
+          "불가",
+          "오리",
+          "거북",
+          "나비",
+          "벌",
+          "잠자",
+          "개구",
+          "도마",
+          "뱀",
+          "도마",
+          "치타",
+          "기린",
+          "코끼",
+          "쥐",
+          "돼지",
+          "소",
+          "양",
+          "말",
+          "닭",
+          "개",
+          "고양",
+          "원숭",
+          "팬더",
+        ];
+
+        const shuffled = [...funnyNames].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, count).join(" ");
+      }
+
+      /* ---------------- 참가자 파싱 ---------------- */
+      function parseParticipants(text) {
+        const lines = text
+          .split(/[\s\n]+/)
+          .map((s) => s.trim())
+          .filter((s) => s);
+        const result = [];
+
+        lines.forEach((line) => {
+          let name = line;
+          let count = 1;
+
+          // 숫자로 개수 지정 (철수2)
+          const numMatch = line.match(/^(.+?)(\d+)$/);
+          if (numMatch) {
+            name = numMatch[1];
+            count = parseInt(numMatch[2]);
+          } else {
+            // 별표로 개수 지정 (영희*3)
+            const starMatch = line.match(/^(.+?)\*(\d+)$/);
+            if (starMatch) {
+              name = starMatch[1];
+              count = parseInt(starMatch[2]);
+            }
+          }
+
+          for (let i = 0; i < count; i++) {
+            result.push(name);
+          }
+        });
+
+        return result;
+      }
+
+      /* ---------------- 핀 초기화 ---------------- */
+      function initPins() {
+        pins = [];
+        const pinCount = 50; // 원형 핀
+        const barCount = 25; // 막대기 장애물
+
+        const neonColors = [
+          "#ff00ff", // 핑크
+          "#00ffff", // 시안
+          "#ff00ff", // 마젠타
+          "#00ff00", // 라임
+          "#ffff00", // 옐로우
+          "#ff0080", // 핑크
+          "#0080ff", // 블루
+        ];
+
+        // 장애물 간 최소 거리 (공이 갇히지 않도록)
+        const minDistance = 60;
+        const placedPins = [];
+
+        // 원형 핀 배치 (경로를 막지 않도록 개선)
+        for (let i = 0; i < pinCount; i++) {
+          let attempts = 0;
+          let valid = false;
+          let x, y;
+
+          while (!valid && attempts < 50) {
+            x = Math.random() * (canvas.width - 40) + 20;
+            y = 150 + Math.random() * (canvas.height - 400);
+
+            // 다른 핀과 충분한 거리 유지
+            valid = placedPins.every((pin) => {
+              const dx = x - pin.x;
+              const dy = y - pin.y;
+              return Math.sqrt(dx * dx + dy * dy) > minDistance;
+            });
+
+            // 좌우 경계에서 너무 가까이 있으면 피하기 (경로 확보)
+            if (valid && (x < 50 || x > canvas.width - 50)) {
+              valid = Math.random() > 0.3; // 경계 근처는 30% 확률로만 배치
+            }
+
+            attempts++;
+          }
+
+          if (valid) {
+            pins.push({
+              type: "circle",
+              x: x,
+              y: y,
+              r: 8 + Math.random() * 4,
+              color: neonColors[Math.floor(Math.random() * neonColors.length)],
+              glow: Math.random() * 0.5 + 0.5,
+            });
+            placedPins.push({ x, y });
+          }
+        }
+
+        // 기울어진 막대기 장애물 (아래로 가는 경로 확보)
+        for (let i = 0; i < barCount; i++) {
+          let attempts = 0;
+          let valid = false;
+          let x, y, angle;
+
+          while (!valid && attempts < 50) {
+            x = Math.random() * (canvas.width - 60) + 30;
+            y = 150 + Math.random() * (canvas.height - 400);
+
+            // 대부분 아래쪽으로 기울어지도록 (30도 ~ 60도 또는 120도 ~ 150도)
+            // 이렇게 하면 공이 아래로 떨어지는 경로가 확보됨
+            const angleType = Math.random();
+            if (angleType < 0.5) {
+              angle = Math.PI / 6 + Math.random() * (Math.PI / 6); // 30~60도
+            } else {
+              angle = (2 * Math.PI) / 3 + Math.random() * (Math.PI / 6); // 120~150도
+            }
+
+            // 다른 핀과 충분한 거리 유지
+            valid = placedPins.every((pin) => {
+              const dx = x - pin.x;
+              const dy = y - pin.y;
+              return Math.sqrt(dx * dx + dy * dy) > minDistance;
+            });
+
+            attempts++;
+          }
+
+          if (valid) {
+            const length = 30 + Math.random() * 40; // 길이 줄임
+            pins.push({
+              type: "bar",
+              x: x,
+              y: y,
+              length: length,
+              width: 8,
+              angle: angle,
+              color: neonColors[Math.floor(Math.random() * neonColors.length)],
+            });
+            placedPins.push({ x, y });
+          }
+        }
+
+        // 결승선 근처 회전 풍차 장애물 추가 (스펙타클한 효과)
+        const finishLineY = canvas.height - 50;
+        const windmillRadius = 70; // 큰 풍차
+        const centerGap = canvas.width * 0.25; // 중앙 공간 확보
+
+        // 좌측 풍차
+        pins.push({
+          type: "windmill",
+          x: canvas.width * 0.25 - centerGap / 2,
+          y: finishLineY - 120,
+          radius: windmillRadius,
+          angle: Math.random() * Math.PI * 2,
+          rotationSpeed: 0.08 + Math.random() * 0.04, // 빠른 회전
+          color: "#00ffff", // 시안
+          pullRadius: 100, // 끌어당기는 범위
+          catchBall: null, // 잡은 공
+          catchAngle: 0, // 공을 잡은 각도
+          particleEffect: 0, // 파티클 효과
+        });
+
+        // 우측 풍차
+        pins.push({
+          type: "windmill",
+          x: canvas.width * 0.75 + centerGap / 2,
+          y: finishLineY - 120,
+          radius: windmillRadius,
+          angle: Math.random() * Math.PI * 2,
+          rotationSpeed: -(0.08 + Math.random() * 0.04), // 반대 방향 회전
+          color: "#ff00ff", // 핑크
+          pullRadius: 100, // 끌어당기는 범위
+          catchBall: null, // 잡은 공
+          catchAngle: 0, // 공을 잡은 각도
+          particleEffect: 0, // 파티클 효과
+        });
+
+        // 중앙 작은 풍차
+        pins.push({
+          type: "windmill",
+          x: canvas.width / 2, // 정중앙
+          y: finishLineY - 100, // 좌우보다 조금 위
+          radius: 40, // 작은 크기
+          angle: Math.random() * Math.PI * 2,
+          rotationSpeed: 0.12 + Math.random() * 0.06, // 빠른 회전
+          color: "#ffff00", // 노란색
+          pullRadius: 60, // 작은 끌어당기는 범위
+          catchBall: null, // 잡은 공
+          catchAngle: 0, // 공을 잡은 각도
+          particleEffect: 0, // 파티클 효과
+        });
+
+        // 엑스트라 새 초기화 (랜덤 1마리)
+        if (Math.random() < 1.0) {
+          // 항상 1마리 (100% 확률)
+          bird = {
+            x: Math.random() * (canvas.width - 100) + 50,
+            y: 200 + Math.random() * (canvas.height - 600), // 중간 구간에 배치
+            vx: (Math.random() - 0.5) * 1.5, // 좌우 이동 속도
+            vy: Math.sin(Math.random() * Math.PI * 2) * 0.3, // 상하 살짝 움직임
+            size: 25 + Math.random() * 15, // 새 크기
+            wingFlap: 0, // 날개 펄럭임 애니메이션
+            color: neonColors[Math.floor(Math.random() * neonColors.length)],
+            direction: Math.random() > 0.5 ? 1 : -1, // 좌우 방향
+          };
+        }
+      }
+
+      /* ---------------- 공 초기화 ---------------- */
+      function initBalls() {
+        balls = [];
+        const shuffled = [...participants].sort(() => Math.random() - 0.5);
+
+        const neonColors = [
+          "#ff00ff",
+          "#00ffff",
+          "#ff0080",
+          "#00ff00",
+          "#ffff00",
+          "#ff00ff",
+          "#0080ff",
+          "#ff8000",
+        ];
+
+        shuffled.forEach((name, i) => {
+          balls.push({
+            name,
+            x: canvas.width / 2 + (Math.random() - 0.5) * 40,
+            y: 20,
+            r: 14,
+            vx: (Math.random() - 0.5) * 2,
+            vy: 0,
+            finished: false,
+            finishOrder: null,
+            color: neonColors[i % neonColors.length],
+            lastY: 20, // 마지막 y 위치 추적
+            stuckFrames: 0, // 같은 위치에 머문 프레임 수
+            nearbyPin: null, // 근처에 있는 장애물
+            nearbyPinFrames: 0, // 같은 장애물 근처에 머문 프레임 수
+          });
+        });
+      }
+
+      /* ---------------- 핀 그리기 (네온 효과) ---------------- */
+      function drawPin(pin) {
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = pin.color;
+
+        if (pin.type === "circle") {
+          ctx.beginPath();
+          ctx.arc(pin.x, pin.y, pin.r, 0, Math.PI * 2);
+          ctx.fillStyle = pin.color;
+          ctx.fill();
+
+          ctx.strokeStyle = pin.color;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // 내부 하이라이트
+          ctx.beginPath();
+          ctx.arc(
+            pin.x - pin.r * 0.3,
+            pin.y - pin.r * 0.3,
+            pin.r * 0.4,
+            0,
+            Math.PI * 2
+          );
+          ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+          ctx.fill();
+        } else if (pin.type === "bar") {
+          // 회전된 막대기 그리기
+          ctx.save();
+          ctx.translate(pin.x, pin.y);
+          ctx.rotate(pin.angle);
+
+          ctx.fillStyle = pin.color;
+          ctx.fillRect(-pin.length / 2, -pin.width / 2, pin.length, pin.width);
+          ctx.strokeStyle = pin.color;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(
+            -pin.length / 2,
+            -pin.width / 2,
+            pin.length,
+            pin.width
+          );
+
+          ctx.restore();
+        } else if (pin.type === "windmill") {
+          // 회전하는 풍차 그리기 (스펙타클 버전)
+          ctx.save();
+          ctx.translate(pin.x, pin.y);
+          ctx.rotate(pin.angle);
+
+          // 끌어당기는 범위 글로우 효과
+          if (pin.particleEffect > 0) {
+            ctx.shadowBlur = 30 + pin.particleEffect * 5;
+            ctx.shadowColor = pin.color;
+            ctx.beginPath();
+            ctx.arc(0, 0, pin.radius + 10, 0, Math.PI * 2);
+            ctx.strokeStyle = pin.color + "60";
+            ctx.lineWidth = 3;
+            ctx.stroke();
+          }
+
+          // 풍차 날개 4개 (더 화려하게)
+          for (let i = 0; i < 4; i++) {
+            ctx.save();
+            ctx.rotate((Math.PI / 2) * i);
+
+            // 날개 그라디언트
+            const gradient = ctx.createLinearGradient(0, 0, pin.radius, 0);
+            gradient.addColorStop(0, pin.color + "FF");
+            gradient.addColorStop(1, pin.color + "80");
+
+            // 날개 그리기
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(pin.radius, -pin.radius * 0.4);
+            ctx.lineTo(pin.radius * 0.9, 0);
+            ctx.lineTo(pin.radius * 0.7, pin.radius * 0.1);
+            ctx.closePath();
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            ctx.strokeStyle = pin.color;
+            ctx.lineWidth = 5;
+            ctx.stroke();
+
+            // 날개 하이라이트
+            ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+            ctx.fill();
+
+            ctx.restore();
+          }
+
+          // 중심 원 (더 크고 화려하게)
+          const centerGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 15);
+          centerGradient.addColorStop(0, "#fff");
+          centerGradient.addColorStop(1, pin.color);
+          ctx.beginPath();
+          ctx.arc(0, 0, 15, 0, Math.PI * 2);
+          ctx.fillStyle = centerGradient;
+          ctx.fill();
+          ctx.strokeStyle = "#fff";
+          ctx.lineWidth = 4;
+          ctx.stroke();
+
+          ctx.restore();
+
+          // 끌어당기는 범위 표시 (반투명 원)
+          ctx.save();
+          ctx.globalAlpha = 0.2;
+          ctx.beginPath();
+          ctx.arc(pin.x, pin.y, pin.pullRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = pin.color;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.restore();
+
+          // 풍차에 잡혀있는 공 그리기 (풍차와 함께 회전)
+          if (pin.catchBall && !pin.catchBall.finished) {
+            ctx.save();
+            ctx.translate(pin.x, pin.y);
+            ctx.rotate(pin.catchAngle);
+
+            // 공 위치
+            const ballX = Math.cos(0) * (pin.radius + pin.catchBall.r);
+            const ballY = Math.sin(0) * (pin.radius + pin.catchBall.r);
+            ctx.translate(ballX, ballY);
+
+            // 공 그리기 (회전된 상태)
+            ctx.shadowBlur = 25;
+            ctx.shadowColor = pin.catchBall.color;
+            ctx.beginPath();
+            ctx.arc(0, 0, pin.catchBall.r, 0, Math.PI * 2);
+            const gradient = ctx.createRadialGradient(
+              0,
+              0,
+              0,
+              0,
+              0,
+              pin.catchBall.r
+            );
+            gradient.addColorStop(0, pin.catchBall.color + "FF");
+            gradient.addColorStop(1, pin.catchBall.color + "CC");
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            ctx.strokeStyle = pin.catchBall.color;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            // 공 이름
+            ctx.shadowBlur = 10;
+            ctx.fillStyle = "#fff";
+            ctx.font = "bold 11px sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(pin.catchBall.name.slice(0, 2), 0, 2);
+
+            ctx.restore();
+          }
+        }
+
+        ctx.shadowBlur = 0;
+      }
+
+      /* ---------------- 공 그리기 (네온 효과) ---------------- */
+      function drawBall(ball) {
+        // 글로우 효과
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = ball.color;
+
+        // 외곽 글로우
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.r + 3, 0, Math.PI * 2);
+        ctx.fillStyle = ball.color + "40";
+        ctx.fill();
+
+        // 메인 공
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+        const gradient = ctx.createRadialGradient(
+          ball.x - ball.r * 0.3,
+          ball.y - ball.r * 0.3,
+          0,
+          ball.x,
+          ball.y,
+          ball.r
+        );
+        gradient.addColorStop(0, ball.color + "FF");
+        gradient.addColorStop(1, ball.color + "CC");
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        ctx.strokeStyle = ball.color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // 하이라이트
+        ctx.beginPath();
+        ctx.arc(
+          ball.x - ball.r * 0.3,
+          ball.y - ball.r * 0.3,
+          ball.r * 0.4,
+          0,
+          Math.PI * 2
+        );
+        ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+        ctx.fill();
+
+        ctx.shadowBlur = 0;
+
+        // 이름 표시 (네온 텍스트) - 전체 이름 표시
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = ball.color;
+        ctx.fillStyle = "#fff";
+
+        // 이름 길이에 따라 폰트 크기 조정
+        const nameLength = ball.name.length;
+        let fontSize = 12;
+        if (nameLength > 6) {
+          fontSize = 8;
+        } else if (nameLength > 4) {
+          fontSize = 9;
+        } else if (nameLength > 3) {
+          fontSize = 10;
+        } else if (nameLength > 2) {
+          fontSize = 11;
+        }
+
+        ctx.font = `bold ${fontSize}px sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        // 긴 이름은 여러 줄로 표시
+        if (nameLength > 4) {
+          // 두 줄로 나누기
+          const mid = Math.ceil(nameLength / 2);
+          ctx.fillText(ball.name.slice(0, mid), ball.x, ball.y - 4);
+          ctx.fillText(ball.name.slice(mid), ball.x, ball.y + 5);
+        } else {
+          // 짧은 이름은 한 줄로 전체 표시
+          ctx.fillText(ball.name, ball.x, ball.y + 2);
+        }
+        ctx.shadowBlur = 0;
+      }
+
+      /* ---------------- 새 그리기 (웃긴 새) ---------------- */
+      function drawBird(bird) {
+        ctx.save();
+        ctx.translate(bird.x, bird.y);
+        ctx.scale(bird.direction, 1); // 좌우 방향에 따라 뒤집기
+
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = bird.color;
+
+        // 날개 펄럭임 애니메이션
+        bird.wingFlap += 0.3;
+        const wingAngle = Math.sin(bird.wingFlap) * 0.3;
+
+        // 몸통 (타원)
+        ctx.fillStyle = bird.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, bird.size * 0.4, bird.size * 0.5, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = bird.color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // 머리 (원)
+        ctx.beginPath();
+        ctx.arc(
+          bird.size * 0.5,
+          -bird.size * 0.2,
+          bird.size * 0.3,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.stroke();
+
+        // 부리 (삼각형 - 웃긴 모양)
+        ctx.fillStyle = "#ffff00";
+        ctx.beginPath();
+        ctx.moveTo(bird.size * 0.7, -bird.size * 0.2);
+        ctx.lineTo(bird.size * 1.0, -bird.size * 0.1);
+        ctx.lineTo(bird.size * 0.7, 0);
+        ctx.closePath();
+        ctx.fill();
+
+        // 눈 (큰 눈)
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        ctx.arc(
+          bird.size * 0.55,
+          -bird.size * 0.25,
+          bird.size * 0.08,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.fillStyle = "#000";
+        ctx.beginPath();
+        ctx.arc(
+          bird.size * 0.57,
+          -bird.size * 0.27,
+          bird.size * 0.05,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+
+        // 왼쪽 날개 (펄럭임)
+        ctx.save();
+        ctx.rotate(wingAngle);
+        ctx.fillStyle = bird.color;
+        ctx.beginPath();
+        ctx.ellipse(
+          -bird.size * 0.3,
+          0,
+          bird.size * 0.25,
+          bird.size * 0.4,
+          -0.5,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        // 오른쪽 날개 (펄럭임)
+        ctx.save();
+        ctx.rotate(-wingAngle);
+        ctx.fillStyle = bird.color;
+        ctx.beginPath();
+        ctx.ellipse(
+          bird.size * 0.3,
+          0,
+          bird.size * 0.25,
+          bird.size * 0.4,
+          0.5,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        // 꼬리
+        ctx.fillStyle = bird.color;
+        ctx.beginPath();
+        ctx.ellipse(
+          -bird.size * 0.5,
+          bird.size * 0.2,
+          bird.size * 0.15,
+          bird.size * 0.3,
+          0.3,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.restore();
+        ctx.shadowBlur = 0;
+      }
+
+      /* ---------------- 충돌 감지 ---------------- */
+      function checkCollision(ball, pin) {
+        if (pin.type === "circle") {
+          const dx = ball.x - pin.x;
+          const dy = ball.y - pin.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          return distance < ball.r + pin.r;
+        } else if (pin.type === "bar") {
+          // 회전된 막대기와 공의 충돌 감지
+          const dx = ball.x - pin.x;
+          const dy = ball.y - pin.y;
+          const cos = Math.cos(-pin.angle);
+          const sin = Math.sin(-pin.angle);
+          const localX = dx * cos - dy * sin;
+          const localY = dx * sin + dy * cos;
+
+          const closestX = Math.max(
+            -pin.length / 2,
+            Math.min(localX, pin.length / 2)
+          );
+          const closestY = Math.max(
+            -pin.width / 2,
+            Math.min(localY, pin.width / 2)
+          );
+
+          const distX = localX - closestX;
+          const distY = localY - closestY;
+          return distX * distX + distY * distY < ball.r * ball.r;
+        } else if (pin.type === "windmill") {
+          // 풍차와 공의 충돌 감지 (풍차 반지름 내)
+          const dx = ball.x - pin.x;
+          const dy = ball.y - pin.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          return distance < ball.r + pin.radius;
+        }
+        return false;
+      }
+
+      /* ---------------- 카메라 업데이트 ---------------- */
+      function updateCamera() {
+        if (balls.length === 0) return;
+
+        // 1위 공 (가장 y값이 큰 공 = 가장 앞선 공) 찾기
+        const activeBalls = balls.filter((b) => !b.finished);
+        if (activeBalls.length > 0) {
+          // 가장 앞선 공 찾기
+          const leadingBall = activeBalls.reduce((prev, curr) =>
+            curr.y > prev.y ? curr : prev
+          );
+
+          // 타겟 카메라 위치 설정
+          targetCameraY = Math.max(
+            0,
+            Math.min(
+              leadingBall.y - canvasContainer.clientHeight / 2,
+              canvas.height - canvasContainer.clientHeight
+            )
+          );
+
+          // 부드러운 카메라 이동 (lerp)
+          const lerpFactor = 0.1; // 0.1 = 부드럽게, 1.0 = 즉시
+          cameraY += (targetCameraY - cameraY) * lerpFactor;
+        }
+      }
+
+      /* ---------------- 애니메이션 ---------------- */
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 카메라 변환
+        ctx.save();
+        ctx.translate(0, -cameraY);
+
+        // 배경 그리드 (네온 효과)
+        ctx.strokeStyle = "#00ffff22";
+        ctx.lineWidth = 1;
+        for (let i = 0; i < canvas.width; i += 50) {
+          ctx.beginPath();
+          ctx.moveTo(i, 0);
+          ctx.lineTo(i, canvas.height);
+          ctx.stroke();
+        }
+        for (let i = 0; i < canvas.height; i += 50) {
+          ctx.beginPath();
+          ctx.moveTo(0, i);
+          ctx.lineTo(canvas.width, i);
+          ctx.stroke();
+        }
+
+        // 풍차 회전 업데이트 및 공 끌어당기기/던지기
+        pins.forEach((pin) => {
+          if (pin.type === "windmill") {
+            // 회전 업데이트
+            pin.angle += pin.rotationSpeed;
+            if (pin.angle > Math.PI * 2) {
+              pin.angle -= Math.PI * 2;
+            }
+
+            // 공을 잡고 있는 경우
+            if (pin.catchBall && !pin.catchBall.finished) {
+              pin.catchAngle += pin.rotationSpeed * 1.5; // 공도 함께 회전
+
+              // 공을 풍차 주변에 위치시키기
+              pin.catchBall.x =
+                pin.x +
+                Math.cos(pin.catchAngle) * (pin.radius + pin.catchBall.r);
+              pin.catchBall.y =
+                pin.y +
+                Math.sin(pin.catchAngle) * (pin.radius + pin.catchBall.r);
+
+              // 공 속도 제거 (풍차가 잡고 있음)
+              pin.catchBall.vx *= 0.9;
+              pin.catchBall.vy *= 0.9;
+
+              // 0.5초 후 던지기 (스펙타클!)
+              if (pin.catchAngle > pin.angle + Math.PI) {
+                const throwSpeed = Math.abs(pin.rotationSpeed) * 100; // 회전 속도에 비례
+                pin.catchBall.vx = Math.cos(pin.catchAngle) * throwSpeed;
+                pin.catchBall.vy = Math.sin(pin.catchAngle) * throwSpeed - 5; // 위로 강하게
+
+                pin.particleEffect = 30; // 파티클 효과
+                pin.catchBall = null;
+                playSound("finish");
+                vibrate([50, 30, 50]);
+              }
+            }
+
+            // 파티클 효과 감소
+            if (pin.particleEffect > 0) {
+              pin.particleEffect--;
+            }
+          }
+        });
+
+        // 새 움직임 업데이트
+        if (bird) {
+          bird.x += bird.vx;
+          bird.y += bird.vy;
+
+          // 좌우 경계에서 반사
+          if (bird.x < bird.size || bird.x > canvas.width - bird.size) {
+            bird.vx *= -1;
+            bird.direction *= -1; // 방향 전환
+            bird.x = Math.max(
+              bird.size,
+              Math.min(canvas.width - bird.size, bird.x)
+            );
+          }
+
+          // 상하 경계에서 반사 (살짝만)
+          if (
+            bird.y < bird.size * 2 ||
+            bird.y > canvas.height - bird.size * 3
+          ) {
+            bird.vy *= -0.5;
+            bird.y = Math.max(
+              bird.size * 2,
+              Math.min(canvas.height - bird.size * 3, bird.y)
+            );
+          }
+
+          // 자연스러운 좌우 배회 (속도 변화)
+          bird.vx += (Math.random() - 0.5) * 0.05;
+          bird.vx = Math.max(-2.0, Math.min(2.0, bird.vx)); // 최대 속도 제한
+
+          // 상하 살짝 움직임
+          bird.vy += (Math.random() - 0.5) * 0.02;
+          bird.vy = Math.max(-0.5, Math.min(0.5, bird.vy));
+        }
+
+        // 새 그리기
+        if (bird) {
+          drawBird(bird);
+        }
+
+        // 핀 그리기
+        pins.forEach((pin) => drawPin(pin));
+
+        // 결승선 (오목한 곡선, 네온 효과)
+        const finishBaseY = canvas.height - 50;
+        const finishDepth = 40; // 오목한 정도 (클수록 더 오목)
+        const finishWidth = canvas.width;
+        const finishCenterX = finishWidth / 2;
+
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = "#ffff00";
+        ctx.strokeStyle = "#ffff00";
+        ctx.lineWidth = 5;
+        ctx.setLineDash([20, 10]);
+        ctx.beginPath();
+
+        // 오목한 곡선 그리기 (포물선 형태)
+        for (let x = 0; x <= finishWidth; x += 2) {
+          const normalizedX = x / finishWidth; // 0 ~ 1
+          const curve = 4 * normalizedX * (1 - normalizedX); // 0~1 사이의 곡선 (중간이 1, 양 끝이 0)
+          const y = finishBaseY + finishDepth * curve;
+
+          if (x === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.shadowBlur = 0;
+
+        // FINISH 텍스트 (네온 효과)
+        ctx.shadowBlur = 25;
+        ctx.shadowColor = "#ffff00";
+        ctx.fillStyle = "#ffff00";
+        ctx.font = "bold 28px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("FINISH", canvas.width / 2, finishBaseY - 70);
+        ctx.shadowBlur = 0;
+
+        // 중력 적용
+        balls.forEach((ball) => {
+          if (ball.finished) return;
+
+          // 중력 강화 (항상 아래로 떨어지도록)
+          ball.vy += 0.5; // 중력 증가
+          ball.x += ball.vx;
+          ball.y += ball.vy;
+
+          // 공이 같은 위치에 머무는지 체크 (더 민감하게)
+          if (Math.abs(ball.y - ball.lastY) < 1.5) {
+            ball.stuckFrames++;
+          } else {
+            ball.stuckFrames = 0;
+          }
+          ball.lastY = ball.y;
+
+          // 공이 너무 오래 같은 위치에 있으면 강제로 아래로 밀기 (더 빠르게 감지)
+          if (ball.stuckFrames > 30) {
+            // 약 0.5초 동안 움직이지 않으면 즉시 아래로
+            ball.vy = Math.max(ball.vy, 4.0); // 강제로 아래로 밀기 (더 강하게)
+            ball.vx += (Math.random() - 0.5) * 2.0; // 랜덤 수평 이동
+            ball.stuckFrames = 0;
+          }
+
+          // 결승선 근처에서는 멈춤 감지를 더 빠르게
+          const finishLineY2 = canvas.height - 50;
+          if (ball.y > finishLineY2 - 150 && ball.stuckFrames > 15) {
+            ball.vy = Math.max(ball.vy, 5.0);
+            ball.vx += (Math.random() - 0.5) * 2.5;
+            ball.stuckFrames = 0;
+          }
+
+          // 항상 아래 방향 최소 속도 보장 (매 프레임 체크, 더 강화)
+          // 위로 올라가는 것도 일정 시간 후에는 아래로 강제
+          if (ball.vy < -1 && ball.stuckFrames > 20) {
+            ball.vy = 0.5; // 위로 올라가는 것도 제한
+          }
+          if (ball.vy < 0.8) {
+            ball.vy = Math.max(ball.vy, 0.8); // 항상 아래로 최소 0.8 속도
+          }
+
+          // 공이 너무 느려지면 강제로 속도 증가 (멈추지 않도록, 더 강화)
+          const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+          if (currentSpeed < 1.5) {
+            // 전체 속도가 너무 느리면 아래 방향으로 가속
+            if (ball.vy < 1.5) {
+              ball.vy = 1.5; // 아래 방향 최소 속도 1.5
+            }
+            // 약간의 랜덤 수평 움직임 추가
+            if (Math.abs(ball.vx) < 0.3) {
+              ball.vx += (Math.random() - 0.5) * 1.0;
+            }
+          }
+
+          // 장애물 근처에 머무는 시간 추적 (낑김 방지)
+          let nearestPin = null;
+          let nearestDistance = Infinity;
+
+          pins.forEach((pin) => {
+            let distance;
+            if (pin.type === "circle") {
+              const dx = ball.x - pin.x;
+              const dy = ball.y - pin.y;
+              distance = Math.sqrt(dx * dx + dy * dy) - ball.r - pin.r;
+            } else if (pin.type === "bar") {
+              const dx = ball.x - pin.x;
+              const dy = ball.y - pin.y;
+              distance = Math.sqrt(dx * dx + dy * dy) - ball.r - pin.length / 2;
+            } else if (pin.type === "windmill") {
+              const dx = ball.x - pin.x;
+              const dy = ball.y - pin.y;
+              distance = Math.sqrt(dx * dx + dy * dy) - ball.r - pin.radius;
+            }
+
+            // 공 근처(30px 이내) 장애물 찾기
+            if (distance < 30 && distance < nearestDistance) {
+              nearestDistance = distance;
+              nearestPin = pin;
+            }
+          });
+
+          // 같은 장애물 근처에 있는지 체크
+          if (nearestPin && ball.nearbyPin === nearestPin) {
+            ball.nearbyPinFrames++;
+
+            // 2초(120프레임) 이상 같은 장애물 근처에 있으면 제거
+            if (ball.nearbyPinFrames > 120) {
+              const index = pins.indexOf(nearestPin);
+              if (index > -1) {
+                pins.splice(index, 1);
+                playSound("finish"); // 제거 효과음
+                vibrate(30);
+              }
+              ball.nearbyPin = null;
+              ball.nearbyPinFrames = 0;
+            }
+          } else {
+            // 다른 장애물이거나 장애물이 없으면 초기화
+            ball.nearbyPin = nearestPin;
+            ball.nearbyPinFrames = nearestPin ? 1 : 0;
+          }
+
+          // 핀과 충돌
+          pins.forEach((pin) => {
+            if (checkCollision(ball, pin)) {
+              if (pin.type === "circle") {
+                const dx = ball.x - pin.x;
+                const dy = ball.y - pin.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > 0) {
+                  // 튕기기
+                  const overlap = ball.r + pin.r - distance;
+                  ball.x += (dx / distance) * overlap * 1.1;
+                  ball.y += (dy / distance) * overlap * 1.1;
+
+                  const angle = Math.atan2(dy, dx);
+                  const speed = Math.sqrt(
+                    ball.vx * ball.vx + ball.vy * ball.vy
+                  );
+                  const bounceForce = speed * 0.6; // 튕김 힘 줄임
+                  ball.vx = Math.cos(angle) * bounceForce;
+                  ball.vy = Math.sin(angle) * bounceForce;
+
+                  // 위로 너무 튕기는 것 방지 (아래 방향 속도 우선)
+                  if (ball.vy < 0) {
+                    ball.vy = Math.max(ball.vy, -0.5); // 위로 최대 0.5까지만 (더 제한)
+                  }
+                  // 항상 아래로 떨어지도록 보장 (강화)
+                  if (ball.vy < 0.5) {
+                    ball.vy = 0.5; // 최소 아래 방향 속도 보장
+                  }
+
+                  playSound("bounce");
+                  vibrate(10);
+                }
+              } else if (pin.type === "bar") {
+                // 회전된 막대기 충돌 - 낑김 방지 강화
+                const dx = ball.x - pin.x;
+                const dy = ball.y - pin.y;
+                const cos = Math.cos(-pin.angle);
+                const sin = Math.sin(-pin.angle);
+                const localX = dx * cos - dy * sin;
+                const localY = dx * sin + dy * cos;
+
+                const closestX = Math.max(
+                  -pin.length / 2,
+                  Math.min(localX, pin.length / 2)
+                );
+                const closestY = Math.max(
+                  -pin.width / 2,
+                  Math.min(localY, pin.width / 2)
+                );
+
+                const worldClosestX = pin.x + closestX * cos - closestY * sin;
+                const worldClosestY = pin.y + closestX * sin + closestY * cos;
+
+                const distX = ball.x - worldClosestX;
+                const distY = ball.y - worldClosestY;
+                const distance = Math.sqrt(distX * distX + distY * distY);
+
+                if (distance > 0) {
+                  const overlap = ball.r - distance;
+
+                  // 낑김 방지: 여러 번 보정하여 확실히 밖으로 밀어내기
+                  if (overlap > 0) {
+                    // 1차 보정 (더 강하게)
+                    const pushDistance = overlap * 1.5;
+                    ball.x += (distX / distance) * pushDistance;
+                    ball.y += (distY / distance) * pushDistance;
+
+                    // 2차 보정: 다시 확인하여 여전히 안쪽에 있으면 추가로 밀어내기
+                    const dx2 = ball.x - pin.x;
+                    const dy2 = ball.y - pin.y;
+                    const localX2 = dx2 * cos - dy2 * sin;
+                    const localY2 = dx2 * sin + dy2 * cos;
+                    const closestX2 = Math.max(
+                      -pin.length / 2,
+                      Math.min(localX2, pin.length / 2)
+                    );
+                    const closestY2 = Math.max(
+                      -pin.width / 2,
+                      Math.min(localY2, pin.width / 2)
+                    );
+                    const worldClosestX2 =
+                      pin.x + closestX2 * cos - closestY2 * sin;
+                    const worldClosestY2 =
+                      pin.y + closestX2 * sin + closestY2 * cos;
+                    const distX2 = ball.x - worldClosestX2;
+                    const distY2 = ball.y - worldClosestY2;
+                    const distance2 = Math.sqrt(
+                      distX2 * distX2 + distY2 * distY2
+                    );
+
+                    if (distance2 < ball.r) {
+                      // 여전히 안쪽에 있으면 추가로 밀어내기
+                      const overlap2 = ball.r - distance2;
+                      ball.x += (distX2 / distance2) * overlap2 * 2.0;
+                      ball.y += (distY2 / distance2) * overlap2 * 2.0;
+                    }
+
+                    // 3차 보정: 막대기 끝부분에 낑혔을 경우 처리
+                    const edgeDistance = Math.min(
+                      Math.abs(localX - -pin.length / 2),
+                      Math.abs(localX - pin.length / 2)
+                    );
+                    if (edgeDistance < ball.r * 0.5) {
+                      // 막대기 끝에 가까우면 수직 방향으로 밀어내기
+                      const edgeNormalX = localX < 0 ? -1 : 1;
+                      const edgeNormalY = 0;
+                      const worldEdgeNormalX =
+                        edgeNormalX * cos - edgeNormalY * sin;
+                      const worldEdgeNormalY =
+                        edgeNormalX * sin + edgeNormalY * cos;
+                      ball.x += worldEdgeNormalX * ball.r * 0.5;
+                      ball.y += worldEdgeNormalY * ball.r * 0.5;
+                    }
+                  }
+
+                  // 막대기의 법선 벡터를 따라 튕기기
+                  const normalX = Math.cos(pin.angle + Math.PI / 2);
+                  const normalY = Math.sin(pin.angle + Math.PI / 2);
+                  const dot = ball.vx * normalX + ball.vy * normalY;
+                  ball.vx -= 2 * dot * normalX * 1.0; // 튕김 힘 줄임
+                  ball.vy -= 2 * dot * normalY * 1.0;
+                  ball.vx *= 0.85;
+                  ball.vy *= 0.85;
+
+                  // 낑김 방지: 속도도 추가로 보정
+                  const finalDx = ball.x - pin.x;
+                  const finalDy = ball.y - pin.y;
+                  const finalLocalX = finalDx * cos - finalDy * sin;
+                  const finalLocalY = finalDx * sin + finalDy * cos;
+                  const finalDist = Math.sqrt(
+                    Math.pow(
+                      Math.max(
+                        -pin.length / 2,
+                        Math.min(finalLocalX, pin.length / 2)
+                      ) - finalLocalX,
+                      2
+                    ) +
+                      Math.pow(
+                        Math.max(
+                          -pin.width / 2,
+                          Math.min(finalLocalY, pin.width / 2)
+                        ) - finalLocalY,
+                        2
+                      )
+                  );
+
+                  if (finalDist < ball.r * 0.9) {
+                    // 여전히 너무 가까우면 속도로 밀어내기
+                    const escapeSpeed = 2.0;
+                    ball.vx +=
+                      (finalDx /
+                        Math.sqrt(finalDx * finalDx + finalDy * finalDy)) *
+                      escapeSpeed;
+                    ball.vy +=
+                      (finalDy /
+                        Math.sqrt(finalDx * finalDx + finalDy * finalDy)) *
+                      escapeSpeed;
+                  }
+
+                  // 위로 너무 튕기는 것 방지 (아래 방향 속도 우선)
+                  if (ball.vy < 0) {
+                    ball.vy = Math.max(ball.vy, -0.5); // 위로 최대 0.5까지만 (더 제한)
+                  }
+                  // 항상 아래로 떨어지도록 보장 (강화)
+                  if (ball.vy < 0.5) {
+                    ball.vy = 0.5; // 최소 아래 방향 속도 보장
+                  }
+
+                  playSound("bounce");
+                  vibrate(10);
+                }
+              } else if (pin.type === "windmill") {
+                // 풍차와 공의 상호작용 (끌어당기기, 잡기, 던지기)
+                const dx = ball.x - pin.x;
+                const dy = ball.y - pin.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // 이미 공을 잡고 있으면 처리 안 함
+                if (pin.catchBall === ball) {
+                  return;
+                }
+
+                // 끌어당기는 범위 내에 있으면
+                if (distance < pin.pullRadius && !pin.catchBall) {
+                  // 풍차 쪽으로 끌어당기기
+                  const pullForce =
+                    ((pin.pullRadius - distance) / pin.pullRadius) * 2.0;
+                  ball.vx += (dx / distance) * pullForce * 0.5;
+                  ball.vy += (dy / distance) * pullForce * 0.5;
+                  pin.particleEffect = 10; // 글로우 효과
+                }
+
+                // 직접 충돌 시
+                if (distance < ball.r + pin.radius && !pin.catchBall) {
+                  // 공을 잡기 (50% 확률)
+                  if (
+                    Math.random() > 0.5 &&
+                    distance < ball.r + pin.radius * 0.8
+                  ) {
+                    pin.catchBall = ball;
+                    pin.catchAngle = pin.angle;
+                    pin.particleEffect = 30; // 큰 글로우 효과
+                    playSound("finish");
+                    vibrate(50);
+                  } else {
+                    // 아니면 튕기기
+                    const angle = Math.atan2(dy, dx);
+                    const overlap = ball.r + pin.radius - distance;
+                    ball.x += (dx / distance) * overlap * 1.1;
+                    ball.y += (dy / distance) * overlap * 1.1;
+
+                    const speed = Math.sqrt(
+                      ball.vx * ball.vx + ball.vy * ball.vy
+                    );
+                    const bounceForce = Math.max(speed * 3.0, 5.0); // 더 강하게
+
+                    // 풍차 회전 방향에 따라 튕기기
+                    const rotationAngle = pin.angle + Math.PI / 2;
+                    ball.vx = Math.cos(rotationAngle) * bounceForce;
+                    ball.vy = Math.sin(rotationAngle) * bounceForce - 3; // 위로 추가 힘
+
+                    // 위로 튕기는 것을 허용
+                    if (ball.vy < -6) {
+                      ball.vy = -6;
+                    }
+
+                    playSound("bounce");
+                    vibrate(15);
+                  }
+                }
+              }
+            }
+          });
+
+          // 새와 충돌
+          if (bird) {
+            const dx = ball.x - bird.x;
+            const dy = ball.y - bird.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const collisionDistance = ball.r + bird.size * 0.6; // 새와 공의 충돌 범위
+
+            if (distance < collisionDistance && distance > 0) {
+              // 충돌 처리
+              const overlap = collisionDistance - distance;
+              ball.x += (dx / distance) * overlap * 1.1;
+              ball.y += (dy / distance) * overlap * 1.1;
+
+              // 위로 강하게 튕기기 (새가 공을 위로 밀어올림)
+              const speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+              const bounceForce = Math.max(speed * 2.0, 3.5); // 새는 강하게 튕김
+
+              // 위 방향으로 강하게 튕기기
+              const angle = Math.atan2(dy, dx);
+              ball.vx = Math.cos(angle) * bounceForce * 0.6;
+              ball.vy = Math.sin(angle) * bounceForce * 1.3; // 위로 강하게
+
+              // 추가 위 방향 힘
+              ball.vy -= bounceForce * 0.7;
+
+              // 새도 반대 방향으로 살짝 밀림
+              bird.vx -= (dx / distance) * 0.3;
+              bird.vy -= (dy / distance) * 0.2;
+
+              playSound("bounce");
+              vibrate(20);
+            }
+          }
+
+          // 공끼리 충돌
+          balls.forEach((other) => {
+            if (ball === other || other.finished) return;
+
+            const dx = ball.x - other.x;
+            const dy = ball.y - other.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < ball.r + other.r && distance > 0) {
+              const overlap = ball.r + other.r - distance;
+              ball.x += (dx / distance) * overlap * 0.5;
+              ball.y += (dy / distance) * overlap * 0.5;
+
+              const angle = Math.atan2(dy, dx);
+              const speed1 = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+              const speed2 = Math.sqrt(
+                other.vx * other.vx + other.vy * other.vy
+              );
+              const bounceForce = (speed1 + speed2) * 0.2; // 공끼리 충돌 튕김 줄임
+
+              ball.vx += Math.cos(angle) * bounceForce;
+              ball.vy += Math.sin(angle) * bounceForce;
+
+              // 위로 너무 튕기는 것 방지
+              if (ball.vy < 0) {
+                ball.vy = Math.max(ball.vy, -0.3); // 위로 최대 0.3까지만 (더 제한)
+              }
+              // 항상 아래로 떨어지도록 보장
+              if (ball.vy < 0.3) {
+                ball.vy = 0.3; // 최소 아래 방향 속도 보장
+              }
+            }
+          });
+
+          // 경계 체크
+          if (ball.x < ball.r) {
+            ball.x = ball.r;
+            ball.vx *= -0.7;
+          }
+          if (ball.x > canvas.width - ball.r) {
+            ball.x = canvas.width - ball.r;
+            ball.vx *= -0.7;
+          }
+
+          // 결승선 통과 (오목한 곡선 기준)
+          const finishBaseY = canvas.height - 50;
+          const finishDepth = 40;
+          const normalizedX = Math.max(0, Math.min(1, ball.x / canvas.width));
+          const curve = 4 * normalizedX * (1 - normalizedX); // 포물선 곡선
+          const finishLineY = finishBaseY + finishDepth * curve;
+
+          // 공의 중심이 곡선을 넘으면 완주
+          if (ball.y >= finishLineY - ball.r && !ball.finished) {
+            ball.finished = true;
+            ball.finishOrder = finishedBalls.length + 1;
+            finishedBalls.push(ball);
+            playSound("finish");
+            vibrate(50);
+
+            // 첫 번째 완주자
+            if (finishedBalls.length === 1) {
+              playSound("finish");
+              vibrate([100, 50, 100]);
+            }
+          }
+
+          if (!ball.finished) drawBall(ball);
+        });
+
+        // 완주한 공 표시
+        finishedBalls.forEach((ball) => {
+          ctx.save();
+          ctx.globalAlpha = 0.8;
+          drawBall(ball);
+          ctx.restore();
+
+          // 순위 표시 (네온 효과)
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = "#ffff00";
+          ctx.fillStyle = "#ffff00";
+          ctx.font = "bold 16px sans-serif";
+          const t = window.t || ((key, vars = {}) => key);
+          ctx.fillText(`${ball.finishOrder}${t("resultRank")}`, ball.x, ball.y - ball.r - 8);
+          ctx.shadowBlur = 0;
+        });
+
+        ctx.restore(); // 카메라 변환 복원
+
+        // 카메라 업데이트
+        updateCamera();
+
+        // 타임아웃 체크 - 게임이 너무 오래 지속되면 강제 종료
+        const currentTime = Date.now();
+        if (currentTime - gameStartTime > MAX_GAME_TIME) {
+          // 남은 공들을 모두 완주 처리 (현재 y 위치 기준으로 정렬)
+          const remainingBalls = balls.filter((b) => !b.finished);
+          remainingBalls.sort((a, b) => b.y - a.y); // 아래쪽에 있는 공이 먼저 완주
+
+          remainingBalls.forEach((ball) => {
+            ball.finished = true;
+            ball.finishOrder = finishedBalls.length + 1;
+            finishedBalls.push(ball);
+          });
+
+          cancelAnimationFrame(animationId);
+          showResult();
+          return;
+        }
+
+        // 모든 공이 완주했는지 체크
+        if (balls.every((b) => b.finished)) {
+          cancelAnimationFrame(animationId);
+          showResult();
+          return;
+        }
+
+        animationId = requestAnimationFrame(animate);
+      }
+
+      const RESTART_DELAY_MS = 2000;
+
+      function loadResultAd() {
+        const adContainer = document.getElementById("resultAd");
+        if (!adContainer || adContainer.dataset.loaded) return;
+        try {
+          const ad = adContainer.querySelector("ins.adsbygoogle");
+          if (ad) {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            adContainer.dataset.loaded = "true";
+          }
+        } catch (e) {
+          console.warn("Ad loading error:", e);
+        }
+      }
+
+      /* ---------------- 결과 표시 ---------------- */
+      function showResult() {
+        resultEl.classList.remove("hidden");
+        // 결과 영역으로 스크롤
+        setTimeout(() => {
+          resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+
+        const sorted = [...finishedBalls].sort(
+          (a, b) => a.finishOrder - b.finishOrder
+        );
+
+        const t = window.t || ((key, vars = {}) => key);
+        resultEl.innerHTML = `
+          <h2 class="text-2xl font-bold mb-4 text-center">${t("resultTitle")}</h2>
+          <div class="space-y-2">
+            ${sorted
+              .map(
+                (ball, i) => `
+              <div class="flex items-center gap-3 p-3 rounded-lg ${
+                i === 0
+                  ? "bg-yellow-500/20 border-2 border-yellow-500"
+                  : i < 3
+                  ? "bg-slate-700"
+                  : "bg-slate-700/50"
+              }">
+                <span class="text-2xl font-bold w-10 text-center">${
+                  i + 1
+                }</span>
+                <div class="flex-1">
+                  <div class="font-bold">${ball.name}</div>
+                  <div class="text-xs text-slate-400">${ball.finishOrder}${t("resultFinishOrder")}</div>
+                </div>
+                ${
+                  i === 0
+                    ? '<span class="text-2xl">🏆</span>'
+                    : i === 1
+                    ? '<span class="text-xl">🥈</span>'
+                    : i === 2
+                    ? '<span class="text-xl">🥉</span>'
+                    : ""
+                }
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+          <div id="resultAd" class="mt-4">
+            <ins
+              class="adsbygoogle"
+              style="display:block; width:100%;"
+              data-ad-client="ca-pub-1204894220949193"
+              data-ad-slot="5145068706"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+          <button
+            id="retryBtn"
+            class="w-full mt-4 py-3 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            ${t("retryBtn")}
+          </button>
+        `;
+        loadResultAd();
+        const retryBtn = document.getElementById("retryBtn");
+        if (retryBtn) {
+          retryBtn.disabled = true;
+          setTimeout(() => {
+            retryBtn.disabled = false;
+            retryBtn.addEventListener("click", () => location.reload(), {
+              once: true,
+            });
+          }, RESTART_DELAY_MS);
+        }
+      }
+
+      /* ---------------- 게임 시작 ---------------- */
+      document.getElementById("startBtn").onclick = () => {
+        const t = window.t || ((key, vars = {}) => key);
+        const input = participantsInput.value.trim();
+        if (!input) {
+          alert(t("alertNoInput"));
+          return;
+        }
+
+        participants = parseParticipants(input);
+        if (participants.length === 0) {
+          alert(t("alertNoParticipants"));
+          return;
+        }
+
+        canvasContainer.classList.remove("hidden");
+        resultEl.classList.add("hidden");
+        document
+          .getElementById("startBtn")
+          .parentElement.classList.add("hidden");
+
+        initPins();
+        initBalls();
+        finishedBalls = [];
+        cameraY = 0;
+        gameStartTime = Date.now();
+        animate();
+      };
+
+      /* ---------------- 페이지 로드 시 기본값 설정 ---------------- */
+      function updatePlaceholder() {
+        participantsInput.value = generateRandomNames(3);
+      }
+      
+      window.addEventListener("DOMContentLoaded", () => {
+        updatePlaceholder();
+      });
+      
+      // 언어 변경 시 placeholder 업데이트
+      const originalSetLang = window.setLang;
+      if (originalSetLang) {
+        window.setLang = function(lang, options) {
+          originalSetLang(lang, options);
+          setTimeout(updatePlaceholder, 100);
+        };
+      }
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-format="fluid"
+     data-ad-layout-key="-6t+ed+2i-1n-4w"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="7300458753"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="title">동기부여</title>
+
+    <!-- OG -->
+    <meta property="og:title" data-i18n-content="title" content="동기부여" />
+    <meta
+      property="og:description"
+      data-i18n-content="metaDescription"
+      content="괜찮다고 말해주되, 그대로는 두지 않는. 의욕 0에서도 가능한 3분 행동."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Motivation"
+    />
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1204894220949193" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Favicon (inline SVG) -->
+    <link
+      rel="icon"
+      href='data:image/svg+xml;utf8,
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect width="64" height="64" rx="14" fill="%230b1220"/>
+          <path d="M18 33c0-8 6-14 14-14s14 6 14 14" fill="none" stroke="%23ffffff" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="26" cy="28" r="2.4" fill="%23ffffff"/>
+          <circle cx="38" cy="28" r="2.4" fill="%23ffffff"/>
+          <path d="M24 44h16" stroke="%23ffffff" stroke-width="4" stroke-linecap="round"/>
+        </svg>'
+    />
+
+    <style>
+      :root {
+        --bg: #0b1220;
+        --panel: #0f1a2b;
+        --panel2: #0c1524;
+        --text: #eaf0ff;
+        --muted: #a7b3d6;
+        --muted2: #7f8ab0;
+        --line: rgba(255, 255, 255, 0.09);
+        --good: #c7ffd1;
+        --warn: #ffe6a8;
+        --bad: #ffb3b3;
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        --radius: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+        background: radial-gradient(
+            1200px 700px at 20% 10%,
+            rgba(103, 116, 255, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 600px at 90% 30%,
+            rgba(90, 255, 210, 0.1),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.55;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 22px 18px 34px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: linear-gradient(
+          140deg,
+          rgba(255, 255, 255, 0.14),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow);
+        flex: 0 0 auto;
+      }
+      .logo svg {
+        opacity: 0.95;
+      }
+      .brand h1 {
+        font-size: 16px;
+        letter-spacing: -0.2px;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: -0.1px;
+      }
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex: 0 0 auto;
+      }
+      .btn {
+        appearance: none;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 14px;
+        font-size: 13px;
+        letter-spacing: -0.1px;
+        cursor: pointer;
+        transition: transform 0.08s ease, background 0.2s ease, border 0.2s ease;
+        user-select: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn.primary {
+        background: rgba(103, 116, 255, 0.2);
+        border-color: rgba(103, 116, 255, 0.35);
+      }
+      .btn.ghost {
+        background: transparent;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+      }
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .card .hd {
+        padding: 16px 16px 10px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          transparent
+        );
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .card .hd h2 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: -0.2px;
+      }
+      .card .hd .sub {
+        margin-top: 4px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .card .bd {
+        padding: 14px 16px 16px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: -0.1px;
+        white-space: nowrap;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .stack {
+        display: grid;
+        gap: 10px;
+      }
+      .divider {
+        height: 1px;
+        background: var(--line);
+        margin: 8px 0;
+      }
+      .quote {
+        padding: 14px 14px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(15, 26, 43, 0.85),
+          rgba(12, 21, 36, 0.85)
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .quote:before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(
+            600px 240px at 20% 10%,
+            rgba(103, 116, 255, 0.2),
+            transparent 60%
+          ),
+          radial-gradient(
+            480px 220px at 90% 50%,
+            rgba(90, 255, 210, 0.12),
+            transparent 55%
+          );
+        opacity: 0.8;
+        pointer-events: none;
+      }
+      .quote > * {
+        position: relative;
+      }
+      .big {
+        font-size: 18px;
+        letter-spacing: -0.3px;
+        margin: 0 0 8px;
+        line-height: 1.35;
+      }
+      .small {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: -0.1px;
+      }
+      .control {
+        padding: 12px 12px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 8px;
+        letter-spacing: -0.1px;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: #7b87ff;
+      }
+      .range-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        color: var(--muted2);
+        font-size: 12px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        padding: 9px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.2s ease, border 0.2s ease, transform 0.08s ease;
+      }
+      .chip:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+      .chip:active {
+        transform: translateY(1px);
+      }
+      .chip.selected {
+        background: rgba(103, 116, 255, 0.18);
+        border-color: rgba(103, 116, 255, 0.35);
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .timer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 12px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .time {
+        font-size: 22px;
+        letter-spacing: -0.5px;
+        margin: 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .log {
+        display: grid;
+        gap: 8px;
+        max-height: 280px;
+        overflow: auto;
+        padding-right: 4px;
+      }
+      .log::-webkit-scrollbar {
+        width: 8px;
+      }
+      .log::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+      }
+      .item {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 14px;
+        padding: 10px 10px;
+      }
+      .item .t {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 13px;
+        letter-spacing: -0.1px;
+      }
+      .item .d {
+        margin-top: 4px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .kbd {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 2px 7px;
+        border-radius: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      footer {
+        margin-top: 14px;
+        color: var(--muted2);
+        font-size: 12px;
+        letter-spacing: -0.1px;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        background: rgba(12, 21, 36, 0.92);
+        border: 1px solid var(--line);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+        z-index: 999;
+        font-size: 13px;
+        letter-spacing: -0.1px;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-2px);
+      }
+      .hint {
+        padding: 10px 12px;
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--muted);
+        font-size: 12px;
+      }
+      /* 설문 화면 스타일 */
+      .screen {
+        display: none;
+      }
+      .screen.active {
+        display: block;
+      }
+      .landing {
+        text-align: center;
+        padding: 80px 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeIn 0.5s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .landing h1 {
+        font-size: 36px;
+        letter-spacing: -0.5px;
+        margin: 0 0 20px;
+        line-height: 1.3;
+        background: linear-gradient(135deg, #eaf0ff 0%, #a7b3d6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .landing .subtitle {
+        font-size: 20px;
+        color: var(--muted);
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+      .landing .description {
+        font-size: 15px;
+        color: var(--muted2);
+        margin-bottom: 50px;
+        line-height: 1.8;
+      }
+      .btn-large {
+        padding: 16px 32px;
+        font-size: 16px;
+        border-radius: 16px;
+        font-weight: 500;
+        background: rgba(103, 116, 255, 0.25);
+        border-color: rgba(103, 116, 255, 0.4);
+      }
+      .btn-large:hover {
+        background: rgba(103, 116, 255, 0.35);
+        border-color: rgba(103, 116, 255, 0.5);
+        transform: translateY(-2px);
+      }
+      .survey-card {
+        max-width: 700px;
+        margin: 0 auto;
+        animation: fadeIn 0.3s ease;
+      }
+      .survey-progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 0 10px;
+      }
+      .progress-bar {
+        flex: 1;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        margin: 0 15px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, rgba(103, 116, 255, 0.6), rgba(90, 255, 210, 0.6));
+        border-radius: 999px;
+        transition: width 0.3s ease;
+      }
+      .question-number {
+        font-size: 13px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .question-title {
+        font-size: 22px;
+        letter-spacing: -0.3px;
+        margin: 0 0 30px;
+        line-height: 1.4;
+        text-align: center;
+      }
+      .survey-options {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+      .survey-option {
+        padding: 18px 20px;
+        border-radius: 16px;
+        border: 2px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+        font-size: 15px;
+        position: relative;
+      }
+      .survey-option:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+      .survey-option.selected {
+        background: rgba(103, 116, 255, 0.18);
+        border-color: rgba(103, 116, 255, 0.4);
+        box-shadow: 0 4px 12px rgba(103, 116, 255, 0.2);
+      }
+      .survey-option:active {
+        transform: translateY(0);
+      }
+      .survey-nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 30px;
+      }
+      .result-screen {
+        text-align: center;
+        padding: 50px 20px;
+        max-width: 700px;
+        margin: 0 auto;
+        animation: fadeIn 0.5s ease;
+      }
+      .result-emoji {
+        font-size: 80px;
+        margin-bottom: 24px;
+        animation: bounce 0.6s ease;
+      }
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .result-title {
+        font-size: 32px;
+        letter-spacing: -0.4px;
+        margin: 0 0 20px;
+        line-height: 1.3;
+        background: linear-gradient(135deg, #eaf0ff 0%, #a7b3d6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .result-description {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+      .result-actions {
+        display: grid;
+        gap: 12px;
+        margin-top: 40px;
+      }
+      .result-action {
+        padding: 16px 20px;
+        border-radius: 16px;
+        border: 2px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+        font-size: 15px;
+      }
+      .result-action:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .result-action.primary {
+        background: rgba(103, 116, 255, 0.2);
+        border-color: rgba(103, 116, 255, 0.4);
+      }
+      .adsense-block {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      .adsbygoogle {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+      <link rel="canonical" href="https://funnyfunny.cloud/tools/motivate/" />
+  </head>
+  <body>
+    <!-- 시작 화면 -->
+    <div class="screen active" id="landingScreen">
+      <div class="wrap">
+        <div class="landing">
+          <h1 data-i18n="landingTitle">딱정한 위로</h1>
+          <p class="subtitle" data-i18n="landingSubtitle">의욕 0에서도 가능한 3분 행동</p>
+          <p class="description" data-i18n-html="landingDescription">
+            지금 상태를 "그대로" 인정하되, "그대로" 두진 않기<br/>
+            <br/>
+            가벼운 설문으로 나에게 맞는 동기부여 솔루션을 찾아보세요 ✨<br/>
+            <span style="color: var(--muted2); font-size: 13px;">⏱️ 약 2-3분 소요</span>
+          </p>
+          <button class="btn btn-large primary" id="btnStartSurvey" data-i18n="btnStart">
+            시작하기 🚀
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 설문 화면 -->
+    <div class="screen" id="surveyScreen">
+      <div class="wrap">
+        <div class="survey-card card">
+          <div class="bd">
+            <div class="survey-progress">
+              <span class="question-number" id="questionNumber">질문 1/5</span>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+              </div>
+              <span class="question-number" id="questionPercent">20%</span>
+            </div>
+            <h2 class="question-title" id="questionTitle"></h2>
+            <div class="survey-options" id="surveyOptions"></div>
+            <div class="survey-nav">
+              <button class="btn" id="btnPrev" style="display: none;" data-i18n="btnPrev">이전</button>
+              <button class="btn primary" id="btnNext" disabled data-i18n="btnNext">다음</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div class="screen" id="resultScreen">
+      <div class="wrap">
+        <div class="result-screen">
+          <div class="result-emoji" id="resultEmoji"></div>
+          <h1 class="result-title" id="resultTitle"></h1>
+          <p class="result-description" id="resultDescription"></p>
+          <div class="result-actions" id="resultActions"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 메인 화면 (기존) -->
+    <div class="screen" id="mainScreen">
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M7 13c0-3 2.5-5.5 5.5-5.5S18 10 18 13"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M9 17h6"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <circle cx="10" cy="11" r="1" fill="white" />
+              <circle cx="14" cy="11" r="1" fill="white" />
+            </svg>
+          </div>
+          <div style="min-width: 0">
+            <h1 data-i18n="mainTitle">딱정한 위로</h1>
+            <p data-i18n="mainSubtitle">의욕 0에서도 가능한 3분 행동 — 다독이되, 그대로는 두지 않기</p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="lang-switch" style="display: flex; gap: 4px;">
+            <button class="btn ghost" onclick="setLang('ko')" style="padding: 8px 10px; font-size: 12px;">한국어</button>
+            <button class="btn ghost" onclick="setLang('en')" style="padding: 8px 10px; font-size: 12px;">English</button>
+          </div>
+          <button class="btn ghost" id="btnRestartSurvey" data-i18n="btnRestartSurvey">설문 다시하기</button>
+          <a
+            class="btn ghost"
+            href="https://funnyfunny.cloud"
+            target="_blank"
+            rel="noopener"
+            data-i18n="btnViewOtherServices"
+          >
+            다른 서비스 보기
+          </a>
+          <button class="btn" id="btnExport" data-i18n="btnExport">기록 복사</button>
+          <button class="btn primary" id="btnReset" data-i18n="btnReset">초기화</button>
+        </div>
+      </header>
+
+      <div class="grid">
+        <!-- LEFT: main flow -->
+        <section class="card">
+          <div class="hd">
+            <div>
+              <h2 data-i18n="sectionMainTitle">지금 상태를 "그대로" 인정하되, "그대로" 두진 않기</h2>
+              <div class="sub" data-i18n="sectionMainSub">공감 → 현실 한 문장 → 선택권 → 최소 행동</div>
+            </div>
+            <div class="row">
+              <span class="pill" id="modePill">모드: 자동</span>
+              <span class="pill" id="todayPill">오늘: -</span>
+            </div>
+          </div>
+
+          <div class="bd stack">
+            <div class="quote" aria-live="polite">
+              <p class="big" id="mainLine">
+                오늘 의욕이 없지? 이상한 게 아니야.
+              </p>
+              <p class="small" id="subLine">
+                다만, 지금 “아무것도 안 하면” 이 상태는 좋아지지 않아.
+              </p>
+            </div>
+
+            <div class="control">
+              <label for="energy" data-i18n="labelEnergy">현재 의욕/에너지 (0~10)</label>
+              <input id="energy" type="range" min="0" max="10" value="3" />
+              <div class="range-row">
+                <span data-i18n="energyMin">0 (바닥)</span>
+                <span class="mono"><span data-i18n="energyCurrent">현재</span>: <span id="energyVal">3</span></span>
+                <span data-i18n="energyMax">10 (충만)</span>
+              </div>
+            </div>
+
+            <div class="control">
+              <label data-i18n="labelBlockers">오늘의 "막힘"은 뭐에 가까워?</label>
+              <div class="chips" id="blockers">
+                <div class="chip" data-key="tired" data-i18n="blockerTired">피곤함/수면부족</div>
+                <div class="chip" data-key="anxious" data-i18n="blockerAnxious">불안/걱정</div>
+                <div class="chip" data-key="overwhelmed" data-i18n="blockerOverwhelmed">할 일 과다</div>
+                <div class="chip" data-key="avoid" data-i18n="blockerAvoid">회피/미루기</div>
+                <div class="chip" data-key="empty" data-i18n="blockerEmpty">무감각/공허</div>
+                <div class="chip" data-key="pain" data-i18n="blockerPain">몸통증/컨디션</div>
+              </div>
+              <div class="divider"></div>
+              <div class="hint" data-i18n-html="tipBlockers">
+                팁: 이 서비스는 "기분을 좋게 만드는 것"보다,
+                <b>지금 상태에서도 가능한 최소 움직임</b>에 집중해. 의욕이
+                생기면 하는 게 아니라,
+                <b>조금 움직여서 의욕을 따라오게</b> 만드는 방식이야.
+              </div>
+            </div>
+
+            <div class="control">
+              <label data-i18n="labelActions">오늘 "딱 하나" 고르기 (의욕 필요 없는 단위)</label>
+              <div class="chips" id="actions">
+                <div class="chip" data-action="water" data-i18n="actionWater">물 한 컵 마시기</div>
+                <div class="chip" data-action="sit" data-i18n="actionSit">침대에서 일어나 앉기</div>
+                <div class="chip" data-action="title" data-i18n="actionTitle">
+                  할 일 목록 '제목만' 적기
+                </div>
+                <div class="chip" data-action="delete" data-i18n="actionDelete">
+                  안 해도 되는 것 1개 지우기
+                </div>
+                <div class="chip" data-action="shower" data-i18n="actionShower">세수/샤워 '시작'만</div>
+                <div class="chip" data-action="desk" data-i18n="actionDesk">책상 위 3개만 정리</div>
+                <div class="chip" data-action="out" data-i18n="actionOut">현관 밖 30초 서기</div>
+                <div class="chip" data-action="call" data-i18n="actionCall">메시지 1개만 보내기</div>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <button class="btn primary" id="btnGenerate" data-i18n="btnGenerate">
+                  멘트 만들기
+                </button>
+                <button class="btn" id="btnStart3" data-i18n="btnTimer">3분 타이머</button>
+                <button class="btn" id="btnDone" data-i18n="btnDone">했다(체크)</button>
+                <button class="btn" id="btnSkip" data-i18n="btnSkip">오늘은 포기 선언</button>
+              </div>
+            </div>
+
+            <div class="timer" role="region" aria-label="3분 타이머">
+              <div>
+                <p class="time" id="time">03:00</p>
+                <div class="muted" id="timerHint" data-i18n="timerHint">
+                  버튼 누르면 바로 시작. 멈춰도 됨. 중요한 건 "시작" 기록.
+                </div>
+              </div>
+              <div class="row">
+                <button class="btn" id="btnPause" data-i18n="btnPause">일시정지</button>
+                <button class="btn" id="btnStop" data-i18n="btnStop">종료</button>
+              </div>
+            </div>
+
+            <div class="control">
+              <label data-i18n="labelMemo">메모 (선택)</label>
+              <input
+                id="memo"
+                type="text"
+                data-i18n-placeholder="memoPlaceholder"
+                placeholder="예: 3분만 했는데도 좀 덜 무거움 / 그냥 시작이 어려웠음"
+                style="
+                  width: 100%;
+                  padding: 12px 12px;
+                  border-radius: 14px;
+                  border: 1px solid var(--line);
+                  background: rgba(255, 255, 255, 0.03);
+                  color: var(--text);
+                "
+              />
+              <div class="range-row">
+                <span data-i18n="memoHint1">기록은 평가가 아니라 "증거"야</span>
+                <span class="mono"><span class="kbd">Enter</span> <span data-i18n="memoHint2">로 저장</span></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT: logs + guidance -->
+        <aside class="card">
+          <div class="hd">
+            <div>
+              <h2 data-i18n="sectionLogTitle">오늘 기록</h2>
+              <div class="sub" data-i18n="sectionLogSub">
+                잘했는지 못했는지 판단 금지. "했다/시작했다"만 남기기.
+              </div>
+            </div>
+            <span class="pill" id="streakPill">연속: 0일</span>
+          </div>
+          <div class="bd stack">
+            <div class="control">
+              <label data-i18n="labelPrinciples">냉정한 원칙 (서비스 뼈대)</label>
+              <div class="hint" id="principles" data-i18n-html="labelPrinciples">
+                1) 의욕은 전제 조건이 아님<br />
+                2) 감정은 사실로 존중, 행동은 선택으로 결정<br />
+                3) "큰 결심" 금지, "작은 시작"만 허용<br />
+                4) 쉬는 건 회복, 멈춤은 정체 — 구분하기
+              </div>
+            </div>
+
+            <div class="control">
+              <label data-i18n="labelLog">로그</label>
+              <div class="log" id="log"></div>
+              <div class="divider"></div>
+              <div class="row">
+                <button class="btn" id="btnClearLog" data-i18n="btnClearLog">오늘 기록 지우기</button>
+                <button class="btn" id="btnNudge" data-i18n="btnNudge">다음 한 문장</button>
+              </div>
+            </div>
+
+            <div class="control">
+              <label data-i18n="labelSafety">안전 가이드</label>
+              <div class="hint" data-i18n-html="safetyText">
+                이 서비스는 "생활/생산성 코칭" 성격이야. 만약 무기력이 오래
+                지속되거나(예: 수주 이상), 수면/식사/일상 기능이 크게 무너진
+                상태라면, 전문가 도움(상담/진료)을 병행하는 게 더 빠를 수 있어.
+                <br /><br />
+                단, 오늘은 결론 하나: <b>0에서 1만 만들자.</b>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer data-i18n-html="footerText">
+        ⓘ 저장은 이 브라우저(로컬) 안에서만 이루어집니다. (localStorage) ·
+        단축키: <span class="kbd">G</span> 멘트 ·
+        <span class="kbd">T</span> 타이머 · <span class="kbd">D</span> 했다 ·
+        <span class="kbd">N</span> 다음 한 문장
+      </footer>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          // Meta
+          title: "동기부여",
+          metaDescription: "괜찮다고 말해주되, 그대로는 두지 않는. 의욕 0에서도 가능한 3분 행동.",
+          // Landing
+          landingTitle: "동기부여",
+          landingSubtitle: "의욕 0에서도 가능한 3분 행동",
+          landingDescription: "지금 상태를 \"그대로\" 인정하되, \"그대로\" 두진 않기<br/><br/>가벼운 설문으로 나에게 맞는 동기부여 솔루션을 찾아보세요 ✨<br/><span style=\"color: var(--muted2); font-size: 13px;\">⏱️ 약 2-3분 소요</span>",
+          btnStart: "시작하기 🚀",
+          // Survey
+          questionPrefix: "질문",
+          btnPrev: "이전",
+          btnNext: "다음",
+          // Result
+          resultViewAll: "📋 전체 기능 보기",
+          resultComplete: "설문 완료! 잘했어! 🎉",
+          // Main
+          mainTitle: "동기부여",
+          mainSubtitle: "의욕 0에서도 가능한 3분 행동 — 다독이되, 그대로는 두지 않기",
+          btnRestartSurvey: "설문 다시하기",
+          btnViewOtherServices: "다른 서비스 보기",
+          btnExport: "기록 복사",
+          btnReset: "초기화",
+          sectionMainTitle: "지금 상태를 \"그대로\" 인정하되, \"그대로\" 두진 않기",
+          sectionMainSub: "공감 → 현실 한 문장 → 선택권 → 최소 행동",
+          modeLabel: "모드",
+          modeAuto: "자동",
+          todayLabel: "오늘",
+          labelEnergy: "현재 의욕/에너지 (0~10)",
+          energyMin: "0 (바닥)",
+          energyMax: "10 (충만)",
+          energyCurrent: "현재",
+          labelBlockers: "오늘의 \"막힘\"은 뭐에 가까워?",
+          blockerTired: "피곤함/수면부족",
+          blockerAnxious: "불안/걱정",
+          blockerOverwhelmed: "할 일 과다",
+          blockerAvoid: "회피/미루기",
+          blockerEmpty: "무감각/공허",
+          blockerPain: "몸통증/컨디션",
+          tipBlockers: "팁: 이 서비스는 \"기분을 좋게 만드는 것\"보다, <b>지금 상태에서도 가능한 최소 움직임</b>에 집중해. 의욕이 생기면 하는 게 아니라, <b>조금 움직여서 의욕을 따라오게</b> 만드는 방식이야.",
+          labelActions: "오늘 \"딱 하나\" 고르기 (의욕 필요 없는 단위)",
+          actionWater: "물 한 컵 마시기",
+          actionSit: "침대에서 일어나 앉기",
+          actionTitle: "할 일 목록 '제목만' 적기",
+          actionDelete: "안 해도 되는 것 1개 지우기",
+          actionShower: "세수/샤워 '시작'만",
+          actionDesk: "책상 위 3개만 정리",
+          actionOut: "현관 밖 30초 서기",
+          actionCall: "메시지 1개만 보내기",
+          btnGenerate: "멘트 만들기",
+          btnTimer: "3분 타이머",
+          btnDone: "했다(체크)",
+          btnSkip: "오늘은 포기 선언",
+          timerHint: "버튼 누르면 바로 시작. 멈춰도 됨. 중요한 건 \"시작\" 기록.",
+          btnPause: "일시정지",
+          btnResume: "재개",
+          btnStop: "종료",
+          labelMemo: "메모 (선택)",
+          memoPlaceholder: "예: 3분만 했는데도 좀 덜 무거움 / 그냥 시작이 어려웠음",
+          memoHint1: "기록은 평가가 아니라 \"증거\"야",
+          memoHint2: "Enter로 저장",
+          sectionLogTitle: "오늘 기록",
+          sectionLogSub: "잘했는지 못했는지 판단 금지. \"했다/시작했다\"만 남기기.",
+          streakLabel: "연속",
+          streakDays: "일",
+          labelPrinciples: "냉정한 원칙 (서비스 뼈대)",
+          principle1: "1) 의욕은 전제 조건이 아님",
+          principle2: "2) 감정은 사실로 존중, 행동은 선택으로 결정",
+          principle3: "3) \"큰 결심\" 금지, \"작은 시작\"만 허용",
+          principle4: "4) 쉬는 건 회복, 멈춤은 정체 — 구분하기",
+          labelLog: "로그",
+          btnClearLog: "오늘 기록 지우기",
+          btnNudge: "다음 한 문장",
+          labelSafety: "안전 가이드",
+          safetyText: "이 서비스는 \"생활/생산성 코칭\" 성격이야. 만약 무기력이 오래 지속되거나(예: 수주 이상), 수면/식사/일상 기능이 크게 무너진 상태라면, 전문가 도움(상담/진료)을 병행하는 게 더 빠를 수 있어.<br/><br/>단, 오늘은 결론 하나: <b>0에서 1만 만들자.</b>",
+          footerText: "ⓘ 저장은 이 브라우저(로컬) 안에서만 이루어집니다. (localStorage) · 단축키: <span class=\"kbd\">G</span> 멘트 · <span class=\"kbd\">T</span> 타이머 · <span class=\"kbd\">D</span> 했다 · <span class=\"kbd\">N</span> 다음 한 문장",
+          // Toasts
+          toastCopied: "기록을 복사했어",
+          toastMemoSaved: "메모 저장",
+          toastMentionGenerated: "멘트 생성",
+          toastTimerStart: "3분 시작",
+          toastTimerEnd: "3분 끝. 여기서 멈춰도 돼.",
+          toastTimerStop: "타이머 종료",
+          toastDone: "좋아. 오늘은 여기까지로 충분해.",
+          toastSkip: "포기 선언 기록",
+          toastLogCleared: "오늘 기록 삭제",
+          toastReset: "초기화 완료",
+          toastNudge: "다음 한 문장",
+          toastSelectAction: "먼저 '딱 하나'를 고르자",
+          toastSelectActionForTimer: "먼저 행동을 선택해주세요",
+          toastStartTimer: "먼저 타이머를 시작해",
+          toastConfirmRestart: "설문을 다시 시작할까요? 현재 진행 상황은 저장됩니다.",
+          // Survey questions
+          surveyQ1: "지금 기분이 어때?",
+          surveyQ2: "지금 에너지 레벨은?",
+          surveyQ3: "지금 가장 막히는 건 뭐야?",
+          surveyQ4: "지금 할 수 있는 가장 작은 행동은?",
+          surveyQ5: "오늘 목표는?",
+          // Survey options
+          surveyOpt1_1: "완전히 무기력해 😴",
+          surveyOpt1_2: "피곤하고 지쳐 💤",
+          surveyOpt1_3: "불안하고 걱정돼 😰",
+          surveyOpt1_4: "할 일이 너무 많아 📋",
+          surveyOpt1_5: "그냥 미루고 싶어 🫠",
+          surveyOpt1_6: "괜찮아, 그냥 시작이 어려워 🤷",
+          surveyOpt2_1: "0 - 완전히 바닥 🔋",
+          surveyOpt2_2: "1-2 - 거의 없음 🔋",
+          surveyOpt2_3: "3-4 - 조금 있음 🔋",
+          surveyOpt2_4: "5-6 - 보통 🔋",
+          surveyOpt2_5: "7-8 - 괜찮음 🔋",
+          surveyOpt2_6: "9-10 - 충만함 🔋",
+          surveyOpt3_1: "시작 자체가 어려워 🚪",
+          surveyOpt3_2: "할 일이 너무 많아서 압도돼 📚",
+          surveyOpt3_3: "완벽하게 해야 한다는 압박 ⚡",
+          surveyOpt3_4: "의욕이 전혀 없어 💭",
+          surveyOpt3_5: "뭘 해야 할지 모르겠어 ❓",
+          surveyOpt3_6: "그냥 피하고 싶어 🏃",
+          surveyOpt4_1: "💧 물 한 컵 마시기",
+          surveyOpt4_2: "🪑 침대에서 일어나 앉기",
+          surveyOpt4_3: "📝 할 일 목록 제목만 적기",
+          surveyOpt4_4: "🗑️ 안 해도 되는 것 1개 지우기",
+          surveyOpt4_5: "🚿 세수/샤워 시작만",
+          surveyOpt4_6: "📦 책상 위 3개만 정리",
+          surveyOpt4_7: "🌬️ 현관 밖 30초 서기",
+          surveyOpt4_8: "💬 메시지 1개만 보내기",
+          surveyOpt5_1: "그냥 시작만 하면 돼 ✨",
+          surveyOpt5_2: "3분만 하면 돼 ⏱️",
+          surveyOpt5_3: "하나만 완료하면 돼 ✅",
+          surveyOpt5_4: "기록만 남기면 돼 📝",
+          // Result types
+          resultEmptyTitle: "새싹 타입",
+          resultEmptyDesc: "완전히 무기력한 지금도 괜찮아. 이상한 게 아니야! 🌱 하지만 작은 움직임 하나로 시작할 수 있어. 지금 바로 해볼까?",
+          resultTiredTitle: "회복 타입",
+          resultTiredDesc: "피곤하고 지친 지금도 이해해. 하지만 가장 가벼운 움직임부터 시작해보자. 무리하지 말고, 딱 하나만! 💪",
+          resultAnxiousTitle: "안정 타입",
+          resultAnxiousDesc: "불안하고 걱정되는 마음, 인정해. 하지만 작은 행동 하나가 그 감정을 조금씩 풀어줄 거야. 함께 해볼까? 🤝",
+          resultOverwhelmedTitle: "정리 타입",
+          resultOverwhelmedDesc: "할 일이 많아서 압도되는 느낌이지? 그럴수록 작게 나누고, 하나씩만 시작하자. 완벽하지 않아도 돼! ✨",
+          resultAvoidTitle: "시작 타입",
+          resultAvoidDesc: "미루고 싶은 마음도 이해해. 하지만 딱 3분만 하면 돼. 그 이상은 욕심이야. 지금 바로 시작해볼까? 🚀",
+          resultOkTitle: "준비 타입",
+          resultOkDesc: "괜찮은 상태에서 시작이 어려운 거라면, 이제 바로 시작할 수 있어! 지금이 바로 시작할 때야! 💫",
+          // Log types
+          logGenerate: "멘트",
+          logTimerStart: "타이머 시작",
+          logTimerDone: "타이머 완료",
+          logDone: "했다(체크)",
+          logSkip: "포기 선언",
+          logMemo: "메모 저장",
+          logAction: "행동",
+          logBlockers: "막힘",
+          logMemoLabel: "메모",
+          logEmpty: "아직 기록이 없어. 괜찮아.<br/>버튼 하나만 눌러도 '시작'이야.",
+          // Export
+          exportHeader: "[동기부여]",
+          exportEnergy: "에너지",
+          exportBlockers: "막힘",
+          exportAction: "오늘의 하나",
+          exportMemo: "메모",
+          exportLog: "로그",
+          exportNotSelected: "미선택",
+          // Mode labels
+          modeSoft: "부드럽게",
+          modeBalanced: "균형",
+          modeCold: "냉정",
+          // Dynamic messages - validate
+          msgValidateSoft1: "오늘 의욕이 없지? 이상한 게 아니야.",
+          msgValidateSoft2: "지금 무기력한 건 '게으름'이 아니라, 신호일 때가 많아.",
+          msgValidateSoft3: "지금 상태에서 버티는 것 자체가 이미 쉽지 않아.",
+          msgValidateBalanced1: "의욕이 바닥이면, 그건 그냥 현재 상태야. 죄가 아니야.",
+          msgValidateBalanced2: "지금 힘든 건 인정할게. 그런데 그게 결론은 아니야.",
+          msgValidateBalanced3: "무기력은 흔해. 다만 방치하면 습관이 돼.",
+          msgValidateCold1: "의욕이 없다는 사실은 인정. 그런데 그걸 핑계로 쓰면 끝이야.",
+          msgValidateCold2: "지금이 힘든 건 사실. 하지만 가만히 있으면 더 힘들어져.",
+          msgValidateCold3: "지금 상태는 '출발선'이지 '면제권'이 아니야.",
+          // Dynamic messages - cold fact
+          msgColdSoft1: "다만, 오늘도 아무것도 안 하면 내일도 비슷해질 확률이 높아.",
+          msgColdSoft2: "조금만 움직이면, 감정이 아니라 '몸'이 먼저 따라와줄 때가 있어.",
+          msgColdSoft3: "완벽은 필요 없고, 정체만 피하자.",
+          msgColdBalanced1: "쉬는 건 회복이지만, 멈춰있으면 정체야.",
+          msgColdBalanced2: "의욕이 생겨서 하는 게 아니라, 하다 보면 의욕이 붙는 쪽이 현실이야.",
+          msgColdBalanced3: "큰 결심 없이도 0에서 1은 만들 수 있어.",
+          msgColdHard1: "지금 아무것도 안 하면, 이 상태는 더 굳어져.",
+          msgColdHard2: "오늘 3분을 못 내면, 내일도 3분이 못 나와.",
+          msgColdHard3: "감정은 존중하되, 행동은 네가 결정해야 해.",
+          // Dynamic messages - choice
+          msgChoiceSoft1: "지금 당장 열심히 하라는 말 안 할게.",
+          msgChoiceSoft2: "오늘은 '잘함' 말고 '시작함'만 목표로 하자.",
+          msgChoiceSoft3: "선택권 줄게. 지금 바로 3분만 할래, 아니면 30초만 할래?",
+          msgChoiceBalanced1: "강요 안 해. 대신 선택은 하자: '아예 안 함' vs '딱 하나 시작'.",
+          msgChoiceBalanced2: "오늘의 목표는 성과가 아니라 증거야. 했다는 증거.",
+          msgChoiceBalanced3: "지금부터 3분. 끝나면 그만해도 돼.",
+          msgChoiceHard1: "핑계는 여기까지. 선택해: 3분 하거나, 오늘 포기 선언하고 내일 계획 세워.",
+          msgChoiceHard2: "오늘은 딱 하나만 한다. 그 이상은 욕심이야.",
+          msgChoiceHard3: "지금 안 하면, 오늘은 그냥 흘려보낸 거야.",
+          // Dynamic messages - action
+          msgAction1: "오늘의 하나는 \"{action}\". 의욕은 필요 없어. 시작만 해.",
+          msgAction2: "\"{action}\"만 하자. 잘하는 게 아니라, 하는 게 목표야.",
+          msgAction3: "지금 {action}로 0→1 만들자. 딱 3분이면 돼.",
+          msgActionDefault: "오늘의 '딱 하나'를 고르자. (물/앉기/제목만/지우기 중 아무거나)",
+          // Dynamic messages - blocker hints
+          msgBlockerTired: "피곤하면 더더욱 '생각' 말고 '동작'으로 가자.",
+          msgBlockerAnxious: "불안할수록 계획을 키우지 말고, 행동을 줄이자.",
+          msgBlockerOverwhelmed: "할 일이 많으면 '우선순위'가 아니라 '삭제'부터야.",
+          msgBlockerAvoid: "미루고 싶으면 목표를 낮춰. 3분이면 도망도 아니고 성취도 아니야.",
+          msgBlockerEmpty: "공허할수록 감정 분석 말고, 감각(물/세수/바깥 공기)부터.",
+          msgBlockerPain: "통증 있으면 무리 금지. 대신 가장 가벼운 동작으로 '시작'만.",
+          msgBlockerDefault: "지금은 분석보다 '한 번의 시작'이 더 효과적일 때가 있어.",
+          // Nudges
+          nudge1: "오늘의 목표는 '잘함'이 아니라 '시작함'이야.",
+          nudge2: "의욕이 없으면, 목표를 낮추는 게 아니라 '단위를 자르는' 거야.",
+          nudge3: "3분은 인생을 바꾸기엔 작고, 무너짐을 막기엔 충분히 커.",
+          nudge4: "지금 필요한 건 해답이 아니라 증거야. 했다는 증거.",
+          nudge5: "쉬는 건 회복. 그런데 오늘은 0에서 1만 만들고 쉬자.",
+          nudge6: "완벽주의는 오늘 출입 금지. 시작만 허용.",
+          nudge7: "감정은 날씨고, 행동은 우산이야. 우산부터 펴.",
+          nudgeSubline: "지금 당장 3분만. 멈춰도 돼. 중요한 건 '시작' 기록.",
+        },
+        en: {
+          // Meta
+          title: "Motivation",
+          metaDescription: "Acknowledge as is, but don't leave it as is. 3-minute actions possible even at motivation 0.",
+          // Landing
+          landingTitle: "Motivation",
+          landingSubtitle: "3-minute actions possible even at motivation 0",
+          landingDescription: "Acknowledge your current state \"as is\", but don't leave it \"as is\"<br/><br/>Find your motivation solution through a quick survey ✨<br/><span style=\"color: var(--muted2); font-size: 13px;\">⏱️ Takes about 2-3 minutes</span>",
+          btnStart: "Get Started 🚀",
+          // Survey
+          questionPrefix: "Question",
+          btnPrev: "Previous",
+          btnNext: "Next",
+          // Result
+          resultViewAll: "📋 View All Features",
+          resultComplete: "Survey complete! Well done! 🎉",
+          // Main
+          mainTitle: "Motivation",
+          mainSubtitle: "3-minute actions possible even at motivation 0 — comfort but don't leave as is",
+          btnRestartSurvey: "Restart Survey",
+          btnViewOtherServices: "Other Services",
+          btnExport: "Copy Log",
+          btnReset: "Reset",
+          sectionMainTitle: "Acknowledge your current state \"as is\", but don't leave it \"as is\"",
+          sectionMainSub: "Empathy → One reality sentence → Choice → Minimum action",
+          modeLabel: "Mode",
+          modeAuto: "Auto",
+          todayLabel: "Today",
+          labelEnergy: "Current motivation/energy (0~10)",
+          energyMin: "0 (Bottom)",
+          energyMax: "10 (Full)",
+          energyCurrent: "Current",
+          labelBlockers: "What's blocking you today?",
+          blockerTired: "Tiredness/Lack of sleep",
+          blockerAnxious: "Anxiety/Worry",
+          blockerOverwhelmed: "Too many tasks",
+          blockerAvoid: "Avoidance/Procrastination",
+          blockerEmpty: "Numbness/Emptiness",
+          blockerPain: "Body pain/Condition",
+          tipBlockers: "Tip: This service focuses on <b>minimum movement possible even in your current state</b> rather than \"making you feel good\". It's not about doing when you feel motivated, but <b>moving a little to make motivation follow</b>.",
+          labelActions: "Choose \"just one\" for today (no motivation required)",
+          actionWater: "Drink one glass of water",
+          actionSit: "Get up from bed and sit",
+          actionTitle: "Write only titles for to-do list",
+          actionDelete: "Delete 1 thing you don't need to do",
+          actionShower: "Just start washing face/shower",
+          actionDesk: "Organize only 3 things on desk",
+          actionOut: "Stand outside door for 30 seconds",
+          actionCall: "Send just 1 message",
+          btnGenerate: "Generate Message",
+          btnTimer: "3-minute Timer",
+          btnDone: "Done (Check)",
+          btnSkip: "Give up for today",
+          timerHint: "Click button to start. You can pause. What matters is the \"start\" record.",
+          btnPause: "Pause",
+          btnResume: "Resume",
+          btnStop: "Stop",
+          labelMemo: "Memo (Optional)",
+          memoPlaceholder: "e.g., Felt less heavy even after just 3 minutes / Just hard to start",
+          memoHint1: "Records are evidence, not evaluation",
+          memoHint2: "Press Enter to save",
+          sectionLogTitle: "Today's Log",
+          sectionLogSub: "No judging good or bad. Just record \"did it/started it\".",
+          streakLabel: "Streak",
+          streakDays: "days",
+          labelPrinciples: "Cold Principles (Service Core)",
+          principle1: "1) Motivation is not a prerequisite",
+          principle2: "2) Emotions are respected as facts, actions are decided as choices",
+          principle3: "3) No \"big decisions\", only \"small starts\" allowed",
+          principle4: "4) Rest is recovery, stopping is stagnation — distinguish",
+          labelLog: "Log",
+          btnClearLog: "Clear Today's Log",
+          btnNudge: "Next One Sentence",
+          labelSafety: "Safety Guide",
+          safetyText: "This service is \"lifestyle/productivity coaching\" in nature. If lethargy persists for a long time (e.g., weeks) or sleep/meals/daily functions are significantly disrupted, it may be faster to seek professional help (counseling/medical care) in parallel.<br/><br/>But today, one conclusion: <b>Just make 0 to 1.</b>",
+          footerText: "ⓘ Storage is only within this browser (local). (localStorage) · Shortcuts: <span class=\"kbd\">G</span> Message · <span class=\"kbd\">T</span> Timer · <span class=\"kbd\">D</span> Done · <span class=\"kbd\">N</span> Next One Sentence",
+          // Toasts
+          toastCopied: "Log copied",
+          toastMemoSaved: "Memo saved",
+          toastMentionGenerated: "Message generated",
+          toastTimerStart: "3 minutes started",
+          toastTimerEnd: "3 minutes done. You can stop here.",
+          toastTimerStop: "Timer stopped",
+          toastDone: "Good. That's enough for today.",
+          toastSkip: "Give up recorded",
+          toastLogCleared: "Today's log cleared",
+          toastReset: "Reset complete",
+          toastNudge: "Next one sentence",
+          toastSelectAction: "First, choose 'just one'",
+          toastSelectActionForTimer: "Please select an action first",
+          toastStartTimer: "Start the timer first",
+          toastConfirmRestart: "Restart the survey? Current progress will be saved.",
+          // Survey questions
+          surveyQ1: "How are you feeling now?",
+          surveyQ2: "What's your energy level now?",
+          surveyQ3: "What's blocking you most right now?",
+          surveyQ4: "What's the smallest action you can do now?",
+          surveyQ5: "What's your goal for today?",
+          // Survey options
+          surveyOpt1_1: "Completely lethargic 😴",
+          surveyOpt1_2: "Tired and exhausted 💤",
+          surveyOpt1_3: "Anxious and worried 😰",
+          surveyOpt1_4: "Too many things to do 📋",
+          surveyOpt1_5: "Just want to procrastinate 🫠",
+          surveyOpt1_6: "I'm okay, just hard to start 🤷",
+          surveyOpt2_1: "0 - Completely bottom 🔋",
+          surveyOpt2_2: "1-2 - Almost none 🔋",
+          surveyOpt2_3: "3-4 - A little 🔋",
+          surveyOpt2_4: "5-6 - Average 🔋",
+          surveyOpt2_5: "7-8 - Okay 🔋",
+          surveyOpt2_6: "9-10 - Full 🔋",
+          surveyOpt3_1: "Starting itself is hard 🚪",
+          surveyOpt3_2: "Overwhelmed by too many tasks 📚",
+          surveyOpt3_3: "Pressure to do it perfectly ⚡",
+          surveyOpt3_4: "No motivation at all 💭",
+          surveyOpt3_5: "Don't know what to do ❓",
+          surveyOpt3_6: "Just want to avoid 🏃",
+          surveyOpt4_1: "💧 Drink one glass of water",
+          surveyOpt4_2: "🪑 Get up from bed and sit",
+          surveyOpt4_3: "📝 Write only titles for to-do list",
+          surveyOpt4_4: "🗑️ Delete 1 thing you don't need to do",
+          surveyOpt4_5: "🚿 Just start washing face/shower",
+          surveyOpt4_6: "📦 Organize only 3 things on desk",
+          surveyOpt4_7: "🌬️ Stand outside door for 30 seconds",
+          surveyOpt4_8: "💬 Send just 1 message",
+          surveyOpt5_1: "Just start ✨",
+          surveyOpt5_2: "Just 3 minutes ⏱️",
+          surveyOpt5_3: "Complete just one ✅",
+          surveyOpt5_4: "Just leave a record 📝",
+          // Result types
+          resultEmptyTitle: "Sprout Type",
+          resultEmptyDesc: "It's okay to be completely lethargic right now. It's not strange! 🌱 But you can start with one small movement. Want to try now?",
+          resultTiredTitle: "Recovery Type",
+          resultTiredDesc: "I understand you're tired and exhausted now. But let's start with the lightest movement. Don't push yourself, just one! 💪",
+          resultAnxiousTitle: "Stability Type",
+          resultAnxiousDesc: "I acknowledge your anxious and worried feelings. But one small action will gradually ease those feelings. Shall we try together? 🤝",
+          resultOverwhelmedTitle: "Organize Type",
+          resultOverwhelmedDesc: "Feeling overwhelmed by too many tasks? The more so, let's break it down small and start one at a time. It doesn't have to be perfect! ✨",
+          resultAvoidTitle: "Start Type",
+          resultAvoidDesc: "I understand wanting to procrastinate. But just 3 minutes is enough. Anything more is greed. Want to start right now? 🚀",
+          resultOkTitle: "Ready Type",
+          resultOkDesc: "If you're okay but just hard to start, you can start right now! Now is the time to start! 💫",
+          // Log types
+          logGenerate: "Message",
+          logTimerStart: "Timer start",
+          logTimerDone: "Timer done",
+          logDone: "Done (Check)",
+          logSkip: "Give up",
+          logMemo: "Memo saved",
+          logAction: "Action",
+          logBlockers: "Blockers",
+          logMemoLabel: "Memo",
+          logEmpty: "No records yet. It's okay.<br/>Just pressing one button is a 'start'.",
+          // Export
+          exportHeader: "[Motivation]",
+          exportEnergy: "Energy",
+          exportBlockers: "Blockers",
+          exportAction: "Today's One",
+          exportMemo: "Memo",
+          exportLog: "Log",
+          exportNotSelected: "Not selected",
+          // Mode labels
+          modeSoft: "Gentle",
+          modeBalanced: "Balanced",
+          modeCold: "Cold",
+          // Dynamic messages - validate
+          msgValidateSoft1: "No motivation today? That's not strange.",
+          msgValidateSoft2: "Being lethargic now is often a signal, not 'laziness'.",
+          msgValidateSoft3: "Just holding on in this state is already not easy.",
+          msgValidateBalanced1: "If motivation is at the bottom, that's just the current state. It's not a sin.",
+          msgValidateBalanced2: "I acknowledge it's hard now. But that's not the conclusion.",
+          msgValidateBalanced3: "Lethargy is common. But if left unchecked, it becomes a habit.",
+          msgValidateCold1: "I acknowledge you have no motivation. But if you use it as an excuse, that's it.",
+          msgValidateCold2: "It's true it's hard now. But if you stay still, it gets harder.",
+          msgValidateCold3: "Your current state is a 'starting line', not a 'free pass'.",
+          // Dynamic messages - cold fact
+          msgColdSoft1: "However, if you do nothing today too, tomorrow will likely be similar.",
+          msgColdSoft2: "If you move just a little, sometimes your 'body' follows before your emotions.",
+          msgColdSoft3: "Perfection isn't needed, just avoid stagnation.",
+          msgColdBalanced1: "Rest is recovery, but staying still is stagnation.",
+          msgColdBalanced2: "The reality is that motivation doesn't come first, it follows after you start.",
+          msgColdBalanced3: "You can make 0 to 1 without big decisions.",
+          msgColdHard1: "If you do nothing now, this state will harden further.",
+          msgColdHard2: "If you can't spare 3 minutes today, you won't be able to tomorrow either.",
+          msgColdHard3: "Respect emotions, but you decide the actions.",
+          // Dynamic messages - choice
+          msgChoiceSoft1: "I won't tell you to work hard right now.",
+          msgChoiceSoft2: "Today, let's aim for 'starting' not 'doing well'.",
+          msgChoiceSoft3: "I'll give you a choice. Do you want to do just 3 minutes right now, or just 30 seconds?",
+          msgChoiceBalanced1: "I won't force you. But let's make a choice: 'Do nothing' vs 'Start just one'.",
+          msgChoiceBalanced2: "Today's goal is evidence, not achievement. Evidence that you did it.",
+          msgChoiceBalanced3: "3 minutes from now. You can stop when it's done.",
+          msgChoiceHard1: "No more excuses. Choose: Do 3 minutes, or declare giving up today and plan for tomorrow.",
+          msgChoiceHard2: "Today, do just one. Anything more is greed.",
+          msgChoiceHard3: "If you don't do it now, today will just pass by.",
+          // Dynamic messages - action
+          msgAction1: "Today's one is \"{action}\". No motivation needed. Just start.",
+          msgAction2: "Let's just do \"{action}\". The goal isn't doing it well, it's doing it.",
+          msgAction3: "Let's make 0→1 with {action} now. Just 3 minutes is enough.",
+          msgActionDefault: "Let's choose today's 'just one'. (Water/sit/title only/delete - anything)",
+          // Dynamic messages - blocker hints
+          msgBlockerTired: "The more tired you are, the more you should go with 'movement' not 'thinking'.",
+          msgBlockerAnxious: "The more anxious you are, don't expand plans, reduce actions.",
+          msgBlockerOverwhelmed: "If you have too many tasks, it's not about 'priority' but 'deletion' first.",
+          msgBlockerAvoid: "If you want to procrastinate, lower your goal. 3 minutes is neither running away nor achievement.",
+          msgBlockerEmpty: "The more empty you feel, don't analyze emotions, start with sensations (water/washing face/outside air).",
+          msgBlockerPain: "If you have pain, no pushing. Instead, just 'start' with the lightest movement.",
+          msgBlockerDefault: "Sometimes, 'one start' is more effective than analysis right now.",
+          // Nudges
+          nudge1: "Today's goal is 'starting' not 'doing well'.",
+          nudge2: "If you have no motivation, it's not about lowering goals but 'cutting units'.",
+          nudge3: "3 minutes is too small to change life, but big enough to prevent collapse.",
+          nudge4: "What you need now is evidence, not answers. Evidence that you did it.",
+          nudge5: "Rest is recovery. But today, let's make 0 to 1 and then rest.",
+          nudge6: "Perfectionism is banned today. Only starting is allowed.",
+          nudge7: "Emotions are weather, actions are umbrellas. Open the umbrella first.",
+          nudgeSubline: "Just 3 minutes right now. You can stop. What matters is the 'start' record.",
+        }
+      };
+
+      let currentLang = "ko";
+      const defaultLang = "ko";
+
+      function detectLang() {
+        if (typeof window === "undefined") return defaultLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (stored && (stored === "ko" || stored === "en")) return stored;
+        const browserLang = navigator.language || navigator.userLanguage || "";
+        if (browserLang.toLowerCase().startsWith("ko")) return "ko";
+        return "en";
+      }
+
+      function t(key, vars = {}) {
+        const text = translations[currentLang]?.[key] || translations[defaultLang]?.[key] || key;
+        if (typeof text !== "string") return text;
+        return text.replace(/\{(\w+)\}/g, (_, k) => (vars[k] !== undefined ? vars[k] : `{${k}}`));
+      }
+
+      function applyTranslations() {
+        document.documentElement.lang = currentLang;
+        document.title = t("title");
+        const metaDesc = document.querySelector('meta[property="og:description"]');
+        if (metaDesc) metaDesc.setAttribute("content", t("metaDescription"));
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        if (lang !== "ko" && lang !== "en") return;
+        currentLang = lang;
+        localStorage.setItem("preferredLang", lang);
+        applyTranslations();
+        // Re-render dynamic content
+        if (state.currentScreen === "main") {
+          restoreSelections();
+          const lines = buildLines();
+          applyLines(lines);
+          renderLog();
+          renderStreak();
+          renderToday();
+        } else if (state.currentScreen === "survey") {
+          renderQuestion();
+        } else if (state.currentScreen === "result") {
+          showResult();
+        } else if (state.currentScreen === "landing") {
+          // Landing screen updates handled by applyTranslations
+        }
+      }
+
+      // =========================
+      // State & helpers
+      // =========================
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      const LS_KEY = "strict_comfort_v1";
+      const todayKey = () => new Date().toISOString().slice(0, 10);
+
+      // 설문 질문들
+      function getSurveyQuestions() {
+        return [
+          {
+            question: t("surveyQ1"),
+            options: [
+              { text: t("surveyOpt1_1"), value: "empty", energy: 1 },
+              { text: t("surveyOpt1_2"), value: "tired", energy: 2 },
+              { text: t("surveyOpt1_3"), value: "anxious", energy: 3 },
+              { text: t("surveyOpt1_4"), value: "overwhelmed", energy: 4 },
+              { text: t("surveyOpt1_5"), value: "avoid", energy: 3 },
+              { text: t("surveyOpt1_6"), value: "ok", energy: 5 },
+            ]
+          },
+          {
+            question: t("surveyQ2"),
+            options: [
+              { text: t("surveyOpt2_1"), value: 0 },
+              { text: t("surveyOpt2_2"), value: 1 },
+              { text: t("surveyOpt2_3"), value: 3 },
+              { text: t("surveyOpt2_4"), value: 5 },
+              { text: t("surveyOpt2_5"), value: 7 },
+              { text: t("surveyOpt2_6"), value: 9 },
+            ]
+          },
+          {
+            question: t("surveyQ3"),
+            options: [
+              { text: t("surveyOpt3_1"), value: "start" },
+              { text: t("surveyOpt3_2"), value: "overwhelmed" },
+              { text: t("surveyOpt3_3"), value: "perfection" },
+              { text: t("surveyOpt3_4"), value: "motivation" },
+              { text: t("surveyOpt3_5"), value: "direction" },
+              { text: t("surveyOpt3_6"), value: "avoid" },
+            ]
+          },
+          {
+            question: t("surveyQ4"),
+            options: [
+              { text: t("surveyOpt4_1"), value: "water" },
+              { text: t("surveyOpt4_2"), value: "sit" },
+              { text: t("surveyOpt4_3"), value: "title" },
+              { text: t("surveyOpt4_4"), value: "delete" },
+              { text: t("surveyOpt4_5"), value: "shower" },
+              { text: t("surveyOpt4_6"), value: "desk" },
+              { text: t("surveyOpt4_7"), value: "out" },
+              { text: t("surveyOpt4_8"), value: "call" },
+            ]
+          },
+          {
+            question: t("surveyQ5"),
+            options: [
+              { text: t("surveyOpt5_1"), value: "start" },
+              { text: t("surveyOpt5_2"), value: "3min" },
+              { text: t("surveyOpt5_3"), value: "one" },
+              { text: t("surveyOpt5_4"), value: "record" },
+            ]
+          }
+        ];
+      }
+
+      // 결과 타입별 메시지
+      function getResultTypes() {
+        return {
+          empty: {
+            emoji: "🌱",
+            title: t("resultEmptyTitle"),
+            description: t("resultEmptyDesc"),
+            actions: [
+              { text: t("surveyOpt4_1"), action: "water", message: currentLang === "ko" ? "좋아! 가장 작은 움직임부터 시작했어. 이제 조금 더 가볍지 않아?" : "Good! You started with the smallest movement. Don't you feel a bit lighter now?" },
+              { text: t("surveyOpt4_2"), action: "sit", message: currentLang === "ko" ? "완벽해! 일어나 앉는 것만으로도 충분한 시작이야. 잘하고 있어!" : "Perfect! Just getting up and sitting is enough of a start. You're doing great!" },
+            ]
+          },
+          tired: {
+            emoji: "💤",
+            title: t("resultTiredTitle"),
+            description: t("resultTiredDesc"),
+            actions: [
+              { text: t("surveyOpt4_7"), action: "out", message: currentLang === "ko" ? "바깥 공기만 마셔도 몸이 깨어날 수 있어. 잘했어!" : "Just breathing outside air can wake up your body. Well done!" },
+              { text: t("surveyOpt4_5"), action: "shower", message: currentLang === "ko" ? "물에 손만 대도 기분이 전환될 수 있어. 시작이 중요해!" : "Just touching water can shift your mood. Starting is what matters!" },
+            ]
+          },
+          anxious: {
+            emoji: "🫂",
+            title: t("resultAnxiousTitle"),
+            description: t("resultAnxiousDesc"),
+            actions: [
+              { text: t("surveyOpt4_3"), action: "title", message: currentLang === "ko" ? "머릿속 걱정을 종이에 옮기면 조금 가벼워져. 잘하고 있어!" : "Moving worries from your head to paper can lighten them. You're doing great!" },
+              { text: t("surveyOpt4_4"), action: "delete", message: currentLang === "ko" ? "부담을 줄이는 것도 중요한 행동이야. 멋져!" : "Reducing burden is also an important action. Awesome!" },
+            ]
+          },
+          overwhelmed: {
+            emoji: "📋",
+            title: t("resultOverwhelmedTitle"),
+            description: t("resultOverwhelmedDesc"),
+            actions: [
+              { text: t("surveyOpt4_4"), action: "delete", message: currentLang === "ko" ? "할 일을 줄이는 것도 중요한 행동이야. 잘했어!" : "Reducing tasks is also an important action. Well done!" },
+              { text: t("surveyOpt4_6"), action: "desk", message: currentLang === "ko" ? "작은 공간부터 정리하면 마음도 정리돼. 멋져!" : "Organizing a small space can organize your mind too. Awesome!" },
+            ]
+          },
+          avoid: {
+            emoji: "🎯",
+            title: t("resultAvoidTitle"),
+            description: t("resultAvoidDesc"),
+            actions: [
+              { text: t("surveyOpt4_8"), action: "call", message: currentLang === "ko" ? "가장 작은 소통부터 시작했어. 잘하고 있어!" : "You started with the smallest communication. You're doing great!" },
+              { text: t("surveyOpt4_3"), action: "title", message: currentLang === "ko" ? "완벽하게 적을 필요 없어. 제목만 적으면 돼. 멋져!" : "No need to write perfectly. Just write titles. Awesome!" },
+            ]
+          },
+          ok: {
+            emoji: "✨",
+            title: t("resultOkTitle"),
+            description: t("resultOkDesc"),
+            actions: [
+              { text: currentLang === "ko" ? "⏱️ 3분 타이머 시작" : "⏱️ Start 3-minute timer", action: "timer", message: currentLang === "ko" ? "지금 바로 3분만 해보자. 끝나면 그만해도 돼. 시작이 중요해!" : "Let's do just 3 minutes right now. You can stop when it's done. Starting is what matters!" },
+              { text: currentLang === "ko" ? "🎯 가장 작은 행동부터" : "🎯 Start with smallest action", action: "any", message: currentLang === "ko" ? "어떤 작은 행동이든 좋아. 시작만 하면 돼. 잘하고 있어!" : "Any small action is good. Just start. You're doing great!" },
+            ]
+          }
+        };
+      }
+
+      const state = {
+        currentScreen: "landing",
+        surveyAnswers: [],
+        currentQuestionIndex: 0,
+        energy: 3,
+        blockers: new Set(),
+        action: null,
+        memo: "",
+        logsByDay: {}, // { "YYYY-MM-DD": [ {ts, type, action, energy, blockers, memo} ] }
+        streak: 0,
+        lastDayDone: null,
+        timer: {
+          running: false,
+          remaining: 180,
+          interval: null,
+          startedAt: null,
+        },
+      };
+
+      function getActionLabel(key) {
+        const map = {
+          water: t("actionWater"),
+          sit: t("actionSit"),
+          title: t("actionTitle"),
+          delete: t("actionDelete"),
+          shower: t("actionShower"),
+          desk: t("actionDesk"),
+          out: t("actionOut"),
+          call: t("actionCall"),
+        };
+        return map[key] || key;
+      }
+
+      function getBlockerLabel(key) {
+        const map = {
+          tired: t("blockerTired"),
+          anxious: t("blockerAnxious"),
+          overwhelmed: t("blockerOverwhelmed"),
+          avoid: t("blockerAvoid"),
+          empty: t("blockerEmpty"),
+          pain: t("blockerPain"),
+        };
+        return map[key] || key;
+      }
+
+      function showToast(msg) {
+        const t = $("#toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 1400);
+      }
+
+      function save() {
+        const payload = {
+          energy: state.energy,
+          blockers: Array.from(state.blockers),
+          action: state.action,
+          memo: state.memo,
+          logsByDay: state.logsByDay,
+          streak: state.streak,
+          lastDayDone: state.lastDayDone,
+        };
+        localStorage.setItem(LS_KEY, JSON.stringify(payload));
+      }
+
+      function load() {
+        const raw = localStorage.getItem(LS_KEY);
+        if (!raw) return;
+        try {
+          const p = JSON.parse(raw);
+          state.energy = Number.isFinite(p.energy) ? p.energy : 3;
+          state.blockers = new Set(Array.isArray(p.blockers) ? p.blockers : []);
+          state.action = p.action || null;
+          state.memo = p.memo || "";
+          state.logsByDay = p.logsByDay || {};
+          state.streak = p.streak || 0;
+          state.lastDayDone = p.lastDayDone || null;
+        } catch (e) {}
+      }
+
+      function fmtTime(sec) {
+        const m = String(Math.floor(sec / 60)).padStart(2, "0");
+        const s = String(sec % 60).padStart(2, "0");
+        return `${m}:${s}`;
+      }
+
+      function nowTime() {
+        const d = new Date();
+        const hh = String(d.getHours()).padStart(2, "0");
+        const mm = String(d.getMinutes()).padStart(2, "0");
+        return `${hh}:${mm}`;
+      }
+
+      function logEntry(type) {
+        const day = todayKey();
+        if (!state.logsByDay[day]) state.logsByDay[day] = [];
+
+        const entry = {
+          ts: new Date().toISOString(),
+          time: nowTime(),
+          type, // "generate" | "timer_start" | "timer_done" | "done" | "skip" | "memo"
+          action: state.action,
+          energy: state.energy,
+          blockers: Array.from(state.blockers),
+          memo: state.memo?.trim() || "",
+        };
+
+        state.logsByDay[day].unshift(entry);
+        save();
+        renderLog();
+        updateStreakIfNeeded(type);
+      }
+
+      function updateStreakIfNeeded(type) {
+        // streak: when user marks "done" or finishes timer, count day as done.
+        if (type !== "done" && type !== "timer_done") return;
+
+        const day = todayKey();
+        if (state.lastDayDone === day) return;
+
+        // compute streak by checking consecutive days with "done" or "timer_done"
+        state.lastDayDone = day;
+
+        // rebuild streak from today backwards
+        let streak = 0;
+        let d = new Date(day + "T00:00:00");
+        for (;;) {
+          const key = d.toISOString().slice(0, 10);
+          const arr = state.logsByDay[key] || [];
+          const hasDone = arr.some(
+            (x) => x.type === "done" || x.type === "timer_done"
+          );
+          if (!hasDone) break;
+          streak += 1;
+          d.setDate(d.getDate() - 1);
+        }
+        state.streak = streak;
+        save();
+        renderStreak();
+      }
+
+      // =========================
+      // Copy/export
+      // =========================
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast(t("toastCopied"));
+        } catch (e) {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+          showToast(t("toastCopied"));
+        }
+      }
+
+      function exportToday() {
+        const day = todayKey();
+        const arr = state.logsByDay[day] || [];
+        const action = state.action ? getActionLabel(state.action) : t("exportNotSelected");
+        const blockers =
+          Array.from(state.blockers)
+            .map((k) => getBlockerLabel(k))
+            .join(", ") || t("exportNotSelected");
+
+        const lines = [];
+        lines.push(`${t("exportHeader")} ${day}`);
+        lines.push(`- ${t("exportEnergy")}: ${state.energy}/10`);
+        lines.push(`- ${t("exportBlockers")}: ${blockers}`);
+        lines.push(`- ${t("exportAction")}: ${action}`);
+        if (state.memo?.trim()) lines.push(`- ${t("exportMemo")}: ${state.memo.trim()}`);
+        lines.push(`- ${t("exportLog")}(${arr.length}):`);
+        for (const x of arr.slice().reverse()) {
+          const time = x.time || "";
+          const tag =
+            {
+              generate: t("logGenerate"),
+              timer_start: t("logTimerStart"),
+              timer_done: t("logTimerDone"),
+              done: t("logDone"),
+              skip: t("logSkip"),
+              memo: t("logMemo"),
+            }[x.type] || x.type;
+          const act = x.action ? getActionLabel(x.action) : "—";
+          lines.push(`  • ${time} / ${tag} / ${act}`);
+        }
+        return lines.join("\n");
+      }
+
+      // =========================
+      // Script engine: comfort + cold reality + choice + minimum move
+      // =========================
+      function modeByEnergy(e) {
+        // auto: lower energy -> warmer + shorter + non-pushy
+        // higher energy -> firmer + clearer
+        if (e <= 2) return "부드럽게";
+        if (e <= 5) return "균형";
+        return "냉정";
+      }
+
+      function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function buildLines() {
+        const e = state.energy;
+        const mode = modeByEnergy(e);
+        const action = state.action ? getActionLabel(state.action) : null;
+        const blockers = Array.from(state.blockers);
+
+        // 1) validate (공감)
+        const validateSoft = [
+          t("msgValidateSoft1"),
+          t("msgValidateSoft2"),
+          t("msgValidateSoft3"),
+        ];
+        const validateBalanced = [
+          t("msgValidateBalanced1"),
+          t("msgValidateBalanced2"),
+          t("msgValidateBalanced3"),
+        ];
+        const validateCold = [
+          t("msgValidateCold1"),
+          t("msgValidateCold2"),
+          t("msgValidateCold3"),
+        ];
+
+        // 2) cold fact (현실 한 문장)
+        const coldSoft = [
+          t("msgColdSoft1"),
+          t("msgColdSoft2"),
+          t("msgColdSoft3"),
+        ];
+        const coldBalanced = [
+          t("msgColdBalanced1"),
+          t("msgColdBalanced2"),
+          t("msgColdBalanced3"),
+        ];
+        const coldHard = [
+          t("msgColdHard1"),
+          t("msgColdHard2"),
+          t("msgColdHard3"),
+        ];
+
+        // 3) choice (선택권)
+        const choiceSoft = [
+          t("msgChoiceSoft1"),
+          t("msgChoiceSoft2"),
+          t("msgChoiceSoft3"),
+        ];
+        const choiceBalanced = [
+          t("msgChoiceBalanced1"),
+          t("msgChoiceBalanced2"),
+          t("msgChoiceBalanced3"),
+        ];
+        const choiceHard = [
+          t("msgChoiceHard1"),
+          t("msgChoiceHard2"),
+          t("msgChoiceHard3"),
+        ];
+
+        // 4) action nudge (최소 행동)
+        let actionLine = "";
+        if (action) {
+          const actionTemplates = [
+            t("msgAction1", { action }),
+            t("msgAction2", { action }),
+            t("msgAction3", { action }),
+          ];
+          actionLine = pick(actionTemplates);
+        } else {
+          actionLine = t("msgActionDefault");
+        }
+
+        // blocker-aware micro tweak
+        const blockerHintMap = {
+          tired: t("msgBlockerTired"),
+          anxious: t("msgBlockerAnxious"),
+          overwhelmed: t("msgBlockerOverwhelmed"),
+          avoid: t("msgBlockerAvoid"),
+          empty: t("msgBlockerEmpty"),
+          pain: t("msgBlockerPain"),
+        };
+        const blockerLine = blockers.length
+          ? pick(blockers.map((b) => blockerHintMap[b]).filter(Boolean))
+          : t("msgBlockerDefault");
+
+        const main =
+          mode === t("modeSoft")
+            ? pick(validateSoft)
+            : mode === t("modeBalanced")
+            ? pick(validateBalanced)
+            : pick(validateCold);
+
+        const sub =
+          mode === t("modeSoft")
+            ? pick(coldSoft)
+            : mode === t("modeBalanced")
+            ? pick(coldBalanced)
+            : pick(coldHard);
+
+        const choice =
+          mode === t("modeSoft")
+            ? pick(choiceSoft)
+            : mode === t("modeBalanced")
+            ? pick(choiceBalanced)
+            : pick(choiceHard);
+
+        return { mode, main, sub, choice, actionLine, blockerLine };
+      }
+
+      function applyLines(lines) {
+        $("#modePill").textContent = `${t("modeLabel")}: ${lines.mode}`;
+        $("#mainLine").textContent = lines.main;
+        $(
+          "#subLine"
+        ).textContent = `${lines.sub} ${lines.choice} ${lines.actionLine} ${lines.blockerLine}`;
+      }
+
+      // =========================
+      // Timer
+      // =========================
+      function setTimerUI() {
+        $("#time").textContent = fmtTime(state.timer.remaining);
+        $("#btnPause").textContent = state.timer.running ? t("btnPause") : t("btnResume");
+      }
+
+      function stopTimer(reset = true) {
+        if (state.timer.interval) clearInterval(state.timer.interval);
+        state.timer.interval = null;
+        state.timer.running = false;
+        state.timer.startedAt = null;
+        if (reset) state.timer.remaining = 180;
+        setTimerUI();
+      }
+
+      function startTimer() {
+        if (state.timer.running) return;
+        state.timer.running = true;
+        if (!state.timer.interval) {
+          state.timer.interval = setInterval(() => {
+            if (!state.timer.running) return;
+            state.timer.remaining -= 1;
+            if (state.timer.remaining <= 0) {
+              state.timer.remaining = 0;
+              setTimerUI();
+              state.timer.running = false;
+              clearInterval(state.timer.interval);
+              state.timer.interval = null;
+              showToast(t("toastTimerEnd"));
+              logEntry("timer_done");
+            } else {
+              setTimerUI();
+            }
+          }, 1000);
+        }
+        setTimerUI();
+      }
+
+      function togglePause() {
+        state.timer.running = !state.timer.running;
+        setTimerUI();
+        showToast(state.timer.running ? t("btnResume") : t("btnPause"));
+      }
+
+      // =========================
+      // Render
+      // =========================
+      function renderToday() {
+        const d = new Date();
+        const y = d.getFullYear();
+        const m = d.getMonth() + 1;
+        const day = d.getDate();
+        $("#todayPill").textContent = `${t("todayLabel")}: ${y}.${String(m).padStart(
+          2,
+          "0"
+        )}.${String(day).padStart(2, "0")}`;
+      }
+
+      function renderStreak() {
+        $("#streakPill").textContent = `${t("streakLabel")}: ${state.streak}${t("streakDays")}`;
+      }
+
+      function renderLog() {
+        const day = todayKey();
+        const arr = state.logsByDay[day] || [];
+        const box = $("#log");
+        box.innerHTML = "";
+
+        if (arr.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "hint";
+          empty.innerHTML = t("logEmpty");
+          box.appendChild(empty);
+          return;
+        }
+
+        for (const x of arr) {
+          const el = document.createElement("div");
+          el.className = "item";
+          const tag =
+            {
+              generate: t("logGenerate"),
+              timer_start: t("logTimerStart"),
+              timer_done: t("logTimerDone"),
+              done: t("logDone"),
+              skip: t("logSkip"),
+              memo: t("logMemo"),
+            }[x.type] || x.type;
+
+          const act = x.action ? getActionLabel(x.action) : "—";
+          const blockers =
+            (x.blockers || []).map((k) => getBlockerLabel(k)).join(", ") || "—";
+
+          el.innerHTML = `
+          <div class="t">
+            <span>${x.time} · ${tag}</span>
+            <span class="mono">E:${x.energy}/10</span>
+          </div>
+          <div class="d">${t("logAction")}: ${act} · ${t("logBlockers")}: ${blockers}${
+            x.memo ? " · " + t("logMemoLabel") + ": " + escapeHtml(x.memo) : ""
+          }</div>
+        `;
+          box.appendChild(el);
+        }
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      // =========================
+      // UI selection
+      // =========================
+      function bindChips(containerSel, onPick, selectedSet = false) {
+        const chips = $$(containerSel + " .chip");
+        chips.forEach((ch) => {
+          ch.addEventListener("click", () => {
+            if (selectedSet) {
+              const key = ch.dataset.key;
+              if (state.blockers.has(key)) {
+                state.blockers.delete(key);
+                ch.classList.remove("selected");
+              } else {
+                state.blockers.add(key);
+                ch.classList.add("selected");
+              }
+              save();
+              return;
+            }
+            // single select
+            chips.forEach((c) => c.classList.remove("selected"));
+            ch.classList.add("selected");
+            onPick(ch);
+            save();
+          });
+        });
+      }
+
+      function restoreSelections() {
+        // energy
+        $("#energy").value = String(state.energy);
+        $("#energyVal").textContent = String(state.energy);
+        $("#memo").value = state.memo || "";
+
+        // blockers
+        $$("#blockers .chip").forEach((ch) => {
+          const k = ch.dataset.key;
+          if (state.blockers.has(k)) ch.classList.add("selected");
+        });
+
+        // actions
+        if (state.action) {
+          $$("#actions .chip").forEach((ch) => {
+            if (ch.dataset.action === state.action)
+              ch.classList.add("selected");
+          });
+        }
+      }
+
+      // =========================
+      // Nudge sentences (extra one-liners)
+      // =========================
+      function getNudges() {
+        return [
+          t("nudge1"),
+          t("nudge2"),
+          t("nudge3"),
+          t("nudge4"),
+          t("nudge5"),
+          t("nudge6"),
+          t("nudge7"),
+        ];
+      }
+      function nextNudge() {
+        const nudges = getNudges();
+        const s = pick(nudges);
+        $("#mainLine").textContent = s;
+        $("#subLine").textContent = t("nudgeSubline");
+        showToast(t("toastNudge"));
+        logEntry("generate");
+      }
+
+      // =========================
+      // 화면 전환
+      // =========================
+      function showScreen(screenName) {
+        $$(".screen").forEach(s => s.classList.remove("active"));
+        $(`#${screenName}Screen`).classList.add("active");
+        state.currentScreen = screenName;
+      }
+
+      // =========================
+      // 설문 진행
+      // =========================
+      function startSurvey() {
+        state.surveyAnswers = [];
+        state.currentQuestionIndex = 0;
+        showScreen("survey");
+        renderQuestion();
+      }
+
+      function renderQuestion() {
+        const questions = getSurveyQuestions();
+        const q = questions[state.currentQuestionIndex];
+        const progress = ((state.currentQuestionIndex + 1) / questions.length) * 100;
+        
+        $("#questionNumber").textContent = `${t("questionPrefix")} ${state.currentQuestionIndex + 1}/${questions.length}`;
+        $("#questionPercent").textContent = `${Math.round(progress)}%`;
+        $("#progressFill").style.width = `${progress}%`;
+        $("#questionTitle").textContent = q.question;
+        
+        const optionsContainer = $("#surveyOptions");
+        optionsContainer.innerHTML = "";
+        
+        q.options.forEach((opt, idx) => {
+          const div = document.createElement("div");
+          div.className = "survey-option";
+          div.textContent = opt.text;
+          div.dataset.value = opt.value;
+          div.dataset.index = idx;
+          div.addEventListener("click", () => selectOption(opt, div));
+          optionsContainer.appendChild(div);
+        });
+
+        $("#btnPrev").style.display = state.currentQuestionIndex === 0 ? "none" : "inline-flex";
+        $("#btnNext").disabled = true;
+      }
+
+      function selectOption(option, element) {
+        $$("#surveyOptions .survey-option").forEach(opt => opt.classList.remove("selected"));
+        element.classList.add("selected");
+        $("#btnNext").disabled = false;
+        
+        // 답변 저장
+        if (state.currentQuestionIndex < state.surveyAnswers.length) {
+          state.surveyAnswers[state.currentQuestionIndex] = option;
+        } else {
+          state.surveyAnswers.push(option);
+        }
+      }
+
+      function nextQuestion() {
+        const questions = getSurveyQuestions();
+        if (state.currentQuestionIndex < questions.length - 1) {
+          state.currentQuestionIndex++;
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      }
+
+      function prevQuestion() {
+        if (state.currentQuestionIndex > 0) {
+          state.currentQuestionIndex--;
+          renderQuestion();
+          // 이전 답변 복원
+          const prevAnswer = state.surveyAnswers[state.currentQuestionIndex];
+          if (prevAnswer) {
+            setTimeout(() => {
+              $$("#surveyOptions .survey-option").forEach(opt => {
+                if (opt.dataset.value === prevAnswer.value) {
+                  opt.classList.add("selected");
+                  $("#btnNext").disabled = false;
+                }
+              });
+            }, 50);
+          }
+        }
+      }
+
+      function showResult() {
+        // 설문 결과 분석
+        const firstAnswer = state.surveyAnswers[0];
+        const secondAnswer = state.surveyAnswers[1];
+        const thirdAnswer = state.surveyAnswers[2];
+        const fourthAnswer = state.surveyAnswers[3];
+        
+        // 에너지 설정
+        if (secondAnswer && typeof secondAnswer.value === 'number') {
+          state.energy = secondAnswer.value;
+        } else if (firstAnswer && firstAnswer.energy) {
+          state.energy = firstAnswer.energy;
+        }
+        
+        // 막힘 설정
+        if (firstAnswer && firstAnswer.value !== 'ok') {
+          state.blockers.add(firstAnswer.value);
+        }
+        if (thirdAnswer) {
+          state.blockers.add(thirdAnswer.value);
+        }
+        
+        // 행동 설정
+        if (fourthAnswer) {
+          state.action = fourthAnswer.value;
+        }
+        
+        // 결과 타입 결정
+        let resultType = "ok";
+        if (firstAnswer) {
+          if (firstAnswer.value === "empty") resultType = "empty";
+          else if (firstAnswer.value === "tired") resultType = "tired";
+          else if (firstAnswer.value === "anxious") resultType = "anxious";
+          else if (firstAnswer.value === "overwhelmed") resultType = "overwhelmed";
+          else if (firstAnswer.value === "avoid") resultType = "avoid";
+        }
+        
+        const resultTypes = getResultTypes();
+        const result = resultTypes[resultType] || resultTypes.ok;
+        
+        $("#resultEmoji").textContent = result.emoji;
+        $("#resultTitle").textContent = result.title;
+        $("#resultDescription").textContent = result.description;
+        
+        const actionsContainer = $("#resultActions");
+        actionsContainer.innerHTML = "";
+        
+        result.actions.forEach((act, idx) => {
+          const div = document.createElement("div");
+          div.className = `result-action ${idx === 0 ? 'primary' : ''}`;
+          div.textContent = act.text;
+          div.addEventListener("click", () => {
+            if (act.action === "timer") {
+              showMainScreen();
+              setTimeout(() => {
+                if (state.action) {
+                  $("#btnStart3").click();
+                } else {
+                  showToast(t("toastSelectActionForTimer"));
+                }
+              }, 300);
+            } else if (act.action === "any") {
+              showMainScreen();
+            } else {
+              state.action = act.action;
+              save();
+              showMainScreen();
+              setTimeout(() => {
+                showToast(act.message);
+              }, 200);
+            }
+          });
+          actionsContainer.appendChild(div);
+        });
+        
+        // 메인 화면으로 가기 버튼 추가
+        const mainBtn = document.createElement("div");
+        mainBtn.className = "result-action";
+        mainBtn.textContent = t("resultViewAll");
+        mainBtn.addEventListener("click", showMainScreen);
+        actionsContainer.appendChild(mainBtn);
+        
+        showScreen("result");
+        save();
+        
+        // 결과 화면에 도달한 것을 축하
+        setTimeout(() => {
+          showToast(t("resultComplete"));
+        }, 500);
+      }
+
+      function showMainScreen() {
+        localStorage.setItem(LS_KEY + "_survey_done", "true");
+        showScreen("main");
+        restoreSelections();
+        const lines = buildLines();
+        applyLines(lines);
+      }
+
+      // =========================
+      // Events
+      // =========================
+      function init() {
+        // Initialize language
+        currentLang = detectLang();
+        applyTranslations();
+        
+        load();
+        
+        // 시작 화면 버튼
+        $("#btnStartSurvey").addEventListener("click", startSurvey);
+        
+        // 설문 네비게이션
+        $("#btnNext").addEventListener("click", nextQuestion);
+        $("#btnPrev").addEventListener("click", prevQuestion);
+        
+        // 설문 화면에서 키보드 지원
+        window.addEventListener("keydown", (e) => {
+          if (state.currentScreen !== "survey") return;
+          if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+          
+          if (e.key === "Enter" && !$("#btnNext").disabled) {
+            nextQuestion();
+          } else if (e.key === "ArrowLeft" && state.currentQuestionIndex > 0) {
+            prevQuestion();
+          } else if (e.key === "ArrowRight" && !$("#btnNext").disabled) {
+            nextQuestion();
+          } else if (e.key >= "1" && e.key <= "9") {
+            const idx = parseInt(e.key) - 1;
+            const options = $$("#surveyOptions .survey-option");
+            if (options[idx]) {
+              options[idx].click();
+            }
+          }
+        });
+        
+        // 설문 완료 여부 확인
+        const surveyDone = localStorage.getItem(LS_KEY + "_survey_done");
+        if (surveyDone === "true") {
+          showMainScreen();
+        } else {
+          showScreen("landing");
+        }
+        
+        renderToday();
+        renderStreak();
+        restoreSelections();
+        renderLog();
+        setTimerUI();
+
+        // Energy slider
+        $("#energy").addEventListener("input", (e) => {
+          state.energy = parseInt(e.target.value, 10);
+          $("#energyVal").textContent = String(state.energy);
+          save();
+        });
+
+        // Memo
+        $("#memo").addEventListener("input", (e) => {
+          state.memo = e.target.value;
+          save();
+        });
+        $("#memo").addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            state.memo = $("#memo").value;
+            logEntry("memo");
+            showToast(t("toastMemoSaved"));
+          }
+        });
+
+        // Chips
+        bindChips("#blockers", () => {}, true);
+        bindChips(
+          "#actions",
+          (ch) => {
+            state.action = ch.dataset.action;
+          },
+          false
+        );
+
+        // Generate lines
+        $("#btnGenerate").addEventListener("click", () => {
+          const lines = buildLines();
+          applyLines(lines);
+          logEntry("generate");
+          showToast(t("toastMentionGenerated"));
+        });
+
+        // Timer
+        $("#btnStart3").addEventListener("click", () => {
+          if (!state.action) {
+            showToast(t("toastSelectAction"));
+            return;
+          }
+          // reset and start
+          stopTimer(true);
+          state.timer.remaining = 180;
+          setTimerUI();
+          startTimer();
+          logEntry("timer_start");
+          showToast(t("toastTimerStart"));
+        });
+        $("#btnPause").addEventListener("click", () => {
+          if (!state.timer.interval) {
+            // if never started, do nothing
+            showToast(t("toastStartTimer"));
+            return;
+          }
+          togglePause();
+        });
+        $("#btnStop").addEventListener("click", () => {
+          stopTimer(true);
+          showToast(t("toastTimerStop"));
+        });
+
+        // Done / Skip
+        $("#btnDone").addEventListener("click", () => {
+          if (!state.action) {
+            showToast(t("toastSelectAction"));
+            return;
+          }
+          stopTimer(true);
+          logEntry("done");
+          showToast(t("toastDone"));
+        });
+
+        $("#btnSkip").addEventListener("click", () => {
+          stopTimer(true);
+          logEntry("skip");
+          // 냉정하지만 버리지 않는 포기 처리
+          $("#mainLine").textContent = "오늘은 포기 선언, 오케이.";
+          $("#subLine").textContent =
+            "대신 약속 하나: 내일은 ‘딱 하나’만 고르자. (크게 말고, 작게)";
+          showToast(t("toastSkip"));
+        });
+
+        // Export / reset / clear
+        $("#btnExport").addEventListener("click", async () => {
+          const text = exportToday();
+          await copyText(text);
+        });
+
+        $("#btnClearLog").addEventListener("click", () => {
+          const day = todayKey();
+          state.logsByDay[day] = [];
+          save();
+          renderLog();
+          showToast(t("toastLogCleared"));
+        });
+
+        $("#btnReset").addEventListener("click", () => {
+          localStorage.removeItem(LS_KEY);
+          // soft reload state
+          state.energy = 3;
+          state.blockers = new Set();
+          state.action = null;
+          state.memo = "";
+          state.logsByDay = {};
+          state.streak = 0;
+          state.lastDayDone = null;
+          stopTimer(true);
+
+          // UI reset
+          $$("#blockers .chip, #actions .chip").forEach((c) =>
+            c.classList.remove("selected")
+          );
+          $("#energy").value = "3";
+          $("#energyVal").textContent = "3";
+          $("#memo").value = "";
+          $("#modePill").textContent = `${t("modeLabel")}: ${t("modeAuto")}`;
+          $("#mainLine").textContent = currentLang === "ko" ? "오늘 의욕이 없지? 이상한 게 아니야." : "No motivation today? That's not strange.";
+          $("#subLine").textContent = currentLang === "ko" ? "다만, 지금 \"아무것도 안 하면\" 이 상태는 좋아지지 않아." : "However, if you do nothing now, this state won't improve.";
+          renderStreak();
+          renderLog();
+          showToast(t("toastReset"));
+        });
+
+        $("#btnNudge").addEventListener("click", nextNudge);
+
+        // 설문 다시하기
+        $("#btnRestartSurvey").addEventListener("click", () => {
+          if (confirm(t("toastConfirmRestart"))) {
+            startSurvey();
+          }
+        });
+
+        // Keyboard shortcuts (메인 화면에서만)
+        window.addEventListener("keydown", (e) => {
+          if (state.currentScreen !== "main") return;
+          if (
+            e.target &&
+            (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
+          )
+            return;
+
+          if (e.key === "g" || e.key === "G") $("#btnGenerate").click();
+          if (e.key === "t" || e.key === "T") $("#btnStart3").click();
+          if (e.key === "d" || e.key === "D") $("#btnDone").click();
+          if (e.key === "n" || e.key === "N") $("#btnNudge").click();
+        });
+
+        // initial script
+        const lines = buildLines();
+        applyLines(lines);
+      }
+
+      init();
+    </script>
+
+    <!-- Google AdSense -->
+    <div class="adsense-block">
+      <ins
+        class="adsbygoogle"
+        style="display: block; text-align: center"
+        data-ad-client="ca-pub-1204894220949193"
+        data-ad-slot="7300458753"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    </div>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </body>
+</html>

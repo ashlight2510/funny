@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title data-i18n-title="metaTitle">하루 한판 테트리스</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="description"
+      content="싱글 / 2인 / AI 대전 가능한 하루 한판 테트리스"
+    />
+    <meta name="keywords" content="테트리스, AI게임, 2인게임, 웹게임" />
+
+    <meta property="og:title" content="하루 한판 테트리스" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/000/fff&text=DAILY+TETRIS"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(24, 24, 27, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(59, 130, 246, 0.2);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/tet/" />
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white min-h-screen flex flex-col items-center py-8"
+  >
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div><h1
+      class="mt-4 text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg"
+    >
+      <span data-i18n="title">🧱 하루 한판 테트리스</span>
+    </h1>
+
+    <!-- 모드 선택 -->
+    <div id="menu" class="mt-8 flex flex-col gap-4 items-center">
+      <div class="flex gap-4">
+        <button
+          onclick="start('solo')"
+          class="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg text-white font-bold text-lg shadow-lg transform transition-all hover:scale-105"
+        >
+          <span data-i18n="btnSolo">🤖 싱글 (AI)</span>
+        </button>
+        <button
+          onclick="start('duo')"
+          class="px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 rounded-lg text-white font-bold text-lg shadow-lg transform transition-all hover:scale-105"
+        >
+          <span data-i18n="btnDuo">👥 2인 플레이</span>
+        </button>
+      </div>
+
+      <select
+        id="theme"
+        class="text-black mt-4 p-3 rounded-lg text-lg font-semibold shadow-lg bg-white"
+      >
+        <option value="classic">🎨 Classic</option>
+        <option value="neon">💡 Neon</option>
+        <option value="pastel">🌸 Pastel</option>
+        <option value="mono">⚫ Mono</option>
+      </select>
+    </div>
+
+    <!-- 통계 -->
+    <div id="stats" class="mt-6 text-lg text-zinc-300 font-semibold"></div>
+
+    <!-- 게임 -->
+    <div
+      id="game"
+      class="hidden mt-8 flex flex-col md:flex-row gap-8 items-start"
+    >
+      <!-- P1 패널 -->
+      <div class="flex flex-col items-center">
+        <div
+          class="bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl p-6 shadow-2xl border-2 border-zinc-700"
+        >
+          <div class="text-center mb-4">
+            <h2 class="text-2xl font-bold text-blue-400 mb-2" data-i18n="player1">플레이어 1</h2>
+            <div id="p1-score" class="text-xl font-semibold text-yellow-400">
+              <span data-i18n="score">점수</span>: 0
+            </div>
+            <button
+              id="p1-resume-btn"
+              onclick="resumePlayer(1)"
+              class="hidden mt-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white font-bold text-sm shadow-lg transform transition-all hover:scale-105"
+              data-i18n="btnResume"
+            >
+              ▶️ 다시 시작
+            </button>
+          </div>
+          <canvas
+            id="p1"
+            width="400"
+            height="720"
+            class="bg-black rounded-lg border-4 border-zinc-600 shadow-inner w-full max-w-[400px] h-auto"
+            style="image-rendering: pixelated"
+          ></canvas>
+        </div>
+        <div id="p1-controls" class="mt-4 text-sm text-zinc-400 text-center">
+          <div data-i18n="controlsP1">← → 이동 | ↑ 회전 | ↓ 빠른 낙하</div>
+          <div data-i18n="controlsP1Space">스페이스바: 한 번에 떨어뜨리기</div>
+        </div>
+      </div>
+
+      <!-- P2 패널 -->
+      <div id="p2-panel" class="flex flex-col items-center hidden">
+        <div
+          class="bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl p-6 shadow-2xl border-2 border-zinc-700"
+        >
+          <div class="text-center mb-4">
+            <h2 class="text-2xl font-bold text-green-400 mb-2" data-i18n="player2">플레이어 2</h2>
+            <div id="p2-score" class="text-xl font-semibold text-yellow-400">
+              <span data-i18n="score">점수</span>: 0
+            </div>
+            <button
+              id="p2-resume-btn"
+              onclick="resumePlayer(2)"
+              class="hidden mt-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white font-bold text-sm shadow-lg transform transition-all hover:scale-105"
+              data-i18n="btnResume"
+            >
+              ▶️ 다시 시작
+            </button>
+          </div>
+          <canvas
+            id="p2"
+            width="400"
+            height="720"
+            class="bg-black rounded-lg border-4 border-zinc-600 shadow-inner w-full max-w-[400px] h-auto"
+            style="image-rendering: pixelated"
+          ></canvas>
+        </div>
+        <div id="p2-controls" class="mt-4 text-sm text-zinc-400 text-center">
+          <div data-i18n="controlsP2">WASD 이동 | W 회전 | Enter 빠른 낙하</div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="result"
+      class="mt-6 text-3xl font-bold text-center min-h-[50px]"
+    ></div>
+    <div id="gameoverAd" class="hidden w-full max-w-2xl mx-auto mt-4">
+      <ins
+        class="adsbygoogle"
+        style="display:block; width:100%;"
+        data-ad-client="ca-pub-1204894220949193"
+        data-ad-slot="5145068706"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    </div>
+
+    <!-- 게임 컨트롤 버튼 -->
+    <div id="game-controls" class="hidden mt-4 flex gap-4 justify-center">
+      <button
+        onclick="pauseGame()"
+        class="px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 rounded-lg text-white font-bold shadow-lg transform transition-all hover:scale-105"
+      >
+        <span data-i18n="btnPause">⏸️ 일시정지</span>
+      </button>
+      <button
+        onclick="saveGame()"
+        class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 rounded-lg text-white font-bold shadow-lg transform transition-all hover:scale-105"
+        data-i18n="btnSave"
+      >
+        💾 저장하기
+      </button>
+    </div>
+
+    <!-- 공유하기 버튼 -->
+    <div
+      id="share-buttons"
+      class="hidden mt-6 flex gap-4 flex-wrap justify-center"
+    ></div>
+
+    <!-- 모바일 컨트롤 -->
+    <div id="mobile-controls" class="hidden mt-6 w-full max-w-md px-4 mx-auto">
+      <div class="grid grid-cols-3 gap-4 mb-4">
+        <button
+          id="btn-left"
+          class="p-4 bg-zinc-700 rounded-lg text-2xl font-bold active:bg-zinc-600 touch-manipulation"
+        >
+          ←
+        </button>
+        <button
+          id="btn-rotate"
+          class="p-4 bg-zinc-700 rounded-lg text-2xl font-bold active:bg-zinc-600 touch-manipulation"
+        >
+          ↻
+        </button>
+        <button
+          id="btn-right"
+          class="p-4 bg-zinc-700 rounded-lg text-2xl font-bold active:bg-zinc-600 touch-manipulation"
+        >
+          →
+        </button>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <button
+          id="btn-down"
+          class="p-4 bg-zinc-700 rounded-lg text-xl font-bold active:bg-zinc-600 touch-manipulation"
+        >
+          <span data-i18n="btnDown">↓ 빠른 낙하</span>
+        </button>
+        <button
+          id="btn-hard-drop"
+          class="p-4 bg-zinc-700 rounded-lg text-xl font-bold active:bg-zinc-600 touch-manipulation"
+          data-i18n="btnHardDrop"
+        >
+          ⬇ 한 번에
+        </button>
+      </div>
+    </div>
+
+    <!-- 다른 서비스 보기 -->
+    <div class="mt-8 mb-4">
+      <a
+        href="https://funnyfunny.cloud/"
+        target="_blank"
+        class="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-white font-semibold transition-colors"
+      >
+        <span data-i18n="btnOtherServices">🎁 다른 서비스 보기</span>
+      </a>
+    </div>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "하루 한판 테트리스",
+          title: "🧱 하루 한판 테트리스",
+          btnSolo: "🤖 싱글 (AI)",
+          btnDuo: "👥 2인 플레이",
+          player1: "플레이어 1",
+          player2: "플레이어 2",
+          score: "점수",
+          lines: "라인",
+          btnResume: "▶️ 다시 시작",
+          controlsP1: "← → 이동 | ↑ 회전 | ↓ 빠른 낙하",
+          controlsP1Space: "스페이스바: 한 번에 떨어뜨리기",
+          controlsP2: "WASD 이동 | W 회전 | Enter 빠른 낙하",
+          btnPause: "⏸️ 일시정지",
+          btnSave: "💾 저장하기",
+          btnDown: "↓ 빠른 낙하",
+          btnHardDrop: "⬇ 한 번에",
+          btnOtherServices: "🎁 다른 서비스 보기",
+          statsPlay: "플레이 {play} | 승 {win} | 패 {lose}",
+          scoreDisplay: "점수: {score} | 라인: {lines}",
+          gameOver: "GAME OVER",
+          resultP1Win: "🎉 1P 승리! (2P는 다시 시작 가능)",
+          resultP2Win: "🎉 2P 승리! (1P는 다시 시작 가능)",
+          shareTitle: "🧱 하루 한판 테트리스",
+          shareResult: "{result}",
+          shareScore: "{winner}P 승리!",
+          shareScoreSolo: "점수: {score} | 라인: {lines}",
+          alertCopied: "결과가 클립보드에 복사되었습니다!",
+          alertLinkCopied: "링크가 클립보드에 복사되었습니다!",
+          promptCopy: "결과를 복사하세요:",
+          promptCopyLink: "링크를 복사하세요:",
+        },
+        en: {
+          metaTitle: "Daily Tetris",
+          title: "🧱 Daily Tetris",
+          btnSolo: "🤖 Solo (AI)",
+          btnDuo: "👥 2 Players",
+          player1: "Player 1",
+          player2: "Player 2",
+          score: "Score",
+          lines: "Lines",
+          btnResume: "▶️ Resume",
+          controlsP1: "← → Move | ↑ Rotate | ↓ Fast Drop",
+          controlsP1Space: "Spacebar: Hard Drop",
+          controlsP2: "WASD Move | W Rotate | Enter Fast Drop",
+          btnPause: "⏸️ Pause",
+          btnSave: "💾 Save",
+          btnDown: "↓ Fast Drop",
+          btnHardDrop: "⬇ Hard Drop",
+          btnOtherServices: "🎁 View Other Services",
+          statsPlay: "Play {play} | Win {win} | Lose {lose}",
+          scoreDisplay: "Score: {score} | Lines: {lines}",
+          gameOver: "GAME OVER",
+          resultP1Win: "🎉 Player 1 Wins! (Player 2 can resume)",
+          resultP2Win: "🎉 Player 2 Wins! (Player 1 can resume)",
+          shareTitle: "🧱 Daily Tetris",
+          shareResult: "{result}",
+          shareScore: "{winner}P Wins!",
+          shareScoreSolo: "Score: {score} | Lines: {lines}",
+          alertCopied: "Result copied to clipboard!",
+          alertLinkCopied: "Link copied to clipboard!",
+          promptCopy: "Copy result:",
+          promptCopyLink: "Copy link:",
+          gameOverSolo: "Game Over! Score: {score} | Lines: {lines}",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+          if (el.tagName === "TITLE") {
+            el.textContent = t(el.dataset.i18nTitle);
+          } else {
+            el.title = t(el.dataset.i18nTitle);
+          }
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          el.setAttribute("aria-label", t(el.dataset.i18nAria));
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+          el.setAttribute("alt", t(el.dataset.i18nAlt));
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+        // Update dynamic content
+        if (window.p1 && window.p1.score !== undefined) {
+          updateScoreDisplay();
+        }
+        if (window.stats) {
+          showStats();
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      /* ===================== 설정 ===================== */
+      const COLS = 10,
+        ROWS = 18;
+      const PIECES = "TJLOSZI";
+      const THEMES = {
+        classic: [
+          "#facc15",
+          "#22d3ee",
+          "#fb923c",
+          "#60a5fa",
+          "#4ade80",
+          "#f87171",
+          "#c084fc",
+        ],
+        neon: ["#0ff", "#f0f", "#ff0", "#0f0", "#f00", "#00f", "#fff"],
+        pastel: [
+          "#fde68a",
+          "#bae6fd",
+          "#fecaca",
+          "#bbf7d0",
+          "#e9d5ff",
+          "#ddd6fe",
+          "#fed7aa",
+        ],
+        mono: ["#999", "#aaa", "#bbb", "#ccc", "#ddd", "#eee", "#fff"],
+      };
+      let COLORS = THEMES.classic;
+
+      /* ===================== 통계 ===================== */
+      let stats = JSON.parse(
+        localStorage.stats || '{"play":0,"win":0,"lose":0}'
+      );
+      function saveStats() {
+        localStorage.stats = JSON.stringify(stats);
+      }
+      function showStats() {
+        const t = window.t || ((key, vars = {}) => key);
+        stats.play++;
+        saveStats();
+        document.getElementById(
+          "stats"
+        ).textContent = t("statsPlay", { play: stats.play, win: stats.win, lose: stats.lose });
+      }
+
+      /* ===================== 사운드 ===================== */
+      let ctx = null;
+      let bgmSource = null;
+      let bgmGain = null;
+
+      function initAudio() {
+        if (!ctx) {
+          ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (ctx.state === "suspended") {
+          ctx.resume();
+        }
+      }
+
+      function beep(freq = 400, dur = 0.1) {
+        try {
+          initAudio();
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.frequency.value = freq;
+          o.connect(g);
+          g.connect(ctx.destination);
+          o.start();
+          g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+          o.stop(ctx.currentTime + dur);
+        } catch (e) {
+          // 사운드 실패 시 무시
+        }
+      }
+
+      function startBGM() {
+        try {
+          initAudio();
+          if (bgmSource) {
+            stopBGM();
+          }
+
+          // 테트리스 BGM (Korobeiniki) - 정확한 멜로디
+          const melody = [
+            // 첫 번째 구절
+            { freq: 523.25, dur: 0.12 }, // E5
+            { freq: 493.88, dur: 0.12 }, // B4
+            { freq: 440, dur: 0.12 }, // A4
+            { freq: 392, dur: 0.12 }, // G4
+            { freq: 349.23, dur: 0.24 }, // F4
+            { freq: 392, dur: 0.12 }, // G4
+            { freq: 440, dur: 0.24 }, // A4
+            { freq: 392, dur: 0.12 }, // G4
+            { freq: 349.23, dur: 0.12 }, // F4
+            { freq: 329.63, dur: 0.12 }, // E4
+            { freq: 293.66, dur: 0.24 }, // D4
+            // 두 번째 구절
+            { freq: 293.66, dur: 0.12 }, // D4
+            { freq: 349.23, dur: 0.12 }, // F4
+            { freq: 392, dur: 0.24 }, // G4
+            { freq: 349.23, dur: 0.12 }, // F4
+            { freq: 329.63, dur: 0.12 }, // E4
+            { freq: 293.66, dur: 0.24 }, // D4
+            // 세 번째 구절
+            { freq: 440, dur: 0.12 }, // A4
+            { freq: 493.88, dur: 0.12 }, // B4
+            { freq: 523.25, dur: 0.12 }, // E5
+            { freq: 493.88, dur: 0.12 }, // B4
+            { freq: 440, dur: 0.12 }, // A4
+            { freq: 392, dur: 0.12 }, // G4
+            { freq: 349.23, dur: 0.24 }, // F4
+            { freq: 392, dur: 0.12 }, // G4
+            { freq: 440, dur: 0.24 }, // A4
+            // 네 번째 구절
+            { freq: 392, dur: 0.12 }, // G4
+            { freq: 349.23, dur: 0.12 }, // F4
+            { freq: 329.63, dur: 0.12 }, // E4
+            { freq: 293.66, dur: 0.24 }, // D4
+            { freq: 293.66, dur: 0.12 }, // D4
+            { freq: 349.23, dur: 0.12 }, // F4
+            { freq: 392, dur: 0.24 }, // G4
+            { freq: 349.23, dur: 0.12 }, // F4
+            { freq: 329.63, dur: 0.12 }, // E4
+            { freq: 293.66, dur: 0.36 }, // D4
+          ];
+
+          bgmGain = ctx.createGain();
+          bgmGain.gain.value = 0.2;
+          bgmGain.connect(ctx.destination);
+
+          let loopTimeout = null;
+          let isPlaying = true;
+
+          function playNote(note, time) {
+            try {
+              const o = ctx.createOscillator();
+              const g = ctx.createGain();
+              o.type = "square";
+              o.frequency.value = note.freq;
+              o.connect(g);
+              g.connect(bgmGain);
+              g.gain.setValueAtTime(0.15, time);
+              g.gain.exponentialRampToValueAtTime(0.01, time + note.dur);
+              o.start(time);
+              o.stop(time + note.dur);
+            } catch (e) {
+              // 노트 재생 실패 시 무시
+            }
+          }
+
+          function playLoop() {
+            if (!gameRunning || !isPlaying) {
+              bgmSource = null;
+              if (loopTimeout) clearTimeout(loopTimeout);
+              return;
+            }
+
+            const startTime = ctx.currentTime;
+            let noteTime = startTime;
+
+            melody.forEach((note) => {
+              playNote(note, noteTime);
+              noteTime += note.dur;
+            });
+
+            const totalDur = noteTime - startTime;
+            loopTimeout = setTimeout(() => {
+              if (gameRunning && isPlaying) {
+                playLoop();
+              }
+            }, totalDur * 1000);
+          }
+
+          bgmSource = {
+            stop: () => {
+              isPlaying = false;
+              if (loopTimeout) {
+                clearTimeout(loopTimeout);
+                loopTimeout = null;
+              }
+            },
+          };
+
+          // 약간의 지연 후 시작 (AudioContext가 준비될 시간)
+          setTimeout(() => {
+            if (gameRunning) {
+              playLoop();
+            }
+          }, 100);
+        } catch (e) {
+          console.error("BGM 오류:", e);
+        }
+      }
+
+      function stopBGM() {
+        if (bgmSource) {
+          bgmSource.stop();
+          bgmSource = null;
+        }
+        if (bgmGain) {
+          bgmGain.gain.cancelScheduledValues(ctx.currentTime);
+          bgmGain.gain.setValueAtTime(0, ctx.currentTime);
+          bgmGain = null;
+        }
+      }
+
+      /* ===================== 엔진 ===================== */
+      function arena() {
+        return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+      }
+      function piece(t) {
+        return {
+          T: [
+            [0, 1, 0],
+            [1, 1, 1],
+          ],
+          O: [
+            [2, 2],
+            [2, 2],
+          ],
+          L: [
+            [0, 0, 3],
+            [3, 3, 3],
+          ],
+          J: [
+            [4, 0, 0],
+            [4, 4, 4],
+          ],
+          I: [[5, 5, 5, 5]],
+          S: [
+            [0, 6, 6],
+            [6, 6, 0],
+          ],
+          Z: [
+            [7, 7, 0],
+            [0, 7, 7],
+          ],
+        }[t];
+      }
+      function rand() {
+        return PIECES[(Math.random() * 7) | 0];
+      }
+
+      function Player(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
+        this.ctx.scale(40, 40); // 캔버스 크기에 맞게 스케일 조정 (400/10 = 40)
+        this.field = arena();
+        this.matrix = piece(rand());
+        this.pos = { x: 3, y: 0 };
+        this.score = 0;
+        this.lines = 0;
+        this.gameOver = false;
+      }
+
+      function collide(p, offset = { x: 0, y: 0 }) {
+        const pos = { x: p.pos.x + offset.x, y: p.pos.y + offset.y };
+        return p.matrix.some((r, y) =>
+          r.some((v, x) => {
+            if (!v) return false;
+            const nx = x + pos.x;
+            const ny = y + pos.y;
+            return (
+              nx < 0 ||
+              nx >= COLS ||
+              ny >= ROWS ||
+              (ny >= 0 && p.field[ny]?.[nx] !== 0)
+            );
+          })
+        );
+      }
+
+      function rotate(m) {
+        const rows = m.length;
+        const cols = m[0].length;
+        const rotated = Array.from({ length: cols }, () => Array(rows).fill(0));
+        for (let y = 0; y < rows; y++) {
+          for (let x = 0; x < cols; x++) {
+            rotated[x][rows - 1 - y] = m[y][x];
+          }
+        }
+        return rotated;
+      }
+
+      function tryRotate(p) {
+        const rotated = rotate(p.matrix);
+        const oldMatrix = p.matrix;
+        const oldPos = { ...p.pos };
+
+        // 회전 시도
+        p.matrix = rotated;
+
+        // 충돌 체크
+        if (!collide(p)) {
+          return true;
+        }
+
+        // Wall kick 시도: 왼쪽으로 1칸
+        p.pos.x--;
+        if (!collide(p)) {
+          return true;
+        }
+
+        // 오른쪽으로 1칸
+        p.pos.x += 2;
+        if (!collide(p)) {
+          return true;
+        }
+
+        // 왼쪽으로 2칸
+        p.pos.x -= 3;
+        if (!collide(p)) {
+          return true;
+        }
+
+        // 오른쪽으로 2칸
+        p.pos.x += 4;
+        if (!collide(p)) {
+          return true;
+        }
+
+        // 실패 시 원래대로
+        p.matrix = oldMatrix;
+        p.pos = oldPos;
+        return false;
+      }
+
+      function merge(p) {
+        p.matrix.forEach((r, y) =>
+          r.forEach((v, x) => {
+            if (v && y + p.pos.y >= 0) {
+              p.field[y + p.pos.y][x + p.pos.x] = v;
+            }
+          })
+        );
+      }
+
+      function sweep(p) {
+        let c = 0;
+        for (let y = ROWS - 1; y >= 0; y--) {
+          if (p.field[y].every((v) => v)) {
+            p.field.splice(y, 1);
+            p.field.unshift(Array(COLS).fill(0));
+            c++;
+            y++;
+          }
+        }
+        if (c) {
+          p.lines += c;
+          // 라인 수에 따른 점수 계산
+          const points = [0, 100, 300, 500, 800];
+          p.score += points[c] || c * 100;
+          beep(600);
+          navigator.vibrate?.(50);
+        }
+      }
+
+      function draw(p) {
+        const ctx = p.ctx;
+        ctx.clearRect(0, 0, COLS, ROWS);
+
+        // 배경
+        ctx.fillStyle = "#0a0a0a";
+        ctx.fillRect(0, 0, COLS, ROWS);
+
+        // 그리드 라인
+        ctx.strokeStyle = "#1a1a1a";
+        ctx.lineWidth = 0.02;
+        for (let x = 0; x <= COLS; x++) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, ROWS);
+          ctx.stroke();
+        }
+        for (let y = 0; y <= ROWS; y++) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(COLS, y);
+          ctx.stroke();
+        }
+
+        // 고정된 블록
+        p.field.forEach((r, y) =>
+          r.forEach((v, x) => {
+            if (v) {
+              ctx.fillStyle = COLORS[v - 1];
+              ctx.fillRect(x + 0.05, y + 0.05, 0.9, 0.9);
+              // 하이라이트
+              ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+              ctx.fillRect(x + 0.05, y + 0.05, 0.9, 0.2);
+            }
+          })
+        );
+
+        // 현재 블록
+        p.matrix.forEach((r, y) =>
+          r.forEach((v, x) => {
+            if (v) {
+              const drawY = y + p.pos.y;
+              if (drawY >= 0) {
+                ctx.fillStyle = COLORS[v - 1];
+                ctx.fillRect(x + p.pos.x + 0.05, drawY + 0.05, 0.9, 0.9);
+                // 하이라이트
+                ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+                ctx.fillRect(x + p.pos.x + 0.05, drawY + 0.05, 0.9, 0.2);
+              }
+            }
+          })
+        );
+
+        // 점수 업데이트
+        const t = window.t || ((key, vars = {}) => key);
+        const scoreEl =
+          p === p1
+            ? document.getElementById("p1-score")
+            : document.getElementById("p2-score");
+        if (scoreEl) {
+          scoreEl.textContent = t("scoreDisplay", { score: p.score, lines: p.lines });
+        }
+      }
+
+      /* ===================== AI ===================== */
+      function aiMove(ai) {
+        if (!ai) return;
+        const dir = Math.random() < 0.5 ? -1 : 1;
+        ai.pos.x += dir;
+        if (collide(ai)) {
+          ai.pos.x -= dir;
+        }
+        if (Math.random() < 0.1) {
+          tryRotate(ai);
+        }
+      }
+
+      /* ===================== 시작 ===================== */
+      const RESTART_DELAY_MS = 2000;
+      let p1,
+        p2,
+        mode,
+        gameRunning = false;
+      const keys = {};
+      const keyTimers = {};
+
+      function lockResumeButton(id) {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        const unlockAt = Date.now() + RESTART_DELAY_MS;
+        btn.dataset.unlockAt = String(unlockAt);
+        btn.disabled = true;
+        btn.classList.add("opacity-60", "pointer-events-none");
+        setTimeout(() => {
+          if (Number(btn.dataset.unlockAt) !== unlockAt) return;
+          btn.disabled = false;
+          btn.classList.remove("opacity-60", "pointer-events-none");
+        }, RESTART_DELAY_MS);
+      }
+
+      function showGameOverAd() {
+        const ad = document.getElementById("gameoverAd");
+        if (!ad) return;
+        ad.classList.remove("hidden");
+        if (ad.dataset.loaded) return;
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+          ad.dataset.loaded = "true";
+        } catch {
+          // ignore ad loading errors
+        }
+      }
+
+      function hideGameOverAd() {
+        const ad = document.getElementById("gameoverAd");
+        if (ad) ad.classList.add("hidden");
+      }
+
+      function handleKey(player, actions) {
+        if (!player) return;
+
+        if (actions.left) {
+          player.pos.x--;
+          if (collide(player)) player.pos.x++;
+          else beep(200, 0.05);
+        }
+        if (actions.right) {
+          player.pos.x++;
+          if (collide(player)) player.pos.x--;
+          else beep(200, 0.05);
+        }
+        if (actions.down) {
+          drop(player);
+        }
+        if (actions.rotate) {
+          if (tryRotate(player)) {
+            beep(300, 0.05);
+          }
+        }
+        if (actions.hardDrop) {
+          while (!collide(player, { x: 0, y: 1 })) {
+            player.pos.y++;
+          }
+          drop(player);
+        }
+      }
+
+      function startKeyRepeat(keyCode, player, actions) {
+        if (keyTimers[keyCode]) return;
+
+        // 즉시 실행
+        handleKey(player, actions);
+
+        // 첫 반복은 약간 늦게
+        keyTimers[keyCode] = setTimeout(() => {
+          const interval = setInterval(() => {
+            if (!keys[keyCode] || !gameRunning) {
+              clearInterval(interval);
+              keyTimers[keyCode] = null;
+              return;
+            }
+            handleKey(player, actions);
+          }, 50); // 빠른 반복 (50ms)
+
+          keyTimers[keyCode] = interval;
+        }, 200); // 첫 반복까지 200ms 대기
+      }
+
+      function stopKeyRepeat(keyCode) {
+        if (keyTimers[keyCode]) {
+          if (typeof keyTimers[keyCode] === "number") {
+            clearTimeout(keyTimers[keyCode]);
+          } else {
+            clearInterval(keyTimers[keyCode]);
+          }
+          keyTimers[keyCode] = null;
+        }
+      }
+
+      // 스크롤 방지를 위한 전역 이벤트 리스너
+      document.addEventListener(
+        "keydown",
+        (e) => {
+          // 게임 중일 때만 방향키와 스페이스바 스크롤 방지
+          if (gameRunning) {
+            if (
+              ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(
+                e.key
+              )
+            ) {
+              e.preventDefault();
+            }
+          }
+        },
+        { passive: false }
+      );
+
+      document.addEventListener("keydown", (e) => {
+        if (!gameRunning) return;
+        const key = e.key.toLowerCase();
+        const keyCode = e.key;
+
+        // 이미 눌린 키는 무시 (키 반복 방지)
+        if (keys[keyCode] || (key !== keyCode && keys[key])) return;
+
+        const code = e.code;
+
+        if (mode === "duo") {
+          // 2P 모드: 1P는 WASD + 스페이스, 2P는 방향키 + 엔터
+
+          // P1 컨트롤 (WASD + 스페이스)
+          if (p1) {
+            if (code === "KeyA" || key === "a") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p1-a";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                startKeyRepeat(keyId, p1, { left: true });
+              }
+            } else if (code === "KeyD" || key === "d") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p1-d";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                startKeyRepeat(keyId, p1, { right: true });
+              }
+            } else if (code === "KeyS" || key === "s") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p1-s";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                startKeyRepeat(keyId, p1, { down: true });
+              }
+            } else if (code === "KeyW" || key === "w") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p1-w";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                handleKey(p1, { rotate: true });
+              }
+            } else if (keyCode === " " && p1) {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p1-space";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                handleKey(p1, { hardDrop: true });
+              }
+            }
+          }
+
+          // P2 컨트롤 (방향키 + 엔터)
+          if (p2) {
+            if (keyCode === "ArrowLeft") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p2-ArrowLeft";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                startKeyRepeat(keyId, p2, { left: true });
+              }
+            } else if (keyCode === "ArrowRight") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p2-ArrowRight";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                startKeyRepeat(keyId, p2, { right: true });
+              }
+            } else if (keyCode === "ArrowDown") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p2-ArrowDown";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                startKeyRepeat(keyId, p2, { down: true });
+              }
+            } else if (keyCode === "ArrowUp") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p2-ArrowUp";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                handleKey(p2, { rotate: true });
+              }
+            } else if (code === "Enter" || keyCode === "Enter") {
+              e.preventDefault();
+              e.stopPropagation();
+              const keyId = "p2-enter";
+              if (!keys[keyId]) {
+                keys[keyId] = true;
+                handleKey(p2, { hardDrop: true });
+              }
+            }
+          }
+        } else {
+          // 1P 혼자: 방향키 + 스페이스
+          if (keyCode === "ArrowLeft" && p1) {
+            e.preventDefault();
+            e.stopPropagation();
+            keys["ArrowLeft"] = true;
+            startKeyRepeat("ArrowLeft", p1, { left: true });
+          }
+          if (keyCode === "ArrowRight" && p1) {
+            e.preventDefault();
+            e.stopPropagation();
+            keys["ArrowRight"] = true;
+            startKeyRepeat("ArrowRight", p1, { right: true });
+          }
+          if (keyCode === "ArrowDown" && p1) {
+            e.preventDefault();
+            e.stopPropagation();
+            keys["ArrowDown"] = true;
+            startKeyRepeat("ArrowDown", p1, { down: true });
+          }
+          if (keyCode === "ArrowUp" && p1) {
+            e.preventDefault();
+            e.stopPropagation();
+            keys["ArrowUp"] = true;
+            handleKey(p1, { rotate: true });
+          }
+          if (keyCode === " " && p1) {
+            e.preventDefault();
+            e.stopPropagation();
+            keys[" "] = true;
+            handleKey(p1, { hardDrop: true });
+          }
+        }
+      });
+
+      // 모바일 터치 컨트롤
+      function initMobileControls() {
+        const isMobile =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          );
+        const mobileControls = document.getElementById("mobile-controls");
+
+        if (!mobileControls) return;
+
+        // 게임 중일 때만 표시
+        if (isMobile && gameRunning) {
+          mobileControls.classList.remove("hidden");
+        } else {
+          mobileControls.classList.add("hidden");
+        }
+
+        // 터치 버튼 이벤트
+        document.getElementById("btn-left")?.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            if (p1 && gameRunning) {
+              handleKey(p1, { left: true });
+            }
+          },
+          { passive: false }
+        );
+
+        document.getElementById("btn-right")?.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            if (p1 && gameRunning) {
+              handleKey(p1, { right: true });
+            }
+          },
+          { passive: false }
+        );
+
+        document.getElementById("btn-rotate")?.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            if (p1 && gameRunning) {
+              handleKey(p1, { rotate: true });
+            }
+          },
+          { passive: false }
+        );
+
+        document.getElementById("btn-down")?.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            if (p1 && gameRunning) {
+              handleKey(p1, { down: true });
+            }
+          },
+          { passive: false }
+        );
+
+        document.getElementById("btn-hard-drop")?.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            if (p1 && gameRunning) {
+              handleKey(p1, { hardDrop: true });
+            }
+          },
+          { passive: false }
+        );
+
+        // 스와이프 제스처
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        document.addEventListener(
+          "touchstart",
+          (e) => {
+            if (!gameRunning || !p1) return;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+          },
+          { passive: true }
+        );
+
+        document.addEventListener(
+          "touchend",
+          (e) => {
+            if (!gameRunning || !p1) return;
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+            const threshold = 30;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+              // 좌우 스와이프
+              if (Math.abs(diffX) > threshold) {
+                if (diffX > 0) {
+                  handleKey(p1, { right: true });
+                } else {
+                  handleKey(p1, { left: true });
+                }
+              }
+            } else {
+              // 상하 스와이프
+              if (Math.abs(diffY) > threshold) {
+                if (diffY > 0) {
+                  handleKey(p1, { down: true });
+                } else {
+                  handleKey(p1, { rotate: true });
+                }
+              }
+            }
+          },
+          { passive: true }
+        );
+      }
+
+      document.addEventListener("keyup", (e) => {
+        const key = e.key.toLowerCase();
+        const keyCode = e.key;
+        const code = e.code;
+
+        if (mode === "duo") {
+          // 2P 모드: 1P는 WASD + 스페이스, 2P는 방향키 + 엔터
+
+          // P1 키 해제 (WASD + 스페이스)
+          if (code === "KeyA" || key === "a") {
+            keys["p1-a"] = false;
+            stopKeyRepeat("p1-a");
+          }
+          if (code === "KeyD" || key === "d") {
+            keys["p1-d"] = false;
+            stopKeyRepeat("p1-d");
+          }
+          if (code === "KeyS" || key === "s") {
+            keys["p1-s"] = false;
+            stopKeyRepeat("p1-s");
+          }
+          if (code === "KeyW" || key === "w") {
+            keys["p1-w"] = false;
+          }
+          if (keyCode === " ") {
+            keys["p1-space"] = false;
+          }
+
+          // P2 키 해제 (방향키 + 엔터)
+          if (keyCode === "ArrowLeft") {
+            keys["p2-ArrowLeft"] = false;
+            stopKeyRepeat("p2-ArrowLeft");
+          }
+          if (keyCode === "ArrowRight") {
+            keys["p2-ArrowRight"] = false;
+            stopKeyRepeat("p2-ArrowRight");
+          }
+          if (keyCode === "ArrowDown") {
+            keys["p2-ArrowDown"] = false;
+            stopKeyRepeat("p2-ArrowDown");
+          }
+          if (keyCode === "ArrowUp") {
+            keys["p2-ArrowUp"] = false;
+          }
+          if (code === "Enter" || keyCode === "Enter") {
+            keys["p2-enter"] = false;
+          }
+        } else {
+          // 1P 혼자: 방향키 + 스페이스
+          if (keyCode === "ArrowLeft") {
+            keys["ArrowLeft"] = false;
+            stopKeyRepeat("ArrowLeft");
+          }
+          if (keyCode === "ArrowRight") {
+            keys["ArrowRight"] = false;
+            stopKeyRepeat("ArrowRight");
+          }
+          if (keyCode === "ArrowDown") {
+            keys["ArrowDown"] = false;
+            stopKeyRepeat("ArrowDown");
+          }
+          if (keyCode === "ArrowUp") {
+            keys["ArrowUp"] = false;
+          }
+          if (keyCode === " ") {
+            keys[" "] = false;
+          }
+        }
+      });
+
+      function start(m) {
+        mode = m;
+        gameRunning = true;
+        gamePaused = false;
+        p1GameOver = false;
+        p2GameOver = false;
+        COLORS = THEMES[document.getElementById("theme").value];
+        document.getElementById("menu").classList.add("hidden");
+        document.getElementById("game").classList.remove("hidden");
+        document.getElementById("game-controls").classList.remove("hidden");
+        document.getElementById("result").textContent = "";
+        hideGameOverAd();
+
+        // 캔버스 크기 설정
+        const p1Canvas = document.getElementById("p1");
+        const p2Canvas = document.getElementById("p2");
+        p1Canvas.width = 400;
+        p1Canvas.height = 720;
+        p2Canvas.width = 400;
+        p2Canvas.height = 720;
+
+        if (mode === "duo" || mode === "solo") {
+          document.getElementById("p2-panel").classList.remove("hidden");
+        } else {
+          document.getElementById("p2-panel").classList.add("hidden");
+        }
+        p1 = new Player(p1Canvas);
+        if (mode === "duo" || mode === "solo") p2 = new Player(p2Canvas);
+        else p2 = null;
+        showStats();
+        last = 0;
+
+        // AudioContext 초기화를 위해 사용자 상호작용 후 BGM 시작
+        initAudio();
+        setTimeout(() => {
+          startBGM();
+        }, 100);
+
+        // 모바일 컨트롤 초기화
+        initMobileControls();
+
+        // 다시 시작 버튼 숨기기
+        document.getElementById("p1-resume-btn").classList.add("hidden");
+        document.getElementById("p2-resume-btn").classList.add("hidden");
+
+        // 조작법 안내 업데이트
+        if (mode === "duo") {
+          document.getElementById("p1-controls").innerHTML = `
+            <div>WASD 이동 | W 회전 | S 빠른 낙하</div>
+            <div>스페이스바: 한 번에 떨어뜨리기</div>
+          `;
+          document.getElementById("p2-controls").innerHTML = `
+            <div>← → 이동 | ↑ 회전 | ↓ 빠른 낙하</div>
+            <div>Enter: 한 번에 떨어뜨리기</div>
+          `;
+        } else {
+          document.getElementById("p1-controls").innerHTML = `
+            <div>← → 이동 | ↑ 회전 | ↓ 빠른 낙하</div>
+            <div>스페이스바: 한 번에 떨어뜨리기</div>
+          `;
+        }
+
+        loop();
+      }
+
+      function pauseGame() {
+        const t = window.t || ((key, vars = {}) => key);
+        if (!gameRunning) return;
+        gamePaused = !gamePaused;
+        if (gamePaused) {
+          document.getElementById("result").textContent = t("btnPause");
+        } else {
+          document.getElementById("result").textContent = "";
+        }
+      }
+
+      /* ===================== 루프 ===================== */
+      function drop(p) {
+        if (!p) return;
+        p.pos.y++;
+        if (collide(p)) {
+          p.pos.y--;
+          merge(p);
+          sweep(p);
+          p.matrix = piece(rand());
+          p.pos = { x: 3, y: 0 };
+          if (collide(p)) {
+            // 게임 오버 처리 (게임은 계속 진행)
+            if (p === p1) {
+              p1GameOver = true;
+              beep(200, 0.3);
+              navigator.vibrate?.(100);
+              document
+                .getElementById("p1-resume-btn")
+                .classList.remove("hidden");
+              lockResumeButton("p1-resume-btn");
+              showGameOverAd();
+              const t = window.t || ((key, vars = {}) => key);
+              if (mode === "duo") {
+                if (!p2GameOver) {
+                  document.getElementById("result").textContent = t("resultP2Win");
+                  stats.win++;
+                }
+              } else {
+                document.getElementById(
+                  "result"
+                ).textContent = t("gameOverSolo", { score: p1.score, lines: p1.lines });
+                stats.lose++;
+              }
+              saveStats();
+            } else if (p === p2) {
+              p2GameOver = true;
+              beep(200, 0.3);
+              navigator.vibrate?.(100);
+              document
+                .getElementById("p2-resume-btn")
+                .classList.remove("hidden");
+              lockResumeButton("p2-resume-btn");
+              showGameOverAd();
+              const t = window.t || ((key, vars = {}) => key);
+              if (mode === "duo") {
+                if (!p1GameOver) {
+                  document.getElementById("result").textContent = t("resultP1Win");
+                  stats.win++;
+                }
+              }
+              saveStats();
+            }
+
+            // 모든 플레이어가 게임 오버되면 게임 종료
+            if (
+              (p1GameOver && (mode === "solo" || !p2)) ||
+              (mode === "duo" && p1GameOver && p2GameOver)
+            ) {
+              setTimeout(() => {
+                stopBGM();
+                Object.keys(keyTimers).forEach((key) => {
+                  stopKeyRepeat(key);
+                });
+                document.getElementById("menu").classList.remove("hidden");
+                document.getElementById("game").classList.add("hidden");
+                document
+                  .getElementById("game-controls")
+                  .classList.add("hidden");
+                const shareButtonsEl = document.getElementById("share-buttons");
+                if (shareButtonsEl) shareButtonsEl.classList.add("hidden");
+                const mobileControls =
+                  document.getElementById("mobile-controls");
+                if (mobileControls) mobileControls.classList.add("hidden");
+                gameRunning = false;
+              }, 3000);
+            }
+            return;
+          }
+        }
+      }
+
+      let last = 0;
+      function loop(t = 0) {
+        if (!gameRunning || gamePaused) {
+          if (gamePaused) {
+            requestAnimationFrame(loop);
+          }
+          return;
+        }
+
+        if (t - last > 700) {
+          if (!p1GameOver && p1) drop(p1);
+          if (mode === "duo" && p2 && !p2GameOver) drop(p2);
+          if (mode === "solo" && p2 && !p2GameOver) {
+            drop(p2);
+            aiMove(p2);
+          }
+          last = t;
+        }
+
+        if (p1 && !p1GameOver) draw(p1);
+        else if (p1 && p1GameOver) {
+          // 게임 오버된 플레이어는 회색으로 표시
+          const ctx = p1.ctx;
+          ctx.clearRect(0, 0, COLS, ROWS);
+          ctx.fillStyle = "#000";
+          ctx.fillRect(0, 0, COLS, ROWS);
+          ctx.fillStyle = "rgba(100, 100, 100, 0.5)";
+          ctx.fillRect(0, 0, COLS, ROWS);
+
+          // 게임 오버 텍스트
+          ctx.fillStyle = "#fff";
+          ctx.font = "bold 1.5px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          const centerX = COLS / 2;
+          const centerY = ROWS / 2;
+
+          // 텍스트 배경
+          ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+          ctx.fillRect(centerX - 3, centerY - 1.5, 6, 3);
+
+          // 텍스트
+          const t = window.t || ((key, vars = {}) => key);
+          const gameOverText = t("gameOver").split(" ");
+          ctx.fillStyle = "#ff0000";
+          if (gameOverText.length === 2) {
+            ctx.fillText(gameOverText[0], centerX, centerY - 0.5);
+            ctx.fillText(gameOverText[1], centerX, centerY + 0.5);
+          } else {
+            ctx.fillText(t("gameOver"), centerX, centerY);
+          }
+        }
+
+        if ((mode === "duo" || mode === "solo") && p2) {
+          if (!p2GameOver) draw(p2);
+          else {
+            const ctx = p2.ctx;
+            ctx.clearRect(0, 0, COLS, ROWS);
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, COLS, ROWS);
+            ctx.fillStyle = "rgba(100, 100, 100, 0.5)";
+            ctx.fillRect(0, 0, COLS, ROWS);
+
+            // 게임 오버 텍스트
+            ctx.fillStyle = "#fff";
+            ctx.font = "bold 1.5px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            const centerX = COLS / 2;
+            const centerY = ROWS / 2;
+
+            // 텍스트 배경
+            ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+            ctx.fillRect(centerX - 3, centerY - 1.5, 6, 3);
+
+            // 텍스트
+            const t = window.t || ((key, vars = {}) => key);
+            const gameOverText = t("gameOver").split(" ");
+            ctx.fillStyle = "#ff0000";
+            if (gameOverText.length === 2) {
+              ctx.fillText(gameOverText[0], centerX, centerY - 0.5);
+              ctx.fillText(gameOverText[1], centerX, centerY + 0.5);
+            } else {
+              ctx.fillText(t("gameOver"), centerX, centerY);
+            }
+          }
+        }
+        requestAnimationFrame(loop);
+      }
+
+      let lastWinner = null;
+
+      function shareResult() {
+        const t = window.t || ((key, vars = {}) => key);
+        const resultText = document.getElementById("result").textContent;
+        const scoreText =
+          mode === "duo"
+            ? t("shareScore", { winner: lastWinner })
+            : t("shareScoreSolo", { score: p1?.score || 0, lines: p1?.lines || 0 });
+        const shareText = `${t("shareTitle")}\n${resultText}\n${scoreText}\n\nhttps://funnyfunny.cloud/`;
+
+        if (navigator.share) {
+          navigator
+            .share({
+              title: t("shareTitle"),
+              text: shareText,
+              url: window.location.href,
+            })
+            .catch(() => {
+              // 공유 취소 시 무시
+            });
+        } else {
+          // 클립보드에 복사
+          navigator.clipboard
+            .writeText(shareText)
+            .then(() => {
+              alert(t("alertCopied"));
+            })
+            .catch(() => {
+              // 복사 실패 시 텍스트 표시
+              prompt(t("promptCopy"), shareText);
+            });
+        }
+      }
+
+      function copyLink() {
+        const t = window.t || ((key, vars = {}) => key);
+        const url = window.location.href;
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
+            alert(t("alertLinkCopied"));
+          })
+          .catch(() => {
+            // 복사 실패 시 텍스트 표시
+            prompt(t("promptCopyLink"), url);
+          });
+      }
+
+      // 전역 함수로 노출
+      window.shareResult = shareResult;
+      window.copyLink = copyLink;
+      window.pauseGame = pauseGame;
+      window.resumePlayer = resumePlayer;
+      window.pauseGame = pauseGame;
+      window.saveGame = saveGame;
+      window.resumeGame = resumeGame;
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-format="fluid"
+     data-ad-layout-key="-6t+ed+2i-1n-4w"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="7300458753"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

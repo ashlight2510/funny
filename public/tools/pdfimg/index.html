@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PDF → 이미지 변환기 | PDF to Images</title>
+    <meta
+      name="description"
+      content="서버 업로드 없이 브라우저에서 PDF를 페이지별 PNG/JPEG 이미지로 변환합니다. 로컬에서만 처리됩니다."
+    />
+    <meta
+      name="description"
+      lang="en"
+      content="Convert PDF pages to PNG/JPEG images in your browser. No uploads; processed locally."
+    />
+    <meta
+      name="keywords"
+      content="PDF, image converter, PDF to PNG, PDF to JPG, 로컬 변환, 브라우저 변환"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b0f17" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/pdfimg/" />
+    <link rel="alternate" hreflang="ko" href="https://pdfimg.funnyfunny.cloud/?lang=ko" />
+    <link rel="alternate" hreflang="en" href="https://pdfimg.funnyfunny.cloud/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pdfimg.funnyfunny.cloud/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FunnyFunny Tools" />
+    <meta property="og:title" content="PDF → 이미지 변환기 | PDF to Images" />
+    <meta
+      property="og:description"
+      content="브라우저에서 PDF를 페이지별 PNG/JPEG로 변환합니다. 파일은 로컬에서만 처리됩니다."
+    />
+    <meta property="og:url" content="https://pdfimg.funnyfunny.cloud/" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1020/ffffff.png&amp;text=PDF+to+Images"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="PDF to Images preview" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PDF → 이미지 변환기 | PDF to Images" />
+    <meta
+      name="twitter:description"
+      content="PDF를 PNG/JPEG로 변환. 서버 업로드 없이 로컬 처리."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/0b1020/ffffff.png&amp;text=PDF+to+Images"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PDF to Images",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Convert PDF pages to PNG/JPEG images in the browser without uploads."
+      }
+    </script>
+    <style>
+      :root {
+        --bg: #0b0f17;
+        --card: #121a27;
+        --line: #22304a;
+        --text: #e8eefc;
+        --muted: #9fb0d0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Apple SD Gothic Neo,
+          Noto Sans KR,
+          sans-serif;
+        background: linear-gradient(180deg, #070b12, #0b1020);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 28px 18px 70px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0 0 18px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 980px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: rgba(18, 26, 39, 0.92);
+        border: 1px solid rgba(34, 48, 74, 0.9);
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      }
+      .card .in {
+        padding: 14px;
+      }
+      .drop {
+        border: 1px dashed rgba(159, 176, 208, 0.55);
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.02);
+        transition: 0.15s ease;
+      }
+      .drop.drag {
+        border-color: #7aa2ff;
+        background: rgba(122, 162, 255, 0.08);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid rgba(159, 176, 208, 0.35);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 13px;
+        user-select: none;
+      }
+      .btn.primary {
+        border-color: rgba(122, 162, 255, 0.55);
+        background: rgba(122, 162, 255, 0.18);
+      }
+      .btn.danger {
+        border-color: rgba(255, 120, 120, 0.55);
+        background: rgba(255, 120, 120, 0.12);
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      label {
+        font-size: 12px;
+        color: var(--muted);
+        display: block;
+        margin: 12px 0 6px;
+      }
+      input[type="text"],
+      select,
+      input[type="number"],
+      input[type="range"] {
+        width: 100%;
+        padding: 10px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(159, 176, 208, 0.25);
+        background: rgba(0, 0, 0, 0.18);
+        color: var(--text);
+        outline: none;
+      }
+      .mini {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 6px;
+        line-height: 1.4;
+      }
+      .stat {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .stat b {
+        color: var(--text);
+      }
+      .listTop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .progress {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        border: 1px solid rgba(159, 176, 208, 0.15);
+      }
+      .bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(
+          90deg,
+          rgba(122, 162, 255, 0.25),
+          rgba(122, 162, 255, 0.85)
+        );
+        transition: width 0.1s ease;
+      }
+      .thumbs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+      @media (max-width: 980px) {
+        .thumbs {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 520px) {
+        .thumbs {
+          grid-template-columns: 1fr;
+        }
+      }
+      .thumb {
+        border: 1px solid rgba(159, 176, 208, 0.18);
+        border-radius: 14px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.16);
+      }
+      .thumb .trow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 0 0 8px;
+      }
+      .badge {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .imgbox {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(159, 176, 208, 0.12);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .imgbox img {
+        width: 100%;
+        display: block;
+      }
+      .footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .kbd {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(159, 176, 208, 0.18);
+        padding: 2px 6px;
+        border-radius: 8px;
+      }
+      .adsense-block {
+        margin: 18px 0 0;
+        display: flex;
+        justify-content: center;
+      }
+      .adsbygoogle {
+        display: block;
+        text-align: center;
+        min-height: 100px;
+      }
+    </style>
+
+    <!-- JSZip (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>PDF → 이미지 변환기</h1>
+      <p class="sub">
+        브라우저에서만 변환됩니다. 파일은 서버로 업로드되지 않습니다.<br />
+        페이지별 PNG/JPEG 생성 및 ZIP 일괄다운로드를 지원합니다.
+      </p>
+
+      <div class="grid">
+        <!-- Left: Controls -->
+        <div class="card">
+          <div class="in">
+            <div id="drop" class="drop">
+              <div
+                style="
+                  font-size: 13px;
+                  margin-bottom: 10px;
+                  color: var(--muted);
+                "
+              >
+                PDF 파일을 여기로 드래그&드롭 하시거나
+              </div>
+              <div class="row" style="justify-content: center">
+                <label class="btn primary" for="file"> 파일 선택 </label>
+                <input
+                  id="file"
+                  type="file"
+                  accept="application/pdf"
+                  style="display: none"
+                />
+                <button id="clear" class="btn danger" type="button" disabled>
+                  초기화
+                </button>
+              </div>
+              <div class="hint" style="margin-top: 12px">
+                권장: 큰 PDF는 메모리를 많이 사용합니다. 페이지 범위를 좁히면 더
+                안정적입니다.
+              </div>
+            </div>
+
+            <div class="stat" id="stat">
+              <span>상태: <b id="status">대기</b></span>
+              <span>페이지: <b id="pages">-</b></span>
+            </div>
+
+            <label>페이지 범위</label>
+            <input
+              id="range"
+              type="text"
+              placeholder="예: 1-3, 5, 8-10 (비우면 전체)"
+            />
+
+            <div class="mini">
+              <div>
+                <label>포맷</label>
+                <select id="format">
+                  <option value="image/png">PNG</option>
+                  <option value="image/jpeg">JPEG</option>
+                </select>
+              </div>
+              <div>
+                <label>스케일(해상도)</label>
+                <select id="scale">
+                  <option value="1">1x (빠름)</option>
+                  <option value="1.5" selected>1.5x</option>
+                  <option value="2">2x (선명)</option>
+                  <option value="3">3x (고해상도)</option>
+                </select>
+              </div>
+            </div>
+
+            <label>JPEG 품질 (JPEG 선택 시)</label>
+            <input
+              id="quality"
+              type="range"
+              min="0.5"
+              max="1"
+              step="0.05"
+              value="0.92"
+            />
+            <div class="hint">
+              현재 품질: <span id="qval" class="kbd">0.92</span>
+            </div>
+
+            <div class="row" style="margin-top: 14px">
+              <button id="convert" class="btn primary" type="button" disabled>
+                변환 시작
+              </button>
+              <button id="zip" class="btn" type="button" disabled>
+                ZIP 다운로드
+              </button>
+            </div>
+
+            <div style="margin-top: 12px">
+              <div class="progress"><div id="bar" class="bar"></div></div>
+              <div class="hint" id="progText" style="margin-top: 8px">-</div>
+            </div>
+
+            <div class="footer">
+              <div>사용 팁</div>
+              <ul style="margin: 8px 0 0 18px; padding: 0">
+                <li>
+                  <span class="kbd">1-3,5</span> 처럼 입력하면 해당 페이지만
+                  변환됩니다.
+                </li>
+                <li>고해상도(2x~3x)는 느리지만 인쇄/확대에 유리합니다.</li>
+                <li>
+                  휴대폰 브라우저는 메모리가 부족할 수 있어 PC 사용을
+                  권장합니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Output -->
+        <div class="card">
+          <div class="in">
+            <div class="listTop">
+              <div style="font-size: 13px; color: var(--muted)">
+                결과 미리보기 (페이지별 다운로드 가능)
+              </div>
+              <div class="row">
+                <button id="dlAll" class="btn" type="button" disabled>
+                  개별 전부 다운로드
+                </button>
+              </div>
+            </div>
+            <div style="height: 10px"></div>
+            <div id="thumbs" class="thumbs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="adsense-block">
+        <ins
+          class="adsbygoogle"
+          style="display: block; text-align: center"
+          data-ad-client="ca-pub-1204894220949193"
+          data-ad-slot="5145068706"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
+    </div>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+
+      const fileInput = $("file");
+      const drop = $("drop");
+      const clearBtn = $("clear");
+      const convertBtn = $("convert");
+      const zipBtn = $("zip");
+      const dlAllBtn = $("dlAll");
+      const thumbs = $("thumbs");
+      const statusEl = $("status");
+      const pagesEl = $("pages");
+      const rangeEl = $("range");
+      const formatEl = $("format");
+      const scaleEl = $("scale");
+      const qualityEl = $("quality");
+      const qvalEl = $("qval");
+      const bar = $("bar");
+      const progText = $("progText");
+
+      let pdfDoc = null;
+      let pdfFileName = "document";
+      let outputs = []; // {page, mime, blob, url, width, height}
+      let converting = false;
+      let pdfjs = null;
+
+      const pdfjsCandidates = [
+        {
+          lib: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs",
+          worker:
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.mjs",
+          module: true,
+        },
+        {
+          lib: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs",
+          worker:
+            "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.min.mjs",
+          module: true,
+        },
+        {
+          lib: "https://unpkg.com/pdfjs-dist@4.6.82/build/pdf.min.mjs",
+          worker:
+            "https://unpkg.com/pdfjs-dist@4.6.82/build/pdf.worker.min.mjs",
+          module: true,
+        },
+        {
+          lib: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.js",
+          worker:
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.js",
+          module: false,
+        },
+        {
+          lib: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.js",
+          worker:
+            "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.min.js",
+          module: false,
+        },
+        {
+          lib: "https://unpkg.com/pdfjs-dist@4.6.82/build/pdf.min.js",
+          worker:
+            "https://unpkg.com/pdfjs-dist@4.6.82/build/pdf.worker.min.js",
+          module: false,
+        },
+      ];
+
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.async = true;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error(`load failed: ${src}`));
+          document.head.appendChild(script);
+        });
+      }
+
+      async function initPdfJs() {
+        if (pdfjs && pdfjs.getDocument) return true;
+        for (const candidate of pdfjsCandidates) {
+          try {
+            if (candidate.module) {
+              const mod = await import(candidate.lib);
+              const ns = mod?.default && mod.default.getDocument ? mod.default : mod;
+              if (ns?.getDocument) {
+                pdfjs = ns;
+                pdfjs.GlobalWorkerOptions.workerSrc = candidate.worker;
+                return true;
+              }
+            } else {
+              await loadScript(candidate.lib);
+              if (window.pdfjsLib?.getDocument) {
+                pdfjs = window.pdfjsLib;
+                pdfjs.GlobalWorkerOptions.workerSrc = candidate.worker;
+                return true;
+              }
+            }
+          } catch {
+            // try next CDN
+          }
+        }
+        setStatus("PDF.js 로딩 실패");
+        setProgress(
+          0,
+          "PDF.js 라이브러리를 불러오지 못했습니다. CDN 차단/광고 차단기/네트워크 상태를 확인해 주세요.",
+        );
+        clearBtn.disabled = true;
+        convertBtn.disabled = true;
+        zipBtn.disabled = true;
+        dlAllBtn.disabled = true;
+        return false;
+      }
+
+      qualityEl.addEventListener("input", () => {
+        qvalEl.textContent = Number(qualityEl.value).toFixed(2);
+      });
+
+      function setStatus(text) {
+        statusEl.textContent = text;
+      }
+
+      function setProgress(pct, text) {
+        bar.style.width = `${pct}%`;
+        progText.textContent = text || "";
+      }
+
+      function resetAll() {
+        pdfDoc = null;
+        outputs.forEach((o) => URL.revokeObjectURL(o.url));
+        outputs = [];
+        thumbs.innerHTML = "";
+        pagesEl.textContent = "-";
+        setStatus("대기");
+        setProgress(0, "-");
+        clearBtn.disabled = true;
+        convertBtn.disabled = true;
+        zipBtn.disabled = true;
+        dlAllBtn.disabled = true;
+        rangeEl.value = "";
+      }
+
+      clearBtn.addEventListener("click", resetAll);
+
+      // Drag & Drop
+      ["dragenter", "dragover"].forEach((evt) => {
+        drop.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          drop.classList.add("drag");
+        });
+      });
+      ["dragleave", "drop"].forEach((evt) => {
+        drop.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          drop.classList.remove("drag");
+        });
+      });
+      drop.addEventListener("drop", (e) => {
+        const f = e.dataTransfer.files?.[0];
+        if (f) handleFile(f);
+      });
+
+      fileInput.addEventListener("change", () => {
+        const f = fileInput.files?.[0];
+        if (f) handleFile(f);
+      });
+
+      async function handleFile(file) {
+        if (!file || file.type !== "application/pdf") {
+          alert("PDF 파일만 지원합니다.");
+          return;
+        }
+        resetAll();
+        clearBtn.disabled = false;
+        convertBtn.disabled = true;
+        setStatus("로딩 중…");
+        setProgress(0, "PDF를 불러오는 중입니다…");
+
+        pdfFileName = (file.name || "document").replace(/\.pdf$/i, "");
+
+        if (!pdfjs) {
+          const ok = await initPdfJs();
+          if (!ok) {
+            alert(
+              "PDF.js를 로드하지 못했습니다. 네트워크 또는 차단 설정을 확인해 주세요.",
+            );
+            setStatus("오류");
+            setProgress(0, "PDF.js 로딩 실패");
+            return;
+          }
+        }
+
+        const data = await file.arrayBuffer();
+        pdfDoc = await pdfjs.getDocument({ data }).promise;
+
+        pagesEl.textContent = pdfDoc.numPages;
+        setStatus("준비 완료");
+        setProgress(
+          0,
+          "변환할 페이지 범위/옵션을 설정한 뒤 ‘변환 시작’을 누르십시오.",
+        );
+        convertBtn.disabled = false;
+      }
+
+      function parseRange(input, maxPages) {
+        // 빈 값이면 전체
+        const s = (input || "").trim();
+        if (!s) return Array.from({ length: maxPages }, (_, i) => i + 1);
+
+        const parts = s
+          .split(",")
+          .map((x) => x.trim())
+          .filter(Boolean);
+        const set = new Set();
+
+        for (const p of parts) {
+          if (/^\d+$/.test(p)) {
+            const n = Number(p);
+            if (n >= 1 && n <= maxPages) set.add(n);
+            continue;
+          }
+          const m = p.match(/^(\d+)\s*-\s*(\d+)$/);
+          if (m) {
+            let a = Number(m[1]),
+              b = Number(m[2]);
+            if (Number.isNaN(a) || Number.isNaN(b)) continue;
+            if (a > b) [a, b] = [b, a];
+            a = Math.max(1, a);
+            b = Math.min(maxPages, b);
+            for (let i = a; i <= b; i++) set.add(i);
+          }
+        }
+        const arr = Array.from(set).sort((x, y) => x - y);
+        return arr.length
+          ? arr
+          : Array.from({ length: maxPages }, (_, i) => i + 1);
+      }
+
+      function dataURLToBlob(dataUrl) {
+        const [meta, b64] = dataUrl.split(",");
+        const mime = meta.match(/data:(.*?);base64/)[1];
+        const bin = atob(b64);
+        const len = bin.length;
+        const u8 = new Uint8Array(len);
+        for (let i = 0; i < len; i++) u8[i] = bin.charCodeAt(i);
+        return new Blob([u8], { type: mime });
+      }
+
+      function makeFileName(page, mime) {
+        const ext = mime === "image/png" ? "png" : "jpg";
+        const p = String(page).padStart(3, "0");
+        return `${pdfFileName}_p${p}.${ext}`;
+      }
+
+      function addThumb(output) {
+        const { page, url, mime, width, height } = output;
+
+        const wrap = document.createElement("div");
+        wrap.className = "thumb";
+
+        const top = document.createElement("div");
+        top.className = "trow";
+
+        const left = document.createElement("div");
+        left.innerHTML = `<div style="font-size:13px">Page ${page}</div><div class="badge">${width}×${height} · ${mime.includes("png") ? "PNG" : "JPEG"}</div>`;
+
+        const right = document.createElement("div");
+        const dl = document.createElement("button");
+        dl.className = "btn";
+        dl.type = "button";
+        dl.textContent = "다운로드";
+        dl.addEventListener("click", () => {
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = makeFileName(page, mime);
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        });
+        right.appendChild(dl);
+
+        top.appendChild(left);
+        top.appendChild(right);
+
+        const box = document.createElement("div");
+        box.className = "imgbox";
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = `Page ${page}`;
+        box.appendChild(img);
+
+        wrap.appendChild(top);
+        wrap.appendChild(box);
+        thumbs.appendChild(wrap);
+      }
+
+      convertBtn.addEventListener("click", async () => {
+        if (!pdfDoc || converting) return;
+        converting = true;
+
+        // 정리
+        outputs.forEach((o) => URL.revokeObjectURL(o.url));
+        outputs = [];
+        thumbs.innerHTML = "";
+        zipBtn.disabled = true;
+        dlAllBtn.disabled = true;
+
+        const maxPages = pdfDoc.numPages;
+        const pages = parseRange(rangeEl.value, maxPages);
+        const mime = formatEl.value;
+        const scale = Number(scaleEl.value);
+        const quality = Number(qualityEl.value);
+
+        setStatus("변환 중…");
+        setProgress(0, `총 ${pages.length}페이지 변환을 시작합니다…`);
+
+        try {
+          for (let idx = 0; idx < pages.length; idx++) {
+            const pageNo = pages[idx];
+            const page = await pdfDoc.getPage(pageNo);
+
+            const viewport = page.getViewport({ scale });
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d", { alpha: true });
+
+            canvas.width = Math.floor(viewport.width);
+            canvas.height = Math.floor(viewport.height);
+
+            await page.render({ canvasContext: ctx, viewport }).promise;
+
+            const dataUrl =
+              mime === "image/png"
+                ? canvas.toDataURL("image/png")
+                : canvas.toDataURL("image/jpeg", quality);
+
+            const blob = dataURLToBlob(dataUrl);
+            const url = URL.createObjectURL(blob);
+
+            const out = {
+              page: pageNo,
+              mime,
+              blob,
+              url,
+              width: canvas.width,
+              height: canvas.height,
+            };
+            outputs.push(out);
+            addThumb(out);
+
+            const pct = Math.round(((idx + 1) / pages.length) * 100);
+            setProgress(
+              pct,
+              `변환 진행: ${idx + 1}/${pages.length} (Page ${pageNo})`,
+            );
+            // 메모리 압박 완화
+            canvas.width = 1;
+            canvas.height = 1;
+          }
+
+          setStatus("완료");
+          setProgress(
+            100,
+            `완료: ${outputs.length}개 이미지가 생성되었습니다.`,
+          );
+          zipBtn.disabled = outputs.length === 0;
+          dlAllBtn.disabled = outputs.length === 0;
+        } catch (err) {
+          console.error(err);
+          alert("변환 중 오류가 발생했습니다. 콘솔을 확인해 주십시오.");
+          setStatus("오류");
+          setProgress(0, "오류로 중단되었습니다.");
+        } finally {
+          converting = false;
+        }
+      });
+
+      dlAllBtn.addEventListener("click", () => {
+        if (!outputs.length) return;
+        // 브라우저 보안상 연속 다운로드가 제한될 수 있습니다.
+        outputs.forEach((o, i) => {
+          setTimeout(() => {
+            const a = document.createElement("a");
+            a.href = o.url;
+            a.download = makeFileName(o.page, o.mime);
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          }, i * 150);
+        });
+      });
+
+      zipBtn.addEventListener("click", async () => {
+        if (!outputs.length) return;
+
+        setStatus("ZIP 생성 중…");
+        setProgress(0, "ZIP 파일을 생성하는 중입니다…");
+
+        try {
+          const zip = new JSZip();
+          const folder = zip.folder(pdfFileName || "pdf_images");
+
+          for (let i = 0; i < outputs.length; i++) {
+            const o = outputs[i];
+            const name = makeFileName(o.page, o.mime);
+            folder.file(name, o.blob);
+
+            const pct = Math.round(((i + 1) / outputs.length) * 100);
+            setProgress(pct, `ZIP 구성: ${i + 1}/${outputs.length}`);
+            await new Promise((r) => setTimeout(r, 0));
+          }
+
+          const zipBlob = await zip.generateAsync({ type: "blob" }, (meta) => {
+            // meta.percent 로 진행률도 받을 수 있으나, 위 루프로 충분히 표시 중
+          });
+
+          const url = URL.createObjectURL(zipBlob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `${pdfFileName || "pdf"}_images.zip`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+
+          setStatus("완료");
+          setProgress(100, "ZIP 다운로드가 시작되었습니다.");
+        } catch (e) {
+          console.error(e);
+          alert("ZIP 생성 중 오류가 발생했습니다.");
+          setStatus("오류");
+          setProgress(0, "ZIP 생성 실패");
+        }
+      });
+
+      // 초기화
+      resetAll();
+      initPdfJs();
+    </script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </body>
+</html>

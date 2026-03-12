@@ -1,0 +1,39 @@
+{
+  "ambient": [
+    {
+      "id": "rain",
+      "title": "Rain",
+      "type": "css",
+      "gradient": ["#e8eef4", "#d4dce6"],
+      "text": "You don't need to think about anything right now."
+    },
+    {
+      "id": "fire",
+      "title": "Fire",
+      "type": "css",
+      "gradient": ["#f5e6d3", "#e8d4b8"],
+      "text": "It's okay to zone out here."
+    },
+    {
+      "id": "wave",
+      "title": "Waves",
+      "type": "css",
+      "gradient": ["#dae8f0", "#c5dde8"],
+      "text": "Save the judgment for later."
+    },
+    {
+      "id": "fog",
+      "title": "Fog",
+      "type": "css",
+      "gradient": ["#e8eae8", "#d8dad8"],
+      "text": "Don't think about anything."
+    },
+    {
+      "id": "dawn",
+      "title": "Dawn",
+      "type": "css",
+      "gradient": ["#f0e8e8", "#e8dce0"],
+      "text": "It's okay to leave it as is."
+    }
+  ]
+}

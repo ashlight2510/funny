@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MR Maker · Vocal Remover | mr.funnyfunny.cloud</title>
+  <meta name="description" content="Listen to vocals only or MR only. Separate stereo in-browser, preview and download. All processing happens in your browser—no server uploads." />
+  <meta property="og:title" content="MR Maker · Vocal Remover" />
+  <meta property="og:description" content="Listen to vocals only or MR only. Separate stereo in-browser, preview and download." />
+  <meta property="og:url" content="https://mr.funnyfunny.cloud/en.html" />
+  <meta property="og:type" content="website" />
+  <link rel="alternate" hreflang="ko" href="https://mr.funnyfunny.cloud/" />
+  <link rel="alternate" hreflang="en" href="https://mr.funnyfunny.cloud/en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://mr.funnyfunny.cloud/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%236366f1'/><stop offset='100%25' style='stop-color:%238b5cf6'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><path d='M28 68 L28 38 L34 35 L34 65 M44 68 L44 28 L50 25 L50 65 M60 68 L60 35 L66 32 L66 65 M72 68 L72 40 L78 37 L78 65' fill='white' opacity='0.95'/></svg>" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #0c0c0f;
+      --surface: #141419;
+      --surface2: #1c1c23;
+      --border: #2a2a34;
+      --text: #e8e8ed;
+      --text2: #9ca3af;
+      --accent: #6366f1;
+      --accent2: #8b5cf6;
+      --success: #22c55e;
+      --danger: #ef4444;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .page { max-width: 560px; margin: 0 auto; padding: 28px 20px; }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tagline { color: var(--text2); font-size: 0.9rem; margin: 0; }
+    header { position: relative; }
+    .lang-switch { position: absolute; top: 0; right: 0; }
+    .lang-switch a {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    .lang-switch a:hover { background: rgba(99, 102, 241, 0.3); color: var(--text); }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .dropzone {
+      border: 2px dashed var(--border);
+      border-radius: 14px;
+      padding: 32px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      background: rgba(99, 102, 241, 0.04);
+    }
+    .dropzone:hover, .dropzone.dragover { border-color: var(--accent); background: rgba(99, 102, 241, 0.08); }
+    .dropzone input { display: none; }
+    .dropzone .icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.9; }
+    .dropzone .label { font-weight: 600; margin-bottom: 4px; }
+    .dropzone .hint { font-size: 0.85rem; color: var(--text2); }
+    .loading-box {
+      display: none;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .loading-box.visible { display: block; }
+    .loader-label { font-weight: 600; margin-bottom: 20px; color: var(--text); }
+    .loader-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+    }
+    .loader-bars span {
+      width: 8px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 4px;
+      animation: bar 0.8s ease-in-out infinite;
+    }
+    .loader-bars span:nth-child(1) { height: 20px; animation-delay: 0s; }
+    .loader-bars span:nth-child(2) { height: 32px; animation-delay: 0.1s; }
+    .loader-bars span:nth-child(3) { height: 44px; animation-delay: 0.2s; }
+    .loader-bars span:nth-child(4) { height: 28px; animation-delay: 0.3s; }
+    .loader-bars span:nth-child(5) { height: 38px; animation-delay: 0.4s; }
+    .loader-bars span:nth-child(6) { height: 24px; animation-delay: 0.5s; }
+    .loader-bars span:nth-child(7) { height: 40px; animation-delay: 0.6s; }
+    @keyframes bar {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.7; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+    .player-box { display: none; }
+    .player-box.visible { display: block; }
+    .mode-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      background: var(--surface2);
+      padding: 6px;
+      border-radius: 12px;
+    }
+    .mode-tabs button {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text2);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-tabs button:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .mode-tabs button.active { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; }
+    .progress-wrap {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text2);
+      margin-bottom: 16px;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-play {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .btn-play:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4); }
+    .btn-play:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-dl {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-dl:hover { background: var(--border); }
+    .btn-dl.vocal { border-color: var(--success); color: var(--success); }
+    .btn-dl.vocal:hover { background: rgba(34, 197, 94, 0.15); }
+    .btn-dl.mr { border-color: var(--accent); color: var(--accent); }
+    .btn-dl.mr:hover { background: rgba(99, 102, 241, 0.15); }
+    .download-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; justify-content: center; }
+    .filename { font-size: 0.85rem; color: var(--text2); margin-top: 12px; word-break: break-all; }
+    .reset-wrap { text-align: center; margin-top: 20px; }
+    .btn-reset {
+      background: transparent;
+      color: var(--text2);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-reset:hover { color: var(--text); border-color: var(--text2); }
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      font-size: 0.85rem;
+      color: var(--text2);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+    }
+    .footer-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      text-decoration: none;
+    }
+    .warn { font-size: 0.8rem; color: var(--text2); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="lang-switch">
+        <a href="./index.html">🇰🇷 한국어</a>
+      </div>
+      <h1>MR Maker · Vocal Remover</h1>
+      <p class="tagline">Vocals only / MR only · Right in your browser</p>
+    </header>
+
+    <div class="card">
+      <div id="dropSection" class="dropzone">
+        <input type="file" id="fileInput" accept="audio/*" />
+        <div class="icon">🎵</div>
+        <div class="label">Upload audio</div>
+        <div class="hint">MP3, WAV, M4A, etc. · Stereo recommended</div>
+      </div>
+
+      <div id="loadingSection" class="loading-box">
+        <div class="loader-label">Processing preview…</div>
+        <div class="loader-bars">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div id="playerSection" class="player-box">
+        <div class="mode-tabs">
+          <button type="button" data-mode="original">Original</button>
+          <button type="button" data-mode="vocal">Vocals only</button>
+          <button type="button" data-mode="mr">MR only</button>
+        </div>
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+        <div class="controls">
+          <button type="button" class="btn btn-play" id="playBtn" title="Play / Pause">▶</button>
+        </div>
+        <div class="download-row">
+          <button type="button" class="btn btn-dl vocal" id="dlVocal">Download vocals</button>
+          <button type="button" class="btn btn-dl mr" id="dlMr">Download MR</button>
+        </div>
+        <div class="filename" id="fileName"></div>
+        <div class="reset-wrap">
+          <button type="button" class="btn-reset" id="resetBtn">Upload another file</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="warn">Separates vocals (center) / MR (sides) from stereo. Mono may have limited effect.</p>
+
+    <footer>
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" class="footer-link">✨ View other services</a>
+      <div>
+        <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a> · mr.funnyfunny.cloud
+      </div>
+    </footer>
+  </div>
+
+  <script>
+(function () {
+  'use strict';
+
+  const dropSection = document.getElementById('dropSection');
+  const fileInput = document.getElementById('fileInput');
+  const loadingSection = document.getElementById('loadingSection');
+  const playerSection = document.getElementById('playerSection');
+  const modeTabs = document.querySelectorAll('.mode-tabs button');
+  const progressWrap = document.getElementById('progressWrap');
+  const progressBar = document.getElementById('progressBar');
+  const currentTimeEl = document.getElementById('currentTime');
+  const totalTimeEl = document.getElementById('totalTime');
+  const playBtn = document.getElementById('playBtn');
+  const dlVocal = document.getElementById('dlVocal');
+  const dlMr = document.getElementById('dlMr');
+  const fileNameEl = document.getElementById('fileName');
+  const resetBtn = document.getElementById('resetBtn');
+
+  let audioContext = null;
+  let originalBuffer = null;
+  let vocalBuffer = null;
+  let mrBuffer = null;
+  let sourceNode = null;
+  let gainNode = null;
+  let startedAt = 0;
+  let pausedAt = 0;
+  let rafId = null;
+  let mode = 'original';
+  let lastFile = null;
+
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function getBuffer() {
+    if (mode === 'vocal') return vocalBuffer;
+    if (mode === 'mr') return mrBuffer;
+    return originalBuffer;
+  }
+
+  function showDrop() {
+    dropSection.style.display = 'block';
+    loadingSection.classList.remove('visible');
+    playerSection.classList.remove('visible');
+  }
+
+  function showLoading() {
+    dropSection.style.display = 'none';
+    loadingSection.classList.add('visible');
+    playerSection.classList.remove('visible');
+  }
+
+  function showPlayer() {
+    dropSection.style.display = 'none';
+    loadingSection.classList.remove('visible');
+    playerSection.classList.add('visible');
+  }
+
+  function setMode(m) {
+    mode = m;
+    modeTabs.forEach(function (b) {
+      b.classList.toggle('active', b.dataset.mode === mode);
+    });
+    stopPlayback();
+    updateTimeDisplays(0, getBuffer() ? getBuffer().duration : 0);
+    progressBar.style.width = '0%';
+  }
+
+  function updateTimeDisplays(current, total) {
+    currentTimeEl.textContent = formatTime(current);
+    totalTimeEl.textContent = formatTime(total);
+  }
+
+  function stopPlayback() {
+    if (sourceNode) {
+      try { sourceNode.stop(); } catch (_) {}
+      sourceNode = null;
+    }
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    playBtn.textContent = '▶';
+  }
+
+  function startPlayback() {
+    const buf = getBuffer();
+    if (!buf || !audioContext) return;
+    stopPlayback();
+    const src = audioContext.createBufferSource();
+    src.buffer = buf;
+    if (!gainNode) gainNode = audioContext.createGain();
+    src.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    src.start(0);
+    sourceNode = src;
+    startedAt = audioContext.currentTime;
+    pausedAt = 0;
+    playBtn.textContent = '⏸';
+
+    function tick() {
+      if (!sourceNode) return;
+      const elapsed = audioContext.currentTime - startedAt;
+      if (elapsed >= buf.duration) {
+        stopPlayback();
+        updateTimeDisplays(0, buf.duration);
+        progressBar.style.width = '0%';
+        return;
+      }
+      progressBar.style.width = (elapsed / buf.duration * 100) + '%';
+      updateTimeDisplays(elapsed, buf.duration);
+      rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function togglePlayback() {
+    const buf = getBuffer();
+    if (!buf) return;
+    if (sourceNode) {
+      pausedAt = audioContext.currentTime - startedAt;
+      try { sourceNode.stop(); } catch (_) {}
+      sourceNode = null;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      playBtn.textContent = '▶';
+      progressBar.style.width = (pausedAt / buf.duration * 100) + '%';
+      updateTimeDisplays(pausedAt, buf.duration);
+      return;
+    }
+    if (pausedAt > 0) {
+      const src = audioContext.createBufferSource();
+      src.buffer = buf;
+      if (!gainNode) gainNode = audioContext.createGain();
+      src.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      const startOffset = Math.min(pausedAt, buf.duration - 0.01);
+      src.start(0, startOffset);
+      sourceNode = src;
+      startedAt = audioContext.currentTime - startOffset;
+      playBtn.textContent = '⏸';
+      function tick() {
+        if (!sourceNode) return;
+        const elapsed = audioContext.currentTime - startedAt;
+        if (elapsed >= buf.duration) {
+          stopPlayback();
+          updateTimeDisplays(0, buf.duration);
+          progressBar.style.width = '0%';
+          return;
+        }
+        progressBar.style.width = (elapsed / buf.duration * 100) + '%';
+        updateTimeDisplays(elapsed, buf.duration);
+        rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+    } else {
+      startPlayback();
+    }
+  }
+
+  progressWrap.addEventListener('click', function (e) {
+    const buf = getBuffer();
+    if (!buf) return;
+    const rect = progressWrap.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const t = Math.max(0, Math.min(1, x)) * buf.duration;
+    stopPlayback();
+    pausedAt = t;
+    progressBar.style.width = (t / buf.duration * 100) + '%';
+    updateTimeDisplays(t, buf.duration);
+  });
+
+  playBtn.addEventListener('click', togglePlayback);
+
+  modeTabs.forEach(function (b) {
+    b.addEventListener('click', function () { setMode(b.dataset.mode); });
+  });
+
+  function encodeWav(channels, sampleRate) {
+    const numCh = channels.length;
+    const numSamples = channels[0].length;
+    const dataLen = numSamples * numCh * 2;
+    const buffer = new ArrayBuffer(44 + dataLen);
+    const view = new DataView(buffer);
+    const write = function (offset, val) { view.setUint32(offset, val, true); };
+    const write16 = function (offset, val) { view.setUint16(offset, val, true); };
+    function writeStr(offset, s) {
+      for (let i = 0; i < s.length; i++) view.setUint8(offset + i, s.charCodeAt(i));
+    }
+    writeStr(0, 'RIFF');
+    write(4, 36 + dataLen);
+    writeStr(8, 'WAVE');
+    writeStr(12, 'fmt ');
+    write(16, 16);
+    write16(20, 1);
+    write16(22, numCh);
+    write(24, sampleRate);
+    write(28, sampleRate * numCh * 2);
+    write16(32, numCh * 2);
+    write16(34, 16);
+    writeStr(36, 'data');
+    write(40, dataLen);
+    let pos = 44;
+    for (let i = 0; i < numSamples; i++) {
+      for (let ch = 0; ch < numCh; ch++) {
+        const s = Math.max(-1, Math.min(1, channels[ch][i]));
+        view.setInt16(pos, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+        pos += 2;
+      }
+    }
+    return buffer;
+  }
+
+  function bufferToChannels(buf) {
+    const ch = [];
+    for (let i = 0; i < buf.numberOfChannels; i++) ch.push(buf.getChannelData(i).slice());
+    return ch;
+  }
+
+  function createWavFromBuffer(buf) {
+    const ch = bufferToChannels(buf);
+    return encodeWav(ch, buf.sampleRate);
+  }
+
+  function downloadBlob(blob, name) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  dlVocal.addEventListener('click', function () {
+    if (!vocalBuffer || !lastFile) return;
+    const base = lastFile.name.replace(/\.[^.]*$/, '') || 'audio';
+    const wav = createWavFromBuffer(vocalBuffer);
+    downloadBlob(new Blob([wav], { type: 'audio/wav' }), base + '_vocal.wav');
+  });
+
+  dlMr.addEventListener('click', function () {
+    if (!mrBuffer || !lastFile) return;
+    const base = lastFile.name.replace(/\.[^.]*$/, '') || 'audio';
+    const wav = createWavFromBuffer(mrBuffer);
+    downloadBlob(new Blob([wav], { type: 'audio/wav' }), base + '_MR.wav');
+  });
+
+  resetBtn.addEventListener('click', function () {
+    stopPlayback();
+    originalBuffer = vocalBuffer = mrBuffer = null;
+    lastFile = null;
+    fileNameEl.textContent = '';
+    setMode('original');
+    showDrop();
+    fileInput.value = '';
+  });
+
+  function separate(ctx, buf) {
+    const sr = buf.sampleRate;
+    const len = buf.length;
+    const ch = buf.numberOfChannels;
+    let L = buf.getChannelData(0);
+    let R = ch > 1 ? buf.getChannelData(1) : L;
+    if (L.length !== len) L = L.slice(0, len);
+    if (R.length !== len) R = R.slice(0, len);
+
+    const mid = new Float32Array(len);
+    const side = new Float32Array(len);
+    for (let i = 0; i < len; i++) {
+      mid[i] = 0.5 * (L[i] + R[i]);
+      side[i] = 0.5 * (L[i] - R[i]);
+    }
+
+    const vocalCh = [new Float32Array(len), new Float32Array(len)];
+    for (let i = 0; i < len; i++) {
+      vocalCh[0][i] = mid[i];
+      vocalCh[1][i] = mid[i];
+    }
+    const vocal = ctx.createBuffer(2, len, sr);
+    vocal.getChannelData(0).set(vocalCh[0]);
+    vocal.getChannelData(1).set(vocalCh[1]);
+
+    const mrCh = [new Float32Array(len), new Float32Array(len)];
+    for (let i = 0; i < len; i++) {
+      mrCh[0][i] = side[i];
+      mrCh[1][i] = -side[i];
+    }
+    const mr = ctx.createBuffer(2, len, sr);
+    mr.getChannelData(0).set(mrCh[0]);
+    mr.getChannelData(1).set(mrCh[1]);
+
+    return { vocal, mr };
+  }
+
+  dropSection.addEventListener('click', function () { fileInput.click(); });
+  dropSection.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    dropSection.classList.add('dragover');
+  });
+  dropSection.addEventListener('dragleave', function () { dropSection.classList.remove('dragover'); });
+  dropSection.addEventListener('drop', function (e) {
+    e.preventDefault();
+    dropSection.classList.remove('dragover');
+    const f = e.dataTransfer && e.dataTransfer.files[0];
+    if (f && f.type.startsWith('audio/')) handleFile(f);
+  });
+
+  fileInput.addEventListener('change', function () {
+    const f = fileInput.files[0];
+    if (f) handleFile(f);
+  });
+
+  function handleFile(file) {
+    lastFile = file;
+    fileNameEl.textContent = file.name;
+    showLoading();
+    stopPlayback();
+
+    if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    const fr = new FileReader();
+    fr.onload = function () {
+      audioContext.decodeAudioData(fr.result).then(function (buf) {
+        originalBuffer = buf;
+        const { vocal, mr } = separate(audioContext, buf);
+        vocalBuffer = vocal;
+        mrBuffer = mr;
+        setMode('original');
+        showPlayer();
+        const dur = buf.duration;
+        updateTimeDisplays(0, dur);
+        totalTimeEl.textContent = formatTime(dur);
+      }).catch(function (err) {
+        console.error(err);
+        alert('Decoding failed. Try another file.');
+        showDrop();
+      });
+    };
+    fr.readAsArrayBuffer(file);
+  }
+})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>화투로 보는 오늘의 운세 | 화투 운세</title>
+
+  <!-- OG -->
+  <meta property="og:title" content="화투로 보는 오늘의 운세" />
+  <meta property="og:description" content="화투 한 장으로 알아보는 오늘의 운세와 행운" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Hwatu+Fortune" />
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <rect width='100' height='100' rx='20' fill='%230b1220'/>
+    <text x='50' y='62' font-size='52' text-anchor='middle' fill='white'>🃏</text>
+  </svg>">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111827;
+      --paper:#ffffff;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#111;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+      background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%);
+      color:#111;
+      min-height:100vh;
+    }
+    header{
+      background: linear-gradient(135deg, #0b1220 0%, #1a2332 100%);
+      color:#fff;
+      padding:28px 16px;
+      text-align:center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    header h1{ margin:0 0 8px; font-size:24px; letter-spacing:-0.3px; font-weight:800; }
+    header p{ margin:0; opacity:0.9; font-size:14px; line-height:1.6; }
+
+    main{ max-width:1000px; margin:0 auto; padding:24px 16px 32px; }
+
+    .row{ display:grid; grid-template-columns: 1fr; gap:20px; }
+    @media (min-width:900px){
+      .row{ grid-template-columns: 1fr; align-items:start; }
+    }
+    
+    .main-card-section{
+      max-width:600px;
+      margin:0 auto;
+    }
+
+    .panel{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+      box-shadow: 0 8px 24px rgba(17,24,39,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .panel:hover{
+      box-shadow: 0 12px 32px rgba(17,24,39,0.12);
+    }
+
+    .hint{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+      margin:12px 0 0;
+    }
+    .hint b{
+      color:#111;
+      font-weight:700;
+    }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; justify-content:center; }
+    button{
+      border:none;
+      border-radius:12px;
+      padding:12px 18px;
+      font-weight:700;
+      cursor:pointer;
+      background:var(--bg);
+      color:#fff;
+      letter-spacing:-0.2px;
+      transition: all 0.2s;
+      font-size:14px;
+    }
+    button:hover:not(:disabled){
+      transform:translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11,18,32,0.2);
+    }
+    button.secondary{
+      background:#eef2ff;
+      color:#111;
+    }
+    button.secondary:hover:not(:disabled){
+      background:#e0e7ff;
+    }
+    button.ghost{
+      background:#fff;
+      color:#111;
+      border:1px solid var(--line);
+    }
+    button.ghost:hover:not(:disabled){
+      border-color:#9ca3af;
+      background:#f9fafb;
+    }
+    button:disabled{
+      opacity:0.55;
+      cursor:not-allowed;
+    }
+
+    /* Card flip */
+    .stage{ display:flex; justify-content:center; padding:8px 0 6px; }
+    .flip{
+      width:260px;
+      height:360px;
+      perspective: 1200px;
+    }
+    .flip-inner{
+      width:100%;
+      height:100%;
+      position:relative;
+      transform-style:preserve-3d;
+      transition: transform .75s cubic-bezier(.2,.8,.2,1);
+      border-radius:16px;
+    }
+    .flip.is-flipped .flip-inner{ transform: rotateY(180deg); }
+    .face{
+      position:absolute;
+      inset:0;
+      border-radius:16px;
+      overflow:hidden;
+      backface-visibility:hidden;
+      border:1px solid rgba(229,231,235,0.9);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .back{
+      background: linear-gradient(135deg, #0b1220 0%, #111827 55%, #0b1220 100%);
+      color:#fff;
+      flex-direction:column;
+      gap:10px;
+    }
+    .back .mark{
+      width:86px;height:86px;border-radius:22px;
+      border:1px solid rgba(255,255,255,0.18);
+      display:flex;align-items:center;justify-content:center;
+      font-size:44px;
+      background: rgba(255,255,255,0.06);
+    }
+    .back .txt{ font-weight:800; letter-spacing:-0.2px; }
+    .front{
+      transform: rotateY(180deg);
+      background:#fff;
+    }
+    .front img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    .front .fallback{
+      padding:18px;
+      text-align:center;
+      color:#111;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      font-size:13px;
+      color:#111;
+      background:#fff;
+      font-weight:600;
+    }
+    .badges{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
+
+    .result-title{ margin:16px 0 0; text-align:center; font-size:20px; font-weight:800; letter-spacing:-0.3px; color:#111; }
+    .result-sub{ margin:12px auto 0; text-align:center; max-width:48ch; color:#111; line-height:1.7; font-size:15px; }
+    .result-sub small{ color:var(--muted); display:block; margin-top:8px; }
+
+    .info-section{
+      background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      padding:20px;
+      margin-top:16px;
+    }
+    .info-section-title{
+      font-size:15px;
+      font-weight:800;
+      color:#111;
+      margin-bottom:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .info-section-desc{
+      font-size:14px;
+      line-height:1.7;
+      color:#374151;
+      margin-bottom:16px;
+    }
+    .info-section-desc strong{
+      color:#111;
+      font-weight:700;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 90px 1fr;
+      gap:10px 12px;
+      margin-top:16px;
+      font-size:14px;
+      color:#111;
+    }
+    .kv .k{ 
+      color:var(--muted);
+      font-weight:600;
+      font-size:13px;
+    }
+    .kv .v{
+      color:#111;
+      line-height:1.6;
+    }
+    .kv .v strong{
+      color:#0b1220;
+      font-weight:700;
+    }
+
+    .history{
+      margin-top:12px;
+      display:grid;
+      gap:10px;
+    }
+    .h-item{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px;
+      background:#fff;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      transition: all 0.2s;
+    }
+    .h-item:hover{
+      border-color:#9ca3af;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .h-item .left{ display:flex; flex-direction:column; gap:4px; }
+    .h-item .date{ font-size:12px; color:var(--muted); }
+    .h-item .name{ font-weight:800; letter-spacing:-0.2px; font-size:15px; }
+    .h-item .tag{ font-size:12px; color:#111; border:1px solid var(--line); padding:6px 10px; border-radius:999px; background:#f9fafb; white-space:nowrap; font-weight:600; }
+
+    footer{
+      text-align:center;
+      padding:24px 16px 32px;
+      color:var(--muted);
+      font-size:13px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    footer a{ 
+      color:#111; 
+      font-weight:800; 
+      text-decoration:none;
+      transition: color 0.2s;
+    }
+  footer a:hover{
+    color:#0b1220;
+    text-decoration:underline;
+  }
+  
+    /* Share canvas (hidden) */
+    #shareCanvas{
+      display:none;
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/hwatu/" />
+  </head>
+
+<body>
+<header>
+  <h1>화투로 보는 오늘의 운세</h1>
+  <p>화투 한 장으로 매일을 열어보는 마법 같은 순간.<br/>나만의 운세를 확인하고 공유해보세요.</p>
+  <div style="margin-top:12px;">
+    <a href="./en.html" style="color:#fff; text-decoration:none; opacity:0.9; font-size:13px;">🇺🇸 English</a>
+  </div>
+</header>
+
+<main>
+  <div class="row">
+    <!-- Main: Card -->
+    <section class="panel main-card-section">
+      <div class="stage">
+        <div class="flip" id="flip">
+          <div class="flip-inner">
+            <div class="face back">
+              <div class="mark">🎴</div>
+              <div class="txt">오늘의 화투 1장</div>
+              <div style="font-size:13px;opacity:.85;">클릭해서 뒤집기</div>
+            </div>
+            <div class="face front">
+              <img id="cardImg" alt="화투 카드" />
+              <div class="fallback" id="fallback" style="display:none;">
+                <div style="font-size:18px;font-weight:900;">이미지 로드 실패</div>
+                <div style="margin-top:8px;color:var(--muted);line-height:1.45;">
+                  <div>경로: <code id="imgPath"></code></div>
+                  <div style="margin-top:6px;">assets/cards/1-1.png ~ 12-4.png 형식으로 맞춰주세요</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="badges" id="badges" style="display:none;"></div>
+
+          <div class="result-title" id="resultTitle">오늘의 화투를 뽑아보세요</div>
+          <div class="result-sub" id="resultText">보통</div>
+
+      <div class="actions">
+        <button id="drawBtn">오늘 운세 뽑기</button>
+        <button class="secondary" id="copyBtn" disabled>결과 복사</button>
+        <button class="secondary" id="shareImageBtn" disabled>이미지로 공유</button>
+      </div>
+
+      <p class="hint">
+        • 언제든지 뽑을 수 있습니다. 랜덤으로 나오므로 사람마다 다른 결과가 나옵니다.
+      </p>
+      
+      <hr style="border:none;border-top:1px solid var(--line); margin:24px 0;" />
+      
+      <div class="badge">🕘 최근 7일 기록</div>
+      <div class="history" id="history"></div>
+    </section>
+
+    <!-- Other Services -->
+    <aside class="panel" style="max-width:400px; margin:20px auto 0;">
+      <div class="actions" style="margin-top:0;">
+        <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" style="text-decoration:none; flex:1;">
+          <button class="secondary" type="button" style="width:100%;">✨ 다른 서비스 보기</button>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div>© funnyfunny.cloud · <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a></div>
+</footer>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center; margin:20px auto; max-width:900px;"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+/* =========================
+   1) 화투 카드 데이터
+   - 이미지 파일명: ./assets/hwatu/01.png ~ 48.png
+   - 이미 네가 가진 이미지가 있다 했으니, 파일명만 맞추면 바로 뜸
+========================= */
+function pad2(n){ return String(n).padStart(2,'0'); }
+
+// 12개월 x 4장 = 48장 (단순 인덱스)
+// 실제 세부 카드(광/띠/피/특수)는 tags로만 구분해도 충분히 재미가 남
+const months = [
+  {m:1,  name:'1월(송학)',  theme:'시작'},
+  {m:2,  name:'2월(매화)',  theme:'관계'},
+  {m:3,  name:'3월(벚꽃)',  theme:'기회'},
+  {m:4,  name:'4월(등나무)',theme:'정리'},
+  {m:5,  name:'5월(창포)',  theme:'승부'},
+  {m:6,  name:'6월(모란)',  theme:'풍요'},
+  {m:7,  name:'7월(싸리)',  theme:'회복'},
+  {m:8,  name:'8월(공산)',  theme:'집중'},
+  {m:9,  name:'9월(국화)',  theme:'완성'},
+  {m:10, name:'10월(단풍)', theme:'전환'},
+  {m:11, name:'11월(오동)', theme:'확장'},
+  {m:12, name:'12월(비)',   theme:'마무리'}
+];
+
+// 카드 등급 분류 (게임 스타일)
+const typeByIndex = (iInMonth) => {
+  // 0..3
+  // 0: 전설 (기존 광), 1: 유니크 (기존 띠), 2: 레어 (기존 피), 3: 레어/특별 (랜덤)
+  if(iInMonth === 0) return 'legendary';  // 기존 gwang - 최고 등급
+  if(iInMonth === 1) return 'unique';     // 기존 tti
+  if(iInMonth === 2) return 'rare';       // 기존 pi
+  return Math.random() < 0.25 ? 'special' : 'rare';
+};
+
+const cards = Array.from({length:48}, (_,idx)=>{
+  const monthIndex = Math.floor(idx/4); // 0..11
+  const inMonth = idx % 4; // 0..3
+  const t = typeByIndex(inMonth);
+  const m = months[monthIndex];
+  const id = idx+1;
+  // 파일명 형식: {월}-{카드번호}.png (예: 1-1.png, 12-4.png)
+  const month = monthIndex + 1;
+  const cardInMonth = inMonth + 1;
+  return {
+    id,
+    month: m.m,
+    monthName: m.name,
+    theme: m.theme,
+    type: t,
+    tags: [t, m.theme],
+    img: `./assets/cards/${month}-${cardInMonth}.png`
+  };
+});
+
+/* =========================
+   2) 데일리 드로우(하루 1회 고정)
+   - 날짜 + 브라우저 정보 기반 seed
+========================= */
+function hashString(str){
+  let h = 2166136261;
+  for(let i=0;i<str.length;i++){
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+function mulberry32(a){
+  return function(){
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+}
+function todayKey(){
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
+// 사용자별 고유 ID 생성 (한 번 생성되면 계속 유지)
+function getUserId(){
+  const STORAGE_KEY = 'hwatu.userId';
+  try {
+    let userId = localStorage.getItem(STORAGE_KEY);
+    if(!userId){
+      // crypto.randomUUID가 있으면 사용, 없으면 랜덤 생성
+      if(crypto.randomUUID){
+        userId = crypto.randomUUID();
+      } else {
+        const bytes = new Uint8Array(16);
+        crypto.getRandomValues(bytes);
+        userId = Array.from(bytes, b => b.toString(16).padStart(2,'0')).join('');
+      }
+      localStorage.setItem(STORAGE_KEY, userId);
+    }
+    return userId;
+  } catch(e){
+    // localStorage 실패 시 임시 ID 생성
+    return 'temp-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+}
+
+// 하루 뽑기 횟수 관리
+function getDrawCount(){
+  const key = todayKey();
+  const saved = JSON.parse(localStorage.getItem('hwatu.drawCount') || 'null');
+  if(saved && saved.key === key){
+    return saved.count || 0;
+  }
+  return 0;
+}
+
+function incrementDrawCount(){
+  const key = todayKey();
+  const count = getDrawCount() + 1;
+  localStorage.setItem('hwatu.drawCount', JSON.stringify({key, count}));
+  return count;
+}
+
+function canDraw(){
+  // 제한 없음 - 항상 뽑을 수 있음
+  return true;
+}
+
+function dailyPick(){
+  // 매번 랜덤하게 다른 카드 선택 (사용자마다, 뽑을 때마다 다름)
+  // 타임스탬프 + 사용자 ID + 랜덤 값을 조합해서 완전히 랜덤하게
+  const userId = getUserId();
+  const timestamp = Date.now();
+  const random = Math.random().toString(36);
+  const seed = hashString(userId + timestamp + random);
+  const rng = mulberry32(seed);
+  return cards[Math.floor(rng()*cards.length)];
+}
+
+/* =========================
+   3) 운세 문구 생성(태그 기반)
+========================= */
+const fortuneBase = {
+  legendary: [  // 기존 unique (광) - 최고 등급
+    "오늘은 완벽한 날이에요! 하고 싶은 일을 모두 시작해보세요.",
+    "큰 기회가 찾아오는 특별한 날입니다. 용기를 내서 도전해보세요.",
+    "모든 것이 순조롭게 흘러가는 날이에요. 중요한 결정도 오늘 하면 좋아요."
+  ],
+  unique: [    // 기존 rare (띠)
+    "오늘은 중심을 잡으면 좋은 결과가 따라옵니다.",
+    "주도권을 잡는 쪽이 유리한 날이에요. 적극적으로 나서보세요.",
+    "협력과 소통에서 좋은 기회가 찾아옵니다."
+  ],
+  rare: [      // 기존 common (피)
+    "오늘은 차근차근 진행하면 좋은 결과가 나올 거예요.",
+    "작은 노력이 큰 성과로 이어지는 날입니다.",
+    "안정적인 흐름 속에서 기회를 발견할 수 있어요."
+  ],
+  special: [
+    "예상 밖의 좋은 기회가 들어올 수 있어요. 눈을 크게 뜨고 기다려보세요.",
+    "한 번의 선택이 모든 것을 바꿀 수 있는 특별한 날입니다.",
+    "새로운 기회가 찾아오는 날이에요. 준비된 자에게 행운이 따릅니다."
+  ]
+};
+
+const themeHint = {
+  시작: "새로 시작하기 좋은 타이밍.",
+  관계: "사람에서 운이 트이는 흐름.",
+  기회: "작은 기회를 크게 만들 수 있어요.",
+  정리: "비우면 다음이 들어옵니다.",
+  승부: "밀어붙일 건 밀어붙이기.",
+  풍요: "여유가 생기면 나눔도 좋아요.",
+  회복: "컨디션 회복이 최우선.",
+  집중: "한 가지에 몰입하면 성과가 납니다.",
+  완성: "마무리하면 평가가 좋아져요.",
+  전환: "루틴을 바꾸면 기회가 열립니다.",
+  확장: "스케일을 키우기 좋은 날.",
+  마무리: "마지막 점검이 실수를 막아요."
+};
+
+function pickOne(arr, rng){
+  return arr[Math.floor(rng()*arr.length)];
+}
+
+function makeFortune(card, isPractice=false){
+  // 매번 랜덤하게 운세 생성 (카드 ID + 타임스탬프 + 랜덤)
+  const randomSeed = String(Math.random()) + Date.now() + card.id;
+  const seed = hashString(randomSeed);
+  const rng = mulberry32(seed);
+
+  const line1 = pickOne(fortuneBase[card.type] || fortuneBase.rare, rng);
+  const line2 = themeHint[card.theme] || "오늘 흐름을 가볍게 읽어보세요.";
+
+  // 점수 감각(재미용) - 다양한 분포로 조정 (60점대부터 100점까지)
+  const scoreBase = {legendary: 85, unique: 78, special: 75, rare: 72};
+  // 기본 점수에 -5부터 +15까지 랜덤 변동 (60점대~100점 가능)
+  const variance = Math.floor(rng() * 21) - 5; // -5 ~ +15
+  const score = Math.max(60, Math.min(100, (scoreBase[card.type]||70) + variance));
+
+  // 행동 추천(짧게)
+  const actions = [
+    "결정해야 할 건 1개만 먼저.",
+    "오늘은 ‘빨리’보다 ‘정확히’.",
+    "대화 하나만 더 해보기.",
+    "30분만 몰입하고 끊기.",
+    "미루던 것 1개 정리하기."
+  ];
+  const action = pickOne(actions, rng);
+
+  return { line1, line2, score, action };
+}
+
+/* =========================
+   4) 기록(최근 7일)
+========================= */
+function loadHistory(){
+  return JSON.parse(localStorage.getItem('hwatu.history')||'[]');
+}
+function saveHistory(list){
+  localStorage.setItem('hwatu.history', JSON.stringify(list.slice(-7)));
+}
+function renderHistory(){
+  const wrap = document.getElementById('history');
+  const list = loadHistory().slice().reverse();
+  wrap.innerHTML = '';
+  if(list.length === 0){
+    wrap.innerHTML = `<div class="hint">아직 기록이 없어요. 오늘 한 장 뽑아보세요.</div>`;
+    return;
+  }
+  list.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'h-item';
+    div.innerHTML = `
+      <div class="left">
+        <div class="date">${item.key}</div>
+        <div class="name">${item.name}</div>
+      </div>
+      <div class="tag">${item.type.toUpperCase()} · ${item.theme}</div>
+    `;
+    wrap.appendChild(div);
+  });
+}
+
+/* =========================
+   5) UI 바인딩
+========================= */
+const flip = document.getElementById('flip');
+const cardImg = document.getElementById('cardImg');
+const fallback = document.getElementById('fallback');
+const imgPath = document.getElementById('imgPath');
+const badges = document.getElementById('badges');
+const resultTitle = document.getElementById('resultTitle');
+const resultText = document.getElementById('resultText');
+const drawBtn = document.getElementById('drawBtn');
+const copyBtn = document.getElementById('copyBtn');
+const shareImageBtn = document.getElementById('shareImageBtn');
+
+let current = null;
+let currentFortune = null;
+
+function setBadges(card){
+  const typeLabel = ({legendary:'전설', unique:'유니크', rare:'레어', special:'특별'})[card.type] || '레어';
+  badges.innerHTML = `
+    <span class="badge">📅 ${card.monthName}</span>
+    <span class="badge">🏷️ ${typeLabel}</span>
+    <span class="badge">🧭 ${card.theme}</span>
+  `;
+  badges.style.display = 'flex'; // 배지 표시
+}
+
+function showCard(card){
+  current = card;
+  // 배지는 결과가 나올 때만 표시 (updateResult에서 처리)
+
+  // 이미지 로드
+  cardImg.src = card.img;
+  imgPath.textContent = card.img;
+
+  cardImg.onload = () => {
+    fallback.style.display = 'none';
+    cardImg.style.display = 'block';
+  };
+  cardImg.onerror = () => {
+    cardImg.style.display = 'none';
+    fallback.style.display = 'block';
+  };
+}
+
+function updateResult(card, fortune, isPractice){
+  const mode = isPractice ? "연습 결과" : "오늘의 결과";
+  resultTitle.textContent = `${mode} · 운세 점수 ${fortune.score}점`;
+  resultText.innerHTML = `
+    ${fortune.line1}<br/>
+    <small>${fortune.line2}</small><br/>
+    <small>오늘의 제안: <b>${fortune.action}</b></small>
+  `;
+  // 배지 표시 (결과가 나올 때만)
+  setBadges(card);
+  
+  // 복사/공유 버튼은 항상 활성화 (뽑기 횟수와 무관)
+  copyBtn.disabled = false;
+  shareImageBtn.disabled = false;
+}
+
+function updateDrawCount(){
+  // 뽑기 버튼은 항상 활성화 (제한 없음)
+  drawBtn.disabled = false;
+  drawBtn.textContent = '오늘 운세 뽑기';
+  
+  // 복사/공유 버튼은 항상 활성화 (결과가 있으면)
+  if(current && currentFortune){
+    copyBtn.disabled = false;
+    shareImageBtn.disabled = false;
+  }
+}
+
+function showAd(){
+  // 광고 슬롯이 있으면 다시 로드
+  const adSlot = document.querySelector('.adsbygoogle');
+  if(adSlot && window.adsbygoogle){
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch(e){
+      console.log('Ad reload:', e);
+    }
+  }
+}
+
+function doDailyDraw(){
+  const card = dailyPick();
+  showCard(card);
+  const f = makeFortune(card, false);
+  currentFortune = f;
+
+  // flip
+  flip.classList.add('is-flipped');
+  updateResult(card, f, false);
+
+  // 뽑기 버튼 상태 업데이트
+  updateDrawCount();
+
+  // 광고 표시
+  setTimeout(() => {
+    showAd();
+  }, 500);
+
+  // 기록 저장 (오늘 날짜 기준으로 저장, 같은 카드 중복 저장 방지)
+  const key = todayKey();
+  const hist = loadHistory();
+  // 같은 날짜에 같은 카드는 중복 저장하지 않음 (같은 카드 여러 번 뽑은 경우)
+  const todaySame = hist.filter(x => x.key === key && x.id === card.id);
+  if(todaySame.length === 0){
+    hist.push({key, name: card.monthName, type: card.type, theme: card.theme, id: card.id});
+    saveHistory(hist);
+    renderHistory();
+  }
+}
+
+
+function copyResult(){
+  if(!current || !currentFortune) return;
+  const typeLabel = ({legendary:'전설', unique:'유니크', rare:'레어', special:'특별'})[current.type] || '레어';
+  const text =
+`🎴 화투 운세: ${current.monthName} (${typeLabel}/${current.theme})
+점수: ${currentFortune.score}점
+한줄: ${currentFortune.line1}
+제안: ${currentFortune.action}
+
+https://hwatu.funnyfunny.cloud
+#화투운세 #funnyfunny #HwatuFortune`;
+
+  navigator.clipboard.writeText(text)
+    .then(()=> alert('결과가 복사됐어요! X에 붙여넣기 하면 됩니다.'))
+    .catch(()=> alert('복사 실패… 브라우저 권한을 확인해 주세요.'));
+}
+
+async function shareImage(){
+  if(!current || !currentFortune) return;
+  
+  try {
+    // Canvas 생성
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200;
+    canvas.height = 900;
+    const ctx = canvas.getContext('2d');
+    
+    // 배경 그라데이션
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, '#0b1220');
+    gradient.addColorStop(0.5, '#111827');
+    gradient.addColorStop(1, '#0b1220');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // 화투 카드 이미지 로드 및 그리기
+    const cardImgLoaded = await new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = current.img;
+    });
+    
+    // 카드 이미지 그리기 (왼쪽 상단)
+    if(cardImgLoaded){
+      const cardSize = 200;
+      const cardX = 100;
+      const cardY = 100;
+      const cardHeight = cardSize * 1.38;
+      const radius = 8;
+      
+      // 카드 배경 (흰색 둥근 모서리 효과)
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      const bgX = cardX - 8;
+      const bgY = cardY - 8;
+      const bgW = cardSize + 16;
+      const bgH = cardHeight + 16;
+      // 둥근 사각형 그리기
+      ctx.moveTo(bgX + radius, bgY);
+      ctx.lineTo(bgX + bgW - radius, bgY);
+      ctx.quadraticCurveTo(bgX + bgW, bgY, bgX + bgW, bgY + radius);
+      ctx.lineTo(bgX + bgW, bgY + bgH - radius);
+      ctx.quadraticCurveTo(bgX + bgW, bgY + bgH, bgX + bgW - radius, bgY + bgH);
+      ctx.lineTo(bgX + radius, bgY + bgH);
+      ctx.quadraticCurveTo(bgX, bgY + bgH, bgX, bgY + bgH - radius);
+      ctx.lineTo(bgX, bgY + radius);
+      ctx.quadraticCurveTo(bgX, bgY, bgX + radius, bgY);
+      ctx.closePath();
+      ctx.fill();
+      
+      // 카드 이미지 (둥근 모서리)
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cardX + radius, cardY);
+      ctx.lineTo(cardX + cardSize - radius, cardY);
+      ctx.quadraticCurveTo(cardX + cardSize, cardY, cardX + cardSize, cardY + radius);
+      ctx.lineTo(cardX + cardSize, cardY + cardHeight - radius);
+      ctx.quadraticCurveTo(cardX + cardSize, cardY + cardHeight, cardX + cardSize - radius, cardY + cardHeight);
+      ctx.lineTo(cardX + radius, cardY + cardHeight);
+      ctx.quadraticCurveTo(cardX, cardY + cardHeight, cardX, cardY + cardHeight - radius);
+      ctx.lineTo(cardX, cardY + radius);
+      ctx.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(cardImgLoaded, cardX, cardY, cardSize, cardHeight);
+      ctx.restore();
+    }
+    
+    // 제목 (카드가 있으면 오른쪽으로, 없으면 중앙)
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = cardImgLoaded ? 'left' : 'center';
+    ctx.font = 'bold 64px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    const titleX = cardImgLoaded ? 340 : canvas.width / 2;
+    ctx.fillText('🎴 화투 운세', titleX, 140);
+    
+    // 카드 정보
+    const typeLabel = ({legendary:'전설', unique:'유니크', rare:'레어', special:'특별'})[current.type] || '레어';
+    ctx.font = '36px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    ctx.fillText(`${current.monthName} · ${typeLabel} · ${current.theme}`, titleX, 200);
+    
+    // 점수
+    ctx.fillStyle = '#fbbf24';
+    ctx.font = 'bold 48px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    ctx.fillText(`운세 점수 ${currentFortune.score}점`, titleX, 270);
+    
+    // 운세 내용 (카드 아래쪽 중앙)
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.font = '42px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    
+    // 한줄 운세
+    const line1Y = cardImgLoaded ? 420 : 400;
+    ctx.fillText(currentFortune.line1, canvas.width / 2, line1Y);
+    
+    // 테마 힌트
+    ctx.fillStyle = '#d1d5db';
+    ctx.font = '32px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    const line2Y = line1Y + 60;
+    ctx.fillText(currentFortune.line2 || '', canvas.width / 2, line2Y);
+    
+    // 오늘의 제안
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '36px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    const actionY = line2Y + 100;
+    ctx.fillText(`오늘의 제안: ${currentFortune.action}`, canvas.width / 2, actionY);
+    
+    // 도메인
+    ctx.fillStyle = '#9ca3af';
+    ctx.font = '28px system-ui, -apple-system, "Noto Sans KR", sans-serif';
+    ctx.fillText('hwatu.funnyfunny.cloud', canvas.width / 2, canvas.height - 60);
+    
+    // Canvas를 Blob으로 변환
+    canvas.toBlob(async (blob) => {
+      if(!blob) {
+        alert('이미지 생성 실패');
+        return;
+      }
+      
+      // Web Share API 지원 확인
+      if(navigator.share && navigator.canShare && navigator.canShare({files: [new File([blob], 'hwatu-fortune.png', {type: 'image/png'})]})){
+        try {
+          const file = new File([blob], 'hwatu-fortune.png', {type: 'image/png'});
+          await navigator.share({
+            files: [file],
+            title: '화투 운세',
+            text: `화투 운세: ${current.monthName} - ${currentFortune.score}점`
+          });
+          alert('공유 완료!');
+          return;
+        } catch(err){
+          if(err.name !== 'AbortError'){
+            console.error('Share failed:', err);
+          } else {
+            return; // 사용자가 취소한 경우
+          }
+        }
+      }
+      
+      // Web Share API 미지원 시 다운로드
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `hwatu-fortune-${todayKey()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      alert('이미지가 다운로드됐어요! SNS에 업로드해서 공유하세요.');
+    }, 'image/png');
+    
+  } catch(err){
+    console.error('이미지 생성 실패:', err);
+    alert('이미지 생성 중 오류가 발생했습니다.');
+  }
+}
+
+// 초기 렌더
+renderHistory();
+updateDrawCount();
+showCard(dailyPick()); // 카드만 미리 세팅(뒤집기 전)
+
+// 이벤트
+drawBtn.addEventListener('click', doDailyDraw);
+copyBtn.addEventListener('click', copyResult);
+shareImageBtn.addEventListener('click', shareImage);
+
+// 카드 클릭하면 새로운 운세 뽑기
+flip.addEventListener('click', ()=>{
+  doDailyDraw();
+});
+</script>
+</body>
+</html>

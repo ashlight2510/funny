@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⏰ 인생 남은 시간 대시보드 (밈 버전)</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: radial-gradient(circle at top, #262635 0, #050510 55%);
+      color: #f7f7f7;
+      text-align: center;
+    }
+    h1 {
+      font-size: 26px;
+      margin: 10px 0 4px;
+    }
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+    .layout {
+      max-width: 980px;
+      margin: 16px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (min-width: 800px) {
+      .layout {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+    .card {
+      flex: 1;
+      background: rgba(10, 10, 18, 0.95);
+      border-radius: 18px;
+      padding: 20px 18px 22px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+    }
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      text-align: left;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      font-size: 15px;
+      background: #111119;
+      color: #f7f7f7;
+      outline: none;
+    }
+    input:focus {
+      border-color: #7d8bff;
+      box-shadow: 0 0 0 1px rgba(125, 139, 255, 0.4);
+    }
+    .hint {
+      font-size: 11px;
+      opacity: 0.6;
+      margin-top: 2px;
+      text-align: left;
+    }
+    button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 13px 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #7d8bff, #ff7e9f);
+      color: #111;
+      cursor: pointer;
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+        filter 0.1s;
+      box-shadow: 0 10px 20px rgba(125, 139, 255, 0.4);
+    }
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 24px rgba(125, 139, 255, 0.55);
+    }
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(125, 139, 255, 0.35);
+    }
+    #resultCard {
+      display: none;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      margin-bottom: 8px;
+    }
+    .big-free {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffd86b;
+      margin: 6px 0 2px;
+    }
+    .subline {
+      font-size: 13px;
+      opacity: 0.86;
+      margin-bottom: 8px;
+    }
+    .lifetime-box {
+      margin-top: 10px;
+      padding: 10px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 13px;
+      text-align: left;
+    }
+    .lifetime-main {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .lifetime-sub {
+      opacity: 0.8;
+      font-size: 12px;
+    }
+    .divider {
+      margin: 10px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    .meme-title {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 6px;
+    }
+    .meme-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      font-size: 13px;
+    }
+    .meme-list li {
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meme-emoji {
+      width: 20px;
+    }
+    .meme-footer {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.8;
+      font-style: italic;
+    }
+    .copy-btn {
+      margin-top: 10px;
+      padding: 9px 11px;
+      border-radius: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .small-note {
+      margin-top: 8px;
+      font-size: 11px;
+      opacity: 0.55;
+    }
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(10, 10, 18, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      z-index: 100;
+      border: 1px solid rgba(125, 139, 255, 0.2);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(247, 247, 247, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(125, 139, 255, 0.3);
+      color: #f7f7f7;
+      box-shadow: 0 2px 8px rgba(125, 139, 255, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(125, 139, 255, 0.1);
+      color: rgba(247, 247, 247, 0.9);
+    }
+    footer {
+      margin-top: 26px;
+      font-size: 11px;
+      opacity: 0.4;
+    }
+    .ad-container {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 250px;
+    }
+  </style>
+    <meta property="og:image" content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Life+Countdown+Dashboard" />
+    <meta property="og:image:alt" content="Life Countdown Dashboard" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%8F%B3%3C/text%3E%3C/svg%3E" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/life/" />
+  </head>
+<body>
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <h1 data-i18n="title">⏰ 인생 남은 시간 대시보드</h1>
+  <div class="subtitle" data-i18n="subtitle">밈 버전으로 보는 나의 진짜 자유시간 & "어디서 새고 있는지" 리포트</div>
+
+  <div class="layout">
+    <!-- 입력 카드 -->
+    <div class="card">
+      <h2 data-i18n="inputTitle">1. 기본 정보 입력</h2>
+
+      <label for="age" data-i18n="ageLabel">현재 나이</label>
+      <input type="number" id="age" placeholder="예: 25" min="10" max="90" />
+      <div class="hint" data-i18n="ageHint">80세까지 산다고 가정해서 남은 인생 자유시간을 계산합니다.</div>
+
+      <label for="sleep" data-i18n="sleepLabel">하루 평균 수면 시간 (시간)</label>
+      <input type="number" id="sleep" placeholder="예: 7" min="0" max="24" step="0.1" />
+      <div class="hint" data-i18n="sleepHint">알람 끄고 다시 누운 시간까지 솔직하게…</div>
+
+      <label for="work" data-i18n="workLabel">하루 평균 근무/학교/노동 시간 (시간)</label>
+      <input type="number" id="work" placeholder="예: 9" min="0" max="24" step="0.1" />
+      <div class="hint" data-i18n="workHint">출퇴근 포함 "일 때문에 묶여 있는" 총 시간 느낌대로</div>
+
+      <button onclick="calculate()" data-i18n="calculateBtn">내 자유시간 계산하기</button>
+
+      <div class="small-note" data-i18n="disclaimer">
+        * 정확한 재무/생애설계 도구가 아니라, 현실 자각 + 현웃용 밈 대시보드입니다.
+      </div>
+    </div>
+
+    <!-- 결과 카드 -->
+    <div class="card" id="resultCard">
+      <div class="pill" data-i18n="reportTitle">📊 인생 시간 리포트</div>
+      <h2 id="headline"></h2>
+
+      <div class="big-free" id="dailyFree"></div>
+      <div class="subline" id="dailyDetail"></div>
+
+      <div class="lifetime-box" id="lifetimeBox">
+        <div class="lifetime-main" id="lifetimeMain"></div>
+        <div class="lifetime-sub" id="lifetimeSub"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="meme-title" data-i18n="memeTitle">🧨 당신의 자유시간을 몰래 훔쳐가는 것들 (밈)</div>
+        <ul class="meme-list" id="memeList"></ul>
+        <div class="meme-footer" id="memeFooter"></div>
+      </div>
+
+      <button class="copy-btn" style="color: #fff;" onclick="copyResult()" data-i18n="copyBtn">
+        📋 이 결과 카톡에 자랑하기
+      </button>
+      <div class="small-note" data-i18n="resultNote">
+        * 수치들은 대~충입니다. 인생의 의미를 찾기보다는, "와 생각보다 없네" 정도만 느껴주세요.
+      </div>
+    </div>
+  </div>
+
+  <!-- 광고 영역 -->
+  <div class="ad-container">
+    </div>
+
+  <footer data-i18n="footer">© 2025 인생 남은 시간 대시보드 (밈 버전)</footer>
+
+  <!-- 카카오 광고 스크립트 -->
+  <script>
+    /* i18n */
+    const translations = {
+      ko: {
+        metaTitle: "⏰ 인생 남은 시간 대시보드 (밈 버전)",
+        title: "⏰ 인생 남은 시간 대시보드",
+        subtitle: "밈 버전으로 보는 나의 진짜 자유시간 & \"어디서 새고 있는지\" 리포트",
+        inputTitle: "1. 기본 정보 입력",
+        ageLabel: "현재 나이",
+        ageHint: "80세까지 산다고 가정해서 남은 인생 자유시간을 계산합니다.",
+        sleepLabel: "하루 평균 수면 시간 (시간)",
+        sleepHint: "알람 끄고 다시 누운 시간까지 솔직하게…",
+        workLabel: "하루 평균 근무/학교/노동 시간 (시간)",
+        workHint: "출퇴근 포함 \"일 때문에 묶여 있는\" 총 시간 느낌대로",
+        calculateBtn: "내 자유시간 계산하기",
+        disclaimer: "* 정확한 재무/생애설계 도구가 아니라, 현실 자각 + 현웃용 밈 대시보드입니다.",
+        reportTitle: "📊 인생 시간 리포트",
+        memeTitle: "🧨 당신의 자유시간을 몰래 훔쳐가는 것들 (밈)",
+        copyBtn: "📋 이 결과 카톡에 자랑하기",
+        resultNote: "* 수치들은 대~충입니다. 인생의 의미를 찾기보다는, \"와 생각보다 없네\" 정도만 느껴주세요.",
+        footer: "© 2025 인생 남은 시간 대시보드 (밈 버전)",
+        alertCopySuccess: "결과 문구가 클립보드에 복사되었습니다!",
+        alertCopyFail: "복사에 실패했어요. 직접 드래그해서 복사해주세요!",
+        alertAgeRequired: "나이를 입력해주세요!",
+        alertSleepRequired: "수면 시간을 제대로 입력해주세요!",
+        alertWorkRequired: "근무/학교 시간을 제대로 입력해주세요!",
+        hoursUnit: "시간",
+        headlineTemplate: "진짜 당신의 자유시간은 하루 {hours}",
+        headlineZero: "0시간입니다…",
+        dailyFreeZero: "자유시간: 0시간 (인생 회사/학교 소유)",
+        dailyDetailTemplate: "24시간 중 {sleep} + {work} 제외하고 남는 \"완전 내 시간\"입니다.",
+        sleepPart: "수면",
+        workPart: "일/학교",
+        lifetimeOver80: "와… 80세 기준으로는 이미 덤으로 사는 인생입니다.",
+        lifetimeOver80Sub: "그래도 오늘 하루 만큼은, 내가 선택해서 쓰는 시간이 조금이라도 있기를 🙏",
+        lifetimeTemplate: "지금부터 {age}세까지 남은 \"완전 자유시간\"은 대략 {years}년 {days}일 분량입니다.",
+        lifetimeSub: "물론 그 안에서도 배달, 숏폼, 회의, 눈치보기로 새는 시간은 따로 있다는 게 함정…",
+        memeItemTemplate: "{age}살 {label} → 자유시간 -{hours}시간",
+        memeFooter: "\"25살 배달비 → 자유시간 -0.1시간\" 같은 느낌으로, 어디서 새고 있는지 감 잡아보는 용도입니다. 그 작은 기쁨이라도 뺏지 말고, 그냥 가끔만 줄여봅시다. 😇",
+        copyTextTemplate: "⏰ 인생 남은 시간 대시보드 (밈 버전)\n\n{headline}\n➡ {daily}\n{detail}\n\n{lifeMain}\n{lifeSub}\n\n자유시간 몰래 훔쳐가는 것들:\n{memes}\n\n\"그 작은 기쁨이라도 뺏지 마세요…\"\n(나도 해보기 👉 {url})",
+        copyMemeHeader: "자유시간 몰래 훔쳐가는 것들:",
+        copyMemeFooter: "\"그 작은 기쁨이라도 뺏지 마세요…\"",
+        copyTryIt: "나도 해보기 👉",
+        memeLabels: {
+          delivery: "배달앱 구경 & 최저가 비교",
+          shorts: "숏폼(릴스/쇼츠/틱톡) 무의식 스크롤",
+          insta: "인스타 스토리/친구 근황 눈팅",
+          chat: "단톡방 읽씹 방지용 눈치보기",
+          commute: "출퇴근 멍때리기 + 환승 대기",
+          bed: "침대 위 '5분만 더' 딜레이",
+          meeting: "이메일만 읽다 끝난 쓸데없는 회의"
+        }
+      },
+      en: {
+        metaTitle: "⏰ Life Remaining Time Dashboard (Meme Version)",
+        title: "⏰ Life Remaining Time Dashboard",
+        subtitle: "My real free time & \"where it's leaking\" report in meme version",
+        inputTitle: "1. Basic Information",
+        ageLabel: "Current Age",
+        ageHint: "Calculates remaining free time in life assuming you live until 80.",
+        sleepLabel: "Average Daily Sleep (hours)",
+        sleepHint: "Be honest... including the time after turning off the alarm and going back to bed.",
+        workLabel: "Average Daily Work/School Time (hours)",
+        workHint: "Total time 'bound by work' including commute, roughly.",
+        calculateBtn: "Calculate My Free Time",
+        disclaimer: "* This is not an accurate financial/life planning tool, but a reality check + meme dashboard.",
+        reportTitle: "📊 Life Time Report",
+        memeTitle: "🧨 Things That Steal Your Free Time (Meme)",
+        copyBtn: "📋 Share this result",
+        resultNote: "* Numbers are approximate. Don't search for life's meaning, just feel \"wow, there's less than I thought\".",
+        footer: "© 2025 Life Remaining Time Dashboard (Meme Version)",
+        alertCopySuccess: "Result text has been copied to clipboard!",
+        alertCopyFail: "Copy failed. Please manually select and copy!",
+        alertAgeRequired: "Please enter your age!",
+        alertSleepRequired: "Please enter sleep time correctly!",
+        alertWorkRequired: "Please enter work/school time correctly!",
+        hoursUnit: " hours",
+        headlineTemplate: "Your real free time per day is {hours}",
+        headlineZero: "0 hours...",
+        dailyFreeZero: "Free time: 0 hours (life owned by company/school)",
+        dailyDetailTemplate: "This is the \"completely my time\" left after excluding {sleep} + {work} out of 24 hours.",
+        sleepPart: "Sleep",
+        workPart: "Work/School",
+        lifetimeOver80: "Wow... based on 80 years, you're already living bonus life.",
+        lifetimeOver80Sub: "Still, I hope there's at least a little time today that I choose to spend 🙏",
+        lifetimeTemplate: "The remaining \"complete free time\" from now until age {age} is approximately {years} years and {days} days.",
+        lifetimeSub: "Of course, the time that leaks through delivery, short-form content, meetings, and social awareness is separate...",
+        memeItemTemplate: "Age {age} {label} → Free time -{hours} hours",
+        memeFooter: "Like \"Age 25 delivery fee → Free time -0.1 hours\", this is to get a sense of where it's leaking. Don't take away even that small joy, just reduce it occasionally. 😇",
+        copyTextTemplate: "⏰ Life Remaining Time Dashboard (Meme Version)\n\n{headline}\n➡ {daily}\n{detail}\n\n{lifeMain}\n{lifeSub}\n\nThings that steal free time:\n{memes}\n\n\"Don't take away even that small joy...\"\n(Try it yourself 👉 {url})",
+        copyMemeHeader: "Things that steal free time:",
+        copyMemeFooter: "\"Don't take away even that small joy...\"",
+        copyTryIt: "Try it yourself 👉",
+        memeLabels: {
+          delivery: "Delivery app browsing & lowest price comparison",
+          shorts: "Short-form (Reels/Shorts/TikTok) unconscious scrolling",
+          insta: "Instagram stories/friends' updates lurking",
+          chat: "Group chat read receipts to avoid being ignored",
+          commute: "Commute zoning out + transfer waiting",
+          bed: "Bed '5 more minutes' delay",
+          meeting: "Useless meeting that ended with just reading emails"
+        }
+      }
+    };
+    const defaultLang = "ko";
+    const supportedLangs = ["ko", "en"];
+    let currentLang = defaultLang;
+    function t(key, vars = {}) {
+      const langTable = translations[currentLang] || translations.ko;
+      // Support nested keys like "memeLabels.delivery"
+      const keys = key.split(".");
+      let template = langTable;
+      for (const k of keys) {
+        template = template?.[k];
+        if (template === undefined) {
+          // Fallback to Korean
+          template = translations.ko;
+          for (const k2 of keys) {
+            template = template?.[k2];
+          }
+          break;
+        }
+      }
+      if (template === undefined || typeof template !== "string") {
+        return key;
+      }
+      return template.replace(/\{(\w+)\}/g, (_, token) =>
+        vars[token] !== undefined ? vars[token] : `{${token}}`
+      );
+    }
+    function applyTranslations() {
+      document.title = t("metaTitle");
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        el.textContent = t(el.dataset.i18n);
+      });
+    }
+    function setLang(lang, options = {}) {
+      const nextLang = translations[lang] ? lang : defaultLang;
+      currentLang = nextLang;
+      window.currentLang = currentLang;
+      document.documentElement.lang = nextLang;
+      localStorage.setItem("preferredLang", nextLang);
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.lang === nextLang);
+      });
+      applyTranslations();
+      // Update "more tests" button if it exists
+      if (typeof addMoreTestsButton === 'function') {
+        addMoreTestsButton();
+      }
+      // Re-render result if it's already displayed
+      if (document.getElementById("resultCard")?.style.display === "block") {
+        calculate(true); // Pass true to indicate language switch
+      }
+      if (options.updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", nextLang);
+        window.history.replaceState({}, "", url);
+      }
+    }
+    function detectLang() {
+      const params = new URLSearchParams(window.location.search);
+      const paramLang = params.get("lang");
+      if (supportedLangs.includes(paramLang)) return paramLang;
+      const stored = localStorage.getItem("preferredLang");
+      if (supportedLangs.includes(stored)) return stored;
+      const browserLang =
+        navigator.languages && navigator.languages.length
+          ? navigator.languages[0]
+          : navigator.language;
+      if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+        return "ko";
+      }
+      return defaultLang;
+    }
+    document.querySelectorAll(".lang-switch button").forEach((button) => {
+      button.addEventListener("click", () => {
+        setLang(button.dataset.lang, { updateUrl: true });
+      });
+    });
+    setLang(detectLang(), { updateUrl: false });
+
+    function formatHours(num) {
+      const hours = num.toFixed(1).replace(/\.0$/, "");
+      return hours + t("hoursUnit");
+    }
+
+    function calculate() {
+      const age = parseInt(document.getElementById("age").value, 10);
+      const sleep = parseFloat(document.getElementById("sleep").value);
+      const work = parseFloat(document.getElementById("work").value);
+
+      // Skip validation if called from language switch (values might be empty)
+      const isLangSwitch = arguments[0] === true;
+      if (!isLangSwitch) {
+        if (!age || !isFinite(age) || age <= 0) {
+          alert(t("alertAgeRequired"));
+          return;
+        }
+        if (!sleep && sleep !== 0 || !isFinite(sleep) || sleep < 0 || sleep > 24) {
+          alert(t("alertSleepRequired"));
+          return;
+        }
+        if (!work && work !== 0 || !isFinite(work) || work < 0 || work > 24) {
+          alert(t("alertWorkRequired"));
+          return;
+        }
+      } else {
+        // If called from language switch but values are invalid, just return
+        if (!age || !isFinite(age) || age <= 0 || 
+            (!sleep && sleep !== 0 || !isFinite(sleep) || sleep < 0 || sleep > 24) ||
+            (!work && work !== 0 || !isFinite(work) || work < 0 || work > 24)) {
+          return;
+        }
+      }
+
+      const rawFree = 24 - sleep - work;
+      const dailyFree = Math.max(0, rawFree); // 음수 방지
+
+      const headlineEl = document.getElementById("headline");
+      const dailyFreeEl = document.getElementById("dailyFree");
+      const dailyDetailEl = document.getElementById("dailyDetail");
+      const lifetimeMainEl = document.getElementById("lifetimeMain");
+      const lifetimeSubEl = document.getElementById("lifetimeSub");
+      const memeListEl = document.getElementById("memeList");
+      const memeFooterEl = document.getElementById("memeFooter");
+      const resultCard = document.getElementById("resultCard");
+
+      // 헤드라인 & 자유시간
+      const freeHoursText = dailyFree <= 0 ? t("headlineZero") : formatHours(dailyFree);
+      headlineEl.innerText = t("headlineTemplate", { hours: freeHoursText });
+      dailyFreeEl.innerText = dailyFree <= 0 ? t("dailyFreeZero") : formatHours(dailyFree);
+
+      const sleepPart = t("sleepPart") + " " + formatHours(sleep);
+      const workPart = t("workPart") + " " + formatHours(work);
+      dailyDetailEl.innerText = t("dailyDetailTemplate", { sleep: sleepPart, work: workPart });
+
+      // 평생 자유시간 (80세 기준)
+      const lifeExpectancy = 80;
+      const remainingYears = Math.max(0, lifeExpectancy - age);
+      const remainingDays = remainingYears * 365;
+      const lifetimeFreeHours = dailyFree * remainingDays;
+      const lifetimeFreeDays = lifetimeFreeHours / 24;
+      const lifetimeYearsEq = Math.floor(lifetimeFreeDays / 365);
+      const lifetimeDaysRest = Math.floor(lifetimeFreeDays % 365);
+
+      if (remainingYears <= 0) {
+        lifetimeMainEl.innerText = t("lifetimeOver80");
+        lifetimeSubEl.innerText = t("lifetimeOver80Sub");
+      } else {
+        lifetimeMainEl.innerText = t("lifetimeTemplate", {
+          age: lifeExpectancy,
+          years: lifetimeYearsEq,
+          days: lifetimeDaysRest
+        });
+        lifetimeSubEl.innerText = t("lifetimeSub");
+      }
+
+      // 밈 리스트 생성
+      memeListEl.innerHTML = "";
+      const memes = [
+        { emoji: "🍕", key: "delivery" },
+        { emoji: "📱", key: "shorts" },
+        { emoji: "👀", key: "insta" },
+        { emoji: "💬", key: "chat" },
+        { emoji: "🚇", key: "commute" },
+        { emoji: "🛌", key: "bed" },
+        { emoji: "📊", key: "meeting" }
+      ];
+
+      // 3~4개 랜덤 선택
+      const shuffled = [...memes].sort(() => Math.random() - 0.5);
+      const count = 3 + Math.floor(Math.random() * 2); // 3 또는 4개
+      const picked = shuffled.slice(0, count);
+
+      picked.forEach(m => {
+        const li = document.createElement("li");
+        const spanEmoji = document.createElement("span");
+        spanEmoji.className = "meme-emoji";
+        spanEmoji.textContent = m.emoji;
+
+        const lost = (Math.random() * 0.7 + 0.1).toFixed(1); // 0.1~0.8시간
+        const label = t("memeLabels." + m.key);
+        const textSpan = document.createElement("span");
+        textSpan.textContent = t("memeItemTemplate", {
+          age: age,
+          label: label,
+          hours: lost
+        });
+
+        li.appendChild(spanEmoji);
+        li.appendChild(textSpan);
+        memeListEl.appendChild(li);
+      });
+
+      memeFooterEl.innerText = t("memeFooter");
+
+      resultCard.style.display = "block";
+    }
+
+    function copyResult() {
+      const headline = document.getElementById("headline").innerText;
+      const daily = document.getElementById("dailyFree").innerText;
+      const detail = document.getElementById("dailyDetail").innerText;
+      const lifeMain = document.getElementById("lifetimeMain").innerText;
+      const lifeSub = document.getElementById("lifetimeSub").innerText;
+
+      const memes = Array.from(document.querySelectorAll("#memeList li"))
+        .map(li => li.innerText)
+        .join("\n");
+
+      const text = t("copyTextTemplate", {
+        headline: headline,
+        daily: daily,
+        detail: detail,
+        lifeMain: lifeMain,
+        lifeSub: lifeSub,
+        memes: memes,
+        url: window.location.href
+      });
+
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          alert(t("alertCopySuccess"));
+        })
+        .catch(() => {
+          alert(t("alertCopyFail"));
+        });
+    }
+  </script>
+
+    
+    <script>
+      (function () {
+        'use strict';
+        const targetUrl = 'https://funnyfunny.cloud/';
+        function addMoreTestsButton() {
+          let moreBtn = document.getElementById('more-tests-btn');
+          if (!moreBtn) {
+            moreBtn = document.createElement('button');
+            moreBtn.id = 'more-tests-btn';
+            moreBtn.type = 'button';
+            moreBtn.dataset.url = targetUrl;
+            moreBtn.className = 'w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3';
+            moreBtn.addEventListener('click', function () {
+              window.open(targetUrl, '_blank', 'noopener');
+            });
+            const shareButton = document.querySelector("button#share-btn, button#shareBtn, button[id*=\"share\"]");
+            if (shareButton) {
+              shareButton.insertAdjacentElement('afterend', moreBtn);
+            } else if (document.body) {
+              document.body.appendChild(moreBtn);
+            }
+          }
+          // Update text based on current language
+          moreBtn.textContent = (window.currentLang || 'ko') === 'en' ? 'Try More Tests' : '더 많은 테스트 해보기';
+        }
+        // Make function globally available
+        window.addMoreTestsButton = addMoreTestsButton;
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', addMoreTestsButton);
+        } else {
+          addMoreTestsButton();
+        }
+      })();
+    </script>
+
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  
+</body>
+</html>

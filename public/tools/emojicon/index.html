@@ -1,0 +1,5043 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-adsense-account" content="ca-pub-1204894220949193" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Dable 스크립트 시작 / 문의 media@dable.io -->
+    <script>
+      (function (d, a, b, l, e, r) {
+        if (d[b] && d[b].q) return;
+        d[b] =
+          d[b] ||
+          function () {
+            (d[b].q = d[b].q || []).push(arguments);
+          };
+        e = a.createElement(l);
+        e.async = 1;
+        e.charset = "utf-8";
+        e.src = "//static.dable.io/dist/plugin.min.js";
+        r = a.getElementsByTagName(l)[0];
+        r.parentNode.insertBefore(e, r);
+      })(window, document, "dable", "script");
+      dable("setService", "emojicon.site");
+      dable("sendLogOnce");
+    </script>
+    <!-- Dable 스크립트 종료 / 문의 media@dable.io -->
+    <title>AshLight Emoji Icon Studio</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff8a00;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23e52e71;stop-opacity:1' /%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' filter='url(%23glow)'%3E⚡%3C/text%3E%3C/svg%3E"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff8a00;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23e52e71;stop-opacity:1' /%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' filter='url(%23glow)'%3E⚡%3C/text%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --gradient-angle: 135deg;
+        --gradient-start: #ff8a00;
+        --gradient-end: #e52e71;
+        --icon-radius: 220px;
+        --emoji-size: 420px;
+        --glow-opacity: 0.22;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: #080911;
+        color: #f4f6fb;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 34px;
+      }
+
+      p.description {
+        margin: 0 0 24px;
+        color: rgba(244, 246, 251, 0.8);
+      }
+
+      .hero {
+        max-width: 1400px;
+        margin: 0 auto 24px;
+      }
+
+      .hero .gratitude {
+        margin-top: 18px;
+        font-size: 14px;
+        color: rgba(244, 246, 251, 0.7);
+      }
+
+      .nav-tabs {
+        display: inline-flex;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        padding: 6px;
+        margin: 18px 0 28px;
+      }
+
+      .nav-button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-button.active {
+        background: linear-gradient(135deg, #7f5af0, #00d1ff);
+        color: white;
+        box-shadow: 0 10px 25px rgba(127, 90, 240, 0.4);
+      }
+
+      .lang-switch {
+        display: inline-flex;
+        gap: 6px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        letter-spacing: 0.04em;
+      }
+
+      .lang-switch button.active {
+        background: linear-gradient(135deg, #7f5af0, #00d1ff);
+        color: #fff;
+      }
+
+      .tool-container {
+        display: none;
+        margin-bottom: 48px;
+      }
+
+      .tool-container.active {
+        display: block;
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 24px;
+        max-width: 1400px;
+        margin: 16px auto;
+      }
+
+      .panel {
+        background: #10111c;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .panel h2 {
+        font-size: 18px;
+        margin: 0 0 14px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 18px;
+      }
+
+      label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 8px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select,
+      textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        font-size: 16px;
+        padding: 12px 14px;
+        color: #f4f6fb;
+      }
+
+      input[type="color"] {
+        width: 100%;
+        height: 46px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: transparent;
+        padding: 3px;
+      }
+
+      input[type="range"] {
+        width: 100%;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .inline-input {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .inline-input input[type="number"] {
+        flex: 1;
+      }
+
+      .emoji-input-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+
+      .emoji-inline-label {
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .emoji-input-row input[type="text"] {
+        flex: 0 0 96px;
+        min-width: 96px;
+        max-width: 120px;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .emoji-picker-toggle {
+        min-width: 128px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .emoji-picker-layer {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(8, 9, 17, 0.55);
+        backdrop-filter: blur(6px);
+        padding: 32px 24px;
+        justify-content: center;
+        align-items: flex-start;
+        overflow: auto;
+      }
+
+      .emoji-picker-layer.open {
+        display: flex;
+      }
+
+      .emoji-picker {
+        width: min(880px, 100%);
+        margin-top: 10px;
+        padding: 14px 16px 18px;
+        border-radius: 18px;
+        background: rgba(18, 20, 30, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      }
+
+      .emoji-picker-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.72);
+        gap: 10px;
+      }
+
+      .emoji-picker-close {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .emoji-picker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+        gap: 8px;
+      }
+
+      .emoji-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 8px 0 4px;
+        gap: 10px;
+      }
+
+      .emoji-page-info {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .emoji-picker-tabs {
+        display: inline-flex;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .emoji-tab {
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .emoji-tab.active {
+        background: linear-gradient(135deg, #7f5af0, #00d1ff);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+
+      .emoji-chip {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        color: #fff;
+        transition: border-color 0.15s ease, background 0.15s ease;
+      }
+
+      .emoji-chip:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      button {
+        border: none;
+        border-radius: 12px;
+        padding: 14px 18px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        color: #0f111d;
+      }
+
+      button.accent {
+        background: linear-gradient(135deg, #ff6cab, #7366ff);
+        color: white;
+      }
+
+      button.primary {
+        background: linear-gradient(135deg, #7f5af0, #00d1ff);
+        color: white;
+      }
+
+      button.secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+      }
+
+      button.emoji-picker-toggle,
+      button.emoji-chip {
+        color: #fff;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .preview-panel {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .icon-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 32px;
+        background: radial-gradient(
+          circle at top,
+          rgba(255, 255, 255, 0.05),
+          transparent 55%
+        );
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .icon-preview-img {
+        width: 520px;
+        height: 520px;
+        border-radius: 32px;
+        box-shadow: 0 40px 80px rgba(15, 17, 29, 0.8);
+        object-fit: cover;
+      }
+
+      .mini-previews {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+      }
+
+      .mini-card {
+        display: grid;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 18px;
+      }
+
+      .mini-card h3 {
+        margin: 0 0 16px;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .mini-icon {
+        width: 140px;
+        height: 140px;
+        margin: 16px auto;
+        border-radius: 32px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+        object-fit: cover;
+        display: block;
+      }
+
+      .mini-icon.circle {
+        border-radius: 50%;
+      }
+
+      .mini-icon.square {
+        border-radius: 18px;
+      }
+
+      .mini-icon .emoji {
+        font-size: 84px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .helper {
+        margin-top: 18px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .form-hint {
+        margin-top: 6px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 4px 8px;
+        border-radius: 6px;
+      }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-top: 16px;
+      }
+
+      .status-row a {
+        color: #7fbbff;
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .status-row a:hover {
+        text-decoration: underline;
+      }
+
+      .meta-section {
+        max-width: 1400px;
+        margin: 48px auto 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .meta-card {
+        background: #10111c;
+        border-radius: 24px;
+        padding: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .meta-card h3 {
+        margin: 0 0 14px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .meta-card p,
+      .meta-card li {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.6;
+      }
+
+      .meta-card ul {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .donation-box {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .donation-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+      }
+
+      .donation-item span {
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .donation-qr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .donation-qr-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .donation-qr-code {
+        width: 200px;
+        height: 200px;
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .donation-qr-label {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .donation-links {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .donation-link-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 24px;
+        background: linear-gradient(135deg, #fee500 0%, #ffc700 100%);
+        color: #3c1e1e;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(254, 229, 0, 0.3);
+      }
+
+      .donation-link-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(254, 229, 0, 0.4);
+      }
+
+      .splash-grid {
+        max-width: 1400px;
+        margin: 16px auto;
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 24px;
+      }
+
+      .splash-panel {
+        background: #10111c;
+        border-radius: 24px;
+        padding: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .splash-panel h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      #splash-canvas-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 32px;
+        background: radial-gradient(
+          circle at 45% 0%,
+          rgba(255, 255, 255, 0.05),
+          transparent 60%
+        );
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .splash-preview-img {
+        width: 372px;
+        height: 804px;
+        border-radius: 36px;
+        box-shadow: 0 35px 90px rgba(15, 17, 29, 0.75);
+        object-fit: cover;
+      }
+
+      .splash-preview {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .splash-mini-img {
+        width: 160px;
+        height: 346px;
+        border-radius: 24px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        object-fit: cover;
+      }
+
+      .splash-preview .mini {
+        width: 160px;
+        height: 346px;
+        border-radius: 24px;
+        background: linear-gradient(
+          var(--gradient-angle),
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+      }
+
+      .splash-preview .mini .emoji {
+        font-size: 68px;
+      }
+
+      .splash-preview .mini .text {
+        font-size: 20px;
+        font-weight: 800;
+        text-align: center;
+        color: white;
+        margin-top: 12px;
+        line-height: 1.2;
+      }
+
+      .splash-preview .mini .text span {
+        display: block;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        margin-top: 6px;
+        opacity: 0.8;
+      }
+
+      .ad-slot {
+        display: none;
+      }
+
+      .ad-card {
+        text-align: center;
+      }
+
+      .ad-wrap {
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+        margin-top: 6px;
+      }
+
+      .ad-label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .home-dable {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto 24px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      #dablewidget_GokzprNX_jobwpAd7 {
+        width: 100%;
+      }
+
+      .main-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 16px 0;
+        margin-bottom: 40px;
+      }
+
+      .main-nav-container {
+        max-width: 1400px;
+        margin: 16px auto;
+        padding: 0 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .main-nav-logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+      }
+
+      .main-nav-links {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .main-nav-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 15px;
+        transition: color 0.2s ease;
+        padding: 8px 0;
+        border-radius: 999px;
+        padding: 10px 14px;
+      }
+
+      .nav-pill {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: white !important;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+        text-decoration: none;
+        padding: 12px 18px;
+        font-size: 15px;
+      }
+
+      .nav-pill:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+
+      .nav-extra-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 4px;
+        margin-left: auto;
+        margin-right: 0;
+        align-items: center;
+        justify-content: flex-end;
+        width: auto;
+      }
+
+      .main-nav-links a:hover,
+      .main-nav-links a.active {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .content-page {
+        display: none;
+        max-width: 900px;
+        margin: 16px auto;
+        padding: 40px 24px;
+        background: #10111c;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      .content-page.active {
+        display: block;
+      }
+
+      .content-page h1 {
+        font-size: 36px;
+        margin-bottom: 24px;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .content-page h2 {
+        font-size: 28px;
+        margin-top: 48px;
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.9);
+        padding-bottom: 12px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .content-page h3 {
+        font-size: 22px;
+        margin-top: 32px;
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .content-page p {
+        line-height: 1.8;
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .content-page ul,
+      .content-page ol {
+        margin: 20px 0;
+        padding-left: 28px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+      }
+
+      .content-page li {
+        margin-bottom: 12px;
+      }
+
+      .content-page code {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: "SF Mono", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+      }
+
+      .content-page pre {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content-page pre code {
+        background: none;
+        padding: 0;
+      }
+
+      .blog-list {
+        display: grid;
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .blog-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease;
+      }
+
+      .blog-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .blog-item h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+
+      .blog-item .blog-meta {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 12px;
+      }
+
+      .blog-item p {
+        margin-bottom: 0;
+      }
+
+      .back-to-tool {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s ease;
+      }
+
+      .back-to-tool:hover {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      footer {
+        max-width: 1400px;
+        margin: 40px auto 60px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      @media (max-width: 1100px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+        #app-icon {
+          width: 82vw;
+          height: 82vw;
+          max-width: 520px;
+          max-height: 520px;
+        }
+        .splash-grid {
+          grid-template-columns: 1fr;
+        }
+        #splash-canvas-wrap {
+          padding: 24px;
+        }
+        #splash-screen {
+          transform: scale(0.88);
+        }
+      }
+
+      @media (max-width: 780px) {
+        body {
+          padding: 14px;
+        }
+
+        h1 {
+          font-size: 26px;
+          line-height: 1.35;
+        }
+
+        .nav-tabs {
+          width: 100%;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+
+        .main-nav-container {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 0 12px;
+        }
+
+        .main-nav-links {
+          width: 100%;
+          gap: 10px 14px;
+          flex-wrap: wrap;
+        }
+
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .main-nav-links a {
+          font-size: 14px;
+          padding: 8px 10px;
+        }
+
+        .nav-pill {
+          padding: 8px 12px;
+          flex: 1 1 calc(50% - 8px);
+          text-align: center;
+          font-size: 14px;
+        }
+
+        .nav-extra-buttons {
+          width: 100%;
+          gap: 8px;
+          margin-top: 6px;
+          margin-left: 0;
+          display: flex;
+          justify-content: center;
+        }
+
+        main,
+        .panel,
+        .tool-container,
+        .hero,
+        .meta-section,
+        .content-page,
+        footer {
+          width: 100%;
+          box-sizing: border-box;
+          overflow-x: hidden;
+        }
+
+        .meta-section {
+          grid-template-columns: 1fr;
+        }
+
+        .icon-preview-img {
+          width: 90vw;
+          height: 90vw;
+          max-width: 440px;
+          max-height: 440px;
+        }
+
+        .content-page {
+          padding: 26px 16px 36px;
+        }
+
+        .content-page h1 {
+          font-size: 26px;
+          margin-bottom: 18px;
+        }
+
+        .content-page h2 {
+          font-size: 22px;
+          margin-top: 32px;
+          margin-bottom: 14px;
+        }
+
+        .content-page h3 {
+          font-size: 18px;
+          margin-top: 22px;
+        }
+
+        .content-page p,
+        .content-page li {
+          line-height: 1.7;
+          font-size: 15px;
+        }
+
+        .emoji-picker {
+          width: 100%;
+        }
+      }
+    </style>
+      <meta property="og:image" content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=AshLight+Emoji+Icon+Studio" />
+    <meta property="og:image:alt" content="AshLight Emoji Icon Studio" />
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/emojicon/" />
+  </head>
+  <body><nav class="main-nav">
+      <div class="main-nav-container">
+        <a
+          href="#home"
+          class="main-nav-logo"
+          onclick="showPage('home'); return false;"
+          >⚡️ AshLight</a
+        >
+        <div class="main-nav-links">
+          <a
+            href="#home"
+            class="active"
+            onclick="showPage('home'); return false;"
+            data-i18n="navHome"
+            >홈</a
+          >
+          <a
+            href="#guide"
+            onclick="showPage('guide'); return false;"
+            data-i18n="navGuide"
+            >가이드</a
+          >
+          <a href="#blog" onclick="showPage('blog'); return false;" data-i18n="navBlog"
+            >블로그</a
+          >
+          <a href="#about" onclick="showPage('about'); return false;" data-i18n="navAbout"
+            >소개</a
+          >
+          <a href="#privacy" onclick="showPage('privacy'); return false;"
+            data-i18n="navPrivacy"
+            >개인정보처리방침</a
+          >
+        </div>
+        <div class="lang-switch" role="tablist" aria-label="Language switcher">
+          <button type="button" data-lang="ko" class="active">한국어</button>
+          <button type="button" data-lang="en">English</button>
+        </div>
+        <div class="nav-extra-buttons">
+          <a
+            href="https://ashlight.store"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-pill"
+            >AshLight Store</a
+          >
+          <a
+            href="https://funnyfunny.cloud"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-pill"
+            >funnyfunny.cloud</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero" id="home-page">
+      <h1 data-i18n="heroTitle">⚡️ AshLight 이모지 아이콘 스튜디오</h1>
+      <p class="description" data-i18n="heroDesc1">
+        이모지를 한 글자만 넣으면 아이콘, 파비콘, 앱스토어용 이미지까지 한 번에
+        뽑아주는 AshLight 제작 툴입니다. 컬러를 고르고, 랜덤 프리셋으로 영감도
+        얻고, 다운로드만 누르면 곧바로 배포 준비 완료!
+      </p>
+      <p
+        class="description"
+        style="margin-top: 16px; font-size: 15px; opacity: 0.9"
+        data-i18n="heroDesc2"
+      >
+        iOS, Android, 웹 등 다양한 플랫폼에 최적화된 아이콘을 생성합니다. React
+        Native, Expo, Flutter 등 크로스 플랫폼 프레임워크와도 완벽하게
+        호환됩니다. 전문 디자인 도구 없이도 몇 분 만에 전문적인 앱 아이콘을 만들
+        수 있습니다.
+      </p>
+      <p
+        class="description"
+        style="line-height: 1.7; opacity: 0.9"
+        data-i18n-html="heroDesc3"
+      >
+        이 도구는
+        <strong
+          >누구나 5분 만에 스토어 심사에 바로 제출할 수 있는 아이콘·스플래시
+          세트 완성</strong
+        >을 목표로 설계했습니다. 인기 이모지별 의미와 추천 컬러, 플랫폼별
+        내보내기 규격, 실제 적용 예시까지 한 화면에서 확인할 수 있어 초보자도
+        실무 품질을 빠르게 맞출 수 있습니다. 단순 자동 생성 페이지가 아니라
+        아이콘 제작·배포 전 과정을 설명하는 실사용 중심 가이드를 함께
+        제공합니다.
+      </p>
+      <div class="status-row">
+        <a href="#guide" onclick="showPage('guide'); return false;" data-i18n="heroGuideLink"
+          >📚 완전 가이드</a
+        >
+        <a href="#blog" onclick="showPage('blog'); return false;" data-i18n="heroBlogLink"
+          >📝 블로그</a
+        >
+      </div>
+      <p class="gratitude" data-i18n="heroThanks">
+        사용해주셔서 감사합니다. 좋은 하루 보내시고, 멋진 서비스를 만드는데 이
+        툴이 작은 도움이 되길 바랍니다!
+      </p>
+      <div class="nav-tabs">
+        <button
+          class="nav-button active"
+          data-tool-target="iconTool"
+          data-i18n="tabIconStudio"
+        >
+          🪄 아이콘 스튜디오
+        </button>
+        <button class="nav-button" data-tool-target="splashTool" data-i18n="tabSplashStudio">
+          🌅 스플래시 스튜디오
+        </button>
+      </div>
+    </header>
+
+    <section
+      class="home-dable"
+      id="home-dable"
+      aria-label="추천 위젯"
+      data-i18n-aria="dableWidgetLabel"
+    >
+      <!-- Begin Dable responsive / For inquiries, visit http://dable.io -->
+      <div
+        id="dablewidget_GokzprNX_jobwpAd7"
+        data-widget_id-pc="GokzprNX"
+        data-widget_id-mo="jobwpAd7"
+      ></div>
+      <!-- End responsive / For inquiries, visit http://dable.io -->
+    </section>
+
+    <div class="tool-container active" id="iconTool">
+      <main>
+        <section class="panel">
+          <h2 data-i18n="iconControlTitle">아이콘 컨트롤</h2>
+
+          <div class="form-group">
+            <div class="emoji-input-row">
+              <label
+                for="emojiInput"
+                class="emoji-inline-label"
+                data-i18n="iconEmojiLabel"
+                >아이콘 이모지</label
+              >
+              <input
+                id="emojiInput"
+                type="text"
+                maxlength="4"
+                value="🚀"
+                autocomplete="off"
+              />
+              <button
+                type="button"
+                class="secondary emoji-picker-toggle"
+                id="emojiPickerButton"
+                data-i18n="emojiPickerButton"
+              >
+                😊 이모지 선택
+              </button>
+            </div>
+            <div class="emoji-picker-layer" id="emojiPicker">
+              <div class="emoji-picker">
+                <div class="emoji-picker-header">
+                  <span data-i18n="emojiPickerTitle">이모지 선택</span>
+                  <button
+                    type="button"
+                    class="secondary emoji-picker-close"
+                    id="emojiPickerClose"
+                    data-i18n="emojiPickerClose"
+                  >
+                    닫기
+                  </button>
+                </div>
+                <div class="emoji-picker-tabs" id="emojiPickerTabs">
+                  <button
+                    type="button"
+                    class="emoji-tab active"
+                    data-emoji-tab="frequent"
+                    data-i18n="emojiTabFrequent"
+                  >
+                    자주 쓰는 이모지
+                  </button>
+                  <button type="button" class="emoji-tab" data-emoji-tab="all">
+                    <span data-i18n="emojiTabAll">모든 이모지</span>
+                  </button>
+                </div>
+                <div class="emoji-pagination">
+                  <button
+                    type="button"
+                    class="secondary"
+                    data-emoji-page="prev"
+                    id="emojiPagePrev"
+                    data-i18n="emojiPagePrev"
+                  >
+                    이전
+                  </button>
+                  <span class="emoji-page-info" id="emojiPageInfo"></span>
+                  <button
+                    type="button"
+                    class="secondary"
+                    data-emoji-page="next"
+                    id="emojiPageNext"
+                    data-i18n="emojiPageNext"
+                  >
+                    다음
+                  </button>
+                </div>
+                <div class="emoji-picker-grid" id="emojiPickerGrid"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group split">
+            <div>
+              <label for="colorStart" data-i18n="gradientStart">그라데이션 시작</label>
+              <input type="color" id="colorStart" value="#ff8a00" />
+            </div>
+            <div>
+              <label for="colorEnd" data-i18n="gradientEnd">그라데이션 끝</label>
+              <input type="color" id="colorEnd" value="#e52e71" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="angleInput">
+              <span data-i18n="angleLabelText">그라데이션 각도</span>
+              (<span id="angleValue">135</span>°)
+            </label>
+            <input type="range" id="angleInput" min="0" max="360" value="135" />
+          </div>
+
+          <div class="form-group">
+            <label for="radiusInput">
+              <span data-i18n="radiusLabelText">모서리 라운드</span>
+              (<span id="radiusValue">220</span>px)
+            </label>
+            <input
+              type="range"
+              id="radiusInput"
+              min="0"
+              max="260"
+              value="220"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="emojiSizeInput">
+              <span data-i18n="emojiSizeLabelText">이모지 크기</span>
+              (<span id="emojiSizeValue">420</span>px)
+            </label>
+            <input
+              type="range"
+              id="emojiSizeInput"
+              min="260"
+              max="520"
+              value="420"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="glowInput">
+              <span data-i18n="glowLabelText">글로우 강도</span>
+              (<span id="glowValue">0.22</span>)
+            </label>
+            <input
+              type="range"
+              step="0.01"
+              min="0"
+              max="0.6"
+              value="0.22"
+              id="glowInput"
+            />
+          </div>
+
+          <div class="button-row">
+            <button class="secondary" id="randomButton" data-i18n="randomButton">
+              🎲 랜덤 조합
+            </button>
+            <button class="secondary" id="copyConfigButton" data-i18n="copyConfigButton">
+              📋 설정 복사
+            </button>
+          </div>
+
+          <hr style="margin: 26px 0; border-color: rgba(255, 255, 255, 0.05)" />
+
+          <h2 data-i18n="exportTitle">내보내기</h2>
+          <div class="button-row">
+            <button
+              class="primary"
+              data-download-size="1024"
+              data-filename="icon-ios-1024.png"
+              data-i18n="exportIosButton"
+            >
+              🍎 iOS 아이콘 (1024px)
+            </button>
+            <button
+              class="primary"
+              data-download-size="512"
+              data-filename="icon-android-512.png"
+              data-i18n="exportAndroidButton"
+            >
+              🤖 Android 아이콘 (512px)
+            </button>
+            <button
+              class="primary"
+              data-download-size="192"
+              data-filename="favicon-192.png"
+              data-i18n="exportFaviconButton"
+            >
+              🌐 Favicon/Web (192px)
+            </button>
+            <button class="accent" id="downloadAllButton" data-i18n="exportZipButton">
+              📦 전체 다운로드 ZIP
+            </button>
+          </div>
+          <p class="helper" data-i18n-html="exportHelper">
+            Expo / React Native 에서는 <code>assets/icon.png</code> 로 저장 후
+            <code>app.json</code> 의 <code>expo.icon</code> 을 해당 경로로
+            지정하세요.
+          </p>
+        </section>
+
+        <section class="preview-panel">
+          <div class="icon-wrap">
+            <img
+              id="appIconPreview"
+              class="icon-preview-img"
+              src=""
+              alt="아이콘 미리보기"
+              data-i18n-alt="altIconPreview"
+            />
+          </div>
+          <div class="mini-previews">
+            <div class="mini-card">
+              <h3 data-i18n="previewIosTitle">iOS Rounded</h3>
+              <img
+                class="mini-icon"
+                data-icon-preview-size="180"
+                data-icon-shape="rounded"
+                data-icon-radius="36"
+                alt="iOS 미리보기"
+                data-i18n-alt="altIosPreview"
+              />
+            </div>
+            <div class="mini-card">
+              <h3 data-i18n="previewAndroidTitle">Android Circle</h3>
+              <img
+                class="mini-icon circle"
+                data-icon-preview-size="180"
+                data-icon-shape="circle"
+                alt="Android 미리보기"
+                data-i18n-alt="altAndroidPreview"
+              />
+            </div>
+            <div class="mini-card">
+              <h3 data-i18n="previewBrowserTitle">Browser Favicon</h3>
+              <img
+                class="mini-icon square"
+                data-icon-preview-size="140"
+                data-icon-shape="rounded"
+                data-icon-radius="24"
+                alt="Browser 미리보기"
+                data-i18n-alt="altBrowserPreview"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="tool-container" id="splashTool">
+      <div class="splash-grid">
+        <section class="splash-panel">
+          <h2 data-i18n="splashGuideTitle">스플래시 빠른 제작 가이드</h2>
+          <p data-i18n="splashGuideDesc">
+            아이콘과 동일한 이모지와 그라데이션으로 스플래시 이미지를 자동으로
+            만들어줍니다. Expo / React Native / Flutter 등에서 그대로 사용할 수
+            있는 1242 × 2688 (iPhone 14 Pro 해상도) PNG를 다운로드하세요.
+          </p>
+          <ul style="margin: 18px 0; padding-left: 20px">
+            <li data-i18n="splashGuideStep1">
+              ① 아이콘 탭에서 원하는 이모지·컬러를 완성합니다.
+            </li>
+            <li data-i18n="splashGuideStep2">
+              ② 스플래시 탭으로 전환해 미리보기를 확인합니다.
+            </li>
+            <li data-i18n="splashGuideStep3">
+              ③ 아래 다운로드 버튼으로 전체 해상도를 저장합니다.
+            </li>
+          </ul>
+          <div class="form-group">
+            <label for="splashTitleInput" data-i18n="splashTitleLabel"
+              >메인 제목 (줄바꿈 가능)</label
+            >
+            <textarea id="splashTitleInput" rows="2">AshLight</textarea>
+          </div>
+          <div class="form-group">
+            <label for="splashSubtitleInput" data-i18n="splashSubtitleLabel"
+              >보조 문구</label
+            >
+            <input
+              type="text"
+              id="splashSubtitleInput"
+              value="EMOJI ICON STUDIO"
+            />
+          </div>
+          <div class="button-row">
+            <button
+              class="primary"
+              id="downloadSplashButton"
+              data-i18n="splashDownloadButton"
+            >
+              🌅 스플래시 PNG (1242 × 2688)
+            </button>
+            <button class="secondary" id="splashRandomButton" data-i18n="splashRandomButton">
+              🎲 스플래시 문구 랜덤
+            </button>
+          </div>
+          <p class="helper" style="margin-top: 18px" data-i18n-html="splashHelper">
+            생성된 이미지는 <code>assets/splash.png</code> 등 원하는 경로에
+            저장한 뒤 <code>app.json</code> 또는 네이티브 프로젝트 설정에
+            반영해주세요.
+          </p>
+        </section>
+        <section class="splash-panel">
+          <h2 data-i18n="splashPreviewTitle">AshLight 스플래시 미리보기</h2>
+          <div id="splash-canvas-wrap">
+            <img
+              id="splashMainPreview"
+              class="splash-preview-img"
+              src=""
+              alt="스플래시 미리보기"
+              data-i18n-alt="altSplashPreview"
+            />
+          </div>
+          <div class="splash-preview">
+            <img
+              id="splashMiniPreview"
+              class="splash-mini-img"
+              src=""
+              alt="스플래시 미니 미리보기"
+              data-i18n-alt="altSplashMiniPreview"
+            />
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="meta-section" data-i18n-html="metaOverviewSection">
+      <div class="meta-card">
+        <h3>이 서비스로 할 수 있는 것</h3>
+        <p>
+          AshLight 이모지 아이콘 스튜디오는 개발자와 디자이너를 위한 전문적인
+          아이콘 제작 도구입니다. 복잡한 디자인 소프트웨어 없이도 몇 분 만에 앱
+          아이콘, 파비콘, 스플래시 스크린을 만들 수 있습니다.
+        </p>
+        <ul>
+          <li>
+            <strong>앱 아이콘 제작:</strong> iOS, Android 앱스토어에 바로 제출
+            가능한 고해상도 아이콘 생성
+          </li>
+          <li>
+            <strong>파비콘 제작:</strong> 웹사이트 브랜딩을 위한 다양한 크기의
+            파비콘 생성
+          </li>
+          <li>
+            <strong>스플래시 스크린:</strong> 앱 로딩 화면용 스플래시 이미지
+            제작
+          </li>
+          <li>
+            <strong>일괄 다운로드:</strong> 필요한 모든 크기를 ZIP 파일로 한
+            번에 다운로드
+          </li>
+        </ul>
+      </div>
+
+      <div class="meta-card">
+        <h3>지원하는 플랫폼과 해상도</h3>
+        <p>다양한 플랫폼과 기기를 지원하는 최적화된 아이콘을 생성합니다.</p>
+        <ul>
+          <li>
+            <strong>iOS:</strong> 1024x1024px (App Store), 180x180px, 120x120px
+            등
+          </li>
+          <li>
+            <strong>Android:</strong> 512x512px (Play Store), 192x192px,
+            144x144px 등
+          </li>
+          <li>
+            <strong>웹:</strong> 192x192px, 128x128px, 64x64px, 32x32px, 16x16px
+          </li>
+          <li><strong>React Native / Expo:</strong> 모든 표준 해상도 지원</li>
+        </ul>
+      </div>
+
+      <div class="meta-card">
+        <h3>왜 이모지 아이콘인가요?</h3>
+        <p>
+          이모지는 전 세계적으로 통용되는 시각 언어입니다. 이모지를 활용한
+          아이콘은 다음과 같은 장점이 있습니다:
+        </p>
+        <ul>
+          <li>
+            <strong>즉각적인 인식:</strong> 사용자가 아이콘의 의미를 빠르게
+            파악할 수 있습니다
+          </li>
+          <li>
+            <strong>기억하기 쉬움:</strong> 단순하고 강렬한 형태로 브랜드 인지도
+            향상에 도움이 됩니다
+          </li>
+          <li>
+            <strong>국제적 호환성:</strong> 언어와 문화의 장벽 없이 전 세계
+            사용자에게 친숙합니다
+          </li>
+          <li>
+            <strong>제작의 용이성:</strong> 복잡한 디자인 없이도 전문적인
+            아이콘을 만들 수 있습니다
+          </li>
+        </ul>
+      </div>
+
+      <div class="meta-card">
+        <h3>사용 사례</h3>
+        <p>다양한 프로젝트에서 AshLight를 활용할 수 있습니다:</p>
+        <ul>
+          <li>
+            <strong>프로토타입 개발:</strong> 빠르게 MVP의 아이콘을 제작하여
+            테스트 진행
+          </li>
+          <li>
+            <strong>사이드 프로젝트:</strong> 개인 프로젝트나 포트폴리오용
+            아이콘 제작
+          </li>
+          <li>
+            <strong>스타트업:</strong> 초기 단계에서 비용을 절감하면서도
+            전문적인 아이콘 확보
+          </li>
+          <li>
+            <strong>학습 프로젝트:</strong> React Native, Flutter 등 프레임워크
+            학습 시 아이콘 제작
+          </li>
+          <li>
+            <strong>웹사이트 브랜딩:</strong> 파비콘과 PWA 아이콘으로 웹사이트
+            아이덴티티 강화
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="meta-section" id="guide" data-i18n-html="quickStartSection">
+      <div class="meta-card">
+        <h3>빠른 시작 가이드</h3>
+        <ul>
+          <li>
+            ① 원하는 이모지를 입력하거나 랜덤 프리셋으로 영감을 얻어보세요.
+          </li>
+          <li>
+            ② 그라데이션 컬러, 각도, 이모지 크기를 조절해 미세 조정합니다.
+          </li>
+          <li>
+            ③ iOS / Android / Web 버튼을 눌러 각각 필요한 사이즈를 저장하세요.
+          </li>
+          <li>
+            ④ `스플래시 스튜디오` 탭에서 동일한 스타일의 스플래시 PNG도 저장.
+          </li>
+        </ul>
+        <p style="margin-top: 16px">
+          아이콘을 교체한 뒤에는 앱스토어 / 플레이스토어에 새 빌드를 제출하거나
+          웹사이트 파비콘을 업데이트하는 것을 잊지 마세요.
+        </p>
+      </div>
+
+      <div class="meta-card ad-card" aria-label="추천 광고 영역">
+        <h3 style="margin: 0 0 10px">파트너 광고</h3>
+      </div>
+    </section>
+
+    <section class="meta-section" id="faq" data-i18n-html="faqSection">
+      <div class="meta-card">
+        <h3>FAQ: 이모지 아이콘/스플래시 활용</h3>
+        <ul>
+          <li>
+            <strong>어디에 쓸 수 있나요?</strong> 앱스토어 아이콘, 웹 파비콘,
+            PWA, 내부 테스트 빌드, 마케팅 랜딩 페이지 등에 바로 적용 가능합니다.
+          </li>
+          <li>
+            <strong>저작권 문제는 없나요?</strong> 이모지 폰트는 각 OS가
+            제공하며, 단일 이모지 사용과 배경 그래픽은 대부분의 스토어에서
+            허용됩니다. 단, 타 브랜드 로고/캐릭터는 피해주세요.
+          </li>
+          <li>
+            <strong>광고나 후원을 붙여도 되나요?</strong> 네. 광고 스크립트는
+            가이드에 맞춰 가시성 있게 배치했고, 후원 버튼은 이용 약관을
+            준수합니다.
+          </li>
+          <li>
+            <strong>출시 후 수정이 필요할 때?</strong> 동일한 프리셋을 불러와
+            색상·이모지를 변경한 뒤 새 아이콘을 업로드하면 됩니다.
+          </li>
+        </ul>
+      </div>
+
+      <div class="meta-card">
+        <h3>How-To: 5분 컷 아이콘·스플래시 배포</h3>
+        <ol>
+          <li>이모지를 고르고 그라데이션 컬러·각도·모서리를 맞춥니다.</li>
+          <li>
+            미리보기에서 iOS/Android/웹 형태를 확인하며 크기를 조정합니다.
+          </li>
+          <li>필요한 해상도를 개별 다운로드하거나 ZIP 일괄 다운로드합니다.</li>
+          <li>
+            스플래시 탭에서 동일한 이모지/컬러로 1242×2688 PNG를 저장합니다.
+          </li>
+          <li>
+            iOS(Xcode Assets) / Android(Image Asset Studio) / 웹(파비콘 링크) /
+            Expo (<code>app.json</code>)에 각각 반영하고 빌드합니다.
+          </li>
+        </ol>
+      </div>
+
+      <div class="meta-card">
+        <h3>운영·신뢰 정보</h3>
+        <ul>
+          <li><strong>제작자:</strong> AshLight (ashlight2510@gmail.com)</li>
+          <li>
+            <strong>최근 업데이트:</strong> 2025-01 · 아이콘/스플래시 품질 개선
+          </li>
+          <li>
+            <strong>저장 위치:</strong> 모든 렌더링은 브라우저 내에서 처리하며
+            서버로 업로드하지 않음
+          </li>
+          <li>
+            <strong>테스트 기기:</strong> iPhone 14 Pro, Pixel 7, MacBook Pro
+            (Safari/Chrome)
+          </li>
+          <li>
+            <strong>광고 정책:</strong> UI와 분리된 가시 영역에만 광고 노출
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 콘텐츠 페이지들 -->
+    <div class="content-page" id="guide-page" data-i18n-html="guidePage">
+      <a
+        href="#home"
+        class="back-to-tool"
+        onclick="showPage('home'); return false;"
+        >← 홈으로 돌아가기</a
+      >
+      <h1>📚 완전 가이드: 이모지 아이콘 만들기부터 배포까지</h1>
+
+      <p>
+        AshLight 이모지 아이콘 스튜디오를 사용하여 앱 아이콘, 파비콘, 스플래시
+        스크린을 만드는 방법을 단계별로 안내합니다. iOS, Android, 웹 등 다양한
+        플랫폼에 최적화된 아이콘을 빠르게 제작할 수 있습니다.
+      </p>
+
+      <h2>1. 아이콘 제작 기본 가이드</h2>
+
+      <h3>1.1 이모지 선택하기</h3>
+      <p>
+        아이콘의 핵심은 이모지 선택입니다. 단일 이모지를 사용하는 것이 가장
+        깔끔하고 인식하기 쉽습니다. 복잡한 이모지 조합보다는 하나의 강렬한
+        이모지가 더 효과적입니다.
+      </p>
+      <ul>
+        <li>
+          <strong>추천 이모지:</strong> 🚀, ⚡, 💡, 🎨, 🔥, ⭐, 🎯, 💎 등
+          단순하고 강렬한 형태
+        </li>
+        <li>
+          <strong>피해야 할 이모지:</strong> 복잡한 조합, 텍스트가 포함된
+          이모지, 너무 작은 디테일
+        </li>
+        <li>
+          <strong>플랫폼별 차이:</strong> iOS와 Android에서 이모지 렌더링이 다를
+          수 있으므로, 미리보기로 확인하세요
+        </li>
+      </ul>
+
+      <h3>1.2 그라데이션 색상 선택</h3>
+      <p>
+        그라데이션은 아이콘의 분위기를 결정하는 중요한 요소입니다. 브랜드 컬러와
+        조화롭게 선택하거나, 이모지의 특성을 살리는 색상을 선택하세요.
+      </p>
+      <ul>
+        <li>
+          <strong>밝은 톤:</strong> 활기찬, 친근한 느낌 (예: #ff8a00 → #e52e71)
+        </li>
+        <li>
+          <strong>어두운 톤:</strong> 전문적, 세련된 느낌 (예: #1a1a2e →
+          #16213e)
+        </li>
+        <li>
+          <strong>대비 강한 조합:</strong> 눈에 띄는, 강렬한 느낌 (예: #00f2fe →
+          #4facfe)
+        </li>
+        <li>
+          <strong>색상 이론:</strong> 보색 관계나 유사 색상 조합을 활용하면
+          조화로운 결과를 얻을 수 있습니다
+        </li>
+      </ul>
+
+      <h3>1.3 각도와 반경 조정</h3>
+      <p>
+        그라데이션 각도는 0도부터 360도까지 조정 가능합니다. 기본값 135도는
+        대각선 그라데이션으로 가장 자연스러운 느낌을 줍니다. 반경은 이모지
+        주변의 그라데이션 확산 범위를 조절합니다.
+      </p>
+      <ul>
+        <li><strong>각도 0도:</strong> 위에서 아래로 수직 그라데이션</li>
+        <li><strong>각도 90도:</strong> 왼쪽에서 오른쪽으로 수평 그라데이션</li>
+        <li>
+          <strong>각도 135도:</strong> 대각선 그라데이션 (기본값, 가장
+          자연스러움)
+        </li>
+        <li>
+          <strong>반경:</strong> 값이 클수록 그라데이션이 더 넓게 퍼집니다
+        </li>
+      </ul>
+
+      <h2>2. iOS 앱 아이콘 제작 및 적용</h2>
+
+      <h3>2.1 필요한 아이콘 크기</h3>
+      <p>
+        iOS 앱은 다양한 기기와 해상도를 지원해야 합니다. Xcode는 자동으로 다양한
+        크기로 리사이즈하지만, 최고 품질을 위해 1024x1024px 아이콘을 제공하는
+        것이 좋습니다.
+      </p>
+      <ul>
+        <li><strong>App Store:</strong> 1024x1024px (필수)</li>
+        <li><strong>iPhone:</strong> 180x180px (3x), 120x120px (2x)</li>
+        <li><strong>iPad:</strong> 152x152px (2x), 76x76px (1x)</li>
+        <li>
+          <strong>Mac Catalyst:</strong> 1024x1024px, 512x512px, 256x256px 등
+        </li>
+      </ul>
+
+      <h3>2.2 Xcode에 아이콘 적용하기</h3>
+      <p>
+        Xcode 프로젝트에서 Assets.xcassets 폴더의 AppIcon에 아이콘을 추가합니다.
+      </p>
+      <ol>
+        <li>Xcode에서 프로젝트를 엽니다</li>
+        <li>왼쪽 네비게이터에서 <code>Assets.xcassets</code>를 선택합니다</li>
+        <li><code>AppIcon</code>을 클릭합니다</li>
+        <li>각 슬롯에 해당하는 크기의 아이콘을 드래그 앤 드롭합니다</li>
+        <li>1024x1024px 아이콘은 "App Store" 슬롯에 추가합니다</li>
+      </ol>
+
+      <h3>2.3 주의사항</h3>
+      <ul>
+        <li>아이콘은 투명 배경이 없어야 합니다 (PNG-24 사용)</li>
+        <li>
+          모서리는 자동으로 둥글게 처리되므로, 정사각형 이미지를 사용하세요
+        </li>
+        <li>앱 이름이나 텍스트를 아이콘에 포함하지 마세요</li>
+        <li>Apple의 Human Interface Guidelines를 준수하세요</li>
+      </ul>
+
+      <h2>3. Android 앱 아이콘 제작 및 적용</h2>
+
+      <h3>3.1 필요한 아이콘 크기</h3>
+      <p>
+        Android는 다양한 밀도(density)를 지원합니다. 각 밀도에 맞는 아이콘을
+        제공하면 모든 기기에서 선명하게 표시됩니다.
+      </p>
+      <ul>
+        <li><strong>mdpi:</strong> 48x48px</li>
+        <li><strong>hdpi:</strong> 72x72px</li>
+        <li><strong>xhdpi:</strong> 96x96px</li>
+        <li><strong>xxhdpi:</strong> 144x144px</li>
+        <li><strong>xxxhdpi:</strong> 192x192px</li>
+        <li><strong>Play Store:</strong> 512x512px (필수)</li>
+      </ul>
+
+      <h3>3.2 Android Studio에 아이콘 적용하기</h3>
+      <p>
+        Android Studio의 Image Asset Studio를 사용하면 쉽게 아이콘을 생성할 수
+        있습니다.
+      </p>
+      <ol>
+        <li>Android Studio에서 프로젝트를 엽니다</li>
+        <li>
+          <code>res</code> 폴더를 우클릭하고 <code>New > Image Asset</code>을
+          선택합니다
+        </li>
+        <li>Asset Type을 "Launcher Icons"로 선택합니다</li>
+        <li>
+          Foreground Layer에서 "Image"를 선택하고 다운로드한 아이콘을 선택합니다
+        </li>
+        <li>Background Layer는 단색으로 설정하거나 제거합니다</li>
+        <li>"Next"를 클릭하고 "Finish"를 눌러 적용합니다</li>
+      </ol>
+
+      <h3>3.3 Adaptive Icons (Android 8.0+)</h3>
+      <p>
+        Android 8.0 (Oreo) 이상에서는 Adaptive Icons를 사용합니다. 이는 다양한
+        형태로 변형될 수 있는 아이콘 시스템입니다. AshLight로 만든 아이콘은
+        Adaptive Icon의 safe zone 내에 이모지가 위치하도록 설계되었습니다.
+      </p>
+
+      <h2>4. 웹 파비콘 제작 및 적용</h2>
+
+      <h3>4.1 필요한 파비콘 크기</h3>
+      <p>
+        웹 브라우저와 다양한 플랫폼에서 사용되는 파비콘 크기는 다양합니다.
+        최소한 다음 크기들은 준비하는 것이 좋습니다.
+      </p>
+      <ul>
+        <li>
+          <strong>favicon.ico:</strong> 16x16, 32x32, 48x48 포함 (다중 해상도)
+        </li>
+        <li><strong>apple-touch-icon:</strong> 180x180px (iOS 홈 화면용)</li>
+        <li><strong>android-chrome:</strong> 192x192px, 512x512px</li>
+        <li><strong>기타:</strong> 32x32px, 96x96px 등</li>
+      </ul>
+
+      <h3>4.2 HTML에 파비콘 적용하기</h3>
+      <p>HTML의 <code>&lt;head&gt;</code> 섹션에 파비콘 링크를 추가합니다.</p>
+      <pre><code>&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/site.webmanifest"&gt;</code></pre>
+
+      <h3>4.3 Web App Manifest</h3>
+      <p>
+        PWA(Progressive Web App)를 만들 때는 <code>manifest.json</code> 파일도
+        필요합니다. 이 파일에 아이콘 정보를 포함시킬 수 있습니다.
+      </p>
+
+      <h2>5. React Native / Expo 아이콘 적용</h2>
+
+      <h3>5.1 Expo 프로젝트</h3>
+      <p>Expo는 <code>app.json</code>에서 아이콘을 설정합니다.</p>
+      <ol>
+        <li>다운로드한 아이콘을 <code>assets/icon.png</code>로 저장합니다</li>
+        <li><code>app.json</code>에서 <code>expo.icon</code>을 설정합니다:</li>
+      </ol>
+      <pre><code>{
+  "expo": {
+    "icon": "./assets/icon.png",
+    ...
+  }
+}</code></pre>
+      <li>
+        아이콘을 변경한 후 <code>expo prebuild</code>를 실행하거나 앱을 다시
+        빌드합니다
+      </li>
+
+      <h3>5.2 React Native (Bare Workflow)</h3>
+      <p>
+        React Native의 Bare Workflow에서는 iOS와 Android를 각각 설정해야 합니다.
+      </p>
+      <ul>
+        <li>
+          <strong>iOS:</strong> Xcode의 Assets.xcassets에 아이콘 추가 (위 iOS
+          가이드 참조)
+        </li>
+        <li>
+          <strong>Android:</strong> Android Studio의 Image Asset Studio 사용 (위
+          Android 가이드 참조)
+        </li>
+      </ul>
+
+      <h2>6. 스플래시 스크린 제작</h2>
+
+      <h3>6.1 스플래시 스크린이란?</h3>
+      <p>
+        스플래시 스크린은 앱이 로딩되는 동안 보여지는 초기 화면입니다. 아이콘과
+        동일한 디자인 언어를 사용하여 브랜드 일관성을 유지하는 것이 좋습니다.
+      </p>
+
+      <h3>6.2 iOS 스플래시 스크린</h3>
+      <p>
+        iOS는 Storyboard나 Launch Screen을 사용합니다. AshLight의 스플래시
+        스튜디오에서 생성한 이미지를 사용하거나, Xcode에서 직접 설정할 수
+        있습니다.
+      </p>
+
+      <h3>6.3 Android 스플래시 스크린</h3>
+      <p>
+        Android는 <code>res/drawable</code> 폴더에 스플래시 이미지를 추가하고,
+        <code>AndroidManifest.xml</code>에서 테마를 설정합니다.
+      </p>
+
+      <h2>7. 앱스토어 제출 시 주의사항</h2>
+
+      <h3>7.1 App Store (iOS)</h3>
+      <ul>
+        <li>1024x1024px 아이콘은 투명도가 없어야 합니다</li>
+        <li>아이콘에 텍스트, 저작권 표시, 워터마크를 포함하지 마세요</li>
+        <li>Apple의 디자인 가이드라인을 준수하세요</li>
+        <li>스크린샷과 일관된 디자인을 유지하세요</li>
+      </ul>
+
+      <h3>7.2 Google Play Store (Android)</h3>
+      <ul>
+        <li>512x512px 고해상도 아이콘을 제공하세요</li>
+        <li>아이콘은 32비트 PNG 형식이어야 합니다</li>
+        <li>투명 배경은 사용할 수 없습니다</li>
+        <li>아이콘 모서리는 자동으로 둥글게 처리됩니다</li>
+      </ul>
+
+      <h2>8. 트러블슈팅</h2>
+
+      <h3>8.1 아이콘이 제대로 표시되지 않을 때</h3>
+      <ul>
+        <li>파일 이름과 경로를 확인하세요</li>
+        <li>캐시를 지우고 앱을 재설치해보세요</li>
+        <li>아이콘 크기가 정확한지 확인하세요</li>
+        <li>파일 형식이 올바른지 확인하세요 (PNG 권장)</li>
+      </ul>
+
+      <h3>8.2 색상이 예상과 다를 때</h3>
+      <ul>
+        <li>색상 프로파일을 확인하세요 (sRGB 권장)</li>
+        <li>브라우저나 기기의 색상 보정 설정을 확인하세요</li>
+        <li>그라데이션 각도를 조정해보세요</li>
+      </ul>
+
+      <h2>9. 베스트 프랙티스</h2>
+
+      <ul>
+        <li>
+          <strong>일관성:</strong> 아이콘, 스플래시, 앱 내부 디자인을 일관되게
+          유지하세요
+        </li>
+        <li>
+          <strong>단순함:</strong> 복잡한 디자인보다 단순하고 인식하기 쉬운
+          아이콘이 좋습니다
+        </li>
+        <li><strong>테스트:</strong> 다양한 기기와 해상도에서 테스트하세요</li>
+        <li>
+          <strong>업데이트:</strong> 앱 업데이트 시 아이콘도 함께 개선하는 것을
+          고려하세요
+        </li>
+        <li>
+          <strong>브랜딩:</strong> 아이콘은 브랜드의 첫인상이므로 신중하게
+          선택하세요
+        </li>
+      </ul>
+
+      <p
+        style="
+          margin-top: 40px;
+          padding-top: 24px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        "
+      >
+        이 가이드가 도움이 되셨나요? 더 궁금한 점이 있으시면
+        <a
+          href="mailto:ashlight2510@gmail.com"
+          style="color: rgba(255, 255, 255, 0.9)"
+          >이메일</a
+        >로 문의해주세요.
+      </p>
+    </div>
+
+    <div class="content-page" id="blog-page" data-i18n-html="blogPage">
+      <a
+        href="#home"
+        class="back-to-tool"
+        onclick="showPage('home'); return false;"
+        >← 홈으로 돌아가기</a
+      >
+      <h1>📝 블로그</h1>
+      <p>앱 아이콘, 브랜딩, 앱 출시에 관한 유용한 정보와 팁을 공유합니다.</p>
+
+      <div class="blog-list">
+        <article class="blog-item">
+          <h3>앱 첫인상을 바꾸는 아이콘 디자인 패턴 5가지</h3>
+          <div class="blog-meta">2025년 1월 | 디자인</div>
+          <p>
+            앱스토어에서 사용자가 앱을 발견할 때 가장 먼저 보는 것은
+            아이콘입니다. 효과적인 아이콘 디자인 패턴을 알아보고, 어떤 스타일이
+            어떤 앱 카테고리에 어울리는지 분석합니다. 단순한 형태부터 그라데이션
+            활용, 이모지 기반 디자인까지 다양한 접근 방식을 살펴봅니다. 각
+            패턴마다 안전한 여백 비율(70% 내외), 대비를 살리는 색상 조합, 다크
+            모드에서의 보정 팁을 함께 제공합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>스토어 심사에서 자주 거절당하는 아이콘 케이스와 해결책</h3>
+          <div class="blog-meta">2025년 1월 | 앱스토어 최적화</div>
+          <p>
+            App Store와 Google Play Store 심사에서 아이콘 때문에 거절당하는
+            경우가 종종 있습니다. 저작권 문제, 가이드라인 위반, 품질 문제 등
+            주요 거절 사유를 정리하고, 각 문제에 대한 구체적인 해결 방법을
+            제시합니다. 실제 거절 사례와 승인을 받은 개선 사례를 비교
+            분석합니다. 해상도 부족, 투명 배경 사용, 과도한 텍스트 사용 등
+            체크리스트를 포함해 바로 적용할 수 있는 수정안을 제공합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>이모지 기반 아이콘이 유리한 이유: 사용자 인식과 브랜드 기억</h3>
+          <div class="blog-meta">2025년 1월 | UX/UI</div>
+          <p>
+            이모지는 전 세계적으로 통용되는 시각 언어입니다. 이모지를 활용한 앱
+            아이콘의 장점을 심리학적, 마케팅적 관점에서 분석합니다. 사용자가
+            아이콘을 더 빠르게 인식하고, 브랜드를 더 오래 기억하게 만드는 이모지
+            아이콘의 힘을 알아봅니다. 이모지 선택 시 의미 전이 효과, 문화권별
+            해석 차이, 색상 상징성을 고려한 사례를 소개합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>React Native와 Expo에서 아이콘 교체 실전 가이드</h3>
+          <div class="blog-meta">2025년 1월 | 개발</div>
+          <p>
+            React Native 프로젝트에서 아이콘을 교체하는 과정에서 마주치는 다양한
+            상황을 다룹니다. Expo 관리형 워크플로우와 Bare 워크플로우의 차이점,
+            각각의 아이콘 설정 방법, 빌드 캐시 문제 해결, 그리고 다양한 해상도
+            대응 방법을 실전 예제와 함께 설명합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>파비콘 완전 정리: 웹사이트 아이덴티티의 첫걸음</h3>
+          <div class="blog-meta">2025년 1월 | 웹 개발</div>
+          <p>
+            파비콘은 작지만 웹사이트의 브랜드 인지도에 큰 영향을 미칩니다.
+            다양한 브라우저와 플랫폼에서 완벽하게 작동하는 파비콘을 만드는 방법,
+            PWA에서의 파비콘 활용, 그리고 SEO와 사용자 경험에 미치는 영향을
+            설명합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>그라데이션 색상 선택 가이드: 심리학과 브랜딩 관점</h3>
+          <div class="blog-meta">2025년 1월 | 디자인</div>
+          <p>
+            색상은 사용자의 감정과 행동에 직접적인 영향을 미칩니다. 그라데이션
+            색상 조합이 사용자에게 주는 심리적 효과를 분석하고, 앱 카테고리별로
+            추천하는 색상 조합을 제시합니다. 색상 이론의 기초부터 실전 활용까지
+            다룹니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>
+            앱 출시 후 아이콘 A/B 테스트: 어떤 아이콘이 더 많은 다운로드를
+            유도하는가?
+          </h3>
+          <div class="blog-meta">2025년 1월 | 마케팅</div>
+          <p>
+            아이콘의 작은 변화가 앱 다운로드 수에 얼마나 큰 영향을 미치는지 실제
+            데이터로 분석합니다. A/B 테스트 방법론, 주요 테스트 요소(색상, 형태,
+            이모지 선택), 그리고 결과 분석 방법을 단계별로 설명합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>내가 이 도구를 만든 이유: 개발자 후기</h3>
+          <div class="blog-meta">2025년 1월 | 개발 이야기</div>
+          <p>
+            AshLight 이모지 아이콘 스튜디오를 개발하게 된 배경과 개발 과정에서의
+            경험을 공유합니다. React Native 앱을 개발하면서 겪은 아이콘 제작의
+            어려움, 기존 도구들의 한계, 그리고 이 도구를 통해 해결하고자 했던
+            문제들을 솔직하게 이야기합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>아이콘 디자인 트렌드 2025: 올해 주목할 스타일</h3>
+          <div class="blog-meta">2025년 1월 | 트렌드</div>
+          <p>
+            2025년 앱 아이콘 디자인 트렌드를 분석합니다. 미니멀리즘의 지속,
+            네오모피즘의 부상, 다채로운 그라데이션의 활용, 그리고 이모지 기반
+            디자인의 증가 등 최신 트렌드를 살펴보고 각 트렌드의 장단점을
+            평가합니다.
+          </p>
+        </article>
+
+        <article class="blog-item">
+          <h3>크로스 플랫폼 앱 개발자를 위한 아이콘 가이드</h3>
+          <div class="blog-meta">2025년 1월 | 개발</div>
+          <p>
+            Flutter, React Native, Xamarin 등 크로스 플랫폼 프레임워크를
+            사용하는 개발자를 위한 아이콘 관리 전략을 제시합니다. 하나의
+            소스에서 여러 플랫폼용 아이콘을 생성하는 방법, 플랫폼별 차이점 대응,
+            그리고 자동화 도구 활용법을 다룹니다.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <div class="content-page" id="about-page" data-i18n-html="aboutPage">
+      <a
+        href="#home"
+        class="back-to-tool"
+        onclick="showPage('home'); return false;"
+        >← 홈으로 돌아가기</a
+      >
+      <h1>💡 AshLight 소개</h1>
+
+      <h2>서비스 소개</h2>
+      <p>
+        AshLight 이모지 아이콘 스튜디오는 개발자와 디자이너가 빠르고 쉽게 앱
+        아이콘, 파비콘, 스플래시 스크린을 만들 수 있도록 도와주는 웹 기반
+        도구입니다.
+      </p>
+      <p>
+        복잡한 디자인 소프트웨어 없이도 이모지 하나만으로 전문적인 아이콘을 만들
+        수 있습니다. 그라데이션 색상, 각도, 크기 등을 직관적으로 조절하여 원하는
+        스타일의 아이콘을 제작할 수 있습니다.
+      </p>
+
+      <h2>왜 만들었나요?</h2>
+      <p>
+        React Native 앱을 개발하면서 아이콘 제작의 어려움을 직접 경험했습니다.
+        전문 디자인 도구는 학습 곡선이陡峻하고, 온라인 아이콘 제작 도구들은
+        대부분 유료이거나 제한적인 기능만 제공했습니다.
+      </p>
+      <p>
+        특히 이모지를 활용한 아이콘은 사용자에게 친근하고 기억하기 쉬운 장점이
+        있는데, 이를 쉽게 만들 수 있는 도구가 부족했습니다. 그래서 개발자와
+        디자이너 모두가 빠르게 사용할 수 있는 간단하면서도 강력한 도구를 만들고
+        싶었습니다.
+      </p>
+
+      <h2>주요 기능</h2>
+      <ul>
+        <li>
+          <strong>이모지 기반 아이콘 제작:</strong> 단일 이모지로 다양한
+          스타일의 아이콘 생성
+        </li>
+        <li>
+          <strong>커스터마이징:</strong> 그라데이션 색상, 각도, 반경, 이모지
+          크기 등 세밀한 조정
+        </li>
+        <li>
+          <strong>다양한 해상도 지원:</strong> iOS, Android, 웹 등 플랫폼별
+          최적화된 크기 제공
+        </li>
+        <li>
+          <strong>스플래시 스크린:</strong> 아이콘과 일관된 디자인의 스플래시
+          스크린 생성
+        </li>
+        <li>
+          <strong>원클릭 다운로드:</strong> 필요한 모든 크기를 한 번에 ZIP
+          파일로 다운로드
+        </li>
+        <li>
+          <strong>랜덤 프리셋:</strong> 영감을 얻을 수 있는 랜덤 색상 조합
+        </li>
+      </ul>
+
+      <h2>누구를 위한 서비스인가요?</h2>
+      <ul>
+        <li>
+          <strong>개발자:</strong> 빠르게 프로토타입이나 사이드 프로젝트의
+          아이콘을 만들고 싶은 개발자
+        </li>
+        <li>
+          <strong>디자이너:</strong> 아이디어를 빠르게 시각화하고 싶은 디자이너
+        </li>
+        <li>
+          <strong>스타트업:</strong> 초기 단계에서 비용을 절감하면서도 전문적인
+          아이콘을 원하는 스타트업
+        </li>
+        <li>
+          <strong>학생/취미 개발자:</strong> 학습 프로젝트나 포트폴리오용
+          아이콘이 필요한 사람
+        </li>
+      </ul>
+
+      <h2>기술 스택</h2>
+      <p>
+        AshLight는 순수 HTML, CSS, JavaScript로 제작되었습니다. 복잡한
+        프레임워크 없이도 빠르고 가벼운 사용자 경험을 제공합니다.
+      </p>
+      <ul>
+        <li><strong>HTML5 Canvas:</strong> 고품질 아이콘 렌더링</li>
+        <li><strong>JSZip:</strong> 여러 파일을 ZIP으로 압축</li>
+        <li><strong>반응형 디자인:</strong> 모바일과 데스크톱 모두 지원</li>
+      </ul>
+
+      <h2>로드맵</h2>
+      <p>향후 계획되는 기능들:</p>
+      <ul>
+        <li>더 많은 이모지 조합 옵션</li>
+        <li>커스텀 폰트 지원</li>
+        <li>아이콘 갤러리 및 템플릿</li>
+        <li>API 제공 (개발 예정)</li>
+        <li>다크/라이트 모드 자동 감지</li>
+        <li>히스토리 기능 (최근 생성한 아이콘 저장)</li>
+      </ul>
+
+      <h2>문의 및 피드백</h2>
+      <p>
+        버그 리포트, 기능 제안, 또는 궁금한 점이 있으시면
+        <a
+          href="mailto:ashlight2510@gmail.com"
+          style="color: rgba(255, 255, 255, 0.9)"
+          >ashlight2510@gmail.com</a
+        >으로 연락해주세요. 여러분의 피드백은 서비스 개선에 큰 도움이 됩니다.
+      </p>
+
+      <h2>후원</h2>
+      <p>
+        이 서비스는 개인 비용으로 서버와 도메인을 유지하며 운영되고 있습니다.
+        서비스가 도움이 되셨다면 작은 후원을 부탁드립니다. 후원은 서버 유지비와
+        기능 개발에 사용됩니다.
+      </p>
+    </div>
+
+    <div class="content-page" id="privacy-page" data-i18n-html="privacyPage">
+      <a
+        href="#home"
+        class="back-to-tool"
+        onclick="showPage('home'); return false;"
+        >← 홈으로 돌아가기</a
+      >
+      <h1>🔒 개인정보처리방침</h1>
+
+      <p><strong>최종 수정일: 2025년 1월</strong></p>
+
+      <h2>1. 개인정보의 처리 목적</h2>
+      <p>
+        AshLight 이모지 아이콘 스튜디오('이하 '서비스')는 다음의 목적을 위하여
+        개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의
+        용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법
+        제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+      </p>
+      <ul>
+        <li>서비스 제공: 아이콘 및 스플래시 스크린 생성 서비스 제공</li>
+        <li>서비스 개선: 사용자 경험 향상 및 서비스 품질 개선</li>
+        <li>고객 지원: 문의사항 응대 및 기술 지원</li>
+      </ul>
+
+      <h2>2. 개인정보의 처리 및 보유기간</h2>
+      <p>
+        서비스는 현재 개인정보를 수집하지 않습니다. 모든 처리는 사용자의
+        브라우저에서 로컬로 이루어지며, 서버로 전송되는 개인정보는 없습니다.
+      </p>
+      <p>
+        향후 개인정보를 수집하게 될 경우, 법령에 따른 개인정보 보유·이용기간
+        또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간
+        내에서 개인정보를 처리·보유합니다.
+      </p>
+
+      <h2>3. 처리하는 개인정보의 항목</h2>
+      <p>
+        현재 서비스는 개인정보를 수집하지 않습니다. 아이콘 생성 과정에서
+        입력하는 이모지, 색상, 설정값 등은 모두 사용자의 브라우저에서만 처리되며
+        서버로 전송되지 않습니다.
+      </p>
+      <p>
+        다만, 서비스 이용 과정에서 다음의 정보가 자동으로 생성되어 수집될 수
+        있습니다:
+      </p>
+      <ul>
+        <li>IP 주소, 쿠키, 방문 일시, 서비스 이용 기록 등 (서버 로그)</li>
+        <li>브라우저 종류 및 버전, 운영체제 정보 (기술적 정보)</li>
+      </ul>
+
+      <h2>4. 개인정보의 제3자 제공</h2>
+      <p>
+        서비스는 원칙적으로 정보주체의 개인정보를 제3자에게 제공하지 않습니다.
+        다만, 다음의 경우에는 예외로 합니다:
+      </p>
+      <ul>
+        <li>정보주체로부터 별도의 동의를 받은 경우</li>
+        <li>
+          법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에
+          따라 수사기관의 요구가 있는 경우
+        </li>
+      </ul>
+
+      <h2>5. 개인정보처리의 위탁</h2>
+      <p>
+        현재 서비스는 개인정보 처리 업무를 외부에 위탁하지 않습니다. 향후 위탁이
+        필요한 경우, 위탁 계약 체결 시 개인정보 보호법 제26조에 따라 위탁 업무
+        수행목적, 개인정보 처리 위탁을 받는 자, 위탁을 하는 업무의 내용을 사전에
+        고지하고 동의를 받겠습니다.
+      </p>
+
+      <h2>6. 정보주체의 권리·의무 및 그 행사방법</h2>
+      <p>정보주체는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다:</p>
+      <ul>
+        <li>개인정보 열람 요구</li>
+        <li>개인정보 정정·삭제 요구</li>
+        <li>개인정보 처리정지 요구</li>
+      </ul>
+      <p>
+        권리 행사는 개인정보 보호법 시행령 제41조 제1항에 따라 서면, 전자우편
+        등을 통하여 하실 수 있으며, 서비스는 이에 대해 지체 없이 조치하겠습니다.
+      </p>
+
+      <h2>7. 개인정보의 파기</h2>
+      <p>
+        서비스는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가
+        불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다. 파기의
+        절차 및 방법은 다음과 같습니다:
+      </p>
+      <ul>
+        <li>
+          <strong>파기절차:</strong> 불필요한 개인정보 및 개인정보파일은 내부
+          방침 및 기타 관련 법령에 따라 파기
+        </li>
+        <li>
+          <strong>파기방법:</strong> 전자적 파일 형태의 정보는 기록을 재생할 수
+          없는 기술적 방법을 사용하여 삭제
+        </li>
+      </ul>
+
+      <h2>8. 개인정보 보호책임자</h2>
+      <p>
+        서비스는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와
+        관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보
+        보호책임자를 지정하고 있습니다.
+      </p>
+      <ul>
+        <li><strong>이메일:</strong> ashlight2510@gmail.com</li>
+      </ul>
+      <p>
+        정보주체께서는 서비스의 서비스를 이용하시면서 발생한 모든 개인정보 보호
+        관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자에게
+        문의하실 수 있습니다.
+      </p>
+
+      <h2>9. 개인정보의 안전성 확보 조치</h2>
+      <p>
+        서비스는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고
+        있습니다:
+      </p>
+      <ul>
+        <li>관리적 조치: 내부관리계획 수립·시행, 정기적 직원 교육 등</li>
+        <li>
+          기술적 조치: 개인정보처리시스템 등의 접근권한 관리, 접근통제시스템
+          설치, 고유식별정보 등의 암호화, 보안프로그램 설치
+        </li>
+        <li>물리적 조치: 전산실, 자료보관실 등의 접근통제</li>
+      </ul>
+
+      <h2>10. 개인정보처리방침 변경</h2>
+      <p>
+        이 개인정보처리방침은 2025년 1월부터 적용되며, 법령 및 방침에 따른
+        변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터
+        공지사항을 통하여 고지할 것입니다.
+      </p>
+
+      <h2>11. 쿠키 및 추적 기술</h2>
+      <p>
+        서비스는 사용자 경험 향상을 위해 쿠키를 사용할 수 있습니다. 쿠키는
+        웹사이트가 사용자의 컴퓨터에 저장하는 작은 텍스트 파일입니다. 사용자는
+        브라우저 설정을 통해 쿠키 사용을 거부할 수 있으나, 이 경우 일부 서비스
+        이용에 제한이 있을 수 있습니다.
+      </p>
+
+      <h2>12. 연락처</h2>
+      <p>개인정보 처리방침에 관한 문의사항이 있으시면 아래로 연락해주세요.</p>
+      <ul>
+        <li><strong>이메일:</strong> ashlight2510@gmail.com</li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2025
+      <a
+        href="mailto:ashlight2510@gmail.com"
+        style="
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        "
+        onmouseover="this.style.color='rgba(255, 255, 255, 1)'"
+        onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'"
+        >AshLight</a
+      >
+      <span data-i18n="footerLabel">Emoji Icon Studio</span>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+      const state = {
+        emoji: "🚀",
+        gradientStart: "#ff8a00",
+        gradientEnd: "#e52e71",
+        angle: 135,
+        radius: 220,
+        emojiSize: 420,
+        glow: 0.22,
+        splashTitle: "AshLight",
+        splashSubtitle: "EMOJI ICON STUDIO",
+      };
+
+      const translations = {
+        ko: {
+          alertCopySuccess: "설정이 복사되었습니다. 친구에게 그대로 공유하세요!",
+          alertCopyFail: "복사에 실패했습니다. (HTTPS 환경 권장)",
+          alertExportFail: "내보내는 중 오류가 발생했습니다.",
+          alertSplashFail: "스플래시를 만드는 중 오류가 발생했습니다.",
+          alertZipMissing:
+            "ZIP 라이브러리를 불러오지 못했습니다. 새로고침 후 다시 시도해주세요.",
+          alertZipFail: "패키지를 만드는 중 오류가 발생했습니다.",
+          alertClipboardSuccess: "클립보드에 복사되었습니다!",
+          alertClipboardFail:
+            "복사에 실패했습니다. HTTPS 환경에서 다시 시도해주세요.",
+          renderLoading: "⏳ 렌더링 중...",
+          packagingLoading: "⏳ 패키징 중...",
+          accountMissing: "계좌번호를 입력해주세요",
+          accountPrompt: "계좌번호를 먼저 입력해주세요.",
+          accountCopied: "✅ 복사되었습니다!",
+          accountCopyFail:
+            "복사에 실패했습니다. 계좌번호를 직접 선택하여 복사해주세요.",
+        },
+        en: {
+          metaTitle: "⚡️ AshLight Emoji Icon Studio",
+          navHome: "Home",
+          navGuide: "Guide",
+          navBlog: "Blog",
+          navAbout: "About",
+          navPrivacy: "Privacy Policy",
+          dableWidgetLabel: "Recommended widget",
+          heroTitle: "⚡️ AshLight Emoji Icon Studio",
+          heroDesc1:
+            "Drop in a single emoji and AshLight generates your icon, favicon, and app store assets in one go. Pick colors, spark ideas with random presets, and hit download, ready to ship.",
+          heroDesc2:
+            "Optimized for iOS, Android, and web. Fully compatible with cross-platform frameworks like React Native, Expo, and Flutter. Create professional-grade app icons in minutes without heavy design tools.",
+          heroDesc3:
+            "This tool is built to help anyone finish a <strong>store-ready icon and splash set in 5 minutes</strong>. You can check emoji meanings, recommended colors, platform export specs, and real usage examples in one place. It also includes a practical guide that walks through the full icon-to-launch workflow.",
+          heroGuideLink: "📚 Complete Guide",
+          heroBlogLink: "📝 Blog",
+          heroThanks:
+            "Thanks for using AshLight. Have a great day. Hope this tool helps you launch something awesome!",
+          tabIconStudio: "🪄 Icon Studio",
+          tabSplashStudio: "🌅 Splash Studio",
+          iconControlTitle: "Icon Controls",
+          iconEmojiLabel: "Icon Emoji",
+          emojiPickerButton: "😊 Pick Emoji",
+          emojiPickerTitle: "Pick an Emoji",
+          emojiPickerClose: "Close",
+          emojiTabFrequent: "Frequent",
+          emojiTabAll: "All Emojis",
+          emojiPagePrev: "Prev",
+          emojiPageNext: "Next",
+          gradientStart: "Gradient Start",
+          gradientEnd: "Gradient End",
+          angleLabelText: "Gradient Angle",
+          radiusLabelText: "Corner Radius",
+          emojiSizeLabelText: "Emoji Size",
+          glowLabelText: "Glow Intensity",
+          randomButton: "🎲 Random Combo",
+          copyConfigButton: "📋 Copy Settings",
+          exportTitle: "Export",
+          exportIosButton: "🍎 iOS Icon (1024px)",
+          exportAndroidButton: "🤖 Android Icon (512px)",
+          exportFaviconButton: "🌐 Favicon/Web (192px)",
+          exportZipButton: "📦 Download All ZIP",
+          exportHelper:
+            "For Expo / React Native, save as <code>assets/icon.png</code> and set <code>expo.icon</code> in <code>app.json</code>.",
+          previewIosTitle: "iOS Rounded",
+          previewAndroidTitle: "Android Circle",
+          previewBrowserTitle: "Browser Favicon",
+          altIconPreview: "Icon preview",
+          altIosPreview: "iOS preview",
+          altAndroidPreview: "Android preview",
+          altBrowserPreview: "Browser preview",
+          splashGuideTitle: "Splash Quick Guide",
+          splashGuideDesc:
+            "Generate splash images automatically with the same emoji and gradient as your icon. Download a 1242 x 2688 (iPhone 14 Pro resolution) PNG ready for Expo / React Native / Flutter.",
+          splashGuideStep1:
+            "① Finish your emoji and colors in the Icon tab.",
+          splashGuideStep2:
+            "② Switch to the Splash tab and check the preview.",
+          splashGuideStep3:
+            "③ Download the full-resolution asset below.",
+          splashTitleLabel: "Main Title (line breaks ok)",
+          splashSubtitleLabel: "Subtitle",
+          splashDownloadButton: "🌅 Splash PNG (1242 x 2688)",
+          splashRandomButton: "🎲 Random Splash Copy",
+          splashHelper:
+            "Save the generated image as <code>assets/splash.png</code> (or any path) and wire it in <code>app.json</code> or native project settings.",
+          splashPreviewTitle: "AshLight Splash Preview",
+          altSplashPreview: "Splash preview",
+          altSplashMiniPreview: "Splash mini preview",
+          footerLabel: "Emoji Icon Studio",
+          alertCopySuccess: "Settings copied. Share it with a friend!",
+          alertCopyFail: "Copy failed. (HTTPS recommended)",
+          alertExportFail: "An error occurred while exporting.",
+          alertSplashFail: "An error occurred while generating the splash.",
+          alertZipMissing:
+            "Could not load the ZIP library. Please refresh and try again.",
+          alertZipFail: "An error occurred while building the package.",
+          alertClipboardSuccess: "Copied to clipboard!",
+          alertClipboardFail:
+            "Copy failed. Please retry in an HTTPS environment.",
+          renderLoading: "⏳ Rendering...",
+          packagingLoading: "⏳ Packaging...",
+          accountMissing: "Please enter an account number",
+          accountPrompt: "Please enter an account number first.",
+          accountCopied: "✅ Copied!",
+          accountCopyFail:
+            "Copy failed. Please select the account number and copy manually.",
+          metaOverviewSection: `
+            <div class="meta-card">
+              <h3>What You Can Do Here</h3>
+              <p>
+                AshLight Emoji Icon Studio is a pro-grade tool for developers and designers. Create app icons, favicons, and splash screens in minutes without heavy design software.
+              </p>
+              <ul>
+                <li><strong>App icons:</strong> High-res assets for iOS and Android stores</li>
+                <li><strong>Favicons:</strong> Multi-size favicons for web branding</li>
+                <li><strong>Splash screens:</strong> Launch images that match your icon</li>
+                <li><strong>Bulk download:</strong> All sizes in one ZIP</li>
+              </ul>
+            </div>
+            <div class="meta-card">
+              <h3>Supported Platforms & Sizes</h3>
+              <p>Optimized for a wide range of platforms and devices.</p>
+              <ul>
+                <li><strong>iOS:</strong> 1024x1024px (App Store), 180x180px, 120x120px</li>
+                <li><strong>Android:</strong> 512x512px (Play Store), 192x192px, 144x144px</li>
+                <li><strong>Web:</strong> 192x192px, 128x128px, 64x64px, 32x32px, 16x16px</li>
+                <li><strong>React Native / Expo:</strong> All standard sizes supported</li>
+              </ul>
+            </div>
+            <div class="meta-card">
+              <h3>Why Emoji Icons?</h3>
+              <p>Emoji is a universal visual language. Emoji-based icons have clear advantages:</p>
+              <ul>
+                <li><strong>Instant recognition:</strong> Users understand the meaning at a glance</li>
+                <li><strong>Memorable:</strong> Simple, bold shapes stick in memory</li>
+                <li><strong>Cross-cultural:</strong> Friendly across languages and regions</li>
+                <li><strong>Easy to build:</strong> Professional output without complex design</li>
+              </ul>
+            </div>
+            <div class="meta-card">
+              <h3>Use Cases</h3>
+              <p>AshLight fits a wide range of projects:</p>
+              <ul>
+                <li><strong>Prototypes:</strong> Fast MVP icons</li>
+                <li><strong>Side projects:</strong> Portfolio-ready assets</li>
+                <li><strong>Startups:</strong> Save budget without losing polish</li>
+                <li><strong>Learning:</strong> Create assets while learning RN/Flutter</li>
+                <li><strong>Web branding:</strong> Favicons and PWA icons</li>
+              </ul>
+            </div>`,
+          quickStartSection: `
+            <div class="meta-card">
+              <h3>Quick Start Guide</h3>
+              <ul>
+                <li>① Enter an emoji or use a random preset for inspiration.</li>
+                <li>② Fine-tune gradient colors, angle, and emoji size.</li>
+                <li>③ Download the size you need for iOS / Android / Web.</li>
+                <li>④ In the <code>Splash Studio</code> tab, export the matching splash PNG.</li>
+              </ul>
+              <p style="margin-top: 16px">
+                After replacing icons, remember to submit a new build to the App Store / Play Store or update your website favicon.
+              </p>
+            </div>
+            <div class="meta-card ad-card" aria-label="Recommended ads">
+              <h3 style="margin: 0 0 10px">Partner Ads</h3>
+            </div>
+          `,
+          faqSection: `
+            <div class="meta-card">
+              <h3>FAQ: Emoji Icons & Splash Use</h3>
+              <ul>
+                <li><strong>Where can I use these?</strong> App Store icons, web favicons, PWAs, internal test builds, marketing landing pages, and more.</li>
+                <li><strong>Any copyright or store review issues?</strong> Emojis come from OS fonts and backgrounds are user-generated, so this is generally fine. Avoid imitating brand logos or characters.</li>
+                <li><strong>Can I add ads/sponsorship buttons?</strong> Yes. Ads are placed in visible, separated areas and sponsor buttons are policy-safe.</li>
+                <li><strong>Need changes after launch?</strong> Load the same preset, tweak colors and emoji, and upload new assets.</li>
+              </ul>
+            </div>
+            <div class="meta-card">
+              <h3>How-To: Ship Icons & Splash in 5 Minutes</h3>
+              <ol>
+                <li>Pick your emoji and set gradient colors, angle, and corner radius.</li>
+                <li>Check the iOS/Android/Web preview cards and adjust sizing.</li>
+                <li>Download individual sizes or the ZIP pack.</li>
+                <li>In the Splash tab, export a 1242x2688 PNG with the same style.</li>
+                <li>Apply assets in Xcode Assets, Android Image Asset Studio, web link tags, or Expo <code>app.json</code>.</li>
+              </ol>
+            </div>
+            <div class="meta-card">
+              <h3>Operations & Trust</h3>
+              <ul>
+                <li><strong>Creator:</strong> AshLight (ashlight2510@gmail.com)</li>
+                <li><strong>Last update:</strong> 2025-01 · Icon/Splash quality improvements</li>
+                <li><strong>Data location:</strong> All rendering happens in-browser, nothing is uploaded</li>
+                <li><strong>Test devices:</strong> iPhone 14 Pro, Pixel 7, MacBook Pro (Safari/Chrome)</li>
+                <li><strong>Ad policy:</strong> Ads appear only in visible, separated areas</li>
+              </ul>
+            </div>
+          `,
+          guidePage: `
+            <a href="#home" class="back-to-tool" onclick="showPage('home'); return false;">← Back to home</a>
+            <h1>📚 Complete Guide: From Emoji Icons to Launch</h1>
+            <p>
+              This guide walks you through making app icons, favicons, and splash screens with AshLight. You will learn the best practices for iOS, Android, and web so you can ship assets fast.
+            </p>
+            <h2>1. Icon Basics</h2>
+            <h3>1.1 Choosing an Emoji</h3>
+            <p>
+              The emoji is the heart of the icon. A single, bold emoji is usually the clearest and most recognizable. Complex emoji combinations often look messy at small sizes.
+            </p>
+            <ul>
+              <li><strong>Recommended:</strong> 🚀, ⚡, 💡, 🎨, 🔥, ⭐, 🎯, 💎 for simple, bold shapes</li>
+              <li><strong>Avoid:</strong> multi-emoji combos, text-heavy emoji, overly tiny details</li>
+              <li><strong>Platform differences:</strong> Emoji rendering varies between iOS and Android, so always check previews</li>
+            </ul>
+            <h3>1.2 Picking Gradient Colors</h3>
+            <p>
+              Gradients set the mood. Choose colors that match your brand or highlight the emoji character.
+            </p>
+            <ul>
+              <li><strong>Bright tones:</strong> energetic, friendly (e.g., #ff8a00 - #e52e71)</li>
+              <li><strong>Dark tones:</strong> professional, sleek (e.g., #1a1a2e - #16213e)</li>
+              <li><strong>High contrast:</strong> bold, attention-grabbing (e.g., #00f2fe - #4facfe)</li>
+              <li><strong>Color theory:</strong> complementary or analogous palettes deliver harmony</li>
+            </ul>
+            <h3>1.3 Angle & Radius</h3>
+            <p>
+              The gradient angle can be set from 0° to 360°. The default 135° feels the most natural. Radius controls how far the gradient spreads around the emoji.
+            </p>
+            <ul>
+              <li><strong>0°:</strong> vertical gradient from top to bottom</li>
+              <li><strong>90°:</strong> horizontal gradient from left to right</li>
+              <li><strong>135°:</strong> diagonal gradient (default, most natural)</li>
+              <li><strong>Radius:</strong> higher values spread the gradient wider</li>
+            </ul>
+            <h2>2. iOS App Icons</h2>
+            <h3>2.1 Required Sizes</h3>
+            <p>
+              iOS needs multiple sizes across devices. Xcode can resize automatically, but you should always provide a 1024x1024px icon for best quality.
+            </p>
+            <ul>
+              <li><strong>App Store:</strong> 1024x1024px (required)</li>
+              <li><strong>iPhone:</strong> 180x180px (3x), 120x120px (2x)</li>
+              <li><strong>iPad:</strong> 152x152px (2x), 76x76px (1x)</li>
+              <li><strong>Mac Catalyst:</strong> 1024x1024px, 512x512px, 256x256px</li>
+            </ul>
+            <h3>2.2 Applying in Xcode</h3>
+            <p>Add icons to the AppIcon set inside Assets.xcassets.</p>
+            <ol>
+              <li>Open your project in Xcode</li>
+              <li>Select <code>Assets.xcassets</code> in the navigator</li>
+              <li>Click <code>AppIcon</code></li>
+              <li>Drag each size into the matching slot</li>
+              <li>Add 1024x1024px to the "App Store" slot</li>
+            </ol>
+            <h3>2.3 Notes</h3>
+            <ul>
+              <li>Icons must be fully opaque (use PNG-24)</li>
+              <li>Corners are rounded automatically, so use square assets</li>
+              <li>Avoid text or app names inside the icon</li>
+              <li>Follow Apple Human Interface Guidelines</li>
+            </ul>
+            <h2>3. Android App Icons</h2>
+            <h3>3.1 Required Sizes</h3>
+            <p>Android supports multiple densities. Provide each size for sharp output.</p>
+            <ul>
+              <li><strong>mdpi:</strong> 48x48px</li>
+              <li><strong>hdpi:</strong> 72x72px</li>
+              <li><strong>xhdpi:</strong> 96x96px</li>
+              <li><strong>xxhdpi:</strong> 144x144px</li>
+              <li><strong>xxxhdpi:</strong> 192x192px</li>
+              <li><strong>Play Store:</strong> 512x512px (required)</li>
+            </ul>
+            <h3>3.2 Applying in Android Studio</h3>
+            <p>Use Image Asset Studio to generate the launcher icon set.</p>
+            <ol>
+              <li>Open your project in Android Studio</li>
+              <li>Right-click <code>res</code> &gt; <code>New &gt; Image Asset</code></li>
+              <li>Set Asset Type to "Launcher Icons"</li>
+              <li>Select your downloaded icon as the foreground image</li>
+              <li>Set or remove a background color as needed</li>
+              <li>Click "Next" then "Finish"</li>
+            </ol>
+            <h3>3.3 Adaptive Icons (Android 8.0+)</h3>
+            <p>
+              Adaptive Icons can change shape across devices. AshLight positions emoji within the safe zone for consistent results.
+            </p>
+            <h2>4. Web Favicons</h2>
+            <h3>4.1 Recommended Sizes</h3>
+            <p>Favicons are used across browsers and platforms. Prepare at least these sizes.</p>
+            <ul>
+              <li><strong>favicon.ico:</strong> 16x16, 32x32, 48x48 (multi-resolution)</li>
+              <li><strong>apple-touch-icon:</strong> 180x180px (iOS home screen)</li>
+              <li><strong>android-chrome:</strong> 192x192px, 512x512px</li>
+              <li><strong>Other:</strong> 32x32px, 96x96px, etc.</li>
+            </ul>
+            <h3>4.2 Add Favicons to HTML</h3>
+            <p>Add favicon links in your <code>&lt;head&gt;</code> section.</p>
+            <pre><code>&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/site.webmanifest"&gt;</code></pre>
+            <h3>4.3 Web App Manifest</h3>
+            <p>For PWAs, create a <code>manifest.json</code> with icon references.</p>
+            <h2>5. React Native / Expo</h2>
+            <h3>5.1 Expo Project</h3>
+            <p>Expo reads icon settings from <code>app.json</code>.</p>
+            <ol>
+              <li>Save the icon to <code>assets/icon.png</code></li>
+              <li>Set <code>expo.icon</code> in <code>app.json</code>:</li>
+            </ol>
+            <pre><code>{
+  "expo": {
+    "icon": "./assets/icon.png",
+    ...
+  }
+}</code></pre>
+            <li>After changes, run <code>expo prebuild</code> or rebuild your app</li>
+            <h3>5.2 React Native (Bare Workflow)</h3>
+            <p>Configure iOS and Android separately in the bare workflow.</p>
+            <ul>
+              <li><strong>iOS:</strong> Add icons to Xcode Assets.xcassets (see iOS guide)</li>
+              <li><strong>Android:</strong> Use Android Studio Image Asset Studio (see Android guide)</li>
+            </ul>
+            <h2>6. Splash Screens</h2>
+            <h3>6.1 What is a Splash Screen?</h3>
+            <p>It's the launch screen shown while your app loads. Use a consistent design with your icon to reinforce branding.</p>
+            <h3>6.2 iOS Splash</h3>
+            <p>
+              iOS uses storyboards or launch screens. You can use AshLight's splash output or set it manually in Xcode.
+            </p>
+            <h3>6.3 Android Splash</h3>
+            <p>
+              Android uses images in <code>res/drawable</code> and themes in <code>AndroidManifest.xml</code>.
+            </p>
+            <h2>7. Store Submission Notes</h2>
+            <h3>7.1 App Store (iOS)</h3>
+            <ul>
+              <li>1024x1024px icons must be fully opaque</li>
+              <li>Do not include text, copyright marks, or watermarks</li>
+              <li>Follow Apple design guidelines</li>
+              <li>Keep screenshots visually consistent with the icon</li>
+            </ul>
+            <h3>7.2 Google Play (Android)</h3>
+            <ul>
+              <li>Provide a 512x512px high-res icon</li>
+              <li>Use 32-bit PNG format</li>
+              <li>No transparent backgrounds</li>
+              <li>Icon corners are rounded automatically</li>
+            </ul>
+            <h2>8. Troubleshooting</h2>
+            <h3>8.1 Icon Not Displaying Correctly</h3>
+            <ul>
+              <li>Check file name and path</li>
+              <li>Clear cache and reinstall the app</li>
+              <li>Verify icon dimensions</li>
+              <li>Confirm file format (PNG recommended)</li>
+            </ul>
+            <h3>8.2 Colors Look Different</h3>
+            <ul>
+              <li>Use the sRGB color profile</li>
+              <li>Check device color calibration settings</li>
+              <li>Adjust gradient angle and test again</li>
+            </ul>
+            <h2>9. Best Practices</h2>
+            <ul>
+              <li><strong>Consistency:</strong> Keep icon, splash, and in-app UI aligned</li>
+              <li><strong>Simplicity:</strong> Simple icons are easier to recognize</li>
+              <li><strong>Testing:</strong> Verify across devices and resolutions</li>
+              <li><strong>Updates:</strong> Consider improving icons with each release</li>
+              <li><strong>Branding:</strong> Icons are your first impression, choose carefully</li>
+            </ul>
+            <p style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              Was this guide helpful? If you have more questions, reach out by
+              <a href="mailto:ashlight2510@gmail.com" style="color: rgba(255, 255, 255, 0.9)">email</a>.
+            </p>
+          `,
+          blogPage: `
+            <a href="#home" class="back-to-tool" onclick="showPage('home'); return false;">← Back to home</a>
+            <h1>📝 Blog</h1>
+            <p>Insights and tips on icons, branding, and launching apps.</p>
+            <div class="blog-list">
+              <article class="blog-item">
+                <h3>5 Icon Design Patterns That Transform First Impressions</h3>
+                <div class="blog-meta">Jan 2025 | Design</div>
+                <p>
+                  Your icon is the first thing users notice in the store. We break down effective icon patterns and explain which styles fit which categories, from minimal forms to gradient-driven and emoji-based designs. Includes safe margin ratios, high-contrast palettes, and dark-mode tweaks.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Common Store Rejections: Icon Issues and Fixes</h3>
+                <div class="blog-meta">Jan 2025 | App Store Optimization</div>
+                <p>
+                  Store reviews often reject apps over icon problems. We cover the top reasons, including copyright risks, guideline violations, and quality issues, and provide concrete fixes with real examples. Includes a checklist for resolution, transparency, and text usage.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Why Emoji Icons Work: Recognition & Brand Memory</h3>
+                <div class="blog-meta">Jan 2025 | UX/UI</div>
+                <p>
+                  Emoji is a universal visual language. We explore the psychology and marketing impact of emoji-based icons, including faster recognition, stronger recall, and cultural symbolism, plus tips on meaning transfer and color cues.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Real-World Guide: Replacing Icons in React Native & Expo</h3>
+                <div class="blog-meta">Jan 2025 | Development</div>
+                <p>
+                  Learn the practical steps of swapping icons in React Native projects. We compare Expo managed vs. bare workflows, address build cache issues, and cover resolution handling with real examples.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Favicon Deep Dive: The First Step of Web Identity</h3>
+                <div class="blog-meta">Jan 2025 | Web Dev</div>
+                <p>
+                  Favicons are tiny yet powerful. This post covers multi-browser support, PWA usage, SEO impact, and how to ensure perfect rendering across platforms.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Gradient Color Guide: Psychology & Branding</h3>
+                <div class="blog-meta">Jan 2025 | Design</div>
+                <p>
+                  Color choices influence user emotions and behavior. We analyze the psychology of gradient palettes and share category-specific recommendations, from theory to practical application.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Icon A/B Tests After Launch: What Drives More Installs?</h3>
+                <div class="blog-meta">Jan 2025 | Marketing</div>
+                <p>
+                  We examine how small icon changes impact download rates. Learn A/B testing methodology, key variables (color, shape, emoji choice), and how to interpret results.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Why I Built This Tool: A Developer's Story</h3>
+                <div class="blog-meta">Jan 2025 | Dev Story</div>
+                <p>
+                  The origin story of AshLight, the pain points from building React Native apps, and how this tool aims to solve real icon-creation challenges.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>Icon Trends 2025: Styles to Watch</h3>
+                <div class="blog-meta">Jan 2025 | Trends</div>
+                <p>
+                  We review 2025 icon trends, including minimalism, neo-morphism, bold gradients, and the rise of emoji-based icons, plus pros and cons for each.
+                </p>
+              </article>
+              <article class="blog-item">
+                <h3>An Icon Guide for Cross-Platform App Developers</h3>
+                <div class="blog-meta">Jan 2025 | Development</div>
+                <p>
+                  Strategies for managing icons across Flutter, React Native, Xamarin, and more. Learn how to reuse sources, handle platform differences, and automate your pipeline.
+                </p>
+              </article>
+            </div>
+          `,
+          aboutPage: `
+            <a href="#home" class="back-to-tool" onclick="showPage('home'); return false;">← Back to home</a>
+            <h1>💡 About AshLight</h1>
+            <h2>Service Overview</h2>
+            <p>
+              AshLight Emoji Icon Studio helps developers and designers create app icons, favicons, and splash screens quickly with a web-based workflow.
+            </p>
+            <p>
+              You can craft professional icons with a single emoji, adjust gradients, angles, and sizes to get the exact style you want.
+            </p>
+            <h2>Why We Built It</h2>
+            <p>
+              Building React Native apps exposed how painful icon creation can be. Professional tools were expensive and time-consuming, while lightweight tools were too limited.
+            </p>
+            <p>
+              Emoji icons are friendly and memorable, yet there were few easy ways to create them at high quality. We wanted a simple but powerful tool anyone could use fast.
+            </p>
+            <h2>Key Features</h2>
+            <ul>
+              <li><strong>Emoji-based icon creation:</strong> Generate multiple styles from a single emoji</li>
+              <li><strong>Customization:</strong> Fine-tune gradients, angles, radius, and size</li>
+              <li><strong>Multi-resolution support:</strong> Optimized sizes for iOS, Android, and web</li>
+              <li><strong>Splash screens:</strong> Consistent splash outputs aligned with your icon</li>
+              <li><strong>One-click download:</strong> Download all sizes in one ZIP</li>
+              <li><strong>Random presets:</strong> Inspiration from curated color combos</li>
+            </ul>
+            <h2>Who It's For</h2>
+            <ul>
+              <li><strong>Developers:</strong> Create icons quickly for prototypes or side projects</li>
+              <li><strong>Designers:</strong> Visualize ideas fast with minimal overhead</li>
+              <li><strong>Startups:</strong> Save budget without sacrificing quality</li>
+              <li><strong>Students & hobbyists:</strong> Build portfolio-ready assets</li>
+            </ul>
+            <h2>Tech Stack</h2>
+            <p>
+              AshLight is built with pure HTML, CSS, and JavaScript, making it fast, lightweight, and responsive.
+            </p>
+            <ul>
+              <li><strong>HTML5 Canvas:</strong> High-quality rendering</li>
+              <li><strong>JSZip:</strong> ZIP export for multiple files</li>
+              <li><strong>Responsive design:</strong> Optimized for mobile and desktop</li>
+            </ul>
+            <h2>Roadmap</h2>
+            <p>Planned features:</p>
+            <ul>
+              <li>More emoji combination options</li>
+              <li>Custom font support</li>
+              <li>Icon gallery and templates</li>
+              <li>Public API (planned)</li>
+              <li>Auto dark/light mode</li>
+              <li>History (save recent icons)</li>
+            </ul>
+            <h2>Contact & Feedback</h2>
+            <p>
+              For bug reports, suggestions, or questions, email
+              <a href="mailto:ashlight2510@gmail.com" style="color: rgba(255, 255, 255, 0.9)">ashlight2510@gmail.com</a>.
+              Your feedback helps us improve.
+            </p>
+            <h2>Support</h2>
+            <p>
+              This service is funded personally to cover hosting and domain costs. If it helped you, consider a small donation to support ongoing development.
+            </p>
+          `,
+          privacyPage: `
+            <a href="#home" class="back-to-tool" onclick="showPage('home'); return false;">← Back to home</a>
+            <h1>🔒 Privacy Policy</h1>
+            <p><strong>Last updated: January 2025</strong></p>
+            <h2>1. Purpose of Processing Personal Data</h2>
+            <p>
+              AshLight Emoji Icon Studio ("Service") processes personal data only for the purposes below. Data is not used for any other purpose unless required by law or with consent.
+            </p>
+            <ul>
+              <li>Service delivery: Provide icon and splash generation tools</li>
+              <li>Service improvement: Enhance user experience and quality</li>
+              <li>Customer support: Respond to inquiries and technical help</li>
+            </ul>
+            <h2>2. Retention Period</h2>
+            <p>
+              The Service does not currently collect personal data. All processing happens locally in the browser and is not transmitted to servers.
+            </p>
+            <p>
+              If data collection is introduced in the future, retention will follow legal requirements or user consent terms.
+            </p>
+            <h2>3. Categories of Personal Data</h2>
+            <p>
+              The Service does not collect personal data. Emoji, colors, and settings stay in the browser and are never uploaded.
+            </p>
+            <p>
+              Some technical data may be collected automatically during use:
+            </p>
+            <ul>
+              <li>IP address, cookies, access time, usage logs (server logs)</li>
+              <li>Browser type/version and OS information (technical data)</li>
+            </ul>
+            <h2>4. Sharing with Third Parties</h2>
+            <p>
+              Personal data is not shared with third parties except when required by law or with explicit consent.
+            </p>
+            <ul>
+              <li>With user consent</li>
+              <li>When required by law or lawful authority requests</li>
+            </ul>
+            <h2>5. Outsourcing</h2>
+            <p>
+              The Service does not outsource personal data processing. If outsourcing becomes necessary, we will comply with relevant laws and provide prior notice.
+            </p>
+            <h2>6. User Rights and How to Exercise Them</h2>
+            <p>Users may exercise the following rights:</p>
+            <ul>
+              <li>Request access to personal data</li>
+              <li>Request correction or deletion</li>
+              <li>Request suspension of processing</li>
+            </ul>
+            <p>
+              Requests can be submitted in writing or by email, and we will respond without delay.
+            </p>
+            <h2>7. Data Destruction</h2>
+            <p>
+              Personal data is destroyed when retention periods expire or purposes are achieved. Methods include:
+            </p>
+            <ul>
+              <li><strong>Procedure:</strong> Internal policy and applicable laws</li>
+              <li><strong>Method:</strong> Irreversible deletion for electronic records</li>
+            </ul>
+            <h2>8. Data Protection Officer</h2>
+            <p>
+              We have designated a data protection officer to handle privacy inquiries and complaints.
+            </p>
+            <ul>
+              <li><strong>Email:</strong> ashlight2510@gmail.com</li>
+            </ul>
+            <p>
+              Please contact the officer for any privacy issues, complaints, or requests.
+            </p>
+            <h2>9. Security Measures</h2>
+            <p>
+              The Service applies administrative, technical, and physical safeguards:
+            </p>
+            <ul>
+              <li>Administrative: internal policies and staff training</li>
+              <li>Technical: access control, encryption, security software</li>
+              <li>Physical: restricted access to facilities</li>
+            </ul>
+            <h2>10. Policy Updates</h2>
+            <p>
+              This policy is effective January 2025. Updates will be announced at least 7 days prior to changes.
+            </p>
+            <h2>11. Cookies & Tracking</h2>
+            <p>
+              Cookies may be used to improve user experience. You can disable cookies in your browser, but some features may be limited.
+            </p>
+            <h2>12. Contact</h2>
+            <p>For questions about this policy, contact:</p>
+            <ul>
+              <li><strong>Email:</strong> ashlight2510@gmail.com</li>
+            </ul>
+          `,
+        },
+      };
+
+      const originalTitle = document.title;
+      const originalText = new Map();
+      const originalHtml = new Map();
+      const originalAlt = new Map();
+      const originalAria = new Map();
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        originalText.set(el, el.textContent);
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        originalHtml.set(el, el.innerHTML);
+      });
+      document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+        originalAlt.set(el, el.getAttribute("alt") || "");
+      });
+      document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+        originalAria.set(el, el.getAttribute("aria-label") || "");
+      });
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") {
+          return template;
+        }
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        const isEnglish = currentLang === "en";
+        document.title = isEnglish ? t("metaTitle") : originalTitle;
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          if (isEnglish) {
+            el.textContent = t(el.dataset.i18n);
+          } else if (originalText.has(el)) {
+            el.textContent = originalText.get(el);
+          }
+        });
+
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          if (isEnglish) {
+            const key = el.dataset.i18nHtml;
+            const value = t(key);
+            if (value && value !== key) {
+              el.innerHTML = value;
+            }
+          } else if (originalHtml.has(el)) {
+            el.innerHTML = originalHtml.get(el);
+          }
+        });
+
+        document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+          if (isEnglish) {
+            el.setAttribute("alt", t(el.dataset.i18nAlt));
+          } else if (originalAlt.has(el)) {
+            el.setAttribute("alt", originalAlt.get(el));
+          }
+        });
+
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          if (isEnglish) {
+            el.setAttribute("aria-label", t(el.dataset.i18nAria));
+          } else if (originalAria.has(el)) {
+            el.setAttribute("aria-label", originalAria.get(el));
+          }
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (document.getElementById("faq-ld")) {
+          applyStructuredData();
+        } else {
+          document.addEventListener("DOMContentLoaded", applyStructuredData, {
+            once: true,
+          });
+        }
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function applyStructuredData() {
+        const faqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity:
+            currentLang === "en"
+              ? [
+                  {
+                    "@type": "Question",
+                    name: "Where can I use emoji icons?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "You can use them for App Store / Google Play icons, web favicons, PWAs, internal test builds, marketing landing pages, and more. We provide size-specific PNGs ready to apply.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Any copyright or store review issues?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "We use OS-provided emoji fonts and the background graphics are user-generated. This is generally acceptable, but avoid imitating brand logos or characters.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can I include ads or sponsorship buttons?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes. Ads are placed in visible, separated areas and sponsorship buttons comply with policy guidelines.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How is it saved? Is anything uploaded?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "All rendering happens in your browser canvas and nothing is uploaded. Downloaded PNGs can be used directly in your project.",
+                    },
+                  },
+                ]
+              : [
+                  {
+                    "@type": "Question",
+                    name: "이모지 아이콘은 어디에 쓸 수 있나요?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "App Store / Google Play 아이콘, 웹 파비콘, PWA, 테스트 빌드, 랜딩 페이지 등 다양한 곳에 사용할 수 있습니다. 해상도별 PNG를 제공해 재가공 없이 바로 적용됩니다.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "저작권이나 스토어 심사에 문제가 없나요?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "각 플랫폼이 제공하는 이모지 폰트를 사용하며, 배경 그래픽은 사용자 제작물이므로 일반적인 사용에서는 문제가 없습니다. 단, 타 브랜드 로고나 캐릭터를 모방하는 이모지는 피해주세요.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "광고/후원 버튼을 넣어도 되나요?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "광고는 콘텐츠와 분리된 가시 영역에 배치했으며, 후원 버튼은 정책 위반 요소가 아닙니다. UI를 가리지 않고 명확히 표시하도록 설계했습니다.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "어떻게 저장되고, 서버로 업로드되나요?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "모든 렌더링은 브라우저 내 Canvas에서 처리되며 서버로 업로드하지 않습니다. 다운로드한 PNG를 바로 프로젝트에 넣으면 됩니다.",
+                    },
+                  },
+                ],
+        };
+
+        const howtoSchema = {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name:
+            currentLang === "en"
+              ? "Create icons & splash in 5 minutes with AshLight"
+              : "AshLight로 5분 만에 아이콘·스플래시 완성하기",
+          description:
+            currentLang === "en"
+              ? "Learn how to enter an emoji, tweak gradients, and export iOS/Android/Web icons and a splash image in one go."
+              : "이모지를 입력하고 그라데이션만 조정해 iOS/Android/웹 아이콘과 스플래시를 한 번에 출력하는 방법을 안내합니다.",
+          totalTime: "PT5M",
+          tool: [
+            {
+              "@type": "HowToTool",
+              name: "AshLight Emoji Icon Studio",
+            },
+            {
+              "@type": "HowToTool",
+              name:
+                currentLang === "en"
+                  ? "Web browser (Chrome/Safari)"
+                  : "웹 브라우저 (Chrome/Safari)",
+            },
+          ],
+          supply: [
+            {
+              "@type": "HowToSupply",
+              name: currentLang === "en" ? "1 emoji" : "이모지 1개",
+            },
+            {
+              "@type": "HowToSupply",
+              name:
+                currentLang === "en" ? "Brand color HEX values" : "브랜드 컬러 HEX 값",
+            },
+          ],
+          step:
+            currentLang === "en"
+              ? [
+                  {
+                    "@type": "HowToStep",
+                    name: "Pick emoji and colors",
+                    text: "In the Icon tab, choose an emoji and set gradient start/end colors and the angle.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "Review previews",
+                    text: "Check rounded, circle, and square previews for iOS/Android/Web and adjust sizing.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "Download",
+                    text: "Download platform-specific PNGs or the ZIP bundle.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "Generate splash",
+                    text: "Go to the Splash tab, enter title/subtitle, and export a 1242x2688 PNG.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "Apply to project",
+                    text: "Use Xcode Assets, Android Image Asset Studio, web link tags, or Expo app.json to apply the assets.",
+                  },
+                ]
+              : [
+                  {
+                    "@type": "HowToStep",
+                    name: "이모지와 컬러 선택",
+                    text: "아이콘 탭에서 사용할 이모지와 그라데이션 시작/끝 색상을 입력하고 각도를 맞춥니다.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "프리뷰 확인",
+                    text: "iOS, Android, 웹 파비콘 미리보기 카드에서 라운드/원형/정사각형 모습을 확인하며 크기를 조정합니다.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "다운로드",
+                    text: "플랫폼별 버튼을 눌러 PNG를 저장하거나 ZIP 일괄 다운로드를 선택합니다.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "스플래시 생성",
+                    text: "스플래시 탭으로 이동해 제목/부제목을 입력하고 1242x2688 PNG를 다운로드합니다.",
+                  },
+                  {
+                    "@type": "HowToStep",
+                    name: "프로젝트 반영",
+                    text: "iOS는 Xcode Assets, Android는 Image Asset Studio, 웹은 link 태그, Expo는 app.json의 icon/splash 설정을 업데이트합니다.",
+                  },
+                ],
+        };
+
+        const faqEl = document.getElementById("faq-ld");
+        if (faqEl) {
+          faqEl.textContent = JSON.stringify(faqSchema, null, 2);
+        }
+
+        const howtoEl = document.getElementById("howto-ld");
+        if (howtoEl) {
+          howtoEl.textContent = JSON.stringify(howtoSchema, null, 2);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      function renderHomeDableWidget() {
+        if (typeof dable !== "function") return;
+        try {
+          dable("renderWidgetByWidth", "dablewidget_GokzprNX_jobwpAd7", {
+            ignore_items: true,
+          });
+        } catch (error) {
+          console.error("Dable 위젯 렌더링 실패:", error);
+        }
+      }
+
+      if (document.readyState === "complete") {
+        renderHomeDableWidget();
+      } else {
+        window.addEventListener("load", renderHomeDableWidget);
+      }
+
+      const FREQUENT_EMOJIS = [
+        "😀",
+        "😂",
+        "😊",
+        "😍",
+        "😘",
+        "😎",
+        "🤩",
+        "🥳",
+        "😇",
+        "😉",
+        "😭",
+        "🥹",
+        "😤",
+        "🤯",
+        "🤔",
+        "😴",
+        "🤝",
+        "🙏",
+        "👍",
+        "👏",
+        "💪",
+        "⚡️",
+        "🔥",
+        "✨",
+        "🎉",
+        "🎯",
+        "🚀",
+        "💎",
+        "🌟",
+        "🌈",
+        "☀️",
+        "🌙",
+        "🍀",
+        "🌿",
+        "🌸",
+        "🌻",
+        "🍎",
+        "🍕",
+        "🍣",
+        "🍫",
+        "☕️",
+        "🍺",
+        "🎵",
+        "🎧",
+        "🎮",
+        "🧩",
+        "📱",
+        "💻",
+        "⌚️",
+        "🎨",
+        "🎬",
+        "🏀",
+        "⚽️",
+        "🏖️",
+        "🌊",
+        "🏔️",
+        "✈️",
+        "🚗",
+        "🚲",
+        "💡",
+        "🛠️",
+        "🧪",
+        "🧸",
+        "🎁",
+        "🪄",
+        "🛡️",
+        "🧭",
+      ];
+
+      // 최소한의 초기 풀 (빠른 로드용). 전체 이모지는 런타임에 원격으로 불러옵니다.
+      let ALL_EMOJIS = [
+        ...FREQUENT_EMOJIS,
+        "😅",
+        "😆",
+        "😁",
+        "🙂",
+        "🤗",
+        "🤫",
+        "😴",
+        "🤮",
+        "😱",
+        "😈",
+        "👻",
+        "🤡",
+        "🥶",
+        "🥵",
+        "🤒",
+        "🤧",
+        "🤤",
+        "👌",
+        "🤌",
+        "🖐️",
+        "🖖",
+        "👋",
+        "🤙",
+        "🦾",
+        "🧠",
+        "👀",
+        "👁️",
+        "👄",
+        "👩",
+        "👨",
+        "👧",
+        "👦",
+        "🧒",
+        "👮",
+        "👷",
+        "🕵️",
+        "👩‍⚕️",
+        "👨‍🍳",
+        "👩‍💻",
+        "👩‍🎨",
+        "👩‍🚀",
+        "🧙",
+        "🧚",
+        "🧛",
+        "🧜",
+        "💃",
+        "🕺",
+        "🧑‍🦽",
+        "🧑‍🦼",
+        "🎅",
+        "🦸",
+        "🦹",
+        "🧌",
+        "🐶",
+        "🐱",
+        "🐻",
+        "🐼",
+        "🐯",
+        "🦁",
+        "🐮",
+        "🐷",
+        "🐸",
+        "🐵",
+        "🐔",
+        "🐦",
+        "🦆",
+        "🦉",
+        "🦇",
+        "🐺",
+        "🐴",
+        "🦄",
+        "🐝",
+        "🦋",
+        "🐌",
+        "🐢",
+        "🐍",
+        "🦎",
+        "🦂",
+        "🦀",
+        "🐙",
+        "🐡",
+        "🦈",
+        "🐬",
+        "🦖",
+        "🌵",
+        "🌳",
+        "🌴",
+        "☘️",
+        "🍃",
+        "🍂",
+        "🍁",
+        "🍄",
+        "🌾",
+        "🌺",
+        "🌼",
+        "🌝",
+        "🌛",
+        "🌜",
+        "🌪️",
+        "🌧️",
+        "❄️",
+        "🌫️",
+        "🌍",
+        "🌋",
+        "🏞️",
+        "🏛️",
+        "🗽",
+        "🗼",
+        "⛩️",
+        "🏕️",
+        "🏜️",
+        "🏝️",
+        "🏟️",
+        "🚕",
+        "🚙",
+        "🚌",
+        "🚎",
+        "🚒",
+        "🚚",
+        "🛵",
+        "🛴",
+        "🛺",
+        "🛫",
+        "🛳️",
+        "🚂",
+        "🚇",
+        "🚈",
+        "🚞",
+        "🛣️",
+        "🧳",
+        "⌨️",
+        "🖥️",
+        "🖨️",
+        "💽",
+        "💿",
+        "📀",
+        "📷",
+        "📹",
+        "🎥",
+        "☎️",
+        "📺",
+        "🎙️",
+        "🎛️",
+        "🔦",
+        "🕯️",
+        "🏮",
+        "🛢️",
+        "🔋",
+        "🔌",
+        "🧲",
+        "🧱",
+        "🔨",
+        "⚒️",
+        "🛠️",
+        "🗡️",
+        "🛡️",
+        "🪛",
+        "⚙️",
+        "🧰",
+        "🧪",
+        "🧬",
+        "🔭",
+        "📢",
+        "📯",
+        "🎷",
+        "🎸",
+        "🎻",
+        "🎺",
+        "🪘",
+        "🪕",
+        "📝",
+        "📚",
+        "📈",
+        "📉",
+        "📅",
+        "🗂️",
+        "📰",
+        "📑",
+        "🔖",
+        "🏷️",
+        "💰",
+        "💳",
+        "🪙",
+        "💎",
+        "⚖️",
+        "⚗️",
+        "💊",
+        "💉",
+        "🩸",
+        "🩹",
+        "🩺",
+        "🩻",
+        "🧻",
+        "🧼",
+        "🪥",
+        "🧽",
+        "🧴",
+        "🪣",
+        "🧺",
+        "🧦",
+        "🧣",
+        "🧥",
+        "👗",
+        "👔",
+        "👖",
+        "👚",
+        "👙",
+        "🥼",
+        "🦺",
+        "👠",
+        "👟",
+        "🥾",
+        "🧢",
+        "🎩",
+        "🎓",
+        "👑",
+        "⛑️",
+        "🎒",
+        "👝",
+        "👛",
+        "👜",
+        "💼",
+        "🥽",
+        "🌂",
+        "☂️",
+        "🎈",
+        "🎊",
+        "🎃",
+        "🎄",
+        "🎆",
+        "🧨",
+        "🎋",
+        "🎍",
+        "🎎",
+        "🎏",
+        "🎐",
+        "🎑",
+        "🧧",
+        "🎀",
+        "🎗️",
+        "🏆",
+        "🥇",
+        "🥈",
+        "🥉",
+        "🏅",
+        "🎖️",
+        "🎱",
+        "🎳",
+        "🎰",
+        "🧩",
+        "♟️",
+        "🧸",
+        "🪀",
+        "🎴",
+        "🃏",
+        "🀄️",
+        "🎭",
+        "🧵",
+        "🧶",
+        "🪡",
+        "🪢",
+        "🍇",
+        "🍈",
+        "🍊",
+        "🍋",
+        "🍌",
+        "🍍",
+        "🍏",
+        "🍐",
+        "🍑",
+        "🍒",
+        "🍓",
+        "🫐",
+        "🥝",
+        "🍅",
+        "🥥",
+        "🥑",
+        "🍆",
+        "🥔",
+        "🥕",
+        "🌽",
+        "🌶️",
+        "🥒",
+        "🥬",
+        "🥦",
+        "🧄",
+        "🧅",
+        "🥜",
+        "🌰",
+        "🍞",
+        "🥐",
+        "🥖",
+        "🫓",
+        "🥨",
+        "🥯",
+        "🥞",
+        "🧇",
+        "🧀",
+        "🍖",
+        "🍗",
+        "🥩",
+        "🥓",
+        "🍔",
+        "🍟",
+        "🌭",
+        "🥪",
+        "🌮",
+        "🌯",
+        "🫔",
+        "🥙",
+        "🧆",
+        "🥘",
+        "🍲",
+        "🍛",
+        "🍜",
+        "🍣",
+        "🍱",
+        "🍚",
+        "🍙",
+        "🍘",
+        "🍥",
+        "🥠",
+        "🥡",
+        "🦞",
+        "🦐",
+        "🦑",
+        "🍦",
+        "🍧",
+        "🍨",
+        "🍩",
+        "🍪",
+        "🧁",
+        "🥧",
+        "🍬",
+        "🍭",
+        "🍮",
+        "🍯",
+        "🍼",
+        "🥛",
+        "🫖",
+        "🍵",
+        "🍶",
+        "🍻",
+        "🥂",
+        "🍷",
+        "🥃",
+        "🍸",
+        "🍹",
+        "🍾",
+        "🥄",
+        "🍴",
+        "🍽️",
+        "🥣",
+        "🥡",
+        "⚽️",
+        "🏈",
+        "⚾️",
+        "🥎",
+        "🎾",
+        "🏐",
+        "🏉",
+        "🥏",
+        "🏓",
+        "🏸",
+        "🥅",
+        "⛳️",
+        "🏒",
+        "🏑",
+        "🥍",
+        "🥌",
+        "⛸️",
+        "🛷",
+        "🥊",
+        "🥋",
+        "🎽",
+        "🛼",
+        "🛹",
+        "🔔",
+        "⏰",
+        "⏳",
+        "⌛️",
+        "⏱️",
+        "⏲️",
+        "🌡️",
+        "🎒",
+      ];
+
+      const CURATED_GRADIENTS = [
+        { start: "#ff8a00", end: "#e52e71" },
+        { start: "#ff6cab", end: "#7366ff" },
+        { start: "#00f5a0", end: "#00d9f5" },
+        { start: "#f7971e", end: "#ffd200" },
+        { start: "#8a2be2", end: "#4a00e0" },
+        { start: "#43cea2", end: "#185a9d" },
+        { start: "#f83600", end: "#fe8c00" },
+        { start: "#00c6ff", end: "#0072ff" },
+        { start: "#ff9966", end: "#ff5e62" },
+        { start: "#c33764", end: "#1d2671" },
+        { start: "#f857a6", end: "#ff5858" },
+        { start: "#3494e6", end: "#ec6ead" },
+        { start: "#11998e", end: "#38ef7d" },
+        { start: "#fc5c7d", end: "#6a82fb" },
+        { start: "#fc466b", end: "#3f5efb" },
+        { start: "#7f00ff", end: "#e100ff" },
+        { start: "#1a2a6c", end: "#fdbb2d" },
+        { start: "#a8c0ff", end: "#3f2b96" },
+        { start: "#4568dc", end: "#b06ab3" },
+        { start: "#ff5f6d", end: "#ffc371" },
+        { start: "#5ee7df", end: "#b490ca" },
+        { start: "#30cfd0", end: "#330867" },
+        { start: "#16a085", end: "#f4d03f" },
+        { start: "#c21500", end: "#ffc500" },
+        { start: "#eecda3", end: "#ef629f" },
+        { start: "#52acff", end: "#ffe32c" },
+        { start: "#09203f", end: "#537895" },
+        { start: "#ee9ca7", end: "#ffdde1" },
+        { start: "#ffd89b", end: "#19547b" },
+        { start: "#ff9a9e", end: "#fecfef" },
+        { start: "#a1c4fd", end: "#c2e9fb" },
+        { start: "#0fd850", end: "#f9f047" },
+        { start: "#4158d0", end: "#c850c0" },
+        { start: "#0093e9", end: "#80d0c7" },
+        { start: "#3f2b96", end: "#a8c0ff" },
+        { start: "#ff5858", end: "#f09819" },
+        { start: "#4158d0", end: "#ffcc70" },
+        { start: "#ee0979", end: "#ff6a00" },
+        { start: "#02aab0", end: "#00cdac" },
+        { start: "#f8ffae", end: "#43c6ac" },
+        { start: "#ffe29f", end: "#ffa99f" },
+        { start: "#00c9ff", end: "#92fe9d" },
+        { start: "#fddb92", end: "#d1fdff" },
+        { start: "#7de2fc", end: "#b9b6e5" },
+        { start: "#f15f79", end: "#b24592" },
+        { start: "#fa709a", end: "#fee140" },
+        { start: "#b2fefa", end: "#0ed2f7" },
+        { start: "#f6d365", end: "#fda085" },
+        { start: "#a8ff78", end: "#78ffd6" },
+        { start: "#ffd3a5", end: "#fd6585" },
+        { start: "#43e97b", end: "#38f9d7" },
+        { start: "#08aeea", end: "#2af598" },
+      ];
+
+      const SAFE_RANDOM_EMOJI_SIZE = { min: 300, max: 440 };
+
+      const emojiInput = document.getElementById("emojiInput");
+      const emojiPickerButton = document.getElementById("emojiPickerButton");
+      const emojiPicker = document.getElementById("emojiPicker");
+      const emojiPickerGrid = document.getElementById("emojiPickerGrid");
+      const emojiPickerClose = document.getElementById("emojiPickerClose");
+      const emojiPickerTabs = document.querySelectorAll("[data-emoji-tab]");
+      const emojiPagePrev = document.getElementById("emojiPagePrev");
+      const emojiPageNext = document.getElementById("emojiPageNext");
+      const emojiPageInfo = document.getElementById("emojiPageInfo");
+      const colorStartInput = document.getElementById("colorStart");
+      const colorEndInput = document.getElementById("colorEnd");
+      const angleInput = document.getElementById("angleInput");
+      const angleValue = document.getElementById("angleValue");
+      const radiusInput = document.getElementById("radiusInput");
+      const radiusValue = document.getElementById("radiusValue");
+      const emojiSizeInput = document.getElementById("emojiSizeInput");
+      const emojiSizeValue = document.getElementById("emojiSizeValue");
+      const glowInput = document.getElementById("glowInput");
+      const glowValue = document.getElementById("glowValue");
+      const splashTitleInput = document.getElementById("splashTitleInput");
+      const splashSubtitleInput = document.getElementById(
+        "splashSubtitleInput"
+      );
+      const downloadSplashButton = document.getElementById(
+        "downloadSplashButton"
+      );
+      const splashRandomButton = document.getElementById("splashRandomButton");
+      const toolButtons = document.querySelectorAll(".nav-button");
+      const toolContainers = document.querySelectorAll(".tool-container");
+      const iconPreviewImg = document.getElementById("appIconPreview");
+      const miniIconPreviewImgs = document.querySelectorAll(
+        "[data-icon-preview-size]"
+      );
+      const splashMainPreview = document.getElementById("splashMainPreview");
+      const splashMiniPreview = document.getElementById("splashMiniPreview");
+
+      const ICON_BASE_SIZE = 520;
+      const SPLASH_BASE_WIDTH = 372;
+      const SPLASH_BASE_HEIGHT = 804;
+      const EMOJI_PAGE_SIZE = 120;
+
+      function applyState() {
+        emojiInput.value = state.emoji;
+        colorStartInput.value = state.gradientStart;
+        colorEndInput.value = state.gradientEnd;
+        angleInput.value = state.angle;
+        angleValue.textContent = state.angle;
+        radiusInput.value = state.radius;
+        radiusValue.textContent = state.radius;
+        emojiSizeInput.value = state.emojiSize;
+        emojiSizeValue.textContent = state.emojiSize;
+        glowInput.value = state.glow;
+        glowValue.textContent = state.glow.toFixed(2);
+
+        if (splashTitleInput && document.activeElement !== splashTitleInput) {
+          splashTitleInput.value = state.splashTitle;
+        }
+        if (
+          splashSubtitleInput &&
+          document.activeElement !== splashSubtitleInput
+        ) {
+          splashSubtitleInput.value = state.splashSubtitle;
+        }
+
+        updateIconPreviews();
+        updateSplashPreviews();
+      }
+
+      function updateFromInputs() {
+        state.emoji = emojiInput.value.trim() || "✨";
+        state.gradientStart = colorStartInput.value;
+        state.gradientEnd = colorEndInput.value;
+        state.angle = Number(angleInput.value);
+        state.radius = Number(radiusInput.value);
+        state.emojiSize = Number(emojiSizeInput.value);
+        state.glow = Number(glowInput.value);
+        applyState();
+      }
+
+      emojiInput.addEventListener("input", updateFromInputs);
+      colorStartInput.addEventListener("input", updateFromInputs);
+      colorEndInput.addEventListener("input", updateFromInputs);
+      angleInput.addEventListener("input", updateFromInputs);
+      radiusInput.addEventListener("input", updateFromInputs);
+      emojiSizeInput.addEventListener("input", updateFromInputs);
+      glowInput.addEventListener("input", updateFromInputs);
+
+      function toggleEmojiPicker(forceOpen) {
+        if (!emojiPicker) return;
+        const shouldOpen =
+          typeof forceOpen === "boolean"
+            ? forceOpen
+            : !emojiPicker.classList.contains("open");
+        emojiPicker.classList.toggle("open", shouldOpen);
+        if (shouldOpen) {
+          buildEmojiPicker();
+        }
+      }
+
+      let currentEmojiCategory = "frequent";
+      let currentEmojiPage = 0;
+
+      let remoteEmojiLoaded = false;
+
+      function getEmojiSource() {
+        return currentEmojiCategory === "all" ? ALL_EMOJIS : FREQUENT_EMOJIS;
+      }
+
+      async function loadAllEmojisRemote() {
+        if (remoteEmojiLoaded) return;
+        try {
+          // emoji.json 오픈 소스 데이터 (약 3천여 개)
+          const response = await fetch(
+            "https://unpkg.com/emoji.json/emoji.json"
+          );
+          if (!response.ok) return;
+          const data = await response.json();
+          const chars = data
+            .map((item) => item.char)
+            .filter((c) => typeof c === "string" && c.trim().length > 0);
+          if (chars.length > ALL_EMOJIS.length) {
+            ALL_EMOJIS = chars;
+          }
+          remoteEmojiLoaded = true;
+          if (currentEmojiCategory === "all") {
+            currentEmojiPage = 0;
+            buildEmojiPicker();
+          }
+        } catch (error) {
+          console.warn(
+            "원격 이모지 불러오기 실패, 로컬 풀을 사용합니다.",
+            error
+          );
+        }
+      }
+
+      function updateEmojiPagination() {
+        if (!emojiPageInfo) return;
+        const sourceLength = getEmojiSource().length;
+        const totalPages = Math.max(
+          1,
+          Math.ceil(sourceLength / EMOJI_PAGE_SIZE)
+        );
+        currentEmojiPage = Math.min(currentEmojiPage, totalPages - 1);
+        emojiPageInfo.textContent = `${currentEmojiPage + 1} / ${totalPages}`;
+        if (emojiPagePrev) {
+          emojiPagePrev.disabled = currentEmojiPage === 0;
+        }
+        if (emojiPageNext) {
+          emojiPageNext.disabled = currentEmojiPage >= totalPages - 1;
+        }
+      }
+
+      function setEmojiTab(category) {
+        currentEmojiCategory = category;
+        currentEmojiPage = 0;
+        emojiPickerTabs.forEach((tab) => {
+          tab.classList.toggle("active", tab.dataset.emojiTab === category);
+        });
+        buildEmojiPicker();
+      }
+
+      function buildEmojiPicker() {
+        if (!emojiPickerGrid) return;
+        const source = getEmojiSource();
+        const start = currentEmojiPage * EMOJI_PAGE_SIZE;
+        const slice = source.slice(start, start + EMOJI_PAGE_SIZE);
+
+        emojiPickerGrid.innerHTML = "";
+        slice.forEach((emoji) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "emoji-chip";
+          button.dataset.emojiOption = emoji;
+          button.textContent = emoji;
+          emojiPickerGrid.appendChild(button);
+        });
+
+        updateEmojiPagination();
+      }
+
+      if (emojiPickerGrid) {
+        buildEmojiPicker();
+        emojiPickerGrid.addEventListener("click", (event) => {
+          const target = event.target.closest("[data-emoji-option]");
+          if (!target) return;
+          state.emoji = target.dataset.emojiOption;
+          applyState();
+          toggleEmojiPicker(false);
+        });
+      }
+
+      if (emojiPagePrev) {
+        emojiPagePrev.addEventListener("click", () => {
+          if (currentEmojiPage === 0) return;
+          currentEmojiPage -= 1;
+          buildEmojiPicker();
+        });
+      }
+
+      if (emojiPageNext) {
+        emojiPageNext.addEventListener("click", () => {
+          const totalPages = Math.max(
+            1,
+            Math.ceil(getEmojiSource().length / EMOJI_PAGE_SIZE)
+          );
+          if (currentEmojiPage >= totalPages - 1) return;
+          currentEmojiPage += 1;
+          buildEmojiPicker();
+        });
+      }
+
+      if (emojiPickerButton) {
+        emojiPickerButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          toggleEmojiPicker();
+          loadAllEmojisRemote();
+        });
+      }
+
+      if (emojiPickerClose) {
+        emojiPickerClose.addEventListener("click", () =>
+          toggleEmojiPicker(false)
+        );
+      }
+
+      if (emojiPickerTabs.length) {
+        emojiPickerTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            if (!tab.dataset.emojiTab) return;
+            setEmojiTab(tab.dataset.emojiTab);
+          });
+        });
+      }
+
+      if (emojiPicker) {
+        emojiPicker.addEventListener("click", (event) => {
+          if (event.target === emojiPicker) {
+            toggleEmojiPicker(false);
+          }
+        });
+      }
+
+      if (splashTitleInput) {
+        splashTitleInput.addEventListener("input", () => {
+          state.splashTitle = splashTitleInput.value.replace(/\r\n/g, "\n");
+          updateSplashPreviews();
+        });
+      }
+      if (splashSubtitleInput) {
+        splashSubtitleInput.addEventListener("input", () => {
+          state.splashSubtitle = splashSubtitleInput.value.replace(
+            /\r\n/g,
+            "\n"
+          );
+          updateSplashPreviews();
+        });
+      }
+
+      function setActiveTool(targetId) {
+        toolButtons.forEach((button) => {
+          const isActive = button.dataset.toolTarget === targetId;
+          button.classList.toggle("active", isActive);
+        });
+        toolContainers.forEach((container) => {
+          const isActive = container.id === targetId;
+          container.classList.toggle("active", isActive);
+        });
+
+        if (typeof history.replaceState === "function") {
+          try {
+            if (targetId === "splashTool") {
+              history.replaceState(null, "", "#splash");
+            } else {
+              history.replaceState(
+                null,
+                "",
+                window.location.href.split("#")[0]
+              );
+            }
+          } catch (error) {
+            console.warn("해시 업데이트를 건너뜁니다.", error);
+          }
+        }
+      }
+
+      toolButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const targetId = button.dataset.toolTarget;
+          if (!targetId) return;
+          setActiveTool(targetId);
+        });
+      });
+
+      const initialHash = window.location.hash.replace("#", "");
+      if (initialHash === "splash" || initialHash === "splashTool") {
+        setActiveTool("splashTool");
+      } else {
+        setActiveTool("iconTool");
+      }
+
+      let iconPreviewToken = 0;
+      async function updateIconPreviews() {
+        const token = ++iconPreviewToken;
+        const canvas = await renderIconCanvas(ICON_BASE_SIZE);
+        if (token !== iconPreviewToken) return;
+        const dataUrl = canvas.toDataURL("image/png");
+        if (iconPreviewImg) {
+          iconPreviewImg.src = dataUrl;
+        }
+        miniIconPreviewImgs.forEach((img) => {
+          const size = Number(img.dataset.iconPreviewSize) || 140;
+          const shape = img.dataset.iconShape || "rounded";
+          const radius = Number(img.dataset.iconRadius) || size / 2;
+          const miniCanvas = document.createElement("canvas");
+          miniCanvas.width = size;
+          miniCanvas.height = size;
+          const ctx = miniCanvas.getContext("2d");
+          ctx.clearRect(0, 0, size, size);
+          ctx.save();
+          if (shape === "circle") {
+            ctx.beginPath();
+            ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+          } else if (shape === "rounded") {
+            ctx.beginPath();
+            drawRoundedRect(ctx, 0, 0, size, size, radius);
+            ctx.closePath();
+            ctx.clip();
+          }
+          ctx.drawImage(canvas, 0, 0, size, size);
+          ctx.restore();
+          img.src = miniCanvas.toDataURL("image/png");
+        });
+      }
+
+      let splashPreviewToken = 0;
+      async function updateSplashPreviews() {
+        const token = ++splashPreviewToken;
+        const mainCanvas = await renderSplashCanvas(
+          SPLASH_BASE_WIDTH,
+          SPLASH_BASE_HEIGHT
+        );
+        if (token !== splashPreviewToken) return;
+        const mainUrl = mainCanvas.toDataURL("image/png");
+        if (splashMainPreview) {
+          splashMainPreview.src = mainUrl;
+        }
+        if (splashMiniPreview) {
+          const miniCanvas = document.createElement("canvas");
+          miniCanvas.width = 160;
+          miniCanvas.height = 346;
+          const ctx = miniCanvas.getContext("2d");
+          ctx.drawImage(mainCanvas, 0, 0, 160, 346);
+          splashMiniPreview.src = miniCanvas.toDataURL("image/png");
+        }
+      }
+
+      async function renderIconCanvas(size = 1024) {
+        const scale = size / ICON_BASE_SIZE;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, size, size);
+
+        const radius = Math.min(size / 2, state.radius * scale);
+
+        const gradientAngle = ((90 - state.angle) * Math.PI) / 180;
+        const diagonal = Math.sqrt(size * size + size * size);
+        const centerX = size / 2;
+        const centerY = size / 2;
+        const x1 = centerX + Math.cos(gradientAngle) * diagonal;
+        const y1 = centerY + Math.sin(gradientAngle) * diagonal;
+        const x0 = centerX - Math.cos(gradientAngle) * diagonal;
+        const y0 = centerY - Math.sin(gradientAngle) * diagonal;
+
+        const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
+        gradient.addColorStop(0, state.gradientStart);
+        gradient.addColorStop(1, state.gradientEnd);
+
+        ctx.save();
+        ctx.beginPath();
+        drawRoundedRect(ctx, 0, 0, size, size, radius);
+        ctx.closePath();
+        ctx.clip();
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, size, size);
+
+        const glowStrength = Math.min(state.glow + 0.08, 0.45);
+        const glowGradient = ctx.createRadialGradient(
+          size * 0.3,
+          size * 0.3,
+          0,
+          size * 0.3,
+          size * 0.3,
+          size * 0.6
+        );
+        glowGradient.addColorStop(0, `rgba(255,255,255,${glowStrength})`);
+        glowGradient.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = glowGradient;
+        ctx.fillRect(0, 0, size, size);
+
+        ctx.restore();
+
+        ctx.save();
+        ctx.fillStyle = "#000";
+        ctx.font = `${
+          state.emojiSize * scale
+        }px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',system-ui`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "alphabetic";
+        ctx.shadowColor = "rgba(0,0,0,0.45)";
+        ctx.shadowBlur = 40 * scale;
+        ctx.shadowOffsetY = 0;
+        ctx.shadowOffsetX = 0;
+        const metrics = ctx.measureText(state.emoji);
+        const offsetY =
+          (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) /
+          2;
+        ctx.fillText(state.emoji, centerX, centerY + offsetY);
+        ctx.restore();
+
+        return canvas;
+      }
+
+      function drawRoundedRect(ctx, x, y, width, height, radius) {
+        const r = Math.min(radius, width / 2, height / 2);
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + width, y, x + width, y + height, r);
+        ctx.arcTo(x + width, y + height, x, y + height, r);
+        ctx.arcTo(x, y + height, x, y, r);
+        ctx.arcTo(x, y, x + width, y, r);
+      }
+
+      async function renderSplashCanvas(
+        targetWidth = 1242,
+        targetHeight = 2688
+      ) {
+        const scale = targetWidth / SPLASH_BASE_WIDTH;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, targetWidth, targetHeight);
+
+        const gradientAngle = ((90 - state.angle) * Math.PI) / 180;
+        const diagonal = Math.sqrt(
+          targetWidth * targetWidth + targetHeight * targetHeight
+        );
+        const centerX = targetWidth / 2;
+        const centerY = targetHeight / 2;
+        const x1 = centerX + Math.cos(gradientAngle) * diagonal;
+        const y1 = centerY + Math.sin(gradientAngle) * diagonal;
+        const x0 = centerX - Math.cos(gradientAngle) * diagonal;
+        const y0 = centerY - Math.sin(gradientAngle) * diagonal;
+
+        const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
+        gradient.addColorStop(0, state.gradientStart);
+        gradient.addColorStop(1, state.gradientEnd);
+
+        const cornerRadius = 36 * scale;
+        ctx.save();
+        ctx.beginPath();
+        drawRoundedRect(ctx, 0, 0, targetWidth, targetHeight, cornerRadius);
+        ctx.closePath();
+        ctx.clip();
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+        const overlayGradient = ctx.createRadialGradient(
+          targetWidth * 0.5,
+          targetHeight * 0.38,
+          0,
+          targetWidth * 0.5,
+          targetHeight * 0.38,
+          targetWidth * 0.7
+        );
+        overlayGradient.addColorStop(0, "rgba(255,255,255,0.18)");
+        overlayGradient.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = overlayGradient;
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+        ctx.restore();
+
+        const emojiFontSize = 210 * scale;
+        const titleFontSize = 68 * scale;
+        const subtitleFontSize = 26 * scale;
+        const titleLines = state.splashTitle
+          ? state.splashTitle
+              .split(/\r?\n/)
+              .filter((line) => line.trim().length > 0)
+          : [];
+        const subtitleLines = state.splashSubtitle
+          ? state.splashSubtitle
+              .split(/\r?\n/)
+              .filter((line) => line.trim().length > 0)
+          : [];
+
+        const titleLineHeight = titleFontSize * 1.15;
+        const subtitleLineHeight = subtitleFontSize * 1.2;
+        const spacingAfterEmoji = titleLines.length
+          ? 40 * scale
+          : subtitleLines.length
+          ? 40 * scale
+          : 0;
+        const spacingBetweenTitleSubtitle =
+          titleLines.length && subtitleLines.length ? 20 * scale : 0;
+
+        const totalHeight =
+          emojiFontSize +
+          spacingAfterEmoji +
+          titleLineHeight * titleLines.length +
+          spacingBetweenTitleSubtitle +
+          subtitleLineHeight * subtitleLines.length;
+
+        let currentY = centerY - totalHeight / 2;
+
+        ctx.save();
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        // Emoji
+        currentY += emojiFontSize / 2;
+        ctx.font = `${emojiFontSize}px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',system-ui`;
+        ctx.shadowColor = "rgba(0,0,0,0.45)";
+        ctx.shadowBlur = 32 * scale;
+        ctx.shadowOffsetY = 18 * scale;
+        ctx.fillText(state.emoji, centerX, currentY);
+        ctx.shadowColor = "transparent";
+        currentY += emojiFontSize / 2;
+
+        // Space after emoji
+        currentY += spacingAfterEmoji;
+
+        // Title lines
+        if (titleLines.length) {
+          ctx.font = `${titleFontSize}px 'Pretendard Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif`;
+          ctx.fillStyle = "white";
+          titleLines.forEach((line) => {
+            currentY += titleLineHeight / 2;
+            ctx.fillText(line, centerX, currentY);
+            currentY += titleLineHeight / 2;
+          });
+        }
+
+        // Space between title and subtitle
+        currentY += spacingBetweenTitleSubtitle;
+
+        // Subtitle lines
+        if (subtitleLines.length) {
+          ctx.font = `${subtitleFontSize}px 'Pretendard Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif`;
+          ctx.fillStyle = "rgba(255,255,255,0.9)";
+          subtitleLines.forEach((line) => {
+            currentY += subtitleLineHeight / 2;
+            ctx.fillText(line, centerX, currentY);
+            currentY += subtitleLineHeight / 2;
+          });
+        }
+
+        ctx.restore();
+
+        return canvas;
+      }
+
+      function createScaledCanvas(baseCanvas, size) {
+        const targetCanvas = document.createElement("canvas");
+        targetCanvas.width = size;
+        targetCanvas.height = size;
+        const ctx = targetCanvas.getContext("2d");
+        ctx.drawImage(baseCanvas, 0, 0, size, size);
+        return targetCanvas;
+      }
+
+      const assetPresets = [
+        { size: 1024, filename: "icon-ios-1024.png" },
+        { size: 512, filename: "icon-android-512.png" },
+        { size: 256, filename: "icon-android-256.png" },
+        { size: 192, filename: "favicon-192.png" },
+        { size: 128, filename: "favicon-128.png" },
+        { size: 64, filename: "favicon-64.png" },
+        { size: 48, filename: "favicon-48.png" },
+        { size: 32, filename: "favicon-32.png" },
+      ];
+
+      function hslToHex(h, s, l) {
+        const sNorm = s / 100;
+        const lNorm = l / 100;
+        const k = (n) => (n + h / 30) % 12;
+        const a = sNorm * Math.min(lNorm, 1 - lNorm);
+        const f = (n) =>
+          lNorm - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+        const toHex = (x) =>
+          Math.round(255 * x)
+            .toString(16)
+            .padStart(2, "0");
+        return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+      }
+
+      function generateDynamicGradient() {
+        const baseHue = Math.floor(Math.random() * 360);
+        const offset = 18 + Math.random() * 90;
+        const saturation = 70 + Math.random() * 15;
+        const lightness = 48 + Math.random() * 8;
+        const endLightness = 40 + Math.random() * 12;
+        return {
+          start: hslToHex(baseHue, saturation, lightness),
+          end: hslToHex((baseHue + offset) % 360, saturation - 5, endLightness),
+        };
+      }
+
+      function pickRandomGradient() {
+        if (Math.random() < 0.6) {
+          return CURATED_GRADIENTS[
+            Math.floor(Math.random() * CURATED_GRADIENTS.length)
+          ];
+        }
+        return generateDynamicGradient();
+      }
+
+      function pickRandomEmoji() {
+        return FREQUENT_EMOJIS[
+          Math.floor(Math.random() * FREQUENT_EMOJIS.length)
+        ];
+      }
+
+      function randomizeIcon() {
+        const palette = pickRandomGradient();
+        const emojiSizeRange = SAFE_RANDOM_EMOJI_SIZE;
+        const emojiSize =
+          emojiSizeRange.min +
+          Math.floor(Math.random() * (emojiSizeRange.max - emojiSizeRange.min));
+        const radius = 130 + Math.floor(Math.random() * 110);
+        state.emoji = pickRandomEmoji();
+        state.gradientStart = palette.start;
+        state.gradientEnd = palette.end;
+        state.angle = Math.floor(Math.random() * 360);
+        state.radius = Math.min(radius, 260);
+        state.emojiSize = emojiSize;
+        state.glow = Number((0.12 + Math.random() * 0.22).toFixed(2));
+        applyState();
+      }
+
+      const randomSplashTextsByLang = {
+        ko: [
+          { title: "AshLight", subtitle: "EMOJI ICON STUDIO" },
+          {
+            title: "새로운 아이디어\n시작은 간단하게",
+            subtitle: "BUILD FAST, SHIP FASTER",
+          },
+          { title: "Launch Day", subtitle: "READY TO WOW USERS" },
+          { title: "Design Once", subtitle: "ALL PLATFORMS, ONE EMOJI" },
+          { title: "🚀 &nbsp;Rapid Icons", subtitle: "CRAFTED WITH LOVE" },
+          { title: "컬러만 골라주세요", subtitle: "아이콘/스플래시 자동 생성" },
+          { title: "AshLight Studio", subtitle: "BRING YOUR IDEA TO LIGHT" },
+        ],
+        en: [
+          { title: "AshLight", subtitle: "EMOJI ICON STUDIO" },
+          { title: "New ideas\nStart simple", subtitle: "BUILD FAST, SHIP FASTER" },
+          { title: "Launch Day", subtitle: "READY TO WOW USERS" },
+          { title: "Design Once", subtitle: "ALL PLATFORMS, ONE EMOJI" },
+          { title: "🚀 &nbsp;Rapid Icons", subtitle: "CRAFTED WITH LOVE" },
+          { title: "Just pick colors", subtitle: "AUTO ICON & SPLASH" },
+          { title: "AshLight Studio", subtitle: "BRING YOUR IDEA TO LIGHT" },
+        ],
+      };
+
+      function getRandomSplashTexts() {
+        return randomSplashTextsByLang[currentLang] || randomSplashTextsByLang.ko;
+      }
+
+      const randomButton = document.getElementById("randomButton");
+      if (randomButton) {
+        randomButton.addEventListener("click", randomizeIcon);
+      }
+
+      const randomizeSplashTexts = () => {
+        const presets = getRandomSplashTexts();
+        const randomPreset = presets[Math.floor(Math.random() * presets.length)];
+        state.splashTitle = randomPreset.title;
+        state.splashSubtitle = randomPreset.subtitle;
+        applyState();
+        if (
+          !document.getElementById("splashTool").classList.contains("active")
+        ) {
+          setActiveTool("splashTool");
+        }
+      };
+
+      if (splashRandomButton) {
+        splashRandomButton.addEventListener("click", randomizeSplashTexts);
+      }
+
+      document
+        .getElementById("copyConfigButton")
+        .addEventListener("click", async () => {
+          const text = [
+            `emoji=${state.emoji}`,
+            `start=${state.gradientStart}`,
+            `end=${state.gradientEnd}`,
+            `angle=${state.angle}deg`,
+            `radius=${state.radius}px`,
+            `title=${state.splashTitle || ""}`,
+            `subtitle=${state.splashSubtitle || ""}`,
+        ].join(" | ");
+        try {
+          await navigator.clipboard.writeText(text);
+          alert(t("alertCopySuccess"));
+        } catch (error) {
+          alert(t("alertCopyFail"));
+        }
+      });
+
+      async function downloadIcon(size, filename, button) {
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.textContent = t("renderLoading");
+
+        try {
+          const baseCanvas = await renderIconCanvas(size);
+          const link = document.createElement("a");
+          link.download = filename;
+          link.href = baseCanvas.toDataURL("image/png");
+          link.click();
+        } catch (error) {
+          console.error(error);
+          alert(t("alertExportFail"));
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
+
+      async function downloadSplash(button) {
+        if (!splashMainPreview) return;
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.textContent = t("renderLoading");
+
+        try {
+          const baseCanvas = await renderSplashCanvas(1242, 2688);
+          const link = document.createElement("a");
+          link.download = "splash-1242x2688.png";
+          link.href = baseCanvas.toDataURL("image/png");
+          link.click();
+        } catch (error) {
+          console.error(error);
+          alert(t("alertSplashFail"));
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
+
+      async function downloadAllAssets(button) {
+        if (typeof JSZip === "undefined") {
+          alert(t("alertZipMissing"));
+          return;
+        }
+
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.textContent = t("packagingLoading");
+
+        try {
+          const baseCanvas = await renderIconCanvas(1024);
+          const zip = new JSZip();
+
+          for (const asset of assetPresets) {
+            const scaledCanvas = createScaledCanvas(baseCanvas, asset.size);
+            const dataUrl = scaledCanvas.toDataURL("image/png");
+            zip.file(asset.filename, dataUrl.split(",")[1], { base64: true });
+          }
+
+          const blob = await zip.generateAsync({ type: "blob" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = `emoji-icon-pack-${Date.now()}.zip`;
+          document.body.appendChild(link);
+          link.click();
+          setTimeout(() => {
+            URL.revokeObjectURL(link.href);
+            link.remove();
+          }, 1000);
+        } catch (error) {
+          console.error(error);
+          alert(t("alertZipFail"));
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
+
+      document.querySelectorAll("[data-download-size]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const size = Number(button.dataset.downloadSize);
+          downloadIcon(size, button.dataset.filename, button);
+        });
+      });
+
+      const downloadAllButton = document.getElementById("downloadAllButton");
+      if (downloadAllButton) {
+        downloadAllButton.addEventListener("click", () =>
+          downloadAllAssets(downloadAllButton)
+        );
+      }
+
+      if (downloadSplashButton) {
+        downloadSplashButton.addEventListener("click", () =>
+          downloadSplash(downloadSplashButton)
+        );
+      }
+
+      document.querySelectorAll("[data-copy-text]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const text = button.dataset.copyText;
+          if (!text) return;
+          try {
+            await navigator.clipboard.writeText(text);
+            alert(t("alertClipboardSuccess"));
+          } catch (error) {
+            console.error(error);
+            alert(t("alertClipboardFail"));
+          }
+        });
+      });
+
+      applyState();
+
+      // 페이지 전환 함수
+      function showPage(pageId) {
+        const homePage = document.getElementById("home-page");
+        const homeAd = document.getElementById("home-dable");
+        const toolContainers = document.querySelectorAll(".tool-container");
+
+        // 콘텐츠 페이지 숨김
+        document.querySelectorAll(".content-page").forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // 모든 네비 링크 비활성화
+        document.querySelectorAll(".main-nav-links a").forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        if (pageId === "home") {
+          if (homePage) {
+            homePage.style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+          if (homeAd) {
+            homeAd.style.removeProperty("display");
+          }
+          toolContainers.forEach((container) => {
+            container.style.removeProperty("display");
+          });
+          document
+            .querySelectorAll(".main-nav-links a")[0]
+            .classList.add("active");
+          return;
+        }
+
+        // 홈 섹션과 툴 숨김
+        if (homePage) {
+          homePage.style.display = "none";
+        }
+        if (homeAd) {
+          homeAd.style.display = "none";
+        }
+        toolContainers.forEach((container) => {
+          container.style.display = "none";
+        });
+
+        // 선택한 콘텐츠 페이지 표시
+        const targetPage = document.getElementById(pageId + "-page");
+        if (targetPage) {
+          targetPage.classList.add("active");
+          targetPage.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // 네비 링크 활성화
+        const navLinks = document.querySelectorAll(".main-nav-links a");
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href") === "#" + pageId) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // 해시 변경 감지
+      window.addEventListener("hashchange", function () {
+        const hash = window.location.hash.substring(1) || "home";
+        showPage(hash);
+      });
+
+      // 초기 페이지 로드 시 해시 확인
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        showPage(hash);
+      }
+
+      // 계좌번호 복사 함수
+      function copyAccountNumber() {
+        const accountElement = document.getElementById("accountNumber");
+        const accountNumber = accountElement.textContent.trim();
+
+        if (accountNumber === t("accountMissing")) {
+          alert(t("accountPrompt"));
+          return;
+        }
+
+        navigator.clipboard
+          .writeText(accountNumber)
+          .then(() => {
+            const copyText = accountElement.nextElementSibling;
+            const originalText = copyText.textContent;
+            copyText.textContent = t("accountCopied");
+            copyText.style.color = "rgba(76, 175, 80, 0.9)";
+            setTimeout(() => {
+              copyText.textContent = originalText;
+              copyText.style.color = "rgba(255, 255, 255, 0.6)";
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("복사 실패:", err);
+            alert(t("accountCopyFail"));
+          });
+      }
+    </script>
+    <script id="faq-ld" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "이모지 아이콘은 어디에 쓸 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "App Store / Google Play 아이콘, 웹 파비콘, PWA, 테스트 빌드, 랜딩 페이지 등 다양한 곳에 사용할 수 있습니다. 해상도별 PNG를 제공해 재가공 없이 바로 적용됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "저작권이나 스토어 심사에 문제가 없나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "각 플랫폼이 제공하는 이모지 폰트를 사용하며, 배경 그래픽은 사용자 제작물이므로 일반적인 사용에서는 문제가 없습니다. 단, 타 브랜드 로고나 캐릭터를 모방하는 이모지는 피해주세요."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "광고/후원 버튼을 넣어도 되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "광고는 콘텐츠와 분리된 가시 영역에 배치했으며, 후원 버튼은 정책 위반 요소가 아닙니다. UI를 가리지 않고 명확히 표시하도록 설계했습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "어떻게 저장되고, 서버로 업로드되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "모든 렌더링은 브라우저 내 Canvas에서 처리되며 서버로 업로드하지 않습니다. 다운로드한 PNG를 바로 프로젝트에 넣으면 됩니다."
+            }
+          }
+        ]
+      }
+    </script>
+    <script id="howto-ld" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "AshLight로 5분 만에 아이콘·스플래시 완성하기",
+        "description": "이모지를 입력하고 그라데이션만 조정해 iOS/Android/웹 아이콘과 스플래시를 한 번에 출력하는 방법을 안내합니다.",
+        "totalTime": "PT5M",
+        "tool": [
+          {
+            "@type": "HowToTool",
+            "name": "AshLight Emoji Icon Studio"
+          },
+          {
+            "@type": "HowToTool",
+            "name": "웹 브라우저 (Chrome/Safari)"
+          }
+        ],
+        "supply": [
+          {
+            "@type": "HowToSupply",
+            "name": "이모지 1개"
+          },
+          {
+            "@type": "HowToSupply",
+            "name": "브랜드 컬러 HEX 값"
+          }
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "이모지와 컬러 선택",
+            "text": "아이콘 탭에서 사용할 이모지와 그라데이션 시작/끝 색상을 입력하고 각도를 맞춥니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "프리뷰 확인",
+            "text": "iOS, Android, 웹 파비콘 미리보기 카드에서 라운드/원형/정사각형 모습을 확인하며 크기를 조정합니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "다운로드",
+            "text": "플랫폼별 버튼을 눌러 PNG를 저장하거나 ZIP 일괄 다운로드를 선택합니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "스플래시 생성",
+            "text": "스플래시 탭으로 이동해 제목/부제목을 입력하고 1242x2688 PNG를 다운로드합니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "프로젝트 반영",
+            "text": "iOS는 Xcode Assets, Android는 Image Asset Studio, 웹은 link 태그, Expo는 app.json의 icon/splash 설정을 업데이트합니다."
+          }
+        ]
+      }
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

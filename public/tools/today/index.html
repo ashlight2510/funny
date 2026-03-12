@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>오늘의 나, 잘했다</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="오늘 하루, 내가 잘한 단 하나를 기록하세요. 긍정을 강요하지 않는 1줄 기록 서비스."
+    />
+    <meta
+      name="keywords"
+      content="긍정 기록, 하루 회고, 자기 위로, 멘탈 케어, 간단 일기"
+    />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/today/" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="오늘의 나, 잘했다" />
+    <meta
+      property="og:description"
+      content="오늘 하루, 내가 잘한 단 하나면 충분합니다."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://picsum.photos/1200/630?random=12"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="오늘의 나, 잘했다" />
+    <meta
+      name="twitter:description"
+      content="오늘 하루, 내가 잘한 단 하나를 남겨보세요."
+    />
+    <meta
+      name="twitter:image"
+      content="https://picsum.photos/1200/630?random=12"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🌱%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(51, 65, 85, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+
+  <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <!-- Top Bar -->
+    <header
+      class="w-full px-4 py-3 flex justify-between items-center max-w-3xl mx-auto"
+    >
+      <h1 class="font-bold text-lg" data-i18n="headerTitle">🌱 오늘의 나, 잘했다</h1>
+      <a
+        href="https://funnyfunny.cloud"
+        target="_blank"
+        class="text-sm px-3 py-1.5 rounded-full border border-slate-300 hover:bg-slate-100 transition"
+        data-i18n="viewMore"
+      >
+        다른 서비스 보기 →
+      </a>
+    </header>
+
+    <!-- Main -->
+    <main class="flex-1 flex flex-col justify-center px-4">
+      <div class="max-w-md mx-auto bg-white rounded-3xl shadow-sm p-6">
+        <img
+          src="https://picsum.photos/600/360?random=5"
+          alt="calm"
+          class="rounded-2xl mb-6"
+          loading="lazy"
+        />
+
+        <h2 class="text-xl font-semibold mb-2" data-i18n="heroTitle">
+          오늘,<br />내가 잘한 건 뭐였을까?
+        </h2>
+
+        <p class="text-sm text-slate-500 mb-4" data-i18n="heroSubtitle">
+          거창하지 않아도 괜찮아요.<br />
+          단 하나면 충분합니다.
+        </p>
+
+        <textarea
+          id="input"
+          maxlength="60"
+          rows="2"
+          placeholder="예: 오늘은 버티기라도 했다"
+          data-i18n-placeholder="inputPlaceholder"
+          class="w-full border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 resize-none"
+        ></textarea>
+        <button
+          id="saveBtn"
+          class="w-full mt-4 py-3 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 transition"
+          data-i18n="saveButton"
+        >
+          오늘의 나 기록하기
+        </button>
+
+        <p id="savedMsg" class="hidden text-sm text-green-600 mt-4" data-i18n="savedMessage">
+          ✨ 오늘의 기록이 저장됐어요.
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-6" data-i18n="footer">
+      © 2025 오늘의 나, 잘했다
+    </footer>
+
+    <!-- Script -->
+    <script>
+      /* i18n */
+      const translations = {
+        ko: {
+          metaTitle: "오늘의 나, 잘했다",
+          metaDescription: "오늘 하루, 내가 잘한 단 하나를 기록하세요. 긍정을 강요하지 않는 1줄 기록 서비스.",
+          headerTitle: "🌱 오늘의 나, 잘했다",
+          viewMore: "다른 서비스 보기 →",
+          heroTitle: "오늘,<br />내가 잘한 건 뭐였을까?",
+          heroSubtitle: "거창하지 않아도 괜찮아요.<br />단 하나면 충분합니다.",
+          inputPlaceholder: "예: 오늘은 버티기라도 했다",
+          saveButton: "오늘의 나 기록하기",
+          savedMessage: "✨ 오늘의 기록이 저장됐어요.",
+          footer: "© 2025 오늘의 나, 잘했다"
+        },
+        en: {
+          metaTitle: "Today, I Did Well",
+          metaDescription: "Record one thing you did well today. A simple one-line journal service without forced positivity.",
+          headerTitle: "🌱 Today, I Did Well",
+          viewMore: "View other services →",
+          heroTitle: "Today,<br />What did I do well?",
+          heroSubtitle: "It doesn't have to be grand.<br />One thing is enough.",
+          inputPlaceholder: "e.g., I at least held on today",
+          saveButton: "Record today",
+          savedMessage: "✨ Today's record has been saved.",
+          footer: "© 2025 Today, I Did Well"
+        }
+      };
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.dataset.i18n;
+          const value = t(key);
+          if (key === "heroTitle" || key === "heroSubtitle") {
+            el.innerHTML = value;
+          } else {
+            el.textContent = value;
+          }
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+      setLang(detectLang(), { updateUrl: false });
+
+      const input = document.getElementById("input");
+      const btn = document.getElementById("saveBtn");
+      const msg = document.getElementById("savedMsg");
+
+      const today = new Date().toISOString().slice(0, 10);
+      const key = `good-${today}`;
+
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        input.value = JSON.parse(saved).text;
+        msg.classList.remove("hidden");
+      }
+
+      btn.addEventListener("click", () => {
+        const text = input.value.trim();
+        if (!text) return;
+
+        localStorage.setItem(key, JSON.stringify({ text, date: today }));
+
+        msg.classList.remove("hidden");
+      });
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

@@ -2,5 +2,3 @@ node_modules
 .DS_Store
 .next
 out
-# 빌드 시 copy-tools.mjs로 채워짐
-public/tools/

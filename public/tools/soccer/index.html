@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-i18n-title="metaTitle">우리 둘의 조합이 낳을 축구선수는?</title>
+
+    <!-- SEO meta -->
+    <meta
+      name="description"
+      content="나와 상대방의 생일을 입력하면, 우리 둘의 조합이 낳을 축구선수 타입을 랜덤(하지만 그럴듯하게) 매칭해드립니다. 결과는 바로 공유 가능!"
+    />
+    <meta
+      name="keywords"
+      content="축구 테스트, 생일 궁합, 축구선수 타입, 랜덤 테스트, 커플 테스트, 재미 테스트, football dna"
+    />
+    <meta name="author" content="FunnyFunny" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/soccer/" />
+    <!-- OG / Twitter -->
+    <meta property="og:title" content="우리 둘의 조합이 낳을 축구선수는?" />
+    <meta
+      property="og:description"
+      content="생일 2개만 입력하면 끝. 우리 조합에서 태어날 축구 DNA를 공개합니다 ⚽"
+    />
+    <meta property="og:type" content="website" />
+    <!-- ✅ 실제 동작 더미 이미지 -->
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1e293b/ffffff&text=Soccer"
+    />
+    <meta property="og:image:alt" content="Our Football DNA Result" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="우리 둘의 조합이 낳을 축구선수는?" />
+    <meta
+      name="twitter:description"
+      content="생일 2개만 입력하면 끝. 우리 조합에서 태어날 축구 DNA를 공개합니다 ⚽"
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/1e293b/ffffff&text=Soccer"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='0.9em'%20font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pretendard:wght@400;600;700&display=swap");
+      :root {
+        --bg0: #060712;
+        --bg1: #0b1020;
+        --card: #0f172a;
+      }
+      body {
+        font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto,
+          sans-serif;
+        background: radial-gradient(
+            1200px 600px at 10% 0%,
+            rgba(59, 130, 246, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 90% 20%,
+            rgba(34, 197, 94, 0.18),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .glass {
+        background: rgba(15, 23, 42, 0.62);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        backdrop-filter: blur(10px);
+      }
+      .shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .shine::after {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: linear-gradient(
+          120deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 65%
+        );
+        transform: translateX(-30%);
+        animation: sweep 3.8s infinite;
+      }
+      @keyframes sweep {
+        0% {
+          transform: translateX(-55%);
+        }
+        45% {
+          transform: translateX(70%);
+        }
+        100% {
+          transform: translateX(70%);
+        }
+      }
+      .fade-in {
+        animation: fade 0.28s ease-out both;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Date input calendar icon styling */
+      input[type="date"] {
+        color-scheme: dark;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        cursor: pointer;
+        opacity: 0.9;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator:hover {
+        opacity: 1;
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100px;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+      text-align: center;
+    }
+  </style>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(6, 7, 18, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(59, 130, 246, 0.2);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+</head>
+
+  <body class="min-h-screen text-slate-100 w-full flex flex-col items-center justify-center">
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="text-center mb-8 sm:mb-12">
+      <p class="text-xs uppercase tracking-widest text-slate-300/70 mb-2" data-i18n="subtitle">
+        Football DNA Simulator
+      </p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+        <span data-i18n="titlePart1">우리 둘의 조합이 낳을</span>
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-emerald-200 to-lime-200"
+          data-i18n="titlePart2">축구선수</span
+        ><span data-i18n="titlePart3">는?</span>
+      </h1>
+      
+      <!-- ✅ 기본 포함: 다른 서비스 보기 -->
+      <a
+        href="https://funnyfunny.cloud/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-2xl px-4 py-3 glass hover:bg-white/10 transition"
+      >
+        <span class="text-lg">🧩</span>
+        <span class="font-semibold" data-i18n="btnOtherServices">다른 서비스 보기</span>
+      </a>
+    </header>
+
+    <main class="pb-10">
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <!-- Input Card -->
+        <div class="glass rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold" data-i18n="inputTitle">생일 입력</h2>
+          </div>
+
+          <div class="space-y-5">
+            <label class="block">
+              <span class="text-sm font-semibold text-slate-200/90 mb-2 block" data-i18n="inputBirthA">내 생일</span>
+              <input
+                id="birthA"
+                type="date"
+                min="1900-01-01"
+                max="2025-12-31"
+                class="w-full rounded-2xl px-4 py-3.5 bg-slate-950/60 border border-slate-700/40 focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:border-sky-400/60 transition"
+              />
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-slate-200/90 mb-2 block" data-i18n="inputBirthB">상대방 생일</span>
+              <input
+                id="birthB"
+                type="date"
+                min="1900-01-01"
+                max="2025-12-31"
+                class="w-full rounded-2xl px-4 py-3.5 bg-slate-950/60 border border-slate-700/40 focus:outline-none focus:ring-2 focus:ring-emerald-400/60 focus:border-emerald-400/60 transition"
+              />
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-slate-200/90 mb-2 block" data-i18n="inputRelation">관계 타입 (선택)</span>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button
+                  type="button"
+                  data-rel="연인"
+                  class="relBtn rounded-2xl px-3 py-3.5 glass hover:bg-white/10 active:scale-[0.98] transition text-sm font-semibold"
+                >
+                  <span data-i18n="relationLovers">💞 연인</span>
+                </button>
+                <button
+                  type="button"
+                  data-rel="썸"
+                  class="relBtn rounded-2xl px-3 py-3.5 glass hover:bg-white/10 active:scale-[0.98] transition text-sm font-semibold"
+                >
+                  <span data-i18n="relationSome">😶‍🌫️ 썸</span>
+                </button>
+                <button
+                  type="button"
+                  data-rel="부부"
+                  class="relBtn rounded-2xl px-3 py-3.5 glass hover:bg-white/10 active:scale-[0.98] transition text-sm font-semibold"
+                >
+                  <span data-i18n="relationCouple">💍 부부</span>
+                </button>
+                <button
+                  type="button"
+                  data-rel="그냥 궁금"
+                  class="relBtn rounded-2xl px-3 py-3.5 glass hover:bg-white/10 active:scale-[0.98] transition text-sm font-semibold"
+                >
+                  <span data-i18n="relationCurious">👀 그냥</span>
+                </button>
+              </div>
+              <input id="relation" type="hidden" value="그냥 궁금" />
+            </label>
+
+            <button
+              id="goBtn"
+              class="w-full rounded-2xl px-4 py-4 font-extrabold text-slate-950 bg-gradient-to-r from-sky-300 via-emerald-200 to-lime-200 hover:opacity-95 hover:shadow-lg hover:shadow-sky-300/20 active:scale-[0.98] transition-all mt-2"
+            >
+              <span data-i18n="btnShowResult">결과 보기</span> ⚽
+            </button>
+
+            <p class="text-xs text-slate-300/70 leading-relaxed text-center mt-4" data-i18n="inputNote">
+              * 이 서비스는 재미용 시뮬레이터입니다. 입력값은 저장되지 않습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Preview/Result Area -->
+        <div>
+          <div id="resultWrap" class="hidden">
+            <div class="glass rounded-3xl overflow-hidden shadow-xl">
+              <div class="p-5 sm:p-6 border-b border-white/10">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                      <p
+                      id="resultEyebrow"
+                      class="text-xs uppercase tracking-widest text-slate-300/70"
+                      data-i18n="resultEyebrow"
+                    >
+                    </p>
+                    <h2
+                      id="resultTitle"
+                      class="text-2xl sm:text-3xl font-extrabold mt-2"
+                    ></h2>
+                    <p id="resultSub" class="text-slate-200/80 mt-2"></p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-xs text-slate-300/70" data-i18n="resultChem">케미</p>
+                    <p id="chem" class="text-2xl font-extrabold"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+                <div
+                  class="md:col-span-2 p-5 sm:p-6 border-b md:border-b-0 md:border-r border-white/10"
+                >
+                  <img
+                    id="playerImg"
+                    class="w-full aspect-[4/3] rounded-2xl object-cover border border-white/10"
+                    alt="Player Image"
+                    src=""
+                  />
+                  <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-3"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultPos">포지션</p>
+                      <p id="pos" class="font-bold mt-1"></p>
+                    </div>
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-3"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultNation">국적</p>
+                      <p id="nation" class="font-bold mt-1"></p>
+                    </div>
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-3"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultFoot">주발</p>
+                      <p id="foot" class="font-bold mt-1"></p>
+                    </div>
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-3"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultWeapon">무기</p>
+                      <p id="weapon" class="font-bold mt-1"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="md:col-span-3 p-5 sm:p-6">
+                  <div class="space-y-3">
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-4"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultOneLine">한 줄 판정</p>
+                      <p id="oneLine" class="mt-1 font-semibold"></p>
+                    </div>
+
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-4"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultStyle">플레이 스타일</p>
+                      <p id="style" class="mt-1"></p>
+                      <div id="tags" class="mt-3 flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <div
+                      class="rounded-2xl bg-white/5 border border-white/10 p-4"
+                    >
+                      <p class="text-xs text-slate-300/70" data-i18n="resultDNA">
+                        유전 해석 (농담 70%, 진심 30%)
+                      </p>
+                      <p
+                        id="dna"
+                        class="mt-1 leading-relaxed text-slate-100/90"
+                      ></p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-2 pt-1">
+                      <button
+                        id="copyBtn"
+                        class="flex-1 rounded-2xl px-4 py-3 font-bold bg-white/10 border border-white/10 hover:bg-white/15 transition"
+                      >
+                        <span data-i18n="btnCopy">결과 문구 복사</span> 📋
+                      </button>
+                      <button
+                        id="shareBtn"
+                        class="flex-1 rounded-2xl px-4 py-3 font-bold bg-white/10 border border-white/10 hover:bg-white/15 transition"
+                      >
+                        <span data-i18n="btnShare">공유하기</span> 🔗
+                      </button>
+                    </div>
+
+                    <!-- ✅ 기본 포함: 다른 서비스 보기 (결과 영역에도) -->
+                    <a
+                      href="https://funnyfunny.cloud/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block text-center rounded-2xl px-4 py-3 font-bold bg-gradient-to-r from-sky-300/20 via-emerald-200/15 to-lime-200/15 border border-white/10 hover:bg-white/10 transition"
+                    >
+                      <span data-i18n="btnOtherServices">다른 서비스 보기</span> 🧩
+                    </a>
+
+                    <p
+                      id="toast"
+                      class="hidden text-sm text-emerald-200 font-semibold"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 glass rounded-3xl p-5 sm:p-6">
+              <p class="text-sm text-slate-200/80 leading-relaxed" data-i18n="resultWarning">
+                ⚠️ 안내: 이 결과는
+                <span class="font-semibold">재미용</span>입니다. 다만… 이상하게
+                친구들이 "맞는 듯?" 하게 되는 그 맛이 핵심입니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-10 text-center text-xs text-slate-300/60">
+        © <span id="y"></span> FunnyFunny · Made for laughs & shares.
+      </footer>
+    </main>
+    </div>
+
+    <!-- 광고 영역 -->
+    <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 mt-8 mb-8">
+      <div class="adsense-block" style="min-height: 100px;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1204894220949193"
+             data-ad-slot="5145068706"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          // 광고 영역이 보일 때만 광고 로드
+          (function() {
+            const adBlock = document.querySelector('.adsense-block');
+            if (!adBlock) return;
+            
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  try {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    observer.disconnect();
+                  } catch (e) {
+                    console.warn('AdSense error:', e);
+                  }
+                }
+              });
+            }, { rootMargin: '50px' });
+            
+            observer.observe(adBlock);
+          })();
+        </script>
+      </div>
+    </div>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "우리 둘의 조합이 낳을 축구선수는?",
+          subtitle: "Football DNA Simulator",
+          titlePart1: "우리 둘의 조합이 낳을",
+          titlePart2: "축구선수",
+          titlePart3: "는?",
+          btnOtherServices: "다른 서비스 보기",
+          inputTitle: "생일 입력",
+          inputBirthA: "내 생일",
+          inputBirthB: "상대방 생일",
+          inputRelation: "관계 타입 (선택)",
+          relationLovers: "💞 연인",
+          relationSome: "😶‍🌫️ 썸",
+          relationCouple: "💍 부부",
+          relationCurious: "👀 그냥",
+          btnShowResult: "결과 보기",
+          inputNote: "* 이 서비스는 재미용 시뮬레이터입니다. 입력값은 저장되지 않습니다.",
+          resultEyebrow: "Your Result",
+          resultChem: "케미",
+          resultPos: "포지션",
+          resultNation: "국적",
+          resultFoot: "주발",
+          resultWeapon: "무기",
+          resultOneLine: "한 줄 판정",
+          resultStyle: "플레이 스타일",
+          resultDNA: "유전 해석 (농담 70%, 진심 30%)",
+          btnCopy: "결과 문구 복사",
+          btnShare: "공유하기",
+          resultWarning: "⚠️ 안내: 이 결과는 재미용입니다. 다만… 이상하게 친구들이 \"맞는 듯?\" 하게 되는 그 맛이 핵심입니다.",
+          toastInputRequired: "생일 2개를 모두 입력해줘!",
+          toastCopySuccess: "복사 완료! 톡/스토리에 붙여넣기 ㄱㄱ",
+          toastCopySuccessFallback: "복사 완료!",
+          toastShareLinkCopied: "공유 링크 복사 완료!",
+          toastShareNotSupported: "브라우저가 공유를 지원하지 않아요 😭",
+          shareTitle: "우리 둘의 조합이 낳을 축구선수는?",
+          shareResult: "결과: {name} 타입",
+          sharePosition: "포지션: {pos} · 케미: {chem}/100",
+          shareOneLine: "한 줄: {oneLine}",
+          resultType: "{name} 타입",
+          resultEyebrowWithRel: "Your Result · {rel}",
+        },
+        en: {
+          metaTitle: "What Football Player Would Our Combination Create?",
+          subtitle: "Football DNA Simulator",
+          titlePart1: "What Football Player",
+          titlePart2: "Would Our Combination",
+          titlePart3: "Create?",
+          btnOtherServices: "View Other Services",
+          inputTitle: "Birthday Input",
+          inputBirthA: "My Birthday",
+          inputBirthB: "Partner's Birthday",
+          inputRelation: "Relationship Type (Optional)",
+          relationLovers: "💞 Lovers",
+          relationSome: "😶‍🌫️ Some",
+          relationCouple: "💍 Couple",
+          relationCurious: "👀 Just Curious",
+          btnShowResult: "Show Result",
+          inputNote: "* This service is a fun simulator. Input values are not saved.",
+          resultEyebrow: "Your Result",
+          resultChem: "Chemistry",
+          resultPos: "Position",
+          resultNation: "Nationality",
+          resultFoot: "Foot",
+          resultWeapon: "Weapon",
+          resultOneLine: "One-Line Verdict",
+          resultStyle: "Play Style",
+          resultDNA: "DNA Analysis (70% joke, 30% serious)",
+          btnCopy: "Copy Result Text",
+          btnShare: "Share",
+          resultWarning: "⚠️ Note: This result is for fun. However... the key is that friends strangely find it \"accurate?\"",
+          toastInputRequired: "Please enter both birthdays!",
+          toastCopySuccess: "Copied! Paste in chat/story",
+          toastCopySuccessFallback: "Copied!",
+          toastShareLinkCopied: "Share link copied!",
+          toastShareNotSupported: "Browser doesn't support sharing 😭",
+          shareTitle: "⚽ What Football Player Would Our Combination Create?",
+          shareResult: "Result: {name} Type",
+          sharePosition: "Position: {pos} · Chemistry: {chem}/100",
+          shareOneLine: "One-Line: {oneLine}",
+          resultType: "{name} Type",
+          resultEyebrowWithRel: "Your Result · {rel}",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+          if (el.tagName === "TITLE") {
+            el.textContent = t(el.dataset.i18nTitle);
+          } else {
+            el.title = t(el.dataset.i18nTitle);
+          }
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          el.setAttribute("aria-label", t(el.dataset.i18nAria));
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+          el.setAttribute("alt", t(el.dataset.i18nAlt));
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+        // Re-generate with same inputs if result exists
+        if (window.lastResult) {
+          const a = window.lastResult.a;
+          const b = window.lastResult.b;
+          const rel = window.lastResult.rel;
+          if (a && b) {
+            const birthA = $("birthA");
+            const birthB = $("birthB");
+            const relation = $("relation");
+            if (birthA && birthB && relation) {
+              birthA.value = a;
+              birthB.value = b;
+              relation.value = rel;
+              setTimeout(() => generate(), 100);
+            }
+          }
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      // ---------- Utilities ----------
+      function clamp(n, a, b) {
+        return Math.max(a, Math.min(b, n));
+      }
+
+      // xmur3 + mulberry32: deterministic seeded RNG
+      function xmur3(str) {
+        let h = 1779033703 ^ str.length;
+        for (let i = 0; i < str.length; i++) {
+          h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+          h = (h << 13) | (h >>> 19);
+        }
+        return function () {
+          h = Math.imul(h ^ (h >>> 16), 2246822507);
+          h = Math.imul(h ^ (h >>> 13), 3266489909);
+          return (h ^= h >>> 16) >>> 0;
+        };
+      }
+      function mulberry32(a) {
+        return function () {
+          let t = (a += 0x6d2b79f5);
+          t = Math.imul(t ^ (t >>> 15), t | 1);
+          t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      function pick(rng, arr) {
+        return arr[Math.floor(rng() * arr.length)];
+      }
+      function pickN(rng, arr, n) {
+        const copy = arr.slice();
+        const out = [];
+        while (out.length < n && copy.length) {
+          const idx = Math.floor(rng() * copy.length);
+          out.push(copy.splice(idx, 1)[0]);
+        }
+        return out;
+      }
+
+      // ---------- Translation data ----------
+      function getPlayerStyleTranslations() {
+        const isKo = currentLang === "ko";
+        return {
+          "Lionel Messi": isKo ? "초근접 드리블 + 템포 조절로 경기 맥을 뽑아먹는 타입" : "Ultra-close dribbling + tempo control type that dominates the game",
+          "Cristiano Ronaldo": isKo ? "결정력·집념·피지컬로 모든 걸 밀어붙이는 엔진형" : "Engine type that pushes everything with finishing, persistence, and physicality",
+          "Kevin De Bruyne": isKo ? "시야로 먼저 도착하는 패스. 한 번 열면 끝까지 연다" : "Passes that arrive first with vision. Once open, keeps going",
+          "Kylian Mbappé": isKo ? "순간가속으로 수비 라인을 찢고 들어가는 속도형" : "Speed type that tears through defensive lines with instant acceleration",
+          "Erling Haaland": isKo ? "박스 안에서 끝내는 '공장형 득점기'" : "Goal-scoring factory that finishes inside the box",
+          "Neymar": isKo ? "기술로 분위기 장악 + 쇼맨십 한 스푼" : "Atmosphere control with technique + a spoonful of showmanship",
+          "Mohamed Salah": isKo ? "역습에서 가장 무서운 컷인 피니셔" : "The scariest cut-in finisher in counter-attacks",
+          "Son Heung-min": isKo ? "양발 결정력 + 공간 침투가 깔끔한 '효율 끝판왕'" : "Two-footed finishing + clean space penetration - the efficiency king",
+          "Harry Kane": isKo ? "득점도 하고 빌드업도 하는 만능 스트라이커" : "All-round striker who scores and builds up",
+          "Robert Lewandowski": isKo ? "기본기·포지셔닝·결정력 3박자 정석" : "Textbook trio: fundamentals, positioning, finishing",
+          "Virgil van Dijk": isKo ? "상대 공격을 '정리'하는 안정감의 상징" : "Symbol of stability who 'organizes' opponent attacks",
+          "Sergio Ramos": isKo ? "결정적 순간에 나타나는 공격형 수비 리더" : "Attacking defensive leader who appears at crucial moments",
+          "Rúben Dias": isKo ? "라인을 잡고 팀을 지휘하는 조직형 센터백" : "Organizing center-back who holds the line and commands the team",
+          "Jude Bellingham": isKo ? "박스 투 박스로 분위기 바꾸는 '새 에이스' 타입" : "Box-to-box type who changes the atmosphere - the 'new ace'",
+          "Rodri": isKo ? "게임을 느리게/빠르게 조절하는 미드필드의 기준점" : "Midfield reference point who controls the game's tempo",
+          "Luka Modrić": isKo ? "리듬과 방향을 바꾸는 마에스트로" : "Maestro who changes rhythm and direction",
+          "Toni Kroos": isKo ? "정확도로 상대 체력을 갉아먹는 패스 머신" : "Pass machine that drains opponent stamina with accuracy",
+          "Pedri": isKo ? "작은 터치로 큰 공간을 만드는 조용한 천재형" : "Quiet genius type who creates big spaces with small touches",
+          "Xavi": isKo ? "한 번에 한 칸씩 '이기는 루트'로 끌고 가는 타입" : "Type who leads step by step on the 'winning path'",
+          "Andrés Iniesta": isKo ? "큰 경기에서 조용히 한 번에 끝내는 예술가" : "Artist who quietly finishes everything in big games",
+          "Zinedine Zidane": isKo ? "우아함으로 경기 난이도를 낮추는 전설형" : "Legendary type who lowers game difficulty with elegance",
+          "Ronaldinho": isKo ? "사람을 웃기면서 이기는 마술사" : "Magician who wins while making people laugh",
+          "Ronaldo Nazário": isKo ? "첫 걸음에서 승부가 끝나는 폭발형 스트라이커" : "Explosive striker who decides the match from the first step",
+          "Thierry Henry": isKo ? "미니멀 동작으로 최대 효율을 뽑는 클래식 킬러" : "Classic killer who maximizes efficiency with minimal movement",
+          "Didier Drogba": isKo ? "큰 경기에서 버티고 부수는 '보스몹'" : "'Boss monster' who endures and breaks in big games",
+          "Andrea Pirlo": isKo ? "한 번의 패스로 세계관을 바꾸는 롱패스 장인" : "Long pass craftsman who changes perspectives with one pass",
+          "Gianluigi Buffon": isKo ? "팀 멘탈까지 막아주는 레전드 수문장" : "Legendary goalkeeper who protects even team morale",
+          "Manuel Neuer": isKo ? "골키퍼인데 사실상 스위퍼. 라인을 지운다" : "Goalkeeper who's actually a sweeper. Erases the line",
+          "Iker Casillas": isKo ? "반사신경으로 게임을 살리는 '순간의 영웅'" : "'Moment hero' who saves the game with reflexes",
+          "Marcelo": isKo ? "수비수인데 공격수처럼 논다. 측면의 예술" : "Defender who plays like a forward. Side artistry",
+          "Dani Alves": isKo ? "경기를 넓히는 왕성한 활동량 + 크로스" : "Vigorous work rate that widens the game + crosses",
+          "Trent Alexander-Arnold": isKo ? "오른쪽에서 패스로 경기 설계하는 타입" : "Type who designs the game with passes from the right",
+          "Achraf Hakimi": isKo ? "측면 가속으로 공간을 찢는 스프린터" : "Sprinter who tears space with flank acceleration",
+          "N'Golo Kanté": isKo ? "상대 공을 '없던 일'로 만드는 청소기" : "Vacuum cleaner who makes opponent balls 'never existed'",
+          "Casemiro": isKo ? "경기 흐름 끊고 팀을 지키는 방패형" : "Shield type who breaks game flow and protects the team",
+          "Sadio Mané": isKo ? "직선 침투 + 압박으로 경기 온도 올리는 타입" : "Type who raises game temperature with direct penetration + pressing",
+          "Vinícius Júnior": isKo ? "1대1에서 상대 멘탈을 녹이는 드리블러" : "Dribbler who melts opponent mentality in 1v1",
+          "Bukayo Saka": isKo ? "안정감+결정력으로 성장하는 '팀의 미래'" : "'Team's future' growing with stability + finishing",
+          "Bernardo Silva": isKo ? "쉴 새 없이 돌면서 압박을 이기는 테크니션" : "Technician who beats pressing by constantly moving",
+          "Antoine Griezmann": isKo ? "연결·압박·결정력 다 하는 똑똑한 플레이어" : "Smart player who links, presses, and finishes",
+          "Paulo Dybala": isKo ? "왼발로 각을 만들어 '예쁘게' 끝내는 타입" : "Type who creates angles with left foot and finishes 'beautifully'",
+          "Marco Reus": isKo ? "부드러운 터치로 찬스 만드는 감성형" : "Emotional type who creates chances with soft touches",
+          "Gareth Bale": isKo ? "스피드·파워·왼발 중거리로 한 방" : "One shot with speed, power, and left-footed long range",
+          "Xabi Alonso": isKo ? "경기 전체를 위에서 내려다보는 배급형" : "Distribution type who sees the entire game from above",
+          "Francesco Totti": isKo ? "한 팀에서 왕처럼 군림하는 플레이메이커" : "Playmaker who reigns like a king in one team",
+          "Steven Gerrard": isKo ? "중거리 한 방 + 리더십으로 팀 끌고 가는 타입" : "Type who leads the team with long-range shots + leadership",
+          "Frank Lampard": isKo ? "박스 침투로 득점 생산하는 미드필더" : "Midfielder who produces goals with box penetration",
+          "Paul Scholes": isKo ? "짧고 빠르게, 그리고 롱패스로 끝" : "Short and fast, then finished with long passes",
+          "David Beckham": isKo ? "프리킥·크로스로 각을 새기는 '정밀기계'" : "'Precision machine' who carves angles with free kicks and crosses",
+        };
+      }
+
+      function getFootTranslations() {
+        const isKo = currentLang === "ko";
+        return isKo ? [
+          "오른발",
+          "왼발",
+          "양발(사기)",
+          "오른발(왼발도 됨)",
+          "왼발(오른발도 됨)",
+        ] : [
+          "Right foot",
+          "Left foot",
+          "Both feet (OP)",
+          "Right foot (left works too)",
+          "Left foot (right works too)",
+        ];
+      }
+
+      function getWeaponsTranslations() {
+        const isKo = currentLang === "ko";
+        return isKo ? [
+          "중거리 한 방",
+          "박스 안 원터치",
+          "순간 가속",
+          "환상 패스",
+          "세트피스",
+          "공중볼",
+          "1대1 드리블",
+          "압박 탈출",
+          "수비 차단",
+          "클러치 멘탈",
+        ] : [
+          "Long-range shot",
+          "One-touch in box",
+          "Instant acceleration",
+          "Fantasy pass",
+          "Set pieces",
+          "Aerial balls",
+          "1v1 dribble",
+          "Press escape",
+          "Defensive block",
+          "Clutch mentality",
+        ];
+      }
+
+      function getOnelinesTranslations() {
+        const isKo = currentLang === "ko";
+        return isKo ? [
+          "이 조합은… 감독만 잘 만나면 바로 월드클래스입니다.",
+          "재능은 확실한데, 자꾸 하이라이트가 나옵니다. (좋은 뜻)",
+          "팀플도 되는데 솔로플도 됩니다. 위험하게 완성형.",
+          "경기 흐름을 바꾸는 타입이라 주변이 '왜 저래?' 하다 이깁니다.",
+          "기본기가 좋아서 오래갑니다. 꾸준히 무서운 조합.",
+        ] : [
+          "This combo... just meet the right coach and it's world-class.",
+          "Talent is clear, highlights keep coming. (Good meaning)",
+          "Works in team play and solo play. Dangerously complete.",
+          "A game-changing type, so opponents ask 'why is he like that?' and then lose.",
+          "Solid fundamentals last long. Consistently scary combo.",
+        ];
+      }
+
+      function getDnaTemplatesTranslations() {
+        const isKo = currentLang === "ko";
+        return isKo ? [
+          "A의 {aKey} + B의 {bKey}가 섞여서, {name}처럼 '{hook}'이(가) 강하게 나옵니다. 한 번 꽂히면 끝까지 갑니다.",
+          "둘의 조합은 '{hook}'이 핵심 유전자입니다. 그래서 {name} 타입: 상대가 대비를 해도 이상하게 뚫립니다.",
+          "{name} DNA는 {hook}에 투자합니다. A의 {aKey}가 기반을 깔고, B의 {bKey}가 마침표를 찍는 구조예요.",
+          "이 조합은 안정감 위에 임팩트를 얹습니다. {name}처럼 {hook}을(를) 한 번 터뜨리면 분위기가 바뀝니다.",
+        ] : [
+          "A's {aKey} + B's {bKey} mix together, so {name}'s '{hook}' comes out strong. Once locked in, goes all the way.",
+          "The combo's core gene is '{hook}'. That's why {name} type: strangely breaks through even when opponents prepare.",
+          "{name} DNA invests in {hook}. A's {aKey} lays the foundation, B's {bKey} adds the final touch.",
+          "This combo layers impact on stability. Like {name}, once {hook} explodes, the atmosphere changes.",
+        ];
+      }
+
+      function getKeywordsTranslations() {
+        const isKo = currentLang === "ko";
+        return {
+          a: isKo ? [
+            "집요함",
+            "꾸준함",
+            "승부욕",
+            "상상력",
+            "차분함",
+            "폭발력",
+            "정교함",
+            "책임감",
+            "계획성",
+            "감각",
+          ] : [
+            "Tenacity",
+            "Consistency",
+            "Competitiveness",
+            "Imagination",
+            "Calmness",
+            "Explosiveness",
+            "Precision",
+            "Responsibility",
+            "Planning",
+            "Sense",
+          ],
+          b: isKo ? [
+            "센스",
+            "용기",
+            "여유",
+            "도전성",
+            "유쾌함",
+            "자신감",
+            "몰입",
+            "배짱",
+            "유연함",
+            "리듬",
+          ] : [
+            "Sense",
+            "Courage",
+            "Ease",
+            "Challenge",
+            "Cheerfulness",
+            "Confidence",
+            "Immersion",
+            "Guts",
+            "Flexibility",
+            "Rhythm",
+          ],
+          hook: isKo ? [
+            "결정력",
+            "시야",
+            "드리블",
+            "가속",
+            "멘탈",
+            "패스",
+            "중거리",
+            "압박 탈출",
+            "공간 침투",
+            "세트피스",
+          ] : [
+            "Finishing",
+            "Vision",
+            "Dribble",
+            "Acceleration",
+            "Mentality",
+            "Pass",
+            "Long range",
+            "Press escape",
+            "Space penetration",
+            "Set pieces",
+          ],
+        };
+      }
+
+      // ---------- Player Dataset (lightweight, no DB) ----------
+      // Note: For fun only. Names are used as "types".
+      const PLAYERS = [
+        {
+          name: "Lionel Messi",
+          nation: "Argentina",
+          pos: "AMF / RW",
+          styleKo: "초근접 드리블 + 템포 조절로 경기 맥을 뽑아먹는 타입",
+          styleEn: "Ultra-close dribbling + tempo control type that dominates the game",
+          tags: ["GOAT Aura", "Tight Dribble", "Game Control"],
+        },
+        {
+          name: "Cristiano Ronaldo",
+          nation: "Portugal",
+          pos: "ST / LW",
+          style: "결정력·집념·피지컬로 모든 걸 밀어붙이는 엔진형",
+          tags: ["Finisher", "Air Threat", "Mentality"],
+        },
+        {
+          name: "Kevin De Bruyne",
+          nation: "Belgium",
+          pos: "CM / AMF",
+          style: "시야로 먼저 도착하는 패스. 한 번 열면 끝까지 연다",
+          tags: ["Through Ball", "Vision", "Tempo"],
+        },
+        {
+          name: "Kylian Mbappé",
+          nation: "France",
+          pos: "ST / LW",
+          style: "순간가속으로 수비 라인을 찢고 들어가는 속도형",
+          tags: ["Pace", "Channel Run", "Clinical"],
+        },
+        {
+          name: "Erling Haaland",
+          nation: "Norway",
+          pos: "ST",
+          style: "박스 안에서 끝내는 ‘공장형 득점기’",
+          tags: ["Box Monster", "Strength", "One Touch"],
+        },
+        {
+          name: "Neymar",
+          nation: "Brazil",
+          pos: "LW / AMF",
+          style: "기술로 분위기 장악 + 쇼맨십 한 스푼",
+          tags: ["Skill Moves", "Flair", "Unpredictable"],
+        },
+        {
+          name: "Mohamed Salah",
+          nation: "Egypt",
+          pos: "RW / ST",
+          style: "역습에서 가장 무서운 컷인 피니셔",
+          tags: ["Cut Inside", "Counter", "Composure"],
+        },
+        {
+          name: "Son Heung-min",
+          nation: "Korea",
+          pos: "LW / ST",
+          style: "양발 결정력 + 공간 침투가 깔끔한 ‘효율 끝판왕’",
+          tags: ["Two-footed", "Finishing", "Runs"],
+        },
+        {
+          name: "Harry Kane",
+          nation: "England",
+          pos: "ST",
+          style: "득점도 하고 빌드업도 하는 만능 스트라이커",
+          tags: ["Playmaking 9", "Finishing", "Hold-up"],
+        },
+        {
+          name: "Robert Lewandowski",
+          nation: "Poland",
+          pos: "ST",
+          style: "기본기·포지셔닝·결정력 3박자 정석",
+          tags: ["Positioning", "Clinical", "Consistency"],
+        },
+        {
+          name: "Virgil van Dijk",
+          nation: "Netherlands",
+          pos: "CB",
+          style: "상대 공격을 ‘정리’하는 안정감의 상징",
+          tags: ["Aerial", "Calm", "Dominance"],
+        },
+        {
+          name: "Sergio Ramos",
+          nation: "Spain",
+          pos: "CB",
+          style: "결정적 순간에 나타나는 공격형 수비 리더",
+          tags: ["Leadership", "Big Game", "Aggressive"],
+        },
+        {
+          name: "Rúben Dias",
+          nation: "Portugal",
+          pos: "CB",
+          style: "라인을 잡고 팀을 지휘하는 조직형 센터백",
+          tags: ["Organizer", "Tackling", "Command"],
+        },
+        {
+          name: "Jude Bellingham",
+          nation: "England",
+          pos: "CM / AMF",
+          style: "박스 투 박스로 분위기 바꾸는 ‘새 에이스’ 타입",
+          tags: ["Box-to-Box", "Clutch", "Energy"],
+        },
+        {
+          name: "Rodri",
+          nation: "Spain",
+          pos: "DM",
+          style: "게임을 느리게/빠르게 조절하는 미드필드의 기준점",
+          tags: ["Control", "Shield", "Simple"],
+        },
+        {
+          name: "Luka Modrić",
+          nation: "Croatia",
+          pos: "CM",
+          style: "리듬과 방향을 바꾸는 마에스트로",
+          tags: ["Outside Foot", "Press Resist", "Maestro"],
+        },
+        {
+          name: "Toni Kroos",
+          nation: "Germany",
+          pos: "CM",
+          style: "정확도로 상대 체력을 갉아먹는 패스 머신",
+          tags: ["Accuracy", "Switch", "Metronome"],
+        },
+        {
+          name: "Pedri",
+          nation: "Spain",
+          pos: "CM / AMF",
+          style: "작은 터치로 큰 공간을 만드는 조용한 천재형",
+          tags: ["First Touch", "IQ", "Smooth"],
+        },
+        {
+          name: "Xavi",
+          nation: "Spain",
+          pos: "CM",
+          style: "한 번에 한 칸씩 ‘이기는 루트’로 끌고 가는 타입",
+          tags: ["Tiki-taka", "Control", "Angles"],
+        },
+        {
+          name: "Andrés Iniesta",
+          nation: "Spain",
+          pos: "CM / AMF",
+          style: "큰 경기에서 조용히 한 번에 끝내는 예술가",
+          tags: ["Big Moment", "Dribble", "Calm"],
+        },
+        {
+          name: "Zinedine Zidane",
+          nation: "France",
+          pos: "AMF",
+          style: "우아함으로 경기 난이도를 낮추는 전설형",
+          tags: ["Elegance", "Technique", "Aura"],
+        },
+        {
+          name: "Ronaldinho",
+          nation: "Brazil",
+          pos: "LW / AMF",
+          style: "사람을 웃기면서 이기는 마술사",
+          tags: ["Joy", "Flair", "Magic"],
+        },
+        {
+          name: "Ronaldo Nazário",
+          nation: "Brazil",
+          pos: "ST",
+          style: "첫 걸음에서 승부가 끝나는 폭발형 스트라이커",
+          tags: ["Burst", "Dribble", "Finisher"],
+        },
+        {
+          name: "Thierry Henry",
+          nation: "France",
+          pos: "ST / LW",
+          style: "미니멀 동작으로 최대 효율을 뽑는 클래식 킬러",
+          tags: ["Efficiency", "Cut", "Composure"],
+        },
+        {
+          name: "Didier Drogba",
+          nation: "Côte d'Ivoire",
+          pos: "ST",
+          style: "큰 경기에서 버티고 부수는 ‘보스몹’",
+          tags: ["Big Game", "Hold-up", "Power"],
+        },
+        {
+          name: "Andrea Pirlo",
+          nation: "Italy",
+          pos: "CM / DM",
+          style: "한 번의 패스로 세계관을 바꾸는 롱패스 장인",
+          tags: ["Long Pass", "Set Piece", "Calm"],
+        },
+        {
+          name: "Gianluigi Buffon",
+          nation: "Italy",
+          pos: "GK",
+          style: "팀 멘탈까지 막아주는 레전드 수문장",
+          tags: ["Reflex", "Leadership", "Longevity"],
+        },
+        {
+          name: "Manuel Neuer",
+          nation: "Germany",
+          pos: "GK",
+          style: "골키퍼인데 사실상 스위퍼. 라인을 지운다",
+          tags: ["Sweeper GK", "Bravery", "Play"],
+        },
+        {
+          name: "Iker Casillas",
+          nation: "Spain",
+          pos: "GK",
+          style: "반사신경으로 게임을 살리는 ‘순간의 영웅’",
+          tags: ["Reflex", "Clutch", "Shot Stop"],
+        },
+        {
+          name: "Marcelo",
+          nation: "Brazil",
+          pos: "LB",
+          style: "수비수인데 공격수처럼 논다. 측면의 예술",
+          tags: ["Overlap", "Skill", "Playmaker"],
+        },
+        {
+          name: "Dani Alves",
+          nation: "Brazil",
+          pos: "RB",
+          style: "경기를 넓히는 왕성한 활동량 + 크로스",
+          tags: ["Work Rate", "Cross", "Width"],
+        },
+        {
+          name: "Trent Alexander-Arnold",
+          nation: "England",
+          pos: "RB / CM",
+          style: "오른쪽에서 패스로 경기 설계하는 타입",
+          tags: ["Playmaking", "Cross", "Vision"],
+        },
+        {
+          name: "Achraf Hakimi",
+          nation: "Morocco",
+          pos: "RB / RWB",
+          style: "측면 가속으로 공간을 찢는 스프린터",
+          tags: ["Pace", "Overlap", "Direct"],
+        },
+        {
+          name: "N'Golo Kanté",
+          nation: "France",
+          pos: "DM",
+          style: "상대 공을 ‘없던 일’로 만드는 청소기",
+          tags: ["Ball Win", "Engine", "Humble"],
+        },
+        {
+          name: "Casemiro",
+          nation: "Brazil",
+          pos: "DM",
+          style: "경기 흐름 끊고 팀을 지키는 방패형",
+          tags: ["Shield", "Duels", "Grit"],
+        },
+        {
+          name: "Sadio Mané",
+          nation: "Senegal",
+          pos: "LW / ST",
+          style: "직선 침투 + 압박으로 경기 온도 올리는 타입",
+          tags: ["Pressing", "Direct", "Runs"],
+        },
+        {
+          name: "Vinícius Júnior",
+          nation: "Brazil",
+          pos: "LW",
+          style: "1대1에서 상대 멘탈을 녹이는 드리블러",
+          tags: ["1v1", "Flair", "Acceleration"],
+        },
+        {
+          name: "Bukayo Saka",
+          nation: "England",
+          pos: "RW",
+          style: "안정감+결정력으로 성장하는 ‘팀의 미래’",
+          tags: ["Consistency", "Composed", "Versatile"],
+        },
+        {
+          name: "Bernardo Silva",
+          nation: "Portugal",
+          pos: "AMF / RW",
+          style: "쉴 새 없이 돌면서 압박을 이기는 테크니션",
+          tags: ["Press Resist", "Dribble", "Work Rate"],
+        },
+        {
+          name: "Antoine Griezmann",
+          nation: "France",
+          pos: "SS / AMF",
+          style: "연결·압박·결정력 다 하는 똑똑한 플레이어",
+          tags: ["Link-up", "Smart Runs", "Clutch"],
+        },
+        {
+          name: "Paulo Dybala",
+          nation: "Argentina",
+          pos: "AMF / SS",
+          style: "왼발로 각을 만들어 ‘예쁘게’ 끝내는 타입",
+          tags: ["Left Foot", "Curve", "Technique"],
+        },
+        {
+          name: "Marco Reus",
+          nation: "Germany",
+          pos: "AMF / LW",
+          style: "부드러운 터치로 찬스 만드는 감성형",
+          tags: ["Smooth", "Finishing", "Movement"],
+        },
+        {
+          name: "Gareth Bale",
+          nation: "Wales",
+          pos: "RW / LW",
+          style: "스피드·파워·왼발 중거리로 한 방",
+          tags: ["Power", "Pace", "Big Shot"],
+        },
+        {
+          name: "Xabi Alonso",
+          nation: "Spain",
+          pos: "CM / DM",
+          style: "경기 전체를 위에서 내려다보는 배급형",
+          tags: ["Distribution", "Calm", "Switch"],
+        },
+        {
+          name: "Francesco Totti",
+          nation: "Italy",
+          pos: "SS / AMF",
+          style: "한 팀에서 왕처럼 군림하는 플레이메이커",
+          tags: ["Loyalty", "Vision", "Finishing"],
+        },
+        {
+          name: "Steven Gerrard",
+          nation: "England",
+          pos: "CM",
+          style: "중거리 한 방 + 리더십으로 팀 끌고 가는 타입",
+          tags: ["Long Shot", "Leader", "Drive"],
+        },
+        {
+          name: "Frank Lampard",
+          nation: "England",
+          pos: "CM",
+          style: "박스 침투로 득점 생산하는 미드필더",
+          tags: ["Late Runs", "Goals", "Timing"],
+        },
+        {
+          name: "Paul Scholes",
+          nation: "England",
+          pos: "CM",
+          style: "짧고 빠르게, 그리고 롱패스로 끝",
+          tags: ["Passing", "Tempo", "Range"],
+        },
+        {
+          name: "David Beckham",
+          nation: "England",
+          pos: "RM / CM",
+          style: "프리킥·크로스로 각을 새기는 ‘정밀기계’",
+          tags: ["Set Piece", "Cross", "Precision"],
+        },
+      ];
+
+
+      // ---------- Pixabay API ----------
+      const PIXABAY_KEY = "53710884-8cf25255c451e1da9731736f6";
+
+      async function loadPlayerImage(playerName, imgElement, altText) {
+        try {
+          const url = new URL("https://pixabay.com/api/");
+          url.searchParams.set("key", PIXABAY_KEY);
+          // 선수 이름만 검색 쿼리에 사용
+          url.searchParams.set("q", playerName);
+          url.searchParams.set("image_type", "photo");
+          url.searchParams.set("orientation", "horizontal");
+          url.searchParams.set("safesearch", "true");
+          url.searchParams.set("lang", "en");
+          url.searchParams.set("per_page", "6");
+          console.log("[image search]", playerName, url.toString());
+
+          const res = await fetch(url);
+          if (!res.ok) throw new Error("Pixabay request failed");
+          const data = await res.json();
+          const hit = (data.hits || [])[0];
+
+          if (hit && hit.webformatURL) {
+            imgElement.src = hit.webformatURL;
+            imgElement.alt = altText || `${playerName} 이미지`;
+          } else {
+            // 이미지를 찾지 못한 경우 placeholder 사용
+            imgElement.src = `https://dummyimage.com/900x675/1e293b/ffffff&text=${encodeURIComponent(
+              playerName
+            )}`;
+            imgElement.alt = altText || `${playerName} Type`;
+            console.log("[image search] 이미지를 찾지 못함:", playerName);
+          }
+        } catch (err) {
+          console.error("이미지 불러오기 실패:", err);
+          // 실패 시 placeholder 사용
+          imgElement.src = `https://dummyimage.com/900x675/1e293b/ffffff&text=${encodeURIComponent(
+            playerName
+          )}`;
+          imgElement.alt = altText || `${playerName} Type`;
+        }
+      }
+
+      // ---------- UI bindings ----------
+      const $ = (id) => document.getElementById(id);
+      const birthA = $("birthA");
+      const birthB = $("birthB");
+      const relation = $("relation");
+      const goBtn = $("goBtn");
+      const resultWrap = $("resultWrap");
+
+      const resultTitle = $("resultTitle");
+      const resultSub = $("resultSub");
+      const chem = $("chem");
+      const pos = $("pos");
+      const nation = $("nation");
+      const foot = $("foot");
+      const weapon = $("weapon");
+      const oneLine = $("oneLine");
+      const style = $("style");
+      const dna = $("dna");
+      const tags = $("tags");
+      const playerImg = $("playerImg");
+      const toast = $("toast");
+      const copyBtn = $("copyBtn");
+      const shareBtn = $("shareBtn");
+      const resultEyebrow = $("resultEyebrow");
+
+      // Relationship buttons
+      document.querySelectorAll(".relBtn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".relBtn")
+            .forEach((b) =>
+              b.classList.remove("ring-2", "ring-emerald-300/60")
+            );
+          btn.classList.add("ring-2", "ring-emerald-300/60");
+          relation.value = btn.dataset.rel || "그냥 궁금";
+        });
+      });
+      // default select
+      document
+        .querySelector('.relBtn[data-rel="그냥 궁금"]')
+        ?.classList.add("ring-2", "ring-emerald-300/60");
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.remove("hidden");
+        setTimeout(() => toast.classList.add("hidden"), 1800);
+      }
+
+      function toYMD(d) {
+        return (d || "").trim();
+      }
+
+      function buildSeed(a, b, rel) {
+        const str = `${a}|${b}|${rel}|v1`;
+        const seedFn = xmur3(str);
+        return seedFn(); // uint32
+      }
+
+      let isUpdatingURL = false;
+      function updateURL(a, b, rel, showResult = true) {
+        if (isUpdatingURL) return; // 무한루프 방지
+        isUpdatingURL = true;
+        const url = new URL(location.href);
+        const currentA = url.searchParams.get("a");
+        const currentB = url.searchParams.get("b");
+        const currentR = url.searchParams.get("r");
+        const currentResult = url.searchParams.get("result");
+        
+        // 실제로 변경이 있을 때만 업데이트
+        if (currentA === a && currentB === b && currentR === rel && 
+            ((showResult && currentResult === "true") || (!showResult && currentResult !== "true"))) {
+          isUpdatingURL = false;
+          return;
+        }
+        
+        url.searchParams.set("a", a);
+        url.searchParams.set("b", b);
+        url.searchParams.set("r", rel);
+        if (showResult) {
+          url.searchParams.set("result", "true");
+        } else {
+          url.searchParams.delete("result");
+        }
+        // replaceState만 사용하여 페이지 리로드 방지
+        window.history.replaceState({}, "", url);
+        setTimeout(() => { isUpdatingURL = false; }, 100);
+      }
+
+      function makeShareText(res) {
+        const t = window.t || ((key, vars = {}) => key);
+        const line1 = t("shareTitle");
+        const line2 = t("shareResult", { name: res.player.name });
+        const line3 = t("sharePosition", { pos: res.player.pos, chem: res.chem });
+        const line4 = t("shareOneLine", { oneLine: res.oneLine });
+        return `${line1}\n${line2}\n${line3}\n${line4}\n\n👉 ${location.href}`;
+      }
+
+      function renderResult(res) {
+        const t = window.t || ((key, vars = {}) => key);
+        window.lastResult = res;
+        resultWrap.classList.remove("hidden");
+        resultWrap.classList.add("fade-in");
+        
+        // 결과 페이지 모드: 입력 섹션 숨기기
+        showResultView();
+
+        // Translate relation
+        const relMap = {
+          "연인": t("relationLovers").replace("💞 ", ""),
+          "썸": t("relationSome").replace("😶‍🌫️ ", ""),
+          "부부": t("relationCouple").replace("💍 ", ""),
+          "그냥 궁금": t("relationCurious").replace("👀 ", ""),
+        };
+        const relText = relMap[res.rel] || res.rel;
+
+        resultEyebrow.textContent = t("resultEyebrowWithRel", { rel: relText });
+        resultTitle.textContent = t("resultType", { name: res.player.name });
+        resultSub.textContent = `${res.player.nation} · ${res.player.pos} · "${res.hook}"`;
+
+        chem.textContent = `${res.chem}/100`;
+        pos.textContent = res.player.pos;
+        nation.textContent = res.player.nation;
+        foot.textContent = res.foot;
+        weapon.textContent = res.weapon;
+
+        oneLine.textContent = res.oneLine;
+        const styleTranslations = getPlayerStyleTranslations();
+        style.textContent = styleTranslations[res.player.name] || res.player.styleKo || res.player.styleEn || res.player.style;
+
+        tags.innerHTML = "";
+        res.tags.forEach((tag) => {
+          const el = document.createElement("span");
+          el.className =
+            "px-3 py-1 rounded-full bg-white/10 border border-white/10 text-sm";
+          el.textContent = tag;
+          tags.appendChild(el);
+        });
+
+        dna.textContent = res.dna;
+
+        // ✅ 해당 선수 얼굴 이미지 표시 (Pixabay API 사용)
+        loadPlayerImage(res.player.name, playerImg, `${res.player.name} Type`);
+
+        // scroll into view
+        resultWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function generate() {
+        const a = toYMD(birthA.value);
+        const b = toYMD(birthB.value);
+        const rel = relation.value || "그냥 궁금";
+
+        const t = window.t || ((key, vars = {}) => key);
+        if (!a || !b) {
+          showToast(t("toastInputRequired"));
+          return;
+        }
+
+        updateURL(a, b, rel, true);
+
+        const seed = buildSeed(a, b, rel);
+        const rng = mulberry32(seed);
+
+        const player = PLAYERS[Math.floor(rng() * PLAYERS.length)];
+        const chemScore = Math.floor(70 + rng() * 31); // 70~100
+        const hooks = getKeywordsTranslations().hook;
+        const hook = pick(rng, hooks);
+        const onelines = getOnelinesTranslations();
+        const one = pick(rng, onelines);
+        const foots = getFootTranslations();
+        const f = pick(rng, foots);
+        const weapons = getWeaponsTranslations();
+        const w = pick(rng, weapons);
+
+        const keywords = getKeywordsTranslations();
+        const aKey = pick(rng, keywords.a);
+        const bKey = pick(rng, keywords.b);
+        const dnaTemplates = getDnaTemplatesTranslations();
+        const dnaTpl = pick(rng, dnaTemplates);
+        const dnaText = dnaTpl
+          .replaceAll("{name}", player.name)
+          .replaceAll("{hook}", hook)
+          .replaceAll("{aKey}", aKey)
+          .replaceAll("{bKey}", bKey);
+
+        const extraTags = pickN(
+          rng,
+          [
+            "Clutch",
+            "Calm",
+            "Chaos",
+            "High IQ",
+            "Big Game",
+            "Work Rate",
+            "Ice Cold",
+            "Street Ball",
+            "Machine",
+            "Artist",
+            "Captain",
+            "Counter",
+          ],
+          2
+        );
+
+        const res = {
+          a,
+          b,
+          rel,
+          player,
+          chem: chemScore,
+          hook,
+          oneLine: one,
+          foot: f,
+          weapon: w,
+          tags: [...(player.tags || []).slice(0, 2), ...extraTags],
+          dna: dnaText,
+          imgSeed: `football-${player.name
+            .replace(/\s+/g, "-")
+            .toLowerCase()}-${seed}`,
+        };
+
+        renderResult(res);
+
+        // bind copy/share with this result
+        const shareText = makeShareText(res);
+
+        copyBtn.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(shareText);
+            showToast(t("toastCopySuccess"));
+          } catch {
+            // fallback
+            const ta = document.createElement("textarea");
+            ta.value = shareText;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+            showToast(t("toastCopySuccessFallback"));
+          }
+        };
+
+        shareBtn.onclick = async () => {
+          const url = location.href;
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: t("shareTitle"),
+                text: shareText,
+                url,
+              });
+            } catch {
+              // user canceled
+            }
+          } else {
+            try {
+              await navigator.clipboard.writeText(url);
+              showToast(t("toastShareLinkCopied"));
+            } catch {
+              showToast(t("toastShareNotSupported"));
+            }
+          }
+        };
+      }
+
+      goBtn.addEventListener("click", generate);
+
+      // Enter-to-run
+      [birthA, birthB].forEach((inp) =>
+        inp.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") generate();
+        })
+      );
+
+      // 입력/결과 뷰 전환 함수
+      function showInputView() {
+        const inputSection = document.querySelector('section:not(#resultWrap)');
+        if (inputSection) {
+          inputSection.classList.remove("hidden");
+          inputSection.style.display = "";
+        }
+        resultWrap.classList.add("hidden");
+        // 헤더 다시 보이기
+        const header = document.querySelector('header');
+        if (header) {
+          header.classList.remove("hidden");
+          header.style.display = "";
+        }
+      }
+      
+      function showResultView() {
+        const inputSection = document.querySelector('section:not(#resultWrap)');
+        if (inputSection) {
+          inputSection.classList.add("hidden");
+          inputSection.style.display = "none";
+        }
+        resultWrap.classList.remove("hidden");
+        // 헤더도 숨기기
+        const header = document.querySelector('header');
+        if (header) {
+          header.classList.add("hidden");
+          header.style.display = "none";
+        }
+      }
+
+      // Auto-run from query params (한 번만 실행)
+      let hasInitialized = false;
+      (function initFromURL() {
+        if (hasInitialized) return;
+        hasInitialized = true;
+        
+        $("y").textContent = new Date().getFullYear();
+        const url = new URL(location.href);
+        const a = url.searchParams.get("a");
+        const b = url.searchParams.get("b");
+        const r = url.searchParams.get("r");
+        const showResult = url.searchParams.get("result") === "true";
+        
+        if (a) birthA.value = a;
+        if (b) birthB.value = b;
+        if (r) relation.value = r;
+
+        // highlight relation if matches
+        if (r) {
+          document
+            .querySelectorAll(".relBtn")
+            .forEach((b) =>
+              b.classList.remove("ring-2", "ring-emerald-300/60")
+            );
+          const btn = document.querySelector(
+            `.relBtn[data-rel="${CSS.escape(r)}"]`
+          );
+          btn?.classList.add("ring-2", "ring-emerald-300/60");
+        }
+
+        if (a && b) {
+          // 결과 페이지 모드면 바로 결과 화면 표시
+          if (showResult) {
+            showResultView();
+          }
+          // auto-generate if shared link
+          setTimeout(() => {
+            generate();
+          }, 120);
+        } else if (showResult) {
+          // result=true인데 데이터가 없으면 입력 화면으로
+          showInputView();
+          const url = new URL(location.href);
+          url.searchParams.delete("result");
+          window.history.replaceState({}, "", url);
+        }
+      })();
+    </script>
+</body>
+</html>

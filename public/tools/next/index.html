@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>다음 해의 나, 지금 결정된다</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="올해 당신의 선택이 1년 뒤 인생에 남길 결과. 10문항으로 확인하는 '다음 해의 나' 루트."
+    />
+    <meta
+      name="keywords"
+      content="연초 테스트, 새해 다짐, 자기계발, 습관 테스트, 인간관계, 집중력, 재테크, 인생 루트"
+    />
+    <meta name="author" content="FunnyFunny" />
+    <!-- TODO: 배포 도메인으로 교체 -->
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/next/" />
+    <!-- OG -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="다음 해의 나, 지금 결정된다" />
+    <meta
+      property="og:description"
+      content="올해의 선택이 1년 뒤 당신을 만든다. 안정 루트 vs 제자리 루트 vs 위험하지만 터질 루트."
+    />
+    <!-- 더미 이미지: placehold.co / dummyimage.com 사용 금지 → loremflickr 사용 -->
+    <meta
+      property="og:image"
+      content="https://loremflickr.com/1200/630/future,neon?lock=2026"
+    />
+    <meta property="og:image:alt" content="Next Year Route Test" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="다음 해의 나, 지금 결정된다" />
+    <meta
+      name="twitter:description"
+      content="올해의 선택이 1년 뒤 당신을 만든다. 10문항 결과로 루트를 확인하세요."
+    />
+    <meta
+      name="twitter:image"
+      content="https://loremflickr.com/1200/630/future,neon?lock=2026"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%94%AE%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pretendard:wght@400;600;700&display=swap");
+      :root {
+        --bg0: #060815;
+        --bg1: #0b1028;
+        --card: #0b122e;
+        --stroke: rgba(255, 255, 255, 0.08);
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto,
+          "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+        background: radial-gradient(
+            1200px 700px at 20% 10%,
+            #172554 0%,
+            transparent 55%
+          ),
+          radial-gradient(900px 600px at 85% 30%, #4c1d95 0%, transparent 60%),
+          linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+      }
+      .glass {
+        background: rgba(11, 18, 46, 0.72);
+        border: 1px solid var(--stroke);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      }
+      .btn {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .opt {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .opt:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+      .fade {
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(11, 18, 46, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(241, 245, 249, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(139, 92, 246, 0.3);
+      color: #f1f5f9;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: rgba(241, 245, 249, 0.9);
+    }
+  </style>
+</head>
+
+  <body class="text-slate-100"><div class="min-h-full">
+      <div class="lang-switch" role="tablist" aria-label="Language switcher">
+        <button type="button" data-lang="ko" class="active">KR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <!-- Top bar -->
+      <header class="max-w-5xl mx-auto px-4 pt-6">
+        <div class="flex items-center justify-between gap-3">
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-slate-200/90 hover:text-white transition"
+          >
+            <span class="text-xl">🔮</span>
+            <span class="font-semibold tracking-tight">FunnyFunny</span>
+          </a>
+
+          <!-- ✅ 기본 포함: 다른 서비스 보기 -->
+          <a
+            id="more-services-top"
+            href="https://funnyfunny.cloud/"
+            class="btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold"
+          >
+            다른 서비스 보기
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="max-w-5xl mx-auto px-4 pb-16 pt-6">
+        <!-- Hero / Card -->
+        <section class="glass rounded-3xl p-5 sm:p-8">
+          <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
+            <div class="flex-1">
+              <div
+                class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold bg-white/5 border border-white/10"
+              >
+                <span class="opacity-80">연초 각성용</span>
+                <span class="opacity-60">·</span>
+                <span class="opacity-80">10문항</span>
+                <span class="opacity-60">·</span>
+                <span class="opacity-80">캡처 공유 최적화</span>
+              </div>
+
+              <h1
+                id="titleH1"
+                class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight"
+              >
+                🔮 <span data-next-year>{{YEAR}}</span>년의 나, 지금 결정된다
+              </h1>
+
+              <p id="subtitle" class="mt-3 text-slate-200/90 leading-relaxed">
+                올해 당신의 선택이 1년 뒤 인생에 남길 결과.
+                <span class="text-white font-semibold"
+                  >습관·돈·인간관계·집중력</span
+                >으로 루트를 확인하세요.
+              </p>
+
+              <div class="mt-5 flex flex-wrap items-center gap-2">
+                <span
+                  class="kbd text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-200/90"
+                  >클릭하면 바로 다음</span
+                >
+                <span
+                  class="kbd text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-200/90"
+                  >결과는 저장/공유 가능</span
+                >
+                <span
+                  class="kbd text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-200/90"
+                  >매년 자동 업데이트</span
+                >
+              </div>
+            </div>
+
+            <!-- Side preview -->
+            <div class="lg:w-[360px]">
+              <div
+                class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+              >
+                <img
+                  src="https://loremflickr.com/720/480/future,city,neon?lock=120"
+                  alt="preview"
+                  class="w-full h-44 object-cover"
+                  loading="lazy"
+                />
+                <div class="p-4">
+                  <p class="text-sm text-slate-200/90">결과는 3가지 루트:</p>
+                  <div class="mt-3 grid gap-2">
+                    <div
+                      class="flex items-center justify-between rounded-xl px-3 py-2 bg-white/5 border border-white/10"
+                    >
+                      <span class="text-sm font-semibold">🟢 안정 루트</span>
+                      <span class="text-xs text-slate-300/80"
+                        >무너지지 않는다</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center justify-between rounded-xl px-3 py-2 bg-white/5 border border-white/10"
+                    >
+                      <span class="text-sm font-semibold">🟡 제자리 루트</span>
+                      <span class="text-xs text-slate-300/80"
+                        >바뀌지 않는다</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center justify-between rounded-xl px-3 py-2 bg-white/5 border border-white/10"
+                    >
+                      <span class="text-sm font-semibold"
+                        >🔴 위험하지만 터질 루트</span
+                      >
+                      <span class="text-xs text-slate-300/80">판이 바뀐다</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                id="startBtn"
+                class="mt-4 w-full rounded-2xl px-5 py-4 font-extrabold text-base sm:text-lg bg-white text-slate-950 hover:bg-slate-100 active:translate-y-[1px] transition"
+              >
+                시작하기 (3분 컷)
+              </button>
+              <p class="mt-2 text-xs text-slate-300/80">
+                * 이 테스트는 재미/통찰 목적이며, 개인의 상황에 따라 다를 수
+                있습니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quiz -->
+        <section id="quizSection" class="mt-6 hidden">
+          <div class="glass rounded-3xl p-5 sm:p-8">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs text-slate-300/80 font-semibold">진행도</p>
+                <p class="text-sm text-slate-200/90">
+                  <span id="qIndexText" class="font-bold text-white">1</span>
+                  <span class="opacity-70">/</span>
+                  <span id="qTotalText" class="opacity-80">10</span>
+                </p>
+              </div>
+
+              <button
+                id="restartBtnTop"
+                class="btn rounded-xl px-4 py-2 text-sm font-semibold"
+              >
+                다시하기
+              </button>
+            </div>
+
+            <div class="mt-4">
+              <div
+                class="h-2 rounded-full bg-white/5 border border-white/10 overflow-hidden"
+              >
+                <div
+                  id="progressBar"
+                  class="h-full rounded-full bg-white/70"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+
+            <div id="questionWrap" class="mt-6 fade opacity-100 translate-y-0">
+              <div class="flex items-center gap-2">
+                <span
+                  id="qTag"
+                  class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200/90"
+                  >습관</span
+                >
+                <span class="text-xs text-slate-300/80" id="qHint"
+                  >버튼을 누르면 바로 다음으로 넘어갑니다</span
+                >
+              </div>
+
+              <h2
+                id="qText"
+                class="mt-3 text-2xl sm:text-3xl font-extrabold leading-snug tracking-tight"
+              >
+                질문 텍스트
+              </h2>
+
+              <div
+                id="options"
+                class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3"
+              >
+                <!-- options injected -->
+              </div>
+
+              <div
+                class="mt-5 flex flex-wrap items-center gap-2 text-xs text-slate-300/80"
+              >
+                <span
+                  class="kbd px-2 py-1 rounded-lg bg-white/5 border border-white/10"
+                  >Tip</span
+                >
+                <span>너무 고민하지 말고 “요즘의 나” 기준으로 고르기</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Result -->
+        <section id="resultSection" class="mt-6 hidden">
+          <div class="glass rounded-3xl p-5 sm:p-8">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <p class="text-xs text-slate-300/80 font-semibold">
+                      당신의 루트
+                    </p>
+                    <h2
+                      id="routeTitle"
+                      class="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight"
+                    >
+                      🟢 1년 뒤 안정 루트
+                    </h2>
+                  </div>
+
+                  <!-- ✅ 기본 포함: 다른 서비스 보기 (결과 영역) -->
+                  <a
+                    id="more-services-result"
+                    href="https://funnyfunny.cloud/"
+                    class="btn rounded-xl px-4 py-2 text-sm font-semibold inline-flex items-center gap-2"
+                  >
+                    다른 서비스 보기 ↗
+                  </a>
+                </div>
+
+                <!-- Share card (capture-friendly) -->
+                <div
+                  id="shareCard"
+                  class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-5"
+                >
+                  <p class="text-xs text-slate-300/80 font-semibold">
+                    🔥 공유 문구
+                  </p>
+                  <p
+                    id="shareLine"
+                    class="mt-2 text-lg sm:text-xl font-extrabold leading-snug"
+                  >
+                    “이 선택을 유지하면,
+                    <span data-next-year>{{YEAR}}</span>년의 나는 이 상태다”
+                  </p>
+
+                  <div class="mt-4 grid gap-2">
+                    <p
+                      id="insightLine"
+                      class="text-slate-200/90 leading-relaxed"
+                    >
+                      통찰 한 줄
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                      <span
+                        id="pill1"
+                        class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10"
+                        >습관</span
+                      >
+                      <span
+                        id="pill2"
+                        class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10"
+                        >돈</span
+                      >
+                      <span
+                        id="pill3"
+                        class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10"
+                        >관계</span
+                      >
+                      <span
+                        id="pill4"
+                        class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10"
+                        >집중</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="mt-4 grid sm:grid-cols-2 gap-3">
+                    <button
+                      id="copyBtn"
+                      class="rounded-2xl px-4 py-3 font-extrabold bg-white text-slate-950 hover:bg-slate-100 transition"
+                    >
+                      결과 문구 복사
+                    </button>
+                    <button
+                      id="restartBtn"
+                      class="btn rounded-2xl px-4 py-3 font-extrabold"
+                    >
+                      다시하기
+                    </button>
+                  </div>
+
+                  <p
+                    id="copyToast"
+                    class="mt-2 text-xs text-slate-300/80 hidden"
+                  >
+                    복사됨 ✅
+                  </p>
+                </div>
+
+                <!-- Action -->
+                <div
+                  class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5"
+                >
+                  <p class="text-xs text-slate-300/80 font-semibold">
+                    오늘 할 단 1가지
+                  </p>
+                  <p id="oneThing" class="mt-2 text-lg font-extrabold">
+                    1가지 액션
+                  </p>
+                  <ul
+                    id="actionList"
+                    class="mt-3 space-y-2 text-slate-200/90 text-sm leading-relaxed list-disc pl-5"
+                  >
+                    <!-- injected -->
+                  </ul>
+                </div>
+              </div>
+
+              <!-- right rail -->
+              <aside class="lg:w-[360px]">
+                <div
+                  class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+                >
+                  <img
+                    id="resultImg"
+                    src="https://loremflickr.com/720/520/abstract,light?lock=77"
+                    alt="result"
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                  <div class="p-4">
+                    <p class="text-xs text-slate-300/80 font-semibold">
+                      내 점수(참고용)
+                    </p>
+                    <div class="mt-3 grid gap-2">
+                      <div
+                        class="flex items-center justify-between rounded-xl px-3 py-2 bg-white/5 border border-white/10"
+                      >
+                        <span class="text-sm font-semibold">안정 지수</span>
+                        <span class="text-sm font-extrabold" id="stabilityScore"
+                          >0</span
+                        >
+                      </div>
+                      <div
+                        class="flex items-center justify-between rounded-xl px-3 py-2 bg-white/5 border border-white/10"
+                      >
+                        <span class="text-sm font-semibold">변화 지수</span>
+                        <span class="text-sm font-extrabold" id="changeScore"
+                          >0</span
+                        >
+                      </div>
+                    </div>
+
+                    <p class="mt-4 text-xs text-slate-300/80 leading-relaxed">
+                      * 점수는 재미/경향 확인용입니다. 핵심은 “지금의 선택을
+                      유지했을 때”의 방향성입니다.
+                    </p>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <footer class="max-w-5xl mx-auto px-1 pt-8">
+          <div class="text-center text-xs text-slate-300/70">
+            © <span id="thisYear"></span> FunnyFunny · Built for share & insight
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // =========================
+      // 0) i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "다음 해의 나, 지금 결정된다",
+          metaDescription: "올해 당신의 선택이 1년 뒤 인생에 남길 결과. 10문항으로 확인하는 '다음 해의 나' 루트.",
+          metaOgDescription: "올해의 선택이 1년 뒤 당신을 만든다. 안정 루트 vs 제자리 루트 vs 위험하지만 터질 루트.",
+          metaTwitterDescription: "올해의 선택이 1년 뒤 당신을 만든다. 10문항 결과로 루트를 확인하세요.",
+          viewMore: "다른 서비스 보기",
+          badgeYear: "연초 각성용",
+          badgeQuestions: "10문항",
+          badgeShare: "캡처 공유 최적화",
+          title: "{{YEAR}}년의 나, 지금 결정된다",
+          subtitle: "올해 당신의 선택이 1년 뒤 인생에 남길 결과.",
+          subtitleHighlight: "습관·돈·인간관계·집중력",
+          subtitleEnd: "으로 루트를 확인하세요.",
+          hintClick: "클릭하면 바로 다음",
+          hintSave: "결과는 저장/공유 가능",
+          hintAuto: "매년 자동 업데이트",
+          routeStable: "안정 루트",
+          routeStableDesc: "무너지지 않는다",
+          routeSame: "제자리 루트",
+          routeSameDesc: "바뀌지 않는다",
+          routeBoom: "위험하지만 터질 루트",
+          routeBoomDesc: "판이 바뀐다",
+          startBtn: "시작하기 (3분 컷)",
+          disclaimer: "이 테스트는 재미/통찰 목적이며, 개인의 상황에 따라 다를 수 있습니다.",
+          progress: "진행도",
+          restartBtn: "다시하기",
+          qHint: "버튼을 누르면 바로 다음으로 넘어갑니다",
+          tipLabel: "Tip",
+          tipText: "너무 고민하지 말고 \"요즘의 나\" 기준으로 고르기",
+          resultRoute: "당신의 루트",
+          shareLabel: "🔥 공유 문구",
+          shareBase: "이 선택을 유지하면, {{YEAR}}년의 나는 이 상태다",
+          todayOne: "오늘 할 단 1가지",
+          copyBtn: "결과 문구 복사",
+          copyToast: "복사됨 ✅",
+          scoreLabel: "내 점수(참고용)",
+          scoreStability: "안정 지수",
+          scoreChange: "변화 지수",
+          scoreNote: "점수는 재미/경향 확인용입니다. 핵심은 \"지금의 선택을 유지했을 때\"의 방향성입니다.",
+          optionHint: "선택하면 바로 다음",
+          tagHabit: "습관",
+          tagMoney: "돈",
+          tagRelationship: "인간관계",
+          tagFocus: "집중력",
+          tagTotal: "종합",
+          // Questions data
+          q1_tag: "습관",
+          q1_text: "요즘 가장 자주 반복하는 행동은?",
+          q1_opt1: "😴 해야 할 걸 미루는 편",
+          q1_opt2: "📱 무의미한 스크롤이 많다",
+          q1_opt3: "✅ 루틴(운동/정리/공부) 유지 중",
+          q1_opt4: "🚀 루틴을 새로 만들고 있다",
+          q2_tag: "습관",
+          q2_text: "하루를 마칠 때 '나한테 남는 것'이 있나?",
+          q2_opt1: "거의 없다",
+          q2_opt2: "가끔 있다",
+          q2_opt3: "대부분 있다",
+          q2_opt4: "일부러 만들고 있다",
+          q3_tag: "돈",
+          q3_text: "올해 돈을 쓰는 기준은?",
+          q3_opt1: "스트레스 풀려고 쓰는 편",
+          q3_opt2: "필요할 때만 쓰는 편",
+          q3_opt3: "경험/배움에 투자하는 편",
+          q3_opt4: "일단 아끼고 모으는 편",
+          q4_tag: "돈",
+          q4_text: "수입/자산 흐름은 지금 어떤 상태?",
+          q4_opt1: "고정 수입 + 여유 거의 없음",
+          q4_opt2: "고정 수입 + 조금씩 개선 중",
+          q4_opt3: "복수 수입/사이드 시도 중",
+          q4_opt4: "불안정하지만 크게 키우는 중",
+          q5_tag: "인간관계",
+          q5_text: "최근 가장 에너지를 많이 쓰는 관계는?",
+          q5_opt1: "😵 나를 소모시키는 관계",
+          q5_opt2: "🙂 무난한 관계",
+          q5_opt3: "🌱 나를 성장시키는 관계",
+          q5_opt4: "🧹 정리/경계선 세우는 중",
+          q6_tag: "인간관계",
+          q6_text: "불편한 관계를 정리하거나 거리를 둘 수 있나?",
+          q6_opt1: "못한다",
+          q6_opt2: "고민 중이다",
+          q6_opt3: "할 수 있다",
+          q6_opt4: "이미 하고 있다",
+          q7_tag: "집중력",
+          q7_text: "하루에 '깊게 집중'하는 시간은?",
+          q7_opt1: "거의 없다",
+          q7_opt2: "1~2시간",
+          q7_opt3: "3시간 이상",
+          q7_opt4: "루틴으로 만들고 있다",
+          q8_tag: "집중력",
+          q8_text: "알림/SNS 같은 방해 요소를 통제하고 있나?",
+          q8_opt1: "전혀 못 한다",
+          q8_opt2: "가끔만 통제한다",
+          q8_opt3: "대부분 통제한다",
+          q8_opt4: "강하게 통제(앱 차단/시간 규칙)",
+          q9_tag: "종합",
+          q9_text: "올해 '변화'에 대한 내 태도는?",
+          q9_opt1: "안정이 우선 (리스크는 싫다)",
+          q9_opt2: "필요하면 바꾼다",
+          q9_opt3: "지금 판을 바꿔야 한다",
+          q9_opt4: "작게 실험하며 바꾼다",
+          q10_tag: "종합",
+          q10_text: "내가 가장 놓치기 쉬운 한 가지는?",
+          q10_opt1: "잠/체력",
+          q10_opt2: "돈 흐름",
+          q10_opt3: "관계 정리",
+          q10_opt4: "집중력/환경",
+          // Routes data
+          routeStable_title: "🟢 1년 뒤 안정 루트",
+          routeStable_insight: "{{YEAR}}년의 당신은 급격한 변화는 없지만, 무너지지 않는 상태에 있습니다. 안정은 가장 강한 자산입니다.",
+          routeStable_one: "'하나만' 고정 루틴을 락 걸기",
+          routeStable_action1: "하루 20분이라도 '고정 루틴(운동/정리/공부)'을 절대 깨지 않기",
+          routeStable_action2: "돈: 자동이체 1개 추가(비상금/투자/저축 중 하나)",
+          routeStable_action3: "관계: 에너지 새는 사람 1명은 '거리 두기'로 정리",
+          routeStable_action4: "집중: 알림을 '필수 앱 2개만' 남기기",
+          routeStable_pill1: "루틴 유지",
+          routeStable_pill2: "흐름 안정",
+          routeStable_pill3: "관계 정리",
+          routeStable_pill4: "집중 보호",
+          routeSame_title: "🟡 계속 제자리 루트",
+          routeSame_insight: "{{YEAR}}년의 당신은 지금과 크게 다르지 않을 가능성이 큽니다. 문제는 이게 '안전'처럼 느껴진다는 점입니다.",
+          routeSame_one: "'제자리'를 끊는 최소 변화 1개",
+          routeSame_action1: "습관: 미루는 일을 '5분만' 시작하는 규칙 만들기",
+          routeSame_action2: "돈: '한 달 고정 지출 TOP3'만 뽑아서 1개 줄이기",
+          routeSame_action3: "관계: 나를 소모시키는 만남 1개는 빈도 줄이기",
+          routeSame_action4: "집중: 하루 1번 '무알림 45분' 블록 만들기",
+          routeSame_pill1: "미루기",
+          routeSame_pill2: "유지 소비",
+          routeSame_pill3: "관성 관계",
+          routeSame_pill4: "분산 집중",
+          routeBoom_title: "🔴 위험하지만 터질 루트",
+          routeBoom_insight: "{{YEAR}}년의 당신은 지금보다 훨씬 위에 있거나, 완전히 바닥일 수도 있습니다. 리스크는 크지만 판이 바뀌는 루트입니다.",
+          routeBoom_one: "리스크를 '작은 실험'으로 쪼개기",
+          routeBoom_action1: "습관: 변화 목표를 '주 2회'처럼 측정 가능한 단위로 줄이기",
+          routeBoom_action2: "돈: 큰 베팅 전 '손실 한도(최대 손실)'를 먼저 정하기",
+          routeBoom_action3: "관계: 성장에 도움 되는 사람 1명과 '정기 약속' 만들기",
+          routeBoom_action4: "집중: 결과를 만드는 작업 1개에 '핵심 시간대'를 붙이기",
+          routeBoom_pill1: "판갈이",
+          routeBoom_pill2: "실험 투자",
+          routeBoom_pill3: "관계 재배치",
+          routeBoom_pill4: "집중 몰빵",
+        },
+        en: {
+          metaTitle: "Next Year's Me, Decided Now",
+          metaDescription: "How your choices this year will shape your life one year later. Find your path with 10 questions.",
+          metaOgDescription: "This year's choices shape next year's you. Stable route vs. Same place route vs. Risky but explosive route.",
+          metaTwitterDescription: "This year's choices shape next year's you. Check your route with 10 question results.",
+          viewMore: "View Other Services",
+          badgeYear: "New Year Awakening",
+          badgeQuestions: "10 Questions",
+          badgeShare: "Optimized for sharing",
+          title: "Next Year's Me, Decided Now",
+          subtitle: "How your choices this year will shape your life one year later.",
+          subtitleHighlight: "Habits · Money · Relationships · Focus",
+          subtitleEnd: "Discover your path.",
+          hintClick: "Click to continue",
+          hintSave: "Results can be saved/shared",
+          hintAuto: "Auto-updates yearly",
+          routeStable: "Stable Route",
+          routeStableDesc: "Won't collapse",
+          routeSame: "Same Place Route",
+          routeSameDesc: "Won't change",
+          routeBoom: "Risky but Explosive Route",
+          routeBoomDesc: "Game changer",
+          startBtn: "Start (3 min)",
+          disclaimer: "This test is for fun/insight purposes and may vary depending on individual circumstances.",
+          progress: "Progress",
+          restartBtn: "Restart",
+          qHint: "Click to continue to the next question",
+          tipLabel: "Tip",
+          tipText: "Don't overthink; choose based on \"current me\"",
+          resultRoute: "Your Route",
+          shareLabel: "🔥 Share Text",
+          shareBase: "If I maintain these choices, next year's me will be like this",
+          todayOne: "Today's One Thing",
+          copyBtn: "Copy Result Text",
+          copyToast: "Copied ✅",
+          scoreLabel: "My Scores (Reference)",
+          scoreStability: "Stability Index",
+          scoreChange: "Change Index",
+          scoreNote: "Scores are for fun/trend checking. The key is the direction when \"maintaining current choices\".",
+          optionHint: "Click to continue",
+          tagHabit: "Habits",
+          tagMoney: "Money",
+          tagRelationship: "Relationships",
+          tagFocus: "Focus",
+          tagTotal: "Overall",
+          // Questions data
+          q1_tag: "Habits",
+          q1_text: "What behavior do you repeat most often these days?",
+          q1_opt1: "😴 Tend to procrastinate on things I should do",
+          q1_opt2: "📱 Lots of meaningless scrolling",
+          q1_opt3: "✅ Maintaining routines (exercise/cleaning/studying)",
+          q1_opt4: "🚀 Creating new routines",
+          q2_tag: "Habits",
+          q2_text: "At the end of the day, is there something 'left for me'?",
+          q2_opt1: "Almost never",
+          q2_opt2: "Sometimes",
+          q2_opt3: "Most of the time",
+          q2_opt4: "Intentionally creating it",
+          q3_tag: "Money",
+          q3_text: "What's your criteria for spending money this year?",
+          q3_opt1: "Tend to spend to relieve stress",
+          q3_opt2: "Only spend when necessary",
+          q3_opt3: "Tend to invest in experiences/learning",
+          q3_opt4: "Tend to save and accumulate first",
+          q4_tag: "Money",
+          q4_text: "What's the state of your income/asset flow right now?",
+          q4_opt1: "Fixed income + almost no surplus",
+          q4_opt2: "Fixed income + gradually improving",
+          q4_opt3: "Trying multiple income streams/side hustles",
+          q4_opt4: "Unstable but growing significantly",
+          q5_tag: "Relationships",
+          q5_text: "Which relationship consumes the most energy recently?",
+          q5_opt1: "😵 Relationships that drain me",
+          q5_opt2: "🙂 Neutral relationships",
+          q5_opt3: "🌱 Relationships that help me grow",
+          q5_opt4: "🧹 Currently setting boundaries/cleaning up",
+          q6_tag: "Relationships",
+          q6_text: "Can you distance yourself from or end uncomfortable relationships?",
+          q6_opt1: "Can't",
+          q6_opt2: "Thinking about it",
+          q6_opt3: "Can do it",
+          q6_opt4: "Already doing it",
+          q7_tag: "Focus",
+          q7_text: "How much time do you spend in 'deep focus' per day?",
+          q7_opt1: "Almost none",
+          q7_opt2: "1-2 hours",
+          q7_opt3: "3 hours or more",
+          q7_opt4: "Making it a routine",
+          q8_tag: "Focus",
+          q8_text: "Are you controlling distractions like notifications/SNS?",
+          q8_opt1: "Can't at all",
+          q8_opt2: "Control occasionally",
+          q8_opt3: "Control most of the time",
+          q8_opt4: "Strong control (app blocking/time rules)",
+          q9_tag: "Overall",
+          q9_text: "What's my attitude toward 'change' this year?",
+          q9_opt1: "Stability first (don't like risk)",
+          q9_opt2: "Change if needed",
+          q9_opt3: "Need to change the game now",
+          q9_opt4: "Change through small experiments",
+          q10_tag: "Overall",
+          q10_text: "What's the one thing I'm most likely to miss?",
+          q10_opt1: "Sleep/energy",
+          q10_opt2: "Money flow",
+          q10_opt3: "Relationship cleanup",
+          q10_opt4: "Focus/environment",
+          // Routes data
+          routeStable_title: "🟢 Stable Route One Year Later",
+          routeStable_insight: "In {{YEAR}}, you won't have dramatic changes but won't collapse either. Stability is the strongest asset.",
+          routeStable_one: "Lock in 'just one' fixed routine",
+          routeStable_action1: "Never break the 'fixed routine (exercise/cleaning/studying)' even if it's just 20 minutes a day",
+          routeStable_action2: "Money: Add one auto-transfer (emergency fund/investment/savings)",
+          routeStable_action3: "Relationships: Distance yourself from one person who drains your energy",
+          routeStable_action4: "Focus: Keep only '2 essential apps' for notifications",
+          routeStable_pill1: "Routine maintenance",
+          routeStable_pill2: "Flow stability",
+          routeStable_pill3: "Relationship cleanup",
+          routeStable_pill4: "Focus protection",
+          routeSame_title: "🟡 Same Place Route",
+          routeSame_insight: "In {{YEAR}}, you're likely not much different from now. The problem is this feels 'safe'.",
+          routeSame_one: "One minimal change to break the 'same place'",
+          routeSame_action1: "Habits: Create a rule to start procrastinated tasks 'just 5 minutes'",
+          routeSame_action2: "Money: Pick 'top 3 monthly fixed expenses' and reduce one",
+          routeSame_action3: "Relationships: Reduce frequency of one meeting that drains you",
+          routeSame_action4: "Focus: Create one 'no-notification 45-minute' block per day",
+          routeSame_pill1: "Procrastination",
+          routeSame_pill2: "Maintenance spending",
+          routeSame_pill3: "Inertial relationships",
+          routeSame_pill4: "Scattered focus",
+          routeBoom_title: "🔴 Risky but Explosive Route",
+          routeBoom_insight: "In {{YEAR}}, you could be much higher or completely at the bottom. High risk but game-changing route.",
+          routeBoom_one: "Break down risks into 'small experiments'",
+          routeBoom_action1: "Habits: Reduce change goals to measurable units like '2 times per week'",
+          routeBoom_action2: "Money: Set 'loss limit (maximum loss)' before big bets",
+          routeBoom_action3: "Relationships: Create 'regular appointments' with one person who helps you grow",
+          routeBoom_action4: "Focus: Attach 'core time slot' to one task that produces results",
+          routeBoom_pill1: "Game changer",
+          routeBoom_pill2: "Experimental investment",
+          routeBoom_pill3: "Relationship realignment",
+          routeBoom_pill4: "Focus concentration",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{\\{${k}\\}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", t("metaDescription"));
+        const metaOgDesc = document.querySelector('meta[property="og:description"]');
+        if (metaOgDesc) metaOgDesc.setAttribute("content", t("metaOgDescription"));
+        const metaTwDesc = document.querySelector('meta[name="twitter:description"]');
+        if (metaTwDesc) metaTwDesc.setAttribute("content", t("metaTwitterDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (translations[paramLang]) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (translations[stored]) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      // =========================
+      // 0) Year auto (현재 연도+1)
+      // =========================
+      const NOW_YEAR = new Date().getFullYear();
+      const NEXT_YEAR = NOW_YEAR + 1;
+
+      // replace {{YEAR}} in elements with data-next-year
+      document.querySelectorAll("[data-next-year]").forEach((el) => {
+        el.innerHTML = el.innerHTML.replaceAll("{{YEAR}}", String(NEXT_YEAR));
+      });
+      document.getElementById("thisYear").textContent = String(NOW_YEAR);
+
+      // Also update document title + meta dynamically (optional, but nice)
+      function setMeta(nameOrProp, value, isProp = false) {
+        const selector = isProp
+          ? `meta[property="${nameOrProp}"]`
+          : `meta[name="${nameOrProp}"]`;
+        const el = document.querySelector(selector);
+        if (el) el.setAttribute("content", value);
+      }
+
+      // Initialize language
+      setLang(detectLang(), { updateUrl: false });
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      const dynamicTitle = t("metaTitle", { YEAR: NEXT_YEAR });
+      document.title = dynamicTitle;
+      setMeta("og:title", dynamicTitle, true);
+      setMeta("twitter:title", dynamicTitle, false);
+      applyTranslations();
+
+      // =========================
+      // 1) Quiz data
+      // score: stability (안정), change (변화/리스크)
+      // =========================
+      const QUESTIONS = [
+        // habits
+        {
+          tag: "습관",
+          text: "요즘 가장 자주 반복하는 행동은?",
+          options: [
+            { label: "😴 해야 할 걸 미루는 편", s: 0, c: 1 },
+            { label: "📱 무의미한 스크롤이 많다", s: 0, c: 1 },
+            { label: "✅ 루틴(운동/정리/공부) 유지 중", s: 2, c: 0 },
+            { label: "🚀 루틴을 새로 만들고 있다", s: 1, c: 2 },
+          ],
+        },
+        {
+          tag: "습관",
+          text: "하루를 마칠 때 ‘나한테 남는 것’이 있나?",
+          options: [
+            { label: "거의 없다", s: 0, c: 1 },
+            { label: "가끔 있다", s: 1, c: 1 },
+            { label: "대부분 있다", s: 2, c: 0 },
+            { label: "일부러 만들고 있다", s: 1, c: 2 },
+          ],
+        },
+
+        // money
+        {
+          tag: "돈",
+          text: "올해 돈을 쓰는 기준은?",
+          options: [
+            { label: "스트레스 풀려고 쓰는 편", s: 0, c: 1 },
+            { label: "필요할 때만 쓰는 편", s: 2, c: 0 },
+            { label: "경험/배움에 투자하는 편", s: 1, c: 2 },
+            { label: "일단 아끼고 모으는 편", s: 2, c: 0 },
+          ],
+        },
+        {
+          tag: "돈",
+          text: "수입/자산 흐름은 지금 어떤 상태?",
+          options: [
+            { label: "고정 수입 + 여유 거의 없음", s: 1, c: 0 },
+            { label: "고정 수입 + 조금씩 개선 중", s: 2, c: 1 },
+            { label: "복수 수입/사이드 시도 중", s: 1, c: 2 },
+            { label: "불안정하지만 크게 키우는 중", s: 0, c: 3 },
+          ],
+        },
+
+        // relationships
+        {
+          tag: "인간관계",
+          text: "최근 가장 에너지를 많이 쓰는 관계는?",
+          options: [
+            { label: "😵 나를 소모시키는 관계", s: 0, c: 1 },
+            { label: "🙂 무난한 관계", s: 1, c: 0 },
+            { label: "🌱 나를 성장시키는 관계", s: 2, c: 2 },
+            { label: "🧹 정리/경계선 세우는 중", s: 1, c: 2 },
+          ],
+        },
+        {
+          tag: "인간관계",
+          text: "불편한 관계를 정리하거나 거리를 둘 수 있나?",
+          options: [
+            { label: "못한다", s: 0, c: 0 },
+            { label: "고민 중이다", s: 1, c: 1 },
+            { label: "할 수 있다", s: 2, c: 1 },
+            { label: "이미 하고 있다", s: 2, c: 2 },
+          ],
+        },
+
+        // focus
+        {
+          tag: "집중력",
+          text: "하루에 ‘깊게 집중’하는 시간은?",
+          options: [
+            { label: "거의 없다", s: 0, c: 0 },
+            { label: "1~2시간", s: 1, c: 1 },
+            { label: "3시간 이상", s: 2, c: 1 },
+            { label: "루틴으로 만들고 있다", s: 2, c: 2 },
+          ],
+        },
+        {
+          tag: "집중력",
+          text: "알림/SNS 같은 방해 요소를 통제하고 있나?",
+          options: [
+            { label: "전혀 못 한다", s: 0, c: 0 },
+            { label: "가끔만 통제한다", s: 1, c: 1 },
+            { label: "대부분 통제한다", s: 2, c: 0 },
+            { label: "강하게 통제(앱 차단/시간 규칙)", s: 2, c: 1 },
+          ],
+        },
+
+        // integrative (route decision)
+        {
+          tag: "종합",
+          text: "올해 ‘변화’에 대한 내 태도는?",
+          options: [
+            { label: "안정이 우선 (리스크는 싫다)", s: 2, c: 0 },
+            { label: "필요하면 바꾼다", s: 1, c: 1 },
+            { label: "지금 판을 바꿔야 한다", s: 0, c: 3 },
+            { label: "작게 실험하며 바꾼다", s: 1, c: 2 },
+          ],
+        },
+        {
+          tag: "종합",
+          text: "내가 가장 놓치기 쉬운 한 가지는?",
+          options: [
+            { label: "잠/체력", s: 1, c: 0 },
+            { label: "돈 흐름", s: 1, c: 1 },
+            { label: "관계 정리", s: 1, c: 2 },
+            { label: "집중력/환경", s: 1, c: 1 },
+          ],
+        },
+      ];
+
+      const QUESTIONS_BASE = [
+        // habits
+        {
+          tag: "습관",
+          text: "요즘 가장 자주 반복하는 행동은?",
+          options: [
+            { label: "😴 해야 할 걸 미루는 편", s: 0, c: 1 },
+            { label: "📱 무의미한 스크롤이 많다", s: 0, c: 1 },
+            { label: "✅ 루틴(운동/정리/공부) 유지 중", s: 2, c: 0 },
+            { label: "🚀 루틴을 새로 만들고 있다", s: 1, c: 2 },
+          ],
+        },
+        {
+          tag: "습관",
+          text: "하루를 마칠 때 '나한테 남는 것'이 있나?",
+          options: [
+            { label: "거의 없다", s: 0, c: 1 },
+            { label: "가끔 있다", s: 1, c: 1 },
+            { label: "대부분 있다", s: 2, c: 0 },
+            { label: "일부러 만들고 있다", s: 1, c: 2 },
+          ],
+        },
+        // money
+        {
+          tag: "돈",
+          text: "올해 돈을 쓰는 기준은?",
+          options: [
+            { label: "스트레스 풀려고 쓰는 편", s: 0, c: 1 },
+            { label: "필요할 때만 쓰는 편", s: 2, c: 0 },
+            { label: "경험/배움에 투자하는 편", s: 1, c: 2 },
+            { label: "일단 아끼고 모으는 편", s: 2, c: 0 },
+          ],
+        },
+        {
+          tag: "돈",
+          text: "수입/자산 흐름은 지금 어떤 상태?",
+          options: [
+            { label: "고정 수입 + 여유 거의 없음", s: 1, c: 0 },
+            { label: "고정 수입 + 조금씩 개선 중", s: 2, c: 1 },
+            { label: "복수 수입/사이드 시도 중", s: 1, c: 2 },
+            { label: "불안정하지만 크게 키우는 중", s: 0, c: 3 },
+          ],
+        },
+        // relationships
+        {
+          tag: "인간관계",
+          text: "최근 가장 에너지를 많이 쓰는 관계는?",
+          options: [
+            { label: "😵 나를 소모시키는 관계", s: 0, c: 1 },
+            { label: "🙂 무난한 관계", s: 1, c: 0 },
+            { label: "🌱 나를 성장시키는 관계", s: 2, c: 2 },
+            { label: "🧹 정리/경계선 세우는 중", s: 1, c: 2 },
+          ],
+        },
+        {
+          tag: "인간관계",
+          text: "불편한 관계를 정리하거나 거리를 둘 수 있나?",
+          options: [
+            { label: "못한다", s: 0, c: 0 },
+            { label: "고민 중이다", s: 1, c: 1 },
+            { label: "할 수 있다", s: 2, c: 1 },
+            { label: "이미 하고 있다", s: 2, c: 2 },
+          ],
+        },
+        // focus
+        {
+          tag: "집중력",
+          text: "하루에 '깊게 집중'하는 시간은?",
+          options: [
+            { label: "거의 없다", s: 0, c: 0 },
+            { label: "1~2시간", s: 1, c: 1 },
+            { label: "3시간 이상", s: 2, c: 1 },
+            { label: "루틴으로 만들고 있다", s: 2, c: 2 },
+          ],
+        },
+        {
+          tag: "집중력",
+          text: "알림/SNS 같은 방해 요소를 통제하고 있나?",
+          options: [
+            { label: "전혀 못 한다", s: 0, c: 0 },
+            { label: "가끔만 통제한다", s: 1, c: 1 },
+            { label: "대부분 통제한다", s: 2, c: 0 },
+            { label: "강하게 통제(앱 차단/시간 규칙)", s: 2, c: 1 },
+          ],
+        },
+        // integrative (route decision)
+        {
+          tag: "종합",
+          text: "올해 '변화'에 대한 내 태도는?",
+          options: [
+            { label: "안정이 우선 (리스크는 싫다)", s: 2, c: 0 },
+            { label: "필요하면 바꾼다", s: 1, c: 1 },
+            { label: "지금 판을 바꿔야 한다", s: 0, c: 3 },
+            { label: "작게 실험하며 바꾼다", s: 1, c: 2 },
+          ],
+        },
+        {
+          tag: "종합",
+          text: "내가 가장 놓치기 쉬운 한 가지는?",
+          options: [
+            { label: "잠/체력", s: 1, c: 0 },
+            { label: "돈 흐름", s: 1, c: 1 },
+            { label: "관계 정리", s: 1, c: 2 },
+            { label: "집중력/환경", s: 1, c: 1 },
+          ],
+        },
+      ];
+
+      function getQuestions() {
+        return QUESTIONS_BASE.map((q, idx) => {
+          const num = idx + 1;
+          return {
+            tag: t(`q${num}_tag`),
+            text: t(`q${num}_text`),
+            options: [
+              { label: t(`q${num}_opt1`), s: q.options[0].s, c: q.options[0].c },
+              { label: t(`q${num}_opt2`), s: q.options[1].s, c: q.options[1].c },
+              { label: t(`q${num}_opt3`), s: q.options[2].s, c: q.options[2].c },
+              { label: t(`q${num}_opt4`), s: q.options[3].s, c: q.options[3].c },
+            ],
+          };
+        });
+      }
+
+      // =========================
+      // 2) State
+      // =========================
+      let idx = 0;
+      let stability = 0;
+      let change = 0;
+
+      const startBtn = document.getElementById("startBtn");
+      const quizSection = document.getElementById("quizSection");
+      const resultSection = document.getElementById("resultSection");
+
+      const qIndexText = document.getElementById("qIndexText");
+      const qTotalText = document.getElementById("qTotalText");
+      const progressBar = document.getElementById("progressBar");
+
+      const qWrap = document.getElementById("questionWrap");
+      const qTag = document.getElementById("qTag");
+      const qText = document.getElementById("qText");
+      const optionsEl = document.getElementById("options");
+
+      const restartBtnTop = document.getElementById("restartBtnTop");
+      const restartBtn = document.getElementById("restartBtn");
+
+      // result els
+      const routeTitle = document.getElementById("routeTitle");
+      const shareLine = document.getElementById("shareLine");
+      const insightLine = document.getElementById("insightLine");
+      const oneThing = document.getElementById("oneThing");
+      const actionList = document.getElementById("actionList");
+      const stabilityScore = document.getElementById("stabilityScore");
+      const changeScore = document.getElementById("changeScore");
+      const resultImg = document.getElementById("resultImg");
+
+      const copyBtn = document.getElementById("copyBtn");
+      const copyToast = document.getElementById("copyToast");
+
+      qTotalText.textContent = String(getQuestions().length);
+
+      function resetAll() {
+        idx = 0;
+        stability = 0;
+        change = 0;
+
+        resultSection.classList.add("hidden");
+        quizSection.classList.remove("hidden");
+
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function animateOutIn(next) {
+        qWrap.classList.add("opacity-0", "translate-y-1");
+        setTimeout(() => {
+          next();
+          qWrap.classList.remove("opacity-0", "translate-y-1");
+        }, 160);
+      }
+
+      function renderQuestion() {
+        const questions = getQuestions();
+        const q = questions[idx];
+        qIndexText.textContent = String(idx + 1);
+        progressBar.style.width = `${Math.round(
+          (idx / questions.length) * 100
+        )}%`;
+
+        qTag.textContent = q.tag;
+        qText.textContent = q.text;
+
+        optionsEl.innerHTML = "";
+        q.options.forEach((opt) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className =
+            "opt rounded-2xl p-4 text-left transition active:translate-y-[1px]";
+          btn.innerHTML = `
+          <div class="font-extrabold text-base sm:text-lg">${opt.label}</div>
+          <div class="mt-1 text-xs text-slate-300/80">${t("optionHint")}</div>
+        `;
+          btn.addEventListener("click", () => onPick(opt));
+          optionsEl.appendChild(btn);
+        });
+      }
+
+      function onPick(opt) {
+        stability += opt.s;
+        change += opt.c;
+
+        const nextIndex = idx + 1;
+        const questions = getQuestions();
+        if (nextIndex >= questions.length) {
+          progressBar.style.width = "100%";
+          showResult();
+          return;
+        }
+        idx = nextIndex;
+        animateOutIn(renderQuestion);
+      }
+
+      function routeFromScores(s, c) {
+        // heuristic:
+        // - 안정 루트: 안정 높고 변화 낮음
+        // - 위험하지만 터질 루트: 변화 매우 높음 (도전/판갈이)
+        // - 나머지: 제자리 루트
+        if (s >= 14 && c <= 7) return "stable";
+        if (c >= 14) return "boom";
+        return "same";
+      }
+
+      function setResult(routeKey) {
+        const shareBase = t("shareBase", { YEAR: NEXT_YEAR });
+
+        const ROUTES = {
+          stable: {
+            title: t("routeStable_title"),
+            img: "https://loremflickr.com/720/520/blue,calm,city?lock=301",
+            insight: t("routeStable_insight", { YEAR: NEXT_YEAR }),
+            one: t("routeStable_one"),
+            actions: [
+              t("routeStable_action1"),
+              t("routeStable_action2"),
+              t("routeStable_action3"),
+              t("routeStable_action4"),
+            ],
+            pills: [
+              t("routeStable_pill1"),
+              t("routeStable_pill2"),
+              t("routeStable_pill3"),
+              t("routeStable_pill4"),
+            ],
+          },
+          same: {
+            title: t("routeSame_title"),
+            img: "https://loremflickr.com/720/520/gray,street,night?lock=222",
+            insight: t("routeSame_insight", { YEAR: NEXT_YEAR }),
+            one: t("routeSame_one"),
+            actions: [
+              t("routeSame_action1"),
+              t("routeSame_action2"),
+              t("routeSame_action3"),
+              t("routeSame_action4"),
+            ],
+            pills: [
+              t("routeSame_pill1"),
+              t("routeSame_pill2"),
+              t("routeSame_pill3"),
+              t("routeSame_pill4"),
+            ],
+          },
+          boom: {
+            title: t("routeBoom_title"),
+            img: "https://loremflickr.com/720/520/red,neon,city?lock=909",
+            insight: t("routeBoom_insight", { YEAR: NEXT_YEAR }),
+            one: t("routeBoom_one"),
+            actions: [
+              t("routeBoom_action1"),
+              t("routeBoom_action2"),
+              t("routeBoom_action3"),
+              t("routeBoom_action4"),
+            ],
+            pills: [
+              t("routeBoom_pill1"),
+              t("routeBoom_pill2"),
+              t("routeBoom_pill3"),
+              t("routeBoom_pill4"),
+            ],
+          },
+        };
+
+        const R = ROUTES[routeKey];
+
+        routeTitle.textContent = R.title;
+        shareLine.textContent = shareBase;
+        insightLine.textContent = R.insight;
+
+        oneThing.textContent = R.one;
+        actionList.innerHTML = "";
+        R.actions.forEach((a) => {
+          const li = document.createElement("li");
+          li.textContent = a;
+          actionList.appendChild(li);
+        });
+
+        stabilityScore.textContent = String(stability);
+        changeScore.textContent = String(change);
+
+        resultImg.src = R.img;
+
+        // pills
+        document.getElementById("pill1").textContent = R.pills[0];
+        document.getElementById("pill2").textContent = R.pills[1];
+        document.getElementById("pill3").textContent = R.pills[2];
+        document.getElementById("pill4").textContent = R.pills[3];
+      }
+
+      function showResult() {
+        quizSection.classList.add("hidden");
+        resultSection.classList.remove("hidden");
+
+        const routeKey = routeFromScores(stability, change);
+        setResult(routeKey);
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // =========================
+      // 3) Events
+      // =========================
+      startBtn.addEventListener("click", () => {
+        document
+          .querySelector("section.glass")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => {
+          quizSection.classList.remove("hidden");
+          document
+            .getElementById("quizSection")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+          resetAll();
+        }, 120);
+      });
+
+      restartBtnTop.addEventListener("click", resetAll);
+      restartBtn.addEventListener("click", resetAll);
+      copyBtn.addEventListener("click", async () => {
+        const route = routeTitle.textContent.trim();
+        const share = `${t("shareBase", { YEAR: NEXT_YEAR })}\n\n${route}\n${insightLine.textContent}\n\n#다음해의나 #연초각성 #루트테스트`;
+        try {
+          await navigator.clipboard.writeText(share);
+          copyToast.textContent = t("copyToast");
+          copyToast.classList.remove("hidden");
+          setTimeout(() => copyToast.classList.add("hidden"), 1200);
+        } catch (e) {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = share;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          copyToast.textContent = t("copyToast");
+          copyToast.classList.remove("hidden");
+          setTimeout(() => copyToast.classList.add("hidden"), 1200);
+        }
+      });
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

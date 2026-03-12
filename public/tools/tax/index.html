@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>세금 계산기 | funnyfunny.cloud</title>
+    <meta
+      name="description"
+      content="직장인/프리랜서/개인사업자 세금·보험·경비를 간편하게 추정하고, 월 실수령액과 세금 납부 시기를 확인하세요."
+    />
+
+    <!-- OG (영어 + 띄어쓰기 '+' 규칙) -->
+    <meta property="og:title" content="TAX+CLICK+CALCULATOR" />
+    <meta
+      property="og:description"
+      content="Know+your+real+take-home+in+one+click"
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=TAX+CLICK+CALCULATOR"
+    />
+
+    <!-- Favicon (SVG data URI: 단일파일) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href='data:image/svg+xml;utf8,
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="%230b1220"/>
+      <path d="M18 22h28v6H18zM18 32h20v6H18zM18 42h28v6H18z" fill="%23ffffff" opacity="0.9"/>
+      <circle cx="46" cy="35" r="6" fill="%23ff6b6b"/>
+    </svg>'
+    />
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    
+    <style>
+      :root {
+        --bg: #f8f9fa;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --muted: #6b7280;
+        --primary: #0b1220;
+        --accent: #3b82f6;
+        --accent-hover: #2563eb;
+        --line: #e5e7eb;
+        --ok: #10b981;
+        --warning: #f59e0b;
+        --shadow: rgba(0, 0, 0, 0.05);
+        --shadow-hover: rgba(0, 0, 0, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+          "Noto Sans KR", Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 18px 14px 96px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .brand-badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: var(--primary);
+        display: grid;
+        place-items: center;
+        color: white;
+        font-weight: 900;
+      }
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        border: 1px solid var(--line);
+        background: var(--card);
+        padding: 12px 16px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 2px var(--shadow);
+      }
+      .btn:hover {
+        box-shadow: 0 2px 4px var(--shadow-hover);
+        transform: translateY(-1px);
+      }
+      .btn.primary {
+        border-color: transparent;
+        background: var(--accent);
+        color: white;
+        font-weight: 700;
+      }
+      .btn.primary:hover {
+        background: var(--accent-hover);
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+      }
+      .btn.ghost {
+        background: transparent;
+        border-color: transparent;
+      }
+      .btn.ghost:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .intro {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #ffffff 60%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 14px;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 24px;
+        line-height: 1.3;
+        font-weight: 800;
+        color: var(--text);
+      }
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .mode-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      @media (min-width: 720px) {
+        .mode-row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .mode {
+        border: 2px solid var(--line);
+        background: var(--card);
+        border-radius: 16px;
+        padding: 18px;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.2s ease;
+        min-height: 100px;
+        box-shadow: 0 1px 3px var(--shadow);
+      }
+      .mode:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px var(--shadow-hover);
+        border-color: var(--accent);
+      }
+      .mode.active {
+        border-color: var(--accent);
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.05) 0%,
+          rgba(59, 130, 246, 0.02) 100%
+        );
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+      }
+      .mode .t {
+        font-weight: 800;
+        margin: 0 0 6px;
+      }
+      .mode .d {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      @media (min-width: 900px) {
+        .grid {
+          grid-template-columns: 1.2fr 0.8fr;
+        }
+      }
+      .panel {
+        border: 1px solid var(--line);
+        background: var(--card);
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 1px 3px var(--shadow);
+      }
+      .panel h2 {
+        margin: 0 0 16px;
+        font-size: 18px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0 0 10px;
+      }
+      .fields {
+        display: grid;
+        gap: 10px;
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+      .label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #374151;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1.5px solid var(--line);
+        background: #fff;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.2s ease;
+      }
+      input:focus,
+      select:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .seg {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .seg button {
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 10px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 750;
+        font-size: 13px;
+        color: #111;
+      }
+      .seg button.active {
+        background: rgba(11, 18, 32, 0.06);
+        border-color: rgba(11, 18, 32, 0.35);
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .note {
+        margin-top: 12px;
+        padding: 14px 16px;
+        background: #f8f9fa;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--accent);
+        border-radius: 12px;
+        color: #374151;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .result {
+        display: none;
+        margin-top: 14px;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+      }
+      .result.show {
+        display: block;
+      }
+      .main-num {
+        text-align: center;
+        padding: 24px;
+        border-radius: 18px;
+        border: 2px solid var(--line);
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        box-shadow: 0 2px 8px var(--shadow);
+      }
+      .main-num .k {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .main-num .v {
+        font-size: 42px;
+        font-weight: 900;
+        color: var(--accent);
+        margin: 12px 0;
+        letter-spacing: -0.5px;
+      }
+      .main-num .s {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      @media (min-width: 720px) {
+        .cards {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        padding: 18px;
+        box-shadow: 0 1px 3px var(--shadow);
+        transition: all 0.2s ease;
+      }
+      .card:hover {
+        box-shadow: 0 4px 12px var(--shadow-hover);
+      }
+      .card .ct {
+        margin: 0 0 10px;
+        font-weight: 850;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .kv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        font-size: 14px;
+      }
+      .kv span {
+        color: #374151;
+      }
+      .kv strong {
+        font-weight: 900;
+      }
+      .bar {
+        height: 12px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        overflow: hidden;
+        margin: 10px 0 12px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+      .bar > div {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--accent) 0%,
+          var(--accent-hover) 100%
+        );
+        width: 30%;
+        transition: width 0.3s ease;
+        box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3);
+      }
+      .wave {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+      .wave li {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 14px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #f8f9fa;
+        border: 1px solid #e5e7eb;
+        transition: all 0.2s ease;
+      }
+      .wave li:hover {
+        background: #f1f3f5;
+        border-color: var(--accent);
+      }
+      .wave li b {
+        font-weight: 900;
+      }
+      .reserve {
+        margin-top: 12px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.1) 0%,
+          rgba(16, 185, 129, 0.05) 100%
+        );
+        border: 1.5px solid rgba(16, 185, 129, 0.3);
+        color: #065f46;
+        font-size: 13px;
+        line-height: 1.6;
+        font-weight: 600;
+      }
+      .mini {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 18px;
+        padding: 16px;
+      }
+      .mini h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+      .mini ul {
+        margin: 0;
+        padding-left: 18px;
+        color: #374151;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .footer-fixed {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(247, 248, 250, 0.86);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid var(--line);
+        padding: 10px 12px;
+      }
+      .footer-fixed .inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-fixed .inner .left {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .tiny {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .tooltip-btn {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: #555;
+        font-size: 12px;
+        font-weight: 900;
+        cursor: pointer;
+        display: inline-grid;
+        place-items: center;
+        padding: 0;
+      }
+      .tooltip-btn:hover {
+        border-color: rgba(11, 18, 32, 0.35);
+      }
+      .tip-layer {
+        position: absolute;
+        z-index: 9999;
+        max-width: 280px;
+        background: #111;
+        color: #fff;
+        font-size: 13px;
+        line-height: 1.45;
+        padding: 10px 12px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        display: none;
+      }
+      .tip-layer.show {
+        display: block;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 76px;
+        background: #111;
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+      .divider {
+        height: 1px;
+        background: var(--line);
+        margin: 10px 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        font-size: 12px;
+        color: #374151;
+        font-weight: 700;
+      }
+    </style>
+      <link rel="canonical" href="https://funnyfunny.cloud/tools/tax/" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">FF</div>
+          <div>
+            <div style="font-weight: 900">세금 계산기</div>
+            <div class="tiny">직장인 · 프리랜서 · 개인사업자</div>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="btn ghost" id="btnReset">초기화</button>
+          <a class="btn ghost" href="./en.html">English</a>
+          <a
+            class="btn"
+            href="https://funnyfunny.cloud"
+            target="_blank"
+            rel="noopener"
+            >다른 서비스 보기</a
+          >
+        </div>
+      </header>
+
+      <section class="intro">
+        <h1>세금, 간단하게 계산해보세요</h1>
+        <p class="sub">
+          정확한 신고용 계산이 아니라, <b>"실제 수령액과 세금 납부 시기"</b>를
+          파악하는 추정 도구입니다.<br />
+          한 번 입력하면 <b>월 실수령액</b>과
+          <b>세금 납부 시기(큰 금액이 나가는 달)</b>를 확인할 수 있습니다.
+        </p>
+
+        <div class="mode-row" id="modeRow">
+          <button class="mode" data-mode="employee" type="button">
+            <p class="t">👔 직장인</p>
+            <p class="d">세전 월급 → 세금+4대보험 추정 → 체감 실수령</p>
+          </button>
+          <button class="mode" data-mode="freelancer" type="button">
+            <p class="t">💻 프리랜서/N잡</p>
+            <p class="d">3.3%는 “끝”이 아니라 “예고편”일 수 있어요</p>
+          </button>
+          <button class="mode" data-mode="business" type="button">
+            <p class="t">🏪 개인사업자</p>
+            <p class="d">부가세·종소세 “한 번에 크게” 대비하는 구조</p>
+          </button>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="panel" id="inputPanel">
+          <h2>
+            입력
+            <span class="pill" id="modePill">모드 선택</span>
+          </h2>
+          <p class="hint" id="modeHint">
+            위에서 모드를 선택하면 필요한 입력만 딱 나오게 바뀝니다.
+          </p>
+
+          <div class="fields" id="fieldsArea"></div>
+
+          <div class="actions">
+            <button class="btn primary" id="btnCalc">계산하기</button>
+            <button class="btn" id="btnCopySummary">요약 복사</button>
+            <button class="btn" id="btnSave">입력 저장</button>
+          </div>
+
+          <div class="note" id="disclaimer">
+            <b>중요:</b> 이 결과는 참고용 추정치입니다. 공제/업종/증빙/가입 형태
+            등에 따라 실제와 달라질 수 있어요.
+            <div class="divider"></div>
+            그래도 이 화면 하나만으로
+            <b>“얼마가 왜 빠지는지 / 언제 크게 나갈지”</b> 감각을 잡는 게
+            목표입니다.
+          </div>
+
+          <div class="result" id="resultSection">
+            <div class="main-num">
+              <div class="k">
+                월 실수령액 (추정)
+                <button
+                  class="tooltip-btn"
+                  data-tooltip="netIncome"
+                  type="button"
+                >
+                  ⓘ
+                </button>
+              </div>
+              <div class="v"><span id="netAmount">0</span>원</div>
+              <div class="s">
+                추정치 · 설정에 따라 달라질 수 있어요
+                <button
+                  class="tooltip-btn"
+                  data-tooltip="estimate"
+                  type="button"
+                >
+                  ⓘ
+                </button>
+              </div>
+            </div>
+
+            <div class="cards">
+              <div class="card">
+                <div class="ct">
+                  돈의 흐름
+                  <button class="tooltip-btn" data-tooltip="flow" type="button">
+                    ⓘ
+                  </button>
+                </div>
+                <div class="kv">
+                  <span>들어온 돈</span><strong id="grossAmount">0원</strong>
+                </div>
+                <div class="bar"><div id="outBar"></div></div>
+                <div class="kv">
+                  <span>빠진 돈 (세금·보험·경비)</span
+                  ><strong id="outAmount">0원</strong>
+                </div>
+                <div class="divider"></div>
+                <div class="tiny muted" id="outBreakdown">-</div>
+              </div>
+
+              <div class="card">
+                <div class="ct">
+                  세금 파도 예상
+                  <button
+                    class="tooltip-btn"
+                    data-tooltip="taxWave"
+                    type="button"
+                  >
+                    ⓘ
+                  </button>
+                </div>
+                <ul class="wave" id="waveList"></ul>
+                <div class="reserve" id="reserveBox">
+                  매달 <b id="reserveAmount">0원</b> 정도 “세금 통장”에 따로
+                  모아두면 안전해요.
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="actions"
+              style="margin-top: 12px; justify-content: center"
+            >
+              <button class="btn primary" id="btnRecalc">다시 계산</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="mini">
+          <h3>초보자용 한 줄 사전</h3>
+          <ul>
+            <li>
+              <b>3.3%</b>: 최종 세금이 아니라 <b>미리 떼는 돈</b>일 수 있어요.
+            </li>
+            <li>
+              <b>부가세</b>: 내 돈이 아니라 <b>대신 보관했다가</b> 내는
+              구조(환급도 가능).
+            </li>
+            <li>
+              <b>종합소득세</b>: 보통 <b>1년에 한 번 크게</b> 정산될 수 있어요.
+            </li>
+            <li>
+              <b>핵심</b>: 정확도보다 <b>돈 흐름 + 타이밍</b>을 보는 도구예요.
+            </li>
+          </ul>
+          <div class="divider"></div>
+          <div class="tiny muted">
+            저장은 브라우저(로컬)에만 됩니다. 서버로 전송하지 않습니다.
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="footer-fixed">
+      <div class="inner">
+        <div class="left">
+          <a
+            class="btn"
+            href="https://funnyfunny.cloud"
+            target="_blank"
+            rel="noopener"
+            >다른 서비스 보기</a
+          >
+          <a class="btn ghost" href="./en.html">English</a>
+          <span class="tiny">© funnyfunny.cloud</span>
+        </div>
+        <div class="tiny">· 본 결과는 대략적인 추정치입니다</div>
+      </div>
+    </div>
+
+    <div
+      id="tooltipLayer"
+      class="tip-layer"
+      role="tooltip"
+      aria-hidden="true"
+    ></div>
+    <div id="toast" class="toast">복사했어요</div>
+
+    <script>
+      // -----------------------------
+      // Tooltips (결과 납득/안심용)
+      // -----------------------------
+      const TOOLTIPS = {
+        netIncome:
+          "세금, 보험, 경비를 제외한 실제로 사용 가능한 금액입니다. 공제 및 업종에 따라 실제 결과와 다를 수 있습니다.",
+        estimate:
+          "공제 항목, 업종, 증빙 방식, 가입 형태 등에 따라 실제 납부액과 다를 수 있습니다. 정확한 계산은 세무 전문가와 상담하시기 바랍니다.",
+        flow: "총 수입에서 세금, 보험, 경비가 어떻게 차감되는지 한눈에 확인할 수 있습니다.",
+        taxWave:
+          "사업자와 프리랜서는 특정 시기에 세금이 한꺼번에 납부되는 경우가 있습니다. 미리 준비하면 부담을 줄일 수 있습니다.",
+      };
+
+      // -----------------------------
+      // State
+      // -----------------------------
+      const state = {
+        mode: null, // employee | freelancer | business
+        input: {},
+        result: {},
+      };
+
+      // -----------------------------
+      // Helpers
+      // -----------------------------
+      const $ = (id) => document.getElementById(id);
+
+      function fmt(n) {
+        if (!isFinite(n)) return "0";
+        return Math.round(n).toLocaleString("ko-KR");
+      }
+      function toNumber(val) {
+        if (val === null || val === undefined) return 0;
+        const s = String(val).replace(/[,\s]/g, "");
+        const n = Number(s);
+        return isFinite(n) ? n : 0;
+      }
+      function clamp(n, a, b) {
+        return Math.max(a, Math.min(b, n));
+      }
+
+      function toast(msg = "완료되었습니다") {
+        const t = $("toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 1500);
+      }
+
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          toast("복사되었습니다");
+        } catch {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          toast("복사되었습니다");
+        }
+      }
+
+      // -----------------------------
+      // Mode UI
+      // -----------------------------
+      const modeButtons = Array.from(document.querySelectorAll(".mode"));
+      modeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const mode = btn.dataset.mode;
+          setMode(mode);
+        });
+      });
+
+      function setMode(mode) {
+        state.mode = mode;
+        modeButtons.forEach((b) =>
+          b.classList.toggle("active", b.dataset.mode === mode)
+        );
+
+        const pill = $("modePill");
+        const hint = $("modeHint");
+        if (mode === "employee") {
+          pill.textContent = "👔 직장인";
+          hint.textContent =
+            "세전 월급 기준으로 세금+4대보험을 단순 추정해서 “체감 실수령”을 보여줘요.";
+        } else if (mode === "freelancer") {
+          pill.textContent = "💻 프리랜서/N잡";
+          hint.textContent =
+            "수입/경비 비율을 기반으로 3.3% 원천징수는 ‘미리 낸 돈’으로 보고 정산 감각을 보여줘요.";
+        } else if (mode === "business") {
+          pill.textContent = "🏪 개인사업자";
+          hint.textContent =
+            "월 매출/경비로 순이익을 추정하고, 부가세/종소세 ‘파도’를 대비하는 그림을 보여줘요.";
+        } else {
+          pill.textContent = "모드 선택";
+          hint.textContent =
+            "위에서 모드를 선택하면 필요한 입력만 딱 나오게 바뀝니다.";
+        }
+
+        renderFields();
+        $("resultSection").classList.remove("show");
+      }
+
+      // -----------------------------
+      // Field Renderer
+      // -----------------------------
+      function fieldText({
+        key,
+        label,
+        placeholder,
+        tooltip,
+        defaultValue = "",
+      }) {
+        return `
+        <div class="field">
+          <div class="label">${label}
+            ${
+              tooltip
+                ? `<button class="tooltip-btn" data-tooltip="${tooltip}" type="button">ⓘ</button>`
+                : ""
+            }
+          </div>
+          <input type="text" inputmode="numeric" id="${key}" placeholder="${placeholder}" value="${defaultValue}" />
+        </div>
+      `;
+      }
+
+      function fieldSelect({ key, label, tooltip, options, defaultValue }) {
+        const opts = options
+          .map(
+            (o) =>
+              `<option value="${o.value}" ${
+                String(o.value) === String(defaultValue) ? "selected" : ""
+              }>${o.label}</option>`
+          )
+          .join("");
+        return `
+        <div class="field">
+          <div class="label">${label}
+            ${
+              tooltip
+                ? `<button class="tooltip-btn" data-tooltip="${tooltip}" type="button">ⓘ</button>`
+                : ""
+            }
+          </div>
+          <select id="${key}">${opts}</select>
+        </div>
+      `;
+      }
+
+      function fieldSegment({ key, label, tooltip, items, defaultValue }) {
+        const btns = items
+          .map(
+            (it) => `
+        <button type="button" data-k="${key}" data-v="${it.value}" class="${
+              String(it.value) === String(defaultValue) ? "active" : ""
+            }">
+          ${it.label}
+        </button>
+      `
+          )
+          .join("");
+        return `
+        <div class="field">
+          <div class="label">${label}
+            ${
+              tooltip
+                ? `<button class="tooltip-btn" data-tooltip="${tooltip}" type="button">ⓘ</button>`
+                : ""
+            }
+          </div>
+          <div class="seg" id="${key}__seg">${btns}</div>
+        </div>
+      `;
+      }
+
+      function renderFields() {
+        const area = $("fieldsArea");
+
+        // load saved defaults (if any)
+        const saved = loadSavedInput();
+
+        let html = "";
+        if (!state.mode) {
+          area.innerHTML = `<div class="note">먼저 상단에서 <b>모드</b>를 선택해 주세요.</div>`;
+          return;
+        }
+
+        if (state.mode === "employee") {
+          html += fieldText({
+            key: "salary",
+            label: "세전 월급(원)",
+            placeholder: "예: 3,500,000",
+            tooltip: "estimate",
+            defaultValue: saved.salary ?? "",
+          });
+          html +=
+            `<div class="row2">` +
+            fieldSelect({
+              key: "dependents",
+              label: "부양가족 수(선택)",
+              options: [
+                { value: 0, label: "0" },
+                { value: 1, label: "1" },
+                { value: 2, label: "2" },
+                { value: 3, label: "3+" },
+              ],
+              defaultValue: saved.dependents ?? 0,
+            }) +
+            fieldSelect({
+              key: "deductionLevel",
+              label: "연말정산 공제(선택)",
+              tooltip: "estimate",
+              options: [
+                { value: "low", label: "거의 없음" },
+                { value: "mid", label: "평균" },
+                { value: "high", label: "많이 받는 편" },
+              ],
+              defaultValue: saved.deductionLevel ?? "mid",
+            }) +
+            `</div>`;
+
+          html += `<div class="note">
+          <b>직장인 포인트</b><br/>
+          매달 월급에서 자동으로 빠지는 건 주로 <b>소득세(지방세 포함) + 4대보험</b>이에요.<br/>
+          연말정산은 “나중에 정산”이라 환급/추가납부가 생길 수 있어요.
+        </div>`;
+        }
+
+        if (state.mode === "freelancer") {
+          html += fieldText({
+            key: "income",
+            label: "월 평균 수입(원)",
+            placeholder: "예: 4,000,000",
+            tooltip: "estimate",
+            defaultValue: saved.income ?? "",
+          });
+          html +=
+            `<div class="row2">` +
+            fieldSelect({
+              key: "expenseRate",
+              label: "경비 비율(%)",
+              tooltip: "flow",
+              options: [
+                { value: 10, label: "10%" },
+                { value: 20, label: "20%" },
+                { value: 30, label: "30%" },
+                { value: 40, label: "40%" },
+                { value: 50, label: "50%" },
+                { value: 60, label: "60%" },
+                { value: 70, label: "70%" },
+              ],
+              defaultValue: saved.expenseRate ?? 30,
+            }) +
+            fieldSegment({
+              key: "withholding",
+              label: "3.3% 떼고 받나요?",
+              tooltip: "taxWave",
+              items: [
+                { value: "yes", label: "예" },
+                { value: "no", label: "아니오" },
+                { value: "unknown", label: "모르겠음" },
+              ],
+              defaultValue: saved.withholding ?? "yes",
+            }) +
+            `</div>`;
+
+          html += `<div class="note">
+          <b>프리랜서 포인트</b><br/>
+          <b>3.3%</b>는 최종 세금이 아니라 <b>미리 떼는 돈(원천징수)</b>일 수 있어요.<br/>
+          실제 세금은 보통 다음 해에 정산될 수 있고, 경비/공제에 따라 환급도 가능해요.
+        </div>`;
+        }
+
+        if (state.mode === "business") {
+          html += fieldText({
+            key: "sales",
+            label: "월 매출(원)",
+            placeholder: "예: 10,000,000",
+            tooltip: "flow",
+            defaultValue: saved.sales ?? "",
+          });
+          html += fieldText({
+            key: "cost",
+            label: "월 경비(원)",
+            placeholder: "예: 6,000,000",
+            tooltip: "flow",
+            defaultValue: saved.cost ?? "",
+          });
+
+          html +=
+            `<div class="row2">` +
+            fieldSegment({
+              key: "vatType",
+              label: "업종(부가세)",
+              tooltip: "taxWave",
+              items: [
+                { value: "taxable", label: "과세" },
+                { value: "exempt", label: "면세" },
+                { value: "unknown", label: "모르겠음" },
+              ],
+              defaultValue: saved.vatType ?? "taxable",
+            }) +
+            fieldSegment({
+              key: "vatScheme",
+              label: "부가세 방식",
+              tooltip: "taxWave",
+              items: [
+                { value: "general", label: "일반" },
+                { value: "simple", label: "간이" },
+                { value: "unknown", label: "모르겠음" },
+              ],
+              defaultValue: saved.vatScheme ?? "general",
+            }) +
+            `</div>`;
+
+          html += `<div class="note">
+          <b>사업자 포인트</b><br/>
+          부가세는 고객에게 받은 세금을 <b>잠깐 보관했다가</b> 내는 구조예요(환급도 가능).<br/>
+          종합소득세는 보통 <b>1년에 한 번 크게</b> 나갈 수 있어서 “세금 통장”이 유용해요.
+        </div>`;
+        }
+
+        area.innerHTML = html;
+
+        // segment buttons wiring
+        area.querySelectorAll(".seg button").forEach((b) => {
+          b.addEventListener("click", () => {
+            const key = b.dataset.k;
+            const seg = $("" + key + "__seg");
+            seg
+              .querySelectorAll("button")
+              .forEach((x) => x.classList.toggle("active", x === b));
+          });
+        });
+
+        // numeric formatting on input
+        area.querySelectorAll('input[type="text"]').forEach((inp) => {
+          inp.addEventListener("input", () => {
+            const raw = inp.value.replace(/[^\d]/g, "");
+            // allow empty
+            if (raw.length === 0) {
+              inp.value = "";
+              return;
+            }
+            inp.value = Number(raw).toLocaleString("ko-KR");
+          });
+        });
+      }
+
+      // -----------------------------
+      // Input Read
+      // -----------------------------
+      function readSegment(key) {
+        const seg = document.getElementById(key + "__seg");
+        if (!seg) return null;
+        const active = seg.querySelector("button.active");
+        return active ? active.dataset.v : null;
+      }
+
+      function readInput() {
+        const mode = state.mode;
+        const input = {};
+        if (mode === "employee") {
+          input.salary = toNumber($("salary")?.value);
+          input.dependents = Number($("dependents")?.value ?? 0);
+          input.deductionLevel = $("deductionLevel")?.value ?? "mid";
+        }
+        if (mode === "freelancer") {
+          input.income = toNumber($("income")?.value);
+          input.expenseRate = Number($("expenseRate")?.value ?? 30);
+          input.withholding = readSegment("withholding") ?? "unknown";
+        }
+        if (mode === "business") {
+          input.sales = toNumber($("sales")?.value);
+          input.cost = toNumber($("cost")?.value);
+          input.vatType = readSegment("vatType") ?? "unknown";
+          input.vatScheme = readSegment("vatScheme") ?? "unknown";
+        }
+        state.input = input;
+        return input;
+      }
+
+      // -----------------------------
+      // Approx Tax Model (간단 추정)
+      // - 법/세율 정확 계산이 목적이 아님
+      // - "감각"과 "돈 흐름"이 목표
+      // -----------------------------
+      function employeeModel({ salary, dependents, deductionLevel }) {
+        const gross = salary;
+        if (gross <= 0) return null;
+
+        // Rough income tax rate by monthly salary brackets (very rough)
+        // lower bracket -> smaller rate
+        let taxRate;
+        const monthly = gross;
+        if (monthly < 2500000) taxRate = 0.05;
+        else if (monthly < 4000000) taxRate = 0.08;
+        else if (monthly < 6000000) taxRate = 0.11;
+        else if (monthly < 9000000) taxRate = 0.14;
+        else taxRate = 0.17;
+
+        // dependents reduce a bit
+        taxRate -= clamp(dependents, 0, 3) * 0.006; // up to -1.8%
+        // deduction level tweak
+        if (deductionLevel === "low") taxRate += 0.01;
+        if (deductionLevel === "high") taxRate -= 0.01;
+
+        taxRate = clamp(taxRate, 0.03, 0.19);
+
+        // 4 insurances (employee share) rough 9% of gross
+        // (real differs; used for feel)
+        const insuranceRate = 0.09;
+
+        const incomeTax = gross * taxRate;
+        const insurance = gross * insuranceRate;
+
+        const out = incomeTax + insurance;
+        const net = Math.max(0, gross - out);
+
+        // wave schedule (employee: no big wave, but annual settlement)
+        const waves = [
+          { month: "2~3월", label: "연말정산 정산(환급/추가)", strong: true },
+          { month: "매달", label: "소득세·4대보험 자동 공제", strong: false },
+        ];
+
+        // reserve suggestion: small buffer for potential additional payment
+        const reserve = Math.round(gross * 0.02);
+
+        return {
+          gross,
+          out,
+          net,
+          breakdown: {
+            "소득세(지방세 포함, 추정)": incomeTax,
+            "4대보험(추정)": insurance,
+          },
+          waves,
+          reserve,
+        };
+      }
+
+      function freelancerModel({ income, expenseRate, withholding }) {
+        const gross = income;
+        if (gross <= 0) return null;
+
+        const expRate = clamp(expenseRate / 100, 0, 0.8);
+        const expense = gross * expRate;
+        const taxableBase = Math.max(0, gross - expense);
+
+        // rough effective tax rate by taxable base (monthly)
+        let effRate;
+        if (taxableBase < 2000000) effRate = 0.05;
+        else if (taxableBase < 3500000) effRate = 0.08;
+        else if (taxableBase < 5500000) effRate = 0.11;
+        else if (taxableBase < 8000000) effRate = 0.14;
+        else effRate = 0.17;
+
+        // predicted annualization impact (rough): push up slightly
+        effRate += 0.01;
+        effRate = clamp(effRate, 0.05, 0.22);
+
+        const predictedTax = taxableBase * effRate;
+
+        // already withheld
+        let prepaid = 0;
+        if (withholding === "yes") prepaid = gross * 0.033;
+        else if (withholding === "unknown") prepaid = gross * 0.02;
+
+        // monthly net cashflow approximation:
+        // user receives gross - prepaid (if any). but we'll show "out" includes expense + predictedTax
+        // since expense is "gone money", and predictedTax is "should reserve".
+        const out = expense + predictedTax;
+        const net = Math.max(0, gross - out);
+
+        const waves = [
+          {
+            month: "5월",
+            label: "종합소득세 정산(추가납부/환급)",
+            strong: true,
+          },
+          {
+            month: "매달",
+            label: "경비 + (원천징수/세금 적립) 관리",
+            strong: false,
+          },
+        ];
+
+        // reserve suggestion: predictedTax - prepaid (if positive), plus a buffer
+        const reserve = Math.round(
+          Math.max(0, predictedTax - prepaid) + gross * 0.01
+        );
+
+        return {
+          gross,
+          out,
+          net,
+          breakdown: {
+            "경비(추정)": expense,
+            "세금 적립(추정)": predictedTax,
+          },
+          waves,
+          reserve,
+          extra: { prepaid },
+        };
+      }
+
+      function businessModel({ sales, cost, vatType, vatScheme }) {
+        const gross = sales;
+        if (gross <= 0) return null;
+
+        const expense = Math.max(0, cost);
+        const profit = Math.max(0, gross - expense);
+
+        // rough income tax reserve rate for business profit
+        let taxReserveRate;
+        if (profit < 2000000) taxReserveRate = 0.06;
+        else if (profit < 4000000) taxReserveRate = 0.1;
+        else if (profit < 7000000) taxReserveRate = 0.14;
+        else taxReserveRate = 0.18;
+        taxReserveRate = clamp(taxReserveRate, 0.06, 0.25);
+
+        const incomeTaxReserve = profit * taxReserveRate;
+
+        // VAT reserve (only if taxable; simplified)
+        // General: net VAT approx (sales - cost) * 10% * 0.4 (assume some deductibility)
+        // Simple: smaller/more variable -> use lower reserve factor
+        let vatReserve = 0;
+        const isTaxable = vatType === "taxable" || vatType === "unknown";
+        if (isTaxable) {
+          const baseVat = Math.max(0, gross * 0.1);
+          if (vatScheme === "general") vatReserve = baseVat * 0.35;
+          else if (vatScheme === "simple") vatReserve = baseVat * 0.18;
+          else vatReserve = baseVat * 0.25;
+        }
+
+        const out = expense + incomeTaxReserve + vatReserve;
+        const net = Math.max(0, gross - out);
+
+        const waves = [];
+        // VAT wave
+        if (isTaxable) {
+          waves.push({
+            month: "1월/7월",
+            label: "부가세 신고·납부(대략)",
+            strong: true,
+          });
+        } else {
+          waves.push({
+            month: "-",
+            label: "면세 업종은 부가세 부담이 다를 수 있어요",
+            strong: false,
+          });
+        }
+        // Income tax wave
+        waves.push({
+          month: "5월",
+          label: "종합소득세(큰 파도)",
+          strong: true,
+        });
+        waves.push({ month: "11월", label: "중간예납 가능성", strong: false });
+
+        const reserve = Math.round(incomeTaxReserve + vatReserve);
+
+        const breakdown = {
+          "경비(추정)": expense,
+          "세금 적립(종소세, 추정)": incomeTaxReserve,
+        };
+        if (isTaxable) {
+          breakdown["부가세 적립(추정)"] = vatReserve;
+        }
+
+        return { gross, out, net, breakdown, waves, reserve };
+      }
+
+      function calculate() {
+        const input = readInput();
+
+        let res = null;
+        if (state.mode === "employee") res = employeeModel(input);
+        if (state.mode === "freelancer") res = freelancerModel(input);
+        if (state.mode === "business") res = businessModel(input);
+
+        return res;
+      }
+
+      // -----------------------------
+      // Render Result
+      // -----------------------------
+      function renderResult(res) {
+        state.result = res;
+
+        $("netAmount").textContent = fmt(res.net);
+        $("grossAmount").textContent = fmt(res.gross) + "원";
+        $("outAmount").textContent = fmt(res.out) + "원";
+
+        const outPct = res.gross > 0 ? res.out / res.gross : 0;
+        $("outBar").style.width =
+          (clamp(outPct, 0, 0.95) * 100).toFixed(1) + "%";
+
+        const lines = Object.entries(res.breakdown).map(([k, v]) => {
+          return `• ${k}: ${fmt(v)}원`;
+        });
+
+        // extra info (freelancer: prepaid)
+        if (state.mode === "freelancer" && res.extra?.prepaid) {
+          lines.push(
+            `• (참고) 이미 떼고 받은 3.3% 추정: ${fmt(res.extra.prepaid)}원`
+          );
+        }
+
+        $("outBreakdown").textContent = lines.join("  |  ");
+
+        // waves
+        const ul = $("waveList");
+        ul.innerHTML = "";
+        res.waves.forEach((w) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<span><b>${w.month}</b></span><span>${w.label}</span>`;
+          ul.appendChild(li);
+        });
+
+        $("reserveAmount").textContent = fmt(res.reserve) + "원";
+
+        $("resultSection").classList.add("show");
+        $("resultSection").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      // -----------------------------
+      // Save/Load (local only)
+      // -----------------------------
+      const STORAGE_KEY = "ff_tax_click_v1";
+
+      function saveInput() {
+        if (!state.mode) return;
+        const input = readInput();
+        const payload = { mode: state.mode, input };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        toast("저장되었습니다");
+      }
+
+      function loadSavedInput() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return {};
+          const obj = JSON.parse(raw);
+          // only return input for current mode; if mode not set, return whatever
+          if (!obj?.input) return {};
+          return obj.input;
+        } catch {
+          return {};
+        }
+      }
+
+      function bootFromStorage() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          const obj = JSON.parse(raw);
+          if (!obj?.mode) return;
+          setMode(obj.mode);
+
+          // fields are rendered; now apply values
+          const input = obj.input || {};
+          setTimeout(() => {
+            if (obj.mode === "employee") {
+              if ($("salary"))
+                $("salary").value = input.salary
+                  ? Number(input.salary).toLocaleString("ko-KR")
+                  : "";
+              if ($("dependents"))
+                $("dependents").value = String(input.dependents ?? 0);
+              if ($("deductionLevel"))
+                $("deductionLevel").value = input.deductionLevel ?? "mid";
+            }
+            if (obj.mode === "freelancer") {
+              if ($("income"))
+                $("income").value = input.income
+                  ? Number(input.income).toLocaleString("ko-KR")
+                  : "";
+              if ($("expenseRate"))
+                $("expenseRate").value = String(input.expenseRate ?? 30);
+              // segment
+              const v = input.withholding ?? "yes";
+              const seg = $("withholding__seg");
+              if (seg) {
+                seg
+                  .querySelectorAll("button")
+                  .forEach((b) =>
+                    b.classList.toggle("active", b.dataset.v === v)
+                  );
+              }
+            }
+            if (obj.mode === "business") {
+              if ($("sales"))
+                $("sales").value = input.sales
+                  ? Number(input.sales).toLocaleString("ko-KR")
+                  : "";
+              if ($("cost"))
+                $("cost").value = input.cost
+                  ? Number(input.cost).toLocaleString("ko-KR")
+                  : "";
+              const vatType = input.vatType ?? "taxable";
+              const vatScheme = input.vatScheme ?? "general";
+              const segA = $("vatType__seg");
+              const segB = $("vatScheme__seg");
+              if (segA)
+                segA
+                  .querySelectorAll("button")
+                  .forEach((b) =>
+                    b.classList.toggle("active", b.dataset.v === vatType)
+                  );
+              if (segB)
+                segB
+                  .querySelectorAll("button")
+                  .forEach((b) =>
+                    b.classList.toggle("active", b.dataset.v === vatScheme)
+                  );
+            }
+          }, 0);
+        } catch {}
+      }
+
+      // -----------------------------
+      // Buttons
+      // -----------------------------
+      $("btnCalc").addEventListener("click", () => {
+        if (!state.mode) {
+          toast("모드를 먼저 선택해주세요");
+          return;
+        }
+        const res = calculate();
+        if (!res) {
+          toast("필수 항목을 입력해주세요");
+          return;
+        }
+        renderResult(res);
+      });
+
+      $("btnRecalc").addEventListener("click", () => {
+        $("resultSection").classList.remove("show");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      $("btnSave").addEventListener("click", () => {
+        if (!state.mode) {
+          toast("모드를 먼저 선택해주세요");
+          return;
+        }
+        saveInput();
+      });
+
+      $("btnCopySummary").addEventListener("click", () => {
+        if (!state.mode) {
+          copyText("세금 계산기 - 모드를 선택하고 입력해 보세요.");
+          return;
+        }
+        const input = readInput();
+        const res =
+          state.result && isFinite(state.result.net) ? state.result : null;
+
+        const modeName =
+          state.mode === "employee"
+            ? "직장인"
+            : state.mode === "freelancer"
+            ? "프리랜서/N잡"
+            : "개인사업자";
+
+        let text = `세금 계산기 (${modeName})\n`;
+
+        if (state.mode === "employee") {
+          text += `- 세전 월급: ${fmt(input.salary)}원\n- 부양가족: ${
+            input.dependents
+          }\n- 공제: ${input.deductionLevel}\n`;
+        }
+        if (state.mode === "freelancer") {
+          text += `- 월 수입: ${fmt(input.income)}원\n- 경비 비율: ${
+            input.expenseRate
+          }%\n- 3.3%: ${input.withholding}\n`;
+        }
+        if (state.mode === "business") {
+          text += `- 월 매출: ${fmt(input.sales)}원\n- 월 경비: ${fmt(
+            input.cost
+          )}원\n- 업종(부가세): ${input.vatType}\n- 부가세 방식: ${
+            input.vatScheme
+          }\n`;
+        }
+
+        if (res) {
+          text += `\n[결과(추정)]\n- 들어온 돈: ${fmt(
+            res.gross
+          )}원\n- 빠진 돈: ${fmt(res.out)}원\n- 실수령액: ${fmt(
+            res.net
+          )}원\n- 세금 통장 추천: ${fmt(res.reserve)}원/월\n`;
+        } else {
+          text += `\n(결과는 '계산하기' 후 확인)\n`;
+        }
+
+        text += `\nhttps://funnyfunny.cloud`;
+        copyText(text);
+      });
+
+      $("btnReset").addEventListener("click", () => {
+        state.mode = null;
+        state.input = {};
+        state.result = {};
+        modeButtons.forEach((b) => b.classList.remove("active"));
+        $("modePill").textContent = "모드 선택";
+        $("modeHint").textContent =
+          "위에서 모드를 선택하면 필요한 입력만 딱 나오게 바뀝니다.";
+        $(
+          "fieldsArea"
+        ).innerHTML = `<div class="note">먼저 상단에서 <b>모드</b>를 선택해 주세요.</div>`;
+        $("resultSection").classList.remove("show");
+        toast("초기화!");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // -----------------------------
+      // Tooltip layer (single instance)
+      // -----------------------------
+      const tipLayer = $("tooltipLayer");
+
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".tooltip-btn");
+        if (btn) {
+          const key = btn.dataset.tooltip;
+          const text = TOOLTIPS[key] || "설명 준비중";
+          tipLayer.textContent = text;
+
+          const rect = btn.getBoundingClientRect();
+          const left = rect.left + window.scrollX;
+          const top = rect.bottom + window.scrollY + 8;
+
+          tipLayer.style.left = left + "px";
+          tipLayer.style.top = top + "px";
+          tipLayer.classList.add("show");
+          tipLayer.setAttribute("aria-hidden", "false");
+          return;
+        }
+        tipLayer.classList.remove("show");
+        tipLayer.setAttribute("aria-hidden", "true");
+      });
+
+      window.addEventListener("scroll", () => {
+        tipLayer.classList.remove("show");
+        tipLayer.setAttribute("aria-hidden", "true");
+      });
+
+      // -----------------------------
+      // Boot
+      // -----------------------------
+      renderFields();
+      bootFromStorage();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  </body>
+</html>

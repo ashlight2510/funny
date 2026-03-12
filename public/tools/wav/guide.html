@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WAV → MP3 변환기 가이드</title>
+  <meta name="description" content="브라우저에서 WAV 파일을 MP3로 변환하는 방법을 안내합니다. 서버 업로드 없이 100% 로컬에서 처리됩니다." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23667eea;stop-opacity:1' /><stop offset='100%' style='stop-color:%23764ba2;stop-opacity:1' /></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><path d='M30 70 L30 40 L40 35 L40 65 Z M50 70 L50 30 L60 25 L60 65 Z M70 70 L70 35 L80 30 L80 65 Z' fill='white' opacity='0.9'/><circle cx='35' cy='40' r='3' fill='white'/><circle cx='55' cy='30' r='3' fill='white'/><circle cx='75' cy='35' r='3' fill='white'/></svg>" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 24px;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    
+    h1 {
+      margin: 0 0 8px;
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .back-link:hover {
+      color: #764ba2;
+      transform: translateX(-4px);
+    }
+    
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 16px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #333;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #667eea;
+    }
+    
+    h3 {
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #444;
+    }
+    
+    p {
+      margin: 12px 0;
+      color: #555;
+    }
+    
+    .step {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .step-number {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: 700;
+      margin-right: 12px;
+    }
+    
+    .step-title {
+      font-weight: 600;
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    .step-content {
+      color: #555;
+      margin-top: 8px;
+    }
+    
+    .warning-box {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-left: 4px solid #f59e0b;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .info-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .success-box {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border-left: 4px solid #10b981;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    ul, ol {
+      margin: 12px 0;
+      padding-left: 24px;
+      color: #555;
+    }
+    
+    li {
+      margin: 8px 0;
+    }
+    
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      font-size: 14px;
+      color: #e83e8c;
+    }
+    
+    .faq-item {
+      margin: 20px 0;
+      padding: 16px;
+      background: #f9fafb;
+      border-radius: 12px;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    .faq-answer {
+      color: #555;
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← 서비스로 돌아가기</a>
+    
+    <h1>🎵 WAV → MP3 변환기 가이드</h1>
+    <p class="subtitle">브라우저에서 안전하게 오디오 파일을 변환하는 방법을 안내합니다.</p>
+    
+    <h2>📋 서비스 소개</h2>
+    <p>
+      WAV → MP3 변환기는 브라우저에서 직접 오디오 파일을 변환하는 무료 도구입니다. 
+      파일을 서버에 업로드하지 않고, 100% 로컬에서 처리되므로 개인정보와 파일이 안전하게 보호됩니다.
+    </p>
+    
+    <div class="info-box">
+      <strong>✨ 주요 특징</strong>
+      <ul style="margin-top: 8px;">
+        <li>서버 업로드 없음 - 모든 처리가 브라우저에서 이루어집니다</li>
+        <li>ffmpeg.wasm 기반 - 강력한 오디오 인코딩 엔진</li>
+        <li>다양한 비트레이트 선택 - 96kbps부터 320kbps까지</li>
+        <li>무료 사용 - 로그인 없이 바로 사용 가능</li>
+      </ul>
+    </div>
+    
+    <h2>🚀 사용 방법</h2>
+    
+    <div class="step">
+      <div>
+        <span class="step-number">1</span>
+        <span class="step-title">변환 엔진 로드</span>
+      </div>
+      <div class="step-content">
+        <p>먼저 "1) 변환 엔진 로드" 버튼을 클릭합니다. 이 과정에서 ffmpeg.wasm 라이브러리가 다운로드되어 브라우저에 로드됩니다.</p>
+        <p><strong>처음 사용 시:</strong> 약 10-30MB 정도의 파일을 다운로드하므로 인터넷 연결 상태에 따라 시간이 걸릴 수 있습니다.</p>
+        <p><strong>로드 완료 후:</strong> "로드 완료 ✅ 파일 선택 후 변환하세요" 메시지가 표시되고, 변환 버튼이 활성화됩니다.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div>
+        <span class="step-number">2</span>
+        <span class="step-title">WAV 파일 선택</span>
+      </div>
+      <div class="step-content">
+        <p>"WAV 파일" 입력 필드를 클릭하여 변환할 WAV 파일을 선택합니다.</p>
+        <p><strong>지원 형식:</strong> .wav, audio/wav</p>
+        <p><strong>주의사항:</strong> 파일 크기가 클수록 변환 시간이 오래 걸립니다.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div>
+        <span class="step-number">3</span>
+        <span class="step-title">비트레이트 선택 (선택사항)</span>
+      </div>
+      <div class="step-content">
+        <p>MP3 비트레이트를 선택합니다. 기본값은 128kbps입니다.</p>
+        <ul>
+          <li><strong>96 kbps:</strong> 가장 작은 파일 크기, 낮은 음질</li>
+          <li><strong>128 kbps:</strong> 표준 품질, 균형잡힌 선택 (기본값)</li>
+          <li><strong>192 kbps:</strong> 좋은 음질</li>
+          <li><strong>256 kbps:</strong> 고음질</li>
+          <li><strong>320 kbps:</strong> 최고 음질, 큰 파일 크기</li>
+        </ul>
+        <p>일반적으로 128kbps면 충분한 음질을 제공합니다.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div>
+        <span class="step-number">4</span>
+        <span class="step-title">MP3로 변환</span>
+      </div>
+      <div class="step-content">
+        <p>"2) MP3로 변환" 버튼을 클릭합니다.</p>
+        <p>변환 과정:</p>
+        <ol>
+          <li><strong>파일 로딩/쓰기 중:</strong> 선택한 WAV 파일을 메모리에 로드합니다</li>
+          <li><strong>변환 중:</strong> ffmpeg가 MP3로 인코딩합니다 (파일 크기에 따라 시간 소요)</li>
+          <li><strong>결과 추출/다운로드 준비 중:</strong> 변환된 MP3 파일을 준비합니다</li>
+          <li><strong>완료 ✅:</strong> 다운로드 링크가 표시됩니다</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div>
+        <span class="step-number">5</span>
+        <span class="step-title">다운로드</span>
+      </div>
+      <div class="step-content">
+        <p>변환이 완료되면 "MP3 다운로드" 버튼이 나타납니다. 클릭하여 변환된 MP3 파일을 다운로드합니다.</p>
+        <p>파일명은 원본 WAV 파일명에서 확장자만 .mp3로 변경됩니다.</p>
+      </div>
+    </div>
+    
+    <h2>⚠️ 주의사항</h2>
+    
+    <div class="warning-box">
+      <strong>💡 파일 크기 제한</strong>
+      <ul style="margin-top: 8px;">
+        <li>파일이 크면(수십~수백 MB) 변환에 시간이 오래 걸립니다</li>
+        <li>모바일 기기는 메모리 부족으로 실패할 수 있습니다</li>
+        <li>권장: 100MB 이하의 파일을 사용하세요</li>
+      </ul>
+    </div>
+    
+    <div class="warning-box">
+      <strong>🔋 브라우저 성능</strong>
+      <ul style="margin-top: 8px;">
+        <li>변환 중에는 브라우저가 일시적으로 버벅일 수 있습니다</li>
+        <li>변환 중에는 다른 작업을 하지 않는 것을 권장합니다</li>
+        <li>배터리 사용량이 증가할 수 있습니다</li>
+      </ul>
+    </div>
+    
+    <div class="info-box">
+      <strong>🌐 브라우저 호환성</strong>
+      <ul style="margin-top: 8px;">
+        <li>Chrome, Edge, Firefox, Safari 최신 버전 지원</li>
+        <li>모바일 브라우저에서도 작동하지만, 큰 파일은 데스크톱에서 권장</li>
+        <li>인터넷 연결이 필요합니다 (초기 로드 시)</li>
+      </ul>
+    </div>
+    
+    <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">Q: 파일이 서버에 업로드되나요?</div>
+      <div class="faq-answer">
+        A: 아닙니다. 모든 처리는 브라우저에서만 이루어지며, 파일은 서버로 전송되지 않습니다. 
+        개인정보와 파일이 완전히 안전하게 보호됩니다.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Q: 변환이 실패했어요. 어떻게 해야 하나요?</div>
+      <div class="faq-answer">
+        A: 다음을 확인해보세요:
+        <ul>
+          <li>파일이 올바른 WAV 형식인지 확인</li>
+          <li>파일 크기가 너무 크지 않은지 확인 (100MB 이하 권장)</li>
+          <li>브라우저를 새로고침하고 다시 시도</li>
+          <li>다른 브라우저에서 시도</li>
+          <li>로그 박스의 오류 메시지 확인</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Q: 변환 속도가 느려요.</div>
+      <div class="faq-answer">
+        A: 변환 속도는 다음 요인에 영향을 받습니다:
+        <ul>
+          <li>파일 크기 (큰 파일일수록 오래 걸림)</li>
+          <li>선택한 비트레이트 (높을수록 더 오래 걸림)</li>
+          <li>기기 성능 (CPU, 메모리)</li>
+          <li>브라우저 성능</li>
+        </ul>
+        일반적으로 10MB 파일은 1-2분 정도 소요됩니다.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Q: 다른 오디오 형식도 변환할 수 있나요?</div>
+      <div class="faq-answer">
+        A: 현재는 WAV → MP3 변환만 지원합니다. 다른 형식이 필요하시면 
+        <a href="https://funnyfunny.cloud" target="_blank" rel="noopener noreferrer">funnyfunny.cloud</a>의 
+        다른 오디오 도구를 확인해보세요.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Q: 변환된 MP3 파일의 품질은 어떤가요?</div>
+      <div class="faq-answer">
+        A: 선택한 비트레이트에 따라 품질이 결정됩니다:
+        <ul>
+          <li>128kbps: 일반적인 음악 감상에 충분한 품질</li>
+          <li>192kbps: 고품질 음악 감상</li>
+          <li>256-320kbps: 최고 품질, 전문가 수준</li>
+        </ul>
+        대부분의 경우 128kbps면 충분합니다.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Q: 오프라인에서 사용할 수 있나요?</div>
+      <div class="faq-answer">
+        A: 처음 한 번은 인터넷 연결이 필요합니다 (ffmpeg.wasm 로드). 
+        로드가 완료된 후에는 오프라인에서도 변환할 수 있습니다. 
+        단, 브라우저를 닫으면 다시 로드해야 합니다.
+      </div>
+    </div>
+    
+    <h2>🔗 관련 서비스</h2>
+    <p>
+      더 많은 유용한 도구를 찾고 계신가요? 
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener noreferrer" style="color: #667eea; font-weight: 600;">
+        funnyfunny.cloud에서 다른 서비스 보기 →
+      </a>
+    </p>
+    
+    <div class="success-box" style="margin-top: 40px;">
+      <strong>💡 팁</strong>
+      <p style="margin-top: 8px; margin-bottom: 0;">
+        변환 중에는 페이지를 닫지 마세요. 변환이 완료될 때까지 기다려주세요.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a12" />
+  <title>NEOX — Neo Arcade Shooter</title>
+  <meta name="description" content="Galaga-style neo shooter. Clear waves, earn gold, shop every 5 rounds. Leaderboard (all/daily/weekly)." />
+  <link rel="alternate" hreflang="ko" href="https://neox.funnyfunny.cloud/" />
+  <link rel="alternate" hreflang="en" href="https://neox.funnyfunny.cloud/en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://neox.funnyfunny.cloud/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2306b6d4'/><stop offset='100%25' style='stop-color:%22d3ee'/></linearGradient><filter id='glow'><feGaussianBlur stdDeviation='2' result='b'/><feMerge><feMergeNode in='b'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><rect width='100' height='100' rx='12' fill='%230a0a12'/><path d='M50 25 L58 45 L78 48 L62 62 L66 82 L50 72 L34 82 L38 62 L22 48 L42 45 Z' fill='url(%23g)' filter='url(%23glow)'/></svg>" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body {
+      background: #0a0a12;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .game-wrap {
+      position: relative;
+      width: min(100vw, 96vh * 0.6);
+      max-width: 480px;
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(6, 182, 212, 0.3),
+        0 0 40px rgba(6, 182, 212, 0.15),
+        inset 0 0 60px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
+    }
+    #c {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                  linear-gradient(180deg, #0a0a12 0%, #050508 100%);
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    .scanlines {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.12) 2px,
+        rgba(0, 0, 0, 0.12) 4px
+      );
+      border-radius: 16px;
+      opacity: 0.6;
+    }
+    .hud {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: linear-gradient(180deg, rgba(10, 10, 18, 0.9) 0%, transparent 100%);
+      z-index: 10;
+    }
+    .hud span {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #06b6d4;
+      text-shadow: 0 0 12px rgba(6, 182, 212, 0.8);
+    }
+    .hud .score { color: #22d3ee; }
+    .hud .gold { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
+    .hud .wave { color: #a78bfa; text-shadow: 0 0 12px rgba(167, 139, 250, 0.8); }
+    .hud .lives { color: #f472b6; }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 16px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: rgba(10, 10, 18, 0.92);
+      z-index: 20;
+      border-radius: 16px;
+    }
+    .overlay.hidden { display: none; }
+    #menuStart, #menuOver {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .overlay h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, #06b6d4, #22d3ee, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+    }
+    .overlay .kicker {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    .overlay p {
+      font-size: 13px;
+      color: #94a3b8;
+      margin: 0 0 24px;
+      max-width: 280px;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .btn {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #0a0a12;
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 32px rgba(6, 182, 212, 0.7);
+    }
+    .btn:active { transform: scale(0.98); }
+    .touch-btn { font-family: inherit; user-select: none; -webkit-tap-highlight-color: transparent; }
+    .touch-btn:active { transform: scale(0.95); opacity: 0.9; }
+    .game-over .final-score {
+      font-size: 18px;
+      color: #22d3ee;
+      margin-bottom: 20px;
+      text-shadow: 0 0 16px rgba(34, 211, 238, 0.8);
+    }
+    .shop { padding: 16px; max-height: 85vh; overflow-y: auto; }
+    .shop h2 { font-size: 1rem; margin: 0 0 8px; color: #a78bfa; }
+    .shop .gold-display { font-size: 1.1rem; color: #fbbf24; margin-bottom: 16px; font-weight: 700; }
+    .shop-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      background: rgba(30, 30, 40, 0.8);
+      border-radius: 10px;
+      border: 1px solid rgba(167, 139, 250, 0.25);
+    }
+    .shop-item .info { flex: 1; font-size: 12px; color: #94a3b8; }
+    .shop-item .name { font-weight: 700; color: #e2e8f0; margin-bottom: 2px; }
+    .shop-item .btn-buy {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      color: #0a0a12;
+      white-space: nowrap;
+    }
+    .shop-item .btn-buy:hover { filter: brightness(1.15); }
+    .shop-item .btn-buy:disabled { opacity: 0.5; cursor: not-allowed; filter: none; }
+    .shop-item .lvl { font-size: 10px; color: #64748b; margin-top: 2px; }
+    .shop .btn-next { margin-top: 16px; }
+    .footer-wrap {
+      padding: 20px 16px 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .footer-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #0a0a12;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+    }
+    .footer-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(6, 182, 212, 0.45);
+    }
+    .footer-meta {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .footer-meta a { color: #06b6d4; text-decoration: none; }
+    .footer-meta a:hover { text-decoration: underline; }
+    .lang-link {
+      margin-left: 10px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+    .lang-link:hover { color: #e2e8f0; }
+    .menu-desc { margin: 0 0 24px; }
+    #menuOver.hidden { display: none; }
+    #menuStart.hidden { display: none; }
+    .rank-block {
+      width: 100%;
+      max-width: 320px;
+      min-width: 0;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(6, 182, 212, 0.2);
+      max-height: 220px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .rank-head { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #64748b; margin-bottom: 8px; }
+    .rank-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+    .rank-tab {
+      padding: 6px 12px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      background: transparent;
+      color: #94a3b8;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .rank-tab:hover { color: #e2e8f0; background: rgba(6, 182, 212, 0.1); }
+    .rank-tab.active { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border-color: #06b6d4; }
+    .rank-list {
+      list-style: none;
+      margin: 0 0 12px;
+      padding: 0;
+      font-size: 12px;
+    }
+    .rank-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      min-width: 0;
+    }
+    .rank-list .name { color: #e2e8f0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+    .rank-list .score { color: #22d3ee; flex-shrink: 0; }
+    .rank-submit { display: flex; gap: 8px; margin-bottom: 6px; min-width: 0; }
+    .rank-input {
+      flex: 1;
+      min-width: 0;
+      padding: 8px 12px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 8px;
+      background: rgba(10, 10, 18, 0.8);
+      color: #e2e8f0;
+      font-size: 13px;
+    }
+    .rank-input::placeholder { color: #64748b; }
+    .rank-submit-btn { padding: 8px 14px; font-size: 12px; }
+    .rank-hint { font-size: 11px; color: #64748b; word-break: break-word; overflow-wrap: break-word; }
+  </style>
+</head>
+<body data-lang="en">
+  <div class="game-wrap">
+    <canvas id="c"></canvas>
+    <div class="scanlines"></div>
+    <div class="hud">
+      <span class="score">SCORE <b id="scoreNum">0</b></span>
+      <span class="gold">🪙 <b id="goldNum">0</b></span>
+      <span class="wave">WAVE <b id="waveNum">1</b></span>
+      <span class="lives">♥ <b id="livesNum">3</b></span>
+    </div>
+    <div id="menuOverlay" class="overlay">
+      <div id="menuStart">
+        <div class="kicker">NEON ARCADE</div>
+        <h1>NEOX</h1>
+        <p class="menu-desc" data-i18n="menuDesc">← → 이동 · SPACE 발사<br />웨이브 클리어 시 골드 · 5라운드마다 상점</p>
+        <button class="btn" id="startBtn" data-i18n="startBtn">START</button>
+      </div>
+      <div id="menuOver" class="game-over hidden">
+        <div class="kicker">GAME OVER</div>
+        <div class="final-score">SCORE <b id="finalScore">0</b></div>
+        <button class="btn" id="restartBtn" data-i18n="retryBtn">RETRY</button>
+      </div>
+      <div class="rank-block">
+        <div class="rank-head" data-rank="title">랭킹 (Top 10)</div>
+        <div class="rank-tabs" role="tablist">
+          <button type="button" class="rank-tab active" data-period="all">전체</button>
+          <button type="button" class="rank-tab" data-period="daily">일일</button>
+          <button type="button" class="rank-tab" data-period="weekly">주간</button>
+        </div>
+        <ol class="rank-list" id="rankList"></ol>
+        <div class="rank-submit">
+          <input type="text" id="rankName" maxlength="16" placeholder="닉네임 (최대 16자)" class="rank-input" />
+          <button type="button" id="rankSubmit" class="btn rank-submit-btn">점수 등록</button>
+        </div>
+        <div class="rank-hint" id="rankHint"></div>
+      </div>
+    </div>
+    <div id="shopOverlay" class="overlay hidden">
+      <div class="shop">
+        <h2 id="shopTitle">상점 · WAVE 5 클리어!</h2>
+        <div class="gold-display">🪙 <b id="shopGold">0</b> GOLD</div>
+        <div id="shopList"></div>
+        <button class="btn btn-next" id="shopNextBtn" data-i18n="shopNext">다음 웨이브</button>
+      </div>
+    </div>
+  </div>
+  <footer class="footer-wrap">
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" class="footer-link" data-i18n="footerLink">✨ View other services</a>
+    <div class="footer-meta">
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a>
+      <a href="./index.html" class="lang-link" data-i18n="langLink" id="langLink">한국어</a>
+    </div>
+  </footer>
+
+  <script src="./supabase.config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+(function () {
+  'use strict';
+
+  const C = document.getElementById('c');
+  const ctx = C.getContext('2d');
+  const scoreEl = document.getElementById('scoreNum');
+  const goldEl = document.getElementById('goldNum');
+  const waveEl = document.getElementById('waveNum');
+  const livesEl = document.getElementById('livesNum');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuStart = document.getElementById('menuStart');
+  const menuOver = document.getElementById('menuOver');
+  const shopOverlay = document.getElementById('shopOverlay');
+  const shopTitle = document.getElementById('shopTitle');
+  const shopGold = document.getElementById('shopGold');
+  const shopList = document.getElementById('shopList');
+  const shopNextBtn = document.getElementById('shopNextBtn');
+  const finalScoreEl = document.getElementById('finalScore');
+  const startBtn = document.getElementById('startBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const rankList = document.getElementById('rankList');
+  const rankName = document.getElementById('rankName');
+  const rankSubmit = document.getElementById('rankSubmit');
+  const rankHint = document.getElementById('rankHint');
+  const rankTabs = document.querySelectorAll('.rank-tab');
+
+  let W, H, scale;
+  function resize() {
+    const wrap = C.parentElement;
+    const r = wrap.getBoundingClientRect();
+    W = r.width;
+    H = r.height;
+    C.width = W;
+    C.height = H;
+    scale = Math.min(W / 360, H / 480);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const CS = {
+    PLAYER_W: 24,
+    PLAYER_H: 20,
+    PLAYER_SPEED: 5.5,
+    BULLET_SPEED: -10,
+    BULLET_R: 3,
+    ENEMY_W: 22,
+    ENEMY_H: 18,
+    ENEMY_COLS: 8,
+    ENEMY_ROWS: 3,
+    ENEMY_GAP: 8,
+    ENEMY_DX: 1.8,
+    ENEMY_DY: 14,
+    PARTICLE_COUNT: 8,
+    MISSILE_SPEED: 2.2,
+    MISSILE_R: 4,
+    MISSILE_HOMING: 0.06,
+    MISSILE_TRACKING_MS: 300,
+    DIVE_SPEED: 3,
+    DIVE_HOMING: 0.038,
+    ENEMY_SHOOT_INTERVAL: 2400,
+    ENEMY_DIVE_INTERVAL: 4800,
+    INVINCIBLE_MS: 1800,
+    GOLD_PER_WAVE: 28,
+    GOLD_WAVE_BONUS: 10,
+  };
+
+  let state = 'idle';
+  let player = { x: 0, y: 0 };
+  let bullets = [];
+  let enemies = [];
+  let enemyMissiles = [];
+  let particles = [];
+  let score = 0;
+  let gold = 0;
+  let wave = 1;
+  let lives = 3;
+  let maxLives = 5;
+  let upgrades = { fireRate: 0, bulletSpeed: 0, moveSpeed: 0 };
+  let enemyDir = 1;
+  let enemyTick = 0;
+  let lastFrame = 0;
+  let lastShot = 0;
+  let lastEnemyShoot = 0;
+  let lastDiveSpawn = 0;
+  let invincibleUntil = 0;
+  let raf = 0;
+  const stars = [];
+  for (let i = 0; i < 80; i++) {
+    stars.push({
+      x: Math.random() * 360,
+      y: Math.random() * 480,
+      r: 0.5 + Math.random() * 1,
+      br: 0.2 + Math.random() * 0.5,
+    });
+  }
+
+  function spawnWave() {
+    enemies = [];
+    enemyMissiles = [];
+    const baseX = (W - (CS.ENEMY_COLS * (CS.ENEMY_W + CS.ENEMY_GAP) - CS.ENEMY_GAP)) / 2 + (CS.ENEMY_W + CS.ENEMY_GAP) / 2;
+    const baseY = 60;
+    for (let row = 0; row < CS.ENEMY_ROWS + Math.min(wave - 1, 2); row++) {
+      for (let col = 0; col < CS.ENEMY_COLS; col++) {
+        enemies.push({
+          x: baseX + col * (CS.ENEMY_W + CS.ENEMY_GAP),
+          y: baseY + row * (CS.ENEMY_H + CS.ENEMY_GAP),
+          type: row % 3,
+          hit: false,
+          diving: false,
+          vx: 0,
+          vy: 0,
+        });
+      }
+    }
+    enemyDir = 1;
+    enemyTick = 0;
+  }
+
+  function addParticles(x, y, color) {
+    for (let i = 0; i < CS.PARTICLE_COUNT; i++) {
+      const a = (Math.PI * 2 * i) / CS.PARTICLE_COUNT + Math.random() * 0.5;
+      const s = 2 + Math.random() * 4;
+      particles.push({
+        x, y,
+        vx: Math.cos(a) * s,
+        vy: Math.sin(a) * s,
+        life: 1,
+        color,
+      });
+    }
+  }
+
+  function hitTest(a, b, aw, ah, bw, bh) {
+    return a.x < b.x + bw && a.x + aw > b.x && a.y < b.y + bh && a.y + ah > b.y;
+  }
+
+  function drawPlayer(t) {
+    const x = player.x - CS.PLAYER_W / 2;
+    const y = player.y - CS.PLAYER_H / 2;
+    const w = CS.PLAYER_W;
+    const h = CS.PLAYER_H;
+    const inv = t < invincibleUntil;
+    if (inv && Math.floor(t / 80) % 2 === 0) return;
+    ctx.save();
+    ctx.shadowColor = inv ? '#f472b6' : '#06b6d4';
+    ctx.shadowBlur = inv ? 20 : 14;
+    ctx.fillStyle = '#06b6d4';
+    ctx.beginPath();
+    ctx.moveTo(x, y + h);
+    ctx.lineTo(x + w * 0.5, y);
+    ctx.lineTo(x + w, y + h);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#22d3ee';
+    ctx.beginPath();
+    ctx.moveTo(x + w * 0.35, y + h * 0.6);
+    ctx.lineTo(x + w * 0.5, y + h * 0.2);
+    ctx.lineTo(x + w * 0.65, y + h * 0.6);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawBullet(b) {
+    ctx.save();
+    ctx.shadowColor = '#22d3ee';
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = '#22d3ee';
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, CS.BULLET_R, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawEnemy(e) {
+    if (e.hit) return;
+    const colors = ['#a78bfa', '#c084fc', '#f472b6'];
+    const c = colors[e.type % colors.length];
+    ctx.save();
+    if (e.diving) {
+      ctx.shadowColor = '#f472b6';
+      ctx.shadowBlur = 16;
+      ctx.globalAlpha = 0.9 + Math.sin(performance.now() * 0.01) * 0.1;
+    } else {
+      ctx.shadowColor = c;
+      ctx.shadowBlur = 10;
+    }
+    ctx.fillStyle = e.diving ? '#f472b6' : c;
+    ctx.fillRect(e.x - CS.ENEMY_W / 2, e.y - CS.ENEMY_H / 2, CS.ENEMY_W, CS.ENEMY_H);
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(e.x - CS.ENEMY_W / 2, e.y - CS.ENEMY_H / 2, CS.ENEMY_W, CS.ENEMY_H);
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  function drawEnemyMissile(m) {
+    ctx.save();
+    ctx.shadowColor = '#f472b6';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#f472b6';
+    ctx.beginPath();
+    ctx.ellipse(m.x, m.y, CS.MISSILE_R * 0.6, CS.MISSILE_R, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawParticles() {
+    particles.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 6;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+
+  function updateHud() {
+    scoreEl.textContent = score;
+    goldEl.textContent = gold;
+    waveEl.textContent = wave;
+    livesEl.textContent = lives;
+  }
+
+  function effectiveFireRate() {
+    return 4 + upgrades.fireRate;
+  }
+  function effectiveBulletSpeed() {
+    return CS.BULLET_SPEED * (1 + 0.22 * upgrades.bulletSpeed);
+  }
+  function effectiveMoveSpeed() {
+    return CS.PLAYER_SPEED * (1 + 0.15 * upgrades.moveSpeed);
+  }
+
+  const SHOP_ITEMS = [
+    { id: 'fireRate', name: { ko: '연사 속도', en: 'Fire rate' }, desc: { ko: '초당 발사 수 +1', en: 'Shots/sec +1' }, max: 3, prices: [55, 85, 115] },
+    { id: 'bulletSpeed', name: { ko: '미사일 업그레이드', en: 'Missile upgrade' }, desc: { ko: '탄속 +22%', en: 'Bullet speed +22%' }, max: 2, prices: [70, 95] },
+    { id: 'moveSpeed', name: { ko: '이동 속도', en: 'Move speed' }, desc: { ko: '이동 +15%', en: 'Move +15%' }, max: 2, prices: [60, 85] },
+    { id: 'heal', name: { ko: '체력 회복', en: 'Heal' }, desc: { ko: '체력 +1 (최대 5)', en: 'HP +1 (max 5)' }, max: 99, prices: [90] },
+  ];
+
+  function renderShop() {
+    shopTitle.textContent = t('shopTitlePrefix') + (wave - 1) + t('shopTitleSuffix');
+    shopGold.textContent = gold;
+    shopList.innerHTML = '';
+    SHOP_ITEMS.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'shop-item';
+      const lvl = item.id === 'heal' ? 0 : upgrades[item.id];
+      const max = item.id === 'heal' ? '' : ' / ' + item.max;
+      const price = item.id === 'heal' ? item.prices[0] : (item.prices[lvl] ?? 999);
+      const canBuy = gold >= price && (item.id === 'heal' ? lives < maxLives : lvl < item.max);
+      const nam = typeof item.name === 'object' ? item.name[LANG] || item.name.ko : item.name;
+      const desc = typeof item.desc === 'object' ? item.desc[LANG] || item.desc.ko : item.desc;
+      const name = item.id === 'heal' ? nam : nam + ' Lv.' + (lvl + 1);
+      const lvlTxt = item.id !== 'heal' && lvl > 0 ? ' · Lv.' + lvl + max : '';
+      div.innerHTML =
+        '<div class="info">' +
+          '<div class="name">' + name + '</div>' +
+          '<div class="lvl">' + desc + lvlTxt + '</div>' +
+        '</div>' +
+        '<button class="btn-buy" data-id="' + item.id + '" ' + (canBuy ? '' : 'disabled') + '>' +
+          (item.id === 'heal' && lives >= maxLives ? 'MAX' : (canBuy ? price + ' G' : '\u2014')) +
+        '</button>';
+      shopList.appendChild(div);
+    });
+    var nextBtn = document.getElementById('shopNextBtn');
+    if (nextBtn) nextBtn.textContent = t('shopNext');
+    shopList.querySelectorAll('.btn-buy').forEach(btn => {
+      if (btn.disabled) return;
+      btn.addEventListener('click', () => buyUpgrade(btn.dataset.id));
+    });
+  }
+
+  function buyUpgrade(id) {
+    const item = SHOP_ITEMS.find(i => i.id === id);
+    if (!item) return;
+    if (id === 'heal') {
+      if (lives >= maxLives || gold < item.prices[0]) return;
+      gold -= item.prices[0];
+      lives = Math.min(maxLives, lives + 1);
+    } else {
+      const lvl = upgrades[id];
+      if (lvl >= item.max || gold < (item.prices[lvl] ?? 999)) return;
+      gold -= item.prices[lvl];
+      upgrades[id]++;
+    }
+    renderShop();
+    updateHud();
+  }
+
+  function openShop() {
+    state = 'shop';
+    updateHud();
+    renderShop();
+    menuOverlay.classList.add('hidden');
+    shopOverlay.classList.remove('hidden');
+  }
+
+  function closeShopAndNextWave() {
+    shopOverlay.classList.add('hidden');
+    menuOverlay.classList.add('hidden');
+    state = 'play';
+    spawnWave();
+    lastEnemyShoot = lastDiveSpawn = performance.now();
+    raf = requestAnimationFrame(loop);
+  }
+
+  const LB_TABLE = 'leaderboard_neox';
+  const rankPeriodKey = 'neox_rank_period_v1';
+  const rankNameKey = 'neox_rank_name_v1';
+  function getRankPeriod() { return localStorage.getItem(rankPeriodKey) || 'all'; }
+  function setRankPeriod(p) { localStorage.setItem(rankPeriodKey, p); }
+  function getRankName() { return (localStorage.getItem(rankNameKey) || '').trim(); }
+  function setRankName(v) { localStorage.setItem(rankNameKey, v); }
+
+  function supabaseReady() {
+    return typeof window.supabase !== 'undefined' &&
+      typeof window.SUPABASE_URL === 'string' &&
+      typeof window.SUPABASE_ANON_KEY === 'string' &&
+      window.SUPABASE_URL.startsWith('http') &&
+      window.SUPABASE_ANON_KEY.length > 20;
+  }
+  function getSupabase() {
+    if (!supabaseReady()) return null;
+    try {
+      return window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
+    } catch { return null; }
+  }
+
+  function periodStartISO(period) {
+    const d = new Date();
+    if (period === 'all') return '1970-01-01';
+    if (period === 'daily') {
+      const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), day = String(d.getDate()).padStart(2, '0');
+      return y + '-' + m + '-' + day;
+    }
+    const day = d.getDay(), diffToMon = (day + 6) % 7;
+    d.setDate(d.getDate() - diffToMon);
+    const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), dd = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + dd;
+  }
+
+  const LANG = (document.body && document.body.getAttribute('data-lang')) === 'en' ? 'en' : 'ko';
+  const STR = {
+    ko: { menuDesc: '← → 이동 · SPACE 발사<br />웨이브 클리어 시 골드 · 5라운드마다 상점', startBtn: 'START', retryBtn: 'RETRY', shopTitlePrefix: '상점 · WAVE ', shopTitleSuffix: ' 클리어!', shopNext: '다음 웨이브', footerLink: '✨ 다른 서비스 보기', langLink: 'English' },
+    en: { menuDesc: '← → Move · SPACE Fire<br />Gold on wave clear · Shop every 5 rounds', startBtn: 'START', retryBtn: 'RETRY', shopTitlePrefix: 'Shop · WAVE ', shopTitleSuffix: ' clear!', shopNext: 'Next wave', footerLink: '✨ View other services', langLink: '한국어' }
+  };
+  function t(k) { return (STR[LANG] || STR.ko)[k] || STR.ko[k]; }
+  const RANK_STR = {
+    ko: { noRecords: '아직 기록이 없어요', needName: '닉네임을 입력해주세요.', submitting: '등록 중...', submitOk: '등록 완료! 랭킹 갱신.', submitFail: '등록 실패: ', loadFail: '랭킹 로드 실패: ', noSupabase: 'Supabase 미설정 시 랭킹 비활성화', loading: '랭킹 불러오는 중...', anon: '익명', rankTitle: '랭킹 (Top 10)', tabAll: '전체', tabDaily: '일일', tabWeekly: '주간', namePlaceholder: '닉네임 (최대 16자)', submitBtn: '점수 등록' },
+    en: { noRecords: 'No records yet', needName: 'Enter a nickname.', submitting: 'Submitting...', submitOk: 'Submitted! Leaderboard updated.', submitFail: 'Submit failed: ', loadFail: 'Load failed: ', noSupabase: 'Ranking disabled without Supabase', loading: 'Loading leaderboard...', anon: 'Anonymous', rankTitle: 'Leaderboard (Top 10)', tabAll: 'All', tabDaily: 'Daily', tabWeekly: 'Weekly', namePlaceholder: 'Nickname (max 16)', submitBtn: 'Submit score' }
+  };
+  function tr(k) { return (RANK_STR[LANG] || RANK_STR.ko)[k] || RANK_STR.ko[k]; }
+  function initRankI18n() {
+    var el = document.querySelector('[data-rank="title"]');
+    if (el) el.textContent = tr('rankTitle');
+    document.querySelectorAll('.rank-tab').forEach(function (b) {
+      var p = b.dataset.period;
+      if (p === 'all') b.textContent = tr('tabAll');
+      else if (p === 'daily') b.textContent = tr('tabDaily');
+      else if (p === 'weekly') b.textContent = tr('tabWeekly');
+    });
+    if (rankName) rankName.placeholder = tr('namePlaceholder');
+    if (rankSubmit) rankSubmit.textContent = tr('submitBtn');
+  }
+  function initMenuI18n() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (!k || !t(k)) return;
+      if (k === 'menuDesc') el.innerHTML = t(k);
+      else el.textContent = t(k);
+    });
+    var langLink = document.getElementById('langLink');
+    if (langLink) {
+      langLink.href = LANG === 'en' ? './index.html' : './en.html';
+      langLink.textContent = t('langLink');
+    }
+  }
+
+  function setRankHint(msg) { if (rankHint) rankHint.textContent = msg || ''; }
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function safeName(input) { return String(input || '').trim().replace(/\s+/g, ' ').slice(0, 16); }
+
+  function renderRanking(rows) {
+    if (!rankList) return;
+    rankList.innerHTML = '';
+    if (!rows || rows.length === 0) {
+      const li = document.createElement('li');
+      li.innerHTML = '<span class="name">' + tr('noRecords') + '</span><span class="score">-</span>';
+      rankList.appendChild(li);
+      return;
+    }
+    rows.forEach(function (r) {
+      const li = document.createElement('li');
+      const nm = escapeHtml(safeName(r.name) || tr('anon'));
+      li.innerHTML = '<span class="name">' + nm + '</span><span class="score">' + Number(r.score || 0).toLocaleString() + '</span>';
+      rankList.appendChild(li);
+    });
+  }
+
+  function setActiveRankTab(period) {
+    rankTabs.forEach(function (el) {
+      var active = el.dataset.period === period;
+      el.classList.toggle('active', active);
+    });
+  }
+
+  function fetchRanking() {
+    var period = getRankPeriod();
+    var sb = getSupabase();
+    if (!sb) {
+      setRankHint(tr('noSupabase'));
+      renderRanking([]);
+      return;
+    }
+    setRankHint(tr('loading'));
+    var period_start = periodStartISO(period);
+    sb.from(LB_TABLE).select('name,score,created_at')
+      .eq('period_type', period).eq('period_start', period_start)
+      .order('score', { ascending: false }).order('created_at', { ascending: true })
+      .limit(10).then(function (_ref) {
+        var data = _ref.data, error = _ref.error;
+        if (error) { setRankHint(tr('loadFail') + error.message); renderRanking([]); return; }
+        setRankHint('');
+        renderRanking(data);
+      });
+  }
+
+  function submitRanking(scoreVal) {
+    var sb = getSupabase();
+    if (!sb) { setRankHint(tr('noSupabase')); return; }
+    var nm = safeName(rankName && rankName.value);
+    if (!nm) { setRankHint(tr('needName')); if (rankName) rankName.focus(); return; }
+    var score = Math.max(0, Math.floor(Number(scoreVal) || 0));
+    var period = getRankPeriod();
+    setRankHint(tr('submitting'));
+    var period_start = periodStartISO(period);
+    sb.from(LB_TABLE).upsert({
+      name: nm, score: score, period_type: period, period_start: period_start, user_agent: navigator.userAgent
+    }, { onConflict: 'period_type,period_start,name', ignoreDuplicates: false }).then(function (_ref2) {
+      var error = _ref2.error;
+      if (error) { setRankHint(tr('submitFail') + error.message); return; }
+      setRankHint(tr('submitOk'));
+      setRankName(nm);
+      fetchRanking();
+    });
+  }
+
+  if (rankTabs && rankTabs.length) {
+    rankTabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var p = b.dataset.period;
+        setRankPeriod(p);
+        setActiveRankTab(p);
+        fetchRanking();
+      });
+    });
+  }
+  if (rankSubmit) {
+    rankSubmit.addEventListener('click', function () { submitRanking(score); });
+  }
+  if (rankName && getRankName()) rankName.value = getRankName();
+  initMenuI18n();
+  initRankI18n();
+  setActiveRankTab(getRankPeriod());
+  fetchRanking();
+
+  function gameOver() {
+    state = 'over';
+    cancelAnimationFrame(raf);
+    finalScoreEl.textContent = score;
+    menuStart.classList.add('hidden');
+    menuOver.classList.remove('hidden');
+    menuOverlay.classList.remove('hidden');
+    shopOverlay.classList.add('hidden');
+    fetchRanking();
+  }
+
+  function loop() {
+    if (state !== 'play') return;
+    const now = performance.now();
+    const dt = Math.min((now - lastFrame) / 1000, 0.05);
+    lastFrame = now;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.scale(W / 360, H / 480);
+    ctx.fillStyle = 'rgba(6, 182, 212, 0.15)';
+    stars.forEach(s => {
+      ctx.globalAlpha = 0.3 + Math.sin(now * 0.002 + s.x) * s.br;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = 'rgba(6, 182, 212, 0.06)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < 360; x += 24) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, 480);
+      ctx.stroke();
+    }
+    for (let y = 0; y < 480; y += 24) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(360, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    const spd = effectiveMoveSpeed() * 60 * dt;
+    if (keys['ArrowLeft'] || touchBtns.left) player.x -= spd;
+    if (keys['ArrowRight'] || touchBtns.right) player.x += spd;
+    if (keys['Space'] || touchBtns.fire) tryShoot();
+    player.x = Math.max(CS.PLAYER_W / 2, Math.min(W - CS.PLAYER_W / 2, player.x));
+
+    const bSpeed = effectiveBulletSpeed();
+    bullets.forEach(b => { b.y += bSpeed * 60 * dt; });
+    bullets = bullets.filter(b => b.y > -10);
+
+    const alive = enemies.filter(e => !e.hit);
+    const formation = alive.filter(e => !e.diving);
+
+    if (alive.length === 0) {
+      const cleared = wave;
+      gold += CS.GOLD_PER_WAVE + cleared * CS.GOLD_WAVE_BONUS;
+      score += 400 + cleared * 50;
+      wave++;
+      if (wave % 5 === 1) {
+        drawPlayer(now);
+        bullets.forEach(drawBullet);
+        enemyMissiles.forEach(drawEnemyMissile);
+        enemies.forEach(drawEnemy);
+        drawParticles();
+        openShop();
+        return;
+      }
+      spawnWave();
+    }
+
+    const shootInterval = Math.max(1200, CS.ENEMY_SHOOT_INTERVAL - (wave - 1) * 50);
+    if (formation.length > 0 && now - lastEnemyShoot >= shootInterval) {
+      lastEnemyShoot = now;
+      const shooter = formation[Math.floor(Math.random() * formation.length)];
+      const dx = (player.x - shooter.x) * 0.002;
+      enemyMissiles.push({
+        x: shooter.x,
+        y: shooter.y + CS.ENEMY_H / 2,
+        vx: Math.max(-1.2, Math.min(1.2, dx)),
+        vy: CS.MISSILE_SPEED,
+        spawnedAt: now,
+      });
+    }
+
+    const diveInterval = Math.max(2800, CS.ENEMY_DIVE_INTERVAL - (wave - 1) * 120);
+    const diveCands = formation.filter(e => !e.diving);
+    if (diveCands.length > 0 && now - lastDiveSpawn >= diveInterval) {
+      lastDiveSpawn = now;
+      const d = diveCands[Math.floor(Math.random() * diveCands.length)];
+      d.diving = true;
+      const dx = player.x - d.x;
+      const dy = player.y - d.y;
+      const len = Math.hypot(dx, dy) || 1;
+      d.vx = (dx / len) * CS.DIVE_SPEED;
+      d.vy = (dy / len) * CS.DIVE_SPEED;
+    }
+
+    enemyMissiles.forEach(m => {
+      const age = now - (m.spawnedAt || 0);
+      const tracking = age < CS.MISSILE_TRACKING_MS;
+      if (tracking) {
+        const dx = player.x - m.x;
+        const dy = player.y - m.y;
+        const len = Math.hypot(dx, dy) || 1;
+        m.vx += (dx / len) * CS.MISSILE_HOMING * 60 * dt;
+        m.vy += (dy / len) * CS.MISSILE_HOMING * 60 * dt;
+        const ml = Math.hypot(m.vx, m.vy) || 1;
+        m.vx = (m.vx / ml) * CS.MISSILE_SPEED;
+        m.vy = (m.vy / ml) * CS.MISSILE_SPEED;
+      }
+      m.x += m.vx * 60 * dt;
+      m.y += m.vy * 60 * dt;
+    });
+    enemyMissiles = enemyMissiles.filter(m => m.y < H + 20);
+
+    alive.filter(e => e.diving).forEach(e => {
+      const dx = player.x - e.x;
+      const dy = player.y - e.y;
+      const len = Math.hypot(dx, dy) || 1;
+      e.vx += (dx / len) * CS.DIVE_HOMING * 60 * dt;
+      e.vy += (dy / len) * CS.DIVE_HOMING * 60 * dt;
+      const vl = Math.hypot(e.vx, e.vy) || 1;
+      e.vx = (e.vx / vl) * CS.DIVE_SPEED;
+      e.vy = (e.vy / vl) * CS.DIVE_SPEED;
+      e.x += e.vx * 60 * dt;
+      e.y += e.vy * 60 * dt;
+      if (e.y > H + 40 || e.x < -40 || e.x > W + 40) e.hit = true;
+    });
+
+    enemyTick += 60 * dt;
+    if (enemyTick >= 45) {
+      enemyTick = 0;
+      let edge = false;
+      formation.forEach(e => {
+        e.x += CS.ENEMY_DX * enemyDir;
+        if (e.x <= CS.ENEMY_W / 2 + 4 || e.x >= W - CS.ENEMY_W / 2 - 4) edge = true;
+      });
+      if (edge) {
+        enemyDir *= -1;
+        formation.forEach(e => { e.y += CS.ENEMY_DY; });
+      }
+    }
+
+    bullets.forEach(b => {
+      alive.forEach(e => {
+        if (hitTest(
+          { x: b.x - CS.BULLET_R, y: b.y - CS.BULLET_R },
+          { x: e.x - CS.ENEMY_W / 2, y: e.y - CS.ENEMY_H / 2 },
+          CS.BULLET_R * 2, CS.BULLET_R * 2,
+          CS.ENEMY_W, CS.ENEMY_H
+        )) {
+          e.hit = true;
+          b.dead = true;
+          const colors = ['#a78bfa', '#c084fc', '#f472b6'];
+          addParticles(e.x, e.y, colors[e.type % 3]);
+          score += (e.type + 1) * 50;
+          if (e.diving) score += 80;
+        }
+      });
+    });
+    bullets = bullets.filter(b => !b.dead);
+
+    const inv = now < invincibleUntil;
+    if (!inv) {
+      enemyMissiles.forEach(m => {
+        if (hitTest(
+          { x: player.x - CS.PLAYER_W / 2, y: player.y - CS.PLAYER_H / 2 },
+          { x: m.x - CS.MISSILE_R, y: m.y - CS.MISSILE_R },
+          CS.PLAYER_W, CS.PLAYER_H,
+          CS.MISSILE_R * 2, CS.MISSILE_R * 2
+        )) {
+          m.dead = true;
+          addParticles(m.x, m.y, '#f472b6');
+          lives--;
+          invincibleUntil = now + CS.INVINCIBLE_MS;
+          if (lives <= 0) { gameOver(); return; }
+        }
+      });
+      enemyMissiles = enemyMissiles.filter(m => !m.dead);
+      alive.filter(e => e.diving).forEach(e => {
+        if (hitTest(
+          { x: player.x - CS.PLAYER_W / 2, y: player.y - CS.PLAYER_H / 2 },
+          { x: e.x - CS.ENEMY_W / 2, y: e.y - CS.ENEMY_H / 2 },
+          CS.PLAYER_W, CS.PLAYER_H,
+          CS.ENEMY_W, CS.ENEMY_H
+        )) {
+          e.hit = true;
+          addParticles(e.x, e.y, '#f472b6');
+          lives--;
+          invincibleUntil = now + CS.INVINCIBLE_MS;
+          if (lives <= 0) { gameOver(); return; }
+        }
+      });
+      formation.forEach(e => {
+        if (e.y + CS.ENEMY_H / 2 >= player.y - CS.PLAYER_H / 2 - 5) {
+          e.hit = true;
+          addParticles(e.x, e.y, '#f472b6');
+          lives--;
+          invincibleUntil = now + CS.INVINCIBLE_MS;
+          if (lives <= 0) gameOver();
+        }
+      });
+    }
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= 0.03;
+    });
+    particles = particles.filter(p => p.life > 0);
+
+    drawPlayer(now);
+    bullets.forEach(drawBullet);
+    enemyMissiles.forEach(drawEnemyMissile);
+    enemies.forEach(drawEnemy);
+    drawParticles();
+    updateHud();
+
+    raf = requestAnimationFrame(loop);
+  }
+
+  const keys = {};
+
+  function tryShoot() {
+    if (state !== 'play') return;
+    const now = performance.now();
+    if (now - lastShot < 1000 / effectiveFireRate()) return;
+    lastShot = now;
+    bullets.push({
+      x: player.x,
+      y: player.y - CS.PLAYER_H / 2 - 4,
+      dead: false,
+    });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['Space', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
+    keys[e.code] = true;
+    if (e.code === 'Space') tryShoot();
+  });
+  document.addEventListener('keyup', e => { keys[e.code] = false; });
+
+  const touchBtns = { left: false, right: false, fire: false };
+  function setupTouch() {
+    const wrap = C.parentElement;
+    const left = document.createElement('button');
+    const right = document.createElement('button');
+    const fire = document.createElement('button');
+    left.className = right.className = fire.className = 'touch-btn';
+    left.textContent = '◀';
+    right.textContent = '▶';
+    fire.textContent = 'FIRE';
+    left.style.cssText = 'position:absolute;left:12px;bottom:24px;width:56px;height:56px;border-radius:50%;border:2px solid rgba(6,182,212,0.5);background:rgba(6,182,212,0.15);color:#22d3ee;font-size:18px;cursor:pointer;z-index:15;touch-action:manipulation;';
+    right.style.cssText = 'position:absolute;left:80px;bottom:24px;width:56px;height:56px;border-radius:50%;border:2px solid rgba(6,182,212,0.5);background:rgba(6,182,212,0.15);color:#22d3ee;font-size:18px;cursor:pointer;z-index:15;touch-action:manipulation;';
+    fire.style.cssText = 'position:absolute;right:12px;bottom:24px;width:72px;height:56px;border-radius:12px;border:2px solid rgba(167,139,250,0.5);background:rgba(167,139,250,0.15);color:#a78bfa;font-size:11px;font-weight:700;cursor:pointer;z-index:15;touch-action:manipulation;';
+    [left, right, fire].forEach(el => {
+      el.addEventListener('mousedown', (e) => { e.preventDefault(); });
+      el.addEventListener('touchstart', (e) => { e.preventDefault(); });
+    });
+    left.addEventListener('mousedown', () => { touchBtns.left = true; });
+    left.addEventListener('mouseup', () => { touchBtns.left = false; });
+    left.addEventListener('mouseleave', () => { touchBtns.left = false; });
+    left.addEventListener('touchstart', () => { touchBtns.left = true; });
+    left.addEventListener('touchend', () => { touchBtns.left = false; });
+    right.addEventListener('mousedown', () => { touchBtns.right = true; });
+    right.addEventListener('mouseup', () => { touchBtns.right = false; });
+    right.addEventListener('mouseleave', () => { touchBtns.right = false; });
+    right.addEventListener('touchstart', () => { touchBtns.right = true; });
+    right.addEventListener('touchend', () => { touchBtns.right = false; });
+    fire.addEventListener('mousedown', () => { touchBtns.fire = true; tryShoot(); });
+    fire.addEventListener('touchstart', () => { touchBtns.fire = true; tryShoot(); });
+    fire.addEventListener('mouseup', () => { touchBtns.fire = false; });
+    fire.addEventListener('mouseleave', () => { touchBtns.fire = false; });
+    fire.addEventListener('touchend', () => { touchBtns.fire = false; });
+    wrap.appendChild(left);
+    wrap.appendChild(right);
+    wrap.appendChild(fire);
+  }
+  setupTouch();
+
+  function start() {
+    resize();
+    state = 'play';
+    score = 0;
+    gold = 0;
+    wave = 1;
+    lives = 3;
+    maxLives = 5;
+    upgrades = { fireRate: 0, bulletSpeed: 0, moveSpeed: 0 };
+    player.x = W / 2;
+    player.y = H - 56;
+    bullets = [];
+    particles = [];
+    invincibleUntil = 0;
+    const t = performance.now();
+    lastEnemyShoot = lastDiveSpawn = t;
+    spawnWave();
+    menuStart.classList.remove('hidden');
+    menuOver.classList.add('hidden');
+    menuOverlay.classList.add('hidden');
+    shopOverlay.classList.add('hidden');
+    lastFrame = lastShot = t;
+    updateHud();
+    raf = requestAnimationFrame(loop);
+  }
+
+  startBtn.addEventListener('click', start);
+  restartBtn.addEventListener('click', start);
+  shopNextBtn.addEventListener('click', closeShopAndNextWave);
+})();
+  </script>
+</body>
+</html>

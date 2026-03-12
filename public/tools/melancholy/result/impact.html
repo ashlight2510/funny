@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>이 컨디션이 일상에 미치는 영향 - 마음 컨디션 체크</title>
+  <meta name="description" content="오늘의 마음 컨디션이 집중, 업무, 관계에 미치는 영향과 대응 방법을 알아보세요." />
+  
+  <!-- OG -->
+  <meta property="og:title" content="이 컨디션이 일상에 미치는 영향" />
+  <meta property="og:description" content="오늘의 마음 컨디션이 집중, 업무, 관계에 미치는 영향과 대응 방법을 알아보세요." />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Daily+Impact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://melancholy.funnyfunny.cloud/result/impact.html" />
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1220'/><text x='50' y='62' font-size='52' text-anchor='middle' fill='white'>🌙</text></svg>">
+  
+  <style>
+    :root{
+      --bg1:#fff8f8;
+      --bg2:#f3f0ff;
+      --card:#ffffff;
+      --text:#1b1b1f;
+      --muted:#666671;
+      --line:#e9e7f3;
+      --accent:#6b6eff;
+      --accent2:#f4c2c2;
+      --shadow: 0 16px 60px rgba(20, 20, 40, .10);
+      --r: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      color:var(--text);
+      background: radial-gradient(900px 520px at 15% 10%, rgba(244,194,194,.55), transparent 60%), radial-gradient(900px 520px at 85% 15%, rgba(107,110,255,.22), transparent 60%), linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .wrap{ max-width: 800px; margin: 0 auto; padding: 28px 18px 80px; }
+    header{ text-align:center; margin-bottom:32px; }
+    .pill{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--line); background: rgba(255,255,255,.55); border-radius: 999px; color:var(--muted); font-size:12px; margin-bottom:12px; backdrop-filter: blur(10px); }
+    h1{ margin:0 0 12px; font-size: 28px; letter-spacing: -0.3px; line-height: 1.25; }
+    .card{ background: var(--card); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 32px 28px; backdrop-filter: blur(14px); margin-bottom:24px; }
+    .impactSection{ margin-bottom:28px; }
+    .impactSection h3{ font-size:20px; font-weight:700; margin-bottom:12px; color:var(--accent); }
+    .impactSection p{ font-size:15px; line-height:1.7; color:var(--text); margin:0 0 12px; }
+    .actionsList{ margin-top:32px; padding-top:24px; border-top:1px solid var(--line); }
+    .actionsList h3{ font-size:18px; font-weight:700; margin-bottom:16px; }
+    .actionItem{ padding:14px 18px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.7); margin-bottom:10px; font-size:15px; line-height:1.6; }
+    .ctaButtons{ display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; justify-content:center; }
+    .ctaButton{ display:inline-block; padding: 16px 28px; background: linear-gradient(135deg, rgba(107,110,255,.18), rgba(244,194,194,.28)); border: 2px solid rgba(107,110,255,.25); border-radius: 18px; color: var(--text); font-weight: 700; font-size:16px; text-decoration:none; transition: transform .08s ease; }
+    .ctaButton:hover{ transform: translateY(-2px); box-shadow: 0 4px 12px rgba(107,110,255,.2); }
+    .ctaButton.secondary{ background:rgba(255,255,255,.8); border-color:var(--line); }
+    .adContainer{ margin:24px 0; min-height:250px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.4); border:1px solid var(--line); border-radius:var(--r); padding:20px; }
+    .faqLinks{ margin-top:32px; padding-top:32px; border-top:1px solid var(--line); }
+    .faqLinks h3{ font-size:16px; font-weight:650; margin-bottom:16px; color:var(--muted); }
+    .faqList{ display:grid; gap:12px; }
+    .faqLink{ padding:12px 16px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.7); color:var(--text); text-decoration:none; transition: all .2s ease; display:block; }
+    .faqLink:hover{ border-color:var(--accent); background:rgba(107,110,255,.08); transform: translateY(-1px); }
+    .footerNote{ margin-top: 24px; color: var(--muted); font-size: 12px; line-height: 1.55; text-align:center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="pill">🌙 일상 영향 분석</div>
+      <h1>이 컨디션이 일상에 미치는 영향</h1>
+    </header>
+
+    <div class="card">
+      <div id="impactsContainer"></div>
+      
+      <!-- 광고 위치 (CPC 상승 구간) -->
+      <div class="adContainer">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4977995785737556" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      </div>
+      
+      <div class="actionsList">
+        <h3>오늘의 행동 3가지</h3>
+        <div id="actionsContainer"></div>
+      </div>
+
+      <div class="ctaButtons">
+        <a href="../faq/when-condition-changes.html" class="ctaButton">내일 달라질 수 있는 조건 보기 →</a>
+        <a href="../index.html" class="ctaButton secondary">처음으로 돌아가 다시 체크하기</a>
+      </div>
+    </div>
+
+    <!-- 관련 질문 (FAQ) 2개 -->
+    <div class="faqLinks">
+      <h3>관련 질문</h3>
+      <div class="faqList">
+        <a href="../faq/productivity.html" class="faqLink">일이 손에 안 잡히는 날의 팁은?</a>
+        <a href="../faq/relationship.html" class="faqLink">예민한 날 대화는 어떻게?</a>
+      </div>
+    </div>
+
+    <div class="footerNote">
+      ※ 이 서비스는 의료 진단/치료 목적이 아닙니다. <br/>
+      만약 매달 반복되고 일상에 큰 지장이 있거나, 자신이 너무 힘들다는 생각이 강해진다면
+      산부인과/정신건강의학과 상담이 큰 도움이 될 수 있어요.
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const flow = params.get('flow') || 'mood';
+    const severity = params.get('severity') || 'low';
+
+    const impacts = {
+      low: [
+        {
+          title: '집중·업무',
+          text: '집중력이 평소보다 약간 낮을 수 있어요. 중요한 업무는 충분한 시간을 두고, 실수를 피하기 위해 확인을 한 번 더 하는 것이 좋아요. 하지만 무리하지 않는 선에서 가능해요.'
+        },
+        {
+          title: '관계',
+          text: '약간의 예민함이 있을 수 있지만 큰 문제는 아니에요. 대화할 때 상대의 말을 충분히 듣고, 오해가 생기기 전에 확인하는 것이 도움이 돼요.'
+        },
+        {
+          title: '수면·회복',
+          text: '수면 패턴이나 피로 회복 속도가 평소보다 느릴 수 있어요. 오늘은 일찍 쉬거나 휴식 시간을 조금 더 확보하는 것이 좋아요. 작은 루틴 변화로도 도움이 될 수 있어요.'
+        }
+      ],
+      mid: [
+        {
+          title: '집중·업무',
+          text: '집중력 저하로 실수나 결정 지연이 발생할 수 있어요. 중요한 결정은 가능한 미루고, 업무는 최소한만 처리하는 것이 안전해요. 오늘은 생산성보다 안정이 우선이에요.'
+        },
+        {
+          title: '관계',
+          text: '예민함이 증가해 오해나 갈등이 생길 수 있어요. 중요한 대화는 내일로 미루거나, 꼭 해야 한다면 감정이 격해지기 전에 잠시 멈추는 것이 좋아요.'
+        },
+        {
+          title: '수면·회복',
+          text: '수면 질 저하와 피로 누적으로 루틴이 깨질 수 있어요. 오늘은 규칙적인 루틴보다 휴식을 우선하고, 회복에 집중하는 것이 중요해요.'
+        }
+      ],
+      high: [
+        {
+          title: '집중·업무',
+          text: '집중력과 판단력이 크게 저하되어 중요한 업무나 결정에 실수가 발생할 위험이 높아요. 오늘은 가능한 큰 결정을 미루고, 업무는 최소한만 처리하세요. 생산성 기대를 낮추는 것이 필요해요.'
+        },
+        {
+          title: '관계',
+          text: '예민함이 커서 대화나 관계에서 오해와 갈등이 쉽게 생길 수 있어요. 중요한 대화는 피하고, 혼자 있고 싶은 시간을 존중하는 것이 좋아요. 상대방에게 상태를 간단히 설명하는 것도 도움이 될 수 있어요.'
+        },
+        {
+          title: '수면·회복',
+          text: '수면 패턴이 크게 깨지고 피로 회복이 어려울 수 있어요. 오늘은 루틴보다 휴식과 회복이 절대적으로 우선이에요. 외부 도움을 받는 것도 좋은 선택입니다.'
+        }
+      ]
+    };
+
+    const actions = {
+      low: [
+        '중요한 결정은 내일로 미루기',
+        '큰 지출은 보류하고 필요한 것만 구매',
+        '짧은 산책이나 스트레칭으로 컨디션 회복'
+      ],
+      mid: [
+        '오늘의 일정 1개 이상 줄이기',
+        '중요한 약속이나 결정 모두 미루기',
+        '따뜻한 음식과 충분한 휴식 시간 확보'
+      ],
+      high: [
+        '모든 중요한 결정과 약속 가능한 미루기',
+        '생산성 기대를 최소한으로 낮추기',
+        '신뢰하는 사람에게 상태를 알리고 도움 요청'
+      ]
+    };
+
+    const impactsData = impacts[severity] || impacts.low;
+    const actionsData = actions[severity] || actions.low;
+
+    const impactsContainer = document.getElementById('impactsContainer');
+    impactsData.forEach(impact => {
+      const div = document.createElement('div');
+      div.className = 'impactSection';
+      div.innerHTML = `<h3>${impact.title}</h3><p>${impact.text}</p>`;
+      impactsContainer.appendChild(div);
+    });
+
+    const actionsContainer = document.getElementById('actionsContainer');
+    actionsData.forEach(action => {
+      const div = document.createElement('div');
+      div.className = 'actionItem';
+      div.textContent = action;
+      actionsContainer.appendChild(div);
+    });
+
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4977995785737556" crossorigin="anonymous"></script>
+</body>
+</html>

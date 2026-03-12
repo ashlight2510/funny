@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>공룡 달리기 게임 | Dino 러너 랭킹</title>
+    <meta
+      name="description"
+      content="크롬 공룡게임(다이노) 느낌의 웹 러너 게임. Space/↑로 점프하고 장애물을 피하며 점수를 올리세요. Supabase 랭킹(전체/일일/주간) 지원."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/run/" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="공룡 달리기 게임" />
+    <meta
+      property="og:description"
+      content="크롬 다이노 느낌의 웹 러너 + 전체/일일/주간 랭킹. Space/↑로 점프!"
+    />
+    <meta property="og:url" content="https://run.funnyfunny.cloud/" />
+    <meta property="og:site_name" content="Dino-ish Runner" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/f8fafc&text=Dino+Run"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="공룡 달리기 게임"
+    />
+    <meta
+      name="twitter:description"
+      content="크롬 다이노 느낌의 웹 러너 + 전체/일일/주간 랭킹."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/0f172a/f8fafc&text=Dino+Run"
+    />
+
+    <!-- PWA-ish -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Dino-ish Runner",
+        "url": "https://run.funnyfunny.cloud/",
+        "inLanguage": "ko-KR",
+        "description": "크롬 공룡게임(다이노) 느낌의 웹 러너 게임. Supabase 랭킹(전체/일일/주간) 지원."
+      }
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+</head>
+  <body><main class="wrap">
+      <header class="topbar">
+        <div class="title-wrap">
+          <div class="title" data-i18n="title">공룡 달리기 게임</div>
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+        </div>
+        <div class="hud">
+          <div class="hud-item">
+            <span class="label" data-i18n="labelScore">SCORE</span>
+            <span id="score">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="label" data-i18n="labelBest">BEST</span>
+            <span id="best">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="label" data-i18n="labelSpeed">SPEED</span>
+            <span id="speed">1.00</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="stage" aria-label="게임 화면">
+        <canvas id="game" width="900" height="260"></canvas>
+        <div id="overlay" class="overlay" role="status" aria-live="polite">
+          <div class="overlay-card">
+            <div class="overlay-title" id="overlayTitle">대기 중</div>
+            <div class="overlay-sub" id="overlaySub">Space / ↑ 로 시작</div>
+            <div class="overlay-cta">
+              <button id="startBtn" class="start-btn" type="button">
+                시작하기
+              </button>
+              <div class="start-hint" id="startHint">
+                모바일은 화면 탭으로도 시작/점프할 수 있어요
+              </div>
+            </div>
+            <div class="overlay-help">
+              <div data-i18n-html="helpJump">
+                <kbd>Space</kbd> / <kbd>↑</kbd> 점프
+              </div>
+              <div data-i18n-html="helpDuck">
+                <kbd>↓</kbd> 빠르게 내려오기
+              </div>
+              <div data-i18n-html="helpRestart">
+                <kbd>R</kbd> 재시작
+              </div>
+            </div>
+            <div id="overlayAd" class="overlay-ad" aria-label="Advertisement" style="display:none">
+              <ins
+                class="adsbygoogle"
+                style="display:block; width:100%;"
+                data-ad-client="ca-pub-1204894220949193"
+                data-ad-slot="5145068706"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+            </div>
+            <div class="leaderboard">
+              <div class="leaderboard-head">
+                <div class="leaderboard-title" data-i18n="leaderboardTitle">
+                  랭킹 (Top 10)
+                </div>
+                <div
+                  class="tabs"
+                  role="tablist"
+                  aria-label="랭킹 기간 선택"
+                  data-i18n-aria="leaderboardTabsAria"
+                >
+                  <button
+                    class="tab active"
+                    id="tabAll"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-i18n="tabAll"
+                  >
+                    전체
+                  </button>
+                  <button
+                    class="tab"
+                    id="tabDaily"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-i18n="tabDaily"
+                  >
+                    일일
+                  </button>
+                  <button
+                    class="tab"
+                    id="tabWeekly"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-i18n="tabWeekly"
+                  >
+                    주간
+                  </button>
+                  <button
+                    id="refreshBoard"
+                    class="btn"
+                    type="button"
+                    data-i18n="refresh"
+                  >
+                    새로고침
+                  </button>
+                </div>
+              </div>
+              <ol id="board" class="board" aria-label="랭킹 목록"></ol>
+              <div class="submit-row">
+                <input
+                  id="playerName"
+                  class="input"
+                  maxlength="16"
+                  placeholder="닉네임 (최대 16자)"
+                  data-i18n-placeholder="namePlaceholder"
+                />
+                <button
+                  id="submitScore"
+                  class="btn primary"
+                  type="button"
+                  data-i18n="submitScore"
+                >
+                  점수 등록
+                </button>
+              </div>
+              <div id="netHint" class="net-hint"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span data-i18n="footer">공룡 달리기 게임</span>
+      </footer>
+    </main>
+
+    <!-- Mobile Controls -->
+    <div class="mobile-controls" aria-label="모바일 조작 버튼">
+      <button id="btnDuck" class="mc-btn ghost" type="button">
+        <span class="mc-title" data-i18n="mobileDuckTitle">웅크리기</span>
+        <span class="mc-sub" data-i18n="mobileDuckSub">누르고 있기</span>
+      </button>
+      <button id="btnJump" class="mc-btn primary" type="button">
+        <span class="mc-title" data-i18n="mobileJumpTitle">점프</span>
+        <span class="mc-sub" data-i18n="mobileJumpSub">탭</span>
+      </button>
+    </div>
+    <a
+      class="cta-button"
+      href="https://funnyfunny.cloud/"
+      target="_blank"
+      rel="noopener noreferrer"
+      role="button"
+      aria-label="다른 서비스 보기 (새 창)"
+      data-i18n-aria="ctaAria"
+    >
+      <span class="cta-label" data-i18n="ctaLabel">다른 서비스 보기</span>
+      <span aria-hidden="true" class="cta-arrow">↗</span>
+    </a>
+    <!-- Supabase 설정(사용자 입력) -->
+    <script src="./supabase.config.js"></script>
+    <!-- Supabase JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./game.js"></script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

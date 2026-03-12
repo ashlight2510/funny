@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>투자 확신 빌더</title>
+    <meta
+      name="description"
+      content="수익률을 평가하지 않습니다. 당신의 판단과 기준을 기록해 흔들림을 줄입니다."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&amp;text=Investment%20Confidence%20Builder"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230b1220'/%3E%3Ctext%20x='32'%20y='40'%20text-anchor='middle'%20font-size='28'%20font-family='Arial'%20fill='white'%3EIC%3C/text%3E%3C/svg%3E"
+    />
+    <script
+      async=""
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+      data-checked-head="true"
+    ></script>
+    <style>
+      :root {
+        --bg: #0b0f14;
+        --card: #121825;
+        --card2: #0f1520;
+        --text: #e7edf7;
+        --muted: #9fb0c7;
+        --line: #1f2a3d;
+        --good: #7ee7a2;
+        --warn: #ffd479;
+        --bad: #ff7b7b;
+        --accent: #7aa7ff;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --radius: 16px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Apple SD Gothic Neo", "Noto Sans KR", Arial;
+        background: radial-gradient(
+            1200px 600px at 20% 0%,
+            rgba(122, 167, 255, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 90% 10%,
+            rgba(126, 231, 162, 0.12),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 16px auto;
+        padding: 28px 18px 80px;
+      }
+      header {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: linear-gradient(
+          to bottom,
+          rgba(11, 15, 20, 0.92),
+          rgba(11, 15, 20, 0.6)
+        );
+        backdrop-filter: blur(10px);
+        padding: 14px 0;
+      }
+      .brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .logo {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(122, 167, 255, 0.9),
+          rgba(126, 231, 162, 0.85)
+        );
+        box-shadow: var(--shadow);
+      }
+      .brand h1 {
+        font-size: 15px;
+        margin: 0;
+      }
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      button {
+        appearance: none;
+        border: 1px solid var(--line);
+        background: rgba(18, 24, 37, 0.75);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+      }
+      button:hover {
+        border-color: rgba(122, 167, 255, 0.55);
+      }
+      button.primary {
+        background: linear-gradient(
+          135deg,
+          rgba(122, 167, 255, 0.95),
+          rgba(122, 167, 255, 0.55)
+        );
+        border: none;
+      }
+      button.ghost {
+        background: transparent;
+        box-shadow: none;
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      .cols2 {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      @media (max-width: 900px) {
+        .cols2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(18, 24, 37, 0.92),
+          rgba(18, 24, 37, 0.72)
+        );
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: var(--shadow);
+      }
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .hero {
+        padding: 22px 18px;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 21, 32, 0.95),
+          rgba(18, 24, 37, 0.55)
+        );
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .hero h2 {
+        font-size: 24px;
+        margin: 0 0 10px;
+      }
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .pillrow {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+      .pill {
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(11, 15, 20, 0.35);
+      }
+
+      .screen {
+        display: none;
+      }
+      .screen.active {
+        display: block;
+      }
+
+      .step {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+        margin-top: 14px;
+        padding-top: 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .progress {
+        width: 100%;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(
+          90deg,
+          rgba(122, 167, 255, 0.95),
+          rgba(126, 231, 162, 0.85)
+        );
+      }
+      .q {
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 12px 0 14px;
+      }
+      .choices {
+        display: grid;
+        gap: 10px;
+      }
+      .choice {
+        text-align: left;
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 15, 20, 0.25);
+        cursor: pointer;
+      }
+      .choice:hover {
+        border-color: rgba(122, 167, 255, 0.55);
+      }
+      .choice small {
+        display: block;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .row > * {
+        flex: 1;
+      }
+      .field {
+        width: 100%;
+        background: rgba(11, 15, 20, 0.35);
+        border: 1px solid var(--line);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 10px 12px;
+        outline: none;
+      }
+      .field:focus {
+        border-color: rgba(122, 167, 255, 0.55);
+      }
+      .kpi {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .kpi {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi .box {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(11, 15, 20, 0.35),
+          rgba(11, 15, 20, 0.15)
+        );
+      }
+      .big {
+        font-size: 24px;
+        margin: 6px 0 0;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(11, 15, 20, 0.28);
+        color: var(--muted);
+      }
+      .tag.good {
+        color: var(--good);
+        border-color: rgba(126, 231, 162, 0.35);
+      }
+      .tag.warn {
+        color: var(--warn);
+        border-color: rgba(255, 212, 121, 0.35);
+      }
+      .tag.bad {
+        color: var(--bad);
+        border-color: rgba(255, 123, 123, 0.35);
+      }
+
+      .checklist {
+        display: grid;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .checkitem {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 15, 20, 0.22);
+      }
+      .checkitem input {
+        margin-top: 2px;
+        transform: scale(1.1);
+      }
+      .toast {
+        margin-top: 12px;
+        border: 1px solid var(--line);
+        background: rgba(122, 167, 255, 0.12);
+        padding: 12px;
+        border-radius: 14px;
+        color: var(--text);
+        display: none;
+      }
+      .toast.show {
+        display: block;
+      }
+      footer {
+        margin-top: 24px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+        opacity: 0.9;
+      }
+      .mini {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+      }
+      .hr {
+        height: 1px;
+        background: var(--line);
+        margin: 14px 0;
+      }
+    </style>
+    <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(11, 15, 20, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(122, 167, 255, 0.3);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(122, 167, 255, 0.2);
+      color: #7aa7ff;
+      box-shadow: 0 2px 8px rgba(122, 167, 255, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(122, 167, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/invest/" />
+  </head>
+
+  <body>
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1 data-i18n="title">투자 확신 빌더</h1>
+            <p class="muted" data-i18n="subtitle">
+              수익률이 아니라, 판단을 기록해 흔들림을 줄입니다.
+            </p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" id="btnHome" data-i18n="btnHome">홈</button>
+          <button class="ghost" id="btnDashboard" data-i18n="btnDashboard">대시보드</button>
+          <button class="ghost" id="btnChecklist" data-i18n="btnChecklist">체크</button>
+          <button class="ghost" id="btnAnchor" data-i18n="btnAnchor">선언문</button>
+          <button class="ghost" id="btnOtherService" data-i18n="btnOtherService">다른 서비스 보기</button>
+        </div>
+      </header>
+
+      <!-- SCREEN: HOME -->
+      <section id="screen-home" class="screen active">
+        <div class="hero">
+          <h2 data-i18n="heroTitle">
+            투자를 잘하자는 게 아닙니다.<br />흔들리지 않게 하려는 겁니다.
+          </h2>
+          <p data-i18n="heroDesc">
+            여기서는 수익률로 당신을 평가하지 않습니다.<br />
+            당신이 “어떤 기준으로 판단했는지”만 기록하고, 그 일관성이 쌓일수록
+            확신을 만들어줍니다.
+          </p>
+          <div class="pillrow">
+            <span class="pill" data-i18n="pill1">로그인 없이 시작</span>
+            <span class="pill" data-i18n="pill2">기준(원칙) 자동 생성</span>
+            <span class="pill" data-i18n="pill3">행동 체크로 확신 누적</span>
+            <span class="pill" data-i18n="pill4">모든 데이터는 이 기기(localStorage)에 저장</span>
+          </div>
+          <div class="step">
+            <button class="primary" id="btnStart" data-i18n="btnStart">
+              지금 나의 투자 기준 점검하기 (약 3분)
+            </button>
+            <button id="btnResume" data-i18n="btnResume">이어서 하기</button>
+          </div>
+        </div>
+
+        <div class="grid cols2" style="margin-top: 14px">
+          <div class="card">
+            <h2>이 서비스가 하는 일</h2>
+            <p class="muted">
+              “공격형/안정형” 낙인을 찍지 않습니다. 대신,
+              <b>당신이 흔들리는 순간</b>을 찾고, <b>지킬 수 있는 기준</b>을
+              만들고, 그 기준을 지킨 기록으로 <b>자기 신뢰</b>를 쌓게 돕습니다.
+            </p>
+            <div class="hr"></div>
+            <div class="split">
+              <div>
+                <div class="tag good">✅ 결과가 아니라 행동</div>
+                <p class="mini">수익 여부가 아니라 ‘원칙 준수’만 체크합니다.</p>
+              </div>
+              <div>
+                <div class="tag warn">🧠 불안 → 통제 → 확신</div>
+                <p class="mini">
+                  진단 후 ‘선언문’으로 마무리해 마음이 정돈됩니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>빠른 사용 예시</h2>
+            <p class="muted">
+              ① 진단 → ② 기준 생성 → ③ 선언 → ④ 오늘의 체크 3개<br />
+              이 네 가지가 반복되면 “운”이 아니라 “실력 구간”이 됩니다.
+            </p>
+            <div class="hr"></div>
+            <button id="btnQuickDashboard">내 대시보드 바로 보기</button>
+          </div>
+        </div>
+
+        <footer>
+          * 주의: 본 페이지는 투자 자문이 아닙니다. 시장 예측이 아니라 ‘자기
+          판단의 일관성’을 돕기 위한 기록 도구입니다.
+        </footer>
+      </section>
+
+      <!-- SCREEN: DIAGNOSIS -->
+      <section id="screen-diagnosis" class="screen">
+        <div class="card">
+          <h2>기준 점검</h2>
+          <p class="muted">정답은 없습니다. 지금의 당신을 기록할 뿐입니다.</p>
+          <div class="progress" aria-label="진행률">
+            <div class="bar" id="diagBar"></div>
+          </div>
+
+          <div class="q" id="qText"></div>
+          <div class="choices" id="choices"></div>
+
+          <div class="step">
+            <button id="btnBackQ">이전</button>
+            <div class="muted" id="qMeta"></div>
+            <button class="primary" id="btnNextQ">다음</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN: RULES DRAFT -->
+      <section id="screen-rules" class="screen">
+        <div class="grid cols2">
+          <div class="card">
+            <h2>나의 투자 기준 (초안)</h2>
+            <p class="muted">
+              이건 ‘정답’이 아니라 ‘지킬 수 있는 기준’의 초안입니다. 마음에 안
+              들면 수정하세요.
+            </p>
+
+            <div class="kpi" style="margin-top: 10px">
+              <div class="box">
+                <div class="muted">권장 위험자산 비중</div>
+                <div class="big" id="kRiskPct">-</div>
+                <div class="mini">당신의 허용 낙폭과 충동 위험을 반영</div>
+              </div>
+              <div class="box">
+                <div class="muted">권장 최대 낙폭(기준)</div>
+                <div class="big" id="kMaxDD">-</div>
+                <div class="mini">손절이 아니라 ‘비중 조절’ 기준으로 사용</div>
+              </div>
+              <div class="box">
+                <div class="muted">취약 구간</div>
+                <div class="big" id="kWeak">-</div>
+                <div class="mini">이때만 방어하면 체감 난이도가 내려갑니다</div>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <label class="mini">손실 기준(%)</label>
+            <input class="field" id="ruleStop" type="number" step="1" />
+
+            <div style="height: 10px"></div>
+
+            <label class="mini">추가 매수 조건(텍스트)</label>
+            <input
+              class="field"
+              id="ruleAdd"
+              type="text"
+              placeholder="예: 지수 -10% 이상 / 2회 분할"
+            />
+
+            <div style="height: 10px"></div>
+
+            <label class="mini">뉴스 소비 제한</label>
+            <input
+              class="field"
+              id="ruleNews"
+              type="text"
+              placeholder="예: 하루 10분 / 장중 금지"
+            />
+
+            <div style="height: 10px"></div>
+
+            <label class="mini">행동 금지 1개</label>
+            <input
+              class="field"
+              id="ruleBan"
+              type="text"
+              placeholder="예: 장중 즉흥 매매 금지"
+            />
+
+            <div class="step">
+              <button id="btnRulesBack">뒤로</button>
+              <button class="primary" id="btnToAnchor">
+                이 기준으로 ‘판단 선언’하기
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>왜 이게 자신감을 만들까?</h2>
+            <p class="muted" style="line-height: 1.6">
+              자신감은 “오를 거야”가 아니라 “나는 나를 통제한 적이 있다”에서
+              나옵니다.<br />
+              이 기준은 시장을 예측하려는 게 아니라,
+              <b>흔들리는 순간의 행동</b>을 줄이는 장치입니다.
+            </p>
+            <div class="hr"></div>
+            <div class="tag good">✅ 평가하지 않음</div>
+            <p class="mini">
+              수익률로 판단하지 않으니, ‘틀릴까 봐’ 불안해질 이유가 줄어듭니다.
+            </p>
+            <div style="height: 8px"></div>
+            <div class="tag warn">🛡️ 한 가지를 막으면 충분</div>
+            <p class="mini">
+              당신의 취약 구간만 방어하면 체감 난이도가 확 내려갑니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN: ANCHOR -->
+      <section id="screen-anchor" class="screen">
+        <div class="card">
+          <h2>판단 선언</h2>
+          <p class="muted">
+            선택이 아니라 선언입니다. “다음 판단에서 이 기준을 따른다.”
+          </p>
+
+          <div class="hr"></div>
+
+          <div
+            class="card"
+            style="background: rgba(11, 15, 20, 0.18); box-shadow: none"
+          >
+            <div class="row">
+              <div>
+                <div class="mini muted">손실 기준</div>
+                <div class="big" id="aStop">-</div>
+              </div>
+              <div>
+                <div class="mini muted">추가 매수 조건</div>
+                <div class="big" style="font-size: 18px" id="aAdd">-</div>
+              </div>
+            </div>
+            <div style="height: 10px"></div>
+            <div class="row">
+              <div>
+                <div class="mini muted">뉴스 제한</div>
+                <div class="big" style="font-size: 18px" id="aNews">-</div>
+              </div>
+              <div>
+                <div class="mini muted">행동 금지</div>
+                <div class="big" style="font-size: 18px" id="aBan">-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <button id="btnAnchorEdit">기준 수정</button>
+            <button class="primary" id="btnAnchorLock">
+              🔒 이 기준으로 판단하기
+            </button>
+          </div>
+
+          <div class="toast" id="anchorToast"></div>
+        </div>
+      </section>
+
+      <!-- SCREEN: CHECKLIST -->
+      <section id="screen-check" class="screen">
+        <div class="grid cols2">
+          <div class="card">
+            <h2>오늘의 체크</h2>
+            <p class="muted">
+              수익이 아니라 “행동”만 기록합니다. 체크는 곧 확신의 근거가 됩니다.
+            </p>
+
+            <div class="checklist" id="checklist"></div>
+
+            <div class="step">
+              <button id="btnResetToday">오늘 체크 초기화</button>
+              <button class="primary" id="btnSaveToday">오늘 기록 저장</button>
+            </div>
+
+            <div class="toast" id="checkToast"></div>
+          </div>
+
+          <div class="card">
+            <h2>즉시 격려 메시지</h2>
+            <p class="muted" style="line-height: 1.6" id="encourageBox">
+              체크를 하면, 결과와 무관하게 “잘 설계된 판단”을 확인하는 문구가
+              나타납니다.
+            </p>
+            <div class="hr"></div>
+            <div class="tag good">✅ 칭찬은 태도에만</div>
+            <p class="mini">운이 아니라 ‘원칙 준수’를 강화합니다.</p>
+            <div style="height: 8px"></div>
+            <div class="tag warn">🧠 불안할수록 단순하게</div>
+            <p class="mini">
+              하락장일수록 체크 항목은 3개만 지키면 충분합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN: DASHBOARD -->
+      <section id="screen-dash" class="screen">
+        <div class="grid cols2">
+          <div class="card">
+            <h2>확신 대시보드</h2>
+            <p class="muted">
+              이 숫자는 수익이 아니라 “일관성”입니다. 쌓이면 스스로를 믿을
+              근거가 됩니다.
+            </p>
+
+            <div class="kpi" style="margin-top: 10px">
+              <div class="box">
+                <div class="muted">투자 확신 지수</div>
+                <div class="big" id="dScore">-</div>
+                <div class="mini">원칙 준수와 충동 억제 기반</div>
+              </div>
+              <div class="box">
+                <div class="muted">기준 준수 연속일</div>
+                <div class="big" id="dStreak">-</div>
+                <div class="mini">행동 체크가 이어질수록 증가</div>
+              </div>
+              <div class="box">
+                <div class="muted">이번 달 기록</div>
+                <div class="big" id="dMonth">-</div>
+                <div class="mini">저장된 체크 기록 개수</div>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+            <div class="row">
+              <button id="btnNewDecision">➕ 새로운 판단(선언) 시작</button>
+              <button class="primary" id="btnGoCheck">
+                오늘 체크하러 가기
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>이번 달, 가장 잘한 선택</h2>
+            <p class="muted" id="dBest">기록이 쌓이면 자동으로 생성됩니다.</p>
+            <div class="hr"></div>
+            <h2 style="font-size: 16px; margin: 0 0 6px">나의 현재 선언문</h2>
+            <p class="mini" id="dAnchor">
+              아직 선언이 없습니다. 진단을 먼저 진행하세요.
+            </p>
+            <div class="step">
+              <button id="btnShareText">선언문 텍스트 복사</button>
+              <button id="btnWipeAll">전체 초기화</button>
+            </div>
+            <div class="toast" id="dashToast"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "투자 확신 빌더",
+          metaDescription: "수익률을 평가하지 않습니다. 당신의 판단과 기준을 기록해 흔들림을 줄입니다.",
+          title: "투자 확신 빌더",
+          subtitle: "수익률이 아니라, 판단을 기록해 흔들림을 줄입니다.",
+          btnHome: "홈",
+          btnDashboard: "대시보드",
+          btnChecklist: "체크",
+          btnAnchor: "선언문",
+          btnOtherService: "다른 서비스 보기",
+          heroTitle: "투자를 잘하자는 게 아닙니다.<br />흔들리지 않게 하려는 겁니다.",
+          heroDesc: "여기서는 수익률로 당신을 평가하지 않습니다.<br />당신이 \"어떤 기준으로 판단했는지\"만 기록하고, 그 일관성이 쌓일수록 확신을 만들어줍니다.",
+          pill1: "로그인 없이 시작",
+          pill2: "기준(원칙) 자동 생성",
+          pill3: "행동 체크로 확신 누적",
+          pill4: "모든 데이터는 이 기기(localStorage)에 저장",
+          btnStart: "지금 나의 투자 기준 점검하기 (약 3분)",
+          btnResume: "이어서 하기",
+          choiceHint: "가장 가까운 것을 고르세요",
+          btnNext: "다음",
+          btnResult: "결과 만들기",
+          alertNoChoice: "가장 가까운 선택지를 하나 골라주세요.",
+          btnBack: "이전",
+          weak1: "급락/급등 뉴스 직후",
+          weak2: "지루한 횡보장(기준 이탈 유혹)",
+          weak3: "급등 뉴스/테마 자극 구간",
+          weak4: "연속 손실(심리 흔들림 구간)",
+          tone1: "계획형 기회 투자자",
+          tone2: "불안 민감형 (기준이 있으면 강해짐)",
+          tone3: "의욕형 (장중 충동만 막으면 급성장)",
+          tone4: "중립 균형형 (비중 관리로 강해짐)",
+        },
+        en: {
+          metaTitle: "Investment Confidence Builder",
+          metaDescription: "We don't evaluate returns. We record your judgment and criteria to reduce uncertainty.",
+          title: "Investment Confidence Builder",
+          subtitle: "Not about returns, but about recording your judgment to reduce uncertainty.",
+          btnHome: "Home",
+          btnDashboard: "Dashboard",
+          btnChecklist: "Check",
+          btnAnchor: "Declaration",
+          btnOtherService: "View More Services",
+          heroTitle: "It's not about investing well.<br />It's about not being shaken.",
+          heroDesc: "We don't evaluate you by returns here.<br />We only record \"what criteria you judged by\", and as that consistency builds, it creates confidence.",
+          pill1: "Start without login",
+          pill2: "Auto-generate criteria (principles)",
+          pill3: "Accumulate confidence through action checks",
+          pill4: "All data stored on this device (localStorage)",
+          btnStart: "Check my investment criteria now (about 3 min)",
+          btnResume: "Continue",
+          choiceHint: "Choose the closest one",
+          btnNext: "Next",
+          btnResult: "Create Result",
+          alertNoChoice: "Please choose one closest option.",
+          btnBack: "Back",
+          weak1: "Right after sudden drop/surge news",
+          weak2: "Boring sideways market (temptation to deviate from criteria)",
+          weak3: "Surge news/theme stimulation period",
+          weak4: "Consecutive losses (psychological shake period)",
+          tone1: "Planned opportunity investor",
+          tone2: "Anxiety-sensitive type (stronger with criteria)",
+          tone3: "Enthusiastic type (rapid growth if only mid-day impulse is blocked)",
+          tone4: "Neutral balanced type (stronger with position management)",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          if (el.tagName === "BUTTON" || el.tagName === "H1" || el.tagName === "H2") {
+            if (el.dataset.i18n === "heroTitle" || el.dataset.i18n === "heroDesc") {
+              el.innerHTML = t(el.dataset.i18n);
+            } else {
+              el.textContent = t(el.dataset.i18n);
+            }
+          } else {
+            el.textContent = t(el.dataset.i18n);
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.forceUpdate && typeof window.renderQuestion === "function") {
+          window.renderQuestion();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true, forceUpdate: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false, forceUpdate: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      // -----------------------------
+      // Storage helpers
+      // -----------------------------
+      const KEY = {
+        state: "icb_state_v1", // current progress
+        profile: "icb_profile_v1", // diagnosis results
+        rules: "icb_rules_v1", // editable rules
+        anchor: "icb_anchor_v1", // locked declaration
+        logs: "icb_logs_v1", // daily checklist logs
+      };
+
+      function load(key, fallback) {
+        try {
+          const v = localStorage.getItem(key);
+          return v ? JSON.parse(v) : fallback;
+        } catch (e) {
+          return fallback;
+        }
+      }
+      function save(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+      function todayStr() {
+        const d = new Date();
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
+        return `${yyyy}-${mm}-${dd}`;
+      }
+      function clamp(n, a, b) {
+        return Math.max(a, Math.min(b, n));
+      }
+
+      // -----------------------------
+      // Screens
+      // -----------------------------
+      const screens = {
+        home: document.getElementById("screen-home"),
+        diagnosis: document.getElementById("screen-diagnosis"),
+        rules: document.getElementById("screen-rules"),
+        anchor: document.getElementById("screen-anchor"),
+        check: document.getElementById("screen-check"),
+        dash: document.getElementById("screen-dash"),
+      };
+
+      function show(name) {
+        Object.values(screens).forEach((s) => s.classList.remove("active"));
+        screens[name].classList.add("active");
+        // remember last screen
+        const st = load(KEY.state, { screen: "home" });
+        st.screen = name;
+        save(KEY.state, st);
+      }
+
+      // Top nav
+      document.getElementById("btnHome").onclick = () => show("home");
+      document.getElementById("btnDashboard").onclick = () => {
+        refreshDash();
+        show("dash");
+      };
+      document.getElementById("btnChecklist").onclick = () => {
+        renderChecklist();
+        show("check");
+      };
+      document.getElementById("btnAnchor").onclick = () => {
+        refreshAnchorUI();
+        show("anchor");
+      };
+      document.getElementById("btnOtherService").onclick = () => {
+        window.open("https://funnyfunny.cloud", "_blank", "noopener");
+      };
+
+      document.getElementById("btnQuickDashboard").onclick = () => {
+        refreshDash();
+        show("dash");
+      };
+
+      // -----------------------------
+      // Diagnosis questions (short but meaningful)
+      // -----------------------------
+      const QUESTIONS_BASE = [
+        {
+          id: "dd_react",
+          text: "보유 자산이 -12% 하락했을 때, 당신이 실제로 할 가능성이 가장 높은 행동은?",
+          textEn: "When your holdings drop by -12%, what action are you most likely to take?",
+          choices: [
+            { label: "전량/대부분 매도", labelEn: "Sell all/most", score: { capacity: -2, impulse: +1 } },
+            {
+              label: "일부 매도(비중 축소)",
+              labelEn: "Sell some (reduce position)",
+              score: { capacity: -1, impulse: 0 },
+            },
+            {
+              label: "관망(아무것도 안 함)",
+              labelEn: "Wait (do nothing)",
+              score: { capacity: +1, impulse: -1 },
+            },
+            {
+              label: "추가 매수(분할로)",
+              labelEn: "Buy more (dollar-cost averaging)",
+              score: { capacity: +2, impulse: -1 },
+            },
+          ],
+        },
+        {
+          id: "news_influence",
+          text: "급등/급락 뉴스를 보면 매매 버튼이 가까워지는 편인가요?",
+          textEn: "When you see sudden surge/drop news, do you feel the urge to trade?",
+          choices: [
+            { label: "바로 영향 받는다", labelEn: "Immediately affected", score: { capacity: -1, impulse: +2 } },
+            {
+              label: "영향은 받지만 참는다",
+              labelEn: "Affected but resist",
+              score: { capacity: 0, impulse: +1 },
+            },
+            { label: "대부분 무시한다", labelEn: "Mostly ignore", score: { capacity: +1, impulse: -1 } },
+            {
+              label: "뉴스는 기준 확인용",
+              labelEn: "News is for checking criteria",
+              score: { capacity: +1, impulse: -2 },
+            },
+          ],
+        },
+        {
+          id: "hold_period",
+          text: "평균 보유 기간은 어느 쪽에 가깝나요?",
+          textEn: "What is your average holding period closest to?",
+          choices: [
+            {
+              label: "수일~수주(짧게)",
+              labelEn: "Days to weeks (short)",
+              score: { strategy: "swing", capacity: 0, impulse: +1 },
+            },
+            {
+              label: "1~3개월",
+              labelEn: "1-3 months",
+              score: { strategy: "mix", capacity: 0, impulse: 0 },
+            },
+            {
+              label: "6개월~1년",
+              labelEn: "6 months to 1 year",
+              score: { strategy: "long", capacity: +1, impulse: -1 },
+            },
+            {
+              label: "1년 이상",
+              labelEn: "1 year or more",
+              score: { strategy: "long", capacity: +2, impulse: -1 },
+            },
+          ],
+        },
+        {
+          id: "plan_first",
+          text: "매수할 때 가장 먼저 보는 것은?",
+          textEn: "What do you check first when buying?",
+          choices: [
+            { label: "가격/차트", labelEn: "Price/chart", score: { impulse: +1, capacity: 0 } },
+            { label: "뉴스/테마", labelEn: "News/theme", score: { impulse: +2, capacity: -1 } },
+            { label: "비중/리스크", labelEn: "Position size/risk", score: { impulse: -1, capacity: +1 } },
+            {
+              label: "기준(원칙)부터 확인",
+              labelEn: "Check criteria (principles) first",
+              score: { impulse: -2, capacity: +2 },
+            },
+          ],
+        },
+        {
+          id: "sleep_loss",
+          text: "손실이 3개월 연속이면 심리 상태는?",
+          textEn: "If losses continue for 3 months, what is your mental state?",
+          choices: [
+            { label: "잠이 흔들린다", labelEn: "Sleep is disturbed", score: { capacity: -2, impulse: +1 } },
+            {
+              label: "신경 쓰이지만 유지",
+              labelEn: "Bothered but maintain",
+              score: { capacity: -1, impulse: 0 },
+            },
+            { label: "생각보다 괜찮다", labelEn: "Better than expected", score: { capacity: +1, impulse: -1 } },
+            {
+              label: "오히려 계획대로 기회",
+              labelEn: "Rather an opportunity as planned",
+              score: { capacity: +2, impulse: -1 },
+            },
+          ],
+        },
+      ];
+
+      let qIndex = 0;
+      let answers = load(KEY.profile, { answers: {} }).answers || {};
+
+      const qText = document.getElementById("qText");
+      const choicesEl = document.getElementById("choices");
+      const diagBar = document.getElementById("diagBar");
+      const qMeta = document.getElementById("qMeta");
+
+      function renderQuestion() {
+        const questions = getQuestions();
+        const total = questions.length;
+        const q = questions[qIndex];
+        qText.textContent = q.text;
+        qMeta.textContent = `${qIndex + 1} / ${total}`;
+        diagBar.style.width = `${(qIndex / total) * 100}%`;
+
+        choicesEl.innerHTML = "";
+        q.choices.forEach((c, i) => {
+          const btn = document.createElement("button");
+          btn.className = "choice";
+          const picked = answers[q.id] === i;
+          const t = window.t || ((key, vars = {}) => key);
+          btn.innerHTML = `${picked ? "✅ " : ""}${
+            c.label
+          }<small>${t("choiceHint")}</small>`;
+          btn.onclick = () => {
+            answers[q.id] = i;
+            saveProfileAnswers();
+            renderQuestion();
+          };
+          choicesEl.appendChild(btn);
+        });
+
+        const t = window.t || ((key, vars = {}) => key);
+        document.getElementById("btnBackQ").disabled = qIndex === 0;
+        document.getElementById("btnNextQ").textContent =
+          qIndex === total - 1 ? t("btnResult") : t("btnNext");
+      }
+
+      function saveProfileAnswers() {
+        const profile = load(KEY.profile, { answers: {} });
+        profile.answers = answers;
+        save(KEY.profile, profile);
+      }
+
+      function computeProfile() {
+        const questions = getQuestions();
+        // aggregate
+        let capacity = 0;
+        let impulse = 0;
+        let strategy = "mix";
+
+        questions.forEach((q) => {
+          const pick = answers[q.id];
+          if (pick === undefined) return;
+          const sc = q.choices[pick].score || {};
+          capacity += sc.capacity || 0;
+          impulse += sc.impulse || 0;
+          if (sc.strategy) strategy = sc.strategy;
+        });
+
+        // normalize into interpretable metrics
+        // capacity range roughly -8..+10
+        const capNorm = clamp(Math.round(((capacity + 8) / 18) * 100), 0, 100); // 0..100
+        const impNorm = clamp(Math.round(((impulse + 8) / 18) * 100), 0, 100);
+
+        // derive suggested risk %
+        // higher capacity -> more risk, higher impulse -> less risk
+        let riskPct = clamp(
+          Math.round(25 + capNorm * 0.55 - impNorm * 0.35),
+          10,
+          85
+        );
+
+        // derive max drawdown guidance
+        // 8% ~ 28%
+        let maxDD = clamp(Math.round(8 + capNorm * 0.2 - impNorm * 0.1), 8, 28);
+
+        const t = window.t || ((key, vars = {}) => key);
+        // weak spot label
+        let weak = t("weak1");
+        if (impNorm < 40) weak = t("weak2");
+        if (impNorm >= 40 && impNorm < 70) weak = t("weak3");
+        if (impNorm >= 70) weak = t("weak4");
+
+        // generate a gentle but confident summary
+        const tone =
+          capNorm >= 65 && impNorm <= 45
+            ? t("tone1")
+            : capNorm <= 45 && impNorm >= 60
+            ? t("tone2")
+            : capNorm >= 55 && impNorm >= 60
+            ? t("tone3")
+            : t("tone4");
+
+        const profile = {
+          updatedAt: Date.now(),
+          capacity,
+          impulse,
+          capNorm,
+          impNorm,
+          strategy,
+          riskPct,
+          maxDD,
+          weak,
+          tone,
+        };
+        save(KEY.profile, { answers, profile });
+        return profile;
+      }
+
+      // Buttons
+      document.getElementById("btnStart").onclick = () => {
+        qIndex = 0;
+        answers = load(KEY.profile, { answers: {} }).answers || {};
+        renderQuestion();
+        show("diagnosis");
+      };
+
+      document.getElementById("btnResume").onclick = () => {
+        const st = load(KEY.state, { screen: "home" });
+        if (st.screen && screens[st.screen]) {
+          if (st.screen === "dash") refreshDash();
+          if (st.screen === "check") renderChecklist();
+          if (st.screen === "anchor") refreshAnchorUI();
+          show(st.screen);
+        } else show("home");
+      };
+
+      document.getElementById("btnBackQ").onclick = () => {
+        qIndex = Math.max(0, qIndex - 1);
+        renderQuestion();
+      };
+
+      document.getElementById("btnNextQ").onclick = () => {
+        const t = window.t || ((key, vars = {}) => key);
+        const questions = getQuestions();
+        // ensure current question answered
+        const q = questions[qIndex];
+        if (answers[q.id] === undefined) {
+          alert(t("alertNoChoice"));
+          return;
+        }
+        if (qIndex < questions.length - 1) {
+          qIndex++;
+          renderQuestion();
+          return;
+        }
+        // compute & go rules
+        const p = computeProfile();
+        buildRulesDraft(p);
+        show("rules");
+      };
+
+      // -----------------------------
+      // Rules draft
+      // -----------------------------
+      const ruleStop = document.getElementById("ruleStop");
+      const ruleAdd = document.getElementById("ruleAdd");
+      const ruleNews = document.getElementById("ruleNews");
+      const ruleBan = document.getElementById("ruleBan");
+
+      function buildRulesDraft(p) {
+        // Show KPI
+        document.getElementById("kRiskPct").textContent = `${p.riskPct}%`;
+        document.getElementById("kMaxDD").textContent = `-${p.maxDD}%`;
+        document.getElementById("kWeak").textContent = p.weak;
+
+        // default rules (editable)
+        const existing = load(KEY.rules, null);
+        const rules = existing || {
+          stop: p.maxDD,
+          add:
+            p.riskPct >= 55
+              ? "지수 -10% 이상이면 2회 분할로만"
+              : "급락일엔 관망 → 다음날 1회 분할",
+          news:
+            p.impNorm >= 60
+              ? "하루 10분 / 장중 뉴스 금지"
+              : "하루 20분 / 매수 직전만 확인",
+          ban: p.impNorm >= 70 ? "장중 즉흥 매매 금지" : "테마 추격 매수 금지",
+        };
+        save(KEY.rules, rules);
+
+        ruleStop.value = rules.stop;
+        ruleAdd.value = rules.add;
+        ruleNews.value = rules.news;
+        ruleBan.value = rules.ban;
+      }
+
+      function syncRulesFromInputs() {
+        const rules = {
+          stop: Number(ruleStop.value || 0),
+          add: ruleAdd.value.trim(),
+          news: ruleNews.value.trim(),
+          ban: ruleBan.value.trim(),
+        };
+        save(KEY.rules, rules);
+        return rules;
+      }
+
+      document.getElementById("btnRulesBack").onclick = () => show("diagnosis");
+      document.getElementById("btnToAnchor").onclick = () => {
+        const rules = syncRulesFromInputs();
+        refreshAnchorUI(rules);
+        show("anchor");
+      };
+
+      // -----------------------------
+      // Anchor (declaration)
+      // -----------------------------
+      const anchorToast = document.getElementById("anchorToast");
+      function refreshAnchorUI(rulesOverride) {
+        const rules = rulesOverride || load(KEY.rules, null);
+        const profile = load(KEY.profile, { profile: null }).profile;
+        const anchor = load(KEY.anchor, null);
+
+        // fill with latest rules
+        if (rules) {
+          document.getElementById("aStop").textContent = `-${rules.stop}%`;
+          document.getElementById("aAdd").textContent = rules.add || "-";
+          document.getElementById("aNews").textContent = rules.news || "-";
+          document.getElementById("aBan").textContent = rules.ban || "-";
+        } else {
+          document.getElementById("aStop").textContent = "-";
+          document.getElementById("aAdd").textContent = "-";
+          document.getElementById("aNews").textContent = "-";
+          document.getElementById("aBan").textContent = "-";
+        }
+
+        // toast hint
+        anchorToast.classList.remove("show");
+        if (anchor?.lockedAt) {
+          const d = new Date(anchor.lockedAt);
+          anchorToast.textContent = `이미 선언이 저장되어 있습니다. (잠금: ${d.toLocaleString()}) 필요하면 기준 수정 후 다시 잠글 수 있어요.`;
+          anchorToast.classList.add("show");
+        } else if (profile) {
+          anchorToast.textContent = `당신의 현재 프로필: ${profile.tone}. 이 기준은 당신이 지킬 수 있는 형태로 설계됐습니다.`;
+          anchorToast.classList.add("show");
+        }
+      }
+
+      document.getElementById("btnAnchorEdit").onclick = () => {
+        // go back to rules with current rules filled
+        const rules = load(KEY.rules, null);
+        const p = load(KEY.profile, { profile: null }).profile;
+        if (p) buildRulesDraft(p);
+        if (rules) {
+          ruleStop.value = rules.stop;
+          ruleAdd.value = rules.add;
+          ruleNews.value = rules.news;
+          ruleBan.value = rules.ban;
+        }
+        show("rules");
+      };
+
+      document.getElementById("btnAnchorLock").onclick = () => {
+        const rules = syncRulesFromInputs();
+        const profile = load(KEY.profile, { profile: null }).profile;
+
+        if (!profile) {
+          alert("진단을 먼저 진행해 주세요.");
+          show("home");
+          return;
+        }
+
+        const anchor = {
+          lockedAt: Date.now(),
+          profileTone: profile.tone,
+          riskPct: profile.riskPct,
+          maxDD: profile.maxDD,
+          rules,
+        };
+        save(KEY.anchor, anchor);
+
+        anchorToast.textContent =
+          "🔒 선언이 저장되었습니다. 수익 여부와 관계없이, ‘기준을 지켰다’는 사실이 당신의 근거가 됩니다.";
+        anchorToast.classList.add("show");
+      };
+
+      // -----------------------------
+      // Checklist
+      // -----------------------------
+      const baseChecklist = [
+        { id: "no_impulse_buy", text: "계획 없이 매수하지 않았다" },
+        { id: "no_instant_sell", text: "손실을 보고 즉시 행동하지 않았다" },
+        { id: "read_rules", text: "매매 전 기준(선언문)을 다시 읽었다" },
+        { id: "size_first", text: "가격보다 비중(리스크)을 먼저 봤다" },
+        { id: "news_limit", text: "뉴스 소비 제한을 지켰다" },
+        { id: "no_chase", text: "급등/테마 추격 매수를 하지 않았다" },
+      ];
+
+      const encourageBox = document.getElementById("encourageBox");
+      const checkToast = document.getElementById("checkToast");
+      const checklistEl = document.getElementById("checklist");
+
+      function pickEncourage(doneCount, total) {
+        // “근거 기반 격려” 톤
+        if (doneCount === 0) {
+          return "오늘은 ‘기준 확인’만 해도 충분합니다. 불안할수록 단순하게 가는 게 오히려 실력입니다.";
+        }
+        if (doneCount < Math.ceil(total / 2)) {
+          return `좋습니다. 지금은 수익보다 “흔들림을 줄이는 구간”입니다. 오늘 ${doneCount}개를 지킨 건, 판단이 무너지지 않았다는 증거예요.`;
+        }
+        if (doneCount < total) {
+          return `수익 여부와 상관없이, 이건 잘 설계된 결정입니다. ${doneCount}/${total}을 지킨 건 “운”이 아니라 “통제”에 가깝습니다.`;
+        }
+        return "완벽합니다. 이런 날의 기록이 쌓이면, 하락장에서도 스스로를 믿을 근거가 생깁니다.";
+      }
+
+      function renderChecklist() {
+        const t = todayStr();
+        const logs = load(KEY.logs, {});
+        const today = logs[t] || { checked: {} };
+
+        checklistEl.innerHTML = "";
+        baseChecklist.forEach((item) => {
+          const row = document.createElement("label");
+          row.className = "checkitem";
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.checked = !!today.checked[item.id];
+          cb.onchange = () => {
+            today.checked[item.id] = cb.checked;
+            logs[t] = today;
+            save(KEY.logs, logs);
+
+            const done = Object.values(today.checked).filter(Boolean).length;
+            encourageBox.textContent = pickEncourage(
+              done,
+              baseChecklist.length
+            );
+          };
+
+          const txt = document.createElement("div");
+          txt.innerHTML = `<div>${item.text}</div><div class="mini muted">오늘의 행동만 체크합니다.</div>`;
+          row.appendChild(cb);
+          row.appendChild(txt);
+          checklistEl.appendChild(row);
+        });
+
+        const done = Object.values(today.checked || {}).filter(Boolean).length;
+        encourageBox.textContent = pickEncourage(done, baseChecklist.length);
+
+        checkToast.classList.remove("show");
+      }
+
+      document.getElementById("btnResetToday").onclick = () => {
+        const t = todayStr();
+        const logs = load(KEY.logs, {});
+        logs[t] = { checked: {} };
+        save(KEY.logs, logs);
+        renderChecklist();
+        checkToast.textContent =
+          "오늘 체크를 초기화했습니다. 다시 ‘행동’만 기록해도 충분합니다.";
+        checkToast.classList.add("show");
+      };
+
+      document.getElementById("btnSaveToday").onclick = () => {
+        const t = todayStr();
+        const logs = load(KEY.logs, {});
+        const today = logs[t] || { checked: {} };
+        const done = Object.values(today.checked || {}).filter(Boolean).length;
+
+        // save is already happening in onchange, here we provide feedback
+        checkToast.textContent = `저장 완료. 오늘 ${done}개를 지켰습니다. 이 기록은 수익과 무관하게 당신의 ‘근거’로 남습니다.`;
+        checkToast.classList.add("show");
+
+        // update dashboard too
+        refreshDash();
+      };
+
+      // -----------------------------
+      // Dashboard
+      // -----------------------------
+      const dashToast = document.getElementById("dashToast");
+
+      function calcStreak(logs) {
+        // consecutive days with at least 1 check
+        const keys = Object.keys(logs).sort(); // YYYY-MM-DD
+        if (keys.length === 0) return 0;
+
+        // Start from today backward
+        let streak = 0;
+        let cur = new Date();
+        for (;;) {
+          const k = cur.toISOString().slice(0, 10);
+          const entry = logs[k];
+          const done = entry
+            ? Object.values(entry.checked || {}).filter(Boolean).length
+            : 0;
+          if (done > 0) {
+            streak++;
+            cur.setDate(cur.getDate() - 1);
+          } else break;
+        }
+        return streak;
+      }
+
+      function calcMonthCount(logs) {
+        const now = new Date();
+        const ym = now.toISOString().slice(0, 7); // YYYY-MM
+        return Object.keys(logs).filter((k) => k.startsWith(ym)).length;
+      }
+
+      function calcConfidenceScore(anchor, profile, logs) {
+        // Score from 0..100 based on:
+        // - Anchor exists (base)
+        // - Average checklist completion
+        // - Streak bonus
+        let score = 20;
+        if (anchor?.lockedAt) score += 20;
+
+        const days = Object.keys(logs);
+        if (days.length) {
+          let sum = 0;
+          days.forEach((d) => {
+            const done = Object.values(logs[d]?.checked || {}).filter(
+              Boolean
+            ).length;
+            sum += (done / baseChecklist.length) * 100;
+          });
+          const avg = sum / days.length; // 0..100
+          score += avg * 0.45; // up to +45
+        }
+
+        const streak = calcStreak(logs);
+        score += Math.min(15, streak * 2); // up to +15
+
+        // Impulse penalty: if impulse is high, require more checks to reach higher score.
+        if (profile) {
+          const penalty = Math.max(0, (profile.impNorm - 60) * 0.2); // up to ~8
+          score -= penalty;
+        }
+
+        return clamp(Math.round(score), 0, 100);
+      }
+
+      function bestLineFromLogs(logs) {
+        // Find most frequently checked item this month
+        const now = new Date();
+        const ym = now.toISOString().slice(0, 7);
+        const counter = {};
+        Object.keys(logs)
+          .filter((k) => k.startsWith(ym))
+          .forEach((day) => {
+            const checked = logs[day]?.checked || {};
+            for (const id in checked) {
+              if (checked[id]) counter[id] = (counter[id] || 0) + 1;
+            }
+          });
+        const entries = Object.entries(counter).sort((a, b) => b[1] - a[1]);
+        if (!entries.length)
+          return "아직 기록이 충분하지 않습니다. 오늘 체크 1개만 해도 시작입니다.";
+        const topId = entries[0][0];
+        const topItem = baseChecklist.find((x) => x.id === topId);
+        const cnt = entries[0][1];
+        return `이번 달 가장 잘 지킨 행동은 “${
+          topItem ? topItem.text : topId
+        }” (총 ${cnt}일) 입니다. 이건 당신의 실력에 가까운 습관이에요.`;
+      }
+
+      function anchorText(anchor) {
+        if (!anchor?.lockedAt)
+          return "아직 선언이 없습니다. 진단을 먼저 진행하세요.";
+        const r = anchor.rules;
+        return [
+          `• 손실 기준: -${r.stop}%`,
+          `• 추가 매수 조건: ${r.add}`,
+          `• 뉴스 제한: ${r.news}`,
+          `• 행동 금지: ${r.ban}`,
+          `• 프로필: ${anchor.profileTone} / 권장 위험자산 비중 ${anchor.riskPct}%`,
+        ].join("\n");
+      }
+
+      function refreshDash() {
+        const logs = load(KEY.logs, {});
+        const anchor = load(KEY.anchor, null);
+        const profile = load(KEY.profile, { profile: null }).profile;
+
+        const streak = calcStreak(logs);
+        const monthCount = calcMonthCount(logs);
+        const score = calcConfidenceScore(anchor, profile, logs);
+
+        document.getElementById("dScore").textContent = `${score} / 100`;
+        document.getElementById("dStreak").textContent = `${streak}일`;
+        document.getElementById("dMonth").textContent = `${monthCount}건`;
+        document.getElementById("dBest").textContent = bestLineFromLogs(logs);
+        document.getElementById("dAnchor").textContent = anchor
+          ? anchorText(anchor)
+          : "아직 선언이 없습니다. 진단을 먼저 진행하세요.";
+
+        dashToast.classList.remove("show");
+      }
+
+      document.getElementById("btnGoCheck").onclick = () => {
+        renderChecklist();
+        show("check");
+      };
+      document.getElementById("btnNewDecision").onclick = () => {
+        show("diagnosis");
+        renderQuestion();
+      };
+
+      document.getElementById("btnShareText").onclick = async () => {
+        const anchor = load(KEY.anchor, null);
+        const text = anchorText(anchor);
+        try {
+          await navigator.clipboard.writeText(text);
+          dashToast.textContent =
+            "선언문을 복사했습니다. 메모/노션/카톡에 붙여넣어 ‘기준’을 고정해두면 흔들림이 줄어듭니다.";
+          dashToast.classList.add("show");
+        } catch (e) {
+          dashToast.textContent =
+            "복사에 실패했습니다. 브라우저 권한을 확인해 주세요.";
+          dashToast.classList.add("show");
+        }
+      };
+
+      document.getElementById("btnWipeAll").onclick = () => {
+        if (
+          !confirm(
+            "정말 전체 데이터를 초기화할까요? (이 기기의 저장 기록이 삭제됩니다)"
+          )
+        )
+          return;
+        Object.values(KEY).forEach((k) => localStorage.removeItem(k));
+        answers = {};
+        qIndex = 0;
+        dashToast.textContent =
+          "초기화 완료. 다시 ‘기준 점검’부터 시작할 수 있어요.";
+        dashToast.classList.add("show");
+        show("home");
+      };
+
+      // -----------------------------
+      // Home shortcuts
+      // -----------------------------
+      document
+        .getElementById("btnDashboard")
+        .addEventListener("click", refreshDash);
+
+      // -----------------------------
+      // Initialize
+      // -----------------------------
+      (function init() {
+        const st = load(KEY.state, { screen: "home" });
+        if (st.screen && screens[st.screen]) {
+          if (st.screen === "dash") refreshDash();
+          if (st.screen === "check") renderChecklist();
+          if (st.screen === "anchor") refreshAnchorUI();
+          if (st.screen === "diagnosis") renderQuestion();
+          show(st.screen);
+        } else {
+          show("home");
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>지금 이 술에 🍻</title>
+
+  <!-- SEO / OG -->
+  <meta name="description" content="지금 이 술에 딱 맞는 안주 하나, 고민 없이 바로 추천" />
+  <meta property="og:title" content="지금 이 술에 🍻" />
+  <meta property="og:description" content="술 종류와 배고픔만 고르면 끝나는 안주 추천 서비스" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/020617/ffffff&text=ANJU" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Ctext y='50%25' x='50%25' dy='.35em' font-size='52' text-anchor='middle'%3E%F0%9F%8D%BB%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #fff;
+    }
+
+    header {
+      padding: 28px 16px;
+      text-align: center;
+      background: #020617;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 16px auto;
+      padding: 24px 16px 40px;
+    }
+
+    .card {
+      background: #020617;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .step-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .step-sub {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .choice {
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 16px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .choice:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+    }
+
+    .result {
+      margin-top: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1e293b;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 160px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #1e293b;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #2b384e;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: #cbd5e1;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .list li {
+      margin-bottom: 6px;
+    }
+
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/anju/" />
+  </head>
+
+<body><div class="lang-switch" role="tablist" aria-label="Language switcher">
+  <button type="button" data-lang="ko" class="active">KR</button>
+  <button type="button" data-lang="en">EN</button>
+</div>
+<header>
+  <h1 data-i18n="title">🍻 지금 이 술에</h1>
+  <p data-i18n="subtitle">지금 이 술에, 딱 맞는 안주 하나</p>
+</header>
+
+<main>
+  <div class="card" id="stepCard"></div>
+  <div class="card result" id="resultCard" style="display:none;"></div>
+
+  <footer data-i18n="footer">
+    © 집술 메이트 · 안주 추천 서비스 · <a href="https://funnyfunny.cloud" target="_blank" style="color:#94a3b8;text-decoration:none;">funnyfunny.cloud</a>
+  </footer>
+</main>
+
+<script>
+/* i18n */
+const translations = {
+  ko: {
+    metaTitle: "지금 이 술에 🍻",
+    metaDescription: "지금 이 술에 딱 맞는 안주 하나, 고민 없이 바로 추천",
+    title: "🍻 지금 이 술에",
+    subtitle: "지금 이 술에, 딱 맞는 안주 하나",
+    footer: "© 집술 메이트 · 안주 추천 서비스 · funnyfunny.cloud",
+    ingredients: "재료",
+    steps: "만드는 법",
+    todayAnju: "오늘의 안주 🍺",
+    timeBadge: "술 안 식기 전에 {time}분",
+    difficultyBadge: "난이도 {difficulty}",
+    rerollBtn: "이 안주 별로면 다시 추천",
+    saveImageBtn: "이미지 저장",
+    moreTestsBtn: "다른 테스트 해보기",
+    // Steps
+    step1Question: "어떤 술이야?",
+    step1Sub: "술에 따라 안주가 완전히 달라져요.",
+    step1Beer: "🍺 맥주",
+    step1Soju: "🍶 소주",
+    step1Wine: "🍷 와인",
+    step1Whiskey: "🥃 위스키",
+    step2Question: "와인 종류는?",
+    step2Sub: "레드와 화이트는 어울리는 안주가 달라요.",
+    step2Red: "🍷 레드와인",
+    step2White: "🥂 화이트와인",
+    // Difficulty
+    difficultyEasy: "하",
+    difficultyMedium: "중",
+    difficultyHard: "상",
+    // Save Image
+    saveImageTitle: "지금 이 술에",
+    saveImageIngredients: "재료",
+    saveImageSteps: "만드는 법",
+    saveImageFooter: "🍻 지금 이 술에 · 안주 추천 · funnyfunny.cloud",
+    saveImageTime: "{time}분",
+    saveImageDifficulty: "난이도 {difficulty}",
+    // Recipes (맥주)
+    recipeChicken: "치킨",
+    recipeChickenFit: "맥주 없으면 섭섭",
+    recipeChickenDesc: "말이 필요 없는 맥주 안주의 최종 보스",
+    recipeChickenIng1: "닭",
+    recipeChickenIng2: "튀김가루",
+    recipeChickenIng3: "식용유",
+    recipeChickenIng4: "소금",
+    recipeChickenStep1: "닭에 소금으로 밑간한다",
+    recipeChickenStep2: "튀김가루를 입힌다",
+    recipeChickenStep3: "기름에 노릇하게 튀긴다",
+    recipeFries: "감자튀김",
+    recipeFriesFit: "맥주가 술술",
+    recipeFriesDesc: "짭짤함 하나로 맥주 속도 올리는 안주",
+    recipeFriesIng1: "감자",
+    recipeFriesIng2: "식용유",
+    recipeFriesIng3: "소금",
+    recipeFriesStep1: "감자를 길게 썬다",
+    recipeFriesStep2: "기름에 바삭하게 튀긴다",
+    recipeFriesStep3: "소금을 뿌린다",
+    recipeSausage: "소시지 구이",
+    recipeSausageFit: "독일 감성",
+    recipeSausageDesc: "육즙 가득한 클래식 맥주 안주",
+    recipeSausageIng1: "소시지",
+    recipeSausageIng2: "머스터드",
+    recipeSausageStep1: "팬에 소시지를 굽는다",
+    recipeSausageStep2: "노릇해지면 접시에 담는다",
+    recipePizza: "피자",
+    recipePizzaFit: "탄산으로 느끼함 컷",
+    recipePizzaDesc: "여럿이 마실 때 실패 없는 선택",
+    recipePizzaIng1: "피자 도우",
+    recipePizzaIng2: "토마토소스",
+    recipePizzaIng3: "치즈",
+    recipePizzaIng4: "토핑",
+    recipePizzaStep1: "도우에 소스를 바른다",
+    recipePizzaStep2: "치즈와 토핑을 올린다",
+    recipePizzaStep3: "오븐에 굽는다",
+    recipeCheeseBall: "치즈볼",
+    recipeCheeseBallFit: "단짠 조합",
+    recipeCheeseBallDesc: "한 입씩 집어먹기 좋은 안주",
+    recipeCheeseBallIng1: "치즈볼",
+    recipeCheeseBallIng2: "식용유",
+    recipeCheeseBallStep1: "기름을 달군다",
+    recipeCheeseBallStep2: "치즈볼을 튀긴다",
+    recipeSquidTempura: "오징어튀김",
+    recipeSquidTempuraFit: "바삭함 극대화",
+    recipeSquidTempuraDesc: "튀김과 맥주의 공식",
+    recipeSquidTempuraIng1: "오징어",
+    recipeSquidTempuraIng2: "튀김가루",
+    recipeSquidTempuraIng3: "식용유",
+    recipeSquidTempuraStep1: "오징어를 손질한다",
+    recipeSquidTempuraStep2: "튀김옷을 입힌다",
+    recipeSquidTempuraStep3: "기름에 튀긴다",
+    recipeNacho: "나초 & 살사",
+    recipeNachoFit: "가볍게 시작",
+    recipeNachoDesc: "입 심심할 때 딱 좋은 맥주 안주",
+    recipeNachoIng1: "나초",
+    recipeNachoIng2: "살사소스",
+    recipeNachoStep1: "나초를 접시에 담는다",
+    recipeNachoStep2: "살사소스를 곁들인다",
+    recipeHotWing: "핫윙",
+    recipeHotWingFit: "매콤함 + 탄산",
+    recipeHotWingDesc: "매운맛으로 맥주 리셋",
+    recipeHotWingIng1: "닭날개",
+    recipeHotWingIng2: "핫소스",
+    recipeHotWingIng3: "식용유",
+    recipeHotWingStep1: "날개를 튀긴다",
+    recipeHotWingStep2: "핫소스를 버무린다",
+    recipeDriedSquid: "마른 오징어",
+    recipeDriedSquidFit: "씹을수록 맥주",
+    recipeDriedSquidDesc: "말 안 하고 마시기 좋은 안주",
+    recipeDriedSquidIng1: "마른 오징어",
+    recipeDriedSquidStep1: "살짝 구워 준비한다",
+    recipePretzel: "프레첼",
+    recipePretzelFit: "독일 국룰",
+    recipePretzelDesc: "짠맛으로 맥주 풍미 강조",
+    recipePretzelIng1: "프레첼",
+    recipePretzelStep1: "그대로 접시에 담는다",
+    // 소주
+    recipeTofuKimchi: "두부김치",
+    recipeTofuKimchiFit: "소주랑 찰떡",
+    recipeTofuKimchiDesc: "기름기와 산미 조합의 국룰 안주",
+    recipeTofuKimchiIng1: "두부",
+    recipeTofuKimchiIng2: "김치",
+    recipeTofuKimchiIng3: "고기",
+    recipeTofuKimchiIng4: "고춧가루",
+    recipeTofuKimchiStep1: "두부를 데친다",
+    recipeTofuKimchiStep2: "김치를 볶는다",
+    recipeTofuKimchiStep3: "두부 위에 김치를 올린다",
+    recipePorkBelly: "삼겹살",
+    recipePorkBellyFit: "소주 국룰",
+    recipePorkBellyDesc: "기름진 고기에 소주 한 잔",
+    recipePorkBellyIng1: "삼겹살",
+    recipePorkBellyIng2: "마늘",
+    recipePorkBellyIng3: "쌈채소",
+    recipePorkBellyStep1: "삼겹살을 굽는다",
+    recipePorkBellyStep2: "마늘을 곁들인다",
+    recipeSpicyPork: "제육볶음",
+    recipeSpicyPorkFit: "매콤함이 소주를 부른다",
+    recipeSpicyPorkDesc: "스트레스 풀리는 매콤한 집술 안주",
+    recipeSpicyPorkIng1: "돼지고기",
+    recipeSpicyPorkIng2: "고추장",
+    recipeSpicyPorkIng3: "양파",
+    recipeSpicyPorkStep1: "고기를 양념한다",
+    recipeSpicyPorkStep2: "팬에 볶는다",
+    recipeGreenOnionPancake: "파전",
+    recipeGreenOnionPancakeFit: "전엔 역시 소주",
+    recipeGreenOnionPancakeDesc: "바삭한 전 한 입에 술 한 잔",
+    recipeGreenOnionPancakeIng1: "부침가루",
+    recipeGreenOnionPancakeIng2: "파",
+    recipeGreenOnionPancakeIng3: "물",
+    recipeGreenOnionPancakeStep1: "반죽을 만든다",
+    recipeGreenOnionPancakeStep2: "파를 넣어 굽는다",
+    recipeConchSalad: "골뱅이무침",
+    recipeConchSaladFit: "새콤매콤",
+    recipeConchSaladDesc: "입맛 돋우는 클래식 안주",
+    recipeConchSaladIng1: "골뱅이",
+    recipeConchSaladIng2: "채소",
+    recipeConchSaladIng3: "초고추장",
+    recipeConchSaladStep1: "재료를 썬다",
+    recipeConchSaladStep2: "양념에 버무린다",
+    // 와인
+    recipeCheeseNuts: "치즈 & 견과",
+    recipeCheeseNutsFit: "와인 맛을 살려주는 조합",
+    recipeCheeseNutsDesc: "술 맛을 해치지 않는 가벼운 안주",
+    recipeCheeseNutsIng1: "치즈",
+    recipeCheeseNutsIng2: "견과류",
+    recipeCheeseNutsStep1: "치즈를 자른다",
+    recipeCheeseNutsStep2: "견과와 함께 담는다",
+    recipeSteak: "스테이크",
+    recipeSteakFit: "레드와인과 환상 궁합",
+    recipeSteakDesc: "육즙과 탄닌의 정석",
+    recipeSteakIng1: "소고기",
+    recipeSteakIng2: "소금",
+    recipeSteakIng3: "후추",
+    recipeSteakIng4: "버터",
+    recipeSteakStep1: "고기에 간한다",
+    recipeSteakStep2: "센 불에 굽는다",
+    recipeSteakStep3: "버터로 마무리",
+    recipeGambas: "감바스",
+    recipeGambasFit: "마늘 향 극대화",
+    recipeGambasDesc: "화이트와인 대표 안주",
+    recipeGambasIng1: "새우",
+    recipeGambasIng2: "마늘",
+    recipeGambasIng3: "올리브오일",
+    recipeGambasStep1: "마늘을 볶는다",
+    recipeGambasStep2: "새우를 익힌다",
+    // 위스키
+    recipeDarkChocolate: "다크초콜릿",
+    recipeDarkChocolateFit: "위스키 단맛 강조",
+    recipeDarkChocolateDesc: "쓴맛과 단맛의 밸런스",
+    recipeDarkChocolateIng1: "다크초콜릿",
+    recipeDarkChocolateStep1: "한 조각씩 준비한다",
+    recipeNutsMix: "견과류 믹스",
+    recipeNutsMixFit: "클래식",
+    recipeNutsMixDesc: "위스키 초보도 실패 없음",
+    recipeNutsMixIng1: "견과류",
+    recipeNutsMixStep1: "그대로 담아낸다",
+    recipeSmokedCheese: "훈제 치즈",
+    recipeSmokedCheeseFit: "스모키 매칭",
+    recipeSmokedCheeseDesc: "위스키 향과 잘 맞음",
+    recipeSmokedCheeseIng1: "훈제 치즈",
+    recipeSmokedCheeseStep1: "썰어서 접시에 담는다"
+  },
+  en: {
+    metaTitle: "Perfect Anju for This Drink 🍻",
+    metaDescription: "Recommend the perfect side dish for your drink, no worries needed",
+    title: "🍻 Perfect Anju for This Drink",
+    subtitle: "The perfect side dish for your drink",
+    footer: "© Home Drinking Mate · Anju Recommendation Service · funnyfunny.cloud",
+    ingredients: "Ingredients",
+    steps: "How to Make",
+    todayAnju: "Today's Anju 🍺",
+    timeBadge: "{time} min before the drink gets warm",
+    difficultyBadge: "Difficulty {difficulty}",
+    rerollBtn: "Recommend another anju",
+    saveImageBtn: "Save Image",
+    moreTestsBtn: "Try Other Tests",
+    // Steps
+    step1Question: "What drink?",
+    step1Sub: "Anju varies greatly depending on the drink.",
+    step1Beer: "🍺 Beer",
+    step1Soju: "🍶 Soju",
+    step1Wine: "🍷 Wine",
+    step1Whiskey: "🥃 Whiskey",
+    step2Question: "What type of wine?",
+    step2Sub: "Red and white wines have different matching anju.",
+    step2Red: "🍷 Red Wine",
+    step2White: "🥂 White Wine",
+    // Difficulty
+    difficultyEasy: "Easy",
+    difficultyMedium: "Medium",
+    difficultyHard: "Hard",
+    // Save Image
+    saveImageTitle: "Perfect Anju for This Drink",
+    saveImageIngredients: "Ingredients",
+    saveImageSteps: "How to Make",
+    saveImageFooter: "🍻 Perfect Anju for This Drink · Anju Recommendation · funnyfunny.cloud",
+    saveImageTime: "{time} min",
+    saveImageDifficulty: "Difficulty {difficulty}",
+    // Recipes (Beer)
+    recipeChicken: "Fried Chicken",
+    recipeChickenFit: "Beer is incomplete without it",
+    recipeChickenDesc: "The ultimate boss of beer anju, no explanation needed",
+    recipeChickenIng1: "Chicken",
+    recipeChickenIng2: "Flour",
+    recipeChickenIng3: "Cooking oil",
+    recipeChickenIng4: "Salt",
+    recipeChickenStep1: "Season chicken with salt",
+    recipeChickenStep2: "Coat with flour",
+    recipeChickenStep3: "Fry until golden brown",
+    recipeFries: "French Fries",
+    recipeFriesFit: "Beer flows smoothly",
+    recipeFriesDesc: "Anju that speeds up beer with just saltiness",
+    recipeFriesIng1: "Potatoes",
+    recipeFriesIng2: "Cooking oil",
+    recipeFriesIng3: "Salt",
+    recipeFriesStep1: "Cut potatoes into strips",
+    recipeFriesStep2: "Fry until crispy",
+    recipeFriesStep3: "Sprinkle with salt",
+    recipeSausage: "Grilled Sausage",
+    recipeSausageFit: "German vibe",
+    recipeSausageDesc: "Classic beer anju full of juice",
+    recipeSausageIng1: "Sausage",
+    recipeSausageIng2: "Mustard",
+    recipeSausageStep1: "Grill sausage in pan",
+    recipeSausageStep2: "Place on plate when golden",
+    recipePizza: "Pizza",
+    recipePizzaFit: "Carbonation cuts the greasiness",
+    recipePizzaDesc: "A no-fail choice when drinking with others",
+    recipePizzaIng1: "Pizza dough",
+    recipePizzaIng2: "Tomato sauce",
+    recipePizzaIng3: "Cheese",
+    recipePizzaIng4: "Toppings",
+    recipePizzaStep1: "Spread sauce on dough",
+    recipePizzaStep2: "Add cheese and toppings",
+    recipePizzaStep3: "Bake in oven",
+    recipeCheeseBall: "Cheese Balls",
+    recipeCheeseBallFit: "Sweet & salty combo",
+    recipeCheeseBallDesc: "Perfect bite-sized anju",
+    recipeCheeseBallIng1: "Cheese balls",
+    recipeCheeseBallIng2: "Cooking oil",
+    recipeCheeseBallStep1: "Heat oil",
+    recipeCheeseBallStep2: "Fry cheese balls",
+    recipeSquidTempura: "Squid Tempura",
+    recipeSquidTempuraFit: "Crispiness maximized",
+    recipeSquidTempuraDesc: "The formula of tempura and beer",
+    recipeSquidTempuraIng1: "Squid",
+    recipeSquidTempuraIng2: "Flour",
+    recipeSquidTempuraIng3: "Cooking oil",
+    recipeSquidTempuraStep1: "Prepare squid",
+    recipeSquidTempuraStep2: "Coat with batter",
+    recipeSquidTempuraStep3: "Fry in oil",
+    recipeNacho: "Nachos & Salsa",
+    recipeNachoFit: "Start light",
+    recipeNachoDesc: "Perfect beer anju when you're bored",
+    recipeNachoIng1: "Nachos",
+    recipeNachoIng2: "Salsa sauce",
+    recipeNachoStep1: "Place nachos on plate",
+    recipeNachoStep2: "Serve with salsa",
+    recipeHotWing: "Hot Wings",
+    recipeHotWingFit: "Spicy + carbonation",
+    recipeHotWingDesc: "Reset beer with spiciness",
+    recipeHotWingIng1: "Chicken wings",
+    recipeHotWingIng2: "Hot sauce",
+    recipeHotWingIng3: "Cooking oil",
+    recipeHotWingStep1: "Fry wings",
+    recipeHotWingStep2: "Toss with hot sauce",
+    recipeDriedSquid: "Dried Squid",
+    recipeDriedSquidFit: "The more you chew, the more beer",
+    recipeDriedSquidDesc: "Good anju for silent drinking",
+    recipeDriedSquidIng1: "Dried squid",
+    recipeDriedSquidStep1: "Lightly grill and prepare",
+    recipePretzel: "Pretzel",
+    recipePretzelFit: "German standard",
+    recipePretzelDesc: "Enhances beer flavor with saltiness",
+    recipePretzelIng1: "Pretzel",
+    recipePretzelStep1: "Place on plate as is",
+    // Soju
+    recipeTofuKimchi: "Tofu & Kimchi",
+    recipeTofuKimchiFit: "Perfect match with soju",
+    recipeTofuKimchiDesc: "The standard anju combo of oiliness and acidity",
+    recipeTofuKimchiIng1: "Tofu",
+    recipeTofuKimchiIng2: "Kimchi",
+    recipeTofuKimchiIng3: "Meat",
+    recipeTofuKimchiIng4: "Red pepper powder",
+    recipeTofuKimchiStep1: "Boil tofu",
+    recipeTofuKimchiStep2: "Stir-fry kimchi",
+    recipeTofuKimchiStep3: "Place kimchi on tofu",
+    recipePorkBelly: "Pork Belly",
+    recipePorkBellyFit: "Soju standard",
+    recipePorkBellyDesc: "Fatty meat with soju",
+    recipePorkBellyIng1: "Pork belly",
+    recipePorkBellyIng2: "Garlic",
+    recipePorkBellyIng3: "Leafy vegetables",
+    recipePorkBellyStep1: "Grill pork belly",
+    recipePorkBellyStep2: "Serve with garlic",
+    recipeSpicyPork: "Spicy Pork Stir-fry",
+    recipeSpicyPorkFit: "Spiciness calls for soju",
+    recipeSpicyPorkDesc: "Stress-relieving spicy home drinking anju",
+    recipeSpicyPorkIng1: "Pork",
+    recipeSpicyPorkIng2: "Gochujang",
+    recipeSpicyPorkIng3: "Onion",
+    recipeSpicyPorkStep1: "Season meat",
+    recipeSpicyPorkStep2: "Stir-fry in pan",
+    recipeGreenOnionPancake: "Green Onion Pancake",
+    recipeGreenOnionPancakeFit: "Jeon is best with soju",
+    recipeGreenOnionPancakeDesc: "A sip of crispy jeon, a sip of alcohol",
+    recipeGreenOnionPancakeIng1: "Pancake mix",
+    recipeGreenOnionPancakeIng2: "Green onion",
+    recipeGreenOnionPancakeIng3: "Water",
+    recipeGreenOnionPancakeStep1: "Make batter",
+    recipeGreenOnionPancakeStep2: "Add green onion and cook",
+    recipeConchSalad: "Conch Salad",
+    recipeConchSaladFit: "Sour & spicy",
+    recipeConchSaladDesc: "Classic appetite-whetting anju",
+    recipeConchSaladIng1: "Conch",
+    recipeConchSaladIng2: "Vegetables",
+    recipeConchSaladIng3: "Vinegar gochujang",
+    recipeConchSaladStep1: "Cut ingredients",
+    recipeConchSaladStep2: "Mix with sauce",
+    // Wine
+    recipeCheeseNuts: "Cheese & Nuts",
+    recipeCheeseNutsFit: "Combination that enhances wine flavor",
+    recipeCheeseNutsDesc: "Light anju that doesn't interfere with wine taste",
+    recipeCheeseNutsIng1: "Cheese",
+    recipeCheeseNutsIng2: "Nuts",
+    recipeCheeseNutsStep1: "Cut cheese",
+    recipeCheeseNutsStep2: "Serve with nuts",
+    recipeSteak: "Steak",
+    recipeSteakFit: "Perfect match with red wine",
+    recipeSteakDesc: "The standard of juice and tannin",
+    recipeSteakIng1: "Beef",
+    recipeSteakIng2: "Salt",
+    recipeSteakIng3: "Pepper",
+    recipeSteakIng4: "Butter",
+    recipeSteakStep1: "Season meat",
+    recipeSteakStep2: "Grill over high heat",
+    recipeSteakStep3: "Finish with butter",
+    recipeGambas: "Gambas",
+    recipeGambasFit: "Garlic flavor maximized",
+    recipeGambasDesc: "Representative white wine anju",
+    recipeGambasIng1: "Shrimp",
+    recipeGambasIng2: "Garlic",
+    recipeGambasIng3: "Olive oil",
+    recipeGambasStep1: "Stir-fry garlic",
+    recipeGambasStep2: "Cook shrimp",
+    // Whiskey
+    recipeDarkChocolate: "Dark Chocolate",
+    recipeDarkChocolateFit: "Emphasizes whiskey sweetness",
+    recipeDarkChocolateDesc: "Balance of bitterness and sweetness",
+    recipeDarkChocolateIng1: "Dark chocolate",
+    recipeDarkChocolateStep1: "Prepare piece by piece",
+    recipeNutsMix: "Mixed Nuts",
+    recipeNutsMixFit: "Classic",
+    recipeNutsMixDesc: "Even whiskey beginners won't fail",
+    recipeNutsMixIng1: "Nuts",
+    recipeNutsMixStep1: "Serve as is",
+    recipeSmokedCheese: "Smoked Cheese",
+    recipeSmokedCheeseFit: "Smoky match",
+    recipeSmokedCheeseDesc: "Goes well with whiskey aroma",
+    recipeSmokedCheeseIng1: "Smoked cheese",
+    recipeSmokedCheeseStep1: "Slice and place on plate"
+  }
+};
+
+const defaultLang = "ko";
+const supportedLangs = ["ko", "en"];
+let currentLang = defaultLang;
+
+function t(key, vars = {}) {
+  const langTable = translations[currentLang] || translations.ko;
+  const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+  if (typeof template !== "string") return template;
+  return template.replace(/\{(\w+)\}/g, (_, token) =>
+    vars[token] !== undefined ? vars[token] : `{${token}}`
+  );
+}
+
+function applyTranslations() {
+  document.title = t("metaTitle");
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc) desc.setAttribute("content", t("metaDescription"));
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    if (el.tagName === "FOOTER") {
+      el.innerHTML = t("footer") + ' · <a href="https://funnyfunny.cloud" target="_blank" style="color:#94a3b8;text-decoration:none;">funnyfunny.cloud</a>';
+    } else {
+      el.textContent = t(el.dataset.i18n);
+    }
+  });
+  if (typeof renderStep === "function") renderStep();
+  if (typeof renderResultContent === "function" && currentRecipe) renderResultContent(currentRecipe);
+}
+
+function setLang(lang, options = {}) {
+  const nextLang = translations[lang] ? lang : defaultLang;
+  currentLang = nextLang;
+  window.currentLang = currentLang;
+  window.t = t;
+  document.documentElement.lang = nextLang;
+  localStorage.setItem("preferredLang", nextLang);
+  document.querySelectorAll(".lang-switch button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.lang === nextLang);
+  });
+  applyTranslations();
+  if (options.updateUrl) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", nextLang);
+    window.history.replaceState({}, "", url);
+  }
+  // 언어 변경 시 현재 레시피가 있으면 재렌더링
+  if (currentRecipe) {
+    renderResultContent(currentRecipe);
+  }
+}
+
+function detectLang() {
+  const params = new URLSearchParams(window.location.search);
+  const paramLang = params.get("lang");
+  if (supportedLangs.includes(paramLang)) return paramLang;
+  const stored = localStorage.getItem("preferredLang");
+  if (supportedLangs.includes(stored)) return stored;
+  const browserLang =
+    navigator.languages && navigator.languages.length
+      ? navigator.languages[0]
+      : navigator.language;
+  if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+    return "ko";
+  }
+  return defaultLang;
+}
+
+/* STEP 정의 */
+function getSteps() {
+  return [
+    {
+      key: "drink",
+      q: t("step1Question"),
+      sub: t("step1Sub"),
+      a: [
+        { t: t("step1Beer"), v: "beer" },
+        { t: t("step1Soju"), v: "soju" },
+        { t: t("step1Wine"), v: "wine" },
+        { t: t("step1Whiskey"), v: "whiskey" }
+      ]
+    },
+    {
+      key: "wineType",
+      q: t("step2Question"),
+      sub: t("step2Sub"),
+      condition: (a) => a.drink === "wine",
+      a: [
+        { t: t("step2Red"), v: "red" },
+        { t: t("step2White"), v: "white" }
+      ]
+    }
+  ];
+}
+
+/* 안주 레시피 */
+const recipes = [
+/* =========================
+   🍺 맥주
+========================= */
+{
+  name: "치킨",
+  drink: ["beer"],
+  alcoholFit: "맥주 없으면 섭섭",
+  time: 30,
+  difficulty: "중",
+  description: "말이 필요 없는 맥주 안주의 최종 보스",
+  ingredients: ["닭", "튀김가루", "식용유", "소금"],
+  steps: [
+    "닭에 소금으로 밑간한다",
+    "튀김가루를 입힌다",
+    "기름에 노릇하게 튀긴다"
+  ]
+},
+{
+  name: "감자튀김",
+  drink: ["beer"],
+  alcoholFit: "맥주가 술술",
+  time: 10,
+  difficulty: "하",
+  description: "짭짤함 하나로 맥주 속도 올리는 안주",
+  ingredients: ["감자", "식용유", "소금"],
+  steps: [
+    "감자를 길게 썬다",
+    "기름에 바삭하게 튀긴다",
+    "소금을 뿌린다"
+  ]
+},
+{
+  name: "소시지 구이",
+  drink: ["beer"],
+  alcoholFit: "독일 감성",
+  time: 10,
+  difficulty: "하",
+  description: "육즙 가득한 클래식 맥주 안주",
+  ingredients: ["소시지", "머스터드"],
+  steps: [
+    "팬에 소시지를 굽는다",
+    "노릇해지면 접시에 담는다"
+  ]
+},
+{
+  name: "피자",
+  drink: ["beer"],
+  alcoholFit: "탄산으로 느끼함 컷",
+  time: 25,
+  difficulty: "중",
+  description: "여럿이 마실 때 실패 없는 선택",
+  ingredients: ["피자 도우", "토마토소스", "치즈", "토핑"],
+  steps: [
+    "도우에 소스를 바른다",
+    "치즈와 토핑을 올린다",
+    "오븐에 굽는다"
+  ]
+},
+{
+  name: "치즈볼",
+  drink: ["beer"],
+  alcoholFit: "단짠 조합",
+  time: 8,
+  difficulty: "하",
+  description: "한 입씩 집어먹기 좋은 안주",
+  ingredients: ["치즈볼", "식용유"],
+  steps: [
+    "기름을 달군다",
+    "치즈볼을 튀긴다"
+  ]
+},
+{
+  name: "오징어튀김",
+  drink: ["beer"],
+  alcoholFit: "바삭함 극대화",
+  time: 20,
+  difficulty: "중",
+  description: "튀김과 맥주의 공식",
+  ingredients: ["오징어", "튀김가루", "식용유"],
+  steps: [
+    "오징어를 손질한다",
+    "튀김옷을 입힌다",
+    "기름에 튀긴다"
+  ]
+},
+{
+  name: "나초 & 살사",
+  drink: ["beer"],
+  alcoholFit: "가볍게 시작",
+  time: 5,
+  difficulty: "하",
+  description: "입 심심할 때 딱 좋은 맥주 안주",
+  ingredients: ["나초", "살사소스"],
+  steps: [
+    "나초를 접시에 담는다",
+    "살사소스를 곁들인다"
+  ]
+},
+{
+  name: "핫윙",
+  drink: ["beer"],
+  alcoholFit: "매콤함 + 탄산",
+  time: 20,
+  difficulty: "중",
+  description: "매운맛으로 맥주 리셋",
+  ingredients: ["닭날개", "핫소스", "식용유"],
+  steps: [
+    "날개를 튀긴다",
+    "핫소스를 버무린다"
+  ]
+},
+{
+  name: "마른 오징어",
+  drink: ["beer"],
+  alcoholFit: "씹을수록 맥주",
+  time: 2,
+  difficulty: "하",
+  description: "말 안 하고 마시기 좋은 안주",
+  ingredients: ["마른 오징어"],
+  steps: [
+    "살짝 구워 준비한다"
+  ]
+},
+{
+  name: "프레첼",
+  drink: ["beer"],
+  alcoholFit: "독일 국룰",
+  time: 5,
+  difficulty: "하",
+  description: "짠맛으로 맥주 풍미 강조",
+  ingredients: ["프레첼"],
+  steps: [
+    "그대로 접시에 담는다"
+  ]
+},
+
+/* =========================
+   🍶 소주
+========================= */
+{
+  name: "두부김치",
+  drink: ["soju","beer"],
+  alcoholFit: "소주랑 찰떡",
+  time: 15,
+  difficulty: "하",
+  description: "기름기와 산미 조합의 국룰 안주",
+  ingredients: ["두부", "김치", "고기", "고춧가루"],
+  steps: [
+    "두부를 데친다",
+    "김치를 볶는다",
+    "두부 위에 김치를 올린다"
+  ]
+},
+{
+  name: "삼겹살",
+  drink: ["soju"],
+  alcoholFit: "소주 국룰",
+  time: 30,
+  difficulty: "중",
+  description: "기름진 고기에 소주 한 잔",
+  ingredients: ["삼겹살", "마늘", "쌈채소"],
+  steps: [
+    "삼겹살을 굽는다",
+    "마늘을 곁들인다"
+  ]
+},
+{
+  name: "제육볶음",
+  drink: ["soju"],
+  alcoholFit: "매콤함이 소주를 부른다",
+  time: 25,
+  difficulty: "중",
+  description: "스트레스 풀리는 매콤한 집술 안주",
+  ingredients: ["돼지고기", "고추장", "양파"],
+  steps: [
+    "고기를 양념한다",
+    "팬에 볶는다"
+  ]
+},
+{
+  name: "파전",
+  drink: ["soju","beer"],
+  alcoholFit: "전엔 역시 소주",
+  time: 20,
+  difficulty: "중",
+  description: "바삭한 전 한 입에 술 한 잔",
+  ingredients: ["부침가루", "파", "물"],
+  steps: [
+    "반죽을 만든다",
+    "파를 넣어 굽는다"
+  ]
+},
+{
+  name: "골뱅이무침",
+  drink: ["soju","beer"],
+  alcoholFit: "새콤매콤",
+  time: 15,
+  difficulty: "하",
+  description: "입맛 돋우는 클래식 안주",
+  ingredients: ["골뱅이", "채소", "초고추장"],
+  steps: [
+    "재료를 썬다",
+    "양념에 버무린다"
+  ]
+},
+
+/* =========================
+   🍷 와인
+========================= */
+{
+  name: "치즈 & 견과",
+  drink: ["wine"],
+  wineType: ["red","white"],
+  alcoholFit: "와인 맛을 살려주는 조합",
+  time: 5,
+  difficulty: "하",
+  description: "술 맛을 해치지 않는 가벼운 안주",
+  ingredients: ["치즈", "견과류"],
+  steps: [
+    "치즈를 자른다",
+    "견과와 함께 담는다"
+  ]
+},
+{
+  name: "스테이크",
+  drink: ["wine"],
+  wineType: ["red"],
+  alcoholFit: "레드와인과 환상 궁합",
+  time: 25,
+  difficulty: "중",
+  description: "육즙과 탄닌의 정석",
+  ingredients: ["소고기", "소금", "후추", "버터"],
+  steps: [
+    "고기에 간한다",
+    "센 불에 굽는다",
+    "버터로 마무리"
+  ]
+},
+{
+  name: "감바스",
+  drink: ["wine"],
+  wineType: ["white"],
+  alcoholFit: "마늘 향 극대화",
+  time: 15,
+  difficulty: "중",
+  description: "화이트와인 대표 안주",
+  ingredients: ["새우", "마늘", "올리브오일"],
+  steps: [
+    "마늘을 볶는다",
+    "새우를 익힌다"
+  ]
+},
+
+/* =========================
+   🥃 위스키
+========================= */
+{
+  name: "다크초콜릿",
+  drink: ["whiskey","wine"],
+  alcoholFit: "위스키 단맛 강조",
+  time: 3,
+  difficulty: "하",
+  description: "쓴맛과 단맛의 밸런스",
+  ingredients: ["다크초콜릿"],
+  steps: [
+    "한 조각씩 준비한다"
+  ]
+},
+{
+  name: "견과류 믹스",
+  drink: ["whiskey"],
+  alcoholFit: "클래식",
+  time: 2,
+  difficulty: "하",
+  description: "위스키 초보도 실패 없음",
+  ingredients: ["견과류"],
+  steps: [
+    "그대로 담아낸다"
+  ]
+},
+{
+  name: "훈제 치즈",
+  drink: ["whiskey"],
+  alcoholFit: "스모키 매칭",
+  time: 5,
+  difficulty: "하",
+  description: "위스키 향과 잘 맞음",
+  ingredients: ["훈제 치즈"],
+  steps: [
+    "썰어서 접시에 담는다"
+  ]
+}
+];
+
+// 레시피 key 매핑 (레시피 이름 -> 번역 키)
+const recipeKeyMap = {
+  "치킨": "chicken",
+  "감자튀김": "fries",
+  "소시지 구이": "sausage",
+  "피자": "pizza",
+  "치즈볼": "cheeseBall",
+  "오징어튀김": "squidTempura",
+  "나초 & 살사": "nacho",
+  "핫윙": "hotWing",
+  "마른 오징어": "driedSquid",
+  "프레첼": "pretzel",
+  "두부김치": "tofuKimchi",
+  "삼겹살": "porkBelly",
+  "제육볶음": "spicyPork",
+  "파전": "greenOnionPancake",
+  "골뱅이무침": "conchSalad",
+  "치즈 & 견과": "cheeseNuts",
+  "스테이크": "steak",
+  "감바스": "gambas",
+  "다크초콜릿": "darkChocolate",
+  "견과류 믹스": "nutsMix",
+  "훈제 치즈": "smokedCheese"
+};
+
+// 번역된 레시피 객체 생성 함수
+function translateRecipe(recipe) {
+  const key = recipeKeyMap[recipe.name] || recipe.key || recipe.name.toLowerCase().replace(/\s+/g, "");
+  const isKo = currentLang === "ko";
+  
+  const difficultyMap = { "하": "Easy", "중": "Medium", "상": "Hard" };
+  const translatedDifficulty = isKo ? recipe.difficulty : (difficultyMap[recipe.difficulty] || recipe.difficulty);
+  
+  // ingredients와 steps 번역 키 생성
+  const ingredientKeys = recipe.ingredients.map((ing, idx) => {
+    const ingKey = `recipe${key.charAt(0).toUpperCase() + key.slice(1)}Ing${idx + 1}`;
+    return t(ingKey) !== ingKey ? t(ingKey) : ing;
+  });
+  
+  const stepKeys = recipe.steps.map((step, idx) => {
+    const stepKey = `recipe${key.charAt(0).toUpperCase() + key.slice(1)}Step${idx + 1}`;
+    return t(stepKey) !== stepKey ? t(stepKey) : step;
+  });
+  
+  const nameKey = `recipe${key.charAt(0).toUpperCase() + key.slice(1)}`;
+  const fitKey = `${nameKey}Fit`;
+  const descKey = `${nameKey}Desc`;
+  
+  return {
+    ...recipe,
+    name: t(nameKey) !== nameKey ? t(nameKey) : recipe.name,
+    alcoholFit: t(fitKey) !== fitKey ? t(fitKey) : recipe.alcoholFit,
+    description: t(descKey) !== descKey ? t(descKey) : recipe.description,
+    difficulty: translatedDifficulty,
+    ingredients: ingredientKeys,
+    steps: stepKeys
+  };
+}
+
+// 번역된 레시피 배열 반환
+function getRecipes() {
+  return recipes.map(translateRecipe);
+}
+
+let stepIndex = 0;
+const answers = {};
+const stepCard = document.getElementById("stepCard");
+const resultCard = document.getElementById("resultCard");
+let currentRecipe = null;
+
+function random(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function currentStep() {
+  const steps = getSteps();
+  while (
+    stepIndex < steps.length &&
+    steps[stepIndex].condition &&
+    !steps[stepIndex].condition(answers)
+  ) {
+    stepIndex++;
+  }
+  return steps[stepIndex];
+}
+
+function renderStep() {
+  const s = currentStep();
+  if (!s) return showResult();
+
+  stepCard.innerHTML = `
+    <div class="step-title">${s.q}</div>
+    <div class="step-sub">${s.sub}</div>
+    <div class="choices">
+      ${s.a.map(o =>
+        `<div class="choice" onclick="nextStep('${s.key}','${o.v}')">${o.t}</div>`
+      ).join("")}
+    </div>
+  `;
+}
+
+function nextStep(key, value) {
+  answers[key] = value;
+  stepIndex++;
+  renderStep();
+}
+
+function pickAnju(a) {
+  const recipes = getRecipes();
+  let list = recipes.filter(r =>
+    r.drink.includes(a.drink) &&
+    (!r.wineType || r.wineType.includes(a.wineType))
+  );
+
+  if (!list.length) {
+    list = recipes.filter(r => r.drink.includes(a.drink));
+  }
+
+  return random(list);
+}
+
+function showResult() {
+  stepCard.style.display = "none";
+  resultCard.style.display = "block";
+
+  currentRecipe = pickAnju(answers);
+  renderResultContent(currentRecipe);
+}
+
+function reroll() {
+  currentRecipe = pickAnju(answers);
+  renderResultContent(currentRecipe);
+}
+
+function renderResultContent(r) {
+  const ingredientView = r.ingredients ? `
+    <div class="section">
+      <h3>${t("ingredients")}</h3>
+      <ul class="list">
+        ${r.ingredients.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+    </div>
+  ` : "";
+
+  const stepsView = r.steps ? `
+    <div class="section">
+      <h3>${t("steps")}</h3>
+      <ol class="list">
+        ${r.steps.map(step => `<li>${step}</li>`).join("")}
+      </ol>
+    </div>
+  ` : "";
+
+  const difficultyText = r.difficulty === "하" || r.difficulty === "Easy" ? t("difficultyEasy") : 
+                         r.difficulty === "중" || r.difficulty === "Medium" ? t("difficultyMedium") : 
+                         r.difficulty === "상" || r.difficulty === "Hard" ? t("difficultyHard") : r.difficulty;
+
+  resultCard.innerHTML = `
+    <h2>${t("todayAnju")}</h2>
+    <p style="font-size:22px;font-weight:800;margin:6px 0">${r.name}</p>
+    <p style="color:#94a3b8;font-size:14px">${r.description}</p>
+
+    <div>
+      <span class="badge">⏱ ${t("timeBadge", { time: r.time })}</span>
+      <span class="badge">🔥 ${t("difficultyBadge", { difficulty: difficultyText })}</span>
+      <span class="badge">🍶 ${r.alcoholFit}</span>
+    </div>
+
+    ${ingredientView}
+    ${stepsView}
+
+    <div class="actions">
+      <button class="btn" onclick="reroll()">${t("rerollBtn")}</button>
+      <button class="btn" onclick="saveImage()">${t("saveImageBtn")}</button>
+      <button class="btn" onclick="window.open('https://funnyfunny.cloud','_blank')">${t("moreTestsBtn")}</button>
+    </div>
+  `;
+}
+
+function saveImage() {
+  if (!currentRecipe) return;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  ctx.fillStyle = "#020617";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Title
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "28px 'Segoe UI', system-ui, sans-serif";
+  ctx.fillText(t("saveImageTitle"), 60, 80);
+
+  // Recipe name
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "48px 'Segoe UI', system-ui, sans-serif";
+  ctx.fillText(currentRecipe.name, 60, 150);
+
+  // Description
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "22px 'Segoe UI', system-ui, sans-serif";
+  const desc = currentRecipe.description;
+  wrapText(ctx, desc, 60, 200, 1080, 30);
+
+  // Badges
+  const badges = [
+    `⏱ ${t("saveImageTime", { time: currentRecipe.time })}`,
+    `🔥 ${t("saveImageDifficulty", { difficulty: currentRecipe.difficulty })}`,
+    `🍶 ${currentRecipe.alcoholFit}`
+  ];
+  let x = 60;
+  const y = 280;
+  badges.forEach(text => {
+    const paddingX = 18;
+    const paddingY = 10;
+    ctx.font = "20px 'Segoe UI', system-ui, sans-serif";
+    const w = ctx.measureText(text).width + paddingX * 2;
+    const h = 38;
+    ctx.fillStyle = "#1e293b";
+    ctx.beginPath();
+    ctx.roundRect(x, y - h + paddingY, w, h, 16);
+    ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(text, x + paddingX, y);
+    x += w + 14;
+  });
+
+  // Ingredients
+  let infoY = y + 60;
+  if (currentRecipe.ingredients) {
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "22px 'Segoe UI', system-ui, sans-serif";
+    ctx.fillText(t("saveImageIngredients"), 60, infoY);
+    infoY += 28;
+    ctx.fillStyle = "#e2e8f0";
+    ctx.font = "20px 'Segoe UI', system-ui, sans-serif";
+    wrapText(ctx, currentRecipe.ingredients.join(", "), 60, infoY, 1080, 28);
+    infoY += 40;
+  }
+
+  // Steps
+  if (currentRecipe.steps) {
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "22px 'Segoe UI', system-ui, sans-serif";
+    ctx.fillText(t("saveImageSteps"), 60, infoY);
+    infoY += 28;
+    ctx.fillStyle = "#e2e8f0";
+    ctx.font = "20px 'Segoe UI', system-ui, sans-serif";
+    currentRecipe.steps.forEach((step, idx) => {
+      wrapText(ctx, `${idx + 1}. ${step}`, 60, infoY, 1080, 28);
+      infoY += 30;
+    });
+  }
+
+  // Footer
+  ctx.fillStyle = "#475569";
+  ctx.font = "18px 'Segoe UI', system-ui, sans-serif";
+  ctx.fillText(t("saveImageFooter"), 60, canvas.height - 40);
+
+  const link = document.createElement("a");
+  link.download = `anju-${Date.now()}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(" ");
+  let line = "";
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + " ";
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > maxWidth && n > 0) {
+      ctx.fillText(line.trim(), x, y);
+      line = words[n] + " ";
+      y += lineHeight;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line.trim(), x, y);
+}
+
+document.querySelectorAll(".lang-switch button").forEach((button) => {
+  button.addEventListener("click", () => {
+    setLang(button.dataset.lang, { updateUrl: true });
+  });
+});
+
+setLang(detectLang(), { updateUrl: false });
+// 전역 변수 설정
+window.currentLang = currentLang;
+window.t = t;
+renderStep();
+</script>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+</html>

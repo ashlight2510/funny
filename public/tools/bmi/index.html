@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- ✅ 기본 SEO -->
+    <title>BMI Survey | Fun Diet Plan</title>
+    <meta
+      name="description"
+      content="A fun step-by-step BMI survey that gives personalized diet tips based on your style."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/bmi/" />
+    <!-- ✅ OG (요구: og:image dummyimage + text는 영어로 서비스에 맞게) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BMI Survey" />
+    <meta
+      property="og:description"
+      content="Step-by-step survey → fun BMI result → personalized diet tips."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=BMI+Survey+Diet+Plan"
+    />
+
+    <!-- ✅ Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BMI Survey" />
+    <meta
+      name="twitter:description"
+      content="Step-by-step survey → fun BMI result → personalized diet tips."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=BMI+Survey+Diet+Plan"
+    />
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- ✅ 파비콘: 자동 생성(여기서는 SVG data URI로 “프로젝트마다” 쉽게 바꾸게 만들어둠) -->
+    <!-- 아래 SERVICE_OG_TEXT만 바꾸면 파비콘 글자도 같이 바뀌게 JS가 세팅합니다 -->
+    <link
+      id="favicon"
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f172a'/%3E%3Ctext x='50' y='64' font-size='44' text-anchor='middle' fill='white' font-family='system-ui'%3EBMI%3C/text%3E%3C/svg%3E"
+    />
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: rgba(255, 255, 255, 0.08);
+        --line: rgba(255, 255, 255, 0.18);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.88);
+        --accent: rgba(24, 213, 200, 0.9);
+        --accent2: rgba(113, 97, 239, 0.95);
+        --danger: #ffb4b4;
+        --r: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+          sans-serif;
+        background: linear-gradient(to bottom right, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        color: var(--text);
+        padding: 24px 14px;
+        position: relative;
+      }
+      .wrap {
+        width: min(860px, 94vw);
+      }
+      .card {
+        background: white;
+        border: none;
+        border-radius: 32px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        max-width: 800px;
+        width: 100%;
+      }
+      header {
+        padding: 32px 32px 24px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        background: white;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        letter-spacing: -0.3px;
+        color: #1f2937;
+        font-weight: 800;
+      }
+      .sub {
+        margin: 0;
+        color: #6b7280;
+        line-height: 1.5;
+        font-size: 15px;
+      }
+      .content {
+        padding: 32px;
+        display: grid;
+        gap: 24px;
+        background: white;
+      }
+      .topbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        font-size: 14px;
+        color: #667eea;
+        font-weight: 600;
+      }
+      .progress {
+        flex: 1;
+        min-width: 240px;
+        height: 12px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: none;
+        background: rgba(102, 126, 234, 0.1);
+      }
+      .bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transition: width 0.35s ease;
+      }
+      .step {
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+        display: none;
+        gap: 24px;
+      }
+      .step.active {
+        display: grid;
+      }
+      .q {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .q .num {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: white;
+        flex-shrink: 0;
+      }
+      .q h2 {
+        margin: 0;
+        font-size: 24px;
+        color: #1f2937;
+        letter-spacing: -0.3px;
+        font-weight: 600;
+      }
+      .q p {
+        margin: 6px 0 0;
+        color: #6b7280;
+        line-height: 1.5;
+        font-size: 14px;
+      }
+      .choices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 640px) {
+        .choices {
+          grid-template-columns: 1fr;
+        }
+      }
+      .choice {
+        padding: 20px;
+        border-radius: 16px;
+        border: 2px solid transparent;
+        background: linear-gradient(to right, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+      }
+      .choice:hover {
+        background: linear-gradient(to right, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border-color: rgba(102, 126, 234, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+      }
+      .choice:active {
+        transform: translateY(0);
+      }
+      .choice strong {
+        display: block;
+        font-size: 16px;
+        color: #1f2937;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .choice span {
+        display: block;
+        margin-top: 4px;
+        color: #6b7280;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .choice[aria-pressed="true"],
+      .choice.selected {
+        border-color: #667eea;
+        background: linear-gradient(to right, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+      }
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+      label {
+        font-size: 14px;
+        color: #374151;
+        font-weight: 600;
+      }
+      input {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 2px solid #e5e7eb;
+        background: white;
+        color: #1f2937;
+        outline: none;
+        font-size: 16px;
+        transition: all 0.2s ease;
+      }
+      input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 4px;
+      }
+      .btn {
+        padding: 14px 24px;
+        border-radius: 12px;
+        border: none;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 15px;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+      }
+      .btn.ghost {
+        background: rgba(102, 126, 234, 0.08);
+        backdrop-filter: blur(10px);
+        color: #667eea;
+        border: 2px solid rgba(102, 126, 234, 0.25);
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+      }
+      .btn.ghost:hover {
+        background: rgba(102, 126, 234, 0.12);
+        border-color: rgba(102, 126, 234, 0.4);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .hint {
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.5;
+      }
+      .warn {
+        display: none;
+        color: #ef4444;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .result {
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+        display: none;
+        gap: 24px;
+      }
+      .result.show {
+        display: grid;
+      }
+      .big {
+        font-size: 42px;
+        font-weight: 900;
+        letter-spacing: -0.8px;
+        line-height: 1.05;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        font-size: 13px;
+        color: #667eea;
+        font-weight: 600;
+      }
+      .bmi-scale {
+        display: grid;
+        gap: 10px;
+      }
+      .scale-bar {
+        position: relative;
+        height: 12px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background: rgba(0, 0, 0, 0.05);
+      }
+      .scale-bar .seg {
+        height: 100%;
+        float: left;
+      }
+      .seg.under {
+        width: 17.5%;
+        background: rgba(122, 204, 255, 0.65);
+      }
+      .seg.normal {
+        width: 22.5%;
+        background: rgba(24, 213, 200, 0.7);
+      }
+      .seg.over {
+        width: 10%;
+        background: rgba(255, 214, 102, 0.7);
+      }
+      .seg.obese {
+        width: 50%;
+        background: rgba(255, 140, 140, 0.75);
+      }
+      .scale-marker {
+        position: absolute;
+        top: -8px;
+        width: 2px;
+        height: 28px;
+        background: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        transform: translateX(-1px);
+      }
+      .scale-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11.5px;
+        color: #6b7280;
+      }
+      .scale-caption {
+        font-size: 12px;
+        color: #374151;
+        font-weight: 600;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      @media (max-width: 720px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mini {
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: var(--r);
+        background: rgba(102, 126, 234, 0.03);
+        padding: 16px;
+        transition: all 0.2s ease;
+      }
+      .mini:hover {
+        background: rgba(102, 126, 234, 0.05);
+        border-color: rgba(102, 126, 234, 0.15);
+      }
+      .mini h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        color: #1f2937;
+        font-weight: 700;
+      }
+      .mini p {
+        margin: 0;
+        color: #4b5563;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .hr {
+        height: 1px;
+        background: rgba(0, 0, 0, 0.08);
+        margin: 6px 0;
+      }
+      .cta {
+        margin-top: 6px;
+      }
+      .cta a {
+        text-decoration: none;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        border: 1px solid rgba(226, 232, 240, 0.25);
+        background: rgba(226, 232, 240, 0.85);
+        color: #0f172a;
+        padding: 12px 14px;
+        font-weight: 800;
+        transition: background 0.18s ease;
+      }
+      .cta a:hover {
+        background: rgba(226, 232, 240, 0.75);
+      }
+      .cta svg {
+        margin-left: 8px;
+        width: 20px;
+        height: 20px;
+      }
+      footer {
+        margin-top: 10px;
+        color: #6b7280;
+        font-size: 12px;
+        line-height: 1.45;
+        padding: 0 6px;
+      }
+      code.k {
+        background: rgba(102, 126, 234, 0.1);
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        color: #667eea;
+        font-weight: 600;
+      }
+    </style>
+    <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: white;
+      color: #667eea;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+  </style>
+</head>
+
+  <body>
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="wrap">
+      <div class="card">
+        <header>
+          <h1 id="serviceTitle" data-i18n="title">BMI 설문형 다이어트 플랜</h1>
+          <p class="sub" data-i18n="subtitle">
+            한 번씩만 딸각. 숫자도 한 번씩만. 그리고 결과는… 은근히 도움 됨.
+          </p>
+        </header>
+
+        <section class="content">
+          <div class="topbar">
+            <div class="pill" id="stepLabel">STEP 1 / 7</div>
+            <div class="progress" aria-label="progress">
+              <div class="bar" id="bar"></div>
+            </div>
+            <button class="btn ghost" id="restartBtn" type="button" data-i18n="restartBtn">
+              처음부터
+            </button>
+          </div>
+
+          <!-- STEP 1 -->
+          <div class="step active" data-step="1">
+            <div class="q">
+              <div class="num">1</div>
+              <div>
+                <h2 data-i18n="step1Title">당신의 목표는?</h2>
+                <p data-i18n="step1Desc">성격(?)에 따라 플랜이 달라집니다.</p>
+              </div>
+            </div>
+            <div class="choices" role="group" aria-label="goal">
+              <button
+                class="choice"
+                type="button"
+                data-key="goal"
+                data-val="fatloss"
+              >
+                <strong data-i18n="goalFatloss">지방 감량</strong><span data-i18n="goalFatlossDesc">체지방 위주로 쭉쭉</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="goal"
+                data-val="recomp"
+              >
+                <strong data-i18n="goalRecomp">체형 개선</strong><span data-i18n="goalRecompDesc">근육은 지키고 라인 정리</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="goal"
+                data-val="health"
+              >
+                <strong data-i18n="goalHealth">건강 습관</strong><span data-i18n="goalHealthDesc">무리 없이 오래 가는 방식</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="goal"
+                data-val="quickstart"
+              >
+                <strong data-i18n="goalQuickstart">빠른 스타트</strong><span data-i18n="goalQuickstartDesc">일단 시작이 반이니까</span>
+              </button>
+            </div>
+            <div class="row">
+              <span class="hint" data-i18n="step1Hint">선택하면 자동으로 다음으로 넘어갑니다.</span>
+              <button class="btn" type="button" data-next data-i18n="btnNext">다음</button>
+            </div>
+            <div class="warn"></div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step" data-step="2">
+            <div class="q">
+              <div class="num">2</div>
+              <div>
+                <h2 data-i18n="step2Title">식사 스타일은?</h2>
+                <p data-i18n="step2Desc">당신의 "현실 루틴"을 기준으로 추천합니다.</p>
+              </div>
+            </div>
+            <div class="choices" role="group" aria-label="eating">
+              <button
+                class="choice"
+                type="button"
+                data-key="eating"
+                data-val="snacker"
+              >
+                <strong data-i18n="eatingSnacker">간식 파티형</strong><span data-i18n="eatingSnackerDesc">자잘하게 자주 먹는 편</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="eating"
+                data-val="bigmeals"
+              >
+                <strong data-i18n="eatingBigmeals">한 번에 크게형</strong><span data-i18n="eatingBigmealsDesc">한 끼에 몰아서 먹는 편</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="eating"
+                data-val="late"
+              >
+                <strong data-i18n="eatingLate">야식/늦은식사형</strong><span data-i18n="eatingLateDesc">밤에 힘이 나는 편</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="eating"
+                data-val="regular"
+              >
+                <strong data-i18n="eatingRegular">규칙러</strong><span data-i18n="eatingRegularDesc">대체로 일정한 편</span>
+              </button>
+            </div>
+            <div class="row">
+              <button class="btn ghost" type="button" data-prev data-i18n="btnPrev">이전</button>
+              <button class="btn" type="button" data-next data-i18n="btnNext">다음</button>
+            </div>
+            <div class="warn"></div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step" data-step="3">
+            <div class="q">
+              <div class="num">3</div>
+              <div>
+                <h2 data-i18n="step3Title">운동은 어떤 타입?</h2>
+                <p data-i18n="step3Desc">"식후 운동/근력/유산소" 비율 추천에 반영됩니다.</p>
+              </div>
+            </div>
+            <div class="choices" role="group" aria-label="activity">
+              <button
+                class="choice"
+                type="button"
+                data-key="activity"
+                data-val="none"
+              >
+                <strong data-i18n="activityNone">거의 안 함</strong><span data-i18n="activityNoneDesc">지금은… 마음만 운동 중</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="activity"
+                data-val="walk"
+              >
+                <strong data-i18n="activityWalk">걷기/가벼움</strong><span data-i18n="activityWalkDesc">산책은 잘함 (좋음)</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="activity"
+                data-val="gym"
+              >
+                <strong data-i18n="activityGym">근력 위주</strong><span data-i18n="activityGymDesc">헬스장/홈트로 근육 지키기</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="activity"
+                data-val="mixed"
+              >
+                <strong data-i18n="activityMixed">혼합형</strong><span data-i18n="activityMixedDesc">유산소+근력 적당히</span>
+              </button>
+            </div>
+            <div class="row">
+              <button class="btn ghost" type="button" data-prev data-i18n="btnPrev">이전</button>
+              <button class="btn" type="button" data-next data-i18n="btnNext">다음</button>
+            </div>
+            <div class="warn"></div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="step" data-step="4">
+            <div class="q">
+              <div class="num">4</div>
+              <div>
+                <h2 data-i18n="step4Title">당신의 "배고픔 패턴"은?</h2>
+                <p data-i18n="step4Desc">간헐적 단식/혈당관리/식사 타이밍 추천에 반영합니다.</p>
+              </div>
+            </div>
+            <div class="choices" role="group" aria-label="hunger">
+              <button
+                class="choice"
+                type="button"
+                data-key="hunger"
+                data-val="morning"
+              >
+                <strong data-i18n="hungerMorning">아침부터 배고픔</strong><span data-i18n="hungerMorningDesc">눈 뜨면 위가 출근함</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="hunger"
+                data-val="evening"
+              >
+                <strong data-i18n="hungerEvening">저녁에 폭발</strong><span data-i18n="hungerEveningDesc">퇴근하면 배고픔도 퇴근 안 함</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="hunger"
+                data-val="random"
+              >
+                <strong data-i18n="hungerRandom">랜덤</strong><span data-i18n="hungerRandomDesc">배고픔이 자유영혼</span>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="hunger"
+                data-val="stable"
+              >
+                <strong data-i18n="hungerStable">대체로 안정적</strong><span data-i18n="hungerStableDesc">패턴이 있는 편</span>
+              </button>
+            </div>
+            <div class="row">
+              <button class="btn ghost" type="button" data-prev data-i18n="btnPrev">이전</button>
+              <button class="btn" type="button" data-next data-i18n="btnNext">다음</button>
+            </div>
+            <div class="warn"></div>
+          </div>
+
+          <!-- STEP 5 (숫자 입력 1/2) -->
+          <div class="step" data-step="5">
+            <div class="q">
+              <div class="num">5</div>
+              <div>
+                <h2 data-i18n="step5Title">키는 몇 cm?</h2>
+                <p data-i18n="step5Desc">숫자는 딱 한 번만. (두 번 입력하면… 귀찮아요)</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="height" data-i18n="heightLabel">키 (cm)</label>
+              <input
+                id="height"
+                type="number"
+                inputmode="decimal"
+                data-i18n-placeholder="heightPlaceholder"
+                placeholder="예: 170"
+                min="80"
+                max="230"
+              />
+              <div class="hint" data-i18n="heightHint">단위는 cm. (m로 입력하면 BMI가 삐끗합니다)</div>
+            </div>
+            <div class="row">
+              <button class="btn ghost" type="button" data-prev data-i18n="btnPrev">이전</button>
+              <button class="btn" type="button" data-next data-i18n="btnNext">다음</button>
+            </div>
+            <div class="warn"></div>
+          </div>
+
+          <!-- STEP 6 (숫자 입력 2/2) -->
+          <div class="step" data-step="6">
+            <div class="q">
+              <div class="num">6</div>
+              <div>
+                <h2 data-i18n="step6Title">몸무게는 몇 kg?</h2>
+                <p data-i18n="step6Desc">여기도 한 번만. (정직함은 건강의 첫걸음)</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="weight" data-i18n="weightLabel">몸무게 (kg)</label>
+              <input
+                id="weight"
+                type="number"
+                inputmode="decimal"
+                data-i18n-placeholder="weightPlaceholder"
+                placeholder="예: 65"
+                min="20"
+                max="250"
+              />
+              <div class="hint" data-i18n="weightHint">단위는 kg. (근육 30kg이면 이미 상위권)</div>
+            </div>
+            <div class="row">
+              <button class="btn ghost" type="button" data-prev>이전</button>
+              <button class="btn" type="button" id="finishBtn" data-i18n="btnViewResult">
+                결과 보기
+              </button>
+            </div>
+            <div class="warn"></div>
+          </div>
+
+          <!-- STEP 7 (결과) -->
+          <div class="result" id="result">
+            <div class="badge" id="badge" data-i18n="resultGenerating">🧾 결과 생성 중…</div>
+            <div class="big" id="bmiBig">—</div>
+            <div class="hint" id="funLine">—</div>
+            <div class="bmi-scale" aria-label="BMI 분포 위치">
+              <div class="scale-caption" id="bmiCaption">BMI 위치: —</div>
+              <div class="scale-bar" role="img" aria-label="BMI 구간 그래프">
+                <span class="seg under"></span>
+                <span class="seg normal"></span>
+                <span class="seg over"></span>
+                <span class="seg obese"></span>
+                <span class="scale-marker" id="bmiMarker"></span>
+              </div>
+              <div class="scale-labels">
+                <span data-i18n="bmiScaleUnder">저체중 18.5</span>
+                <span data-i18n="bmiScaleNormal">정상 23</span>
+                <span data-i18n="bmiScaleOver">과체중 25</span>
+                <span data-i18n="bmiScaleObese">비만 30+</span>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="cards">
+              <div class="mini">
+                <h3 data-i18n="resultCardOneLiner">당신 맞춤 "핵심 한 줄"</h3>
+                <p id="oneLiner">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultCardPriority">이번 주 실천 1순위</h3>
+                <p id="priorityTip">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultCardAfterMeal">식후 운동 (딱 이만큼)</h3>
+                <p id="afterMeal">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultCardGlucose">혈당/간식 관리 팁</h3>
+                <p id="glucose">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultCardIF">간헐적 단식 (가능하면)</h3>
+                <p id="ifTip">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultCardWorkout">운동 구성 제안</h3>
+                <p id="workout">—</p>
+              </div>
+            </div>
+
+            <!-- ✅ 다른 서비스 보기 버튼 (요구 코드 + 위치: 결과 하단 CTA) -->
+            <div class="cta">
+              <a
+                href="https://funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n="btnMoreTests">더 많은 테스트 해보기</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5H19.5V10.5M11.25 12.75L19.5 4.5M18 13.5V18.75C18 19.9926 16.9926 21 15.75 21H6.75C5.50736 21 4.5 19.9926 4.5 18.75V9.75C4.5 8.50736 5.50736 7.5 6.75 7.5H12"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+
+            <div class="row">
+              <button class="btn ghost" type="button" id="backToSurvey" data-i18n="btnRestartSurvey">
+                설문 다시하기
+              </button>
+              <button class="btn" type="button" id="copyBtn" data-i18n="btnCopyResult">
+                결과 문구 복사
+              </button>
+            </div>
+
+            <p class="hint" data-i18n="resultDisclaimer">
+              참고: 본 결과는 재미 + 일반 정보 목적입니다. 개인 건강
+              상태/질환/약 복용 등이 있으면 전문가 상담이 안전합니다.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      /***************
+       * 프로젝트별로 “자동 세팅”하기 쉽게 만든 상수들
+       ***************/
+      /* i18n */
+      const translations = {
+        ko: {
+          metaTitle: "BMI 설문형 다이어트 플랜 | 재미있는 다이어트 계획",
+          metaDescription: "단계별 BMI 설문으로 개인 맞춤 다이어트 팁을 받아보세요.",
+          title: "BMI 설문형 다이어트 플랜",
+          subtitle: "한 번씩만 딸각. 숫자도 한 번씩만. 그리고 결과는… 은근히 도움 됨.",
+          restartBtn: "처음부터",
+          stepLabel: "STEP {current} / {total}",
+          resultLabel: "RESULT / 7",
+          // Step 1
+          step1Title: "당신의 목표는?",
+          step1Desc: "성격(?)에 따라 플랜이 달라집니다.",
+          goalFatloss: "지방 감량",
+          goalFatlossDesc: "체지방 위주로 쭉쭉",
+          goalRecomp: "체형 개선",
+          goalRecompDesc: "근육은 지키고 라인 정리",
+          goalHealth: "건강 습관",
+          goalHealthDesc: "무리 없이 오래 가는 방식",
+          goalQuickstart: "빠른 스타트",
+          goalQuickstartDesc: "일단 시작이 반이니까",
+          step1Hint: "선택하면 자동으로 다음으로 넘어갑니다.",
+          // Step 2
+          step2Title: "식사 스타일은?",
+          step2Desc: "당신의 \"현실 루틴\"을 기준으로 추천합니다.",
+          eatingSnacker: "간식 파티형",
+          eatingSnackerDesc: "자잘하게 자주 먹는 편",
+          eatingBigmeals: "한 번에 크게형",
+          eatingBigmealsDesc: "한 끼에 몰아서 먹는 편",
+          eatingLate: "야식/늦은식사형",
+          eatingLateDesc: "밤에 힘이 나는 편",
+          eatingRegular: "규칙러",
+          eatingRegularDesc: "대체로 일정한 편",
+          // Step 3
+          step3Title: "운동은 어떤 타입?",
+          step3Desc: "\"식후 운동/근력/유산소\" 비율 추천에 반영됩니다.",
+          activityNone: "거의 안 함",
+          activityNoneDesc: "지금은… 마음만 운동 중",
+          activityWalk: "걷기/가벼움",
+          activityWalkDesc: "산책은 잘함 (좋음)",
+          activityGym: "근력 위주",
+          activityGymDesc: "헬스장/홈트로 근육 지키기",
+          activityMixed: "혼합형",
+          activityMixedDesc: "유산소+근력 적당히",
+          // Step 4
+          step4Title: "당신의 \"배고픔 패턴\"은?",
+          step4Desc: "간헐적 단식/혈당관리/식사 타이밍 추천에 반영합니다.",
+          hungerMorning: "아침부터 배고픔",
+          hungerMorningDesc: "눈 뜨면 위가 출근함",
+          hungerEvening: "저녁에 폭발",
+          hungerEveningDesc: "퇴근하면 배고픔도 퇴근 안 함",
+          hungerRandom: "랜덤",
+          hungerRandomDesc: "배고픔이 자유영혼",
+          hungerStable: "대체로 안정적",
+          hungerStableDesc: "패턴이 있는 편",
+          // Step 5
+          step5Title: "키는 몇 cm?",
+          step5Desc: "숫자는 딱 한 번만. (두 번 입력하면… 귀찮아요)",
+          heightLabel: "키 (cm)",
+          heightPlaceholder: "예: 170",
+          heightHint: "단위는 cm. (m로 입력하면 BMI가 삐끗합니다)",
+          // Step 6
+          step6Title: "몸무게는 몇 kg?",
+          step6Desc: "여기도 한 번만. (정직함은 건강의 첫걸음)",
+          weightLabel: "몸무게 (kg)",
+          weightPlaceholder: "예: 65",
+          weightHint: "단위는 kg. (근육 30kg이면 이미 상위권)",
+          // Buttons
+          btnPrev: "이전",
+          btnNext: "다음",
+          btnViewResult: "결과 보기",
+          btnRestartSurvey: "설문 다시하기",
+          btnCopyResult: "결과 문구 복사",
+          btnMoreTests: "더 많은 테스트 해보기",
+          // Result
+          resultGenerating: "🧾 결과 생성 중…",
+          bmiLocation: "BMI 위치: {value} ({status})",
+          bmiScaleUnder: "저체중 18.5",
+          bmiScaleNormal: "정상 23",
+          bmiScaleOver: "과체중 25",
+          bmiScaleObese: "비만 30+",
+          resultCardOneLiner: "당신 맞춤 \"핵심 한 줄\"",
+          resultCardPriority: "이번 주 실천 1순위",
+          resultCardAfterMeal: "식후 운동 (딱 이만큼)",
+          resultCardGlucose: "혈당/간식 관리 팁",
+          resultCardIF: "간헐적 단식 (가능하면)",
+          resultCardWorkout: "운동 구성 제안",
+          resultDisclaimer: "참고: 본 결과는 재미 + 일반 정보 목적입니다. 개인 건강 상태/질환/약 복용 등이 있으면 전문가 상담이 안전합니다."
+        },
+        en: {
+          metaTitle: "BMI Survey | Fun Diet Plan",
+          metaDescription: "A fun step-by-step BMI survey that gives personalized diet tips based on your style.",
+          title: "BMI Survey Diet Plan",
+          subtitle: "Click once. Enter numbers once. And the result... surprisingly helpful.",
+          restartBtn: "Start Over",
+          stepLabel: "STEP {current} / {total}",
+          resultLabel: "RESULT / 7",
+          // Step 1
+          step1Title: "What's your goal?",
+          step1Desc: "Plans vary based on your personality (?)",
+          goalFatloss: "Fat Loss",
+          goalFatlossDesc: "Focus on reducing body fat",
+          goalRecomp: "Body Recomposition",
+          goalRecompDesc: "Maintain muscle, improve lines",
+          goalHealth: "Healthy Habits",
+          goalHealthDesc: "Sustainable long-term approach",
+          goalQuickstart: "Quick Start",
+          goalQuickstartDesc: "Getting started is half the battle",
+          step1Hint: "Selection automatically moves to the next step.",
+          // Step 2
+          step2Title: "What's your eating style?",
+          step2Desc: "Recommendations based on your \"realistic routine\".",
+          eatingSnacker: "Snacker Type",
+          eatingSnackerDesc: "Frequent small snacks",
+          eatingBigmeals: "Big Meals Type",
+          eatingBigmealsDesc: "Large meals at once",
+          eatingLate: "Late Night Eater",
+          eatingLateDesc: "Stronger at night",
+          eatingRegular: "Regular Eater",
+          eatingRegularDesc: "Generally consistent pattern",
+          // Step 3
+          step3Title: "What's your exercise type?",
+          step3Desc: "Reflected in \"post-meal/strength/cardio\" ratio recommendations.",
+          activityNone: "Almost None",
+          activityNoneDesc: "Just thinking about it now...",
+          activityWalk: "Walking/Light",
+          activityWalkDesc: "Good at walking (good)",
+          activityGym: "Strength Focused",
+          activityGymDesc: "Gym/home workout to maintain muscle",
+          activityMixed: "Mixed",
+          activityMixedDesc: "Moderate cardio + strength",
+          // Step 4
+          step4Title: "What's your \"hunger pattern\"?",
+          step4Desc: "Reflected in intermittent fasting/blood sugar management/meal timing recommendations.",
+          hungerMorning: "Hungry from Morning",
+          hungerMorningDesc: "Stomach wakes up with me",
+          hungerEvening: "Evening Explosion",
+          hungerEveningDesc: "Hunger doesn't clock out when I do",
+          hungerRandom: "Random",
+          hungerRandomDesc: "Free-spirited hunger",
+          hungerStable: "Generally Stable",
+          hungerStableDesc: "Has a pattern",
+          // Step 5
+          step5Title: "What's your height in cm?",
+          step5Desc: "Enter numbers only once. (Twice is... annoying)",
+          heightLabel: "Height (cm)",
+          heightPlaceholder: "e.g. 170",
+          heightHint: "Unit is cm. (Entering in m will mess up BMI)",
+          // Step 6
+          step6Title: "What's your weight in kg?",
+          step6Desc: "Only once here too. (Honesty is the first step to health)",
+          weightLabel: "Weight (kg)",
+          weightPlaceholder: "e.g. 65",
+          weightHint: "Unit is kg. (30kg of muscle already puts you in the top tier)",
+          // Buttons
+          btnPrev: "Previous",
+          btnNext: "Next",
+          btnViewResult: "View Result",
+          btnRestartSurvey: "Restart Survey",
+          btnCopyResult: "Copy Result Text",
+          btnMoreTests: "Explore More Tests",
+          // Result
+          resultGenerating: "🧾 Generating result…",
+          bmiLocation: "BMI position: {value} ({status})",
+          bmiScaleUnder: "Underweight 18.5",
+          bmiScaleNormal: "Normal 23",
+          bmiScaleOver: "Overweight 25",
+          bmiScaleObese: "Obese 30+",
+          resultCardOneLiner: "Your Custom \"Key One-Liner\"",
+          resultCardPriority: "This Week's Priority #1",
+          resultCardAfterMeal: "Post-Meal Exercise (Just This Much)",
+          resultCardGlucose: "Blood Sugar/Snack Management Tips",
+          resultCardIF: "Intermittent Fasting (If Possible)",
+          resultCardWorkout: "Exercise Composition Suggestion",
+          resultDisclaimer: "Note: This result is for fun + general information purposes. If you have personal health conditions/diseases/medications, professional consultation is safer.",
+          // BMI status
+          bmiStatusLow: "Low",
+          bmiStatusNormal: "Normal range",
+          bmiStatusHigh: "High",
+          bmiStatusVeryHigh: "Very high",
+          // Goal words
+          goalWordFatloss: "Fat Loss",
+          goalWordRecomp: "Body Recomposition",
+          goalWordHealth: "Healthy Habits",
+          goalWordQuickstart: "Quick Start",
+          // Eating words
+          eatingWordSnacker: "Frequent snacker",
+          eatingWordBigmeals: "Large meals at once",
+          eatingWordLate: "Strong at night",
+          eatingWordRegular: "Stable pattern",
+          // Hunger words
+          hungerWordMorning: "Morning hunger strong",
+          hungerWordEvening: "Evening explosion type",
+          hungerWordRandom: "Random hunger",
+          hungerWordStable: "Hunger stable",
+          // Fun lines
+          funLineSpeed1: "Just do \"exactly 3 things\" from today. (BMI {bmi} / {status})",
+          funLineSpeed2: "Keep plans short, execution long. You already pressed start.",
+          funLineFocus1: "Fat loss mode ON. Now all that's left... negotiating with snacks.",
+          funLineFocus2: "BMI is a number, results are habits. (It gets interesting from here)",
+          funLineShape1: "Muscle is precious. Fat... is negotiable.",
+          funLineShape2: "Body recomposition is about 'moderation'. Too much won't last long.",
+          funLineSteady1: "Consistency wins. You're already halfway there.",
+          funLineSteady2: "Not rushing is often the truly fast path.",
+          // One liner template
+          oneLinerTemplate: "{goal} + {eating} + {hunger} → \"Reality-based plan\" is the best fit type.",
+          // Priority tips
+          priorityLate: "Late-night defense: Finish dinner with 'protein/veggies' + only 'planned' late-night snacks.",
+          prioritySnacker: "Snack restructuring: Replace with 'protein snacks' + allow snack time only 2 times (exactly).",
+          priorityEvening: "Prevent evening explosion: Boost protein/fiber in afternoon (don't make fasting too long).",
+          priorityNone: "Minimum exercise: Fix at 10-min post-meal walk (surprisingly powerful).",
+          priorityDefault: "Basics: Get as close to 7 hours sleep + prioritize water/protein first.",
+          // After meal tips
+          afterMealNone: "10-min post-meal walk (indoor stepping in place OK).",
+          afterMealWalk: "12~15-min brisk post-meal walk (conversation possible, singing slightly hard).",
+          afterMealGym: "10-min light post-meal walk + strength '1~2 hours after meal' is comfortable.",
+          afterMealDefault: "10~15-min post-meal walk + 2~3 light strength sessions per week (consistency wins).",
+          // Glucose tips
+          glucoseBase: "Meal order: Veggies/protein → carbs (last priority). 'Calorie-free' drinks are advantageous.",
+          glucoseSnacker: " Snacks as 'protein+fiber' combo (yogurt/nuts/boiled eggs, etc.).",
+          glucoseBigmeals: " For large meals, halve 'carbs' and increase veggies/protein for balance.",
+          glucoseLate: " Late hours: End with 'light protein' to reduce next-day fasting explosion.",
+          // IF tips
+          ifMorning: "If morning hunger is strong, 'morning protein' fits better than forced intermittent fasting.",
+          ifEvening: "Evening explosion type: Start with 'light time restriction' like 12:12 (cut late-night).",
+          ifLate: "If late-night eating is frequent, start with 12:12 (e.g. 9pm~9am fast) → adjust gradually as adapted.",
+          ifDefault: "Safe option: Start from 12:12 (without rushing). If hunger/sleep breaks down, immediately ease up. That's the answer.",
+          // Workout tips
+          workoutNone: "5 days/week: 10-min post-meal walk + 2 days/week: 10-min squats/push-ups/planks (very lightly).",
+          workoutWalk: "4~5 days/week: 30-min walk + 2 days/week: 15-min lower body/core (knee-comfortable range).",
+          workoutGym: "2~4 strength sessions/week (full-body focus) + daily NEAT (walk/stairs) to raise 'total activity'.",
+          workoutDefault: "2~3 strength sessions/week + 2~3 cardio sessions/week (20~30min) + 10-min post-meal walk (for blood sugar/habit)."
+        }
+      };
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+      
+      // current 변수를 먼저 선언 (setLang에서 참조하기 전에)
+      let current = 1;
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          if (el.tagName === "INPUT" && el.dataset.i18nPlaceholder) {
+            el.placeholder = t(el.dataset.i18nPlaceholder);
+          } else if (el.tagName === "LABEL" || el.tagName === "H1" || el.tagName === "H2" || el.tagName === "H3" || el.tagName === "P" || el.tagName === "SPAN" || el.tagName === "BUTTON" || el.tagName === "DIV") {
+            el.textContent = t(el.dataset.i18n);
+          } else {
+            el.textContent = t(el.dataset.i18n);
+          }
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (typeof showStep === "function" && typeof current !== "undefined" && current) {
+          showStep(current);
+        }
+        if (typeof renderResult === "function" && typeof current !== "undefined" && current === 7) {
+          renderResult();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+      // DOM 요소들을 먼저 선언 (setLang 호출 전에)
+      const steps = [...document.querySelectorAll(".step")];
+      const resultEl = document.getElementById("result");
+      const stepLabel = document.getElementById("stepLabel");
+      const bar = document.getElementById("bar");
+      const restartBtn = document.getElementById("restartBtn");
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+      setLang(detectLang(), { updateUrl: false });
+
+      const SERVICE_NAME_KO = "BMI 설문형 다이어트 플랜";
+      const SERVICE_OG_TEXT_EN = "BMI Survey Diet Plan"; // ✅ og:image text에 들어갈 영어
+      const FAVICON_TEXT = "BMI"; // ✅ 파비콘에 찍힐 1~3글자(영문 권장)
+
+      // 제목 적용
+      document.getElementById("serviceTitle").textContent = SERVICE_NAME_KO;
+
+      // og:image의 text를 강제로 서비스 맞춤(영문)
+      // (정적 HTML이라도, 서비스별 템플릿화할 때 여기만 바꿔도 됨)
+      const og = document.querySelector('meta[property="og:image"]');
+      const tw = document.querySelector('meta[name="twitter:image"]');
+      const ogText = encodeURIComponent(
+        SERVICE_OG_TEXT_EN.trim().replace(/\s+/g, "+")
+      );
+      const ogUrl = `https://dummyimage.com/1200x630/0f172a/ffffff&text=${ogText}`;
+      if (og) og.setAttribute("content", ogUrl);
+      if (tw) tw.setAttribute("content", ogUrl);
+
+      // 파비콘 data URI 자동 생성(서비스마다 글자만 바꾸면 됨)
+      const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="#0f172a"/>
+      <text x="50" y="64" font-size="44" text-anchor="middle" fill="white"
+            font-family="system-ui, -apple-system, Segoe UI, Roboto">
+        ${escapeXml(FAVICON_TEXT)}
+      </text>
+    </svg>`;
+      const faviconHref =
+        "data:image/svg+xml," + encodeURIComponent(faviconSvg);
+      document.getElementById("favicon").setAttribute("href", faviconHref);
+
+      function escapeXml(s) {
+        return String(s).replace(
+          /[<>&'"]/g,
+          (c) =>
+            ({
+              "<": "&lt;",
+              ">": "&gt;",
+              "&": "&amp;",
+              "'": "&apos;",
+              '"': "&quot;",
+            }[c])
+        );
+      }
+
+      /***************
+       * 설문 로직
+       ***************/
+      const LAST_STEP = 6; // 1~6은 입력, 7은 결과(result)
+
+      const state = {
+        goal: null,
+        eating: null,
+        activity: null,
+        hunger: null,
+        heightCm: null,
+        weightKg: null,
+      };
+
+      function showStep(n) {
+        current = n;
+        const steps = [...document.querySelectorAll(".step")];
+        steps.forEach((s) =>
+          s.classList.toggle("active", Number(s.dataset.step) === n)
+        );
+        if (resultEl) {
+          resultEl.classList.remove("show");
+        }
+
+        const total = 7; // 결과까지 포함 표시
+        if (stepLabel) stepLabel.textContent = t("stepLabel", { current: n, total });
+        const progress = Math.round(((n - 1) / (total - 1)) * 100);
+        if (bar) bar.style.width = progress + "%";
+      }
+
+      function showResult() {
+        if (stepLabel) stepLabel.textContent = t("resultLabel");
+        if (bar) bar.style.width = "100%";
+        steps.forEach((s) => s.classList.remove("active"));
+        if (resultEl) resultEl.classList.add("show");
+        renderResult();
+      }
+
+      // 선택 버튼 처리
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".choice");
+        if (!btn) return;
+
+        const key = btn.dataset.key;
+        const val = btn.dataset.val;
+
+        // 같은 그룹 내 aria-pressed 리셋
+        const group = btn.parentElement;
+        [...group.querySelectorAll(".choice")].forEach((b) =>
+          b.setAttribute("aria-pressed", "false")
+        );
+        btn.setAttribute("aria-pressed", "true");
+        state[key] = val;
+
+        // "딸각 한번" 컨셉: 선택하면 자동 다음
+        const stepEl = btn.closest(".step");
+        const stepNum = Number(stepEl.dataset.step);
+        // 1~4단계는 선택 시 즉시 자동 다음
+        if (stepNum >= 1 && stepNum <= 4) {
+          goNext(stepEl);
+        }
+      });
+
+      // prev/next 처리
+      document.addEventListener("click", (e) => {
+        if (e.target.matches("[data-prev]")) {
+          showStep(Math.max(1, current - 1));
+        }
+        if (e.target.matches("[data-next]")) {
+          const stepEl = e.target.closest(".step");
+          goNext(stepEl);
+        }
+      });
+
+      restartBtn.addEventListener("click", () => resetAll());
+      document.getElementById("finishBtn").addEventListener("click", () => {
+        const stepEl = document.querySelector('.step[data-step="6"]');
+        if (!validateStep(stepEl)) return;
+        showResult();
+      });
+
+      // 숫자 입력 필드에서 입력 완료 시 자동 다음
+      const heightInput = document.getElementById("height");
+      const weightInput = document.getElementById("weight");
+      
+      if (heightInput) {
+        heightInput.addEventListener("input", () => {
+          const stepEl = document.querySelector('.step[data-step="5"]');
+          if (stepEl && validateStep(stepEl)) {
+            // 입력 완료 후 약간의 지연 후 자동 진행
+            clearTimeout(heightInput._autoNext);
+            heightInput._autoNext = setTimeout(() => {
+              goNext(stepEl);
+            }, 500);
+          }
+        });
+        heightInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            const stepEl = document.querySelector('.step[data-step="5"]');
+            if (stepEl && validateStep(stepEl)) {
+              goNext(stepEl);
+            }
+          }
+        });
+      }
+      
+      if (weightInput) {
+        weightInput.addEventListener("input", () => {
+          const stepEl = document.querySelector('.step[data-step="6"]');
+          if (stepEl && validateStep(stepEl)) {
+            // 입력 완료 후 약간의 지연 후 자동 진행
+            clearTimeout(weightInput._autoNext);
+            weightInput._autoNext = setTimeout(() => {
+              showResult();
+            }, 500);
+          }
+        });
+        weightInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            const stepEl = document.querySelector('.step[data-step="6"]');
+            if (stepEl && validateStep(stepEl)) {
+              showResult();
+            }
+          }
+        });
+      }
+
+      document.getElementById("backToSurvey").addEventListener("click", () => {
+        // 결과에서 다시 1단계로
+        showStep(1);
+      });
+
+      document.getElementById("copyBtn").addEventListener("click", async () => {
+        const text = `[BMI Survey Result]
+BMI: ${document.getElementById("bmiBig").textContent}
+${document.getElementById("badge").textContent}
+${document.getElementById("oneLiner").textContent}
+- Priority: ${document.getElementById("priorityTip").textContent}
+- After meal: ${document.getElementById("afterMeal").textContent}
+- Glucose: ${document.getElementById("glucose").textContent}
+- IF: ${document.getElementById("ifTip").textContent}
+- Workout: ${document.getElementById("workout").textContent}
+`;
+        try {
+          await navigator.clipboard.writeText(text);
+          alert("복사 완료! (이제 친구에게 자랑… 아니 공유 가능)");
+        } catch {
+          alert("복사 실패. 브라우저 권한을 확인해 주세요.");
+        }
+      });
+
+      function goNext(stepEl) {
+        if (!validateStep(stepEl)) return;
+        const next = Math.min(LAST_STEP, current + 1);
+        showStep(next);
+      }
+
+      function warn(stepEl, message) {
+        const w = stepEl.querySelector(".warn");
+        if (!w) return;
+        w.style.display = "block";
+        w.textContent = "⚠️ " + message;
+      }
+      function clearWarn(stepEl) {
+        const w = stepEl.querySelector(".warn");
+        if (!w) return;
+        w.style.display = "none";
+        w.textContent = "";
+      }
+
+      function validateStep(stepEl) {
+        clearWarn(stepEl);
+        const n = Number(stepEl.dataset.step);
+
+        if (n === 1 && !state.goal) {
+          warn(stepEl, "목표를 하나 골라주세요.");
+          return false;
+        }
+        if (n === 2 && !state.eating) {
+          warn(stepEl, "식사 스타일을 하나 골라주세요.");
+          return false;
+        }
+        if (n === 3 && !state.activity) {
+          warn(stepEl, "운동 타입을 하나 골라주세요.");
+          return false;
+        }
+        if (n === 4 && !state.hunger) {
+          warn(stepEl, "배고픔 패턴을 하나 골라주세요.");
+          return false;
+        }
+
+        if (n === 5) {
+          const h = Number(document.getElementById("height").value);
+          if (!Number.isFinite(h)) {
+            warn(stepEl, "키를 숫자로 입력해 주세요.");
+            return false;
+          }
+          if (h < 80 || h > 230) {
+            warn(stepEl, "키(cm) 범위가 조금 이상해요. 단위를 확인해 주세요.");
+            return false;
+          }
+          state.heightCm = h;
+        }
+
+        if (n === 6) {
+          const w = Number(document.getElementById("weight").value);
+          if (!Number.isFinite(w)) {
+            warn(stepEl, "몸무게를 숫자로 입력해 주세요.");
+            return false;
+          }
+          if (w < 20 || w > 250) {
+            warn(
+              stepEl,
+              "몸무게(kg) 범위가 조금 이상해요. 단위를 확인해 주세요."
+            );
+            return false;
+          }
+          state.weightKg = w;
+        }
+
+        return true;
+      }
+
+      function resetAll() {
+        state.goal = state.eating = state.activity = state.hunger = null;
+        state.heightCm = state.weightKg = null;
+
+        // aria-pressed 초기화
+        document
+          .querySelectorAll(".choice")
+          .forEach((b) => b.setAttribute("aria-pressed", "false"));
+        document.getElementById("height").value = "";
+        document.getElementById("weight").value = "";
+
+        showStep(1);
+      }
+
+      /***************
+       * 결과 생성 로직(“설문 스타일에 맞춰” 재밌게 + 다이어트 팁)
+       ***************/
+      function bmiClassify(bmi) {
+        const isKo = currentLang === "ko";
+        if (bmi < 18.5)
+          return { label: "Underweight", ko: "저체중", emoji: "🍃", text: isKo ? "저체중" : "Underweight" };
+        if (bmi < 23) return { label: "Normal", ko: "정상", emoji: "🌿", text: isKo ? "정상" : "Normal" };
+        if (bmi < 25) return { label: "Overweight", ko: "과체중", emoji: "🍞", text: isKo ? "과체중" : "Overweight" };
+        if (bmi < 30) return { label: "Obese", ko: "비만", emoji: "🍔", text: isKo ? "비만" : "Obese" };
+        return { label: "Severely Obese", ko: "고도비만", emoji: "🚨", text: isKo ? "고도비만" : "Severely Obese" };
+      }
+
+      function bmiStatus(bmi) {
+        if (bmi < 18.5) return t("bmiStatusLow");
+        if (bmi < 23) return t("bmiStatusNormal");
+        if (bmi < 25) return t("bmiStatusHigh");
+        if (bmi < 30) return t("bmiStatusHigh");
+        return t("bmiStatusVeryHigh");
+      }
+
+      function bmiToPercent(bmi) {
+        const min = 15;
+        const max = 35;
+        const clamped = Math.min(max, Math.max(min, bmi));
+        return ((clamped - min) / (max - min)) * 100;
+      }
+
+      function renderResult() {
+        const hM = state.heightCm / 100;
+        const bmi = state.weightKg / (hM * hM);
+        const b = Math.round(bmi * 10) / 10;
+        const c = bmiClassify(bmi);
+
+        const status = bmiStatus(bmi);
+        document.getElementById(
+          "badge"
+        ).textContent = `${c.emoji} ${c.text} (${c.label})`;
+        document.getElementById("bmiBig").textContent = `${b.toFixed(1)} BMI`;
+        document.getElementById("funLine").textContent = funLineByProfile(
+          b,
+          c.text
+        );
+        document.getElementById(
+          "bmiCaption"
+        ).textContent = t("bmiLocation", { value: b.toFixed(1), status: status });
+        document.getElementById("bmiMarker").style.left = `${bmiToPercent(
+          bmi
+        )}%`;
+
+        // 맞춤 팁 생성
+        const one = oneLinerByProfile();
+        const pri = priorityByProfile();
+        const after = afterMealTip();
+        const glu = glucoseTip();
+        const ift = ifTip();
+        const wo = workoutTip();
+
+        document.getElementById("oneLiner").textContent = one;
+        document.getElementById("priorityTip").textContent = pri;
+        document.getElementById("afterMeal").textContent = after;
+        document.getElementById("glucose").textContent = glu;
+        document.getElementById("ifTip").textContent = ift;
+        document.getElementById("workout").textContent = wo;
+      }
+
+      function funLineByProfile(bmi, bmiText) {
+        const mood =
+          state.goal === "quickstart"
+            ? "speed"
+            : state.goal === "fatloss"
+            ? "focus"
+            : state.goal === "recomp"
+            ? "shape"
+            : "steady";
+
+        const lines = {
+          speed: [
+            t("funLineSpeed1", { bmi: bmi.toFixed(1), status: bmiText }),
+            t("funLineSpeed2"),
+          ],
+          focus: [
+            t("funLineFocus1"),
+            t("funLineFocus2"),
+          ],
+          shape: [
+            t("funLineShape1"),
+            t("funLineShape2"),
+          ],
+          steady: [
+            t("funLineSteady1"),
+            t("funLineSteady2"),
+          ],
+        };
+
+        const pool = lines[mood] || lines.steady;
+        return pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function oneLinerByProfile() {
+        // goal + eating + hunger 조합으로 한 줄 캐릭터화
+        const goalWord =
+          {
+            fatloss: t("goalWordFatloss"),
+            recomp: t("goalWordRecomp"),
+            health: t("goalWordHealth"),
+            quickstart: t("goalWordQuickstart"),
+          }[state.goal] || t("goalWordQuickstart");
+
+        const eater =
+          {
+            snacker: t("eatingWordSnacker"),
+            bigmeals: t("eatingWordBigmeals"),
+            late: t("eatingWordLate"),
+            regular: t("eatingWordRegular"),
+          }[state.eating] || t("eatingWordRegular");
+
+        const hunger =
+          {
+            morning: t("hungerWordMorning"),
+            evening: t("hungerWordEvening"),
+            random: t("hungerWordRandom"),
+            stable: t("hungerWordStable"),
+          }[state.hunger] || t("hungerWordStable");
+
+        return t("oneLinerTemplate", { goal: goalWord, eating: eater, hunger: hunger });
+      }
+
+      function priorityByProfile() {
+        // 가장 "효율 좋은 한 가지"만 추천
+        if (state.eating === "late") {
+          return t("priorityLate");
+        }
+        if (state.eating === "snacker") {
+          return t("prioritySnacker");
+        }
+        if (state.hunger === "evening") {
+          return t("priorityEvening");
+        }
+        if (state.activity === "none") {
+          return t("priorityNone");
+        }
+        return t("priorityDefault");
+      }
+
+      function afterMealTip() {
+        // 식후 운동: 혈당관리/NEAT 관점의 일반적 추천(개인 질환 고려는 별도)
+        if (state.activity === "none")
+          return t("afterMealNone");
+        if (state.activity === "walk")
+          return t("afterMealWalk");
+        if (state.activity === "gym")
+          return t("afterMealGym");
+        return t("afterMealDefault");
+      }
+
+      function glucoseTip() {
+        // 혈당/식습관: 순서/구성 팁
+        const base = t("glucoseBase");
+        if (state.eating === "snacker") {
+          return base + t("glucoseSnacker");
+        }
+        if (state.eating === "bigmeals") {
+          return base + t("glucoseBigmeals");
+        }
+        if (state.eating === "late") {
+          return base + t("glucoseLate");
+        }
+        return base;
+      }
+
+      function ifTip() {
+        // 간헐적 단식은 "가능하면/적합하면"로 안내 (강요 X)
+        if (state.hunger === "morning") {
+          return t("ifMorning");
+        }
+        if (state.hunger === "evening") {
+          return t("ifEvening");
+        }
+        if (state.eating === "late") {
+          return t("ifLate");
+        }
+        return t("ifDefault");
+      }
+
+      function workoutTip() {
+        // 운동 구성 추천: 활동 타입 기반
+        if (state.activity === "none") {
+          return t("workoutNone");
+        }
+        if (state.activity === "walk") {
+          return t("workoutWalk");
+        }
+        if (state.activity === "gym") {
+          return t("workoutGym");
+        }
+        return t("workoutDefault");
+      }
+
+      // 시작
+      showStep(1);
+    </script>
+  </body>
+</html>

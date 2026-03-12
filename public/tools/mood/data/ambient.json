@@ -1,0 +1,39 @@
+{
+  "ambient": [
+    {
+      "id": "rain",
+      "title": "빗소리",
+      "type": "css",
+      "gradient": ["#e8eef4", "#d4dce6"],
+      "text": "지금은 아무 생각도 필요 없음"
+    },
+    {
+      "id": "fire",
+      "title": "모닥불",
+      "type": "css",
+      "gradient": ["#f5e6d3", "#e8d4b8"],
+      "text": "여기선 멍때려도 됨"
+    },
+    {
+      "id": "wave",
+      "title": "파도",
+      "type": "css",
+      "gradient": ["#dae8f0", "#c5dde8"],
+      "text": "판단은 나중에"
+    },
+    {
+      "id": "fog",
+      "title": "안개",
+      "type": "css",
+      "gradient": ["#e8eae8", "#d8dad8"],
+      "text": "아무 생각 하지 말 것"
+    },
+    {
+      "id": "dawn",
+      "title": "새벽",
+      "type": "css",
+      "gradient": ["#f0e8e8", "#e8dce0"],
+      "text": "지금은 그냥 둬도 됨"
+    }
+  ]
+}

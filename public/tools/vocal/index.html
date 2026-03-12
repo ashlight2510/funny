@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n-title="metaTitle">두성터득기 - 실시간 음정 분석</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="마이크로 내 음역과 불안정 구간을 분석하고 두성 훈련 루트를 제안하는 보컬 트레이닝 도구."
+      data-i18n-content="metaDescription"
+    />
+    <meta
+      name="keywords"
+      content="두성, 보컬, 음역, 음정 분석, 헤드보이스, 트레이닝"
+      data-i18n-content="metaKeywords"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/vocal/" />
+    <!-- OG (og-image text MUST be English) -->
+    <meta property="og:title" content="Head Voice Trainer" />
+    <meta
+      property="og:description"
+      content="Realtime pitch analysis and training steps to reach head voice safely."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Head+Voice+Trainer"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vocal.funnyfunny.cloud/" />
+
+    <!-- Favicon (auto SVG) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%230b1220'/%3E%3Cstop offset='100%25' stop-color='%2322c55e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(241, 245, 249, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: #22c55e;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(34, 197, 94, 0.2);
+      color: rgba(241, 245, 249, 0.9);
+    }
+  </style>
+</head>
+
+  <body
+    class="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-white"
+  >
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div><main class="max-w-3xl mx-auto px-4 py-10">
+      <header class="text-center mb-8 space-y-4">
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10"
+          >
+            <span class="text-emerald-300 text-sm font-semibold" data-i18n="brandName"
+              >두성터득기</span
+            >
+            <span class="text-white/50 text-sm">Pitch Analyzer MVP</span>
+          </div>
+          <label
+            class="flex items-center gap-2 text-sm bg-white/5 border border-white/10 rounded-full px-3 py-1 cursor-pointer"
+          >
+            <input id="beginnerToggle" type="checkbox" class="accent-emerald-400" />
+            <span data-i18n="beginnerMode">초보자 모드</span>
+          </label>
+        </div>
+        <div>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight" data-i18n="title">
+            실시간 음정 분석
+          </h1>
+          <p class="mt-2 text-white/70" data-i18n="subtitle">
+            마이크 입력으로 Hz / 음이름 / 음역을 표시합니다. (진단이 아닌 연습
+            보조 도구)
+          </p>
+        </div>
+      </header>
+
+      <!-- Stage 0: Safety -->
+      <section
+        class="mb-8 rounded-2xl border border-rose-300/30 bg-gradient-to-r from-rose-900/50 to-rose-800/40 p-5 shadow-lg"
+      >
+        <p class="text-xs font-semibold uppercase tracking-wide text-rose-200" data-i18n="safetyTitle">
+          단계 0 · 안전 고지 (항상 노출)
+        </p>
+        <p class="mt-2 text-sm text-rose-50" data-i18n="safetyDesc">
+          통증/쉰 목소리/어지러움이 있으면 중단 · 본 서비스는 레슨/의료를
+          대체하지 않음
+        </p>
+      </section>
+
+      <!-- Training flow -->
+      <section
+        class="mb-10 rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg"
+      >
+        <div class="flex items-start justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="text-xl font-bold" data-i18n="trainingRouteTitle">오늘의 훈련 루트</h2>
+            <p class="mt-1 text-sm text-white/60" data-i18n="trainingRouteDesc">
+              각 단계 목표·미션·코치 문구를 따라가며 안전하게 두성으로 접근해
+              보세요.
+            </p>
+          </div>
+          <span
+            class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-200 border border-emerald-400/30"
+            data-i18n="guideMode"
+          >
+            가이드 모드
+          </span>
+        </div>
+
+        <div class="mt-5 space-y-4">
+          <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-semibold" data-i18n="step1Title">1단계: 워밍업 (1~2분)</h3>
+              <span class="text-xs text-white/50" data-i18n="step1Goal">목표: 소리를 키우지 말고 가볍게 켜기</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="step1Mission">
+              미션: 편한 음에서 "음량 30%"로 5초 유지 x 5
+            </p>
+            <p class="mt-1 text-sm text-white/60" data-i18n="step1Coach">
+              코치: 소리를 크게 만들려 하지 말고, 숨이 길게 가는지부터 확인하세요.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-semibold" data-i18n="step2Title">2단계: 연결 (슬라이드, 2~3분)</h3>
+              <span class="text-xs text-white/50" data-i18n="step2Goal">목표: 흉→믹스 방향으로 끊김 최소화</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="step2Mission">
+              미션: 낮은 편한 음 → 5도 위 → 다시 내려오기(슬라이드) x 8
+            </p>
+            <p class="mt-1 text-sm text-white/60" data-i18n="step2Coach">
+              코치: 올리는 연습이 아니라, '이어 붙이는' 연습입니다. 목을 밀면 연결이
+              끊깁니다. 볼륨을 먼저 줄이세요.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-semibold" data-i18n="step3Title">3단계: 두성 접근 (가볍게, 2분)</h3>
+              <span class="text-xs text-white/50" data-i18n="step3Goal">목표: 힘이 아니라 공명 위치 이동</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="step3Mission">
+              미션: "가벼운 소리"로 상행(반음씩 5~7칸) 시도, 불안정해지면 즉시 한
+              칸 내려오기
+            </p>
+            <p class="mt-1 text-sm text-white/60" data-i18n="step3Coach">
+              코치: 여기서 더 밀지 말고, 더 가볍게 두세요. 불안정해진 순간이
+              '훈련 지점'입니다. 거기서 욕심내지 마세요.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-semibold" data-i18n="step4Title">4단계: 취약 구간 집중 (개인화, 2분)</h3>
+              <span class="text-xs text-white/50" data-i18n="step4Goal">목표: 힘든 구간 바로 아래에서 반복</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="step4Mission">
+              미션: 시스템이 찾은 불안정 구간의 시작 note -2 반음부터 5회 반복
+            </p>
+            <p class="mt-1 text-sm text-white/60" data-i18n="step4Coach">
+              코치: 한계 음을 뚫는 게 아니라, 한계 바로 아래를 '편하게' 만드는 게
+              먼저입니다.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-semibold" data-i18n="step5Title">5단계: 쿨다운 (30초)</h3>
+              <span class="text-xs text-white/50" data-i18n="step5Goal">목표: 긴장 해제</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="step5Message">
+              문구: 끝낼 땐 반드시 가벼운 음으로 내려와 목을 쉬게 해주세요.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section
+        class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg"
+      >
+        <div
+          class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between"
+        >
+          <div class="flex gap-3">
+            <button
+              id="startBtn"
+              class="px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition-colors"
+            >
+              <span data-i18n="btnStart">마이크 시작</span>
+            </button>
+            <button
+              id="stopBtn"
+              class="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-semibold transition-colors"
+              disabled
+              data-i18n="btnStop"
+            >
+              정지
+            </button>
+          </div>
+          <div class="text-sm text-white/60">
+            <span data-i18n="sampleRate">샘플레이트</span>: <span id="sr">-</span> Hz · <span data-i18n="statusLabel">상태</span>:
+            <span id="status" data-i18n="statusWaiting">대기</span>
+          </div>
+        </div>
+
+        <div id="metricsPanel" class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="rounded-xl bg-black/20 border border-white/10 p-4">
+            <p class="text-xs text-white/50" data-i18n="currentPitch">현재 음정</p>
+            <p class="mt-1 text-2xl font-extrabold"><span id="note">-</span></p>
+            <p class="mt-1 text-sm text-white/60"><span id="cents">-</span></p>
+          </div>
+          <div class="rounded-xl bg-black/20 border border-white/10 p-4">
+            <p class="text-xs text-white/50" data-i18n="frequency">주파수(Hz)</p>
+            <p class="mt-1 text-2xl font-extrabold"><span id="hz">-</span></p>
+            <p class="mt-1 text-sm text-white/60">
+              <span data-i18n="volume">볼륨</span>: <span id="rms">-</span>
+            </p>
+          </div>
+          <div class="rounded-xl bg-black/20 border border-white/10 p-4">
+            <p class="text-xs text-white/50" data-i18n="range">음역(기록)</p>
+            <p class="mt-1 font-semibold">
+              <span data-i18n="min">최저</span>: <span id="minNote">-</span> · <span data-i18n="max">최고</span>:
+              <span id="maxNote">-</span>
+            </p>
+            <p class="mt-1 text-sm text-white/60">
+              <span data-i18n="stableMaxNote">안정 최고음(대략)</span>: <span id="stableMax">-</span>
+            </p>
+          </div>
+        </div>
+
+        <p class="mt-4 text-xs text-white/50" data-i18n="stableMaxNoteDesc">
+          ※ "안정 최고음"은 피치 검출 성공률/떨림이 상대적으로 좋은 구간을
+          기반으로 대략 계산합니다.
+        </p>
+      </section>
+
+      <!-- Mini coaching -->
+      <section class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-6">
+        <h2 class="text-lg font-bold" data-i18n="coachTitle">코치 한 줄</h2>
+        <p id="coach" class="mt-2 text-white/80 leading-relaxed" data-i18n="coachDefault">
+          마이크를 시작하고 편한 음에서 위로 '슬라이드'해 보세요. 힘으로
+          밀기보다 가볍게 연결하는 느낌을 찾는 게 먼저입니다.
+        </p>
+      </section>
+
+      <!-- Live analysis results -->
+      <section
+        class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg"
+      >
+        <div class="flex items-start justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="text-lg font-bold" data-i18n="analysisTitle">자동 분석 결과</h2>
+            <p class="mt-1 text-sm text-white/60" data-i18n="analysisDesc">
+              불안정 구간 계산, 성종(경향) 분류, 취약 루프 가이드를 바로 확인하세요.
+            </p>
+          </div>
+          <span class="text-xs text-white/50" data-i18n="realtime">실시간</span>
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <div class="rounded-xl border border-emerald-400/20 bg-emerald-900/10 p-4">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-sm text-white/60" data-i18n="weakSpotTitle">힘든 구간 자동 계산</p>
+              <span id="weakStatus" class="text-xs text-emerald-200/80" data-i18n="collectingData">데이터 수집 중</span>
+            </div>
+            <p class="mt-1 text-lg font-semibold text-emerald-100" id="weakRange">
+              -
+            </p>
+            <p class="mt-1 text-sm text-white/70" id="weakCoach">
+              안정적인 측정을 조금 더 쌓아 주세요.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-sky-400/20 bg-sky-900/10 p-4">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-sm text-white/60" data-i18n="voiceTypeTitle">성종(경향) 분류</p>
+              <span id="voiceStatus" class="text-xs text-sky-200/80" data-i18n="collectingData">데이터 수집 중</span>
+            </div>
+            <p class="mt-1 text-lg font-semibold text-sky-100" id="voiceType">-</p>
+            <p class="mt-1 text-sm text-white/70" id="voiceTip">
+              충분한 구간을 부른 뒤 결과가 표시됩니다.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-amber-400/20 bg-amber-900/10 p-4">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-sm text-white/60" data-i18n="loopTrainingTitle">취약 구간 루프 훈련</p>
+              <span id="loopStatus" class="text-xs text-amber-200/80" data-i18n="waiting">대기</span>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <button
+                id="startLoopBtn"
+                class="px-3 py-2 rounded-lg border border-white/10 bg-black/30 text-sm"
+                data-i18n="startLoopBtn"
+              >
+                취약 구간 루프 시작
+              </button>
+              <button
+                id="stopLoopBtn"
+                class="px-3 py-2 rounded-lg border border-white/10 bg-black/30 text-sm"
+                disabled
+                data-i18n="stopLoopBtn"
+              >
+                루프 정지
+              </button>
+              <button
+                id="metronomeBtn"
+                class="px-3 py-2 rounded-lg border border-white/10 bg-black/30 text-sm"
+                data-i18n="metronomeBtn"
+              >
+                메트로놈 80bpm
+              </button>
+            </div>
+            <p class="mt-1 text-sm text-white/70" data-i18n="loopTrainingDesc">
+              취약 구간 시작 음(-2 반음)부터 4~5칸 슬라이드를 반복 재생합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future modules -->
+      <section
+        id="futureSection"
+        class="mt-8 rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg"
+      >
+        <div class="flex items-start justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="text-lg font-bold" data-i18n="futureSectionTitle">원하면 다음 단계로 바로 이어서</h2>
+            <p class="mt-1 text-sm text-white/60" data-i18n="futureSectionDesc">
+              자동 탐지·분류·훈련 모드까지 같은 톤으로 확장할 예정입니다.
+            </p>
+          </div>
+          <span class="text-xs text-white/50" data-i18n="prototypeCard">프로토타입 카드</span>
+        </div>
+
+        <div class="mt-5 grid grid-cols-1 gap-4">
+          <div class="rounded-xl border border-emerald-400/20 bg-emerald-900/20 p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-emerald-100" data-i18n="future1Title">
+                힘든 구간 자동 탐지 (차트/히트맵)
+              </h3>
+              <span class="text-xs text-emerald-200/80" data-i18n="dataView">데이터 뷰</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="future1Desc">
+              검출 성공률·떨림·RMS 변화를 음 높이별로 누적해 불안정 구간을 히트맵으로
+              표시하고, 시작 note를 자동 추천합니다.
+            </p>
+            <div class="mt-3 h-24 rounded-lg border border-emerald-400/30 bg-black/30 flex items-center justify-center text-emerald-200/80 text-xs" data-i18n="chartPlaceholder">
+              차트 placeholder (히트맵/선형 그래프)
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-sky-400/20 bg-sky-900/20 p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-sky-100" data-i18n="future2Title">
+                성종(경향) 분류 UI + 문구 템플릿
+              </h3>
+              <span class="text-xs text-sky-200/80" data-i18n="prompt">프롬프트</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="future2Desc">
+              흉성 중심/밸런스/두성 중심 등 경향별로 자동 분류 후, 맞춤 코멘트와
+              연습 문구를 바로 제안하는 UI 슬롯입니다.
+            </p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-white/80">
+              <div class="rounded-lg border border-white/10 bg-black/30 p-3">
+                <p class="font-semibold" data-i18n="chestVoice">흉성 중심</p>
+                <p class="mt-1 text-white/60" data-i18n="chestVoiceDesc">볼륨 감쇠 + 슬라이드 비중 ↑</p>
+              </div>
+              <div class="rounded-lg border border-white/10 bg-black/30 p-3">
+                <p class="font-semibold" data-i18n="balance">밸런스</p>
+                <p class="mt-1 text-white/60" data-i18n="balanceDesc">코디네이션 유지, 안정 최고음 확정</p>
+              </div>
+              <div class="rounded-lg border border-white/10 bg-black/30 p-3">
+                <p class="font-semibold" data-i18n="headVoice">두성 중심</p>
+                <p class="mt-1 text-white/60" data-i18n="headVoiceDesc">하행 볼륨 + 저음 개구 보정</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-amber-400/20 bg-amber-900/20 p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-amber-100" data-i18n="future3Title">
+                훈련 모드 (메트로놈/슬라이드 가이드 톤)
+              </h3>
+              <span class="text-xs text-amber-200/80" data-i18n="sessionControl">세션 제어</span>
+            </div>
+            <p class="mt-2 text-sm text-white/70" data-i18n="future3Desc">
+              박자·템포·가이드 톤을 켜서 미션을 루프로 돌리고, 취약 구간에서만
+              반복할 수 있는 세션 플레이어.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-3 text-xs text-white/80">
+              <button class="px-3 py-2 rounded-lg border border-white/10 bg-black/30" data-i18n="metronomeBtn">
+                메트로놈 80bpm
+              </button>
+              <button class="px-3 py-2 rounded-lg border border-white/10 bg-black/30" data-i18n="slideGuideOn">
+                슬라이드 가이드 on
+              </button>
+              <button class="px-3 py-2 rounded-lg border border-white/10 bg-black/30" data-i18n="weakLoop">
+                취약 구간 루프
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other services button -->
+      <div class="flex justify-center pt-8 mt-12 border-t border-gray-200/20">
+        <a
+          href="https://funnyfunny.cloud/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-medium transition-colors duration-200"
+        >
+          <span data-i18n="btnOtherServices">다른 서비스 보기</span>
+        </a>
+      </div>
+
+      <footer class="mt-6 text-center text-xs text-white/40">
+        © <span id="year"></span> Head Voice Trainer MVP
+      </footer>
+    </main>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "두성터득기 - 실시간 음정 분석",
+          metaDescription: "마이크로 내 음역과 불안정 구간을 분석하고 두성 훈련 루트를 제안하는 보컬 트레이닝 도구.",
+          metaKeywords: "두성, 보컬, 음역, 음정 분석, 헤드보이스, 트레이닝",
+          brandName: "두성터득기",
+          beginnerMode: "초보자 모드",
+          title: "실시간 음정 분석",
+          subtitle: "마이크 입력으로 Hz / 음이름 / 음역을 표시합니다. (진단이 아닌 연습 보조 도구)",
+          btnStart: "마이크 시작",
+          btnStop: "정지",
+          sampleRate: "샘플레이트",
+          statusLabel: "상태",
+          statusWaiting: "대기",
+          currentPitch: "현재 음정",
+          frequency: "주파수(Hz)",
+          volume: "볼륨",
+          range: "음역(기록)",
+          min: "최저",
+          max: "최고",
+          stableMaxNote: "안정 최고음(대략)",
+          stableMaxNoteDesc: "※ \"안정 최고음\"은 피치 검출 성공률/떨림이 상대적으로 좋은 구간을 기반으로 대략 계산합니다.",
+          coachTitle: "코치 한 줄",
+          coachDefault: "마이크를 시작하고 편한 음에서 위로 '슬라이드'해 보세요. 힘으로 밀기보다 가볍게 연결하는 느낌을 찾는 게 먼저입니다.",
+          analysisTitle: "자동 분석 결과",
+          analysisDesc: "불안정 구간 계산, 성종(경향) 분류, 취약 루프 가이드를 바로 확인하세요.",
+          btnOtherServices: "다른 서비스 보기",
+          centsExact: "정확",
+          centsPositive: "+{cents} cents",
+          centsNegative: "{cents} cents",
+          safetyTitle: "단계 0 · 안전 고지 (항상 노출)",
+          safetyDesc: "통증/쉰 목소리/어지러움이 있으면 중단 · 본 서비스는 레슨/의료를 대체하지 않음",
+          trainingRouteTitle: "오늘의 훈련 루트",
+          trainingRouteDesc: "각 단계 목표·미션·코치 문구를 따라가며 안전하게 두성으로 접근해 보세요.",
+          guideMode: "가이드 모드",
+          step1Title: "1단계: 워밍업 (1~2분)",
+          step1Goal: "목표: 소리를 키우지 말고 가볍게 켜기",
+          step1Mission: "미션: 편한 음에서 \"음량 30%\"로 5초 유지 x 5",
+          step1Coach: "코치: 소리를 크게 만들려 하지 말고, 숨이 길게 가는지부터 확인하세요.",
+          step2Title: "2단계: 연결 (슬라이드, 2~3분)",
+          step2Goal: "목표: 흉→믹스 방향으로 끊김 최소화",
+          step2Mission: "미션: 낮은 편한 음 → 5도 위 → 다시 내려오기(슬라이드) x 8",
+          step2Coach: "코치: 올리는 연습이 아니라, '이어 붙이는' 연습입니다. 목을 밀면 연결이 끊깁니다. 볼륨을 먼저 줄이세요.",
+          step3Title: "3단계: 두성 접근 (가볍게, 2분)",
+          step3Goal: "목표: 힘이 아니라 공명 위치 이동",
+          step3Mission: "미션: \"가벼운 소리\"로 상행(반음씩 5~7칸) 시도, 불안정해지면 즉시 한 칸 내려오기",
+          step3Coach: "코치: 여기서 더 밀지 말고, 더 가볍게 두세요. 불안정해진 순간이 '훈련 지점'입니다. 거기서 욕심내지 마세요.",
+          step4Title: "4단계: 취약 구간 집중 (개인화, 2분)",
+          step4Goal: "목표: 힘든 구간 바로 아래에서 반복",
+          step4Mission: "미션: 시스템이 찾은 불안정 구간의 시작 note -2 반음부터 5회 반복",
+          step4Coach: "코치: 한계 음을 뚫는 게 아니라, 한계 바로 아래를 '편하게' 만드는 게 먼저입니다.",
+          step5Title: "5단계: 쿨다운 (30초)",
+          step5Goal: "목표: 긴장 해제",
+          step5Message: "문구: 끝낼 땐 반드시 가벼운 음으로 내려와 목을 쉬게 해주세요.",
+          realtime: "실시간",
+          weakSpotTitle: "힘든 구간 자동 계산",
+          collectingData: "데이터 수집 중",
+          voiceTypeTitle: "성종(경향) 분류",
+          waiting: "대기",
+          startLoopBtn: "취약 구간 루프 시작",
+          stopLoopBtn: "루프 정지",
+          metronomeBtn: "메트로놈 80bpm",
+          loopTrainingTitle: "취약 구간 루프 훈련",
+          loopTrainingDesc: "취약 구간 시작 음(-2 반음)부터 4~5칸 슬라이드를 반복 재생합니다.",
+          futureSectionTitle: "원하면 다음 단계로 바로 이어서",
+          futureSectionDesc: "자동 탐지·분류·훈련 모드까지 같은 톤으로 확장할 예정입니다.",
+          prototypeCard: "프로토타입 카드",
+          future1Title: "힘든 구간 자동 탐지 (차트/히트맵)",
+          dataView: "데이터 뷰",
+          future1Desc: "검출 성공률·떨림·RMS 변화를 음 높이별로 누적해 불안정 구간을 히트맵으로 표시하고, 시작 note를 자동 추천합니다.",
+          chartPlaceholder: "차트 placeholder (히트맵/선형 그래프)",
+          future2Title: "성종(경향) 분류 UI + 문구 템플릿",
+          prompt: "프롬프트",
+          future2Desc: "흉성 중심/밸런스/두성 중심 등 경향별로 자동 분류 후, 맞춤 코멘트와 연습 문구를 바로 제안하는 UI 슬롯입니다.",
+          chestVoice: "흉성 중심",
+          chestVoiceDesc: "볼륨 감쇠 + 슬라이드 비중 ↑",
+          balance: "밸런스",
+          balanceDesc: "코디네이션 유지, 안정 최고음 확정",
+          headVoice: "두성 중심",
+          headVoiceDesc: "하행 볼륨 + 저음 개구 보정",
+          future3Title: "훈련 모드 (메트로놈/슬라이드 가이드 톤)",
+          sessionControl: "세션 제어",
+          future3Desc: "박자·템포·가이드 톤을 켜서 미션을 루프로 돌리고, 취약 구간에서만 반복할 수 있는 세션 플레이어.",
+          slideGuideOn: "슬라이드 가이드 on",
+          weakLoop: "취약 구간 루프",
+          statusRequesting: "권한 요청 중",
+          statusMeasuring: "측정 중",
+          statusFailed: "실패",
+          statusStopped: "대기",
+          statusLoopPlaying: "루프 재생 중",
+          statusStable: "안정 구간 위주",
+          statusCalculated: "자동 계산 완료",
+          statusCalculatedVoice: "계산됨",
+          weakSpotNone: "뚜렷한 힘든 구간 없음",
+          weakSpotCollecting: "안정적인 측정을 조금 더 쌓아 주세요.",
+          weakSpotCollectingMore: "조금 더 다양한 음역을 불러 주세요. 불안정 구간을 찾아드립니다.",
+          weakSpotStable: "음역 전반이 안정적입니다. 슬라이드로 상·하행을 이어붙이며 유지하세요.",
+          voiceTipCollecting: "충분한 구간을 부른 뒤 결과가 표시됩니다.",
+          voiceTipNeedRange: "낮은 음과 높은 음을 모두 조금씩 불러야 경향을 계산할 수 있어요.",
+          alertMicRequired: "마이크를 먼저 시작하세요.",
+          alertNoWeakSpot: "아직 불안정 구간이 계산되지 않았습니다. 조금 더 측정해 주세요.",
+          alertMicPermission: "마이크 권한을 허용해야 동작합니다.",
+          metronomeStop: "메트로놈 정지",
+          beginnerCoach: "숫자는 잠시 접어두고, 가볍게 '이어붙이기'에만 집중해 보세요.",
+          coachLine1: "고음에서 힘이 들어가면, 먼저 볼륨을 줄이고 더 가볍게 연결해 보세요.",
+          coachLine2: "입을 더 크게 벌리기보다, 소리를 위로 '옮긴다'는 느낌을 찾아보세요.",
+          coachLine3: "목을 밀지 말고, 숨이 길게 흐르는지 먼저 확인해 보세요.",
+          coachLine4: "불안정 구간에선 '올리기'보다 '끊기지 않게 잇기'가 목표입니다.",
+        },
+        en: {
+          metaTitle: "Head Voice Trainer - Realtime Pitch Analysis",
+          metaDescription: "A vocal training tool that analyzes your range and unstable intervals from microphone input and suggests head voice training routes.",
+          metaKeywords: "head voice, vocal, range, pitch analysis, training",
+          brandName: "Head Voice Trainer",
+          beginnerMode: "Beginner Mode",
+          title: "Realtime Pitch Analysis",
+          subtitle: "Displays Hz / note name / range from microphone input. (Practice aid, not diagnosis)",
+          btnStart: "Start Mic",
+          btnStop: "Stop",
+          sampleRate: "Sample Rate",
+          statusLabel: "Status",
+          statusWaiting: "Waiting",
+          currentPitch: "Current Pitch",
+          frequency: "Frequency (Hz)",
+          volume: "Volume",
+          range: "Range (Recorded)",
+          min: "Min",
+          max: "Max",
+          stableMaxNote: "Stable Max (approx)",
+          stableMaxNoteDesc: "※ \"Stable Max\" is roughly calculated based on intervals with relatively good pitch detection success rate/tremor.",
+          coachTitle: "Coach Line",
+          coachDefault: "Start the mic and slide up from a comfortable note. Finding the feeling of connecting lightly rather than pushing with force comes first.",
+          analysisTitle: "Auto Analysis Results",
+          analysisDesc: "Check unstable interval calculation, voice type (tendency) classification, and weak loop guide right away.",
+          btnOtherServices: "View Other Services",
+          centsExact: "Exact",
+          centsPositive: "+{cents} cents",
+          centsNegative: "{cents} cents",
+          safetyTitle: "Stage 0 · Safety Notice (Always Visible)",
+          safetyDesc: "Stop if you experience pain/hoarseness/dizziness · This service does not replace lessons/medical care",
+          trainingRouteTitle: "Today's Training Route",
+          trainingRouteDesc: "Follow each step's goals, missions, and coach phrases to safely approach head voice.",
+          guideMode: "Guide Mode",
+          step1Title: "Step 1: Warm-up (1~2 min)",
+          step1Goal: "Goal: Light activation without increasing volume",
+          step1Mission: "Mission: Hold \"30% volume\" for 5 seconds x 5 at a comfortable note",
+          step1Coach: "Coach: Don't try to make the sound louder. First check if your breath flows long.",
+          step2Title: "Step 2: Connection (Slide, 2~3 min)",
+          step2Goal: "Goal: Minimize breaks in chest→mix direction",
+          step2Mission: "Mission: Low comfortable note → 5th above → back down (slide) x 8",
+          step2Coach: "Coach: This isn't about raising, it's about 'connecting'. Pushing with your throat breaks the connection. Lower the volume first.",
+          step3Title: "Step 3: Head Voice Approach (Light, 2 min)",
+          step3Goal: "Goal: Resonance position shift, not force",
+          step3Mission: "Mission: Try ascending (5~7 semitones) with \"light sound\", immediately go down one step if unstable",
+          step3Coach: "Coach: Don't push further here, keep it lighter. The moment it becomes unstable is the 'training point'. Don't be greedy there.",
+          step4Title: "Step 4: Weak Spot Focus (Personalized, 2 min)",
+          step4Goal: "Goal: Repeat just below the difficult range",
+          step4Mission: "Mission: Repeat 5 times from the unstable range's start note -2 semitones (found by system)",
+          step4Coach: "Coach: It's not about breaking through the limit note, but making the area just below the limit 'comfortable' first.",
+          step5Title: "Step 5: Cool-down (30 sec)",
+          step5Goal: "Goal: Release tension",
+          step5Message: "Message: When finishing, always come down to a light note and let your throat rest.",
+          realtime: "Realtime",
+          weakSpotTitle: "Auto Calculate Difficult Range",
+          collectingData: "Collecting data",
+          voiceTypeTitle: "Voice Type (Tendency) Classification",
+          waiting: "Waiting",
+          startLoopBtn: "Start Weak Range Loop",
+          stopLoopBtn: "Stop Loop",
+          metronomeBtn: "Metronome 80bpm",
+          loopTrainingTitle: "Weak Range Loop Training",
+          loopTrainingDesc: "Repeats a 4~5 semitone slide from the weak range start note (-2 semitones).",
+          futureSectionTitle: "Continue to Next Steps If You Want",
+          futureSectionDesc: "Will expand to auto detection, classification, and training modes with the same tone.",
+          prototypeCard: "Prototype Card",
+          future1Title: "Auto Detect Difficult Range (Chart/Heatmap)",
+          dataView: "Data View",
+          future1Desc: "Accumulates detection success rate, tremor, and RMS changes by pitch to display unstable ranges as a heatmap and auto-recommend start notes.",
+          chartPlaceholder: "Chart placeholder (heatmap/line graph)",
+          future2Title: "Voice Type Classification UI + Phrase Templates",
+          prompt: "Prompt",
+          future2Desc: "Auto-classifies by tendency (chest-dominant/balanced/head-dominant) and immediately suggests tailored comments and practice phrases in a UI slot.",
+          chestVoice: "Chest-dominant",
+          chestVoiceDesc: "Volume reduction + slide emphasis ↑",
+          balance: "Balance",
+          balanceDesc: "Maintain coordination, confirm stable max",
+          headVoice: "Head-dominant",
+          headVoiceDesc: "Descending volume + low note opening correction",
+          future3Title: "Training Mode (Metronome/Slide Guide Tone)",
+          sessionControl: "Session Control",
+          future3Desc: "A session player that loops missions with beat, tempo, and guide tone on, repeating only in weak ranges.",
+          slideGuideOn: "Slide guide on",
+          weakLoop: "Weak range loop",
+          statusRequesting: "Requesting permission",
+          statusMeasuring: "Measuring",
+          statusFailed: "Failed",
+          statusStopped: "Waiting",
+          statusLoopPlaying: "Loop playing",
+          statusStable: "Mostly stable range",
+          statusCalculated: "Auto calculation complete",
+          statusCalculatedVoice: "Calculated",
+          weakSpotNone: "No clear difficult range",
+          weakSpotCollecting: "Please collect a bit more stable measurements.",
+          weakSpotCollectingMore: "Please sing a bit more across different ranges. We'll find the unstable intervals.",
+          weakSpotStable: "Your range is generally stable. Maintain by connecting ascending and descending with slides.",
+          voiceTipCollecting: "Results will appear after singing enough intervals.",
+          voiceTipNeedRange: "You need to sing both low and high notes a bit to calculate tendency.",
+          alertMicRequired: "Please start the mic first.",
+          alertNoWeakSpot: "Unstable range hasn't been calculated yet. Please measure a bit more.",
+          alertMicPermission: "Microphone permission is required to function.",
+          metronomeStop: "Stop Metronome",
+          beginnerCoach: "Set aside the numbers for now and focus only on lightly 'connecting'.",
+          coachLine1: "If force enters in high notes, first lower the volume and try connecting more lightly.",
+          coachLine2: "Rather than opening your mouth wider, try finding the feeling of 'moving' the sound upward.",
+          coachLine3: "Don't push with your throat, first check if your breath flows long.",
+          coachLine4: "In unstable ranges, the goal is 'connecting without breaking' rather than 'raising'.",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+          if (el.tagName === "TITLE") {
+            el.textContent = t(el.dataset.i18nTitle);
+          } else {
+            el.title = t(el.dataset.i18nTitle);
+          }
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          el.setAttribute("aria-label", t(el.dataset.i18nAria));
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+          el.setAttribute("alt", t(el.dataset.i18nAlt));
+        });
+        document.querySelectorAll("[data-i18n-content]").forEach((el) => {
+          el.setAttribute("content", t(el.dataset.i18nContent));
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        // Update dynamic content on language change
+        if (window.$) {
+          const statusEl = $("status");
+          if (statusEl && statusEl.textContent === "대기" || statusEl.textContent === "Waiting") {
+            statusEl.textContent = t("statusWaiting");
+          }
+          // Re-analyze and update all dynamic content
+          if (bucket.size > 0) {
+            analyzeWeakSpot();
+            classifyVoiceTrend();
+          }
+          // Update coach
+          if (beginnerMode) {
+            $("coach").textContent = t("beginnerCoach");
+          } else {
+            $("coach").textContent = getBaseCoach();
+          }
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+      
+      // Update BASE_COACH when language changes
+      const originalSetLang = setLang;
+      setLang = function(lang, options) {
+        originalSetLang(lang, options);
+        if (typeof BASE_COACH !== 'undefined') {
+          // BASE_COACH is now a function, so it will use current language
+        }
+      };
+
+      const $ = (id) => document.getElementById(id);
+
+      $("year").textContent = new Date().getFullYear();
+
+      // ---------- Pitch helpers ----------
+      const NOTE_NAMES = [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B",
+      ];
+      function getBaseCoach() {
+        return t("coachDefault");
+      }
+      // BASE_COACH will be retrieved dynamically via getBaseCoach()
+
+      function freqToMidi(freq) {
+        return 69 + 12 * Math.log2(freq / 440);
+      }
+      function midiToFreq(midi) {
+        return 440 * Math.pow(2, (midi - 69) / 12);
+      }
+      function midiToName(midi) {
+        const m = Math.round(midi);
+        const name = NOTE_NAMES[((m % 12) + 12) % 12];
+        const octave = Math.floor(m / 12) - 1;
+        return `${name}${octave}`;
+      }
+      function centsOff(freq) {
+        const midi = freqToMidi(freq);
+        const nearest = Math.round(midi);
+        const ref = midiToFreq(nearest);
+        const cents = 1200 * Math.log2(freq / ref);
+        return Math.round(cents);
+      }
+
+      // Autocorrelation pitch detection (simple + robust enough for MVP)
+      function autoCorrelate(buffer, sampleRate) {
+        // Compute RMS to ignore silence
+        let rms = 0;
+        for (let i = 0; i < buffer.length; i++) rms += buffer[i] * buffer[i];
+        rms = Math.sqrt(rms / buffer.length);
+        if (rms < 0.01) return { freq: null, rms };
+
+        // Remove DC offset
+        let mean = 0;
+        for (let i = 0; i < buffer.length; i++) mean += buffer[i];
+        mean /= buffer.length;
+        for (let i = 0; i < buffer.length; i++) buffer[i] -= mean;
+
+        const SIZE = buffer.length;
+        const MIN_F = 70; // ~D2
+        const MAX_F = 1100; // ~C6
+        const minLag = Math.floor(sampleRate / MAX_F);
+        const maxLag = Math.floor(sampleRate / MIN_F);
+
+        let bestLag = -1;
+        let bestCorr = 0;
+
+        // Normalized autocorrelation
+        for (let lag = minLag; lag <= maxLag; lag++) {
+          let corr = 0;
+          let normA = 0;
+          let normB = 0;
+          for (let i = 0; i < SIZE - lag; i++) {
+            const a = buffer[i];
+            const b = buffer[i + lag];
+            corr += a * b;
+            normA += a * a;
+            normB += b * b;
+          }
+          const denom = Math.sqrt(normA * normB) || 1;
+          const c = corr / denom;
+
+          if (c > bestCorr) {
+            bestCorr = c;
+            bestLag = lag;
+          }
+        }
+
+        // Require reasonable correlation confidence
+        if (bestCorr < 0.55 || bestLag === -1) return { freq: null, rms };
+
+        // Parabolic interpolation around bestLag for smoother freq
+        // (Use raw correlation array around bestLag by recalculating small window)
+        function corrAt(lag) {
+          let corr = 0,
+            normA = 0,
+            normB = 0;
+          for (let i = 0; i < SIZE - lag; i++) {
+            const a = buffer[i],
+              b = buffer[i + lag];
+            corr += a * b;
+            normA += a * a;
+            normB += b * b;
+          }
+          const denom = Math.sqrt(normA * normB) || 1;
+          return corr / denom;
+        }
+        const c0 = corrAt(bestLag - 1);
+        const c1 = corrAt(bestLag);
+        const c2 = corrAt(bestLag + 1);
+        const denom = c0 - 2 * c1 + c2;
+        const shift = denom ? (0.5 * (c0 - c2)) / denom : 0;
+        const lagInterp = bestLag + shift;
+
+        const freq = sampleRate / lagInterp;
+        return { freq, rms };
+      }
+
+      // ---------- App state ----------
+      let audioCtx = null;
+      let analyser = null;
+      let mediaStream = null;
+      let rafId = null;
+      let loopInterval = null;
+      let metronomeInterval = null;
+      let weakSpot = null;
+      let voiceProfile = null;
+      let beginnerMode = false;
+
+      let minMidi = Infinity;
+      let maxMidi = -Infinity;
+
+      // Rough "stable max" tracking (count frames per midi bucket with confidence)
+      const bucket = new Map(); // midiInt -> { ok, total }
+      function updateStability(midi, ok) {
+        const k = Math.round(midi);
+        const v = bucket.get(k) || { ok: 0, total: 0 };
+        v.total += 1;
+        if (ok) v.ok += 1;
+        bucket.set(k, v);
+      }
+      function getStableMax() {
+        // stable = okRate >= 0.75 and total >= 25
+        let best = null;
+        for (const [k, v] of bucket.entries()) {
+          const rate = v.total ? v.ok / v.total : 0;
+          if (v.total >= 25 && rate >= 0.75) {
+            if (best === null || k > best) best = k;
+          }
+        }
+        return best;
+      }
+
+      function weightedRate(entries) {
+        let okSum = 0;
+        let totalSum = 0;
+        for (const e of entries) {
+          okSum += e.ok;
+          totalSum += e.total;
+        }
+        return totalSum ? okSum / totalSum : 0;
+      }
+
+      function analyzeWeakSpot() {
+        if (bucket.size < 5) {
+          weakSpot = null;
+          $("weakStatus").textContent = t("collectingData");
+          $("weakRange").textContent = "-";
+          $("weakCoach").textContent = t("weakSpotCollectingMore");
+          return;
+        }
+
+        const entries = [...bucket.entries()]
+          .map(([m, v]) => ({
+            midi: m,
+            rate: v.ok / (v.total || 1),
+            total: v.total,
+          }))
+          .sort((a, b) => a.midi - b.midi);
+
+        let best = null;
+        let segment = [];
+        const pushSegment = () => {
+          if (segment.length === 0) return;
+          const avgRate = weightedRate(segment);
+          const avgTotal =
+            segment.reduce((s, x) => s + x.total, 0) / segment.length;
+          const score =
+            segment.length * (1 - avgRate) * Math.log(1 + avgTotal);
+          const seg = {
+            start: segment[0].midi,
+            end: segment[segment.length - 1].midi,
+            avgRate,
+            avgTotal,
+            score,
+          };
+          if (!best || seg.score > best.score) best = seg;
+          segment = [];
+        };
+
+        for (let i = 0; i < entries.length; i++) {
+          const e = entries[i];
+          const isWeak = e.total >= 8 && e.rate <= 0.45;
+          const prev = segment[segment.length - 1];
+          if (isWeak && (!prev || e.midi - prev.midi <= 1)) {
+            segment.push(e);
+          } else {
+            pushSegment();
+          }
+        }
+        pushSegment();
+
+        if (!best || best.avgRate > 0.6) {
+          weakSpot = null;
+          $("weakStatus").textContent = t("statusStable");
+          $("weakRange").textContent = t("weakSpotNone");
+          $("weakCoach").textContent = t("weakSpotStable");
+          return;
+        }
+
+        const startNote = midiToName(best.start);
+        const endNote = midiToName(best.end);
+        const entryMidi = Math.max(best.start - 2, minMidi);
+        const improvement = ((1 - best.avgRate) * 100).toFixed(0);
+        weakSpot = {
+          ...best,
+          entryMidi,
+          text: currentLang === "en" 
+            ? `${startNote}~${endNote} range is relatively unstable (${improvement}% stability improvement needed)`
+            : `${startNote}~${endNote} 구간이 상대적으로 불안정 (안정도 ${improvement}% 개선 필요)`,
+        };
+
+        $("weakStatus").textContent = t("statusCalculated");
+        $("weakRange").textContent = weakSpot.text;
+        const entryNote = midiToName(entryMidi);
+        $("weakCoach").textContent = currentLang === "en"
+          ? `Recommended mission: 4~5 semitone slide x5 from ${entryNote}, connect at 30% volume. Focus on connecting lightly without breaks.`
+          : `추천 미션: ${entryNote}부터 4~5칸 슬라이드 x5, 볼륨 30%로 연결. 끊김 없이 가볍게 잇기에 집중하세요.`;
+      }
+
+      function classifyVoiceTrend() {
+        if (!isFinite(minMidi) || !isFinite(maxMidi) || bucket.size < 8) {
+          voiceProfile = null;
+          $("voiceStatus").textContent = t("collectingData");
+          $("voiceType").textContent = "-";
+          $("voiceTip").textContent = t("voiceTipNeedRange");
+          return;
+        }
+
+        const entries = [...bucket.entries()]
+          .map(([m, v]) => ({ midi: m, ok: v.ok, total: v.total }))
+          .sort((a, b) => a.midi - b.midi);
+        const span = maxMidi - minMidi || 12;
+        const lowCut = minMidi + span * 0.35;
+        const highCut = minMidi + span * 0.7;
+        const low = entries.filter((e) => e.midi <= lowCut);
+        const mid = entries.filter((e) => e.midi > lowCut && e.midi <= highCut);
+        const high = entries.filter((e) => e.midi > highCut);
+
+        const lowRate = weightedRate(low);
+        const midRate = weightedRate(mid);
+        const highRate = weightedRate(high);
+
+        let labelKey = "balance";
+        let tipKey = "balanceDesc";
+
+        if (lowRate - highRate >= 0.2 && highRate < 0.5) {
+          labelKey = "chestVoice";
+          tipKey = "chestVoiceDesc";
+        } else if (highRate - lowRate >= 0.2 && lowRate < 0.5) {
+          labelKey = "headVoice";
+          tipKey = "headVoiceDesc";
+        }
+
+        const label = t(labelKey);
+        const tip = currentLang === "en"
+          ? (labelKey === "chestVoice" 
+              ? "Low notes are stable but tension is high in high note transitions. Lower volume and increase slide emphasis to connect to mix."
+              : labelKey === "headVoice"
+              ? "Mid-high notes are relatively stable but low notes are weak. Fill low notes with descending slides and opening correction."
+              : "Low, mid, and high ranges are similarly stable. Maintain your current routine and increase stable max.")
+          : (labelKey === "chestVoice"
+              ? "저음은 안정적이지만 고음 전환에서 긴장도가 높습니다. 볼륨을 줄이고 슬라이드 비중을 늘려 믹스로 연결하세요."
+              : labelKey === "headVoice"
+              ? "상·중음은 비교적 안정적이나 저음이 약합니다. 하행 슬라이드와 개구 보정으로 저음을 메워 주세요."
+              : "저·중·고 음역이 비슷하게 안정적입니다. 현재 루틴을 유지하며 안정 최고음을 늘려보세요.");
+
+        voiceProfile = { label, tip, lowRate, midRate, highRate };
+        $("voiceStatus").textContent = t("statusCalculatedVoice");
+        const lowPct = (lowRate * 100).toFixed(0);
+        const midPct = (midRate * 100).toFixed(0);
+        const highPct = (highRate * 100).toFixed(0);
+        $("voiceType").textContent = currentLang === "en"
+          ? `${label} (Low ${lowPct}% / Mid ${midPct}% / High ${highPct}%)`
+          : `${label} (저 ${lowPct}% / 중 ${midPct}% / 고 ${highPct}%)`;
+        $("voiceTip").textContent = tip;
+      }
+
+      function requireAudioContext(actionName) {
+        if (!audioCtx) {
+          alert(t("alertMicRequired") + (actionName ? ` (${actionName})` : ""));
+          return false;
+        }
+        return true;
+      }
+
+      function playClick() {
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "square";
+        osc.frequency.setValueAtTime(880, now);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.2, now + 0.001);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      }
+
+      function toggleMetronome() {
+        // Always allow stop even if 오디오 컨텍스트가 닫힌 뒤라 해도 UI를 맞춰 줌
+        if (metronomeInterval) {
+          clearInterval(metronomeInterval);
+          metronomeInterval = null;
+          $("metronomeBtn").textContent = t("metronomeBtn");
+          return;
+        }
+        if (!requireAudioContext(t("metronomeBtn"))) return;
+        const interval = (60 / 80) * 1000;
+        playClick();
+        metronomeInterval = setInterval(playClick, interval);
+        $("metronomeBtn").textContent = t("metronomeStop");
+      }
+
+      function playWeakSlide(baseMidi) {
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const startFreq = midiToFreq(baseMidi);
+        const endFreq = midiToFreq(baseMidi + 4.5);
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(startFreq, now);
+        osc.frequency.linearRampToValueAtTime(endFreq, now + 0.8);
+        osc.frequency.linearRampToValueAtTime(startFreq, now + 1.1);
+
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.15, now + 0.05);
+        gain.gain.linearRampToValueAtTime(0.15, now + 0.95);
+        gain.gain.linearRampToValueAtTime(0.001, now + 1.2);
+
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.25);
+      }
+
+      function startWeakLoop() {
+        if (!requireAudioContext(t("startLoopBtn"))) return;
+        if (!weakSpot) {
+          alert(t("alertNoWeakSpot"));
+          return;
+        }
+        stopWeakLoop();
+        const base = weakSpot.entryMidi || weakSpot.start;
+        playWeakSlide(base);
+        loopInterval = setInterval(() => playWeakSlide(base), 1600);
+        $("loopStatus").textContent = t("statusLoopPlaying");
+        $("startLoopBtn").disabled = true;
+        $("stopLoopBtn").disabled = false;
+      }
+
+      function stopWeakLoop() {
+        if (loopInterval) {
+          clearInterval(loopInterval);
+          loopInterval = null;
+        }
+        $("loopStatus").textContent = t("waiting");
+        $("startLoopBtn").disabled = false;
+        $("stopLoopBtn").disabled = true;
+      }
+
+      function setBeginnerMode(on) {
+        beginnerMode = on;
+        document.body.classList.toggle("beginner", on);
+        $("metricsPanel").classList.toggle("hidden", on);
+        $("futureSection").classList.toggle("hidden", on);
+        $("coach").textContent = on ? t("beginnerCoach") : getBaseCoach();
+      }
+
+      function setStatus(text) {
+        $("status").textContent = text;
+      }
+
+      function resetStats() {
+        minMidi = Infinity;
+        maxMidi = -Infinity;
+        bucket.clear();
+        $("minNote").textContent = "-";
+        $("maxNote").textContent = "-";
+        $("stableMax").textContent = "-";
+        $("weakStatus").textContent = t("collectingData");
+        $("weakRange").textContent = "-";
+        $("weakCoach").textContent = t("weakSpotCollecting");
+        $("voiceStatus").textContent = t("collectingData");
+        $("voiceType").textContent = "-";
+        $("voiceTip").textContent = t("voiceTipCollecting");
+        stopWeakLoop();
+        if (metronomeInterval) toggleMetronome();
+      }
+
+      function render(freq, rms) {
+        if (!freq) {
+          $("hz").textContent = "-";
+          $("note").textContent = "-";
+          $("cents").textContent = "-";
+          $("rms").textContent = rms ? rms.toFixed(3) : "-";
+          return;
+        }
+
+        const midi = freqToMidi(freq);
+        const name = midiToName(midi);
+        const cents = centsOff(freq);
+
+        $("hz").textContent = freq.toFixed(1);
+        $("note").textContent = name;
+        const t = window.t || ((key, vars = {}) => key);
+        $("cents").textContent =
+          cents === 0
+            ? t("centsExact")
+            : cents > 0
+            ? t("centsPositive", { cents })
+            : t("centsNegative", { cents });
+        $("rms").textContent = rms.toFixed(3);
+
+        if (midi < minMidi) minMidi = midi;
+        if (midi > maxMidi) maxMidi = midi;
+
+        $("minNote").textContent = isFinite(minMidi)
+          ? midiToName(minMidi)
+          : "-";
+        $("maxNote").textContent = isFinite(maxMidi)
+          ? midiToName(maxMidi)
+          : "-";
+
+        // "ok" if rms decent and cents not too wild
+        const ok = rms >= 0.02 && Math.abs(cents) <= 35;
+        updateStability(midi, ok);
+        const stableMax = getStableMax();
+        $("stableMax").textContent =
+          stableMax !== null ? midiToName(stableMax) : "-";
+
+        analyzeWeakSpot();
+        classifyVoiceTrend();
+
+        // Tiny coaching hint
+        const coachLines = [
+          t("coachLine1"),
+          t("coachLine2"),
+          t("coachLine3"),
+          t("coachLine4"),
+        ];
+        if (ok && Math.random() < 0.02)
+          $("coach").textContent =
+            coachLines[Math.floor(Math.random() * coachLines.length)];
+      }
+
+      function loop() {
+        const buf = new Float32Array(analyser.fftSize);
+        analyser.getFloatTimeDomainData(buf);
+
+        const { freq, rms } = autoCorrelate(buf, audioCtx.sampleRate);
+        render(freq, rms);
+
+        rafId = requestAnimationFrame(loop);
+      }
+
+      async function startMic() {
+        resetStats();
+        try {
+          setStatus(t("statusRequesting"));
+          mediaStream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              echoCancellation: false,
+              noiseSuppression: false,
+              autoGainControl: false,
+            },
+          });
+
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          $("sr").textContent = Math.round(audioCtx.sampleRate);
+
+          const source = audioCtx.createMediaStreamSource(mediaStream);
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 2048;
+          source.connect(analyser);
+
+          setStatus(t("statusMeasuring"));
+          $("startBtn").disabled = true;
+          $("stopBtn").disabled = false;
+
+          loop();
+        } catch (e) {
+          console.error(e);
+          setStatus(t("statusFailed"));
+          alert(t("alertMicPermission"));
+        }
+      }
+
+      function stopMic() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+
+        if (mediaStream) {
+          mediaStream.getTracks().forEach((t) => t.stop());
+          mediaStream = null;
+        }
+        if (audioCtx) {
+          audioCtx.close();
+          audioCtx = null;
+        }
+        analyser = null;
+
+        $("startBtn").disabled = false;
+        $("stopBtn").disabled = true;
+        $("sr").textContent = "-";
+        setStatus(t("statusStopped"));
+        stopWeakLoop();
+        if (metronomeInterval) toggleMetronome();
+      }
+
+      $("startBtn").addEventListener("click", startMic);
+      $("stopBtn").addEventListener("click", stopMic);
+      $("startLoopBtn").addEventListener("click", startWeakLoop);
+      $("stopLoopBtn").addEventListener("click", stopWeakLoop);
+      $("metronomeBtn").addEventListener("click", toggleMetronome);
+      $("beginnerToggle").addEventListener("change", (e) =>
+        setBeginnerMode(e.target.checked)
+      );
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-format="fluid"
+     data-ad-layout-key="-6t+ed+2i-1n-4w"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="7300458753"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

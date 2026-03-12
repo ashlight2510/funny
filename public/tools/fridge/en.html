@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fridge Rescue</title>
+
+  <!-- OG -->
+  <meta property="og:title" content="Fridge Rescue" />
+  <meta property="og:description" content="Rescue recipes you can make right now with ingredients in your fridge" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Fridge+Rescue" />
+
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1220'/><text x='50' y='62' font-size='50' text-anchor='middle' fill='white'>🥕</text></svg>">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin:0; background:#f7f7f7; }
+    header { background:#0b1220; color:#fff; padding:20px; text-align:center; position:relative; }
+    main { max-width:900px; margin:0 auto; padding:20px; }
+    .step { display:none; background:#fff; padding:24px; margin-bottom:20px; border-radius:12px; }
+    .step.active { display:block; }
+    .step-progress { background:#e5e7eb; height:4px; border-radius:2px; margin-bottom:20px; }
+    .step-progress-bar { background:#0b1220; height:100%; border-radius:2px; transition:width 0.3s; }
+    .step-label { text-align:center; color:#666; font-size:14px; margin-bottom:16px; }
+    h2 { margin-top:0; margin-bottom:16px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:10px; margin-bottom:16px; }
+    .category { margin-bottom:24px; }
+    .category-title { font-weight:600; color:#333; margin-bottom:12px; font-size:15px; }
+    button { padding:12px 16px; border-radius:10px; border:none; background:#0b1220; color:#fff; cursor:pointer; font-size:14px; transition:all 0.2s; }
+    button:hover { opacity:0.9; transform:translateY(-1px); }
+    button.secondary { background:#e5e7eb; color:#111; }
+    button.secondary.active { background:#0b1220; color:#fff; }
+    button.next-btn { width:100%; margin-top:16px; padding:14px; font-size:16px; font-weight:600; }
+    button.next-btn:disabled { background:#ccc; cursor:not-allowed; opacity:0.6; }
+    .card { border:1px solid #e5e7eb; padding:16px; border-radius:12px; margin-bottom:12px; }
+    .warn { color:#dc2626; margin-top:8px; font-size:13px; display:none; }
+    footer { text-align:center; padding:20px; font-size:14px; color:#666; }
+    .footer-link { display:inline-block; padding:10px 20px; background:#0b1220; color:#fff; text-decoration:none; border-radius:8px; font-weight:500; transition:all 0.2s; }
+    .footer-link:hover { background:#1a2332; transform:translateY(-2px); box-shadow:0 4px 12px rgba(11,18,32,0.2); }
+    .lang-switch { position:absolute; top:20px; right:20px; }
+    .lang-switch a { display:inline-block; padding:8px 16px; background:rgba(255,255,255,0.2); color:#fff; text-decoration:none; border-radius:6px; font-size:13px; transition:all 0.2s; }
+    .lang-switch a:hover { background:rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="lang-switch">
+    <a href="./index.html">🇰🇷 한국어</a>
+  </div>
+  <h1>Fridge Rescue</h1>
+  <p>Rescue recipes you can make right now with ingredients in your fridge</p>
+</header>
+
+<main>
+
+<div class="step-progress">
+  <div class="step-progress-bar" id="progressBar" style="width:0%"></div>
+</div>
+<div class="step-label" id="stepLabel">STEP 1 / 3</div>
+
+<!-- STEP 1: 재료 선택 -->
+<section class="step active" data-step="1">
+  <h2>STEP 1. What's in your fridge? 🥕</h2>
+  <p style="color:#666; margin-bottom:16px;">Select the ingredients you have in your fridge right now. You can select multiple items!</p>
+  <div id="ingredients"></div>
+  <div class="warn" id="warn1">You haven't selected any ingredients yet. Please select at least 1 item! 😊</div>
+  <button class="next-btn" id="nextBtn1" onclick="goNext(1)" disabled>Next Step →</button>
+</section>
+
+<!-- STEP 2: 오늘의 상태 -->
+<section class="step" data-step="2">
+  <h2>STEP 2. What do you feel like eating today? 🍽️</h2>
+  <p style="color:#666; margin-bottom:16px;">Choose what matches your mood right now!</p>
+  <div class="grid">
+    <button class="secondary" onclick="setGoal('heavy')">Hearty</button>
+    <button class="secondary" onclick="setGoal('light')">Light</button>
+    <button class="secondary" onclick="setGoal('protein')">Protein</button>
+    <button class="secondary" onclick="setGoal('vitamin')">Veggies·Vitamins</button>
+  </div>
+</section>
+
+<!-- STEP 3: 맛 방향 -->
+<section class="step" data-step="3">
+  <h2>STEP 3. What flavor are you craving? 👅</h2>
+  <p style="color:#666; margin-bottom:16px;">Choose your preferred taste!</p>
+  <div class="grid">
+    <button class="secondary" onclick="setTaste('spicy')">Spicy</button>
+    <button class="secondary" onclick="setTaste('mild')">Mild</button>
+    <button class="secondary" onclick="setTaste('home')">Home-style</button>
+    <button class="secondary" onclick="setTaste('any')">Any</button>
+  </div>
+</section>
+
+<!-- STEP 4: 결과 -->
+<section class="step" data-step="4">
+  <h2>Rescue complete! How about these recipes? 🎉</h2>
+  <p style="color:#666; margin-bottom:16px;">I found recipes you can make right now with your fridge ingredients!</p>
+  <div id="result"></div>
+  <hr style="margin:20px 0;" />
+  <h3>Recent Rescue History</h3>
+  <div id="history"></div>
+  <button onclick="resetSteps()" style="margin-top:16px; background:#666; width:100%;">🔄 Start Over</button>
+</section>
+
+</main>
+
+<footer>
+  <a href="https://funnyfunny.cloud" target="_blank" class="footer-link">✨ View Other Services</a>
+</footer>
+
+<script>
+/* =====================
+   Ingredient Dictionary (by Category)
+===================== */
+const ingredientCategories = {
+  'Staples': ['Rice', 'Bread', 'Noodles', 'Ramen', 'Pasta'],
+  'Protein': ['Egg', 'Tuna', 'Tuna Can', 'Ham', 'Bacon', 'Chicken Breast', 'Fish Cake', 'Pork', 'Frozen Dumplings'],
+  'Vegetables': ['Kimchi', 'Onion', 'Bean Sprouts', 'Salad Greens', 'Cabbage', 'Tomato', 'Carrot', 'Cucumber', 'Bell Pepper', 'Mushroom', 'Broccoli', 'Zucchini', 'Green Onion'],
+  'Other': ['Tofu', 'Potato', 'Cheese', 'Soybean Paste', 'Yogurt', 'Oats', 'Fruit', 'Nuts']
+};
+
+// Ingredient mapping (Korean -> English)
+const ingredientMap = {
+  '밥': 'Rice', '빵': 'Bread', '면': 'Noodles', '라면': 'Ramen', '파스타면': 'Pasta',
+  '달걀': 'Egg', '참치': 'Tuna', '참치캔': 'Tuna Can', '햄': 'Ham', '베이컨': 'Bacon', '닭가슴살': 'Chicken Breast', '어묵': 'Fish Cake', '돼지고기': 'Pork', '냉동만두': 'Frozen Dumplings',
+  '김치': 'Kimchi', '양파': 'Onion', '콩나물': 'Bean Sprouts', '샐러드채소': 'Salad Greens', '양배추': 'Cabbage', '토마토': 'Tomato', '당근': 'Carrot', '오이': 'Cucumber', '파프리카': 'Bell Pepper', '버섯': 'Mushroom', '브로콜리': 'Broccoli', '애호박': 'Zucchini', '대파': 'Green Onion',
+  '두부': 'Tofu', '감자': 'Potato', '치즈': 'Cheese', '된장': 'Soybean Paste', '요거트': 'Yogurt', '오트': 'Oats', '과일': 'Fruit', '견과': 'Nuts'
+};
+
+// Reverse mapping (English -> Korean)
+const ingredientMapReverse = {};
+Object.entries(ingredientMap).forEach(([ko, en]) => {
+  ingredientMapReverse[en] = ko;
+});
+
+/* =====================
+   Recipe DB
+===================== */
+const recipes = [
+  {"id":"R001","name":"Egg Fried Rice","required":["밥","달걀"],"optional":["대파","양파","햄","김치"],"assume":["소금","식용유","간장"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["집밥","담백"],"time":10,"steps":["Heat oil in pan","Scramble eggs","Add rice and stir-fry","Season with soy sauce/salt","Add green onion/toppings"],"missing_ok":["대파","햄"]},
+  {"id":"R002","name":"Tuna Mayo Rice Bowl","required":["밥","참치캔"],"optional":["김","양파","오이"],"assume":["마요네즈","간장","후추"],"macro":{"carb":3,"protein":2,"fat":2,"vitamin":1},"taste":["집밥","고기느낌"],"time":8,"steps":["Drain tuna oil","Mix mayo+soy sauce+pepper","Place on rice","Top with seaweed/veggies"],"missing_ok":["김","오이"]},
+  {"id":"R003","name":"Pan-Fried Tofu (Soy Sauce)","required":["두부"],"optional":["대파","양파"],"assume":["간장","식용유","고춧가루","식초"],"macro":{"carb":0,"protein":3,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":12,"steps":["Remove tofu moisture","Pan-fry until golden","Make soy sauce","Dip and eat"],"missing_ok":["고춧가루","식초"]},
+  {"id":"R004","name":"Stir-Fried Kimchi","required":["김치"],"optional":["돼지고기","햄","양파"],"assume":["식용유","설탕","간장"],"macro":{"carb":1,"protein":1,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":10,"steps":["Chop kimchi","Stir-fry in pan","Adjust sweetness/seasoning","Add toppings and stir-fry"],"missing_ok":["설탕"]},
+  {"id":"R005","name":"Tomato Egg Scramble","required":["달걀","토마토"],"optional":["양파","대파"],"assume":["소금","식용유","후추"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":3},"taste":["깔끔","담백"],"time":10,"steps":["Scramble eggs roughly","Cook eggs first and set aside","Stir-fry tomatoes","Combine eggs again","Season with salt/pepper"],"missing_ok":["양파"]},
+  {"id":"R006","name":"Potato Pancake","required":["감자"],"optional":["양파","달걀"],"assume":["소금","식용유"],"macro":{"carb":3,"protein":1,"fat":1,"vitamin":1},"taste":["집밥","담백"],"time":15,"steps":["Shred potatoes","Rinse to adjust starch","Season with salt","Spread in pan and cook","Flip and cook until golden"],"missing_ok":["달걀"]},
+  {"id":"R007","name":"Butter Roasted Potatoes","required":["감자"],"optional":["파슬리","치즈"],"assume":["버터","소금","후추"],"macro":{"carb":3,"protein":0,"fat":2,"vitamin":1},"taste":["고기느낌","담백"],"time":18,"steps":["Microwave potatoes until cooked","Melt butter in pan","Add potatoes and roast","Season with salt/pepper","Add cheese option"],"missing_ok":["치즈"]},
+  {"id":"R008","name":"Tofu Scramble","required":["두부"],"optional":["양파","파프리카","버섯"],"assume":["소금","식용유","후추"],"macro":{"carb":0,"protein":3,"fat":1,"vitamin":2},"taste":["깔끔","담백"],"time":10,"steps":["Mash tofu","Stir-fry vegetables","Add tofu and stir-fry","Season with salt/pepper"],"missing_ok":["버섯","파프리카"]},
+  {"id":"R009","name":"Steamed Egg (Microwave)","required":["달걀"],"optional":["대파","우유"],"assume":["소금","참기름"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":7,"steps":["Beat eggs","Add water/milk slightly","Season with salt","Microwave 2-3 times in intervals","Add sesame oil/green onion"],"missing_ok":["우유"]},
+  {"id":"R010","name":"Vegetable Egg Roll","required":["달걀"],"optional":["당근","양파","대파"],"assume":["소금","식용유"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":2},"taste":["집밥","담백"],"time":12,"steps":["Chop vegetables finely","Mix into eggs","Pour thinly in pan and roll","Cool slightly and slice"],"missing_ok":["당근"]},
+  {"id":"R011","name":"Kimchi Stew (Simple)","required":["김치"],"optional":["돼지고기","두부","대파"],"assume":["물","고춧가루","간장"],"macro":{"carb":1,"protein":2,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":20,"steps":["Stir-fry kimchi","Add water","Adjust seasoning","Add tofu/meat","Finish with green onion"],"missing_ok":["돼지고기"]},
+  {"id":"R012","name":"Soybean Paste Soup (Clear)","required":["된장"],"optional":["두부","양파","감자","애호박"],"assume":["물","마늘"],"macro":{"carb":1,"protein":2,"fat":0,"vitamin":2},"taste":["깔끔","집밥"],"time":18,"steps":["Boil water","Dissolve soybean paste","Add ingredients","Simmer once","Adjust seasoning"],"missing_ok":["마늘"]},
+  {"id":"R013","name":"Stir-Fried Cabbage","required":["양배추"],"optional":["햄","양파"],"assume":["소금","식용유","간장"],"macro":{"carb":1,"protein":1,"fat":1,"vitamin":3},"taste":["깔끔","담백"],"time":10,"steps":["Slice cabbage","Stir-fry quickly on high heat","Season with salt/soy sauce","Add toppings"],"missing_ok":["햄"]},
+  {"id":"R014","name":"Chicken Breast Vegetable Stir-Fry","required":["닭가슴살"],"optional":["양파","파프리카","브로콜리"],"assume":["소금","후추","식용유"],"macro":{"carb":0,"protein":3,"fat":1,"vitamin":2},"taste":["깔끔","고기느낌"],"time":15,"steps":["Cut chicken into bite-size","Prepare vegetables","Cook chicken first","Add vegetables and stir-fry","Season with salt/pepper"],"missing_ok":["브로콜리"]},
+  {"id":"R015","name":"Oat/Yogurt Bowl","required":["요거트"],"optional":["오트","과일","견과"],"assume":["꿀"],"macro":{"carb":2,"protein":2,"fat":1,"vitamin":2},"taste":["깔끔"],"time":5,"steps":["Put yogurt in bowl","Top with oats/fruit","Sprinkle nuts","Drizzle honey"],"missing_ok":["오트","견과"]},
+  {"id":"R016","name":"Pasta Aglio e Olio (Simple)","required":["파스타면"],"optional":["마늘","베이컨","페퍼론치노"],"assume":["올리브오일","소금","후추"],"macro":{"carb":3,"protein":1,"fat":2,"vitamin":0},"taste":["깔끔","고기느낌"],"time":15,"steps":["Boil pasta","Stir-fry garlic in oil","Add pasta and stir-fry","Season with salt/pepper","Add toppings"],"missing_ok":["베이컨","페퍼론치노"]},
+  {"id":"R017","name":"Bibim Noodles (Simple)","required":["면"],"optional":["오이","김치","달걀"],"assume":["고추장","식초","설탕","간장"],"macro":{"carb":3,"protein":1,"fat":0,"vitamin":2},"taste":["매콤"],"time":12,"steps":["Boil noodles","Make sauce","Mix noodles+sauce","Top with toppings"],"missing_ok":["오이","달걀"]},
+  {"id":"R018","name":"Dumpling Soup","required":["냉동만두"],"optional":["대파","달걀"],"assume":["물","간장","소금"],"macro":{"carb":2,"protein":2,"fat":2,"vitamin":1},"taste":["집밥"],"time":12,"steps":["Boil water","Add dumplings","Adjust seasoning","Add beaten egg (option)","Add green onion"],"missing_ok":["달걀"]},
+  {"id":"R019","name":"Ham Potato Stir-Fry","required":["감자"],"optional":["햄","양파","당근"],"assume":["소금","식용유","간장"],"macro":{"carb":3,"protein":1,"fat":1,"vitamin":1},"taste":["집밥","고기느낌"],"time":15,"steps":["Shred potatoes","Stir-fry potatoes first","Add ham/vegetables","Adjust seasoning"],"missing_ok":["당근"]},
+  {"id":"R020","name":"Omelet (Fridge Cleanout)","required":["달걀"],"optional":["치즈","햄","양파","버섯"],"assume":["소금","버터","후추"],"macro":{"carb":0,"protein":2,"fat":2,"vitamin":1},"taste":["담백","고기느낌"],"time":12,"steps":["Stir-fry fillings","Beat eggs","Pour into pan and cook","Fold and finish"],"missing_ok":["치즈"]},
+  {"id":"R021","name":"Tofu Kimchi","required":["두부","김치"],"optional":["돼지고기","대파"],"assume":["식용유","설탕"],"macro":{"carb":1,"protein":3,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":15,"steps":["Blanch tofu","Stir-fry kimchi","Place on plate","Eat together"],"missing_ok":["돼지고기"]},
+  {"id":"R022","name":"Soy Sauce Egg Rice","required":["밥","달걀"],"optional":["버터","김"],"assume":["간장","참기름"],"macro":{"carb":3,"protein":2,"fat":2,"vitamin":0},"taste":["집밥","담백"],"time":5,"steps":["Prepare warm rice","Place egg on top","Add soy sauce+sesame oil","Mix well","Add seaweed"],"missing_ok":["버터","김"]},
+  {"id":"R023","name":"Salad + Protein Topping","required":["샐러드채소"],"optional":["닭가슴살","달걀","참치캔","요거트"],"assume":["소금","올리브오일","식초"],"macro":{"carb":0,"protein":2,"fat":1,"vitamin":3},"taste":["깔끔"],"time":8,"steps":["Wash greens","Prepare toppings","Make dressing","Mix and eat"],"missing_ok":["올리브오일"]},
+  {"id":"R024","name":"Gochujang Pork Stir-Fry (Simple)","required":["돼지고기"],"optional":["양파","대파","양배추"],"assume":["고추장","간장","설탕","마늘","식용유"],"macro":{"carb":1,"protein":3,"fat":2,"vitamin":2},"taste":["매콤","고기느낌"],"time":15,"steps":["Stir-fry meat","Add vegetables","Add sauce and stir-fry","Adjust seasoning"],"missing_ok":["양배추"]},
+  {"id":"R025","name":"Fish Cake Stir-Fry","required":["어묵"],"optional":["양파","대파","당근"],"assume":["간장","설탕","식용유"],"macro":{"carb":1,"protein":2,"fat":1,"vitamin":1},"taste":["집밥"],"time":10,"steps":["Slice fish cakes","Stir-fry vegetables","Add fish cakes","Season with soy sauce/sugar"],"missing_ok":["당근"]},
+  {"id":"R026","name":"Cheese Toast (Simple)","required":["빵","치즈"],"optional":["햄","달걀"],"assume":["버터"],"macro":{"carb":2,"protein":2,"fat":2,"vitamin":0},"taste":["고기느낌","담백"],"time":7,"steps":["Toast bread","Place cheese/toppings","Heat until melted","Done"],"missing_ok":["햄"]},
+  {"id":"R027","name":"Kimchi Fried Rice","required":["밥","김치"],"optional":["달걀","햄","치즈"],"assume":["식용유","간장"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":12,"steps":["Stir-fry kimchi","Add rice and stir-fry","Adjust seasoning","Add egg/cheese"],"missing_ok":["치즈"]},
+  {"id":"R028","name":"Bean Sprout Soup (Simple)","required":["콩나물"],"optional":["대파","달걀"],"assume":["물","소금","마늘"],"macro":{"carb":0,"protein":1,"fat":0,"vitamin":3},"taste":["깔끔","집밥"],"time":15,"steps":["Boil water","Add bean sprouts","Season with salt/garlic","Finish with green onion"],"missing_ok":["마늘"]},
+  {"id":"R029","name":"Soy Sauce Butter Potato Rice (Potato Rice Bowl)","required":["감자","밥"],"optional":["달걀","양파"],"assume":["간장","버터","후추"],"macro":{"carb":3,"protein":1,"fat":2,"vitamin":1},"taste":["집밥","담백"],"time":15,"steps":["Chop potatoes finely","Cook in pan","Add soy sauce/butter","Place on rice"],"missing_ok":["달걀"]},
+  {"id":"R030","name":"Vegetable Ramen (Upgraded)","required":["라면"],"optional":["양파","대파","달걀","김치"],"assume":["물"],"macro":{"carb":3,"protein":1,"fat":2,"vitamin":1},"taste":["매콤"],"time":8,"steps":["Boil water","Add vegetables first","Add noodles/soup base","Add egg","Add green onion/kimchi"],"missing_ok":["달걀"]},
+  {"id":"R041","name":"Fried Egg Rice","required":["밥","달걀"],"optional":["김","버터"],"assume":["소금","식용유"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":0},"taste":["집밥","담백"],"time":5,"steps":["Fry egg","Place on rice","Add soy sauce/salt","Add seaweed"],"missing_ok":["김"]},
+  {"id":"R042","name":"Kimchi Egg Rice","required":["밥","김치","달걀"],"optional":["참기름"],"assume":["식용유"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":8,"steps":["Stir-fry kimchi","Scramble eggs","Add rice and stir-fry","Add sesame oil"],"missing_ok":[]},
+  {"id":"R043","name":"Tofu Kimbap","required":["밥","두부"],"optional":["김","당근","오이"],"assume":["소금","참기름"],"macro":{"carb":3,"protein":3,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":15,"steps":["Blanch tofu","Prepare rice","Place rice/tofu on seaweed","Roll"],"missing_ok":["당근","오이"]},
+  {"id":"R044","name":"Bacon & Eggs","required":["베이컨","달걀"],"optional":["빵","치즈"],"assume":["소금","후추"],"macro":{"carb":1,"protein":2,"fat":2,"vitamin":0},"taste":["고기느낌","담백"],"time":10,"steps":["Cook bacon","Fry egg","Season with salt/pepper","Place on bread"],"missing_ok":["빵"]},
+  {"id":"R045","name":"Bean Sprout Rice","required":["밥","콩나물"],"optional":["달걀","대파"],"assume":["소금","참기름"],"macro":{"carb":3,"protein":1,"fat":0,"vitamin":3},"taste":["깔끔","집밥"],"time":12,"steps":["Stir-fry bean sprouts","Add rice and stir-fry","Season with salt","Add sesame oil/green onion"],"missing_ok":["달걀"]},
+  {"id":"R046","name":"Fish Cake Soup","required":["어묵"],"optional":["대파","달걀","라면"],"assume":["물","소금","간장"],"macro":{"carb":1,"protein":2,"fat":1,"vitamin":1},"taste":["집밥"],"time":10,"steps":["Boil water","Add fish cakes","Adjust seasoning","Add green onion/egg"],"missing_ok":["달걀"]},
+  {"id":"R047","name":"Cheese Egg Roll","required":["달걀","치즈"],"optional":["햄","양파"],"assume":["소금","식용유"],"macro":{"carb":0,"protein":2,"fat":2,"vitamin":0},"taste":["고기느낌","담백"],"time":10,"steps":["Beat eggs","Add cheese","Pour in pan and roll","Add toppings"],"missing_ok":["햄"]},
+  {"id":"R048","name":"Potato Soup","required":["감자"],"optional":["양파","우유"],"assume":["소금","버터"],"macro":{"carb":3,"protein":0,"fat":1,"vitamin":2},"taste":["담백"],"time":20,"steps":["Cook potatoes","Mash","Add milk","Adjust seasoning"],"missing_ok":["우유"]},
+  {"id":"R049","name":"Kimchi Tofu Soup","required":["김치","두부"],"optional":["대파","돼지고기"],"assume":["물","고춧가루"],"macro":{"carb":1,"protein":3,"fat":1,"vitamin":2},"taste":["매콤","집밥"],"time":15,"steps":["Stir-fry kimchi","Add water","Add tofu","Adjust seasoning"],"missing_ok":["돼지고기"]},
+  {"id":"R050","name":"Vegetable Fried Rice","required":["밥"],"optional":["양파","당근","양배추","달걀"],"assume":["식용유","소금","간장"],"macro":{"carb":3,"protein":1,"fat":1,"vitamin":2},"taste":["깔끔","집밥"],"time":12,"steps":["Stir-fry vegetables","Add rice and stir-fry","Adjust seasoning","Add egg"],"missing_ok":["당근"]},
+  {"id":"R051","name":"Tuna Kimbap","required":["밥","참치캔"],"optional":["김","오이","당근"],"assume":["참기름","소금"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["집밥"],"time":15,"steps":["Drain tuna oil","Prepare rice","Place rice/tuna on seaweed","Roll"],"missing_ok":["오이"]},
+  {"id":"R052","name":"Egg Noodles","required":["면","달걀"],"optional":["대파","김치"],"assume":["물","소금"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":10,"steps":["Boil water","Add noodles","Add beaten egg","Add green onion/kimchi"],"missing_ok":["김치"]},
+  {"id":"R053","name":"Cheese Ramen","required":["라면","치즈"],"optional":["달걀","대파"],"assume":["물"],"macro":{"carb":3,"protein":2,"fat":3,"vitamin":0},"taste":["고기느낌","매콤"],"time":8,"steps":["Boil ramen","Add cheese","Add egg","Add green onion"],"missing_ok":["달걀"]},
+  {"id":"R054","name":"Tofu Fried Rice","required":["밥","두부"],"optional":["양파","대파"],"assume":["식용유","간장","소금"],"macro":{"carb":3,"protein":3,"fat":1,"vitamin":1},"taste":["담백","집밥"],"time":12,"steps":["Mash tofu","Add rice and stir-fry","Season with soy sauce/salt","Add green onion"],"missing_ok":["양파"]},
+  {"id":"R055","name":"Ham Fried Rice","required":["밥","햄"],"optional":["양파","달걀","치즈"],"assume":["식용유","간장"],"macro":{"carb":3,"protein":2,"fat":1,"vitamin":1},"taste":["집밥","고기느낌"],"time":10,"steps":["Stir-fry ham","Add rice and stir-fry","Season with soy sauce","Add egg/cheese"],"missing_ok":["치즈"]}
+];
+
+/* =====================
+   State
+===================== */
+let currentStep = 1;
+let selectedIngredients = JSON.parse(localStorage.getItem('fridge.ingredients')||'[]');
+let goal = localStorage.getItem('fridge.goal') || null;
+let taste = localStorage.getItem('fridge.taste') || null;
+let favorites = JSON.parse(localStorage.getItem('fridge.favorites')||'[]');
+let history = JSON.parse(localStorage.getItem('fridge.history')||'[]');
+
+/* =====================
+   UI Generation
+===================== */
+function renderIngredients() {
+  const ingWrap = document.getElementById('ingredients');
+  ingWrap.innerHTML = '';
+  
+  Object.entries(ingredientCategories).forEach(([category, items]) => {
+    const categoryDiv = document.createElement('div');
+    categoryDiv.className = 'category';
+    
+    const title = document.createElement('div');
+    title.className = 'category-title';
+    title.textContent = category;
+    categoryDiv.appendChild(title);
+    
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    
+    items.forEach(i => {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.className = 'secondary';
+      // Check both English and Korean names
+      const koName = ingredientMapReverse[i];
+      if(selectedIngredients.includes(i) || (koName && selectedIngredients.includes(koName))) btn.classList.add('active');
+      btn.onclick = () => {
+        btn.classList.toggle('active');
+        const koName = ingredientMapReverse[i];
+        const toCheck = koName || i;
+        if (selectedIngredients.includes(toCheck)) {
+          selectedIngredients = selectedIngredients.filter(x => x !== toCheck);
+        } else {
+          selectedIngredients.push(toCheck);
+        }
+        localStorage.setItem('fridge.ingredients', JSON.stringify(selectedIngredients));
+        updateNextButton(1);
+        hideWarn(1);
+      };
+      grid.appendChild(btn);
+    });
+    
+    categoryDiv.appendChild(grid);
+    ingWrap.appendChild(categoryDiv);
+  });
+}
+
+function showStep(n) {
+  currentStep = n;
+  document.querySelectorAll('.step').forEach(s => {
+    s.classList.toggle('active', Number(s.dataset.step) === n);
+  });
+  
+  const progress = Math.round(((n - 1) / 3) * 100);
+  document.getElementById('progressBar').style.width = progress + '%';
+  
+  // STEP 4 is result screen, show different text
+  if(n === 4) {
+    const funMessages = [
+      '🚀 Ready to rescue?',
+      '🎯 Fridge rescue mission start!',
+      '🍳 Ready to start cooking right now?',
+      '✨ All set to cook!',
+      '🎉 Fridge rescue success!',
+      '👨‍🍳 Chef mode ON!',
+      '🔥 Perfect time to cook!'
+    ];
+    document.getElementById('stepLabel').textContent = funMessages[Math.floor(Math.random() * funMessages.length)];
+    document.getElementById('progressBar').style.width = '100%';
+  } else {
+    document.getElementById('stepLabel').textContent = `STEP ${n} / 3`;
+  }
+  
+  // STEP 2, 3 show selected buttons
+  if(n === 2) updateGoalButtons();
+  if(n === 3) updateTasteButtons();
+  
+  // STEP 4 automatically shows results
+  if(n === 4) {
+    recommend();
+  }
+}
+
+function updateGoalButtons() {
+  document.querySelectorAll('[data-step="2"] .secondary').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if(goal) {
+    const btn = [...document.querySelectorAll('[data-step="2"] .secondary')]
+      .find(b => b.onclick.toString().includes(`'${goal}'`));
+    if(btn) btn.classList.add('active');
+  }
+}
+
+function updateTasteButtons() {
+  document.querySelectorAll('[data-step="3"] .secondary').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if(taste) {
+    const btn = [...document.querySelectorAll('[data-step="3"] .secondary')]
+      .find(b => b.onclick.toString().includes(`'${taste}'`));
+    if(btn) btn.classList.add('active');
+  }
+}
+
+function setGoal(g) {
+  goal = g;
+  localStorage.setItem('fridge.goal', g);
+  updateGoalButtons();
+  setTimeout(() => goNext(2), 300);
+}
+
+function setTaste(t) {
+  taste = t;
+  localStorage.setItem('fridge.taste', t);
+  updateTasteButtons();
+  setTimeout(() => goNext(3), 300);
+}
+
+function updateNextButton(step) {
+  if(step === 1) {
+    const btn = document.getElementById('nextBtn1');
+    btn.disabled = selectedIngredients.length === 0;
+  }
+}
+
+function hideWarn(step) {
+  const warn = document.getElementById(`warn${step}`);
+  if(warn) warn.style.display = 'none';
+}
+
+function goNext(step) {
+  if(step === 1) {
+    if(selectedIngredients.length === 0) {
+      document.getElementById('warn1').style.display = 'block';
+      return;
+    }
+  }
+  showStep(step + 1);
+}
+
+function resetSteps() {
+  currentStep = 1;
+  goal = null;
+  taste = null;
+  selectedIngredients = [];
+  localStorage.removeItem('fridge.ingredients');
+  localStorage.removeItem('fridge.goal');
+  localStorage.removeItem('fridge.taste');
+  renderIngredients();
+  showStep(1);
+}
+
+/* =====================
+   Recommendation Logic
+===================== */
+function scoreRecipe(r){
+  // Check required ingredients (tuna can accepts tuna)
+  for(const req of r.required){
+    if(req === '참치캔') {
+      const hasTunaCan = selectedIngredients.includes('참치캔') || selectedIngredients.includes('Tuna Can');
+      const hasTuna = selectedIngredients.includes('참치') || selectedIngredients.includes('Tuna');
+      if(!hasTunaCan && !hasTuna) {
+        return -1;
+      }
+    } else {
+      const koName = req;
+      const enName = ingredientMap[req];
+      const hasKo = selectedIngredients.includes(koName);
+      const hasEn = enName && selectedIngredients.includes(enName);
+      if(!hasKo && !hasEn) {
+        return -1;
+      }
+    }
+  }
+  let score = 10;
+
+  // Nutrition weight
+  if(goal==='protein') score += r.macro.protein * 3;
+  if(goal==='vitamin') score += r.macro.vitamin * 3;
+  if(goal==='light') score += r.macro.fat * -1;
+
+  // Taste mapping
+  const tasteMap = {
+    'spicy': ['매콤', 'spicy'],
+    'mild': ['담백', 'mild'],
+    'home': ['집밥', 'home'],
+    'any': ['상관없음', 'any']
+  };
+  
+  // Taste matching check
+  if(taste && taste !== 'any') {
+    const matched = r.taste.some(t => {
+      if(tasteMap[taste]) {
+        return tasteMap[taste].includes(t);
+      }
+      return t === taste;
+    });
+    if(matched) score += 5;
+  }
+
+  // Time
+  if(r.time <= 10) score += 3;
+
+  return score;
+}
+
+function getReason(r){
+  const reasons = {
+    'protein': ['Perfect for protein boost! 💪', 'Great for building muscle!', 'Packed with protein'],
+    'vitamin': ['Full of veggies & vitamins! 🥬', 'Great for healthy eating', 'Vitamin boost complete!'],
+    'light': ['Perfect for light eating! ✨', 'Enjoy without feeling heavy', 'Great as a light meal'],
+    'heavy': ['Great for filling up! 🍖', 'Satisfying fullness!', 'Can eat until full']
+  };
+  
+  if(goal && reasons[goal]) {
+    return reasons[goal][Math.floor(Math.random() * reasons[goal].length)];
+  }
+  return 'Great recipe to make with your fridge ingredients right now! 👍';
+}
+
+function copyRecipe(r){
+  const text = `🍳 ${r.name}
+Reason: ${getReason(r)}
+Time: ${r.time} min
+${r.steps ? `Steps:\n${r.steps.map((s, i) => `${i+1}. ${s}`).join('\n')}` : ''}
+#FridgeRescue #fridge`; 
+  navigator.clipboard.writeText(text);
+  const messages = ['Copied! 📋', 'Recipe copied! ✨', 'Saved! 👍'];
+  alert(messages[Math.floor(Math.random() * messages.length)]);
+}
+
+function toggleFavorite(name){
+  if(favorites.includes(name)){
+    favorites = favorites.filter(f=>f!==name);
+  } else {
+    favorites.push(name);
+  }
+  localStorage.setItem('fridge.favorites', JSON.stringify(favorites));
+  recommend();
+}
+
+function renderHistory(){
+  const wrap = document.getElementById('history');
+  wrap.innerHTML='';
+  history.slice(-7).reverse().forEach(h=>{
+    const d=document.createElement('div');
+    d.className='card';
+    d.innerHTML=`<strong>${h.name}</strong><br/><small>${h.date}</small>`;
+    wrap.appendChild(d);
+  });
+}
+
+function recommend(){
+  if(selectedIngredients.length === 0) {
+    document.getElementById('result').innerHTML = '<p style="color:#dc2626; padding:20px; background:#fee2e2; border-radius:8px;">😅 You haven\'t selected any ingredients yet!<br/>Please go back to STEP 1 and check what\'s in your fridge.</p>';
+    return;
+  }
+  
+  const perishables = ['두부','콩나물','양배추','버섯','시금치','상추','Tofu','Bean Sprouts','Cabbage','Mushroom'];
+  const ranked = recipes
+    .map(r => {
+      let s = scoreRecipe(r);
+      if(s < 0) return null;
+      if(r.required.some(x=>perishables.includes(x) || perishables.includes(ingredientMap[x]))) s += 4;
+      if(favorites.includes(r.name)) s += 5;
+      // Add score for more optional ingredients
+      if(r.optional) {
+        const matchedOptional = r.optional.filter(opt => {
+          const koName = opt;
+          const enName = ingredientMap[opt];
+          return selectedIngredients.includes(koName) || (enName && selectedIngredients.includes(enName));
+        }).length;
+        s += matchedOptional * 2;
+      }
+      return {...r, score:s};
+    })
+    .filter(r => r !== null && r.score > 0)
+    .sort((a,b)=>b.score-a.score)
+    .slice(0,5); // Show up to 5
+
+  const res = document.getElementById('result');
+  res.innerHTML = '';
+  
+  if(!ranked.length) {
+    const messages = [
+      '😢 Unfortunately, there are no recipes you can make with the selected ingredients...<br/>Try adding more ingredients or go back to STEP 1 to select again?',
+      '🤔 It\'s hard to make a recipe with just the selected ingredients...<br/>Do you have other ingredients in your fridge? Want to check again?',
+      '💔 Rescue failed... but don\'t give up!<br/>Adding a few more ingredients will help you make delicious recipes!'
+    ];
+    res.innerHTML = `<p style="color:#dc2626; padding:20px; background:#fee2e2; border-radius:8px;">${messages[Math.floor(Math.random() * messages.length)]}</p>`;
+    renderHistory();
+    return;
+  }
+
+  // Success message
+  const successMessages = [
+    `Good news! Found ${ranked.length} recipes! 🎉`,
+    `Fridge rescue success! I'll recommend ${ranked.length} recipes! ✨`,
+    `Wow! Discovered ${ranked.length} delicious recipes! 🍳`
+  ];
+  res.innerHTML = `<p style="color:#059669; padding:12px; background:#d1fae5; border-radius:8px; margin-bottom:16px; font-weight:500;">${successMessages[Math.floor(Math.random() * successMessages.length)]}</p>`;
+  
+  ranked.forEach((r, idx) => {
+    // Prevent duplicate history entries
+    const exists = history.some(h => h.name === r.name && h.date === new Date().toLocaleDateString());
+    if(!exists) {
+      history.push({name:r.name, date:new Date().toLocaleDateString()});
+    }
+    localStorage.setItem('fridge.history', JSON.stringify(history));
+
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.style.borderLeft = idx === 0 ? '4px solid #059669' : '1px solid #e5e7eb';
+    div.style.background = idx === 0 ? '#f0fdf4' : '#fff';
+    
+    // Show optional ingredients
+    const hasOptional = r.optional && r.optional.some(opt => {
+      const koName = opt;
+      const enName = ingredientMap[opt];
+      return selectedIngredients.includes(koName) || (enName && selectedIngredients.includes(enName));
+    });
+    const optionalText = r.optional && hasOptional 
+      ? `<br/><small style="color:#059669;">✨ Bonus ingredients: ${r.optional.filter(opt => {
+          const koName = opt;
+          const enName = ingredientMap[opt];
+          return selectedIngredients.includes(koName) || (enName && selectedIngredients.includes(enName));
+        }).map(opt => ingredientMap[opt] || opt).join(', ')}</small>`
+      : '';
+    
+    // Show cooking steps
+    const stepsText = r.steps ? `<br/><details style="margin-top:8px;"><summary style="cursor:pointer; color:#666; font-weight:500;">📝 View Cooking Steps (${r.steps.length} steps)</summary><ol style="margin:8px 0; padding-left:20px; color:#666; font-size:13px; line-height:1.8;">${r.steps.map(s => `<li>${s}</li>`).join('')}</ol></details>` : '';
+    
+    const rankEmoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : '👍';
+    
+    div.innerHTML = `
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="font-size:20px;">${rankEmoji}</span>
+        <strong style="font-size:18px;">${r.name}</strong> ${favorites.includes(r.name)?'❤️':''}
+      </div>
+      ⏱ ${r.time} min · Score ${r.score}<br/>
+      <small style="color:#666;">${getReason(r)}</small>${optionalText}${stepsText}<br/>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button onclick="copyRecipe(${JSON.stringify(r).replace(/"/g, '&quot;')})" style="flex:1; min-width:100px;">📋 Copy</button>
+        <button onclick="toggleFavorite('${r.name.replace(/'/g, "\\'")}')" class="secondary" style="flex:1; min-width:100px;">${favorites.includes(r.name)?'❤️ Remove Favorite':'🤍 Favorite'}</button>
+      </div>
+    `;
+    res.appendChild(div);
+  });
+  
+  renderHistory();
+}
+
+// Initialize
+renderIngredients();
+updateNextButton(1);
+if(goal) updateGoalButtons();
+if(taste) updateTasteButtons();
+</script>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+</html>

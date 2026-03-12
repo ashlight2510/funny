@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>이미지 합치기 & PDF 변환 — 무료 웹툴</title>
+
+    <!-- SEO / OG / Canonical -->
+    <meta
+      name="description"
+      content="여러 장의 이미지를 한 장으로 합치거나(PNG/JPG/WEBP), PDF로 변환/다운로드까지 한 번에. 드래그 정렬·여백·간격·배치 지원."
+    />
+    <meta
+      name="keywords"
+      content="이미지 합치기, 사진 합치기, 이미지 병합, png jpg webp 변환, 이미지 pdf 변환, jpg pdf, png pdf, 무료 웹툴"
+    />
+    <meta name="author" content="FunnyFunny Cloud" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/image/" />
+    <meta property="og:title" content="이미지 합치기 & PDF 변환 — 무료 웹툴" />
+    <meta
+      property="og:description"
+      content="여러 장 이미지를 한 장으로 합치고, PDF로 변환해 바로 다운로드!"
+    />
+    <!-- OG 이미지는 사용 선호에 맞춰 dummyimage.com 사용 -->
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Image+Merge+%26+PDF"
+    />
+    <meta property="og:image:alt" content="Image Merge & PDF" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='0.9em'%20font-size='90'%3E%F0%9F%93%8E%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Drag reorder -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <!-- jsPDF -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <!-- html2canvas for HTML to PDF conversion -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        background: radial-gradient(
+            1200px 800px at 20% 10%,
+            #1b2a5a33,
+            transparent 60%
+          ),
+          radial-gradient(1200px 800px at 90% 20%, #14532d33, transparent 55%),
+          #060913;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 14px;
+        padding: 10px 16px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        transition: transform 160ms ease, box-shadow 160ms ease,
+          filter 160ms ease;
+        border: 1px solid transparent;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn-primary {
+        background: radial-gradient(
+          120% 120% at 20% 20%,
+          #a5f3fc 0%,
+          #22d3ee 45%,
+          #16a34a 100%
+        );
+        color: #031123;
+        box-shadow: 0 10px 35px rgba(34, 211, 238, 0.25);
+      }
+      .btn-primary:hover {
+        filter: brightness(1.03);
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #e5e7eb;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1.5px solid rgba(34, 211, 238, 0.5);
+        color: #befafc;
+        box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.18);
+      }
+      .btn-sm {
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-size: 14px;
+      }
+      .muted {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .ringy {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      }
+      .drop-active {
+        outline: 2px dashed rgba(34, 197, 94, 0.9);
+        outline-offset: 6px;
+      }
+      .thumb {
+        aspect-ratio: 4/3;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .small {
+        font-size: 12px;
+      }
+      input[type="range"] {
+        accent-color: #22c55e;
+      }
+      .lang-switch {
+        display: inline-flex;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(8, 12, 22, 0.7);
+        padding: 4px;
+        gap: 4px;
+        font-size: 13px;
+      }
+      .lang-switch button {
+        border-radius: 999px;
+        padding: 6px 12px;
+        color: rgba(255, 255, 255, 0.7);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: rgba(34, 211, 238, 0.2);
+        color: #e9fdff;
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+</head>
+
+  <body class="text-white"><header class="max-w-6xl mx-auto px-4 pt-8 pb-4">
+      <div
+        class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-2xl glass grid place-items-center text-2xl"
+          >
+            📎
+          </div>
+          <div>
+            <h1
+              class="text-2xl sm:text-3xl font-extrabold tracking-tight"
+              data-i18n="heroTitle"
+            >
+              이미지 합치기 & PDF 변환
+            </h1>
+            <p class="muted mt-1" data-i18n="heroSubtitle">
+              여러 장 업로드 → 드래그 정렬 → 한 장으로 합치거나 PDF로 저장
+            </p>
+          </div>
+        </div>
+
+        <!-- 다른 서비스 보기: 기본 포함 -->
+        <div class="flex gap-2 items-center">
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+          <a
+            class="btn btn-outline"
+            href="https://funnyfunny.cloud/"
+            target="_blank"
+            rel="noopener"
+            ><span data-i18n="viewOtherServices">다른 서비스 보기 ↗</span></a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-14">
+      <!-- HTML to PDF Section - 주요 기능으로 상단 이동 -->
+      <section class="glass rounded-3xl p-5 ringy mb-6">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-bold" data-i18n="htmlTitle">
+              HTML → PDF 변환
+            </h2>
+            <p class="muted small mt-1" data-i18n="htmlSubtitle">
+              HTML 파일을 업로드하면 PDF로 변환해 다운로드할 수 있어요.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-4 grid lg:grid-cols-2 gap-4">
+          <div>
+            <div
+              id="htmlDropzone"
+              class="rounded-2xl border border-white/15 bg-white/5 p-5"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+              >
+                <div>
+                  <div class="font-semibold text-white" data-i18n="htmlDropTitle">
+                    HTML 파일 드래그&드롭
+                  </div>
+                  <div class="muted small mt-1" data-i18n="htmlDropHint">
+                    HTML과 이미지 파일을 함께 선택하세요.
+                  </div>
+                </div>
+                <label
+                  class="btn btn-primary relative overflow-hidden cursor-pointer shadow-lg shadow-cyan-500/15"
+                >
+                  <input
+                    id="htmlFileInput"
+                    type="file"
+                    class="absolute inset-0 opacity-0 cursor-pointer"
+                    accept=".html,.htm,text/html,image/*"
+                    multiple
+                    aria-label="HTML 및 이미지 파일 선택"
+                    data-i18n-aria="htmlFileAria"
+                  />
+                  <span class="font-semibold" data-i18n="btnSelectFiles">
+                    파일 선택
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold" data-i18n="htmlUploadedTitle">
+                  업로드된 HTML
+                </h3>
+                <button
+                  id="btnClearHtml"
+                  class="btn btn-ghost btn-sm"
+                  type="button"
+                  style="display: none"
+                  data-i18n="btnClear"
+                >
+                  비우기
+                </button>
+              </div>
+              <div id="htmlFileName" class="muted small"></div>
+            </div>
+
+            <div class="mt-4 chip rounded-2xl p-4">
+              <div class="font-semibold" data-i18n="htmlViewportTitle">
+                PDF 렌더링 폭
+              </div>
+              <div class="muted small mt-1" data-i18n="htmlViewportHint">
+                문서 성향에 맞게 PC/모바일 폭을 선택하세요.
+              </div>
+              <select
+                id="htmlViewport"
+                class="mt-2 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+              >
+                <option value="desktop" selected data-i18n="viewportDesktop">
+                  데스크톱(1280px)
+                </option>
+                <option value="wide" data-i18n="viewportWide">
+                  와이드(1600px)
+                </option>
+                <option value="auto" data-i18n="viewportAuto">
+                  문서 자동
+                </option>
+                <option value="mobile" data-i18n="viewportMobile">
+                  모바일(390px)
+                </option>
+                <option value="custom" data-i18n="viewportCustom">
+                  직접 입력
+                </option>
+              </select>
+              <div id="htmlCustomWrap" class="mt-3" style="display: none">
+                <div class="muted small" data-i18n="viewportCustomLabel">
+                  직접 입력(px)
+                </div>
+                <input
+                  id="htmlCustomWidth"
+                  type="number"
+                  min="320"
+                  max="3840"
+                  value="1280"
+                  class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button
+                id="btnConvertHtmlToPdf"
+                class="btn btn-primary w-full shadow-lg shadow-emerald-400/25"
+                type="button"
+                disabled
+                data-i18n="btnConvertHtml"
+              >
+                PDF로 변환하기
+              </button>
+              <div id="htmlStatus" class="mt-2 muted small"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="chip rounded-2xl p-4">
+              <div class="font-semibold mb-2" data-i18n="previewTitle">
+                미리보기
+              </div>
+              <div
+                id="htmlPreview"
+                class="rounded-xl border border-white/10 bg-black/30 p-3"
+                style="min-height: 300px; max-height: 600px; overflow: auto; position: relative;"
+              >
+                <div
+                  class="muted small text-center py-8"
+                  data-i18n="htmlPreviewEmpty"
+                >
+                  HTML 파일을 업로드하면 여기에 미리보기가 표시됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid lg:grid-cols-2 gap-4">
+        <!-- Upload -->
+        <div class="glass rounded-3xl p-5 ringy">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-bold" data-i18n="step1Title">
+                1) 이미지 넣기
+              </h2>
+              <p class="muted small mt-1" data-i18n="step1Subtitle">
+                PNG/JPG/WEBP/GIF(첫 프레임) 등 브라우저가 읽는 이미지를
+                지원해요.
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <button
+                id="btnClear"
+                class="btn btn-ghost btn-sm"
+                type="button"
+                data-i18n="btnClearAll"
+              >
+                전체 비우기
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="dropzone"
+            class="mt-4 rounded-2xl border border-white/15 bg-white/5 p-5"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+            >
+              <div>
+                <div class="font-semibold text-white" data-i18n="dropzoneTitle">
+                  여기에 드래그&드롭
+                </div>
+                <div class="muted small mt-1" data-i18n="dropzoneHint">
+                  또는 파일 선택 버튼을 눌러주세요.
+                </div>
+              </div>
+              <label
+                class="btn btn-primary relative overflow-hidden cursor-pointer shadow-lg shadow-cyan-500/15"
+              >
+                <input
+                  id="fileInput"
+                  type="file"
+                  class="absolute inset-0 opacity-0 cursor-pointer"
+                  accept="image/*"
+                  multiple
+                  aria-label="이미지 파일 선택"
+                  data-i18n-aria="imageFileAria"
+                />
+                <span class="font-semibold" data-i18n="btnSelectImages">
+                  파일 선택
+                </span>
+              </label>
+            </div>
+            <div class="mt-3 muted small" data-i18n-html="dragTip">
+              💡 팁: 리스트에서 썸네일을
+              <span class="text-white font-semibold">드래그</span>해서 순서를
+              바꿀 수 있어요.
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold" data-i18n="uploadListTitle">
+                업로드 목록
+              </h3>
+              <div class="muted small">
+                <span id="count">0</span><span data-i18n="unitImages">장</span>
+              </div>
+            </div>
+
+            <div id="list" class="mt-3 grid sm:grid-cols-2 gap-3">
+              <!-- items -->
+            </div>
+
+            <div
+              id="emptyHint"
+              class="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4 muted small text-center"
+              data-i18n-html="emptyHint"
+            >
+              📷 아직 이미지가 없어요.<br />
+              위에서 업로드하거나 파일 선택 버튼을 눌러보세요.
+            </div>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="glass rounded-3xl p-5 ringy">
+          <h2 class="text-lg font-bold" data-i18n="step2Title">
+            2) 출력 설정
+          </h2>
+          <p class="muted small mt-1" data-i18n="step2Subtitle">
+            한 장 이미지로 합치기(세로/가로/그리드) 또는 PDF(페이지별/그리드)로
+            변환.
+          </p>
+
+          <div class="mt-5 grid gap-4">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="chip rounded-2xl p-4">
+                <div class="font-semibold" data-i18n="outputTypeLabel">
+                  출력 타입
+                </div>
+                <select
+                  id="outType"
+                  class="mt-2 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                >
+                  <option value="image" data-i18n="outTypeImage">
+                    합친 이미지로 다운로드
+                  </option>
+                  <option value="pdf" data-i18n="outTypePdf">
+                    PDF로 다운로드
+                  </option>
+                  <option value="zip" data-i18n="outTypeZip">
+                    개별 변환 ZIP(이미지 포맷만)
+                  </option>
+                </select>
+                <div class="muted small mt-2" data-i18n="zipHint">
+                  ZIP은 개별 이미지를 선택한 포맷으로 변환해 묶어줘요.
+                </div>
+              </div>
+
+              <div class="chip rounded-2xl p-4">
+                <div class="font-semibold" data-i18n="imageFormatLabel">
+                  이미지 포맷
+                </div>
+                <select
+                  id="imgFormat"
+                  class="mt-2 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                >
+                  <option value="image/png">PNG</option>
+                  <option value="image/jpeg">JPG</option>
+                  <option value="image/webp">WEBP</option>
+                </select>
+                <div id="qualityWrap" class="mt-3">
+                  <div class="flex items-center justify-between">
+                    <div class="muted small" data-i18n="qualityLabel">
+                      JPG/WEBP 품질
+                    </div>
+                    <div class="small"><span id="qLabel">0.90</span></div>
+                  </div>
+                  <input
+                    id="quality"
+                    type="range"
+                    min="0.4"
+                    max="1"
+                    step="0.02"
+                    value="0.9"
+                    class="w-full mt-2"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="chip rounded-2xl p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold" data-i18n="layoutTitle">
+                    합치기 레이아웃
+                  </div>
+                  <div class="muted small mt-1" data-i18n="layoutHint">
+                    출력 타입이 “합친 이미지”일 때 적용
+                  </div>
+                </div>
+                <div class="small text-white/80" data-i18n="layoutNote">
+                  캔버스 기반
+                </div>
+              </div>
+
+              <div class="mt-3 grid sm:grid-cols-3 gap-2">
+                <label
+                  class="flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 border border-white/10 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="layout"
+                    value="vertical"
+                    class="accent-green-500"
+                    checked
+                  />
+                  <span data-i18n="layoutVertical">세로</span>
+                </label>
+                <label
+                  class="flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 border border-white/10 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="layout"
+                    value="horizontal"
+                    class="accent-green-500"
+                  />
+                  <span data-i18n="layoutHorizontal">가로</span>
+                </label>
+                <label
+                  class="flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 border border-white/10 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="layout"
+                    value="grid"
+                    class="accent-green-500"
+                  />
+                  <span data-i18n="layoutGrid">그리드</span>
+                </label>
+              </div>
+
+              <label
+                class="mt-3 flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 border border-white/10 cursor-pointer"
+              >
+                <input id="keepSize" type="checkbox" class="accent-green-500" />
+                <div>
+                  <div data-i18n="keepSizeTitle">원본 크기 그대로 붙이기</div>
+                  <div class="muted small" data-i18n="keepSizeHint">
+                    리사이즈 없이 간격 0으로 세로/가로 합치기
+                  </div>
+                </div>
+              </label>
+
+              <div class="mt-4 grid sm:grid-cols-3 gap-3">
+                <div>
+                  <div class="muted small" data-i18n="gapLabel">간격(px)</div>
+                  <input
+                    id="gap"
+                    type="number"
+                    min="0"
+                    value="16"
+                    class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                  />
+                </div>
+                <div>
+                  <div class="muted small" data-i18n="bgLabel">배경</div>
+                  <select
+                    id="bg"
+                    class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                  >
+                    <option value="#0b1220" data-i18n="bgDark">어두움</option>
+                    <option value="#ffffff" data-i18n="bgLight">흰색</option>
+                    <option value="transparent" data-i18n="bgTransparent">
+                      투명(PNG만)
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <div class="muted small" data-i18n="gridColsLabel">
+                    그리드 열
+                  </div>
+                  <input
+                    id="cols"
+                    type="number"
+                    min="1"
+                    max="8"
+                    value="2"
+                    class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-3 muted small" data-i18n-html="bgTip">
+                💡 투명 배경은 <span class="text-white font-semibold">PNG</span>일
+                때만 의미가 있어요.
+              </div>
+            </div>
+
+            <div class="chip rounded-2xl p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold" data-i18n="pdfTitle">PDF 설정</div>
+                  <div class="muted small mt-1" data-i18n="pdfHint">
+                    출력 타입이 PDF일 때 적용
+                  </div>
+                </div>
+                <div class="small text-white/80" data-i18n="pdfNote">
+                  페이지 단위
+                </div>
+              </div>
+
+              <div class="mt-3 grid sm:grid-cols-3 gap-3">
+                <div>
+                  <div class="muted small" data-i18n="pdfPaperLabel">
+                    용지
+                  </div>
+                  <select
+                    id="pdfSize"
+                    class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                  >
+                    <option value="a4">A4</option>
+                    <option value="letter">Letter</option>
+                    <option value="auto" data-i18n="pdfPaperAuto">
+                      이미지에 맞춤(권장)
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <div class="muted small" data-i18n="pdfOrientationLabel">
+                    방향
+                  </div>
+                  <select
+                    id="pdfOri"
+                    class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                  >
+                    <option value="portrait" data-i18n="orientationPortrait">
+                      세로
+                    </option>
+                    <option value="landscape" data-i18n="orientationLandscape">
+                      가로
+                    </option>
+                    <option value="auto" data-i18n="orientationAuto">
+                      자동
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <div class="muted small" data-i18n="pdfMarginLabel">
+                    여백(px)
+                  </div>
+                  <input
+                    id="pdfMargin"
+                    type="number"
+                    min="0"
+                    value="24"
+                    class="mt-1 w-full rounded-xl bg-black/30 border border-white/15 px-3 py-2"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-3 grid sm:grid-cols-2 gap-2">
+                <label
+                  class="flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 border border-white/10 cursor-pointer"
+                >
+                  <input
+                    id="pdfOnePerPage"
+                    type="radio"
+                    name="pdfMode"
+                    value="one"
+                    class="accent-green-500"
+                    checked
+                  />
+                  <span data-i18n="pdfOnePerPage">1페이지에 1장</span>
+                </label>
+                <label
+                  class="flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 border border-white/10 cursor-pointer"
+                >
+                  <input
+                    id="pdfGrid"
+                    type="radio"
+                    name="pdfMode"
+                    value="grid"
+                    class="accent-green-500"
+                  />
+                  <span data-i18n="pdfGrid">한 페이지 그리드</span>
+                </label>
+              </div>
+
+              <div class="mt-3 muted small" data-i18n-html="pdfTip">
+                💡 "이미지에 맞춤"은 이미지 크기에 맞춰 PDF 페이지를 잡아서
+                <span class="text-white font-semibold">잘림을 최소화</span>해요.
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 flex flex-col sm:flex-row gap-2">
+            <button
+              id="btnPreview"
+              class="btn btn-ghost btn-sm w-full sm:w-auto"
+              type="button"
+              data-i18n="btnPreview"
+            >
+              미리보기
+            </button>
+            <button
+              id="btnMake"
+              class="btn btn-primary w-full sm:flex-1 shadow-lg shadow-emerald-400/25"
+              type="button"
+              data-i18n="btnMakeDownload"
+            >
+              다운로드 만들기
+            </button>
+          </div>
+
+          <div id="status" class="mt-4 muted small"></div>
+        </div>
+      </section>
+
+      <!-- Preview -->
+      <section class="mt-4 glass rounded-3xl p-5 ringy">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-bold" data-i18n="step3Title">
+              3) 결과 미리보기
+            </h2>
+            <p class="muted small mt-1" data-i18n="step3Subtitle">
+              합친 이미지는 아래 캔버스로, PDF는 페이지 수/용량 정보로 미리
+              확인해요.
+            </p>
+          </div>
+          <a
+            class="btn btn-ghost btn-sm"
+            href="#top"
+            onclick="window.scrollTo({top:0,behavior:'smooth'})"
+            data-i18n="btnTop"
+            >위로</a
+          >
+        </div>
+
+        <div class="mt-4 grid lg:grid-cols-3 gap-4">
+          <div class="lg:col-span-2">
+            <div class="rounded-2xl border border-white/10 bg-black/30 p-3">
+              <canvas
+                id="canvas"
+                class="w-full rounded-xl bg-black/40"
+              ></canvas>
+            </div>
+            <div class="muted small mt-2" data-i18n="canvasTip">
+              ⚡ 캔버스는 브라우저 성능에 따라 큰 이미지에서 시간이 걸릴 수 있어요.
+            </div>
+          </div>
+
+          <div class="chip rounded-2xl p-4">
+            <div class="font-semibold" data-i18n="infoTitle">정보</div>
+            <div class="mt-3 space-y-2 small">
+              <div class="flex justify-between">
+                <span class="muted" data-i18n="infoTotal">총 이미지</span
+                ><span id="infoCount">0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="muted" data-i18n="infoSize">예상 크기</span
+                ><span id="infoSize">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="muted" data-i18n="infoPages">PDF 페이지</span
+                ><span id="infoPages">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="muted" data-i18n="infoState">상태</span
+                ><span id="infoState" data-i18n="stateIdle">대기</span>
+              </div>
+            </div>
+
+            <div
+              class="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 muted small"
+              data-i18n-html="privacyNote"
+            >
+              🔒 이 페이지는 기본적으로
+              <b class="text-white">브라우저 안에서</b> 처리합니다.<br />
+              (대용량/초고해상도는 느릴 수 있어요.)
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <footer class="mt-6 text-center muted small" data-i18n="footerNote">
+        © FunnyFunny Cloud — 빠르고 가벼운 실험적 웹서비스
+      </footer>
+    </main>
+
+    <!-- ZIP support (optional): JSZip via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "이미지 합치기 & PDF 변환 — 무료 웹툴",
+          metaDescription:
+            "여러 장의 이미지를 한 장으로 합치거나(PNG/JPG/WEBP), PDF로 변환/다운로드까지 한 번에. 드래그 정렬·여백·간격·배치 지원.",
+          metaOgTitle: "이미지 합치기 & PDF 변환 — 무료 웹툴",
+          metaOgDescription:
+            "여러 장 이미지를 한 장으로 합치고, PDF로 변환해 바로 다운로드!",
+          heroTitle: "이미지 합치기 & PDF 변환",
+          heroSubtitle:
+            "여러 장 업로드 → 드래그 정렬 → 한 장으로 합치거나 PDF로 저장",
+          viewOtherServices: "다른 서비스 보기 ↗",
+          htmlTitle: "HTML → PDF 변환",
+          htmlSubtitle:
+            "HTML 파일을 업로드하면 PDF로 변환해 다운로드할 수 있어요.",
+          htmlDropTitle: "HTML 파일 드래그&드롭",
+          htmlDropHint: "HTML과 이미지 파일을 함께 선택하세요.",
+          htmlFileAria: "HTML 및 이미지 파일 선택",
+          btnSelectFiles: "파일 선택",
+          htmlUploadedTitle: "업로드된 HTML",
+          btnClear: "비우기",
+          htmlViewportTitle: "PDF 렌더링 폭",
+          htmlViewportHint: "문서 성향에 맞게 PC/모바일 폭을 선택하세요.",
+          viewportDesktop: "데스크톱(1280px)",
+          viewportWide: "와이드(1600px)",
+          viewportAuto: "문서 자동",
+          viewportMobile: "모바일(390px)",
+          viewportCustom: "직접 입력",
+          viewportCustomLabel: "직접 입력(px)",
+          btnConvertHtml: "PDF로 변환하기",
+          previewTitle: "미리보기",
+          htmlPreviewEmpty:
+            "HTML 파일을 업로드하면 여기에 미리보기가 표시됩니다.",
+          step1Title: "1) 이미지 넣기",
+          step1Subtitle:
+            "PNG/JPG/WEBP/GIF(첫 프레임) 등 브라우저가 읽는 이미지를 지원해요.",
+          btnClearAll: "전체 비우기",
+          dropzoneTitle: "여기에 드래그&드롭",
+          dropzoneHint: "또는 파일 선택 버튼을 눌러주세요.",
+          imageFileAria: "이미지 파일 선택",
+          btnSelectImages: "파일 선택",
+          dragTip:
+            "💡 팁: 리스트에서 썸네일을 <span class=\"text-white font-semibold\">드래그</span>해서 순서를 바꿀 수 있어요.",
+          uploadListTitle: "업로드 목록",
+          unitImages: "장",
+          emptyHint:
+            "📷 아직 이미지가 없어요.<br />위에서 업로드하거나 파일 선택 버튼을 눌러보세요.",
+          step2Title: "2) 출력 설정",
+          step2Subtitle:
+            "한 장 이미지로 합치기(세로/가로/그리드) 또는 PDF(페이지별/그리드)로 변환.",
+          outputTypeLabel: "출력 타입",
+          outTypeImage: "합친 이미지로 다운로드",
+          outTypePdf: "PDF로 다운로드",
+          outTypeZip: "개별 변환 ZIP(이미지 포맷만)",
+          zipHint: "ZIP은 개별 이미지를 선택한 포맷으로 변환해 묶어줘요.",
+          imageFormatLabel: "이미지 포맷",
+          qualityLabel: "JPG/WEBP 품질",
+          layoutTitle: "합치기 레이아웃",
+          layoutHint: "출력 타입이 “합친 이미지”일 때 적용",
+          layoutNote: "캔버스 기반",
+          layoutVertical: "세로",
+          layoutHorizontal: "가로",
+          layoutGrid: "그리드",
+          keepSizeTitle: "원본 크기 그대로 붙이기",
+          keepSizeHint: "리사이즈 없이 간격 0으로 세로/가로 합치기",
+          gapLabel: "간격(px)",
+          bgLabel: "배경",
+          bgDark: "어두움",
+          bgLight: "흰색",
+          bgTransparent: "투명(PNG만)",
+          gridColsLabel: "그리드 열",
+          bgTip:
+            "💡 투명 배경은 <span class=\"text-white font-semibold\">PNG</span>일 때만 의미가 있어요.",
+          pdfTitle: "PDF 설정",
+          pdfHint: "출력 타입이 PDF일 때 적용",
+          pdfNote: "페이지 단위",
+          pdfPaperLabel: "용지",
+          pdfPaperAuto: "이미지에 맞춤(권장)",
+          pdfOrientationLabel: "방향",
+          orientationPortrait: "세로",
+          orientationLandscape: "가로",
+          orientationAuto: "자동",
+          pdfMarginLabel: "여백(px)",
+          pdfOnePerPage: "1페이지에 1장",
+          pdfGrid: "한 페이지 그리드",
+          pdfTip:
+            "💡 \"이미지에 맞춤\"은 이미지 크기에 맞춰 PDF 페이지를 잡아서 <span class=\"text-white font-semibold\">잘림을 최소화</span>해요.",
+          btnPreview: "미리보기",
+          btnMakeDownload: "다운로드 만들기",
+          step3Title: "3) 결과 미리보기",
+          step3Subtitle:
+            "합친 이미지는 아래 캔버스로, PDF는 페이지 수/용량 정보로 미리 확인해요.",
+          btnTop: "위로",
+          canvasTip:
+            "⚡ 캔버스는 브라우저 성능에 따라 큰 이미지에서 시간이 걸릴 수 있어요.",
+          infoTitle: "정보",
+          infoTotal: "총 이미지",
+          infoSize: "예상 크기",
+          infoPages: "PDF 페이지",
+          infoState: "상태",
+          stateIdle: "대기",
+          privacyNote:
+            "🔒 이 페이지는 기본적으로 <b class=\"text-white\">브라우저 안에서</b> 처리합니다.<br />(대용량/초고해상도는 느릴 수 있어요.)",
+          footerNote: "© FunnyFunny Cloud — 빠르고 가벼운 실험적 웹서비스",
+          statusLoading: "로딩",
+          statusPreview: "미리보기",
+          statusError: "오류",
+          statusBuilding: "생성중",
+          errorImageRead: "이미지를 읽을 수 없어요.",
+          errorOnlyImages: "이미지 파일만 넣을 수 있어요.",
+          statusLoadingImages: "이미지 {count}장 불러오는 중...",
+          statusUploadDone: "업로드 완료!",
+          statusPreviewError:
+            "미리보기 중 오류가 발생했어요. 설정을 다시 확인해주세요.",
+          statusNeedImages: "이미지를 먼저 추가해주세요.",
+          statusBuildingNow: "만드는 중... (큰 이미지는 시간이 걸릴 수 있어요)",
+          statusMergedDone: "합친 이미지를 다운로드했어요!",
+          statusPdfDone: "PDF 다운로드 완료!",
+          statusZipDone: "ZIP 다운로드 완료!",
+          statusZipUnsupported: "ZIP은 이미지 포맷(PNG/JPG/WEBP)에서만 지원해요.",
+          statusBuildError: "생성 중 오류가 발생했어요.",
+          errorImageCreate: "이미지 생성에 실패했어요.",
+          errorZipModule: "ZIP 모듈 로드 실패",
+          btnDelete: "삭제",
+          htmlNotFound: "HTML 파일을 찾을 수 없어요.",
+          htmlReading: "HTML 파일 읽는 중...",
+          htmlConvertingImages: "이미지 경로 변환 중...",
+          htmlLoaded: "HTML 파일 로드 완료!",
+          htmlReadFail: "HTML 파일을 읽을 수 없어요: {message}",
+          htmlNeedUpload: "먼저 HTML 파일을 업로드해주세요.",
+          htmlLibMissing: "PDF 변환 라이브러리를 불러올 수 없어요.",
+          htmlLoadingImages: "이미지 로딩 중...",
+          htmlConverting:
+            "PDF 변환 중... (페이지가 길면 시간이 걸릴 수 있어요)",
+          htmlPdfDone: "PDF 다운로드 완료!",
+          htmlPdfFail: "PDF 변환 중 오류가 발생했어요: {message}",
+          htmlPreviewEmptyHtml:
+            "📄 HTML 파일을 업로드하면 여기에 미리보기가 표시됩니다.",
+          htmlFileNameWithImages: "{name} (이미지 {count}개 포함)",
+          unknownError: "알 수 없는 오류",
+        },
+        en: {
+          metaTitle: "Image Merge & PDF — Free Web Tool",
+          metaDescription:
+            "Combine multiple images into one (PNG/JPG/WEBP) or convert to PDF and download. Drag sorting, margins, spacing, and layout supported.",
+          metaOgTitle: "Image Merge & PDF — Free Web Tool",
+          metaOgDescription:
+            "Merge multiple images into one and download as PDF instantly.",
+          heroTitle: "Image Merge & PDF",
+          heroSubtitle:
+            "Upload → drag reorder → merge into one image or save as PDF",
+          viewOtherServices: "See other services ↗",
+          htmlTitle: "HTML → PDF",
+          htmlSubtitle:
+            "Upload an HTML file and convert it to PDF for download.",
+          htmlDropTitle: "Drag & drop HTML file",
+          htmlDropHint: "Select the HTML file with its images together.",
+          htmlFileAria: "Select HTML and image files",
+          btnSelectFiles: "Select files",
+          htmlUploadedTitle: "Uploaded HTML",
+          btnClear: "Clear",
+          htmlViewportTitle: "PDF rendering width",
+          htmlViewportHint: "Pick PC/mobile width that fits the document.",
+          viewportDesktop: "Desktop (1280px)",
+          viewportWide: "Wide (1600px)",
+          viewportAuto: "Auto from document",
+          viewportMobile: "Mobile (390px)",
+          viewportCustom: "Custom",
+          viewportCustomLabel: "Custom input (px)",
+          btnConvertHtml: "Convert to PDF",
+          previewTitle: "Preview",
+          htmlPreviewEmpty: "Upload an HTML file to preview it here.",
+          step1Title: "1) Add images",
+          step1Subtitle:
+            "Supports PNG/JPG/WEBP/GIF (first frame) and other browser-readable images.",
+          btnClearAll: "Clear all",
+          dropzoneTitle: "Drag & drop here",
+          dropzoneHint: "Or click the file select button.",
+          imageFileAria: "Select image files",
+          btnSelectImages: "Select files",
+          dragTip:
+            "💡 Tip: Drag the thumbnails in the list to change order.",
+          uploadListTitle: "Upload list",
+          unitImages: " files",
+          emptyHint:
+            "📷 No images yet.<br />Upload above or click the file select button.",
+          step2Title: "2) Output settings",
+          step2Subtitle:
+            "Merge into one image (vertical/horizontal/grid) or export as PDF (per page/grid).",
+          outputTypeLabel: "Output type",
+          outTypeImage: "Download merged image",
+          outTypePdf: "Download as PDF",
+          outTypeZip: "Convert ZIP (image formats only)",
+          zipHint: "ZIP converts each image to the chosen format and bundles it.",
+          imageFormatLabel: "Image format",
+          qualityLabel: "JPG/WEBP quality",
+          layoutTitle: "Merge layout",
+          layoutHint: "Applies when output type is “merged image”",
+          layoutNote: "Canvas-based",
+          layoutVertical: "Vertical",
+          layoutHorizontal: "Horizontal",
+          layoutGrid: "Grid",
+          keepSizeTitle: "Keep original sizes",
+          keepSizeHint: "Merge with zero gap and no resizing",
+          gapLabel: "Gap (px)",
+          bgLabel: "Background",
+          bgDark: "Dark",
+          bgLight: "White",
+          bgTransparent: "Transparent (PNG only)",
+          gridColsLabel: "Grid columns",
+          bgTip:
+            "💡 Transparent background only works with <span class=\"text-white font-semibold\">PNG</span>.",
+          pdfTitle: "PDF settings",
+          pdfHint: "Applies when output type is PDF",
+          pdfNote: "Per page",
+          pdfPaperLabel: "Paper",
+          pdfPaperAuto: "Fit to image (recommended)",
+          pdfOrientationLabel: "Orientation",
+          orientationPortrait: "Portrait",
+          orientationLandscape: "Landscape",
+          orientationAuto: "Auto",
+          pdfMarginLabel: "Margin (px)",
+          pdfOnePerPage: "One image per page",
+          pdfGrid: "Grid on one page",
+          pdfTip:
+            "💡 “Fit to image” sizes the PDF page to minimize <span class=\"text-white font-semibold\">cropping</span>.",
+          btnPreview: "Preview",
+          btnMakeDownload: "Build download",
+          step3Title: "3) Result preview",
+          step3Subtitle:
+            "Merged images show on the canvas; PDFs show page count/size info.",
+          btnTop: "Top",
+          canvasTip:
+            "⚡ Large images can be slow depending on browser performance.",
+          infoTitle: "Info",
+          infoTotal: "Total images",
+          infoSize: "Estimated size",
+          infoPages: "PDF pages",
+          infoState: "State",
+          stateIdle: "Idle",
+          privacyNote:
+            "🔒 This page processes everything <b class=\"text-white\">in your browser</b>.<br />(Large/high-res files can be slow.)",
+          footerNote: "© FunnyFunny Cloud — fast, lightweight experimental web",
+          statusLoading: "Loading",
+          statusPreview: "Preview",
+          statusError: "Error",
+          statusBuilding: "Building",
+          errorImageRead: "Unable to read the image.",
+          errorOnlyImages: "Only image files are supported.",
+          statusLoadingImages: "Loading {count} images...",
+          statusUploadDone: "Upload complete!",
+          statusPreviewError:
+            "Preview error. Please re-check your settings.",
+          statusNeedImages: "Please add images first.",
+          statusBuildingNow: "Building... (large images may take a while)",
+          statusMergedDone: "Merged image downloaded!",
+          statusPdfDone: "PDF downloaded!",
+          statusZipDone: "ZIP downloaded!",
+          statusZipUnsupported:
+            "ZIP is supported only for PNG/JPG/WEBP output.",
+          statusBuildError: "An error occurred during build.",
+          errorImageCreate: "Failed to generate image.",
+          errorZipModule: "Failed to load ZIP module",
+          btnDelete: "Delete",
+          htmlNotFound: "Could not find an HTML file.",
+          htmlReading: "Reading HTML file...",
+          htmlConvertingImages: "Converting image paths...",
+          htmlLoaded: "HTML loaded!",
+          htmlReadFail: "Failed to read HTML file: {message}",
+          htmlNeedUpload: "Upload an HTML file first.",
+          htmlLibMissing: "PDF libraries are not available.",
+          htmlLoadingImages: "Loading images...",
+          htmlConverting: "Converting to PDF... (long pages may take time)",
+          htmlPdfDone: "PDF downloaded!",
+          htmlPdfFail: "PDF conversion failed: {message}",
+          htmlPreviewEmptyHtml:
+            "📄 Upload an HTML file to preview it here.",
+          htmlFileNameWithImages: "{name} (includes {count} images)",
+          unknownError: "Unknown error",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const table = translations[currentLang] || translations.ko;
+        const template = table[key] ?? translations.ko[key] ?? key;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", t("metaOgTitle"));
+        const ogDesc = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        if (ogDesc) ogDesc.setAttribute("content", t("metaOgDescription"));
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          el.setAttribute("aria-label", t(el.dataset.i18nAria));
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        renderList();
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      const $ = (id) => document.getElementById(id);
+
+      const fileInput = $("fileInput");
+      const dropzone = $("dropzone");
+      const listEl = $("list");
+      const emptyHint = $("emptyHint");
+      const countEl = $("count");
+      const statusEl = $("status");
+
+      const outTypeEl = $("outType");
+      const imgFormatEl = $("imgFormat");
+      const qualityEl = $("quality");
+      const qLabelEl = $("qLabel");
+      const qualityWrap = $("qualityWrap");
+
+      const gapEl = $("gap");
+      const bgEl = $("bg");
+      const colsEl = $("cols");
+      const keepSizeEl = $("keepSize");
+
+      const pdfSizeEl = $("pdfSize");
+      const pdfOriEl = $("pdfOri");
+      const pdfMarginEl = $("pdfMargin");
+
+      const infoCountEl = $("infoCount");
+      const infoSizeEl = $("infoSize");
+      const infoPagesEl = $("infoPages");
+      const infoStateEl = $("infoState");
+
+      const canvas = $("canvas");
+      const ctx = canvas.getContext("2d");
+
+      /** @type {{id:string, name:string, file:File|null, src:string, img:HTMLImageElement, w:number, h:number}[]} */
+      let items = [];
+
+      function setStatus(msg, good = false) {
+        statusEl.innerHTML = msg ? (good ? `✅ ${msg}` : `ℹ️ ${msg}`) : "";
+      }
+
+      function fmtBytes(bytes) {
+        if (!Number.isFinite(bytes) || bytes <= 0) return "-";
+        const units = ["B", "KB", "MB", "GB"];
+        let i = 0,
+          v = bytes;
+        while (v >= 1024 && i < units.length - 1) {
+          v /= 1024;
+          i++;
+        }
+        return `${v.toFixed(i === 0 ? 0 : 2)} ${units[i]}`;
+      }
+
+      function updateQualityUI() {
+        const mime = imgFormatEl.value;
+        const show = mime === "image/jpeg" || mime === "image/webp";
+        qualityWrap.style.display = show ? "block" : "none";
+        qLabelEl.textContent = Number(qualityEl.value).toFixed(2);
+      }
+      qualityEl.addEventListener("input", updateQualityUI);
+      imgFormatEl.addEventListener("change", () => {
+        updateQualityUI();
+        syncBgForTransparency();
+      });
+
+      function syncBgForTransparency() {
+        // transparent only makes sense for PNG
+        if (bgEl.value === "transparent" && imgFormatEl.value !== "image/png") {
+          bgEl.value = "#0b1220";
+        }
+        if (imgFormatEl.value !== "image/png") {
+          // keep option but warn via status
+          if (bgEl.value === "transparent") bgEl.value = "#0b1220";
+        }
+      }
+      bgEl.addEventListener("change", syncBgForTransparency);
+
+      function syncGapForKeepSize() {
+        if (keepSizeEl.checked) {
+          gapEl.value = "0";
+          gapEl.disabled = true;
+        } else {
+          gapEl.disabled = false;
+        }
+      }
+      keepSizeEl.addEventListener("change", () => {
+        syncGapForKeepSize();
+        preview();
+      });
+
+      function uid() {
+        return Math.random().toString(16).slice(2) + Date.now().toString(16);
+      }
+
+      async function fileToImage(file) {
+        const src = URL.createObjectURL(file);
+        const img = new Image();
+        img.decoding = "async";
+        img.loading = "eager";
+        await new Promise((res, rej) => {
+          img.onload = () => res();
+          img.onerror = () => rej(new Error(t("errorImageRead")));
+          img.src = src;
+        });
+        return { src, img, w: img.naturalWidth, h: img.naturalHeight };
+      }
+
+      async function addFiles(files) {
+        const arr = [...files].filter(
+          (f) => f && f.type && f.type.startsWith("image/")
+        );
+        if (!arr.length) {
+          setStatus(t("errorOnlyImages"));
+          return;
+        }
+
+        setStatus(t("statusLoadingImages", { count: arr.length }));
+        infoStateEl.textContent = t("statusLoading");
+
+        for (const f of arr) {
+          try {
+            const { src, img, w, h } = await fileToImage(f);
+            items.push({
+              id: uid(),
+              name: f.name || "image",
+              file: f,
+              src,
+              img,
+              w,
+              h,
+            });
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+        renderList();
+        await preview(); // auto preview
+        setStatus(t("statusUploadDone"), true);
+        infoStateEl.textContent = t("stateIdle");
+      }
+
+      function cleanup() {
+        for (const it of items) {
+          try {
+            if (it.src?.startsWith("blob:")) URL.revokeObjectURL(it.src);
+          } catch {}
+        }
+        items = [];
+        renderList();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.width = 1;
+        canvas.height = 1;
+        setStatus("");
+        infoPagesEl.textContent = "-";
+        infoSizeEl.textContent = "-";
+        infoStateEl.textContent = t("stateIdle");
+      }
+
+      function renderList() {
+        listEl.innerHTML = "";
+        countEl.textContent = String(items.length);
+        infoCountEl.textContent = String(items.length);
+
+        emptyHint.style.display = items.length ? "none" : "block";
+
+        for (const it of items) {
+          const card = document.createElement("div");
+          card.className =
+            "rounded-2xl border border-white/10 bg-white/5 p-3 flex gap-3 items-center";
+          card.dataset.id = it.id;
+
+          const thumb = document.createElement("img");
+          thumb.src = it.src;
+          thumb.alt = "thumb";
+          thumb.className =
+            "w-20 h-16 object-cover rounded-xl border border-white/10 bg-black/30";
+
+          const meta = document.createElement("div");
+          meta.className = "min-w-0 flex-1";
+          meta.innerHTML = `
+          <div class="font-semibold truncate">${escapeHtml(it.name)}</div>
+          <div class="muted small">${it.w}×${it.h}</div>
+        `;
+
+          const btns = document.createElement("div");
+          btns.className = "flex gap-2";
+          const del = document.createElement("button");
+          del.className = "btn btn-ghost btn-sm";
+          del.type = "button";
+          del.textContent = t("btnDelete");
+          del.onclick = () => {
+            items = items.filter((x) => x.id !== it.id);
+            try {
+              if (it.src?.startsWith("blob:")) URL.revokeObjectURL(it.src);
+            } catch {}
+            renderList();
+            preview();
+          };
+
+          btns.appendChild(del);
+
+          card.appendChild(thumb);
+          card.appendChild(meta);
+          card.appendChild(btns);
+
+          listEl.appendChild(card);
+        }
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(
+          /[&<>"']/g,
+          (m) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#039;",
+            }[m])
+        );
+      }
+
+      // Drag reorder
+      new Sortable(listEl, {
+        animation: 160,
+        ghostClass: "opacity-40",
+        onEnd: () => {
+          const order = [...listEl.querySelectorAll("[data-id]")].map(
+            (el) => el.dataset.id
+          );
+          items.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+          preview();
+        },
+      });
+
+      // Dropzone events
+      ["dragenter", "dragover"].forEach((ev) =>
+        dropzone.addEventListener(ev, (e) => {
+          e.preventDefault();
+          dropzone.classList.add("drop-active");
+        })
+      );
+      ["dragleave", "drop"].forEach((ev) =>
+        dropzone.addEventListener(ev, (e) => {
+          e.preventDefault();
+          dropzone.classList.remove("drop-active");
+        })
+      );
+      dropzone.addEventListener("drop", (e) => addFiles(e.dataTransfer.files));
+
+      fileInput.addEventListener("change", (e) => addFiles(e.target.files));
+      $("btnClear").addEventListener("click", cleanup);
+
+      function getLayout() {
+        return (
+          document.querySelector('input[name="layout"]:checked')?.value ||
+          "vertical"
+        );
+      }
+      function getPdfMode() {
+        return (
+          document.querySelector('input[name="pdfMode"]:checked')?.value ||
+          "one"
+        );
+      }
+
+      function bgColor() {
+        return bgEl.value === "transparent" ? null : bgEl.value;
+      }
+
+      function clampInt(v, def, min, max) {
+        const n = Math.floor(Number(v));
+        if (!Number.isFinite(n)) return def;
+        return Math.max(min, Math.min(max, n));
+      }
+
+      async function preview() {
+        try {
+          if (!items.length) {
+            infoSizeEl.textContent = "-";
+            infoPagesEl.textContent = "-";
+            infoStateEl.textContent = t("stateIdle");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            return;
+          }
+
+          infoStateEl.textContent = t("statusPreview");
+          const outType = outTypeEl.value;
+
+          if (outType === "pdf") {
+            // For PDF, we don't render all pages; show page count expectation.
+            const mode = getPdfMode();
+            infoPagesEl.textContent =
+              mode === "one" ? String(items.length) : "1";
+            // Show rough size as sum of original file sizes (very rough)
+            const approx = items.reduce((a, it) => a + (it.file?.size || 0), 0);
+            infoSizeEl.textContent = `~${fmtBytes(approx)}`;
+            infoStateEl.textContent = t("stateIdle");
+            // still show a merged preview canvas (first few) for UX
+          } else {
+            infoPagesEl.textContent = "-";
+          }
+
+          // Always draw a merged canvas preview (based on current layout)
+          const layout = getLayout();
+          const keepSize = keepSizeEl.checked;
+          const gap = keepSize ? 0 : Math.max(0, Number(gapEl.value) || 0);
+          const cols = clampInt(colsEl.value, 2, 1, 8);
+
+          // Scale preview to keep it reasonable
+          const PREVIEW_MAX = 2200; // px
+          const {
+            w: cw,
+            h: ch,
+            placements,
+          } = computeLayout(items, layout, gap, cols, keepSize);
+
+          const scale = Math.min(1, PREVIEW_MAX / Math.max(cw, ch));
+          canvas.width = Math.max(1, Math.floor(cw * scale));
+          canvas.height = Math.max(1, Math.floor(ch * scale));
+
+          // background
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const bg = bgColor();
+          if (bg) {
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+          }
+
+          // draw
+          for (const p of placements) {
+            const dx = Math.floor(p.x * scale);
+            const dy = Math.floor(p.y * scale);
+            const dw = Math.floor(p.w * scale);
+            const dh = Math.floor(p.h * scale);
+            ctx.drawImage(p.img, dx, dy, dw, dh);
+          }
+
+          // size estimate by encoding preview (approx)
+          try {
+            const mime = outType === "image" ? imgFormatEl.value : "image/png";
+            const q = Number(qualityEl.value) || 0.9;
+            const dataUrl = canvas.toDataURL(mime, q);
+            const bytes = Math.floor(
+              ((dataUrl.length - dataUrl.indexOf(",") - 1) * 3) / 4
+            );
+            infoSizeEl.textContent =
+              fmtBytes(bytes) + (outType === "pdf" ? " (preview)" : "");
+          } catch {
+            infoSizeEl.textContent = "-";
+          }
+          infoStateEl.textContent = t("stateIdle");
+        } catch (e) {
+          console.error(e);
+          setStatus(t("statusPreviewError"));
+          infoStateEl.textContent = t("statusError");
+        }
+      }
+
+      function computeLayout(items, layout, gap, cols, keepSize = false) {
+        // Strategy:
+        // - vertical/horizontal: normalize widths/heights to a common edge to look consistent.
+        // - grid: each cell size = max cell width among images normalized by aspect (simple).
+        const imgs = items.map((it) => ({
+          img: it.img,
+          w: it.w,
+          h: it.h,
+          a: it.w / it.h,
+        }));
+
+        if (layout === "horizontal") {
+          if (keepSize) {
+            let x = 0;
+            let maxH = 0;
+            const placements = imgs.map((xi) => {
+              const p = { img: xi.img, x, y: 0, w: xi.w, h: xi.h };
+              x += xi.w + gap;
+              maxH = Math.max(maxH, xi.h);
+              return p;
+            });
+            const W = Math.max(1, x - gap);
+            const H = Math.max(1, maxH);
+            return { w: W, h: H, placements };
+          }
+          // common height
+          const H = median(imgs.map((x) => x.h));
+          let x = 0;
+          const placements = imgs.map((xi) => {
+            const w = Math.round(H * xi.a);
+            const p = { img: xi.img, x, y: 0, w, h: H };
+            x += w + gap;
+            return p;
+          });
+          const W = Math.max(1, x - gap);
+          return { w: W, h: H, placements };
+        }
+
+        if (layout === "grid") {
+          const C = Math.max(1, cols);
+          // choose a target cell width from median widths
+          const cellW = Math.max(240, Math.round(median(imgs.map((x) => x.w))));
+          const cellH = Math.max(180, Math.round(cellW * 0.75));
+          const placements = [];
+          let maxX = 0,
+            maxY = 0;
+
+          imgs.forEach((xi, i) => {
+            const r = Math.floor(i / C);
+            const c = i % C;
+            const x = c * (cellW + gap);
+            const y = r * (cellH + gap);
+
+            // fit image into cell preserving aspect (contain)
+            const scale = Math.min(cellW / xi.w, cellH / xi.h);
+            const w = Math.round(xi.w * scale);
+            const h = Math.round(xi.h * scale);
+            const ox = x + Math.round((cellW - w) / 2);
+            const oy = y + Math.round((cellH - h) / 2);
+
+            placements.push({ img: xi.img, x: ox, y: oy, w, h });
+
+            maxX = Math.max(maxX, x + cellW);
+            maxY = Math.max(maxY, y + cellH);
+          });
+
+          const W = maxX;
+          const H = maxY;
+          return { w: W, h: H, placements };
+        }
+
+        // vertical default: common width
+        if (keepSize) {
+          let y = 0;
+          let maxW = 0;
+          const placements = imgs.map((xi) => {
+            const p = { img: xi.img, x: 0, y, w: xi.w, h: xi.h };
+            y += xi.h + gap;
+            maxW = Math.max(maxW, xi.w);
+            return p;
+          });
+          const H = Math.max(1, y - gap);
+          const W = Math.max(1, maxW);
+          return { w: W, h: H, placements };
+        }
+        const W = median(imgs.map((x) => x.w));
+        let y = 0;
+        const placements = imgs.map((xi) => {
+          const h = Math.round(W / xi.a);
+          const p = { img: xi.img, x: 0, y, w: W, h };
+          y += h + gap;
+          return p;
+        });
+        const H = Math.max(1, y - gap);
+        return { w: W, h: H, placements };
+      }
+
+      function median(arr) {
+        const a = [...arr]
+          .filter((n) => Number.isFinite(n))
+          .sort((x, y) => x - y);
+        if (!a.length) return 800;
+        const mid = Math.floor(a.length / 2);
+        return a.length % 2 ? a[mid] : Math.round((a[mid - 1] + a[mid]) / 2);
+      }
+
+      // Build outputs
+      async function buildMergedImageBlob() {
+        if (!items.length) throw new Error(t("statusNeedImages"));
+
+        const layout = getLayout();
+        const keepSize = keepSizeEl.checked;
+        const gap = keepSize ? 0 : Math.max(0, Number(gapEl.value) || 0);
+        const cols = clampInt(colsEl.value, 2, 1, 8);
+
+        const { w, h, placements } = computeLayout(
+          items,
+          layout,
+          gap,
+          cols,
+          keepSize
+        );
+
+        // Use offscreen canvas for full-res output
+        const off = document.createElement("canvas");
+        off.width = Math.max(1, Math.floor(w));
+        off.height = Math.max(1, Math.floor(h));
+        const c = off.getContext("2d");
+
+        const bg = bgColor();
+        if (bg) {
+          c.fillStyle = bg;
+          c.fillRect(0, 0, off.width, off.height);
+        } else {
+          c.clearRect(0, 0, off.width, off.height);
+        }
+
+        for (const p of placements) {
+          c.drawImage(p.img, p.x, p.y, p.w, p.h);
+        }
+
+        const mime = imgFormatEl.value;
+        const q = Number(qualityEl.value) || 0.9;
+
+        // transparency only meaningful for png
+        const blob = await new Promise((res) => off.toBlob(res, mime, q));
+        if (!blob) throw new Error(t("errorImageCreate"));
+        return blob;
+      }
+
+      async function buildPdfBlob() {
+        if (!items.length) throw new Error(t("statusNeedImages"));
+        const { jsPDF } = window.jspdf;
+
+        const mode = getPdfMode();
+        const sizeOpt = pdfSizeEl.value;
+        const marginPx = Math.max(0, Number(pdfMarginEl.value) || 0);
+
+        // helper: px->pt (rough). We'll keep consistent by using px as unit directly with jsPDF "px".
+        // jsPDF supports unit: 'px' (with hotfix). We'll use px to simplify.
+        const unit = "px";
+
+        // Determine orientation per page if auto
+        const oriOpt = pdfOriEl.value;
+
+        let doc = null;
+        let pages = 0;
+
+        if (mode === "grid") {
+          // One page grid using current grid settings
+          const gap = Math.max(0, Number(gapEl.value) || 0);
+          const cols = clampInt(colsEl.value, 2, 1, 8);
+          const { w, h, placements } = computeLayout(items, "grid", gap, cols);
+
+          // Page size
+          const pageW = sizeOpt === "auto" ? w + marginPx * 2 : undefined;
+          const pageH = sizeOpt === "auto" ? h + marginPx * 2 : undefined;
+
+          const orientation = resolveOrientation(oriOpt, w, h);
+          doc = new jsPDF({
+            unit,
+            format: sizeOpt === "auto" ? [pageW, pageH] : sizeOpt,
+            orientation,
+          });
+
+          // background (optional)
+          // We'll draw images onto a canvas first for speed, then add as one image
+          const off = document.createElement("canvas");
+          off.width = Math.max(1, Math.floor(w));
+          off.height = Math.max(1, Math.floor(h));
+          const c = off.getContext("2d");
+          c.fillStyle = "#ffffff";
+          c.fillRect(0, 0, off.width, off.height);
+          for (const p of placements) c.drawImage(p.img, p.x, p.y, p.w, p.h);
+
+          const imgData = off.toDataURL("image/jpeg", 0.92);
+          doc.addImage(imgData, "JPEG", marginPx, marginPx, w, h);
+          pages = 1;
+        } else {
+          // One per page
+          for (let i = 0; i < items.length; i++) {
+            const it = items[i];
+            const w = it.w,
+              h = it.h;
+
+            const orientation = resolveOrientation(oriOpt, w, h);
+
+            if (!doc) {
+              const format =
+                sizeOpt === "auto"
+                  ? [w + marginPx * 2, h + marginPx * 2]
+                  : sizeOpt;
+              doc = new jsPDF({ unit, format, orientation });
+            } else {
+              const format =
+                sizeOpt === "auto"
+                  ? [w + marginPx * 2, h + marginPx * 2]
+                  : sizeOpt;
+              doc.addPage(format, orientation);
+            }
+
+            // fit image into page area (contain)
+            const page = doc.internal.pageSize;
+            const pageW = page.getWidth();
+            const pageH = page.getHeight();
+
+            const maxW = pageW - marginPx * 2;
+            const maxH = pageH - marginPx * 2;
+
+            const scale = Math.min(maxW / w, maxH / h);
+            const dw = w * scale;
+            const dh = h * scale;
+            const x = marginPx + (maxW - dw) / 2;
+            const y = marginPx + (maxH - dh) / 2;
+
+            // encode per image (jpeg for speed; png is big)
+            const dataUrl = imageToDataURL(it.img, "image/jpeg", 0.92);
+            doc.addImage(dataUrl, "JPEG", x, y, dw, dh);
+            pages++;
+          }
+        }
+
+        infoPagesEl.textContent = String(pages);
+
+        const blob = doc.output("blob");
+        return blob;
+      }
+
+      function resolveOrientation(opt, w, h) {
+        if (opt === "auto") return w >= h ? "landscape" : "portrait";
+        return opt;
+      }
+
+      function imageToDataURL(img, mime, quality) {
+        const c = document.createElement("canvas");
+        c.width = img.naturalWidth || img.width;
+        c.height = img.naturalHeight || img.height;
+        const x = c.getContext("2d");
+        x.fillStyle = "#ffffff";
+        x.fillRect(0, 0, c.width, c.height);
+        x.drawImage(img, 0, 0);
+        return c.toDataURL(mime, quality);
+      }
+
+      function downloadBlob(blob, filename) {
+        const a = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+      }
+
+      async function buildZipOfConvertedImages() {
+        if (!items.length) throw new Error(t("statusNeedImages"));
+        if (!window.JSZip) throw new Error(t("errorZipModule"));
+
+        const zip = new JSZip();
+        const mime = imgFormatEl.value;
+        const q = Number(qualityEl.value) || 0.9;
+
+        for (let i = 0; i < items.length; i++) {
+          const it = items[i];
+          const dataUrl = imageToDataURL(it.img, mime, q);
+          const base64 = dataUrl.split(",")[1];
+          const ext =
+            mime === "image/png"
+              ? "png"
+              : mime === "image/webp"
+              ? "webp"
+              : "jpg";
+          const safe = (it.name || `image-${i + 1}`)
+            .replace(/[^\w.-]+/g, "_")
+            .replace(/\.+$/, "");
+          zip.file(`${String(i + 1).padStart(2, "0")}_${safe}.${ext}`, base64, {
+            base64: true,
+          });
+        }
+
+        const blob = await zip.generateAsync({ type: "blob" });
+        return blob;
+      }
+
+      $("btnPreview").addEventListener("click", preview);
+
+      $("btnMake").addEventListener("click", async () => {
+        try {
+          if (!items.length) {
+            setStatus(t("statusNeedImages"));
+            return;
+          }
+          infoStateEl.textContent = t("statusBuilding");
+          setStatus(t("statusBuildingNow"));
+
+          const outType = outTypeEl.value;
+
+          if (outType === "image") {
+            const blob = await buildMergedImageBlob();
+            const ext =
+              imgFormatEl.value === "image/png"
+                ? "png"
+                : imgFormatEl.value === "image/webp"
+                ? "webp"
+                : "jpg";
+            downloadBlob(blob, `merged.${ext}`);
+            setStatus(t("statusMergedDone"), true);
+          } else if (outType === "pdf") {
+            const blob = await buildPdfBlob();
+            downloadBlob(blob, "images.pdf");
+            setStatus(t("statusPdfDone"), true);
+          } else if (outType === "zip") {
+            if (
+              imgFormatEl.value === "image/png" ||
+              imgFormatEl.value === "image/jpeg" ||
+              imgFormatEl.value === "image/webp"
+            ) {
+              const blob = await buildZipOfConvertedImages();
+              downloadBlob(blob, "converted_images.zip");
+              setStatus(t("statusZipDone"), true);
+            } else {
+              setStatus(t("statusZipUnsupported"));
+            }
+          }
+
+          await preview();
+        } catch (e) {
+          console.error(e);
+          setStatus(e?.message || t("statusBuildError"));
+        } finally {
+          infoStateEl.textContent = t("stateIdle");
+        }
+      });
+
+      // If output type changes, adjust preview info
+      outTypeEl.addEventListener("change", () => {
+        const t = outTypeEl.value;
+        // If zip selected, merged layout still used for preview; ok
+        preview();
+      });
+
+      // live preview on setting changes (lightweight ones)
+      [gapEl, colsEl, bgEl, pdfSizeEl, pdfOriEl, pdfMarginEl].forEach((el) => {
+        el.addEventListener("input", () => preview());
+        el.addEventListener("change", () => preview());
+      });
+      document
+        .querySelectorAll('input[name="layout"]')
+        .forEach((r) => r.addEventListener("change", preview));
+      document
+        .querySelectorAll('input[name="pdfMode"]')
+        .forEach((r) => r.addEventListener("change", preview));
+
+
+
+      // HTML file to PDF conversion
+      let uploadedHtmlContent = null;
+      let uploadedHtmlFileName = null;
+      let htmlIframe = null;
+      let captureIframe = null;
+      let uploadedImageFiles = new Map(); // 파일명 -> File 객체
+
+      const htmlFileInput = $("htmlFileInput");
+      const htmlDropzone = $("htmlDropzone");
+      const htmlPreview = $("htmlPreview");
+      const htmlFileName = $("htmlFileName");
+      const btnClearHtml = $("btnClearHtml");
+      const btnConvertHtmlToPdf = $("btnConvertHtmlToPdf");
+      const htmlStatus = $("htmlStatus");
+      const htmlViewportEl = $("htmlViewport");
+      const htmlCustomWrap = $("htmlCustomWrap");
+      const htmlCustomWidthEl = $("htmlCustomWidth");
+
+      function setHtmlStatus(msg, good = false) {
+        htmlStatus.innerHTML = msg ? (good ? `✅ ${msg}` : `ℹ️ ${msg}`) : "";
+      }
+
+      function getHtmlViewportWidth() {
+        const mode = htmlViewportEl.value;
+        if (mode === "desktop") return 1280;
+        if (mode === "wide") return 1600;
+        if (mode === "mobile") return 390;
+        if (mode === "custom") {
+          const v = parseInt(htmlCustomWidthEl.value, 10);
+          return Number.isFinite(v) && v >= 320 ? Math.min(v, 3840) : 1280;
+        }
+        return null;
+      }
+
+      function getHtmlViewportWidthForCapture() {
+        const mode = htmlViewportEl.value;
+        if (mode === "auto") {
+          const previewWidth = htmlPreview?.clientWidth || 0;
+          return Math.max(previewWidth, 1280);
+        }
+        return getHtmlViewportWidth();
+      }
+
+      function applyHtmlPreviewViewport() {
+        if (!htmlIframe) return;
+        const width = getHtmlViewportWidth();
+        if (width) {
+          htmlIframe.style.width = width + "px";
+          htmlIframe.style.margin = "0 auto";
+        } else {
+          htmlIframe.style.width = "100%";
+          htmlIframe.style.margin = "0";
+        }
+      }
+
+      function syncHtmlViewportUI() {
+        const mode = htmlViewportEl.value;
+        htmlCustomWrap.style.display = mode === "custom" ? "block" : "none";
+        applyHtmlPreviewViewport();
+      }
+
+      // 파일을 base64 data URL로 변환
+      function fileToDataURL(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      // HTML 내부의 이미지 경로를 base64로 변환
+      async function convertImagePathsToBase64(htmlText, imageFiles) {
+        // HTML을 파싱하기 위한 임시 DOM
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, "text/html");
+
+        // 모든 img 태그 찾기
+        const images = doc.querySelectorAll("img");
+        let modified = false;
+
+        for (const img of images) {
+          const src = img.getAttribute("src");
+          if (!src) continue;
+
+          // 이미 base64나 data URL인 경우 스킵
+          if (src.startsWith("data:") || src.startsWith("blob:")) continue;
+
+          // 절대 URL인 경우도 스킵 (외부 이미지)
+          if (src.startsWith("http://") || src.startsWith("https://")) continue;
+
+          // 파일명 추출 (경로에서 마지막 부분만)
+          const fileName = src.split("/").pop().split("\\").pop();
+
+          // 이미지 파일 찾기
+          let imageFile = null;
+
+          // 정확한 파일명 매칭
+          if (imageFiles.has(fileName)) {
+            imageFile = imageFiles.get(fileName);
+          } else {
+            // 대소문자 무시 매칭
+            for (const [name, file] of imageFiles.entries()) {
+              if (name.toLowerCase() === fileName.toLowerCase()) {
+                imageFile = file;
+                break;
+              }
+            }
+          }
+
+          if (imageFile) {
+            try {
+              const dataURL = await fileToDataURL(imageFile);
+              img.setAttribute("src", dataURL);
+              modified = true;
+            } catch (e) {
+              console.warn(`이미지 변환 실패: ${fileName}`, e);
+            }
+          } else {
+            console.warn(`이미지 파일을 찾을 수 없음: ${fileName}`);
+          }
+        }
+
+        if (modified) {
+          return doc.documentElement.outerHTML;
+        }
+        return htmlText;
+      }
+
+      async function loadHtmlFile(files) {
+        try {
+          // 여러 파일 중 HTML 파일 찾기
+          const fileArray =
+            files instanceof FileList ? Array.from(files) : [files];
+          const htmlFile = fileArray.find((f) =>
+            f.name.match(/\.(html|htm)$/i)
+          );
+
+          if (!htmlFile) {
+            setHtmlStatus(t("htmlNotFound"));
+            return;
+          }
+
+          // 이미지 파일들 저장
+          uploadedImageFiles.clear();
+          fileArray.forEach((file) => {
+            if (file !== htmlFile && file.type.startsWith("image/")) {
+              // 파일명을 키로 사용 (대소문자 구분)
+              uploadedImageFiles.set(file.name, file);
+            }
+          });
+
+          setHtmlStatus(t("htmlReading"));
+          let htmlText = await htmlFile.text();
+
+          // 이미지 경로를 base64로 변환
+          if (uploadedImageFiles.size > 0) {
+            setHtmlStatus(t("htmlConvertingImages"));
+            htmlText = await convertImagePathsToBase64(
+              htmlText,
+              uploadedImageFiles
+            );
+          }
+
+          uploadedHtmlContent = htmlText;
+          uploadedHtmlFileName = htmlFile.name;
+
+          // 미리보기 iframe 생성
+          if (htmlIframe) {
+            htmlIframe.remove();
+          }
+          htmlIframe = document.createElement("iframe");
+          htmlIframe.style.width = "100%";
+          htmlIframe.style.minHeight = "400px";
+          htmlIframe.style.border = "none";
+          htmlIframe.style.borderRadius = "8px";
+          htmlIframe.style.backgroundColor = "#ffffff";
+          htmlPreview.style.overflow = "auto";
+          htmlPreview.style.maxHeight = "600px";
+          htmlPreview.innerHTML = "";
+          htmlPreview.appendChild(htmlIframe);
+
+          // iframe에 HTML 내용 쓰기
+          htmlIframe.onload = () => {
+            const iframeDoc =
+              htmlIframe.contentDocument || htmlIframe.contentWindow.document;
+            const iframeWindow = htmlIframe.contentWindow;
+
+            // 실제 콘텐츠 크기에 맞춰 iframe 크기 조정
+            setTimeout(() => {
+              try {
+                const contentHeight = Math.max(
+                  iframeDoc.body?.scrollHeight || iframeDoc.documentElement?.scrollHeight || 400,
+                  iframeDoc.body?.offsetHeight || 400
+                );
+                
+                // 최대 높이 제한 (600px 컨테이너에 맞춤)
+                htmlIframe.style.height = Math.min(contentHeight, 800) + "px";
+              } catch (e) {
+                console.warn("iframe 크기 조정 실패:", e);
+                htmlIframe.style.height = "400px";
+              }
+
+              setHtmlStatus(t("htmlLoaded"), true);
+              btnConvertHtmlToPdf.disabled = false;
+            }, 200);
+          };
+
+          htmlIframe.srcdoc = htmlText;
+          applyHtmlPreviewViewport();
+          const imageCount = uploadedImageFiles.size;
+          htmlFileName.textContent =
+            imageCount > 0
+              ? t("htmlFileNameWithImages", {
+                  name: htmlFile.name,
+                  count: imageCount,
+                })
+              : htmlFile.name;
+          btnClearHtml.style.display = "block";
+        } catch (e) {
+          console.error(e);
+          setHtmlStatus(t("htmlReadFail", { message: e.message }));
+        }
+      }
+
+      function clearHtmlFile() {
+        uploadedHtmlContent = null;
+        uploadedHtmlFileName = null;
+        uploadedImageFiles.clear();
+        if (htmlIframe) {
+          htmlIframe.remove();
+          htmlIframe = null;
+        }
+        htmlPreview.innerHTML = `<div class="muted small text-center py-8">${t(
+          "htmlPreviewEmptyHtml"
+        )}</div>`;
+        htmlFileName.textContent = "";
+        btnClearHtml.style.display = "none";
+        btnConvertHtmlToPdf.disabled = true;
+        setHtmlStatus("");
+      }
+
+      // 모든 이미지가 로드될 때까지 기다리는 함수
+      function waitForImages(doc) {
+        return new Promise((resolve) => {
+          const images = doc.querySelectorAll("img");
+          if (images.length === 0) {
+            resolve();
+            return;
+          }
+
+          let loaded = 0;
+          let hasError = false;
+
+          const checkComplete = () => {
+            loaded++;
+            if (loaded === images.length) {
+              // 모든 이미지 로드 완료 후 약간의 추가 대기 (렌더링 완료 보장)
+              setTimeout(resolve, 300);
+            }
+          };
+
+          images.forEach((img) => {
+            if (img.complete && img.naturalHeight !== 0) {
+              // 이미 로드된 이미지
+              checkComplete();
+            } else {
+              // 로딩 중인 이미지
+              img.onload = checkComplete;
+              img.onerror = () => {
+                hasError = true;
+                checkComplete(); // 에러가 나도 계속 진행
+              };
+              // 이미 로드된 경우를 대비해 다시 확인
+              if (img.complete) {
+                checkComplete();
+              }
+            }
+          });
+        });
+      }
+
+      async function convertHtmlFileToPdf() {
+        try {
+          if (!uploadedHtmlContent || !htmlIframe) {
+            setHtmlStatus(t("htmlNeedUpload"));
+            return;
+          }
+
+          if (!window.html2canvas || !window.jspdf) {
+            setHtmlStatus(t("htmlLibMissing"));
+            return;
+          }
+
+          setHtmlStatus(t("htmlLoadingImages"));
+          btnConvertHtmlToPdf.disabled = true;
+
+          // 캡처용 iframe 준비 (PC 폭 기본)
+          const captureWidth = getHtmlViewportWidthForCapture() || 1280;
+          if (!captureIframe) {
+            captureIframe = document.createElement("iframe");
+            captureIframe.style.position = "absolute";
+            captureIframe.style.left = "-99999px";
+            captureIframe.style.top = "0";
+            captureIframe.style.border = "0";
+            captureIframe.style.visibility = "hidden";
+            captureIframe.style.pointerEvents = "none";
+            captureIframe.style.backgroundColor = "#ffffff";
+            document.body.appendChild(captureIframe);
+          }
+          captureIframe.style.width = captureWidth + "px";
+          captureIframe.style.height = "1px";
+
+          const captureReady = new Promise((resolve) => {
+            captureIframe.onload = resolve;
+          });
+          captureIframe.srcdoc = uploadedHtmlContent;
+          await captureReady;
+
+          const iframeDoc =
+            captureIframe.contentDocument || captureIframe.contentWindow.document;
+          const iframeBody = iframeDoc.body;
+          const iframeWindow = captureIframe.contentWindow;
+
+          // 모든 이미지가 로드될 때까지 대기
+          await waitForImages(iframeDoc);
+
+          // 추가 렌더링 대기 시간
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
+          setHtmlStatus(t("htmlConverting"));
+
+          // 실제 뷰포트 크기 가져오기 (iframe 내부의 실제 렌더링 크기)
+          const contentWidth = Math.max(
+            iframeBody.scrollWidth || iframeBody.offsetWidth || 1920,
+            iframeDoc.documentElement?.scrollWidth || 0,
+            iframeWindow.innerWidth || 1920
+          );
+          const contentHeight = Math.max(
+            iframeBody.scrollHeight || iframeBody.offsetHeight || 1080,
+            iframeDoc.documentElement?.scrollHeight || 0,
+            iframeWindow.innerHeight || 1080
+          );
+
+          // html2canvas로 iframe 내용을 캔버스로 변환 (고해상도로 선명하게)
+          const scale = 2; // 고해상도로 선명하게
+          const canvas = await html2canvas(iframeBody, {
+            scale: scale, // 고해상도로 선명하게
+            useCORS: true,
+            allowTaint: true, // true로 변경하여 모든 이미지 포함 (보안 경고 무시)
+            logging: false,
+            backgroundColor: "#ffffff",
+            width: contentWidth,
+            height: contentHeight,
+            windowWidth: contentWidth,
+            windowHeight: contentHeight,
+            x: 0,
+            y: 0,
+            removeContainer: false,
+            imageTimeout: 30000, // 타임아웃 증가 (30초)
+            foreignObjectRendering: false, // 외부 객체 렌더링 비활성화 (호환성)
+            onclone: (clonedDoc) => {
+              // 클론된 문서에서 스타일 보정 (버튼이 틀어지지 않도록)
+              const clonedBody = clonedDoc.body;
+              if (clonedBody) {
+                clonedBody.style.transform = "none";
+                clonedBody.style.transformOrigin = "top left";
+                // 모든 요소의 transform 제거 (버튼 등이 정확하게 렌더링되도록)
+                const allElements = clonedBody.querySelectorAll("*");
+                allElements.forEach((el) => {
+                  if (el.style && el.style.transform) {
+                    el.style.transform = "none";
+                  }
+                });
+
+                // 클론된 문서의 모든 이미지도 로드 대기
+                const clonedImages = clonedDoc.querySelectorAll("img");
+                clonedImages.forEach((img) => {
+                  // base64 이미지나 data URL 이미지 처리
+                  if (img.src && img.src.startsWith("data:")) {
+                    // data URL은 이미 로드된 것으로 간주
+                    return;
+                  }
+                  // 외부 이미지의 경우 원본 src 유지
+                  if (img.src && !img.complete) {
+                    // 이미지가 아직 로드되지 않은 경우 원본 문서에서 가져오기
+                    const originalImg = iframeDoc.querySelector(
+                      `img[src="${img.src}"]`
+                    );
+                    if (originalImg && originalImg.complete) {
+                      img.src = originalImg.src;
+                    }
+                  }
+                });
+              }
+            },
+          });
+
+          const imgData = canvas.toDataURL("image/png", 1.0);
+          const { jsPDF } = window.jspdf;
+
+          // PDF 생성 - 픽셀을 mm로 변환 (96 DPI 기준: 1px = 0.264583mm)
+          // scale을 고려하여 실제 크기 계산
+          const pxToMm = 0.264583;
+          const actualWidth = canvas.width / scale;
+          const actualHeight = canvas.height / scale;
+          const pdfWidth = actualWidth * pxToMm;
+          const pdfHeight = actualHeight * pxToMm;
+
+          // 방향을 정확하게 결정 (가로/세로 비율 기준)
+          const isLandscape = actualWidth > actualHeight;
+
+          const pdf = new jsPDF({
+            orientation: isLandscape ? "landscape" : "portrait",
+            unit: "mm",
+            format: [pdfWidth, pdfHeight],
+            compress: true,
+          });
+
+          // 이미지를 PDF에 추가 (정확한 크기와 방향 유지)
+          pdf.addImage(
+            imgData,
+            "PNG",
+            0,
+            0,
+            pdfWidth,
+            pdfHeight,
+            undefined,
+            "FAST"
+          );
+
+          // 파일명 생성
+          const pdfFileName =
+            uploadedHtmlFileName.replace(/\.(html|htm)$/i, "") + ".pdf";
+
+          // PDF 다운로드
+          pdf.save(pdfFileName);
+          setHtmlStatus(t("htmlPdfDone"), true);
+          btnConvertHtmlToPdf.disabled = false;
+        } catch (e) {
+          console.error(e);
+          setHtmlStatus(
+            t("htmlPdfFail", { message: e?.message || t("unknownError") })
+          );
+          btnConvertHtmlToPdf.disabled = false;
+        }
+      }
+
+      // HTML file upload events
+      ["dragenter", "dragover"].forEach((ev) =>
+        htmlDropzone.addEventListener(ev, (e) => {
+          e.preventDefault();
+          htmlDropzone.classList.add("drop-active");
+        })
+      );
+      ["dragleave", "drop"].forEach((ev) =>
+        htmlDropzone.addEventListener(ev, (e) => {
+          e.preventDefault();
+          htmlDropzone.classList.remove("drop-active");
+        })
+      );
+      htmlDropzone.addEventListener("drop", (e) => {
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          loadHtmlFile(files);
+        }
+      });
+
+      htmlFileInput.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) {
+          loadHtmlFile(e.target.files);
+        }
+      });
+
+      btnClearHtml.addEventListener("click", clearHtmlFile);
+      btnConvertHtmlToPdf.addEventListener("click", convertHtmlFileToPdf);
+      htmlViewportEl.addEventListener("change", syncHtmlViewportUI);
+      htmlCustomWidthEl.addEventListener("input", applyHtmlPreviewViewport);
+
+      // init
+      updateQualityUI();
+      syncGapForKeepSize();
+      preview();
+      syncHtmlViewportUI();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

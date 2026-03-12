@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>MIRACLE | 한국보다 더 좋은 조건에서 태어날 확률은?</title>
+    <meta
+      name="description"
+      content="한국보다 조건 지수가 조금 더 높은 나라에서 태어날 확률을 숫자로 체감해보는 페이지. 국가 우열 판단 없이, 확률 분포만 다룹니다."
+    />
+
+    <!-- OG (추후 funnyfunny 규칙에 맞게 교체 가능) -->
+    <meta property="og:title" content="MIRACLE" />
+    <meta
+      property="og:description"
+      content="한국보다 더 좋은 조건에서 태어날 확률은?"
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=MIRACLE"
+    />
+
+    <style>
+      :root {
+        --bg: #0b1220;
+        --card: #0f1a2e;
+        --text: #e9eef7;
+        --muted: #9fb0c8;
+        --line: #1c2a45;
+        --accent: #8be9fd;
+        --gold: #ffd166;
+        --good: #a7f3d0;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --radius: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+        background: radial-gradient(
+            1200px 800px at 70% 10%,
+            rgba(139, 233, 253, 0.08),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 600px at 20% 0%,
+            rgba(255, 209, 102, 0.08),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wrap {
+        max-width: 600px;
+        margin: 16px auto;
+        padding: 28px 18px;
+        text-align: center;
+      }
+      .logo {
+        font-weight: 900;
+        letter-spacing: 0.7px;
+        font-size: 32px;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 40px 28px;
+        margin-bottom: 20px;
+      }
+      .h1 {
+        font-size: 24px;
+        font-weight: 1000;
+        margin: 0 0 16px;
+        letter-spacing: -0.2px;
+      }
+      .lead {
+        color: var(--muted);
+        margin: 0 0 32px;
+        line-height: 1.6;
+      }
+      .btn {
+        cursor: pointer;
+        border: 1px solid var(--line);
+        background: rgba(139, 233, 253, 0.12);
+        border-color: rgba(139, 233, 253, 0.4);
+        color: var(--text);
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 16px;
+        transition: 0.15s transform ease, 0.15s background ease,
+          0.15s border ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: rgba(139, 233, 253, 0.6);
+        background: rgba(139, 233, 253, 0.18);
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        white-space: nowrap;
+        margin-top: 20px;
+      }
+      .quote {
+        border-left: 3px solid rgba(139, 233, 253, 0.35);
+        padding: 14px 16px;
+        background: rgba(139, 233, 253, 0.06);
+        border-radius: 12px;
+        margin: 20px 0;
+        color: var(--text);
+        text-align: left;
+        font-size: 14px;
+      }
+      .adsense-block {
+        margin: 16px 0;
+        display: flex;
+        justify-content: center;
+      }
+      .adsbygoogle {
+        display: block;
+        margin: 16px auto;
+          text-align: center;
+}
+    </style>
+    <style>
+      .lang-switch {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: inline-flex;
+        gap: 0;
+        padding: 3px;
+        border-radius: 999px;
+        background: rgba(11, 18, 32, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        border: 1px solid rgba(139, 233, 253, 0.3);
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 44px;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+      .lang-switch button.active {
+        background: rgba(139, 233, 253, 0.2);
+        color: #8be9fd;
+        box-shadow: 0 2px 8px rgba(139, 233, 253, 0.4);
+      }
+      .lang-switch button:not(.active):hover {
+        background: rgba(139, 233, 253, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+      }
+    </style>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+      <link rel="canonical" href="https://funnyfunny.cloud/tools/miracle/" />
+  </head>
+
+  <body>
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+    <div class="wrap">
+      <div class="logo">MIRACLE</div>
+      <div class="subtitle" data-i18n="subtitle">한국보다 더 좋은 조건에서 태어날 확률은?</div>
+
+      <div class="card">
+        <div class="h1" data-i18n="cardTitle">🧭 내 출생 운 테스트</div>
+        <p class="lead" data-i18n-html="cardLead">
+          한국보다 조건 지수가 조금 더 높은 곳에서 태어날 확률을<br />
+          <b>숫자로 체감</b>해보는 설문입니다.
+        </p>
+
+        <div class="quote" data-i18n-html="quote">
+          국가 우열 판단 없이, <b>확률 분포</b>만 다룹니다.<br />
+          소득·보건·교육·안전과 상관관계가 큰 지표들을 묶어 계산합니다.
+        </div>
+
+        <a href="survey.html" class="btn" data-i18n="startBtn"> 🧪 설문 시작하기 </a>
+      </div>
+
+      <div class="adsense-block">
+        <ins
+          class="adsbygoogle"
+          style="display: block; text-align: center"
+          data-ad-client="ca-pub-1204894220949193"
+          data-ad-slot="5145068706"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+      <div class="pill" data-i18n="pill">국가 우열 판단 ❌ · 확률 분포만 ⭕</div>
+    </div>
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "MIRACLE | 한국보다 더 좋은 조건에서 태어날 확률은?",
+          metaDescription: "한국보다 조건 지수가 조금 더 높은 나라에서 태어날 확률을 숫자로 체감해보는 페이지. 국가 우열 판단 없이, 확률 분포만 다룹니다.",
+          ogTitle: "MIRACLE",
+          ogDescription: "한국보다 더 좋은 조건에서 태어날 확률은?",
+          subtitle: "한국보다 더 좋은 조건에서 태어날 확률은?",
+          cardTitle: "🧭 내 출생 운 테스트",
+          cardLead: "한국보다 조건 지수가 조금 더 높은 곳에서 태어날 확률을<br /><b>숫자로 체감</b>해보는 설문입니다.",
+          quote: "국가 우열 판단 없이, <b>확률 분포</b>만 다룹니다.<br />소득·보건·교육·안전과 상관관계가 큰 지표들을 묶어 계산합니다.",
+          startBtn: "🧪 설문 시작하기",
+          pill: "국가 우열 판단 ❌ · 확률 분포만 ⭕",
+        },
+        en: {
+          metaTitle: "MIRACLE | What's the probability of being born in better conditions than Korea?",
+          metaDescription: "A page to experience the probability of being born in a country with a slightly higher condition index than Korea. It only deals with probability distribution, without judging national superiority.",
+          ogTitle: "MIRACLE",
+          ogDescription: "What's the probability of being born in better conditions than Korea?",
+          subtitle: "What's the probability of being born in better conditions than Korea?",
+          cardTitle: "🧭 My Birth Fortune Test",
+          cardLead: "A survey to <b>experience numerically</b> the probability of being born in a place with a slightly higher condition index than Korea.",
+          quote: "It only deals with <b>probability distribution</b>, without judging national superiority.<br />It calculates by combining indicators that have a high correlation with income·health·education·safety.",
+          startBtn: "🧪 Start Survey",
+          pill: "No national superiority judgment ❌ · Only probability distribution ⭕",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+        const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+        if (ogTitleMeta) ogTitleMeta.setAttribute("content", t("ogTitle"));
+        const ogDescMeta = document.querySelector('meta[property="og:description"]');
+        if (ogDescMeta) ogDescMeta.setAttribute("content", t("ogDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          if (el.tagName === "A" && el.classList.contains("btn")) {
+            el.textContent = t(el.dataset.i18n);
+          } else {
+            el.textContent = t(el.dataset.i18n);
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+    </script>
+  </body>
+</html>

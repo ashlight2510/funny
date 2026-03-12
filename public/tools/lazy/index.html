@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="오늘 나는 왜 이렇게 귀찮을까? 7가지 과학적 요인으로 분석하는 귀찮음 진단기" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="귀찮음 진단기 – 오늘 나는 왜 아무것도 하기 싫을까?" />
+  <meta property="og:description" content="귀찮음은 게으름이 아니라 뇌의 에너지 관리 전략이다. 7가지 과학적 요인으로 당신의 귀찮음 원인을 정확하게 진단합니다." />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Laziness+Diagnosis" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="귀찮음 진단기 – 오늘 나는 왜 아무것도 하기 싫을까?" />
+  <meta property="twitter:description" content="7가지 과학적 요인으로 당신의 귀찮음 원인을 정확하게 진단합니다." />
+  <meta property="twitter:image" content="https://dummyimage.com/1200x630/1a1a1a/ffffff&text=Laziness+Diagnosis" />
+  
+  <title>귀찮음 진단기 – 오늘 나는 왜 아무것도 하기 싫을까?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+    body { font-family: 'Noto Sans KR', sans-serif; }
+    .question-group { 
+      transition: all 0.3s ease; 
+      animation: fadeIn 0.4s ease-in;
+    }
+    .question-group:hover { transform: translateY(-2px); }
+    #result { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .recommendation-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .recommendation-card:hover {
+      transform: translateX(8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.4s ease-in;
+    }
+    .option-card {
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 2px solid #e5e7eb;
+    }
+    .option-card:hover {
+      border-color: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .option-card.selected {
+      border-color: #1a1a1a;
+      background-color: #f9fafb;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .option-card input[type="radio"] {
+      cursor: pointer;
+    }
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: #1a1a1a;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+    <meta property="og:image:alt" content="Laziness Diagnosis" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%F0%9F%98%B4%3C/text%3E%3C/svg%3E" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/lazy/" />
+  </head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900 min-h-screen">
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <div class="max-w-2xl mx-auto p-4 md:p-6 lg:p-8">
+    <!-- Header -->
+    <header class="text-center mb-8 md:mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent" data-i18n="title">
+        귀찮음 진단기
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 mb-2" data-i18n="subtitle">
+        오늘 나는 왜 아무것도 하기 싫을까?
+      </p>
+      <p class="text-sm md:text-base text-gray-500 leading-relaxed" data-i18n-html="subtitleDesc">
+        귀찮음은 게으름이 아니라 뇌의 에너지 관리 전략이다.<br/>
+        7가지 과학적 요인으로 당신의 귀찮음 원인을 정확하게 진단합니다.
+      </p>
+    </header>
+
+    <!-- Progress Bar -->
+    <div id="progressSection" class="mb-6">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-sm font-semibold text-gray-700" id="progressText">질문 1 / 7</span>
+        <span class="text-sm text-gray-500" id="progressPercent">14%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2.5">
+        <div id="progressBar" class="bg-black h-2.5 rounded-full transition-all duration-300" style="width: 14%"></div>
+      </div>
+    </div>
+
+    <!-- Question Container -->
+    <div id="questionContainer" class="mb-8">
+      <!-- 질문들이 동적으로 들어갈 공간 -->
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div id="navigationButtons" class="flex gap-3 mb-8">
+      <button
+        id="prevButton"
+        onclick="goToPreviousQuestion()"
+        class="hidden flex-1 bg-gray-200 text-gray-800 py-4 rounded-xl text-lg font-semibold hover:bg-gray-300 transition-colors"
+        data-i18n="prevButton"
+      >
+        이전
+      </button>
+      <button
+        id="nextButton"
+        onclick="goToNextQuestion()"
+        class="flex-1 bg-black text-white py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
+        data-i18n="nextButton"
+      >
+        다음
+      </button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result" class="hidden">
+      <div class="bg-white rounded-xl shadow-xl p-6 md:p-8 mb-6">
+        <div id="resultContent"></div>
+      </div>
+
+      <!-- 공유 버튼 -->
+      <div class="text-center mb-8">
+        <button
+          onclick="shareResult()"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors"
+          data-i18n="shareButton"
+        >
+          결과 공유하기
+        </button>
+        <button
+          onclick="location.reload()"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors ml-3"
+          data-i18n="restartButton"
+        >
+          다시 진단하기
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 mt-12 mb-6">
+      <p data-i18n="footerText">귀찮음은 게으름이 아니라 뇌의 에너지 관리 전략이다. 💭</p>
+    </footer>
+  </div>
+
+  <script>
+    // =========================
+    // i18n
+    // =========================
+    const translations = {
+      ko: {
+        metaTitle: "귀찮음 진단기 – 오늘 나는 왜 아무것도 하기 싫을까?",
+        metaDescription: "귀찮음은 게으름이 아니라 뇌의 에너지 관리 전략이다. 7가지 과학적 요인으로 당신의 귀찮음 원인을 정확하게 진단합니다.",
+        title: "귀찮음 진단기",
+        subtitle: "오늘 나는 왜 아무것도 하기 싫을까?",
+        subtitleDesc: "귀찮음은 게으름이 아니라 뇌의 에너지 관리 전략이다.<br/>7가지 과학적 요인으로 당신의 귀찮음 원인을 정확하게 진단합니다.",
+        progressText: "질문 {current} / {total}",
+        prevButton: "이전",
+        nextButton: "다음",
+        resultButton: "결과 보기",
+        alertSelect: "답변을 선택해주세요.",
+        resultTotalScore: "총점: <strong>{total}점</strong> / 28점",
+        resultRecommendations: "💡 지금 바로 적용할 수 있는 최소행동 추천",
+        shareTitle: "귀찮음 진단기",
+        shareText: "귀찮음 진단 결과: {emoji} {title} ({total}점)\n\n7가지 과학적 요인으로 분석하는 귀찮음 진단기\n{url}",
+        shareButton: "결과 공유하기",
+        restartButton: "다시 진단하기",
+        footerText: "귀찮음은 게으름이 아니라 뇌의 에너지 관리 전략이다. 💭",
+        alertCopySuccess: "결과가 클립보드에 복사되었습니다!",
+        alertCopyFail: "공유 기능을 사용할 수 없습니다. 링크를 직접 복사해주세요.",
+        resultLight: "가벼운 귀찮음",
+        resultLightDesc: "생각만 줄이면 바로 움직인다. 지금 필요한 건 <strong>행동의 시작점 1cm 줄이기</strong>입니다.",
+        resultMedium: "중간 귀찮음",
+        resultMediumDesc: "뇌가 에너지를 아끼는 중입니다. <strong>모호함 제거</strong>가 핵심입니다.",
+        resultSevere: "심한 귀찮음",
+        resultSevereDesc: "감정 에너지가 빠져 있습니다. <strong>휴식이 생산성</strong>입니다.",
+        resultExtreme: "극한 귀찮음",
+        resultExtremeDesc: "의지가 아니라 시스템의 문제입니다. 절대 의지로 밀지 마세요.",
+        rec1_1_title: "할 일을 30초짜리 조각으로 쪼개기",
+        rec1_1_desc: "큰 일을 생각하지 말고, 지금 당장 30초만에 할 수 있는 가장 작은 행동을 찾아보세요.",
+        rec1_2_title: "2분 타이머로 시작하기",
+        rec1_2_desc: "2분만 해보고 멈춰도 된다고 생각하면, 시작하기가 훨씬 쉬워집니다.",
+        rec1_3_title: "첫 번째 작은 단계만 정하기",
+        rec1_3_desc: "'프로젝트 완성'이 아니라 '첫 이메일 작성'만 생각하세요.",
+        rec2_1_title: "'어디서부터?'를 '이거부터!'로 바꾸기",
+        rec2_1_desc: "막막한 질문 대신, '바로 이거부터!'라고 구체적으로 정해보세요.",
+        rec2_2_title: "할 일을 3단계로만 나누기",
+        rec2_2_desc: "너무 세분화하지 말고, 큰 그림을 3단계로만 나누면 명확해집니다.",
+        rec2_3_title: "만약의 상황 미리 정하기",
+        rec2_3_desc: "'만약 이렇게 되면?' 시나리오를 미리 생각해두면 결정 피로가 줄어듭니다.",
+        rec2_4_title: "타임박싱으로 마감 만들기",
+        rec2_4_desc: "무한정 시간이 있다고 생각하면 더 못 하게 됩니다. '오늘 3시까지'처럼 명확한 마감을 만드세요.",
+        rec3_1_title: "감정 에너지 회복 시간 갖기",
+        rec3_1_desc: "무리하지 말고, 20-30분 가벼운 휴식(산책, 음악, 명상)을 취하세요.",
+        rec3_2_title: "자동 루틴 만들기",
+        rec3_2_desc: "의지력을 쓰지 않아도 되는 작은 루틴부터 시작하세요. (예: 매일 아침 물 한 잔)",
+        rec3_3_title: "스트레스 원인 최소화하기",
+        rec3_3_desc: "지금 당장 제거할 수 있는 스트레스 요인 하나를 찾아 없애보세요.",
+        rec3_4_title: "낮은 기준으로 시작하기",
+        rec3_4_desc: "완벽하게 하려 하지 말고, '일단 시작'만 하는 낮은 기준을 세우세요.",
+        rec4_1_title: "환경 바꾸기 (가장 쉽고 빠름)",
+        rec4_1_desc: "물리적 공간을 바꾸세요. 다른 카페, 다른 방, 다른 자리만 가도 달라집니다.",
+        rec4_2_title: "자동화 시스템 만들기",
+        rec4_2_desc: "매번 결정하지 않아도 되는 자동화를 구축하세요. 알림, 리마인더, 자동 실행 등.",
+        rec4_3_title: "루틴 3개만 고정하기",
+        rec4_3_desc: "하루에 반드시 하는 루틴을 3개만 정해서 고정하세요. (예: 아침 물 마시기, 저녁 일기 쓰기)",
+        rec4_4_title: "전원 끄고 재부팅하기",
+        rec4_4_desc: "하루 정도 완전히 쉬고, 다음 날 아침에 다시 시작하세요. 뇌도 재부팅이 필요합니다.",
+        rec4_5_title: "도움 요청하기",
+        rec4_5_desc: "혼자 하려 하지 말고, 누군가에게 도움을 요청하거나 함께 하는 방법을 찾아보세요.",
+      },
+      en: {
+        metaTitle: "Laziness Diagnosis – Why Don't I Want to Do Anything Today?",
+        metaDescription: "Laziness is not laziness, but the brain's energy management strategy. Accurately diagnose your laziness causes with 7 scientific factors.",
+        title: "Laziness Diagnosis",
+        subtitle: "Why don't I want to do anything today?",
+        subtitleDesc: "Laziness is not laziness, but the brain's energy management strategy.<br/>Accurately diagnose your laziness causes with 7 scientific factors.",
+        progressText: "Question {current} / {total}",
+        prevButton: "Previous",
+        nextButton: "Next",
+        resultButton: "See Result",
+        alertSelect: "Please select an answer.",
+        resultTotalScore: "Total Score: <strong>{total} points</strong> / 28 points",
+        resultRecommendations: "💡 Minimal Action Recommendations You Can Apply Now",
+        shareTitle: "Laziness Diagnosis",
+        shareText: "Laziness Diagnosis Result: {emoji} {title} ({total} points)\n\nLaziness Diagnosis Analyzed with 7 Scientific Factors\n{url}",
+        shareButton: "Share Result",
+        restartButton: "Diagnose Again",
+        footerText: "Laziness is not laziness, but the brain's energy management strategy. 💭",
+        alertCopySuccess: "Result has been copied to clipboard!",
+        alertCopyFail: "Share function is not available. Please copy the link directly.",
+        resultLight: "Light Laziness",
+        resultLightDesc: "Just reduce your thoughts and you'll move. What you need now is to <strong>reduce the starting point of action by 1cm</strong>.",
+        resultMedium: "Moderate Laziness",
+        resultMediumDesc: "Your brain is conserving energy. <strong>Removing ambiguity</strong> is key.",
+        resultSevere: "Severe Laziness",
+        resultSevereDesc: "Emotional energy is depleted. <strong>Rest is productivity</strong>.",
+        resultExtreme: "Extreme Laziness",
+        resultExtremeDesc: "This is not a willpower issue, but a systems issue. Never push with willpower.",
+        rec1_1_title: "Break tasks into 30-second pieces",
+        rec1_1_desc: "Don't think about big tasks. Find the smallest action you can do right now in just 30 seconds.",
+        rec1_2_title: "Start with a 2-minute timer",
+        rec1_2_desc: "Thinking you can stop after 2 minutes makes it much easier to start.",
+        rec1_3_title: "Define only the first small step",
+        rec1_3_desc: "Don't think about 'completing the project', just think about 'writing the first email'.",
+        rec2_1_title: "Change 'Where do I start?' to 'Start here!'",
+        rec2_1_desc: "Instead of an overwhelming question, specifically decide 'Start with this!'",
+        rec2_2_title: "Divide tasks into only 3 stages",
+        rec2_2_desc: "Don't over-complicate. Divide the big picture into just 3 stages for clarity.",
+        rec2_3_title: "Pre-determine 'what if' scenarios",
+        rec2_3_desc: "Thinking ahead about 'what if this happens?' scenarios reduces decision fatigue.",
+        rec2_4_title: "Create deadlines with timeboxing",
+        rec2_4_desc: "Thinking you have unlimited time makes you less productive. Create clear deadlines like 'by 3 PM today'.",
+        rec3_1_title: "Take time to recover emotional energy",
+        rec3_1_desc: "Don't push yourself. Take 20-30 minutes of light rest (walk, music, meditation).",
+        rec3_2_title: "Create automatic routines",
+        rec3_2_desc: "Start with small routines that don't require willpower. (e.g., a glass of water every morning)",
+        rec3_3_title: "Minimize stress causes",
+        rec3_3_desc: "Find one stress factor you can remove right now and eliminate it.",
+        rec3_4_title: "Start with low standards",
+        rec3_4_desc: "Don't aim for perfection. Set low standards that just get you started.",
+        rec4_1_title: "Change your environment (easiest and fastest)",
+        rec4_1_desc: "Change your physical space. Just going to a different cafe, room, or seat makes a difference.",
+        rec4_2_title: "Build automation systems",
+        rec4_2_desc: "Build automation that doesn't require constant decisions. Notifications, reminders, auto-execution, etc.",
+        rec4_3_title: "Fix only 3 routines",
+        rec4_3_desc: "Choose just 3 routines you must do daily and fix them. (e.g., morning water, evening journal)",
+        rec4_4_title: "Turn off and reboot",
+        rec4_4_desc: "Rest completely for about a day, then start again the next morning. Your brain needs rebooting too.",
+        rec4_5_title: "Ask for help",
+        rec4_5_desc: "Don't try to do it alone. Ask someone for help or find ways to do it together.",
+      },
+    };
+
+    const defaultLang = "ko";
+    const supportedLangs = ["ko", "en"];
+    let currentLang = defaultLang;
+
+    function t(key, vars = {}) {
+      const langTable = translations[currentLang] || translations.ko;
+      let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+      if (typeof template !== "string") return template;
+      Object.keys(vars).forEach((k) => {
+        template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+      });
+      return template;
+    }
+
+    function applyTranslations() {
+      document.title = t("metaTitle");
+      const descMeta = document.querySelector('meta[name="description"]');
+      if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        el.textContent = t(el.dataset.i18n);
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        el.innerHTML = t(el.dataset.i18nHtml);
+      });
+    }
+
+    function detectLang() {
+      const params = new URLSearchParams(window.location.search);
+      const paramLang = params.get("lang");
+      if (supportedLangs.includes(paramLang)) return paramLang;
+      const stored = localStorage.getItem("preferredLang");
+      if (supportedLangs.includes(stored)) return stored;
+      const browserLang =
+        navigator.languages && navigator.languages.length
+          ? navigator.languages[0]
+          : navigator.language;
+      if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+        return "ko";
+      }
+      return defaultLang;
+    }
+
+    function setLang(lang, options = {}) {
+      const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+      currentLang = nextLang;
+      document.documentElement.lang = nextLang;
+      localStorage.setItem("preferredLang", nextLang);
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.lang === nextLang);
+      });
+      applyTranslations();
+      if (options.forceUpdate) {
+        if (typeof showQuestion === "function" && typeof currentQuestionIndex !== "undefined") {
+          showQuestion(currentQuestionIndex);
+        }
+        if (typeof updateProgress === "function") {
+          updateProgress();
+        }
+        if (typeof updateButtons === "function") {
+          updateButtons();
+        }
+        if (document.getElementById("result") && !document.getElementById("result").classList.contains("hidden")) {
+          if (typeof showResult === "function") {
+            showResult();
+          }
+        }
+      }
+      if (options.updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", nextLang);
+        window.history.replaceState({}, "", url);
+      }
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach((button) => {
+      button.addEventListener("click", () => {
+        setLang(button.dataset.lang, { updateUrl: true, forceUpdate: true });
+      });
+    });
+
+    setLang(detectLang(), { updateUrl: false, forceUpdate: false });
+
+    // 질문 데이터
+    const QUESTIONS_BASE = [
+      {
+        id: 1,
+        name: "q1",
+        label: "Q1. 지금 해야 할 일을 미루면 나중에 더 편할 것 같다는 생각이 드나요?",
+        labelEn: "Q1. Do you think that putting off what you need to do now will make it easier later?",
+        subtitle: "(에너지 절약 본능 발동 여부)",
+        subtitleEn: "(Energy-saving instinct activation)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 지금 하는 게 낫다고 생각함", textEn: "Not at all - I think it's better to do it now" },
+          { value: "1", text: "조금 그렇다 - 가끔 그런 생각이 듦", textEn: "A little bit - I sometimes think that way" },
+          { value: "2", text: "보통이다 - 상황에 따라 다름", textEn: "Moderate - It depends on the situation" },
+          { value: "3", text: "꽤 그렇다 - 자주 미루는 게 낫다고 느낌", textEn: "Quite a bit - I often feel it's better to procrastinate" },
+          { value: "4", text: "매우 그렇다 - 지금 하는 것보다 나중이 훨씬 나음", textEn: "Very much so - Later is much better than doing it now" }
+        ]
+      },
+      {
+        id: 2,
+        name: "q2",
+        label: "Q2. 해야 할 일이 막연하거나 너무 커서 어디서부터 시작해야 할지 모르겠나요?",
+        labelEn: "Q2. Is the task vague or too large, making you unsure where to start?",
+        subtitle: "(일의 크기와 명확성)",
+        subtitleEn: "(Task size and clarity)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 할 일이 명확하고 작은 단위로 나뉘어 있음", textEn: "Not at all - Tasks are clear and broken down into small units" },
+          { value: "1", text: "조금 그렇다 - 가끔 막막한 느낌이 듦", textEn: "A little bit - I sometimes feel overwhelmed" },
+          { value: "2", text: "보통이다 - 일부는 명확하고 일부는 모호함", textEn: "Moderate - Some are clear, some are ambiguous" },
+          { value: "3", text: "꽤 그렇다 - 대부분 막연하고 크게 느껴짐", textEn: "Quite a bit - Most feel vague and large" },
+          { value: "4", text: "매우 그렇다 - 정말 크고 모호해서 시작조차 못하겠음", textEn: "Very much so - So large and vague that I can't even start" }
+        ]
+      },
+      {
+        id: 3,
+        name: "q3",
+        label: "Q3. 지금 하는 일의 결과나 보상이 너무 멀리 있어서 동기가 잘 생기지 않나요?",
+        labelEn: "Q3. Is the result or reward of what you're doing now too far away, making motivation hard to come by?",
+        subtitle: "(보상의 거리감)",
+        subtitleEn: "(Distance to reward)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 결과가 가까워서 동기가 잘 생김", textEn: "Not at all - Results are close, so motivation comes easily" },
+          { value: "1", text: "조금 그렇다 - 가끔 보상이 멀게 느껴짐", textEn: "A little bit - Rewards sometimes feel distant" },
+          { value: "2", text: "보통이다 - 보상이 조금은 멀지만 괜찮음", textEn: "Moderate - Rewards are somewhat distant but okay" },
+          { value: "3", text: "꽤 그렇다 - 보상이 너무 멀어서 의욕이 잘 안 생김", textEn: "Quite a bit - Rewards are too distant, making motivation hard" },
+          { value: "4", text: "매우 그렇다 - 보상이 정말 멀어서 시작할 이유가 없음", textEn: "Very much so - Rewards are really far, so there's no reason to start" }
+        ]
+      },
+      {
+        id: 4,
+        name: "q4",
+        label: "Q4. 최근 스트레스를 많이 받았거나 감정적으로 지친 상태인가요?",
+        labelEn: "Q4. Have you been under a lot of stress recently or emotionally exhausted?",
+        subtitle: "(감정 에너지 고갈 및 스트레스 수준)",
+        subtitleEn: "(Emotional energy depletion and stress level)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 컨디션 좋고 스트레스 거의 없음", textEn: "Not at all - Good condition, almost no stress" },
+          { value: "1", text: "조금 그렇다 - 가끔 스트레스 받지만 괜찮음", textEn: "A little bit - Sometimes stressed but okay" },
+          { value: "2", text: "보통이다 - 적당한 스트레스 수준", textEn: "Moderate - Appropriate stress level" },
+          { value: "3", text: "꽤 그렇다 - 스트레스가 많고 감정적으로 지침", textEn: "Quite a bit - High stress and emotionally tired" },
+          { value: "4", text: "매우 그렇다 - 완전히 지쳐 있고 감정 에너지가 바닥", textEn: "Very much so - Completely exhausted, emotional energy at rock bottom" }
+        ]
+      },
+      {
+        id: 5,
+        name: "q5",
+        label: "Q5. 해야 할 일이나 선택할 옵션이 너무 많아서 머리가 복잡하고 결정하기 힘든가요?",
+        labelEn: "Q5. Are there too many tasks or options to choose from, making your mind complicated and decisions difficult?",
+        subtitle: "(결정 피로 및 선택 과부하)",
+        subtitleEn: "(Decision fatigue and choice overload)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 선택지가 명확하고 결정하기 쉬움", textEn: "Not at all - Options are clear and easy to decide" },
+          { value: "1", text: "조금 그렇다 - 가끔 선택지가 많아서 고민됨", textEn: "A little bit - Sometimes too many options to consider" },
+          { value: "2", text: "보통이다 - 적당히 선택할 게 있음", textEn: "Moderate - Reasonable number of options" },
+          { value: "3", text: "꽤 그렇다 - 선택지가 너무 많아서 머리가 아픔", textEn: "Quite a bit - Too many options, causing mental strain" },
+          { value: "4", text: "매우 그렇다 - 결정할 게 너무 많아서 아예 못 함", textEn: "Very much so - So many decisions that I can't do anything" }
+        ]
+      },
+      {
+        id: 6,
+        name: "q6",
+        label: "Q6. 오늘 몸이 피곤하거나 졸리거나 컨디션이 좋지 않은가요?",
+        labelEn: "Q6. Are you tired, sleepy, or in poor physical condition today?",
+        subtitle: "(신체적 피로도)",
+        subtitleEn: "(Physical fatigue)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 컨디션 매우 좋음, 에너지 충만", textEn: "Not at all - Very good condition, full of energy" },
+          { value: "1", text: "조금 그렇다 - 약간 피곤하지만 큰 문제 없음", textEn: "A little bit - Slightly tired but no major issues" },
+          { value: "2", text: "보통이다 - 평소와 비슷한 컨디션", textEn: "Moderate - Similar to usual condition" },
+          { value: "3", text: "꽤 그렇다 - 피곤하고 컨디션이 안 좋음", textEn: "Quite a bit - Tired and poor condition" },
+          { value: "4", text: "매우 그렇다 - 몸이 매우 피곤하고 움직이기 힘듦", textEn: "Very much so - Very tired, hard to move" }
+        ]
+      },
+      {
+        id: 7,
+        name: "q7",
+        label: "Q7. 해야 할 일이 루틴화되어 있지 않아서 매번 새로 생각하고 결정해야 하나요?",
+        labelEn: "Q7. Are tasks not routinized, requiring you to think and decide anew each time?",
+        subtitle: "(자동화 및 루틴 여부)",
+        subtitleEn: "(Automation and routine)",
+        options: [
+          { value: "0", text: "전혀 아니다 - 이미 자동화된 루틴이라 쉽게 할 수 있음", textEn: "Not at all - Already automated routine, easy to do" },
+          { value: "1", text: "조금 그렇다 - 대부분 루틴화되어 있고 일부만 새로 해야 함", textEn: "A little bit - Mostly routinized, only some new tasks" },
+          { value: "2", text: "보통이다 - 반반 정도", textEn: "Moderate - About half and half" },
+          { value: "3", text: "꽤 그렇다 - 대부분이 새로 생각하고 결정해야 하는 일", textEn: "Quite a bit - Most tasks require new thinking and decisions" },
+          { value: "4", text: "매우 그렇다 - 모든 게 새롭고 루틴이 없어서 매우 힘듦", textEn: "Very much so - Everything is new and there's no routine, making it very difficult" }
+        ]
+      }
+    ];
+
+    function getQuestions() {
+      const isEnglish = currentLang === "en";
+      return QUESTIONS_BASE.map(q => ({
+        ...q,
+        label: isEnglish ? q.labelEn : q.label,
+        subtitle: isEnglish ? q.subtitleEn : q.subtitle,
+        options: q.options.map(opt => ({
+          ...opt,
+          text: isEnglish ? opt.textEn : opt.text
+        }))
+      }));
+    }
+
+    // 상태 관리
+    let currentQuestionIndex = 0;
+    let answers = {};
+
+    // 초기화
+    function init() {
+      showQuestion(0);
+      updateProgress();
+    }
+
+    // 질문 표시
+    function showQuestion(index) {
+      const questions = getQuestions();
+      const question = questions[index];
+      const container = document.getElementById("questionContainer");
+      const savedAnswer = answers[question.name];
+      
+      container.innerHTML = `
+        <div class="question-group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 animate-fadeIn">
+          <div class="mb-6">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-relaxed">
+              ${question.label}
+            </h2>
+            <p class="text-sm text-gray-500">${question.subtitle}</p>
+          </div>
+          
+          <div class="space-y-3">
+            ${question.options.map((opt, idx) => {
+              const isSelected = savedAnswer === opt.value;
+              const optionLabels = ['①', '②', '③', '④', '⑤'];
+              return `
+                <label 
+                  class="option-card block p-4 rounded-xl bg-white ${isSelected ? 'selected' : ''}"
+                  onclick="selectOption('${question.name}', '${opt.value}')"
+                >
+                  <div class="flex items-start gap-3">
+                    <input 
+                      type="radio" 
+                      name="${question.name}" 
+                      value="${opt.value}"
+                      ${isSelected ? 'checked' : ''}
+                      onchange="saveAnswer('${question.name}', '${opt.value}')"
+                      class="mt-1 w-5 h-5 text-black border-gray-300 focus:ring-black focus:ring-2"
+                    />
+                    <div class="flex-1">
+                      <span class="font-semibold text-gray-900 mr-2">${optionLabels[idx]}</span>
+                      <span class="text-gray-700 leading-relaxed">${opt.text}</span>
+                    </div>
+                  </div>
+                </label>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      // 버튼 상태 업데이트
+      updateButtons();
+    }
+
+    // 옵션 선택 함수
+    function selectOption(name, value) {
+      saveAnswer(name, value);
+      // UI 업데이트
+      const labels = document.querySelectorAll(`input[name="${name}"]`);
+      labels.forEach(radio => {
+        const card = radio.closest('.option-card');
+        if (radio.value === value) {
+          card.classList.add('selected');
+          radio.checked = true;
+        } else {
+          card.classList.remove('selected');
+        }
+      });
+      updateButtons();
+    }
+
+    // 답변 저장
+    function saveAnswer(name, value) {
+      answers[name] = value;
+    }
+
+    // 진행도 업데이트
+    function updateProgress() {
+      const questions = getQuestions();
+      const totalQuestions = questions.length;
+      const current = currentQuestionIndex + 1;
+      const percent = Math.round((current / totalQuestions) * 100);
+
+      document.getElementById("progressText").textContent = t("progressText", { current, total: totalQuestions });
+      document.getElementById("progressPercent").textContent = `${percent}%`;
+      document.getElementById("progressBar").style.width = `${percent}%`;
+    }
+
+    // 버튼 상태 업데이트
+    function updateButtons() {
+      const prevButton = document.getElementById("prevButton");
+      const nextButton = document.getElementById("nextButton");
+      const questions = getQuestions();
+      const currentQuestion = questions[currentQuestionIndex];
+
+      // 이전 버튼 표시/숨김
+      if (currentQuestionIndex === 0) {
+        prevButton.classList.add("hidden");
+      } else {
+        prevButton.classList.remove("hidden");
+      }
+
+      // 다음 버튼 텍스트 변경
+      if (currentQuestionIndex === questions.length - 1) {
+        nextButton.textContent = t("resultButton");
+      } else {
+        nextButton.textContent = t("nextButton");
+      }
+    }
+
+    // 다음 질문으로 이동
+    function goToNextQuestion() {
+      const questions = getQuestions();
+      const currentQuestion = questions[currentQuestionIndex];
+      const selectedRadio = document.querySelector(`input[name="${currentQuestion.name}"]:checked`);
+      
+      if (!selectedRadio) {
+        alert(t("alertSelect"));
+        return;
+      }
+
+      saveAnswer(currentQuestion.name, selectedRadio.value);
+
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        showQuestion(currentQuestionIndex);
+        updateProgress();
+      } else {
+        // 마지막 질문이면 결과 표시
+        showResult();
+      }
+    }
+
+    // 이전 질문으로 이동
+    function goToPreviousQuestion() {
+      if (currentQuestionIndex > 0) {
+        const currentQuestion = questions[currentQuestionIndex];
+        const selectedRadio = document.querySelector(`input[name="${currentQuestion.name}"]:checked`);
+        if (selectedRadio) {
+          saveAnswer(currentQuestion.name, selectedRadio.value);
+        }
+        
+        currentQuestionIndex--;
+        showQuestion(currentQuestionIndex);
+        updateProgress();
+      }
+    }
+
+    // 결과 표시
+    function showResult() {
+      // 진행 바와 질문 컨테이너 숨기기
+      document.getElementById("progressSection").classList.add("hidden");
+      document.getElementById("questionContainer").classList.add("hidden");
+      document.getElementById("navigationButtons").classList.add("hidden");
+
+      // 총점 계산
+      let total = 0;
+      Object.values(answers).forEach(value => {
+        total += Number(value) || 0;
+      });
+
+      let title = "";
+      let emoji = "";
+      let desc = "";
+      let recommendations = [];
+      let colorClass = "";
+
+      if (total <= 7) {
+        emoji = "🟡";
+        title = t("resultLight");
+        colorClass = "text-yellow-600";
+        desc = t("resultLightDesc");
+        recommendations = [
+          {
+            title: t("rec1_1_title"),
+            desc: t("rec1_1_desc")
+          },
+          {
+            title: t("rec1_2_title"),
+            desc: t("rec1_2_desc")
+          },
+          {
+            title: t("rec1_3_title"),
+            desc: t("rec1_3_desc")
+          }
+        ];
+      } else if (total <= 14) {
+        emoji = "🟠";
+        title = t("resultMedium");
+        colorClass = "text-orange-600";
+        desc = t("resultMediumDesc");
+        recommendations = [
+          {
+            title: t("rec2_1_title"),
+            desc: t("rec2_1_desc")
+          },
+          {
+            title: t("rec2_2_title"),
+            desc: t("rec2_2_desc")
+          },
+          {
+            title: t("rec2_3_title"),
+            desc: t("rec2_3_desc")
+          },
+          {
+            title: t("rec2_4_title"),
+            desc: t("rec2_4_desc")
+          }
+        ];
+      } else if (total <= 21) {
+        emoji = "🔴";
+        title = t("resultSevere");
+        colorClass = "text-red-600";
+        desc = t("resultSevereDesc");
+        recommendations = [
+          {
+            title: t("rec3_1_title"),
+            desc: t("rec3_1_desc")
+          },
+          {
+            title: t("rec3_2_title"),
+            desc: t("rec3_2_desc")
+          },
+          {
+            title: t("rec3_3_title"),
+            desc: t("rec3_3_desc")
+          },
+          {
+            title: t("rec3_4_title"),
+            desc: t("rec3_4_desc")
+          }
+        ];
+      } else {
+        emoji = "⚫";
+        title = t("resultExtreme");
+        colorClass = "text-gray-900";
+        desc = t("resultExtremeDesc");
+        recommendations = [
+          {
+            title: t("rec4_1_title"),
+            desc: t("rec4_1_desc")
+          },
+          {
+            title: t("rec4_2_title"),
+            desc: t("rec4_2_desc")
+          },
+          {
+            title: t("rec4_3_title"),
+            desc: t("rec4_3_desc")
+          },
+          {
+            title: t("rec4_4_title"),
+            desc: t("rec4_4_desc")
+          },
+          {
+            title: t("rec4_5_title"),
+            desc: t("rec4_5_desc")
+          }
+        ];
+      }
+
+      // result.html로 리다이렉트
+      const params = new URLSearchParams({
+        total: total.toString(),
+        title: title || '',
+        emoji: emoji || '',
+        level: total <= 7 ? 'light' : (total <= 14 ? 'medium' : (total <= 21 ? 'severe' : 'extreme'))
+      });
+      window.location.href = `result.html?${params.toString()}`;
+    }
+
+    function shareResult() {
+      const result = window.currentResult;
+      if (!result) return;
+
+      const text = t("shareText", {
+        emoji: result.emoji,
+        title: result.title,
+        total: result.total,
+        url: window.location.href
+      });
+
+      if (navigator.share) {
+        navigator.share({
+          title: t("shareTitle"),
+          text: text,
+          url: window.location.href
+        }).catch(() => {
+          copyToClipboard(text);
+        });
+      } else {
+        copyToClipboard(text);
+      }
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert(t("alertCopySuccess"));
+      }).catch(() => {
+        alert(t("alertCopyFail"));
+      });
+    }
+
+    // 페이지 로드 시 초기화
+    init();
+  </script>
+
+    
+    <script>
+      (function () {
+        'use strict';
+        const targetUrl = 'https://funnyfunny.cloud/';
+        function addMoreTestsButton() {
+          if (document.getElementById('more-tests-btn')) return;
+          const moreBtn = document.createElement('button');
+          moreBtn.id = 'more-tests-btn';
+          moreBtn.type = 'button';
+          moreBtn.dataset.url = targetUrl;
+          moreBtn.textContent = '더 많은 테스트 해보기';
+          moreBtn.className = 'w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3';
+          moreBtn.addEventListener('click', function () {
+            window.open(targetUrl, '_blank', 'noopener');
+          });
+          const shareButton = document.querySelector("button#share-btn, button#shareBtn, button[id*=\"share\"]");
+          if (shareButton) {
+            shareButton.insertAdjacentElement('afterend', moreBtn);
+          } else if (document.body) {
+            document.body.appendChild(moreBtn);
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', addMoreTestsButton);
+        } else {
+          addMoreTestsButton();
+        }
+      })();
+    </script>
+
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Today's Fortune by Hwatu Cards | Hwatu Fortune</title>
+
+  <!-- OG -->
+  <meta property="og:title" content="Today's Fortune by Hwatu Cards" />
+  <meta property="og:description" content="Discover today's fortune and luck with a single Hwatu card" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Hwatu+Fortune" />
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <rect width='100' height='100' rx='20' fill='%230b1220'/>
+    <text x='50' y='62' font-size='52' text-anchor='middle' fill='white'>🃏</text>
+  </svg>">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111827;
+      --paper:#ffffff;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#111;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%);
+      color:#111;
+      min-height:100vh;
+    }
+    header{
+      background: linear-gradient(135deg, #0b1220 0%, #1a2332 100%);
+      color:#fff;
+      padding:28px 16px;
+      text-align:center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    header h1{ margin:0 0 8px; font-size:24px; letter-spacing:-0.3px; font-weight:800; }
+    header p{ margin:0; opacity:0.9; font-size:14px; line-height:1.6; }
+
+    main{ max-width:1000px; margin:0 auto; padding:24px 16px 32px; }
+
+    .row{ display:grid; grid-template-columns: 1fr; gap:20px; }
+    @media (min-width:900px){
+      .row{ grid-template-columns: 1fr; align-items:start; }
+    }
+    
+    .main-card-section{
+      max-width:600px;
+      margin:0 auto;
+    }
+
+    .panel{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+      box-shadow: 0 8px 24px rgba(17,24,39,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .panel:hover{
+      box-shadow: 0 12px 32px rgba(17,24,39,0.12);
+    }
+
+    .hint{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+      margin:12px 0 0;
+    }
+    .hint b{
+      color:#111;
+      font-weight:700;
+    }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; justify-content:center; }
+    button{
+      border:none;
+      border-radius:12px;
+      padding:12px 18px;
+      font-weight:700;
+      cursor:pointer;
+      background:var(--bg);
+      color:#fff;
+      letter-spacing:-0.2px;
+      transition: all 0.2s;
+      font-size:14px;
+    }
+    button:hover:not(:disabled){
+      transform:translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11,18,32,0.2);
+    }
+    button.secondary{
+      background:#eef2ff;
+      color:#111;
+    }
+    button.secondary:hover:not(:disabled){
+      background:#e0e7ff;
+    }
+    button.ghost{
+      background:#fff;
+      color:#111;
+      border:1px solid var(--line);
+    }
+    button.ghost:hover:not(:disabled){
+      border-color:#9ca3af;
+      background:#f9fafb;
+    }
+    button:disabled{
+      opacity:0.55;
+      cursor:not-allowed;
+    }
+
+    /* Card flip */
+    .stage{ display:flex; justify-content:center; padding:8px 0 6px; }
+    .flip{
+      width:260px;
+      height:360px;
+      perspective: 1200px;
+    }
+    .flip-inner{
+      width:100%;
+      height:100%;
+      position:relative;
+      transform-style:preserve-3d;
+      transition: transform .75s cubic-bezier(.2,.8,.2,1);
+      border-radius:16px;
+    }
+    .flip.is-flipped .flip-inner{ transform: rotateY(180deg); }
+    .face{
+      position:absolute;
+      inset:0;
+      border-radius:16px;
+      overflow:hidden;
+      backface-visibility:hidden;
+      border:1px solid rgba(229,231,235,0.9);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .back{
+      background: linear-gradient(135deg, #0b1220 0%, #111827 55%, #0b1220 100%);
+      color:#fff;
+      flex-direction:column;
+      gap:10px;
+    }
+    .back .mark{
+      width:86px;height:86px;border-radius:22px;
+      border:1px solid rgba(255,255,255,0.18);
+      display:flex;align-items:center;justify-content:center;
+      font-size:44px;
+      background: rgba(255,255,255,0.06);
+    }
+    .back .txt{ font-weight:800; letter-spacing:-0.2px; }
+    .front{
+      transform: rotateY(180deg);
+      background:#fff;
+    }
+    .front img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    .front .fallback{
+      padding:18px;
+      text-align:center;
+      color:#111;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      font-size:13px;
+      color:#111;
+      background:#fff;
+      font-weight:600;
+    }
+    .badges{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
+
+    .result-title{ margin:16px 0 0; text-align:center; font-size:20px; font-weight:800; letter-spacing:-0.3px; color:#111; }
+    .result-sub{ margin:12px auto 0; text-align:center; max-width:48ch; color:#111; line-height:1.7; font-size:15px; }
+    .result-sub small{ color:var(--muted); display:block; margin-top:8px; }
+
+    .history{
+      margin-top:12px;
+      display:grid;
+      gap:10px;
+    }
+    .h-item{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px;
+      background:#fff;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      transition: all 0.2s;
+    }
+    .h-item:hover{
+      border-color:#9ca3af;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .h-item .left{ display:flex; flex-direction:column; gap:4px; }
+    .h-item .date{ font-size:12px; color:var(--muted); }
+    .h-item .name{ font-weight:800; letter-spacing:-0.2px; font-size:15px; }
+    .h-item .tag{ font-size:12px; color:#111; border:1px solid var(--line); padding:6px 10px; border-radius:999px; background:#f9fafb; white-space:nowrap; font-weight:600; }
+
+    footer{
+      text-align:center;
+      padding:24px 16px 32px;
+      color:var(--muted);
+      font-size:13px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    footer a{ 
+      color:#111; 
+      font-weight:800; 
+      text-decoration:none;
+      transition: color 0.2s;
+    }
+    footer a:hover{
+      color:#0b1220;
+      text-decoration:underline;
+    }
+    
+    /* Share canvas (hidden) */
+    #shareCanvas{
+      display:none;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>Today's Fortune by Hwatu Cards</h1>
+  <p>Open each day with a single Hwatu card—a magical moment.<br/>Check your personal fortune and share it.</p>
+  <div style="margin-top:12px;">
+    <a href="./index.html" style="color:#fff; text-decoration:none; opacity:0.9; font-size:13px;">🇰🇷 한국어</a>
+  </div>
+</header>
+
+<main>
+  <div class="row">
+    <!-- Main: Card -->
+    <section class="panel main-card-section">
+      <div class="stage">
+        <div class="flip" id="flip">
+          <div class="flip-inner">
+            <div class="face back">
+              <div class="mark">🎴</div>
+              <div class="txt">Today's Hwatu Card</div>
+              <div style="font-size:13px;opacity:.85;">Click to flip</div>
+            </div>
+            <div class="face front">
+              <img id="cardImg" alt="Hwatu card" />
+              <div class="fallback" id="fallback" style="display:none;">
+                <div style="font-size:18px;font-weight:900;">Image Load Failed</div>
+                <div style="margin-top:8px;color:var(--muted);line-height:1.45;">
+                  <div>Path: <code id="imgPath"></code></div>
+                  <div style="margin-top:6px;">Please format as assets/cards/1-1.png ~ 12-4.png</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="badges" id="badges" style="display:none;"></div>
+
+      <div class="result-title" id="resultTitle">Draw today's Hwatu card</div>
+      <div class="result-sub" id="resultText">Common</div>
+
+      <div class="actions">
+        <button id="drawBtn">Draw Today's Fortune</button>
+        <button class="secondary" id="copyBtn" disabled>Copy Result</button>
+        <button class="secondary" id="shareImageBtn" disabled>Share as Image</button>
+      </div>
+
+      <p class="hint">
+        • You can draw anytime. Results are random, so each person gets different outcomes.
+      </p>
+      
+      <hr style="border:none;border-top:1px solid var(--line); margin:24px 0;" />
+      
+      <div class="badge">🕘 Last 7 Days History</div>
+      <div class="history" id="history"></div>
+    </section>
+
+    <!-- Other Services -->
+    <aside class="panel" style="max-width:400px; margin:20px auto 0;">
+      <div class="actions" style="margin-top:0;">
+        <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" style="text-decoration:none; flex:1;">
+          <button class="secondary" type="button" style="width:100%;">✨ View Other Services</button>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div>© funnyfunny.cloud · <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a></div>
+</footer>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center; margin:20px auto; max-width:900px;"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+function pad2(n){ return String(n).padStart(2,'0'); }
+
+const months = [
+  {m:1,  name:'Jan (Pine)',  theme:'Start'},
+  {m:2,  name:'Feb (Plum)',  theme:'Relationships'},
+  {m:3,  name:'Mar (Cherry)',  theme:'Opportunity'},
+  {m:4,  name:'Apr (Wisteria)',theme:'Organization'},
+  {m:5,  name:'May (Iris)',  theme:'Competition'},
+  {m:6,  name:'Jun (Peony)',  theme:'Abundance'},
+  {m:7,  name:'Jul (Bush Clover)',  theme:'Recovery'},
+  {m:8,  name:'Aug (Pampas)',  theme:'Focus'},
+  {m:9,  name:'Sep (Chrysanthemum)',  theme:'Completion'},
+  {m:10, name:'Oct (Maple)', theme:'Transition'},
+  {m:11, name:'Nov (Paulownia)', theme:'Expansion'},
+  {m:12, name:'Dec (Rain)',   theme:'Finishing'}
+];
+
+const typeByIndex = (iInMonth) => {
+  if(iInMonth === 0) return 'legendary';
+  if(iInMonth === 1) return 'unique';
+  if(iInMonth === 2) return 'rare';
+  return Math.random() < 0.25 ? 'special' : 'rare';
+};
+
+const cards = Array.from({length:48}, (_,idx)=>{
+  const monthIndex = Math.floor(idx/4);
+  const inMonth = idx % 4;
+  const t = typeByIndex(inMonth);
+  const m = months[monthIndex];
+  const id = idx+1;
+  const month = monthIndex + 1;
+  const cardInMonth = inMonth + 1;
+  return {
+    id,
+    month: m.m,
+    monthName: m.name,
+    theme: m.theme,
+    type: t,
+    tags: [t, m.theme],
+    img: `./assets/cards/${month}-${cardInMonth}.png`
+  };
+});
+
+function hashString(str){
+  let h = 2166136261;
+  for(let i=0;i<str.length;i++){
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+function mulberry32(a){
+  return function(){
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+}
+function todayKey(){
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
+function getUserId(){
+  const STORAGE_KEY = 'hwatu.userId';
+  try {
+    let userId = localStorage.getItem(STORAGE_KEY);
+    if(!userId){
+      if(crypto.randomUUID){
+        userId = crypto.randomUUID();
+      } else {
+        const bytes = new Uint8Array(16);
+        crypto.getRandomValues(bytes);
+        userId = Array.from(bytes, b => b.toString(16).padStart(2,'0')).join('');
+      }
+      localStorage.setItem(STORAGE_KEY, userId);
+    }
+    return userId;
+  } catch(e){
+    return 'temp-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+}
+
+function getDrawCount(){
+  const key = todayKey();
+  const saved = JSON.parse(localStorage.getItem('hwatu.drawCount') || 'null');
+  if(saved && saved.key === key){
+    return saved.count || 0;
+  }
+  return 0;
+}
+
+function incrementDrawCount(){
+  const key = todayKey();
+  const count = getDrawCount() + 1;
+  localStorage.setItem('hwatu.drawCount', JSON.stringify({key, count}));
+  return count;
+}
+
+function canDraw(){
+  return true;
+}
+
+function dailyPick(){
+  const userId = getUserId();
+  const timestamp = Date.now();
+  const random = Math.random().toString(36);
+  const seed = hashString(userId + timestamp + random);
+  const rng = mulberry32(seed);
+  return cards[Math.floor(rng()*cards.length)];
+}
+
+const fortuneBase = {
+  legendary: [
+    "Today is a perfect day! Start everything you want to do.",
+    "A great opportunity is coming. Be brave and take on the challenge.",
+    "Everything flows smoothly today. It's a good day to make important decisions."
+  ],
+  unique: [
+    "Focus brings good results today.",
+    "Taking the lead is advantageous today. Be proactive.",
+    "Good opportunities come through cooperation and communication."
+  ],
+  rare: [
+    "Take things step by step today for good results.",
+    "Small efforts lead to great achievements today.",
+    "You can discover opportunities in a stable flow."
+  ],
+  special: [
+    "Unexpected good opportunities may come. Keep your eyes open and wait.",
+    "Today is a special day where one choice can change everything.",
+    "New opportunities are coming. Luck follows those who are prepared."
+  ]
+};
+
+const themeHint = {
+  Start: "A good time to start something new.",
+  Relationships: "Good flow comes from people.",
+  Opportunity: "You can make small opportunities big.",
+  Organization: "Emptying makes room for the next.",
+  Competition: "Push forward when you need to push.",
+  Abundance: "When you have room, sharing is good too.",
+  Recovery: "Recovering your condition is top priority.",
+  Focus: "Focusing on one thing brings results.",
+  Completion: "Finishing things well improves your reputation.",
+  Transition: "Changing routines opens opportunities.",
+  Expansion: "A good day to scale up.",
+  Finishing: "Final checks prevent mistakes."
+};
+
+function pickOne(arr, rng){
+  return arr[Math.floor(rng()*arr.length)];
+}
+
+function makeFortune(card, isPractice=false){
+  const randomSeed = String(Math.random()) + Date.now() + card.id;
+  const seed = hashString(randomSeed);
+  const rng = mulberry32(seed);
+
+  const line1 = pickOne(fortuneBase[card.type] || fortuneBase.rare, rng);
+  const line2 = themeHint[card.theme] || "Read today's flow lightly.";
+
+  const scoreBase = {legendary: 85, unique: 78, special: 75, rare: 72};
+  const variance = Math.floor(rng() * 21) - 5;
+  const score = Math.max(60, Math.min(100, (scoreBase[card.type]||70) + variance));
+
+  const actions = [
+    "Decide on just one thing first.",
+    "Today, 'accurately' rather than 'quickly'.",
+    "Have one more conversation.",
+    "Focus for 30 minutes and then stop.",
+    "Complete one thing you've been putting off."
+  ];
+  const action = pickOne(actions, rng);
+
+  return { line1, line2, score, action };
+}
+
+function loadHistory(){
+  return JSON.parse(localStorage.getItem('hwatu.history')||'[]');
+}
+function saveHistory(list){
+  localStorage.setItem('hwatu.history', JSON.stringify(list.slice(-7)));
+}
+function renderHistory(){
+  const wrap = document.getElementById('history');
+  const list = loadHistory().slice().reverse();
+  wrap.innerHTML = '';
+  if(list.length === 0){
+    wrap.innerHTML = `<div class="hint">No records yet. Draw a card today.</div>`;
+    return;
+  }
+  list.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'h-item';
+    div.innerHTML = `
+      <div class="left">
+        <div class="date">${item.key}</div>
+        <div class="name">${item.name}</div>
+      </div>
+      <div class="tag">${item.type.toUpperCase()} · ${item.theme}</div>
+    `;
+    wrap.appendChild(div);
+  });
+}
+
+const flip = document.getElementById('flip');
+const cardImg = document.getElementById('cardImg');
+const fallback = document.getElementById('fallback');
+const imgPath = document.getElementById('imgPath');
+const badges = document.getElementById('badges');
+const resultTitle = document.getElementById('resultTitle');
+const resultText = document.getElementById('resultText');
+const drawBtn = document.getElementById('drawBtn');
+const copyBtn = document.getElementById('copyBtn');
+const shareImageBtn = document.getElementById('shareImageBtn');
+
+let current = null;
+let currentFortune = null;
+
+function setBadges(card){
+  const typeLabel = ({legendary:'Legendary', unique:'Unique', rare:'Rare', special:'Special'})[card.type] || 'Rare';
+  badges.innerHTML = `
+    <span class="badge">📅 ${card.monthName}</span>
+    <span class="badge">🏷️ ${typeLabel}</span>
+    <span class="badge">🧭 ${card.theme}</span>
+  `;
+  badges.style.display = 'flex';
+}
+
+function showCard(card){
+  current = card;
+  cardImg.src = card.img;
+  imgPath.textContent = card.img;
+
+  cardImg.onload = () => {
+    fallback.style.display = 'none';
+    cardImg.style.display = 'block';
+  };
+  cardImg.onerror = () => {
+    cardImg.style.display = 'none';
+    fallback.style.display = 'block';
+  };
+}
+
+function updateResult(card, fortune, isPractice){
+  const mode = isPractice ? "Practice Result" : "Today's Result";
+  resultTitle.textContent = `${mode} · Fortune Score ${fortune.score}`;
+  resultText.innerHTML = `
+    ${fortune.line1}<br/>
+    <small>${fortune.line2}</small><br/>
+    <small>Today's Suggestion: <b>${fortune.action}</b></small>
+  `;
+  setBadges(card);
+  
+  copyBtn.disabled = false;
+  shareImageBtn.disabled = false;
+}
+
+function updateDrawCount(){
+  drawBtn.disabled = false;
+  drawBtn.textContent = 'Draw Today\'s Fortune';
+  
+  if(current && currentFortune){
+    copyBtn.disabled = false;
+    shareImageBtn.disabled = false;
+  }
+}
+
+function showAd(){
+  const adSlot = document.querySelector('.adsbygoogle');
+  if(adSlot && window.adsbygoogle){
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch(e){
+      console.log('Ad reload:', e);
+    }
+  }
+}
+
+function doDailyDraw(){
+  const card = dailyPick();
+  showCard(card);
+  const f = makeFortune(card, false);
+  currentFortune = f;
+
+  flip.classList.add('is-flipped');
+  updateResult(card, f, false);
+
+  updateDrawCount();
+
+  setTimeout(() => {
+    showAd();
+  }, 500);
+
+  const key = todayKey();
+  const hist = loadHistory();
+  const todaySame = hist.filter(x => x.key === key && x.id === card.id);
+  if(todaySame.length === 0){
+    hist.push({key, name: card.monthName, type: card.type, theme: card.theme, id: card.id});
+    saveHistory(hist);
+    renderHistory();
+  }
+}
+
+function copyResult(){
+  if(!current || !currentFortune) return;
+  const typeLabel = ({legendary:'Legendary', unique:'Unique', rare:'Rare', special:'Special'})[current.type] || 'Rare';
+  const text =
+`🎴 Hwatu Fortune: ${current.monthName} (${typeLabel}/${current.theme})
+Score: ${currentFortune.score}
+One-liner: ${currentFortune.line1}
+Suggestion: ${currentFortune.action}
+
+https://hwatu.funnyfunny.cloud
+#HwatuFortune #funnyfunny #HwatuFortune`;
+
+  navigator.clipboard.writeText(text)
+    .then(()=> alert('Result copied! You can paste it on X.'))
+    .catch(()=> alert('Copy failed... Please check browser permissions.'));
+}
+
+async function shareImage(){
+  if(!current || !currentFortune) return;
+  
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200;
+    canvas.height = 900;
+    const ctx = canvas.getContext('2d');
+    
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, '#0b1220');
+    gradient.addColorStop(0.5, '#111827');
+    gradient.addColorStop(1, '#0b1220');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    const cardImgLoaded = await new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = current.img;
+    });
+    
+    if(cardImgLoaded){
+      const cardSize = 200;
+      const cardX = 100;
+      const cardY = 100;
+      const cardHeight = cardSize * 1.38;
+      const radius = 8;
+      
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      const bgX = cardX - 8;
+      const bgY = cardY - 8;
+      const bgW = cardSize + 16;
+      const bgH = cardHeight + 16;
+      ctx.moveTo(bgX + radius, bgY);
+      ctx.lineTo(bgX + bgW - radius, bgY);
+      ctx.quadraticCurveTo(bgX + bgW, bgY, bgX + bgW, bgY + radius);
+      ctx.lineTo(bgX + bgW, bgY + bgH - radius);
+      ctx.quadraticCurveTo(bgX + bgW, bgY + bgH, bgX + bgW - radius, bgY + bgH);
+      ctx.lineTo(bgX + radius, bgY + bgH);
+      ctx.quadraticCurveTo(bgX, bgY + bgH, bgX, bgY + bgH - radius);
+      ctx.lineTo(bgX, bgY + radius);
+      ctx.quadraticCurveTo(bgX, bgY, bgX + radius, bgY);
+      ctx.closePath();
+      ctx.fill();
+      
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cardX + radius, cardY);
+      ctx.lineTo(cardX + cardSize - radius, cardY);
+      ctx.quadraticCurveTo(cardX + cardSize, cardY, cardX + cardSize, cardY + radius);
+      ctx.lineTo(cardX + cardSize, cardY + cardHeight - radius);
+      ctx.quadraticCurveTo(cardX + cardSize, cardY + cardHeight, cardX + cardSize - radius, cardY + cardHeight);
+      ctx.lineTo(cardX + radius, cardY + cardHeight);
+      ctx.quadraticCurveTo(cardX, cardY + cardHeight, cardX, cardY + cardHeight - radius);
+      ctx.lineTo(cardX, cardY + radius);
+      ctx.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(cardImgLoaded, cardX, cardY, cardSize, cardHeight);
+      ctx.restore();
+    }
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = cardImgLoaded ? 'left' : 'center';
+    ctx.font = 'bold 64px system-ui, -apple-system, sans-serif';
+    const titleX = cardImgLoaded ? 340 : canvas.width / 2;
+    ctx.fillText('🎴 Hwatu Fortune', titleX, 140);
+    
+    const typeLabel = ({legendary:'Legendary', unique:'Unique', rare:'Rare', special:'Special'})[current.type] || 'Rare';
+    ctx.font = '36px system-ui, -apple-system, sans-serif';
+    ctx.fillText(`${current.monthName} · ${typeLabel} · ${current.theme}`, titleX, 200);
+    
+    ctx.fillStyle = '#fbbf24';
+    ctx.font = 'bold 48px system-ui, -apple-system, sans-serif';
+    ctx.fillText(`Fortune Score ${currentFortune.score}`, titleX, 270);
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.font = '42px system-ui, -apple-system, sans-serif';
+    
+    const line1Y = cardImgLoaded ? 420 : 400;
+    ctx.fillText(currentFortune.line1, canvas.width / 2, line1Y);
+    
+    ctx.fillStyle = '#d1d5db';
+    ctx.font = '32px system-ui, -apple-system, sans-serif';
+    const line2Y = line1Y + 60;
+    ctx.fillText(currentFortune.line2 || '', canvas.width / 2, line2Y);
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '36px system-ui, -apple-system, sans-serif';
+    const actionY = line2Y + 100;
+    ctx.fillText(`Today's Suggestion: ${currentFortune.action}`, canvas.width / 2, actionY);
+    
+    ctx.fillStyle = '#9ca3af';
+    ctx.font = '28px system-ui, -apple-system, sans-serif';
+    ctx.fillText('hwatu.funnyfunny.cloud', canvas.width / 2, canvas.height - 60);
+    
+    canvas.toBlob(async (blob) => {
+      if(!blob) {
+        alert('Image generation failed');
+        return;
+      }
+      
+      if(navigator.share && navigator.canShare && navigator.canShare({files: [new File([blob], 'hwatu-fortune.png', {type: 'image/png'})]})){
+        try {
+          const file = new File([blob], 'hwatu-fortune.png', {type: 'image/png'});
+          await navigator.share({
+            files: [file],
+            title: 'Hwatu Fortune',
+            text: `Hwatu Fortune: ${current.monthName} - ${currentFortune.score} points`
+          });
+          alert('Shared successfully!');
+          return;
+        } catch(err){
+          if(err.name !== 'AbortError'){
+            console.error('Share failed:', err);
+          } else {
+            return;
+          }
+        }
+      }
+      
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `hwatu-fortune-${todayKey()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      alert('Image downloaded! Upload it to social media to share.');
+    }, 'image/png');
+    
+  } catch(err){
+    console.error('Image generation failed:', err);
+    alert('An error occurred while generating the image.');
+  }
+}
+
+renderHistory();
+updateDrawCount();
+showCard(dailyPick());
+
+drawBtn.addEventListener('click', doDailyDraw);
+copyBtn.addEventListener('click', copyResult);
+shareImageBtn.addEventListener('click', shareImage);
+
+flip.addEventListener('click', ()=>{
+  doDailyDraw();
+});
+</script>
+</body>
+</html>

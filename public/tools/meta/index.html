@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meta Kit - SEO & OG Generator</title>
+
+    <!-- SEO (tool page) -->
+    <meta
+      name="description"
+      content="Meta Kit: SEO 메타태그/OG/Twitter 카드/JSON-LD/파비콘/OG 이미지(캔버스) 생성기"
+    />
+    <meta
+      name="keywords"
+      content="SEO Generator, OG Tags, Meta Kit, Favicon Builder, JSON-LD"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/meta/" />
+    <!-- OG (tool page, og-image text English only) -->
+    <meta property="og:title" content="Meta Kit" />
+    <meta
+      property="og:description"
+      content="한 페이지에서 메타태그, 파비콘, OG 이미지를 한 번에 생성하세요."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Meta+Kit"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://meta.funnyfunny.cloud/" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%230b1220'/%3E%3Cstop offset='100%25' stop-color='%2322c55e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-size='28' font-family='Arial' fill='white'%3EM%3C/text%3E%3C/svg%3E"
+    />
+
+    <meta name="theme-color" content="#0b1220" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+  <script src="/seo-helper.js"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(15, 23, 42, 0.7);
+      padding: 4px;
+      gap: 4px;
+      font-size: 13px;
+    }
+    .lang-switch button {
+      border-radius: 999px;
+      padding: 6px 12px;
+      color: rgba(255, 255, 255, 0.7);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-switch button.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: #ecfdf3;
+    }
+  </style>
+</head>
+
+  <body
+    class="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-white"
+  ><main class="max-w-5xl mx-auto px-4 py-10">
+      <div class="flex justify-center md:justify-end mb-6">
+        <div class="lang-switch" role="tablist" aria-label="Language switcher">
+          <button type="button" data-lang="ko" class="active">한국어</button>
+          <button type="button" data-lang="en">English</button>
+        </div>
+      </div>
+      <header class="text-center mb-8">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10"
+        >
+          <span class="text-emerald-300 text-sm font-semibold">Meta Kit</span>
+          <span class="text-white/50 text-sm"
+            data-i18n="headerTagline"
+            >SEO · OG · Favicon · OG Image</span
+          >
+        </div>
+        <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">
+          <span data-i18n="headerTitle">메타태그/공유/아이콘 한 번에</span>
+        </h1>
+        <p class="mt-2 text-white/70" data-i18n="headerSubtitle">
+          입력 → 생성 → 복붙. OG 이미지 텍스트는 영문만 사용하세요.
+        </p>
+      </header>
+
+      <!-- Form -->
+      <section
+        class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="block text-sm text-white/70" data-i18n="labelSiteTitle"
+              >Site Title (한글 OK)</span
+            >
+            <input
+              id="siteTitle"
+              type="text"
+              placeholder="예: 오늘의 마음"
+              data-i18n-placeholder="placeholderSiteTitle"
+              class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+            />
+          </label>
+
+          <label class="block">
+            <span class="block text-sm text-white/70" data-i18n="labelSiteName"
+              >Site Name (선택, 기본=Title)</span
+            >
+            <input
+              id="siteName"
+              type="text"
+              placeholder="예: Temple Wisdom"
+              data-i18n-placeholder="placeholderSiteName"
+              class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+            />
+          </label>
+
+          <label class="block md:col-span-2">
+            <span
+              class="block text-sm text-white/70"
+              data-i18n="labelDescription"
+              >Description (한글 OK)</span
+            >
+            <textarea
+              id="description"
+              rows="3"
+              placeholder="예: 성경/불교의 메시지에서 영감을 받은 하루 한 문장"
+              data-i18n-placeholder="placeholderDescription"
+              class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+            ></textarea>
+          </label>
+
+          <label class="block md:col-span-2">
+            <span class="block text-sm text-white/70" data-i18n="labelCanonical"
+              >Canonical URL</span
+            >
+            <input
+              id="canonicalUrl"
+              type="url"
+              placeholder="https://meta.funnyfunny.cloud/"
+              value="https://meta.funnyfunny.cloud/"
+              class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+            />
+            <p class="mt-1 text-xs text-white/50">
+              <span data-i18n-html="canonicalHint"
+                >끝에 <span class="font-semibold">/</span>로 마무리하는 걸
+                권장</span
+              >
+            </p>
+          </label>
+
+          <label class="block">
+            <span class="block text-sm text-white/70" data-i18n="labelOgText"
+              >OG Image Text (English only)</span
+            >
+            <input
+              id="ogText"
+              type="text"
+              placeholder="e.g. Temple Wisdom"
+              class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+            />
+            <p class="mt-1 text-xs text-white/50">
+              <span data-i18n="ogTextHint"
+                >영문/숫자/공백/기호만 권장 (공유 플랫폼 호환성)</span
+              >
+            </p>
+          </label>
+
+          <label class="block">
+            <span class="block text-sm text-white/70" data-i18n="labelThemeColor"
+              >Theme Color</span
+            >
+            <div class="mt-2 flex items-center gap-3">
+              <input
+                id="themeColor"
+                type="color"
+                value="#0b1220"
+                class="h-12 w-16 rounded-lg bg-black/20 border border-white/10"
+              />
+              <input
+                id="themeColorText"
+                type="text"
+                value="#0b1220"
+                class="flex-1 rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+              />
+            </div>
+          </label>
+
+          <div class="grid grid-cols-2 gap-3 md:col-span-2">
+            <label class="block">
+              <span class="block text-sm text-white/70" data-i18n="labelRobots"
+                >Robots</span
+              >
+              <select
+                id="robots"
+                class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60"
+              >
+                <option value="index,follow">index,follow</option>
+                <option value="index,nofollow">index,nofollow</option>
+                <option value="noindex,follow">noindex,follow</option>
+                <option value="noindex,nofollow">noindex,nofollow</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="block text-sm text-white/70" data-i18n="labelTwitter"
+                >Twitter Card</span
+              >
+              <select
+                id="twitterCard"
+                class="mt-2 w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/60"
+              >
+                <option value="summary_large_image">summary_large_image</option>
+                <option value="summary">summary</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="md:col-span-2 flex flex-wrap gap-3">
+            <button
+              id="generateBtn"
+              class="flex-1 md:flex-none px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20"
+              data-i18n="btnGenerate"
+            >
+              메타태그 생성
+            </button>
+            <button
+              id="copyBtn"
+              class="flex-1 md:flex-none px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95"
+              data-i18n="btnCopy"
+            >
+              코드 복사
+            </button>
+            <button
+              id="makeOgBtn"
+              class="flex-1 md:flex-none px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95"
+              data-i18n="btnMakeOg"
+            >
+              OG 이미지 생성
+            </button>
+            <button
+              id="downloadOgBtn"
+              class="flex-1 md:flex-none px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95"
+              data-i18n="btnDownloadOg"
+            >
+              OG PNG 다운로드
+            </button>
+            <button
+              id="downloadFaviconBtn"
+              class="flex-1 md:flex-none px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95"
+              data-i18n="btnDownloadFavicon"
+            >
+              Favicon SVG 다운로드
+            </button>
+          </div>
+
+          <div class="md:col-span-2 mt-2">
+            <p id="hint" class="text-sm text-white/60" data-i18n="hintOg">
+              팁: OG 이미지는 생성 후 PNG로 다운로드 → 호스팅(예: /og.png) →
+              og:image에 URL로 넣는 방식이 가장 호환성이 좋습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Output -->
+      <section class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg">
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <h2 class="text-lg font-bold" data-i18n="sectionMetaTitle">
+              생성된 메타태그
+            </h2>
+            <span
+              id="status"
+              class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium"
+              data-i18n="statusIdle"
+              >대기</span
+            >
+          </div>
+          <textarea
+            id="output"
+            rows="18"
+            class="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 font-mono text-sm outline-none focus:ring-2 focus:ring-emerald-500/60 resize-none scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+            placeholder="여기에 meta 태그가 생성됩니다."
+            data-i18n-placeholder="placeholderOutput"
+          ></textarea>
+
+          <div
+            class="mt-4 text-xs text-white/50 leading-relaxed space-y-1"
+            data-i18n-html="metaTips"
+          >
+            • 생성된 코드는 <span class="font-semibold">head</span> 안에
+            붙여넣으세요.<br />
+            • og:image는 <span class="font-semibold">절대경로 URL</span> 권장
+            (data URL은 일부 공유 플랫폼에서 미지원).
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-lg">
+          <h2 class="text-lg font-bold mb-4" data-i18n="sectionPreviewTitle">
+            공유 미리보기
+          </h2>
+          <div
+            class="rounded-2xl overflow-hidden border border-white/10 bg-black/25 shadow-inner"
+          >
+            <div
+              class="aspect-[1200/630] bg-gradient-to-br from-slate-950 to-slate-900 flex items-center justify-center relative overflow-hidden"
+            >
+              <canvas
+                id="ogCanvas"
+                width="1200"
+                height="630"
+                class="w-full h-full object-contain"
+              ></canvas>
+              <div id="ogCanvasPlaceholder" class="absolute inset-0 flex items-center justify-center text-white/30 text-sm">
+                <span data-i18n="ogCanvasPlaceholder">OG 이미지 미리보기</span>
+              </div>
+            </div>
+            <div class="p-4 border-t border-white/10 bg-black/20">
+              <p id="previewTitle" class="font-bold text-lg text-white truncate">-</p>
+              <p id="previewDesc" class="mt-1 text-white/70 text-sm line-clamp-2">-</p>
+              <p id="previewUrl" class="mt-2 text-white/50 text-xs truncate">-</p>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-xl bg-black/20 border border-white/10 p-4 hover:bg-black/30 transition-colors">
+              <p class="text-xs text-white/50 mb-3 font-medium" data-i18n="labelFavicon">
+                Favicon (SVG)
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0">
+                  <img
+                    id="faviconPreview"
+                    alt="favicon preview"
+                    class="w-12 h-12 rounded-xl border border-white/10 bg-black/30 object-contain"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%230b1220'/%3E%3Cstop offset='100%25' stop-color='%2322c55e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Crect x='10' y='14' width='44' height='36' rx='10' fill='rgba(255,255,255,0.10)' stroke='rgba(255,255,255,0.35)' stroke-width='2'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='26' font-family='Arial, Helvetica, sans-serif' font-weight='700' fill='white'%3EM%3C/text%3E%3C/svg%3E"
+                    onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2764%27 height=%2764%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%23334155%27/%3E%3C/svg%3E'"
+                  />
+                </div>
+                <p id="faviconText" class="text-xs text-white/60 flex-1 min-w-0">
+                  <span class="truncate block font-mono">-</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="rounded-xl bg-black/20 border border-white/10 p-4 hover:bg-black/30 transition-colors">
+              <p class="text-xs text-white/50 mb-3 font-medium" data-i18n="labelOgUrl">
+                OG Image URL (추천)
+              </p>
+              <input
+                id="ogImageUrl"
+                type="text"
+                class="w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-500/60 placeholder:text-white/40"
+                placeholder="https://meta.funnyfunny.cloud/og.png"
+              />
+              <p class="mt-2 text-xs text-white/50 leading-relaxed">
+                <span data-i18n="ogUrlHint"
+                  >다운로드한 PNG를 /og.png로 올렸다는 가정</span
+                >
+              </p>
+            </div>
+          </div>
+
+          <p id="ogWarn" class="mt-4 text-sm text-amber-200/90 leading-relaxed"></p>
+        </div>
+      </section>
+
+      <!-- Other services button (your style) -->
+      <div class="flex justify-center pt-8 mt-12 border-t border-gray-200/20">
+        <a
+          href="https://funnyfunny.cloud/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-medium transition-colors duration-200"
+          data-i18n="viewOtherServices"
+        >
+          다른 서비스 보기
+        </a>
+      </div>
+
+      <footer class="mt-6 text-center text-xs text-white/40">
+        © <span id="year"></span> Meta Kit
+      </footer>
+    </main>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "Meta Kit - SEO/OG 생성기",
+          metaDescription:
+            "Meta Kit: SEO 메타태그/OG/Twitter 카드/JSON-LD/파비콘/OG 이미지(캔버스) 생성기",
+          metaKeywords:
+            "SEO 생성기, OG 메타, JSON-LD, 파비콘, 메타 키트",
+          metaOgTitle: "Meta Kit",
+          metaOgDescription:
+            "한 페이지에서 메타태그, 파비콘, OG 이미지를 한 번에 생성하세요.",
+          headerTagline: "SEO · OG · 파비콘 · OG 이미지",
+          headerTitle: "메타태그/공유/아이콘 한 번에",
+          headerSubtitle:
+            "입력 → 생성 → 복붙. OG 이미지 텍스트는 영문만 사용하세요.",
+          labelSiteTitle: "Site Title (한글 OK)",
+          placeholderSiteTitle: "예: 오늘의 마음",
+          labelSiteName: "Site Name (선택, 기본=Title)",
+          placeholderSiteName: "예: Temple Wisdom",
+          labelDescription: "Description (한글 OK)",
+          placeholderDescription:
+            "예: 성경/불교의 메시지에서 영감을 받은 하루 한 문장",
+          labelCanonical: "Canonical URL",
+          canonicalHint:
+            '끝에 <span class="font-semibold">/</span>로 마무리하는 걸 권장',
+          labelOgText: "OG Image Text (English only)",
+          ogTextHint: "영문/숫자/공백/기호만 권장 (공유 플랫폼 호환성)",
+          labelThemeColor: "Theme Color",
+          labelRobots: "Robots",
+          labelTwitter: "Twitter Card",
+          btnGenerate: "메타태그 생성",
+          btnCopy: "코드 복사",
+          btnMakeOg: "OG 이미지 생성",
+          btnDownloadOg: "OG PNG 다운로드",
+          btnDownloadFavicon: "Favicon SVG 다운로드",
+          hintOg:
+            "팁: OG 이미지는 생성 후 PNG로 다운로드 → 호스팅(예: /og.png) → og:image에 URL로 넣는 방식이 가장 호환성이 좋습니다.",
+          sectionMetaTitle: "생성된 메타태그",
+          statusIdle: "대기",
+          placeholderOutput: "여기에 meta 태그가 생성됩니다.",
+          metaTips:
+            "• 생성된 코드는 <span class=\"font-semibold\">head</span> 안에 붙여넣으세요.<br />• og:image는 <span class=\"font-semibold\">절대경로 URL</span> 권장 (data URL은 일부 공유 플랫폼에서 미지원).",
+          sectionPreviewTitle: "공유 미리보기",
+          labelFavicon: "Favicon (SVG)",
+          labelOgUrl: "OG Image URL (추천)",
+          ogUrlHint: "다운로드한 PNG를 /og.png로 올렸다는 가정",
+          viewOtherServices: "다른 서비스 보기",
+          warnOgText:
+            "OG Image Text에 영문 외 문자가 포함되어 있습니다. 공유 호환성을 위해 영문/숫자/공백만 권장합니다.",
+          statusGenerated: "생성됨",
+          statusNeedGenerate: "먼저 생성",
+          statusCopied: "복사됨",
+          statusOgGenerated: "OG 생성됨",
+          appleTouchComment:
+            "Apple touch icon은 PNG 권장: 아래 URL을 실제 PNG로 교체하세요",
+        },
+        en: {
+          metaTitle: "Meta Kit - SEO & OG Generator",
+          metaDescription:
+            "Meta Kit: Generate SEO tags, OG/Twitter cards, JSON-LD, favicons, and OG images in one place.",
+          metaKeywords:
+            "SEO Generator, OG Tags, JSON-LD, Favicon Studio, Meta Kit",
+          metaOgTitle: "Meta Kit",
+          metaOgDescription:
+            "Generate meta tags, favicons, and OG images in one place.",
+          headerTagline: "SEO · OG · Favicon · OG Image",
+          headerTitle: "Meta tags, sharing, icons in one go",
+          headerSubtitle:
+            "Type → generate → paste. Use English only for OG image text.",
+          labelSiteTitle: "Site Title (Korean OK)",
+          placeholderSiteTitle: "e.g. Daily Heart",
+          labelSiteName: "Site Name (optional, defaults to Title)",
+          placeholderSiteName: "e.g. Temple Wisdom",
+          labelDescription: "Description (Korean OK)",
+          placeholderDescription:
+            "e.g. A daily line inspired by Bible/Buddhist messages",
+          labelCanonical: "Canonical URL",
+          canonicalHint:
+            'Recommended to end with a <span class="font-semibold">/</span>',
+          labelOgText: "OG Image Text (English only)",
+          ogTextHint:
+            "Recommended: letters/numbers/spaces/symbols only (share compatibility)",
+          labelThemeColor: "Theme Color",
+          labelRobots: "Robots",
+          labelTwitter: "Twitter Card",
+          btnGenerate: "Generate meta tags",
+          btnCopy: "Copy code",
+          btnMakeOg: "Generate OG image",
+          btnDownloadOg: "Download OG PNG",
+          btnDownloadFavicon: "Download Favicon SVG",
+          hintOg:
+            "Tip: generate the OG image, download as PNG, host it (e.g. /og.png), then set og:image to the URL for best compatibility.",
+          sectionMetaTitle: "Generated meta tags",
+          statusIdle: "Idle",
+          placeholderOutput: "Generated meta tags will appear here.",
+          metaTips:
+            "• Paste the generated code inside the <span class=\"font-semibold\">head</span> tag.<br />• Use an <span class=\"font-semibold\">absolute URL</span> for og:image (data URLs are unsupported on some platforms).",
+          sectionPreviewTitle: "Share preview",
+          labelFavicon: "Favicon (SVG)",
+          labelOgUrl: "OG Image URL (recommended)",
+          ogUrlHint: "Assuming you upload the PNG as /og.png",
+          viewOtherServices: "See other services",
+          warnOgText:
+            "OG Image Text contains non-English characters. For sharing compatibility, use letters/numbers/spaces only.",
+          statusGenerated: "Generated",
+          statusNeedGenerate: "Generate first",
+          statusCopied: "Copied",
+          statusOgGenerated: "OG generated",
+          appleTouchComment:
+            "Apple touch icon should be PNG: replace the URL below with the actual PNG",
+          ogCanvasPlaceholder: "OG Image Preview",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      const canonicalBase = "https://meta.funnyfunny.cloud/";
+      const keywordsByLang = {
+        ko: translations.ko.metaKeywords,
+        en: translations.en.metaKeywords,
+      };
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable[key] ?? translations.ko[key] ?? key;
+        if (typeof template === "function") {
+          return template(vars);
+        }
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", t("metaOgTitle"));
+        const ogDesc = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        if (ogDesc) ogDesc.setAttribute("content", t("metaOgDescription"));
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+        SeoHelper.applySeoSettings({
+          lang: currentLang,
+          keywordsByLang,
+          supportedLangs,
+          defaultLang,
+          canonicalBase,
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      const $ = (id) => document.getElementById(id);
+      $("year").textContent = new Date().getFullYear();
+
+      // --- small helpers ---
+      function clampStr(s, n) {
+        return (s || "").trim().slice(0, n);
+      }
+      function normalizeUrl(u) {
+        u = (u || "").trim();
+        if (!u) return "";
+        // basic fix: ensure scheme
+        if (!/^https?:\/\//i.test(u)) u = "https://" + u;
+        // recommend trailing slash for canonical root
+        return u;
+      }
+      function ensureTrailingSlash(u) {
+        if (!u) return "";
+        return u.endsWith("/") ? u : u + "/";
+      }
+
+      function isMostlyEnglishAscii(s) {
+        // allow common punctuation, digits, space
+        return /^[\x20-\x7E]*$/.test(s || "");
+      }
+
+      function escapeHtmlAttr(str) {
+        return (str || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      async function copyToClipboard(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (_) {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+          } catch (e) {}
+          document.body.removeChild(ta);
+          return true;
+        }
+      }
+
+      // --- favicon SVG generator ---
+      function pickInitial(title) {
+        const t = (title || "").trim();
+        if (!t) return "M";
+        // if first char is ASCII letter/number, use it; else default to M
+        const ch = t[0];
+        if (/^[A-Za-z0-9]$/.test(ch)) return ch.toUpperCase();
+        return "M";
+      }
+
+      function makeFaviconSvgData(title, themeColor) {
+        const initial = pickInitial(title);
+        const bg = (themeColor || "#0b1220").trim();
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="${bg}"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <rect x="10" y="14" width="44" height="36" rx="10" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+  <text x="32" y="42" text-anchor="middle" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="white">${initial}</text>
+</svg>`;
+        const encoded = encodeURIComponent(svg)
+          .replaceAll("'", "%27")
+          .replaceAll("(", "%28")
+          .replaceAll(")", "%29");
+        return `data:image/svg+xml,${encoded}`;
+      }
+
+      function makeFaviconSvgFile(title, themeColor) {
+        const initial = pickInitial(title);
+        const bg = (themeColor || "#0b1220").trim();
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="${bg}"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <rect x="10" y="14" width="44" height="36" rx="10" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+  <text x="32" y="42" text-anchor="middle" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="white">${initial}</text>
+</svg>`;
+      }
+
+      // --- OG image canvas generator ---
+      function drawOg(canvas, params) {
+        const ctx = canvas.getContext("2d");
+        const W = canvas.width,
+          H = canvas.height;
+
+        // background gradient
+        const g = ctx.createLinearGradient(0, H, W, 0);
+        g.addColorStop(0, params.themeColor || "#0b1220");
+        g.addColorStop(1, "#0f172a");
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // subtle grid
+        ctx.globalAlpha = 0.18;
+        ctx.strokeStyle = "rgba(255,255,255,0.12)";
+        for (let x = 0; x <= W; x += 60) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, H);
+          ctx.stroke();
+        }
+        for (let y = 0; y <= H; y += 60) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(W, y);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+
+        // card
+        const pad = 90;
+        const cardX = pad,
+          cardY = pad,
+          cardW = W - pad * 2,
+          cardH = H - pad * 2;
+        ctx.fillStyle = "rgba(255,255,255,0.08)";
+        roundRect(ctx, cardX, cardY, cardW, cardH, 34, true, false);
+        ctx.strokeStyle = "rgba(255,255,255,0.18)";
+        ctx.lineWidth = 2;
+        roundRect(ctx, cardX, cardY, cardW, cardH, 34, false, true);
+
+        // accent pill
+        ctx.fillStyle = "rgba(34,197,94,0.18)";
+        roundRect(ctx, cardX + 40, cardY + 40, 220, 54, 27, true, false);
+        ctx.fillStyle = "rgba(167,243,208,0.95)";
+        ctx.font = "bold 26px Arial, Helvetica, sans-serif";
+        ctx.fillText("Meta Kit", cardX + 70, cardY + 78);
+
+        // Main English text (required)
+        ctx.fillStyle = "rgba(255,255,255,0.95)";
+        ctx.font = "bold 76px Arial, Helvetica, sans-serif";
+        const main = (params.ogText || "OG Image").trim();
+        const mainLines = wrapText(
+          ctx,
+          main,
+          cardX + 40,
+          cardY + 170,
+          cardW - 80,
+          84,
+          2
+        );
+        mainLines.forEach((line, i) => {
+          ctx.fillText(line, cardX + 40, cardY + 170 + i * 86);
+        });
+
+        // Subtitle (can be Korean)
+        ctx.fillStyle = "rgba(255,255,255,0.75)";
+        ctx.font = "32px Arial, Helvetica, sans-serif";
+        const subtitle =
+          clampStr(params.title || "", 36) || "SEO & Share Preview";
+        ctx.fillText(subtitle, cardX + 40, cardY + cardH - 80);
+
+        // URL
+        ctx.fillStyle = "rgba(255,255,255,0.55)";
+        ctx.font = "26px Arial, Helvetica, sans-serif";
+        const url = (params.url || "").replace(/\/+$/, "") || "yourdomain.com";
+        ctx.fillText(url, cardX + 40, cardY + cardH - 40);
+      }
+
+      function roundRect(ctx, x, y, w, h, r, fill, stroke) {
+        const rr = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + rr, y);
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+        ctx.arcTo(x, y + h, x, y, rr);
+        ctx.arcTo(x, y, x + w, y, rr);
+        ctx.closePath();
+        if (fill) ctx.fill();
+        if (stroke) ctx.stroke();
+      }
+
+      function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+        // returns lines, does not draw itself
+        const words = (text || "").split(/\s+/).filter(Boolean);
+        if (!words.length) return [""];
+
+        const lines = [];
+        let line = words[0];
+
+        for (let i = 1; i < words.length; i++) {
+          const testLine = line + " " + words[i];
+          const w = ctx.measureText(testLine).width;
+          if (w <= maxWidth) {
+            line = testLine;
+          } else {
+            lines.push(line);
+            line = words[i];
+            if (maxLines && lines.length >= maxLines - 1) break;
+          }
+        }
+        lines.push(line);
+
+        // If too long, truncate last line
+        if (maxLines && lines.length > maxLines) {
+          lines.length = maxLines;
+        }
+        if (maxLines && lines.length === maxLines) {
+          // ensure last line fits with ellipsis
+          let last = lines[maxLines - 1];
+          while (
+            ctx.measureText(last + "…").width > maxWidth &&
+            last.length > 0
+          ) {
+            last = last.slice(0, -1);
+          }
+          lines[maxLines - 1] = last + "…";
+        }
+        return lines;
+      }
+
+      // --- generator ---
+      const originalGenerate = function() {
+        const title = clampStr($("siteTitle").value, 70);
+        const siteName = clampStr($("siteName").value, 60) || title;
+        const desc = clampStr($("description").value, 170);
+        let canonical = normalizeUrl($("canonicalUrl").value);
+        canonical = ensureTrailingSlash(canonical);
+        const robots = $("robots").value;
+        const twitterCard = $("twitterCard").value;
+
+        const themeColor = (
+          $("themeColorText").value ||
+          $("themeColor").value ||
+          "#0b1220"
+        ).trim();
+
+        // OG text (English-only recommended)
+        const ogTextRaw = clampStr($("ogText").value, 60);
+        const ogWarnEl = $("ogWarn");
+        let ogText = ogTextRaw;
+
+        if (!isMostlyEnglishAscii(ogText)) {
+          ogWarnEl.textContent = t("warnOgText");
+        } else {
+          ogWarnEl.textContent = "";
+        }
+        if (!ogText) ogText = "Meta Kit";
+
+        // OG image URL suggestion (hosted file)
+        const defaultOgUrl = canonical ? canonical + "og.png" : "";
+        if (!$("ogImageUrl").value.trim()) $("ogImageUrl").value = defaultOgUrl;
+        const ogImageUrl = $("ogImageUrl").value.trim() || defaultOgUrl;
+
+        // favicon data uri
+        const faviconData = makeFaviconSvgData(
+          title || siteName || "Meta Kit",
+          themeColor
+        );
+        $("faviconPreview").src = faviconData;
+        $("faviconText").textContent =
+          faviconData.slice(0, 140) + (faviconData.length > 140 ? "..." : "");
+        // preview card
+        $("previewTitle").textContent = title || "-";
+        $("previewDesc").textContent = desc || "-";
+        $("previewUrl").textContent = canonical || "-";
+
+        // JSON-LD (WebSite)
+        const jsonLd = {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: siteName || "",
+          url: canonical || "",
+          description: desc || "",
+        };
+
+        const ogLocale = currentLang === "en" ? "en_US" : "ko_KR";
+        const out =
+          `<!-- SEO -->
+<title>${escapeHtmlAttr(title || siteName || "")}</title>
+<meta name="description" content="${escapeHtmlAttr(desc)}" />
+<meta name="robots" content="${escapeHtmlAttr(robots)}" />
+<link rel="canonical" href="${escapeHtmlAttr(canonical)}" />
+
+<!-- Theme / Icons -->
+<meta name="theme-color" content="${escapeHtmlAttr(themeColor)}" />
+<link rel="icon" type="image/svg+xml" href="${escapeHtmlAttr(faviconData)}" />
+<!-- ${t("appleTouchComment")} -->
+<link rel="apple-touch-icon" href="${escapeHtmlAttr(
+            canonical + "apple-touch-icon.png"
+          )}" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="${escapeHtmlAttr(
+            title || siteName || ""
+          )}" />
+<meta property="og:description" content="${escapeHtmlAttr(desc)}" />
+<meta property="og:image" content="${escapeHtmlAttr(ogImageUrl)}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="${escapeHtmlAttr(canonical)}" />
+<meta property="og:site_name" content="${escapeHtmlAttr(siteName || "")}" />
+<meta property="og:locale" content="${ogLocale}" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="${escapeHtmlAttr(twitterCard)}" />
+<meta name="twitter:title" content="${escapeHtmlAttr(
+            title || siteName || ""
+          )}" />
+<meta name="twitter:description" content="${escapeHtmlAttr(desc)}" />
+<meta name="twitter:image" content="${escapeHtmlAttr(ogImageUrl)}" />
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+${JSON.stringify(jsonLd, null, 2)}
+</scr` + `ipt>`;
+
+        $("output").value = out;
+        $("status").textContent = t("statusGenerated");
+        $("status").className =
+          "text-xs px-2 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-200";
+
+        // draw OG
+        const canvas = $("ogCanvas");
+        drawOg(canvas, {
+          title: title || siteName || "Meta Kit",
+          ogText,
+          themeColor,
+          url: canonical || $("canonicalUrl").value || "",
+        });
+      }
+
+      function syncThemeColor(fromPicker) {
+        const v = fromPicker
+          ? $("themeColor").value
+          : $("themeColorText").value.trim();
+        if (/^#[0-9A-Fa-f]{6}$/.test(v)) {
+          $("themeColor").value = v;
+          $("themeColorText").value = v;
+        }
+      }
+
+      $("themeColor").addEventListener("input", () => syncThemeColor(true));
+      $("themeColorText").addEventListener("input", () =>
+        syncThemeColor(false)
+      );
+
+      $("generateBtn").addEventListener("click", generate);
+
+      $("copyBtn").addEventListener("click", async () => {
+        const txt = $("output").value.trim();
+        if (!txt) {
+          $("status").textContent = t("statusNeedGenerate");
+          $("status").className =
+            "text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/60";
+          return;
+        }
+        await copyToClipboard(txt);
+        $("status").textContent = t("statusCopied");
+        $("status").className =
+          "text-xs px-2 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-200";
+        setTimeout(() => {
+          $("status").textContent = t("statusGenerated");
+        }, 900);
+      });
+
+      $("makeOgBtn").addEventListener("click", () => {
+        generate(); // generate also redraws OG
+        $("status").textContent = t("statusOgGenerated");
+        $("status").className =
+          "text-xs px-2 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-200";
+        setTimeout(() => ($("status").textContent = t("statusGenerated")), 900);
+      });
+
+      $("downloadOgBtn").addEventListener("click", () => {
+        const canvas = $("ogCanvas");
+        const a = document.createElement("a");
+        a.href = canvas.toDataURL("image/png");
+        a.download = "og.png";
+        a.click();
+      });
+
+      $("downloadFaviconBtn").addEventListener("click", () => {
+        const title = clampStr($("siteTitle").value, 70);
+        const siteName =
+          clampStr($("siteName").value, 60) || title || "MetaKit";
+        const themeColor = (
+          $("themeColorText").value ||
+          $("themeColor").value ||
+          "#0b1220"
+        ).trim();
+        const svg = makeFaviconSvgFile(siteName, themeColor);
+        const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "favicon.svg";
+        a.click();
+      });
+
+      // live preview updates (lightweight)
+      [
+        "siteTitle",
+        "siteName",
+        "description",
+        "canonicalUrl",
+        "ogText",
+        "robots",
+        "twitterCard",
+        "themeColorText",
+        "ogImageUrl",
+      ].forEach((id) => {
+        const el = $(id);
+        el.addEventListener("input", () => {
+          // keep URL normalized lightly (no aggressive)
+          $("previewTitle").textContent =
+            clampStr($("siteTitle").value, 70) || "-";
+          $("previewDesc").textContent =
+            clampStr($("description").value, 170) || "-";
+          const url = ensureTrailingSlash(
+            normalizeUrl($("canonicalUrl").value)
+          );
+          $("previewUrl").textContent = url || "-";
+          const themeColor = ($("themeColorText").value || "#0b1220").trim();
+          $("faviconPreview").src = makeFaviconSvgData(
+            $("siteTitle").value || $("siteName").value || "Meta Kit",
+            themeColor
+          );
+        });
+      });
+
+      // Wrap generate to hide placeholder
+      const ogCanvasPlaceholder = document.getElementById("ogCanvasPlaceholder");
+      const originalGenerateFunc = generate;
+      generate = function() {
+        originalGenerateFunc();
+        if (ogCanvasPlaceholder) ogCanvasPlaceholder.style.display = "none";
+      };
+      
+      // Initial generate
+      generate();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

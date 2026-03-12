@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>오늘 컨디션 결과 - dailycheck</title>
+<style>
+:root{--bg1:#0b1621;--bg2:#101f2e;--card:rgba(255,255,255,.92);--text:#0f172a;--muted:rgba(15,23,42,.68);--line:rgba(15,23,42,.12);--accent:rgba(186,230,253,.95);--shadow:0 18px 55px rgba(0,0,0,.35);--r:18px;}
+*{box-sizing:border-box}
+body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Apple SD Gothic Neo","Noto Sans KR",Arial,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#e9eef7;line-height:1.5;}
+.wrap{max-width:800px;margin:0 auto;padding:28px 18px 60px;}
+h1{font-size:28px;font-weight:900;margin:0 0 12px;color:var(--accent);}
+h2{font-size:20px;color:var(--muted);margin:16px 0 0;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:32px 28px;margin-bottom:24px;text-align:center;}
+.bigMsg{font-size:24px;line-height:1.5;margin:8px 0 0;font-weight:700;color:var(--text);}
+.ctaButton{display:inline-block;margin-top:28px;padding:16px 28px;background:rgba(59,130,246,.15);border:2px solid #3b82f6;border-radius:var(--r);color:var(--text);font-weight:700;text-decoration:none;}
+.adContainer{margin:24px 0;min-height:250px;background:rgba(255,255,255,.4);border:1px solid var(--line);border-radius:var(--r);padding:20px;}
+.faqLinks{margin-top:32px;padding-top:32px;border-top:1px solid var(--line);}
+.faqList{display:grid;gap:12px;}
+.faqLink{padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.7);color:var(--text);text-decoration:none;display:block;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>오늘 컨디션은 <span id="typeText"></span>입니다</h1>
+<h2>오늘 중요한 결정을 내려도 괜찮은 날일까요?</h2>
+<div class="card">
+<p class="bigMsg" id="resultMain"></p>
+<p style="color:var(--muted);margin-top:16px;font-size:15px;" id="resultDesc"></p>
+<a href="result/why.html" id="whyLink" class="ctaButton">왜 이런 컨디션이 나왔는지 보기 →</a>
+<div class="adContainer"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753"></ins></div>
+</div>
+<div class="faqLinks"><h3 style="font-size:16px;color:var(--muted);margin-bottom:16px;">관련 질문</h3><div class="faqList"><a href="faq/when-condition-changes.html" class="faqLink">내일 결과가 달라질 수 있나요?</a><a href="faq/how-to-handle-today.html" class="faqLink">오늘은 어떻게 보내는 게 좋나요?</a></div></div>
+</div>
+<script>
+const params = new URLSearchParams(window.location.search);
+const type = params.get('type') || 'B';
+const main = params.get('main') || '';
+const sub = params.get('sub') || '';
+const typeLabels = {A:'좋음',B:'보통',C:'낮음'};
+const descriptions = {
+  A:'오늘은 중요한 결정을 내리기에 비교적 안정적인 날입니다.',
+  B:'오늘은 컨디션이 불안정할 수 있어 중요한 결정을 내리기엔 위험할 수 있습니다.',
+  C:'오늘은 큰 결정을 내리기보다는 안정과 회복에 집중하는 것이 좋습니다.'
+};
+document.getElementById('typeText').textContent = typeLabels[type] || '보통';
+document.getElementById('resultMain').textContent = main || '컨디션을 확인해보세요.';
+document.getElementById('resultDesc').textContent = descriptions[type] || descriptions.B;
+const whyUrl = new URL('result/why.html', window.location.href);
+whyUrl.searchParams.set('type', type);
+document.getElementById('whyLink').href = whyUrl.toString();
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</body>
+</html>

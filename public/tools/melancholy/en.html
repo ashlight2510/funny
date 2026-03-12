@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mind Condition Check · Energy Recovery Guide</title>
+  <meta name="description" content="Not a diagnosis, but a brief check to organize today's feelings and recover energy." />
+  
+  <!-- OG -->
+  <meta property="og:title" content="Mind Condition Check · Energy Recovery Guide" />
+  <meta property="og:description" content="Not a diagnosis, but a brief check to organize today's feelings and recover energy." />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Mind+Condition+Check" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://melancholy.funnyfunny.cloud/en.html" />
+  
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <rect width='100' height='100' rx='20' fill='%230b1220'/>
+    <text x='50' y='62' font-size='52' text-anchor='middle' fill='white'>🌙</text>
+  </svg>">
+  <style>
+    :root{
+      --bg1:#fff8f8;
+      --bg2:#f3f0ff;
+      --card:#ffffff;
+      --text:#1b1b1f;
+      --muted:#666671;
+      --line:#e9e7f3;
+      --accent:#6b6eff;
+      --accent2:#f4c2c2;
+      --shadow: 0 16px 60px rgba(20, 20, 40, .10);
+      --r: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(244,194,194,.55), transparent 60%),
+        radial-gradient(900px 520px at 85% 15%, rgba(107,110,255,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .wrap{
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+    header{
+      text-align:center;
+      margin-bottom:32px;
+      position:relative;
+    }
+    .langSwitch{
+      position:absolute;
+      top:0;
+      right:0;
+    }
+    .langSwitch button{
+      padding:6px 12px;
+      font-size:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      border-radius:8px;
+      cursor:pointer;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      border-radius: 999px;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:12px;
+      backdrop-filter: blur(10px);
+    }
+    h1{
+      margin:0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      margin-top: 8px;
+      max-width: 64ch;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: 32px 28px;
+      backdrop-filter: blur(14px);
+      margin-bottom:24px;
+    }
+    .progressBar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+    }
+    .progressText{
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .progressBarInner{
+      width:100%;
+      height:8px;
+      background:rgba(107,110,255,.15);
+      border-radius:999px;
+      margin-top:8px;
+      overflow:hidden;
+    }
+    .progressBarFill{
+      height:100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius:999px;
+      transition: width .3s ease;
+    }
+    .questionTitle{
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+      margin-top:15px;
+      margin-bottom:24px;
+      text-align:center;
+    }
+    .choices{
+      display:grid;
+      gap:12px;
+    }
+    .choice{
+      padding: 18px 20px;
+      border:2px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.9);
+      cursor:pointer;
+      transition: all .2s ease;
+      text-align:center;
+      font-size:16px;
+      font-weight:500;
+      color:var(--text);
+    }
+    .choice:hover{
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: rgba(107,110,255,.08);
+      box-shadow: 0 4px 12px rgba(107,110,255,.15);
+    }
+    .result{
+      display:none;
+      animation: fadeUp .22s ease both;
+    }
+    .result.show{ display:block; }
+    @keyframes fadeUp{
+      from{opacity:0; transform: translateY(8px);}
+      to{opacity:1; transform: translateY(0);}
+    }
+    .resultGrid{
+      display:grid; gap:20px;
+      margin-top: 8px;
+    }
+    .kicker{ color: var(--accent); font-weight: 750; font-size: 12px; margin-bottom:8px; }
+    .bigMsg{
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: -0.25px;
+      margin: 8px 0 0;
+    }
+    .muted{ color: var(--muted); font-size: 14px; line-height: 1.65; margin-top:8px; }
+    .needList{ display:grid; gap:10px; margin-top: 10px; }
+    .needItem{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.62);
+      cursor:pointer;
+      user-select:none;
+    }
+    .needItem input{ margin-top:3px; }
+    .actions{
+      display:grid; gap:10px;
+      margin-top: 10px;
+    }
+    .act{
+      padding: 12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.62);
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+    }
+    .act span{ font-weight: 700; letter-spacing:-0.1px; }
+    .copyBox{
+      margin-top: 10px;
+      padding: 12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.62);
+    }
+    .quote{
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      margin: 0;
+    }
+    .copyBtns{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px; }
+    .footerNote{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .btnRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; justify-content:center;}
+    button{
+      appearance:none;
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.7);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 12px 18px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      font-weight: 650;
+      letter-spacing: -0.1px;
+      font-size:15px;
+    }
+    button:hover{ transform: translateY(-1px); border-color: rgba(107,110,255,.35); }
+    button.primary{
+      background: linear-gradient(135deg, rgba(107,110,255,.18), rgba(244,194,194,.28));
+      border-color: rgba(107,110,255,.25);
+    }
+    button.ghost{
+      background: rgba(255,255,255,.45);
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .glow0{ background: rgba(255,255,255,.55); }
+    .glow1{ background: rgba(255,255,255,.62); }
+    .glow2{ background: rgba(255,255,255,.70); }
+    .glow3{ background: rgba(255,255,255,.78); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="langSwitch">
+        <button onclick="window.location.href='index.html'">🇰🇷 한국어</button>
+      </div>
+      <div class="pill">🌙 Not a diagnosis, organizing today's feelings</div>
+      <h1>Mind Condition Check · Energy Recovery Guide</h1>
+      <div class="sub">
+        A brief check to organize today's state with short questions, and get 3 actionable steps and encouraging words.
+        (Not for medical diagnosis/treatment purposes)
+      </div>
+    </header>
+
+    <div id="questionCard" class="card">
+      <div class="progressBar">
+        <span class="progressText" id="progressText">Question 1 / 1</span>
+      </div>
+      <div class="progressBarInner">
+        <div class="progressBarFill" id="progressBarFill" style="width:0%"></div>
+      </div>
+      <div id="questionContent"></div>
+    </div>
+
+    <!-- Result -->
+    <div class="result" id="result">
+      <div class="resultGrid">
+        <div class="card glow0" id="cardInterpret">
+          <div class="kicker">Interpretation</div>
+          <div class="bigMsg" id="interpretTitle"></div>
+          <div class="muted" id="interpretBody"></div>
+        </div>
+
+        <div class="card glow0" id="cardNeeds">
+          <div class="kicker">What I need today</div>
+          <div class="muted">The screen gets a bit brighter as you check items. Today's goal is to give yourself "permission."</div>
+          <div class="needList" id="needList"></div>
+        </div>
+
+        <div class="card glow0" id="cardActions">
+          <div class="kicker">3 Actions I can take now</div>
+          <div class="muted">Not grand goals, but recommendations in the smallest units possible for today.</div>
+          <div class="actions" id="actionsList"></div>
+        </div>
+
+        <div class="card glow0" id="cardQuote">
+          <div class="kicker">Today's message</div>
+          <div class="copyBox">
+            <p class="quote" id="quoteText">Click the button to see the message.</p>
+            <div class="copyBtns">
+              <button class="primary" onclick="genQuote()">💌 Get today's message</button>
+              <button onclick="copyQuote()">📋 Copy</button>
+              <button class="ghost" onclick="restart()">↻ Restart</button>
+            </div>
+          </div>
+          <div class="footerNote" id="supportNote"></div>
+        </div>
+
+        <div class="card glow0" id="cardPartner" style="display:none">
+          <div class="kicker">Show to people around you</div>
+          <div class="bigMsg">"Empathy" rather than "solutions" is what helps most.</div>
+          <div class="muted" id="partnerText"></div>
+          <div class="copyBtns">
+            <button onclick="copyPartner()">📋 Copy these messages</button>
+          </div>
+        </div>
+
+        <div class="footerNote">
+          ※ This service is not for medical diagnosis/treatment purposes. <br/>
+          If symptoms repeat monthly and significantly impact daily life, or if you feel very distressed,
+          consulting with a gynecologist or mental health professional can be very helpful.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // -----------------------------
+  // State
+  // -----------------------------
+  const state = {
+    flow: null,        // 'mood' | 'pms'
+    gender: null,      // 'female' | 'male' | 'na'
+    symptoms: new Set(),
+    cycle: null,       // 7 | 14 | 0 | null
+    sleep: null,       // 0 | 1 | 2
+    crave: null,       // 0 | 1 | 2
+    score: 0,
+    severity: 'low'    // low | mid | high
+  };
+
+  // Questions array
+  const QUESTIONS = [];
+  let currentQuestionIndex = 0;
+
+  function buildQuestions(){
+    QUESTIONS.length = 0;
+    
+    // Q0: Start choice
+    QUESTIONS.push({
+      id: 'start',
+      text: 'Which one feels closer to you today?',
+      options: [
+        { text: '🌙 Just feeling a bit down', value: 'mood' },
+        { text: '🌸 It\'s worse before my period', value: 'pms' }
+      ]
+    });
+
+    // Q1: Gender
+    QUESTIONS.push({
+      id: 'gender',
+      text: 'Please select your gender',
+      options: [
+        { text: 'I am female', value: 'female' },
+        { text: 'I am male', value: 'male' },
+        { text: 'Prefer not to say', value: 'na' }
+      ]
+    });
+
+    // Q2-Q9: Symptoms (single choice)
+    const SYMPTOMS = [
+      { id:'sad', label:'Feeling sad or empty for no reason', w:2 },
+      { id:'irrit', label:'More irritable or easily annoyed than usual', w:2 },
+      { id:'tired', label:'Lack of energy and feeling lethargic', w:2 },
+      { id:'cry', label:'Crying more often', w:2 },
+      { id:'alone', label:'Wanting to be alone, contact feels burdensome', w:1 },
+      { id:'focus', label:'Trouble concentrating', w:1 },
+      { id:'anx', label:'Increased anxiety', w:2 },
+      { id:'body', label:'Bloating or discomfort in chest/stomach', w:1 }
+    ];
+
+    SYMPTOMS.forEach(s => {
+      QUESTIONS.push({
+        id: `symptom_${s.id}`,
+        text: `Over the past 3 days, have you experienced "${s.label}"?`,
+        options: [
+          { text: 'Yes', value: s.id, weight: s.w },
+          { text: 'No', value: null, weight: 0 }
+        ]
+      });
+    });
+
+    // Q10: Period timing (only for PMS flow)
+    QUESTIONS.push({
+      id: 'cycle',
+      text: 'Is your period starting soon?',
+      options: [
+        { text: 'Within 1 week', value: 7 },
+        { text: 'Within 2 weeks', value: 14 },
+        { text: 'Not sure', value: 0 }
+      ],
+      conditional: (state) => state.flow === 'pms'
+    });
+
+    // Q11: Sleep
+    QUESTIONS.push({
+      id: 'sleep',
+      text: 'How has your sleep been lately?',
+      options: [
+        { text: 'Sleeping a lot / Feeling drowsy', value: 1 },
+        { text: 'Sleep decreased / Tossing and turning', value: 2 },
+        { text: 'About the same', value: 0 }
+      ]
+    });
+
+    // Q12: Cravings
+    QUESTIONS.push({
+      id: 'crave',
+      text: 'Have you had sugar cravings or binge eating?',
+      options: [
+        { text: 'Often', value: 2 },
+        { text: 'Sometimes', value: 1 },
+        { text: 'Rarely or never', value: 0 }
+      ]
+    });
+  }
+
+  const NEEDS = [
+    'It\'s okay to lower expectations for productivity (performance) today',
+    'It\'s okay to postpone important decisions or big commitments if possible',
+    'Instead of self-blame, tell yourself "this is the effect of my current condition"',
+    'If you want to be alone, it\'s okay to honor that need',
+    'If it\'s hard to express in words, it\'s enough to just rest quietly'
+  ];
+
+  const ACTION_BANK = {
+    low: [
+      'Drink a warm cup of water or tea',
+      'Open a window and get 3-5 minutes of sunlight',
+      'Light stretching for just 60 seconds'
+    ],
+    mid: [
+      '10-minute walk or slowly climbing stairs',
+      'Reduce caffeine/alcohol just for today',
+      'Take a shower and lie down (put your phone away for a bit)'
+    ],
+    high: [
+      'Cancel just one commitment today (at least one)',
+      'Eat something warm or have some simple protein',
+      'Send one line to someone you trust: "I\'m having a hard time right now"'
+    ]
+  };
+
+  const QUOTES = {
+    mood: {
+      low: [
+        'Today\'s you is not broken, just temporarily tired.',
+        'The emotions you\'re feeling now aren\'t "wrong" - they might be a "signal." It\'s okay to take it slow.'
+      ],
+      mid: [
+        'Right now, you don\'t need the ability to push through - you need the ability to be gentler with yourself.',
+        'Trying to feel better itself means you\'re already doing well.'
+      ],
+      high: [
+        'You don\'t have to try to do great today. Just getting through is enough.',
+        'If these feelings persist, it\'s okay to seek help.'
+      ]
+    },
+    pms: {
+      low: [
+        'This time can make you more sensitive due to your body\'s rhythm. It\'s not your fault.',
+        'Right now is like a "hormonal season." It\'s okay to think of it as a cloudy day.'
+      ],
+      mid: [
+        'After ovulation until your period, the signals that stabilize mood can decrease. This is common.',
+        'Right now, stability comes before solutions. It\'s okay to take it easy today.'
+      ],
+      high: [
+        'If depression is severe during this time, treatment (like for PMDD) can help. You\'re not alone in this.',
+        'You\'re not weak - your body might be sending stronger signals right now.'
+      ]
+    }
+  };
+
+  const PARTNER_SCRIPT = [
+    'Instead of "What\'s wrong?" → "I can understand. You must be going through a lot right now"',
+    'Rather than advice/solutions → Just listen without judgment ("I see... I hear you")',
+    'Brief check-in: "How are you feeling today?" "It\'s okay if you respond late"',
+    'Don\'t take sensitivity personally (it doesn\'t mean love has faded)',
+    'When they want to be alone, respect it: "I\'ll wait. Let me know if you need anything"'
+  ];
+
+  // -----------------------------
+  // Question rendering
+  // -----------------------------
+  function getActiveQuestions(){
+    buildQuestions();
+    return QUESTIONS.filter(q => {
+      if(q.conditional && !q.conditional(state)) return false;
+      return true;
+    });
+  }
+
+  function renderQuestion(){
+    const activeQuestions = getActiveQuestions();
+    const totalQuestions = activeQuestions.length;
+    
+    if(currentQuestionIndex >= totalQuestions){
+      showResult();
+      return;
+    }
+
+    const question = activeQuestions[currentQuestionIndex];
+    const questionNum = currentQuestionIndex + 1;
+    const progress = (questionNum / totalQuestions) * 100;
+
+    document.getElementById('progressText').textContent = `Question ${questionNum} / ${totalQuestions}`;
+    document.getElementById('progressBarFill').style.width = `${progress}%`;
+
+    const contentEl = document.getElementById('questionContent');
+    contentEl.innerHTML = `
+      <div class="questionTitle">${question.text}</div>
+      <div class="choices">
+        ${question.options.map((opt, idx) => {
+          const valueStr = opt.value === null ? 'null' : String(opt.value);
+          const weightStr = String(opt.weight || 0);
+          return `
+          <div class="choice" onclick="handleAnswer('${valueStr}', ${weightStr}, '${question.id}')">
+            ${opt.text}
+          </div>
+        `}).join('')}
+      </div>
+    `;
+
+    document.getElementById('questionCard').style.display = 'block';
+    document.getElementById('result').classList.remove('show');
+  }
+
+  function handleAnswer(value, weight, questionId){
+    // Save state
+    if(questionId === 'start'){
+      state.flow = value;
+    } else if(questionId === 'gender'){
+      state.gender = value;
+    } else if(questionId === 'cycle'){
+      state.cycle = parseInt(value, 10);
+    } else if(questionId === 'sleep'){
+      state.sleep = parseInt(value, 10);
+    } else if(questionId === 'crave'){
+      state.crave = parseInt(value, 10);
+    } else if(questionId.startsWith('symptom_')){
+      const symptomId = questionId.replace('symptom_', '');
+      if(value && value !== 'null'){
+        state.symptoms.add(symptomId);
+      }
+    }
+
+    // Auto-advance to next question
+    currentQuestionIndex++;
+    setTimeout(() => {
+      renderQuestion();
+    }, 150);
+  }
+
+  // -----------------------------
+  // Scoring & Result
+  // -----------------------------
+  function showResult(){
+    const SYMPTOMS_DATA = [
+      { id:'sad', w:2 },
+      { id:'irrit', w:2 },
+      { id:'tired', w:2 },
+      { id:'cry', w:2 },
+      { id:'alone', w:1 },
+      { id:'focus', w:1 },
+      { id:'anx', w:2 },
+      { id:'body', w:1 }
+    ];
+
+    // Compute score
+    let score = 0;
+    for(const sid of state.symptoms){
+      const item = SYMPTOMS_DATA.find(x=>x.id===sid);
+      if(item) score += item.w;
+    }
+    score += (state.sleep || 0);
+    score += (state.crave || 0);
+
+    if(state.flow === 'pms' && state.cycle === 7) score += 1;
+
+    state.score = score;
+    if(score <= 6) state.severity = 'low';
+    else if(score <= 12) state.severity = 'mid';
+    else state.severity = 'high';
+
+    const isPms = (state.flow === 'pms');
+
+    // Interpretation
+    const interpretTitle = isPms
+      ? 'Your current sadness isn\'t "your fault" - it\'s likely influenced by your body\'s rhythm.'
+      : 'Your current sadness isn\'t a personality issue - it could be a signal of your condition and stress.';
+
+    const interpretBody = isPms
+      ? `After ovulation until your period, estrogen/progesterone changes can affect mood-stabilizing signals (serotonin).
+During this time, sensitivity, lethargy, crying, and anxiety can appear together.
+It\'s okay to prioritize "stability" over "solutions" today.`
+      : `Recent fatigue, pressure, and sleep changes can make you feel emotions more intensely.
+What you need now isn\'t "logic that pushes you" but "words that acknowledge your state."
+It\'s enough to recover in small steps today.`;
+
+    document.getElementById('interpretTitle').textContent = interpretTitle;
+    document.getElementById('interpretBody').textContent = interpretBody;
+
+    // Needs
+    const needListEl = document.getElementById('needList');
+    needListEl.innerHTML = '';
+    NEEDS.forEach(t => {
+      const row = document.createElement('label');
+      row.className = 'needItem';
+      row.innerHTML = `<input type="checkbox" data-need="1" /> <div>${t}</div>`;
+      row.querySelector('input').addEventListener('change', updateGlow);
+      needListEl.appendChild(row);
+    });
+
+    // Actions
+    const actionsEl = document.getElementById('actionsList');
+    actionsEl.innerHTML = '';
+    const picks = ACTION_BANK[state.severity].slice(0,3);
+    picks.forEach(a => {
+      const div = document.createElement('div');
+      div.className = 'act';
+      div.innerHTML = `<span>${a}</span><small style="color:var(--muted)">Just today</small>`;
+      actionsEl.appendChild(div);
+    });
+
+    // Support note
+    const supportNote = document.getElementById('supportNote');
+    supportNote.textContent =
+      (state.severity === 'high')
+        ? '※ If distress is severe and recurring, consulting/treatment isn\'t "weakness" but a choice that can speed up recovery.'
+        : '※ You\'re doing well enough today. These results are for reference, and you\'re okay as you are.';
+
+    // Partner card
+    document.getElementById('cardPartner').style.display = (isPms ? 'block' : 'none');
+    document.getElementById('partnerText').innerHTML = `
+      <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.7">
+        ${PARTNER_SCRIPT.map(x=>`<li>${x}</li>`).join('')}
+      </ul>
+      <div style="margin-top:10px; color:var(--muted)">
+        Recommended phrases: "It\'s not your fault right now" · "It\'s okay if you don\'t want to talk" · "I\'m here for you"
+      </div>
+    `;
+
+    // Show result
+    document.getElementById('questionCard').style.display = 'none';
+    document.getElementById('result').classList.add('show');
+    genQuote();
+    document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function updateGlow(){
+    const checked = document.querySelectorAll('input[data-need="1"]:checked').length;
+    const level = Math.min(3, checked);
+    const ids = ['cardInterpret','cardNeeds','cardActions','cardQuote','cardPartner'];
+    ids.forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.classList.remove('glow0','glow1','glow2','glow3');
+      el.classList.add(`glow${level}`);
+    });
+  }
+
+  function genQuote(){
+    const bank = QUOTES[state.flow || 'mood'][state.severity || 'low'];
+    const q = bank[Math.floor(Math.random()*bank.length)];
+    document.getElementById('quoteText').textContent = q;
+  }
+
+  async function copyQuote(){
+    const text = document.getElementById('quoteText').textContent.trim();
+    if(!text) return;
+    try{
+      await navigator.clipboard.writeText(text);
+      toast('Copied!');
+    }catch(e){
+      prompt('Copy the message below:', text);
+    }
+  }
+
+  async function copyPartner(){
+    const lines = [
+      'Ways to ask people around you',
+      ...PARTNER_SCRIPT.map(s=>`- ${s}`),
+      '- Recommended phrases: "It\'s not your fault right now" / "It\'s okay if you don\'t want to talk" / "I\'m here for you"'
+    ].join('\n');
+    try{
+      await navigator.clipboard.writeText(lines);
+      toast('Copied!');
+    }catch(e){
+      prompt('Copy the content below:', lines);
+    }
+  }
+
+  function restart(){
+    state.flow = null;
+    state.gender = null;
+    state.symptoms = new Set();
+    state.cycle = null;
+    state.sleep = null;
+    state.crave = null;
+    state.score = 0;
+    state.severity = 'low';
+    currentQuestionIndex = 0;
+    renderQuestion();
+    toast('Returned to the beginning.');
+  }
+
+  let tmr = null;
+  function toast(msg){
+    let el = document.getElementById('toast');
+    if(!el){
+      el = document.createElement('div');
+      el.id = 'toast';
+      el.style.cssText = 'position:fixed; left:50%; bottom:20px; transform:translateX(-50%); padding:10px 14px; border:1px solid rgba(255,255,255,.6); background:rgba(30,30,40,.75); color:white; border-radius:999px; backdrop-filter:blur(10px); box-shadow:0 12px 40px rgba(0,0,0,.18); font-size:13px; z-index:9999; opacity:0; transition:opacity .15s ease;';
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.style.opacity = '1';
+    clearTimeout(tmr);
+    tmr = setTimeout(()=>{ el.style.opacity='0'; }, 1200);
+  }
+
+  // Initial render
+  buildQuestions();
+  renderQuestion();
+</script>
+</body>
+</html>

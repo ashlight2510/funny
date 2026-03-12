@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="수면·집중·기분·몸·귀찮음 5가지로 오늘 컨디션을 한 문장으로 확인합니다. 점수 없이, 딱 한 문장."
+    />
+    <meta property="og:title" content="오늘 상태 점검표" />
+    <meta
+      property="og:description"
+      content="오늘, 밀어붙여도 되는 날인가요? 5초 체크 → 한 문장."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&amp;text=dailycheck"
+    />
+    <title>오늘 상태 점검표 | dailycheck</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='32' y='40' font-size='28' text-anchor='middle' fill='white' font-family='Arial, sans-serif'%3EDC%3C/text%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg1: #0b1621;
+        --bg2: #101f2e;
+        --bg3: #14273b;
+        --card: rgba(255, 255, 255, 0.92);
+        --card2: rgba(255, 255, 255, 0.86);
+        --text: #0f172a;
+        --muted: rgba(15, 23, 42, 0.68);
+        --line: rgba(15, 23, 42, 0.12);
+        --accent: rgba(186, 230, 253, 0.95);
+        --accent2: rgba(253, 230, 138, 0.95);
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+        --r: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+        background: linear-gradient(180deg, var(--bg1), var(--bg2), var(--bg3));
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .wrap {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 520px;
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .topRight {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .badge {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.92);
+        user-select: none;
+      }
+
+      .brandBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        color: #ffffff;
+      }
+
+      .brandIcon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        color: #0f172a;
+        font-size: 13px;
+      }
+
+      .title {
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      .sub {
+        margin: 6px 0 0;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .card {
+        background: var(--card);
+        color: var(--text);
+        border-radius: var(--r);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .cardHead {
+        padding: 16px 16px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        background: linear-gradient(
+          90deg,
+          rgba(186, 230, 253, 0.35),
+          rgba(253, 230, 138, 0.25)
+        );
+      }
+
+      .cardHeadRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .progress {
+        font-size: 12px;
+        color: rgba(15, 23, 42, 0.7);
+        font-weight: 700;
+      }
+
+      .bar {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.1);
+        overflow: hidden;
+        margin-top: 10px;
+      }
+      .bar > div {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(
+          90deg,
+          rgba(56, 189, 248, 0.95),
+          rgba(251, 191, 36, 0.95)
+        );
+        border-radius: 999px;
+        transition: width 220ms ease;
+      }
+
+      .stage {
+        position: relative;
+        min-height: 320px;
+      }
+
+      .pane {
+        padding: 18px 16px 16px;
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform: translateX(12px);
+        transition: opacity 160ms ease, transform 160ms ease;
+        pointer-events: none;
+      }
+
+      .pane.active {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .qTag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(15, 23, 42, 0.72);
+        background: rgba(15, 23, 42, 0.06);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        padding: 7px 10px;
+        border-radius: 999px;
+        user-select: none;
+      }
+
+      .qTitle {
+        margin: 14px 0 8px;
+        font-size: 20px;
+        line-height: 1.25;
+        font-weight: 900;
+        color: rgba(15, 23, 42, 0.92);
+      }
+
+      .qHint {
+        margin: 0 0 14px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .choices {
+        display: grid;
+        gap: 10px;
+      }
+
+      .btnChoice {
+        width: 100%;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: rgba(255, 255, 255, 0.92);
+        color: rgba(15, 23, 42, 0.92);
+        border-radius: 14px;
+        padding: 13px 14px;
+        font-size: 15px;
+        font-weight: 800;
+        text-align: left;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+        transition: transform 120ms ease, box-shadow 120ms ease,
+          border-color 120ms ease;
+      }
+      .btnChoice:hover {
+        transform: translateY(-1px);
+        border-color: rgba(59, 130, 246, 0.3);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+      .btnChoice:active {
+        transform: translateY(0);
+      }
+
+      .footRow {
+        padding: 12px 16px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+        background: var(--card2);
+      }
+
+      .mini {
+        font-size: 12px;
+        color: rgba(15, 23, 42, 0.62);
+        font-weight: 700;
+      }
+
+      .btn {
+        border: 1px solid rgba(15, 23, 42, 0.14);
+        background: rgba(255, 255, 255, 0.95);
+        color: rgba(15, 23, 42, 0.9);
+        border-radius: 999px;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 900;
+        cursor: pointer;
+        transition: transform 120ms ease, border-color 120ms ease;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: rgba(59, 130, 246, 0.32);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btnLink {
+        background: rgba(255, 255, 255, 0.16);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      }
+      .btnLink:hover {
+        border-color: #ffffff;
+      }
+
+      .resultMain {
+        margin: 14px 0 10px;
+        font-size: 22px;
+        font-weight: 950;
+        line-height: 1.25;
+        color: rgba(15, 23, 42, 0.94);
+      }
+      .resultSub {
+        margin: 0 0 12px;
+        font-size: 14px;
+        color: rgba(15, 23, 42, 0.74);
+        line-height: 1.6;
+        font-weight: 700;
+      }
+      .resultSafe {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 900;
+        color: rgba(15, 23, 42, 0.78);
+        background: rgba(15, 23, 42, 0.06);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        padding: 10px 12px;
+        border-radius: 14px;
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 16px;
+        transform: translateX(-50%);
+        background: rgba(15, 23, 42, 0.92);
+        color: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      .mutedSmall {
+        margin-top: 10px;
+        font-size: 12px;
+        color: rgba(15, 23, 42, 0.55);
+        line-height: 1.6;
+        font-weight: 700;
+      }
+
+      a,
+      a:visited {
+        color: inherit;
+      }
+    </style>
+      <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(11, 22, 33, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(186, 230, 253, 0.2);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(247, 247, 247, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(186, 230, 253, 0.3);
+      color: #f7f7f7;
+      box-shadow: 0 2px 8px rgba(186, 230, 253, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(186, 230, 253, 0.1);
+      color: rgba(247, 247, 247, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/dailycheck/" />
+  </head>
+  <body>
+      <div class="lang-switch" role="tablist" aria-label="Language switcher">
+        <button type="button" data-lang="ko" class="active">KR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    <div class="wrap">
+      <div class="shell">
+        <div class="top">
+          <div class="brand">
+            <div class="badge brandBadge">
+              <span class="brandIcon" aria-hidden="true">🩺</span>
+              <span>DAILY CHECK</span>
+            </div>
+            <div>
+              <h1 class="title" data-i18n="title">오늘 상태 점검표</h1>
+              <p class="sub" data-i18n="subtitle">5개 체크 → 오늘 컨디션 한 문장</p>
+            </div>
+          </div>
+          <div class="topRight">
+            <div class="badge" id="todayBadge"></div>
+              <a
+              class="btn btnLink"
+              href="https://funnyfunny.cloud/"
+              target="_blank"
+              rel="noopener"
+              data-i18n="viewMore"
+              >다른 서비스 보기</a
+            >
+          </div>
+        </div>
+
+        <div class="card" role="application" aria-label="오늘 상태 점검표">
+          <div class="cardHead">
+            <div class="cardHeadRow">
+              <div class="progress" id="progressText">준비</div>
+              <div class="progress" id="progressMini">—</div>
+            </div>
+            <div class="bar" aria-hidden="true">
+              <div id="progressBar"></div>
+            </div>
+          </div>
+
+          <div class="stage">
+            <!-- Intro -->
+            <section class="pane active" data-pane="intro">
+              <div class="qTag" data-i18n="introTag">시작</div>
+              <h2 class="qTitle" data-i18n="introTitle">오늘, 밀어붙여도 되는 날인가요?</h2>
+              <p class="qHint" data-i18n="introHint">점수 없이, 딱 한 문장으로만 알려드립니다.</p>
+
+              <div class="choices">
+                <button class="btnChoice" id="startBtn" data-i18n="startBtn">시작하기</button>
+              </div>
+
+              <p class="mutedSmall" data-i18n="disclaimer">
+                ※ 제공되는 문구는 참고용입니다. 건강/의학적 판단이 필요한 경우
+                전문 상담을 권장합니다.
+              </p>
+            </section>
+
+            <!-- Questions -->
+            <section class="pane" data-pane="q0">
+              <div class="qTag">1/5</div>
+              <h2 class="qTitle" data-i18n="q0_title">수면은 어땠나요?</h2>
+              <p class="qHint" data-i18n="q0_hint">오늘의 바닥을 결정하는 값</p>
+              <div class="choices" data-q="sleep"></div>
+            </section>
+
+            <section class="pane" data-pane="q1">
+              <div class="qTag">2/5</div>
+              <h2 class="qTitle" data-i18n="q1_title">집중은 가능한가요?</h2>
+              <p class="qHint" data-i18n="q1_hint">오늘의 속도를 정하는 값</p>
+              <div class="choices" data-q="focus"></div>
+            </section>
+
+            <section class="pane" data-pane="q2">
+              <div class="qTag">3/5</div>
+              <h2 class="qTitle" data-i18n="q2_title">기분은 어떤가요?</h2>
+              <p class="qHint" data-i18n="q2_hint">오늘의 마찰을 정하는 값</p>
+              <div class="choices" data-q="mood"></div>
+            </section>
+
+            <section class="pane" data-pane="q3">
+              <div class="qTag">4/5</div>
+              <h2 class="qTitle" data-i18n="q3_title">몸 상태는요?</h2>
+              <p class="qHint" data-i18n="q3_hint">오늘의 지속력을 정하는 값</p>
+              <div class="choices" data-q="body"></div>
+            </section>
+
+            <section class="pane" data-pane="q4">
+              <div class="qTag">5/5</div>
+              <h2 class="qTitle" data-i18n="q4_title">귀찮음이 얼마나 오나요?</h2>
+              <p class="qHint" data-i18n="q4_hint">오늘의 저항값</p>
+              <div class="choices" data-q="lazy"></div>
+            </section>
+
+            <!-- Result -->
+            <section class="pane" data-pane="result">
+              <div class="qTag" id="resultTag" data-i18n="resultTag">결과</div>
+              <h2 class="qTitle" data-i18n="resultTitle">오늘 컨디션 요약</h2>
+
+              <div class="resultMain" id="resultMain">—</div>
+              <p class="resultSub" id="resultSub">—</p>
+              <div class="resultSafe" id="resultSafe">—</div>
+
+              <div class="mutedSmall" id="resultMeta"></div>
+            </section>
+          </div>
+
+          <div class="footRow">
+            <div class="mini" id="footHint">하루 1회 루틴용</div>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button class="btn" id="backBtn" style="display: none" data-i18n="backBtn">
+                이전
+              </button>
+              <button class="btn" id="copyBtn" style="display: none" data-i18n="copyBtn">
+                결과 복사
+              </button>
+              <button class="btn" id="shareBtn" style="display: none" data-i18n="shareBtn">
+                공유
+              </button>
+              <button class="btn" id="resetBtn" style="display: none" data-i18n="resetBtn">
+                다시하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" data-i18n="toastCopy">
+      복사 완료
+    </div>
+
+    <script>
+      // =========================
+      // 0) i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "오늘 상태 점검표 | dailycheck",
+          metaDescription: "수면·집중·기분·몸·귀찮음 5가지로 오늘 컨디션을 한 문장으로 확인합니다. 점수 없이, 딱 한 문장.",
+          metaOgTitle: "오늘 상태 점검표",
+          metaOgDescription: "오늘, 밀어붙여도 되는 날인가요? 5초 체크 → 한 문장.",
+          title: "오늘 상태 점검표",
+          subtitle: "5개 체크 → 오늘 컨디션 한 문장",
+          viewMore: "다른 서비스 보기",
+          progressReady: "준비",
+          progressCheck: "5초 체크",
+          progressChecking: "체크 중",
+          progressComplete: "완료",
+          progressOneSentence: "오늘의 한 문장",
+          introTag: "시작",
+          introTitle: "오늘, 밀어붙여도 되는 날인가요?",
+          introHint: "점수 없이, 딱 한 문장으로만 알려드립니다.",
+          startBtn: "시작하기",
+          disclaimer: "※ 제공되는 문구는 참고용입니다. 건강/의학적 판단이 필요한 경우 전문 상담을 권장합니다.",
+          q0_title: "수면은 어땠나요?",
+          q0_hint: "오늘의 바닥을 결정하는 값",
+          q1_title: "집중은 가능한가요?",
+          q1_hint: "오늘의 속도를 정하는 값",
+          q2_title: "기분은 어떤가요?",
+          q2_hint: "오늘의 마찰을 정하는 값",
+          q3_title: "몸 상태는요?",
+          q3_hint: "오늘의 지속력을 정하는 값",
+          q4_title: "귀찮음이 얼마나 오나요?",
+          q4_hint: "오늘의 저항값",
+          resultTag: "결과",
+          resultTitle: "오늘 컨디션 요약",
+          backBtn: "이전",
+          copyBtn: "결과 복사",
+          shareBtn: "공유",
+          resetBtn: "다시하기",
+          footHintRoutine: "하루 1회 루틴용",
+          footHintResult: "점수 없이 한 문장",
+          toastCopy: "복사 완료",
+          toastCopyLink: "공유 텍스트 복사됨",
+          toastRemaining: "아직 체크가 남아있어요",
+          resultLabelA: "PUSH OK",
+          resultLabelB: "SAVE MODE",
+          resultLabelC: "BRAKE",
+          resultMetaSaved: "오늘 결과는 이미 생성되어 있어요. (다시하기로 재생성 가능)",
+          resultMetaNew: "오늘 결과가 저장되었습니다. (브라우저 로컬 저장)",
+          shareTitle: "오늘 상태 점검표",
+        },
+        en: {
+          metaTitle: "Today's Condition Check | dailycheck",
+          metaDescription: "Check today's condition in one sentence with 5 factors: sleep, focus, mood, body, laziness. No scores, just one sentence.",
+          metaOgTitle: "Today's Condition Check",
+          metaOgDescription: "Is today a day to push through? 5-second check → one sentence.",
+          title: "Today's Condition Check",
+          subtitle: "5 checks → Today's condition in one sentence",
+          viewMore: "View Other Services",
+          progressReady: "Ready",
+          progressCheck: "5-sec check",
+          progressChecking: "Checking",
+          progressComplete: "Complete",
+          progressOneSentence: "Today's one sentence",
+          introTag: "Start",
+          introTitle: "Is today a day to push through?",
+          introHint: "No scores, just one sentence.",
+          startBtn: "Start",
+          disclaimer: "※ The provided phrases are for reference only. For health/medical judgments, professional consultation is recommended.",
+          q0_title: "How was your sleep?",
+          q0_hint: "Value that determines today's floor",
+          q1_title: "Can you focus?",
+          q1_hint: "Value that sets today's speed",
+          q2_title: "How are you feeling?",
+          q2_hint: "Value that sets today's friction",
+          q3_title: "How's your body?",
+          q3_hint: "Value that sets today's endurance",
+          q4_title: "How lazy are you?",
+          q4_hint: "Today's resistance value",
+          resultTag: "Result",
+          resultTitle: "Today's Condition Summary",
+          backBtn: "Back",
+          copyBtn: "Copy Result",
+          shareBtn: "Share",
+          resetBtn: "Reset",
+          footHintRoutine: "Daily routine",
+          footHintResult: "One sentence, no scores",
+          toastCopy: "Copied",
+          toastCopyLink: "Share text copied",
+          toastRemaining: "Still have checks remaining",
+          resultLabelA: "PUSH OK",
+          resultLabelB: "SAVE MODE",
+          resultLabelC: "BRAKE",
+          resultMetaSaved: "Today's result is already generated. (You can regenerate with Reset)",
+          resultMetaNew: "Today's result has been saved. (Browser local storage)",
+          shareTitle: "Today's Condition Check",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{\\{${k}\\}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", t("metaDescription"));
+        const metaOgTitle = document.querySelector('meta[property="og:title"]');
+        if (metaOgTitle) metaOgTitle.setAttribute("content", t("metaOgTitle"));
+        const metaOgDesc = document.querySelector('meta[property="og:description"]');
+        if (metaOgDesc) metaOgDesc.setAttribute("content", t("metaOgDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        // Update dynamic content if quiz is in progress
+        if (typeof step !== "undefined" && step) {
+          if (step === "intro") {
+            updateProgress("intro");
+          } else if (step.startsWith("q")) {
+            renderQuestions();
+            updateProgress(step);
+          } else if (step === "result") {
+            const saved = loadSaved(today);
+            if (saved) {
+              applyResult(saved, { fromSaved: true });
+            }
+            updateProgress("result");
+          }
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (translations[paramLang]) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (translations[stored]) return stored;
+        const browser = navigator.language?.toLowerCase() || "";
+        if (browser && browser.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      // Initialize language
+      setLang(detectLang(), { updateUrl: false });
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      // =========================
+      // 1) 질문/선택지 (각 선택은 0=좋음, 1=보통, 2=나쁨)
+      // =========================
+      const QUESTIONS_BASE = [
+        {
+          key: "sleep",
+          choices: [
+            { label: "잘 잤다", labelEn: "Slept well", v: 0 },
+            { label: "애매하다", labelEn: "Ambiguous", v: 1 },
+            { label: "거의 못 잤다", labelEn: "Hardly slept", v: 2 },
+          ],
+        },
+        {
+          key: "focus",
+          choices: [
+            { label: "집중 잘 된다", labelEn: "Can focus well", v: 0 },
+            { label: "왔다 갔다 한다", labelEn: "Intermittent", v: 1 },
+            { label: "거의 안 된다", labelEn: "Hardly works", v: 2 },
+          ],
+        },
+        {
+          key: "mood",
+          choices: [
+            { label: "괜찮다", labelEn: "OK", v: 0 },
+            { label: "무덤덤하다", labelEn: "Neutral", v: 1 },
+            { label: "예민하다", labelEn: "Sensitive", v: 2 },
+          ],
+        },
+        {
+          key: "body",
+          choices: [
+            { label: "가볍다", labelEn: "Light", v: 0 },
+            { label: "좀 무겁다", labelEn: "A bit heavy", v: 1 },
+            { label: "피곤하다", labelEn: "Tired", v: 2 },
+          ],
+        },
+        {
+          key: "lazy",
+          choices: [
+            { label: "별로 안 귀찮다", labelEn: "Not really lazy", v: 0 },
+            { label: "하기 싫다", labelEn: "Don't want to", v: 1 },
+            { label: "아무것도 하기 싫다", labelEn: "Don't want to do anything", v: 2 },
+          ],
+        },
+      ];
+
+      function getQuestions() {
+        const isEnglish = currentLang === "en";
+        return QUESTIONS_BASE.map((q) => ({
+          ...q,
+          choices: q.choices.map((c) => ({
+            ...c,
+            label: isEnglish ? c.labelEn : c.label,
+          })),
+        }));
+      }
+
+      // =========================
+      // 2) 결과 문장 풀 60개 (점수/퍼센트 없음)
+      //    - A: 밀어붙여도 되는 날 (20)
+      //    - B: 아껴 쓰는 날 (20)
+      //    - C: 브레이크 권장 (20)
+      // =========================
+      const RESULTS = [
+        // A (1~20)
+        {
+          type: "A",
+          main: "오늘은 밀어붙여도 되는 날입니다.",
+          mainEn: "Today is a day you can push through.",
+          sub: "가장 중요한 한 가지부터 먼저 치고 나가면 흐름이 붙습니다.",
+          subEn: "Start with the most important one first, and momentum will follow.",
+          safe: "오늘의 성공 기준: 핵심 1개 끝내기",
+          safeEn: "Today's success goal: Finish 1 core task",
+        },
+        {
+          type: "A",
+          main: "오늘은 집중을 써도 손해 보지 않습니다.",
+          mainEn: "Today, using your focus won't hurt.",
+          sub: "짧게 시작하면 길게 갑니다. 10분만 먼저.",
+          subEn: "Start short and it goes long. Just 10 minutes first.",
+          safe: "오늘의 성공 기준: 시작하기",
+          safeEn: "Today's success goal: Just start",
+        },
+        {
+          type: "A",
+          main: "오늘은 ‘일단 하면 되는’ 날입니다.",
+          mainEn: "Today is a 'just do it' day.",
+          sub: "완벽은 금지. 실행이 이깁니다.",
+          subEn: "Perfection is forbidden. Execution wins.",
+          safe: "오늘의 성공 기준: 60%로 제출",
+          safeEn: "Today's success goal: Submit at 60%",
+        },
+        {
+          type: "A",
+          main: "오늘은 속도가 붙는 날입니다.",
+          mainEn: "Today is a day when speed kicks in.",
+          sub: "초반만 잡으면 나머지는 자동으로 따라옵니다.",
+          subEn: "Grab the beginning and the rest follows automatically.",
+          safe: "오늘의 성공 기준: 오전 한 번 질주",
+          safeEn: "Today's success goal: One sprint in the morning",
+        },
+        {
+          type: "A",
+          main: "오늘은 생각보다 잘 버티는 날입니다.",
+          mainEn: "Today is a day you can handle better than you think.",
+          sub: "중요한 일을 앞쪽에 배치하세요.",
+          subEn: "Place important tasks first.",
+          safe: "오늘의 성공 기준: 큰 일 먼저",
+          safeEn: "Today's success goal: Big task first",
+        },
+        {
+          type: "A",
+          main: "오늘은 의사결정이 깔끔하게 떨어집니다.",
+          mainEn: "Today, decisions fall cleanly.",
+          sub: "미루던 선택 하나를 정리해도 좋습니다.",
+          subEn: "It's okay to settle one postponed choice.",
+          safe: "오늘의 성공 기준: 결정 1개",
+          safeEn: "Today's success goal: Make 1 decision",
+        },
+        {
+          type: "A",
+          main: "오늘은 ‘정리하면 끝나는’ 날입니다.",
+          mainEn: "Today is a 'finish by organizing' day.",
+          sub: "쌓인 것들 중 하나만 치워도 체감이 큽니다.",
+          subEn: "Clearing just one of the piled things makes a big difference.",
+          safe: "오늘의 성공 기준: 정리 1개",
+          safeEn: "Today's success goal: Organize 1 thing",
+        },
+        {
+          type: "A",
+          main: "오늘은 마음이 흔들려도 몸이 따라주는 날입니다.",
+          mainEn: "Today is a day when your body follows even if your mind wavers.",
+          sub: "작은 루틴을 붙이면 결과가 큽니다.",
+          subEn: "Attaching a small routine yields big results.",
+          safe: "오늘의 성공 기준: 루틴 1개",
+          safeEn: "Today's success goal: 1 routine",
+        },
+        {
+          type: "A",
+          main: "오늘은 말이 잘 통하는 날입니다.",
+          mainEn: "Today is a day when words flow well.",
+          sub: "필요한 연락/협의는 오늘 처리하는 게 유리합니다.",
+          subEn: "It's better to handle necessary contact/coordination today.",
+          safe: "오늘의 성공 기준: 연락 1개",
+          safeEn: "Today's success goal: 1 contact",
+        },
+        {
+          type: "A",
+          main: "오늘은 ‘쌓아두기’에 최적인 날입니다.",
+          mainEn: "Today is optimal for 'building up'.",
+          sub: "조금만 해도 복리처럼 남습니다.",
+          subEn: "Even a little bit accumulates like compound interest.",
+          safe: "오늘의 성공 기준: 20분 누적",
+          safeEn: "Today's success goal: 20 minutes accumulated",
+        },
+        {
+          type: "A",
+          main: "오늘은 컨디션이 작업 모드에 가깝습니다.",
+          mainEn: "Today, your condition is close to work mode.",
+          sub: "멀티태스킹 말고 한 줄로 쭉.",
+          subEn: "Not multitasking, but one line straight.",
+          safe: "오늘의 성공 기준: 한 가지로 쭉",
+          safeEn: "Today's success goal: One thing straight",
+        },
+        {
+          type: "A",
+          main: "오늘은 답이 빨리 보이는 날입니다.",
+          mainEn: "Today is a day when answers appear quickly.",
+          sub: "고민 시간을 줄이고 바로 시도하세요.",
+          subEn: "Reduce worry time and try immediately.",
+          safe: "오늘의 성공 기준: 시도 1번",
+          safeEn: "Today's success goal: 1 attempt",
+        },
+        {
+          type: "A",
+          main: "오늘은 ‘해놓고 잊기’가 가능한 날입니다.",
+          mainEn: "Today is a day when 'do it and forget it' is possible.",
+          sub: "귀찮은 일을 먼저 끝내면 하루가 편해집니다.",
+          subEn: "Finish annoying tasks first and the day becomes easier.",
+          safe: "오늘의 성공 기준: 귀찮은 거 1개 처리",
+          safeEn: "Today's success goal: Handle 1 annoying thing",
+        },
+        {
+          type: "A",
+          main: "오늘은 기분보다 루틴이 이기는 날입니다.",
+          mainEn: "Today is a day when routine wins over mood.",
+          sub: "작게 시작해도 성과는 나옵니다.",
+          subEn: "Even starting small yields results.",
+          safe: "오늘의 성공 기준: 10분 루틴",
+          safeEn: "Today's success goal: 10-minute routine",
+        },
+        {
+          type: "A",
+          main: "오늘은 체력이 말을 듣는 날입니다.",
+          mainEn: "Today is a day when your body listens.",
+          sub: "짧게 몰입하고 짧게 쉬는 리듬이 좋습니다.",
+          subEn: "Short immersion and short breaks work well.",
+          safe: "오늘의 성공 기준: 25분 몰입 1회",
+          safeEn: "Today's success goal: 1 session of 25-minute immersion",
+        },
+        {
+          type: "A",
+          main: "오늘은 ‘정리+실행’ 조합이 잘 먹힙니다.",
+          mainEn: "Today, the 'organize + execute' combination works well.",
+          sub: "할 일 목록을 줄이고 바로 하세요.",
+          subEn: "Reduce your to-do list and do it right away.",
+          safe: "오늘의 성공 기준: 목록 반으로 줄이기",
+          safeEn: "Today's success goal: Cut list in half",
+        },
+        {
+          type: "A",
+          main: "오늘은 집중의 창이 열려 있습니다.",
+          mainEn: "Today, the window of focus is open.",
+          sub: "가장 어려운 일을 ‘첫 작업’으로 넣으세요.",
+          subEn: "Put the hardest task as your 'first work'.",
+          safe: "오늘의 성공 기준: 어려운 거 1개 착수",
+          safeEn: "Today's success goal: Start 1 difficult task",
+        },
+        {
+          type: "A",
+          main: "오늘은 작은 승리를 쌓기 쉬운 날입니다.",
+          mainEn: "Today is a day when small victories stack easily.",
+          sub: "완료 체크를 늘 기억하세요.",
+          subEn: "Always remember to check things off.",
+          safe: "오늘의 성공 기준: 완료 2개",
+          safeEn: "Today's success goal: Complete 2 things",
+        },
+        {
+          type: "A",
+          main: "오늘은 ‘해야 할 말’을 하기 좋은 날입니다.",
+          mainEn: "Today is a good day to say what needs to be said.",
+          sub: "대화는 짧게, 요지는 명확하게.",
+          subEn: "Keep conversations short, points clear.",
+          safe: "오늘의 성공 기준: 한 문장으로 말하기",
+          safeEn: "Today's success goal: Say it in one sentence",
+        },
+        {
+          type: "A",
+          main: "오늘은 끝까지 가는 힘이 있습니다.",
+          mainEn: "Today, you have the strength to go all the way.",
+          sub: "중간에 흔들려도 계속 가면 됩니다.",
+          subEn: "Even if you waver in the middle, just keep going.",
+          safe: "오늘의 성공 기준: 마무리 1개",
+          safeEn: "Today's success goal: Finish 1 thing",
+        },
+
+        // B (21~40)
+        {
+          type: "B",
+          main: "오늘은 아껴 쓰는 게 이득인 날입니다.",
+          mainEn: "Today is a day when saving pays off.",
+          sub: "중요한 것만 하고, 나머지는 내일로 미뤄도 됩니다.",
+          subEn: "Do only what's important, the rest can wait until tomorrow.",
+          safe: "오늘의 성공 기준: 필수만 하기",
+          safeEn: "Today's success goal: Only essentials",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘가볍게 처리’가 정답입니다.",
+          mainEn: "Today, 'light handling' is the answer.",
+          sub: "깊게 파기보다 얕게 여러 개가 더 맞습니다.",
+          subEn: "Multiple shallow tasks are better than one deep dive.",
+          safe: "오늘의 성공 기준: 가벼운 완료 3개",
+          safeEn: "Today's success goal: 3 light completions",
+        },
+        {
+          type: "B",
+          main: "오늘은 속도보다 방향이 중요한 날입니다.",
+          mainEn: "Today, direction is more important than speed.",
+          sub: "빨리보다 ‘맞게’가 이깁니다.",
+          subEn: "'Right' wins over 'fast'.",
+          safe: "오늘의 성공 기준: 방향 확인 1번",
+          safeEn: "Today's success goal: Check direction once",
+        },
+        {
+          type: "B",
+          main: "오늘은 무리하면 내일이 망가집니다.",
+          mainEn: "If you push too hard today, tomorrow will be ruined.",
+          sub: "오늘은 컨디션을 조금 남겨두세요.",
+          subEn: "Leave a little condition for today.",
+          safe: "오늘의 성공 기준: 에너지 30% 남기기",
+          safeEn: "Today's success goal: Leave 30% energy",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘할 건 하되 욕심은 금지’인 날입니다.",
+          mainEn: "Today is a 'do it but no greed' day.",
+          sub: "목표를 줄이면 충분히 괜찮은 하루가 됩니다.",
+          subEn: "Reducing goals makes for a sufficiently good day.",
+          safe: "오늘의 성공 기준: 목표 1개로 축소",
+          safeEn: "Today's success goal: Reduce to 1 goal",
+        },
+        {
+          type: "B",
+          main: "오늘은 집중이 들쑥날쑥할 수 있습니다.",
+          mainEn: "Today, focus can be uneven.",
+          sub: "짧게 끊어 가면 생각보다 잘 됩니다.",
+          subEn: "Going in short bursts works better than you think.",
+          safe: "오늘의 성공 기준: 10분 몰입 2회",
+          safeEn: "Today's success goal: 2 sessions of 10-minute immersion",
+        },
+        {
+          type: "B",
+          main: "오늘은 감정에 휘둘리기 쉬운 날입니다.",
+          mainEn: "Today is a day when you're easily swayed by emotions.",
+          sub: "결정은 ‘작게’만 하세요.",
+          subEn: "Make decisions 'small' only.",
+          safe: "오늘의 성공 기준: 작은 결정만",
+          safeEn: "Today's success goal: Only small decisions",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘정리’가 먼저인 날입니다.",
+          mainEn: "Today, 'organization' comes first.",
+          sub: "뭐부터 할지 정하면 절반은 끝입니다.",
+          subEn: "Deciding what to do first is half the battle.",
+          safe: "오늘의 성공 기준: 우선순위 1~3 정하기",
+          safeEn: "Today's success goal: Set priorities 1-3",
+        },
+        {
+          type: "B",
+          main: "오늘은 반응 속도를 낮추는 게 좋습니다.",
+          mainEn: "Today, it's good to slow down your reaction speed.",
+          sub: "바로 답하기보다 한 번 멈추면 실수가 줄어듭니다.",
+          subEn: "Pausing once reduces mistakes more than answering immediately.",
+          safe: "오늘의 성공 기준: 한 박자 쉬고 답하기",
+          safeEn: "Today's success goal: Pause, then answer",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘루틴만 지켜도 성공’인 날입니다.",
+          mainEn: "Today is a day when 'just keeping routine' is success.",
+          sub: "기본만 해도 충분합니다.",
+          subEn: "Just the basics are enough.",
+          safe: "오늘의 성공 기준: 기본 3개(물/정리/식사)",
+          safeEn: "Today's success goal: Basics 3 (water/organize/eat)",
+        },
+        {
+          type: "B",
+          main: "오늘은 과몰입하면 피로가 쌓입니다.",
+          mainEn: "If you over-immerse today, fatigue will pile up.",
+          sub: "중요한 것 하나만 깊게 하고 멈추세요.",
+          subEn: "Go deep on just one important thing and stop.",
+          safe: "오늘의 성공 기준: 깊게 1개만",
+          safeEn: "Today's success goal: Deep dive on 1 only",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘미루지 않기’만 해도 이깁니다.",
+          mainEn: "Today, just 'not postponing' is enough to win.",
+          sub: "큰 것 말고 작은 것부터.",
+          subEn: "Not big things, start with small ones.",
+          safe: "오늘의 성공 기준: 5분 작업 1개",
+          safeEn: "Today's success goal: 1 task of 5 minutes",
+        },
+        {
+          type: "B",
+          main: "오늘은 몸이 은근히 신호를 줍니다.",
+          mainEn: "Today, your body subtly signals.",
+          sub: "자잘한 피로를 무시하지 마세요.",
+          subEn: "Don't ignore small fatigue.",
+          safe: "오늘의 성공 기준: 스트레칭 3분",
+          safeEn: "Today's success goal: 3 minutes of stretching",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘사람’보다 ‘일’에 에너지를 쓰는 게 낫습니다.",
+          mainEn: "Today, it's better to spend energy on 'work' than 'people'.",
+          sub: "불필요한 대화는 줄이세요.",
+          subEn: "Reduce unnecessary conversations.",
+          safe: "오늘의 성공 기준: 대화 줄이기",
+          safeEn: "Today's success goal: Reduce conversations",
+        },
+        {
+          type: "B",
+          main: "오늘은 집중을 모으는 데 시간이 걸립니다.",
+          mainEn: "Today, it takes time to gather focus.",
+          sub: "시작만 늦지 않게 잡으세요.",
+          subEn: "Just don't start late.",
+          safe: "오늘의 성공 기준: 시작 시간 고정",
+          safeEn: "Today's success goal: Fix start time",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘가벼운 성취’가 컨디션을 올립니다.",
+          mainEn: "Today, 'light achievements' boost your condition.",
+          sub: "바로 끝나는 것부터 처리하세요.",
+          subEn: "Handle things that end immediately first.",
+          safe: "오늘의 성공 기준: 1분짜리 완료 2개",
+          safeEn: "Today's success goal: 2 completions of 1 minute each",
+        },
+        {
+          type: "B",
+          main: "오늘은 계획을 욕심내면 무너집니다.",
+          mainEn: "If you're greedy with plans today, they'll collapse.",
+          sub: "플랜 B를 기본값으로.",
+          subEn: "Make Plan B the default.",
+          safe: "오늘의 성공 기준: 여유 버퍼 1칸",
+          safeEn: "Today's success goal: 1 buffer space",
+        },
+        {
+          type: "B",
+          main: "오늘은 자책하면 더 느려집니다.",
+          mainEn: "If you blame yourself today, you'll get slower.",
+          sub: "속도가 느려도 괜찮습니다. 방향만 맞추세요.",
+          subEn: "Slow speed is okay. Just get the direction right.",
+          safe: "오늘의 성공 기준: 자책 금지",
+          safeEn: "Today's success goal: No self-blame",
+        },
+        {
+          type: "B",
+          main: "오늘은 ‘지키는 하루’가 더 어울립니다.",
+          mainEn: "Today, a 'maintaining day' fits better.",
+          sub: "새로운 시도는 작게만.",
+          subEn: "New attempts, keep them small.",
+          safe: "오늘의 성공 기준: 새 시도 1cm",
+          safeEn: "Today's success goal: New attempt 1cm",
+        },
+        {
+          type: "B",
+          main: "오늘은 컨디션이 반반입니다.",
+          mainEn: "Today, condition is half and half.",
+          sub: "좋을 때 조금 하고, 안 좋을 때 쉬세요.",
+          subEn: "Do a little when good, rest when not good.",
+          safe: "오늘의 성공 기준: 쉬기 포함 계획",
+          safeEn: "Today's success goal: Plan including rest",
+        },
+
+        // C (41~60)
+        {
+          type: "C",
+          main: "오늘은 밀어붙이면 손해 보는 날입니다.",
+          mainEn: "Today is a day when pushing will cost you.",
+          sub: "속도를 내기보다 브레이크를 거는 쪽이 낫습니다.",
+          subEn: "Better to hit the brakes than accelerate.",
+          safe: "오늘의 성공 기준: 버티기",
+          safeEn: "Today's success goal: Endure",
+        },
+        {
+          type: "C",
+          main: "오늘은 쉬는 쪽이 이기는 선택입니다.",
+          mainEn: "Today, choosing to rest is the winning choice.",
+          sub: "해야 할 일은 ‘최소치’만 남기세요.",
+          subEn: "Leave only the 'minimum' of what needs to be done.",
+          safe: "오늘의 성공 기준: 최소치만",
+          safeEn: "Today's success goal: Minimum only",
+        },
+        {
+          type: "C",
+          main: "오늘은 컨디션이 바닥을 건드립니다.",
+          mainEn: "Today, your condition touches the bottom.",
+          sub: "큰 결정은 내일로 미루는 게 안전합니다.",
+          subEn: "It's safer to postpone big decisions until tomorrow.",
+          safe: "오늘의 성공 기준: 결정 미루기",
+          safeEn: "Today's success goal: Postpone decisions",
+        },
+        {
+          type: "C",
+          main: "오늘은 ‘진행’보다 ‘회복’이 우선입니다.",
+          mainEn: "Today, 'recovery' takes priority over 'progress'.",
+          sub: "회복이 되면 내일이 열립니다.",
+          subEn: "When you recover, tomorrow opens up.",
+          safe: "오늘의 성공 기준: 회복 1개",
+          safeEn: "Today's success goal: 1 recovery",
+        },
+        {
+          type: "C",
+          main: "오늘은 집중을 억지로 뽑아쓰면 고장 납니다.",
+          mainEn: "If you force out focus today, it will break.",
+          sub: "짧게만 하고 바로 끊으세요.",
+          subEn: "Do it short and cut it off immediately.",
+          safe: "오늘의 성공 기준: 10분만 하고 끊기",
+          safeEn: "Today's success goal: Just 10 minutes then stop",
+        },
+        {
+          type: "C",
+          main: "오늘은 예민함이 정상인 날입니다.",
+          mainEn: "Today, sensitivity is normal.",
+          sub: "나를 탓하기보다 환경을 낮추세요.",
+          subEn: "Lower the environment rather than blame yourself.",
+          safe: "오늘의 성공 기준: 소음/알림 줄이기",
+          safeEn: "Today's success goal: Reduce noise/notifications",
+        },
+        {
+          type: "C",
+          main: "오늘은 몸이 먼저 멈추라고 합니다.",
+          mainEn: "Today, your body says to stop first.",
+          sub: "무리한 약속/운동/야근은 피하는 게 좋습니다.",
+          subEn: "It's better to avoid excessive commitments/exercise/overtime.",
+          safe: "오늘의 성공 기준: 무리 금지",
+          safeEn: "Today's success goal: No pushing",
+        },
+        {
+          type: "C",
+          main: "오늘은 ‘그냥 해내기’가 어려운 날입니다.",
+          mainEn: "Today is a day when 'just getting it done' is difficult.",
+          sub: "작게 쪼개면 겨우 통과합니다.",
+          subEn: "Only passable if broken into small pieces.",
+          safe: "오늘의 성공 기준: 3분 단위로 쪼개기",
+          safeEn: "Today's success goal: Break into 3-minute units",
+        },
+        {
+          type: "C",
+          main: "오늘은 마음이 쉽게 닳는 날입니다.",
+          mainEn: "Today is a day when your mind wears out easily.",
+          sub: "사람에게 에너지를 쓰지 마세요.",
+          subEn: "Don't spend energy on people.",
+          safe: "오늘의 성공 기준: 혼자 조용히",
+          safeEn: "Today's success goal: Alone quietly",
+        },
+        {
+          type: "C",
+          main: "오늘은 ‘미루기’가 아니라 ‘보호’가 필요합니다.",
+          mainEn: "Today, 'protection' is needed, not 'procrastination'.",
+          sub: "스스로를 보호하면 내일이 살아납니다.",
+          subEn: "Protecting yourself brings tomorrow to life.",
+          safe: "오늘의 성공 기준: 보호 모드",
+          safeEn: "Today's success goal: Protection mode",
+        },
+        {
+          type: "C",
+          main: "오늘은 생산성보다 생존이 우선입니다.",
+          mainEn: "Today, survival comes before productivity.",
+          sub: "할 일은 줄이고, 숨을 쉬세요.",
+          subEn: "Reduce tasks and breathe.",
+          safe: "오늘의 성공 기준: 숨 돌리기",
+          safeEn: "Today's success goal: Catch your breath",
+        },
+        {
+          type: "C",
+          main: "오늘은 감정이 핸들을 잡기 쉽습니다.",
+          mainEn: "Today, emotions easily take the wheel.",
+          sub: "말을 줄이고, 행동도 줄이세요.",
+          subEn: "Reduce words and actions.",
+          safe: "오늘의 성공 기준: 말 줄이기",
+          safeEn: "Today's success goal: Reduce talking",
+        },
+        {
+          type: "C",
+          main: "오늘은 시작이 가장 큰 벽입니다.",
+          mainEn: "Today, starting is the biggest wall.",
+          sub: "벽을 넘으려 하지 말고 옆으로 돌아가세요.",
+          subEn: "Don't try to climb the wall, go around it.",
+          safe: "오늘의 성공 기준: 쉬운 길 선택",
+          safeEn: "Today's success goal: Choose the easy path",
+        },
+        {
+          type: "C",
+          main: "오늘은 몸과 머리가 서로 엇갈립니다.",
+          mainEn: "Today, body and mind are out of sync.",
+          sub: "큰 계획 대신 작은 루틴만.",
+          subEn: "Just small routines instead of big plans.",
+          safe: "오늘의 성공 기준: 물/정리/샤워",
+          safeEn: "Today's success goal: Water/organize/shower",
+        },
+        {
+          type: "C",
+          main: "오늘은 ‘멈추는 용기’가 필요합니다.",
+          mainEn: "Today, you need the 'courage to stop'.",
+          sub: "멈춘다고 망하지 않습니다. 오히려 회복됩니다.",
+          subEn: "Stopping doesn't mean failure. You'll recover instead.",
+          safe: "오늘의 성공 기준: 멈추기",
+          safeEn: "Today's success goal: Stop",
+        },
+        {
+          type: "C",
+          main: "오늘은 몰입하면 회복비가 붙는 날입니다.",
+          mainEn: "Today is a day when immersion comes with recovery costs.",
+          sub: "짧게만 하고, 남은 시간은 회복에 쓰세요.",
+          subEn: "Do it short, use the remaining time for recovery.",
+          safe: "오늘의 성공 기준: 회복비 절약",
+          safeEn: "Today's success goal: Save recovery costs",
+        },
+        {
+          type: "C",
+          main: "오늘은 뭘 해도 만족이 안 날 수 있습니다.",
+          mainEn: "Today, nothing you do may bring satisfaction.",
+          sub: "그럴 땐 ‘완료’만 남기면 됩니다.",
+          subEn: "In that case, just leave 'completion'.",
+          safe: "오늘의 성공 기준: 완료 1개",
+          safeEn: "Today's success goal: Complete 1 thing",
+        },
+        {
+          type: "C",
+          main: "오늘은 비교하면 더 힘든 날입니다.",
+          mainEn: "Today is harder if you compare.",
+          sub: "오늘은 내 속도로만 가세요.",
+          subEn: "Just go at your own pace today.",
+          safe: "오늘의 성공 기준: 비교 금지",
+          safeEn: "Today's success goal: No comparison",
+        },
+        {
+          type: "C",
+          main: "오늘은 ‘정리’도 무리일 수 있습니다.",
+          mainEn: "Today, even 'organization' may be too much.",
+          sub: "시야를 좁혀서 딱 한 구역만.",
+          subEn: "Narrow your view to just one area.",
+          safe: "오늘의 성공 기준: 한 구역만",
+          safeEn: "Today's success goal: Just one area",
+        },
+        {
+          type: "C",
+          main: "오늘은 컨디션이 휴식을 요구합니다.",
+          mainEn: "Today, your condition demands rest.",
+          sub: "지금 쉬는 게 내일을 사는 방법입니다.",
+          subEn: "Resting now is how you survive tomorrow.",
+          safe: "오늘의 성공 기준: 지금 쉬기",
+          safeEn: "Today's success goal: Rest now",
+        },
+      ];
+
+      // =========================
+      // 3) 상태/유틸
+      // =========================
+      const panes = Array.from(document.querySelectorAll(".pane"));
+      const progressText = document.getElementById("progressText");
+      const progressMini = document.getElementById("progressMini");
+      const progressBar = document.getElementById("progressBar");
+      const todayBadge = document.getElementById("todayBadge");
+
+      const backBtn = document.getElementById("backBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const copyBtn = document.getElementById("copyBtn");
+      const shareBtn = document.getElementById("shareBtn");
+      const footHint = document.getElementById("footHint");
+
+      const startBtn = document.getElementById("startBtn");
+      const toast = document.getElementById("toast");
+
+      const resultMainEl = document.getElementById("resultMain");
+      const resultSubEl = document.getElementById("resultSub");
+      const resultSafeEl = document.getElementById("resultSafe");
+      const resultMetaEl = document.getElementById("resultMeta");
+      const resultTagEl = document.getElementById("resultTag");
+
+      const STORAGE_KEY_PREFIX = "dailycheck:v1:";
+      const today = getLocalDateKey();
+      todayBadge.textContent = today;
+
+      let step = "intro"; // intro | q0..q4 | result
+      let idx = -1; // question index
+      const answers = {
+        sleep: null,
+        focus: null,
+        mood: null,
+        body: null,
+        lazy: null,
+      };
+      const history = [];
+
+      // Render choice buttons
+      function renderQuestions() {
+        const QUESTIONS = getQuestions();
+        QUESTIONS.forEach((q, i) => {
+          const box = document.querySelector(`.choices[data-q="${q.key}"]`);
+          if (!box) return;
+          box.innerHTML = "";
+          q.choices.forEach((c) => {
+            const btn = document.createElement("button");
+            btn.className = "btnChoice";
+            btn.type = "button";
+            btn.textContent = c.label;
+            btn.addEventListener("click", () => {
+              answers[q.key] = c.v;
+              history.push({ pane: `q${i}`, key: q.key, v: c.v });
+              // 선택하면 바로 다음으로
+              if (i < QUESTIONS.length - 1) {
+                showPane(`q${i + 1}`);
+              } else {
+                showResult();
+              }
+            });
+            box.appendChild(btn);
+          });
+        });
+      }
+      renderQuestions();
+
+      // Load today's saved result if exists
+      const saved = loadSaved(today);
+      if (saved) {
+        // 바로 결과 화면으로
+        applyResult(saved, { fromSaved: true });
+        showPane("result");
+      } else {
+        updateProgress("intro");
+      }
+
+      // Buttons
+      startBtn.addEventListener("click", () => showPane("q0"));
+
+      backBtn.addEventListener("click", () => {
+        if (history.length === 0) return;
+        // pop current answer
+        const last = history.pop();
+        answers[last.key] = null;
+        // go to last pane
+        showPane(last.pane);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        clearSaved(today);
+        // reset in-memory
+        history.length = 0;
+        Object.keys(answers).forEach((k) => (answers[k] = null));
+        showPane("intro");
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        const text = buildShareText(getCurrentResultPayload());
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast(t("toastCopy"));
+        } catch (e) {
+          // fallback
+          prompt("복사해서 사용하세요:", text);
+        }
+      });
+
+      shareBtn.addEventListener("click", async () => {
+        const payload = getCurrentResultPayload();
+        const text = buildShareText(payload);
+        const shareData = {
+          title: t("shareTitle"),
+          text,
+          url: location.href,
+        };
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch (_) {}
+        } else {
+          try {
+            await navigator.clipboard.writeText(text);
+            showToast(t("toastCopyLink"));
+          } catch (e) {
+            prompt("공유 텍스트:", text);
+          }
+        }
+      });
+
+      // =========================
+      // 4) 화면 전환
+      // =========================
+      function showPane(name) {
+        step = name;
+
+        panes.forEach((p) => {
+          const active = p.getAttribute("data-pane") === name;
+          p.classList.toggle("active", active);
+        });
+
+        // back button visibility
+        const isQuestion = name.startsWith("q");
+        const isResult = name === "result";
+        backBtn.style.display =
+          isQuestion && history.length > 0 ? "inline-flex" : "none";
+
+        // result buttons
+        copyBtn.style.display = isResult ? "inline-flex" : "none";
+        shareBtn.style.display = isResult ? "inline-flex" : "none";
+        resetBtn.style.display = isResult ? "inline-flex" : "none";
+
+        footHint.textContent = isResult
+          ? t("footHintResult")
+          : t("footHintRoutine");
+
+        updateProgress(name);
+        // scroll to top of card on mobile
+        try {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } catch (_) {}
+      }
+
+      function updateProgress(name) {
+        if (name === "intro") {
+          progressText.textContent = t("progressReady");
+          progressMini.textContent = t("progressCheck");
+          progressBar.style.width = "0%";
+          return;
+        }
+        if (name.startsWith("q")) {
+          const i = parseInt(name.slice(1), 10);
+          progressText.textContent = t("progressChecking");
+          progressMini.textContent = `${i + 1} / 5`;
+          progressBar.style.width = `${Math.round(((i + 1) / 5) * 100)}%`;
+          return;
+        }
+        if (name === "result") {
+          progressText.textContent = t("progressComplete");
+          progressMini.textContent = t("progressOneSentence");
+          progressBar.style.width = "100%";
+          return;
+        }
+      }
+
+      // =========================
+      // 5) 결과 로직 (점수 노출 X, 내부적으로만 구간 분류)
+      // =========================
+      function getResults() {
+        return RESULTS.map((r) => {
+          if (currentLang === "en") {
+            return {
+              ...r,
+              main: r.mainEn || r.main,
+              sub: r.subEn || r.sub,
+              safe: r.safeEn || r.safe,
+            };
+          }
+          return r;
+        });
+      }
+
+      function classifyType(sum) {
+        // 0~10 범위(5문항 * 0~2)
+        // A: <=3, B: 4~6, C: >=7
+        if (sum <= 3) return "A";
+        if (sum <= 6) return "B";
+        return "C";
+      }
+
+      function showResult() {
+        const vals = Object.values(answers);
+        if (vals.some((v) => v === null)) {
+          showToast(t("toastRemaining"));
+          return;
+        }
+
+        const sum = vals.reduce((a, b) => a + b, 0);
+        const type = classifyType(sum);
+
+        const results = getResults();
+        const pool = results.filter((r) => r.type === type);
+
+        // date+answers 기반 해시로 "오늘은 이 문장" 느낌 고정
+        const seedStr = `${today}|${answers.sleep}${answers.focus}${answers.mood}${answers.body}${answers.lazy}|${type}`;
+        const idx = hashToIndex(seedStr, pool.length);
+        const picked = pool[idx];
+
+        const payload = {
+          date: today,
+          type,
+          main: picked.main,
+          sub: picked.sub,
+          safe: picked.safe,
+          // 답변은 저장하지 않음(프라이버시)
+          meta: { version: 1 },
+        };
+
+        saveToday(payload);
+        // result.html로 리다이렉트
+        const params = new URLSearchParams({
+          type: payload.type,
+          main: payload.main,
+          sub: payload.sub || '',
+          safe: payload.safe || ''
+        });
+        window.location.href = `result.html?${params.toString()}`;
+      }
+
+      function applyResult(payload, { fromSaved }) {
+        resultMainEl.textContent = payload.main;
+        resultSubEl.textContent = payload.sub;
+        resultSafeEl.textContent = `✅ ${payload.safe}`;
+
+        const labelKey = payload.type === "A" ? "resultLabelA" : payload.type === "B" ? "resultLabelB" : "resultLabelC";
+        resultTagEl.textContent = `${t("resultTag")} · ${t(labelKey)}`;
+
+        resultMetaEl.textContent = fromSaved
+          ? t("resultMetaSaved")
+          : t("resultMetaNew");
+      }
+
+      function getCurrentResultPayload() {
+        const saved = loadSaved(today);
+        return (
+          saved || {
+            date: today,
+            type: "?",
+            main: resultMainEl.textContent || "",
+            sub: resultSubEl.textContent || "",
+            safe: (resultSafeEl.textContent || "").replace(/^✅\s?/, ""),
+          }
+        );
+      }
+
+      function buildShareText(payload) {
+        // 공유 텍스트: 짧고 복붙 쉬운 형태
+        return [
+          t("shareTitle"),
+          `"${payload.main}"`,
+          payload.sub ? `- ${payload.sub}` : "",
+          payload.safe ? `- ${payload.safe}` : "",
+          "",
+          "dailycheck.funnyfunny.cloud",
+        ]
+          .filter(Boolean)
+          .join("\n");
+      }
+
+      // =========================
+      // 6) 로컬 저장 (답변 저장 X, 결과만 저장)
+      // =========================
+      function saveToday(payload) {
+        try {
+          localStorage.setItem(
+            STORAGE_KEY_PREFIX + payload.date,
+            JSON.stringify(payload)
+          );
+        } catch (_) {}
+      }
+      function loadSaved(dateKey) {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY_PREFIX + dateKey);
+          if (!raw) return null;
+          const obj = JSON.parse(raw);
+          if (!obj || obj.date !== dateKey || !obj.main) return null;
+          return obj;
+        } catch (_) {
+          return null;
+        }
+      }
+      function clearSaved(dateKey) {
+        try {
+          localStorage.removeItem(STORAGE_KEY_PREFIX + dateKey);
+        } catch (_) {}
+      }
+
+      // =========================
+      // 7) 날짜/해시/토스트
+      // =========================
+      function getLocalDateKey() {
+        // 사용자가 한국(Asia/Seoul) 기준으로 쓴다는 전제에서,
+        // 브라우저 로컬 타임존 기준 날짜를 사용합니다.
+        const d = new Date();
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        return `${y}-${m}-${day}`;
+      }
+
+      function hashToIndex(str, mod) {
+        // 간단한 32-bit 해시
+        let h = 2166136261;
+        for (let i = 0; i < str.length; i++) {
+          h ^= str.charCodeAt(i);
+          h = Math.imul(h, 16777619);
+        }
+        h >>>= 0;
+        return mod ? h % mod : 0;
+      }
+
+      let toastTimer = null;
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 1100);
+      }
+    </script>
+
+    <!-- 구조화 데이터: WebApplication (선택) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "오늘 상태 점검표",
+        "url": "https://dailycheck.funnyfunny.cloud",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "All",
+        "description": "수면·집중·기분·몸·귀찮음 5가지로 오늘 컨디션을 점수 없이 한 문장으로 확인하는 데일리 체크 도구",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+      }
+    </script>
+  </body>
+</html>

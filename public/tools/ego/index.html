@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EGO 테스트 - 당신의 자아는 어떻게 반응하는가</title>
+
+    <!-- SEO / OG -->
+    <meta
+      name="description"
+      content="12문항으로 알아보는 EGO(자아 반응) 테스트. 갈등·스트레스 상황에서 당신의 자아가 어떻게 작동하는지 분석합니다."
+    />
+    <meta
+      property="og:title"
+      content="EGO 테스트 - 당신의 자아는 어떻게 반응하는가"
+    />
+    <meta
+      property="og:description"
+      content="갈등·스트레스 상황에서 튀어나오는 ‘자아 반응 패턴’을 1분 만에 분석합니다."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff.png&text=EGO+TEST"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:alt" content="EGO TEST 썸네일" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Ctext y='50' x='4' font-size='44'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        font-size: 16.5px;
+      }
+      body {
+        background: #0b1220;
+      }
+      .fade-in {
+        animation: fade 0.25s ease both;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .tap {
+        transform: translateY(0);
+        transition: transform 0.08s ease;
+      }
+      .tap:active {
+        transform: translateY(1px);
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(11, 18, 32, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(226, 232, 240, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: rgba(255, 255, 255, 0.3);
+      color: #e2e8f0;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(226, 232, 240, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/ego/" />
+  </head>
+
+  <body class="min-h-screen text-slate-100">
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <main class="max-w-3xl mx-auto px-4 py-8 sm:py-10">
+      <!-- Header -->
+      <header class="flex items-start justify-between gap-3 mb-7">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-slate-200"
+          >
+            <span>🧠</span><span data-i18n="badge">1분 EGO 테스트</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold mt-3 leading-tight">
+            <span data-i18n="title">EGO 테스트</span>
+            <span
+              class="block text-slate-300 font-semibold text-base sm:text-lg mt-1"
+              data-i18n="subtitle"
+            >
+              당신의 자아는 어떻게 반응하는가
+            </span>
+          </h1>
+          <p class="text-slate-300 mt-3 leading-relaxed" data-i18n="description">
+            이 테스트는 ‘성격’이 아니라
+            <span class="font-semibold text-slate-100">갈등·스트레스·선택</span>
+            앞에서
+            <span class="font-semibold text-slate-100"
+              >자아가 활성화되는 반응 패턴</span
+            >을 분석합니다.
+          </p>
+        </div>
+        <a
+          href="#"
+          id="homeBadge"
+          class="hidden sm:inline-flex tap items-center rounded-2xl bg-white/10 px-3 py-2 text-xs text-slate-200 hover:bg-white/15"
+        >
+          ego
+        </a>
+      </header>
+
+      <!-- Card shell -->
+      <section
+        class="rounded-3xl bg-white/5 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,.35)] overflow-hidden"
+      >
+        <!-- Progress -->
+        <div class="px-5 sm:px-7 pt-5 sm:pt-6">
+          <div class="flex items-center justify-between text-xs text-slate-300">
+            <span id="progressLabel" data-i18n="progressStart">시작</span>
+            <span id="progressRight" class="tabular-nums">0 / 12</span>
+          </div>
+          <div class="mt-3 h-2 rounded-full bg-white/10 overflow-hidden">
+            <div id="progressBar" class="h-full w-0 bg-white/60"></div>
+          </div>
+        </div>
+
+        <!-- Views -->
+        <div class="p-5 sm:p-7">
+          <!-- Start -->
+          <div id="viewStart" class="fade-in">
+            <div
+              class="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6"
+            >
+              <h2 class="text-lg sm:text-xl font-bold" data-i18n="startTitle">시작하기 전에</h2>
+              <ul class="mt-3 space-y-2 text-slate-300 leading-relaxed" data-i18n-html="startInstructions">
+                <li>
+                  • 정답은 없어요.
+                  <span class="text-slate-100 font-semibold">"평소 반응"</span
+                  >으로 고르세요.
+                </li>
+                <li>
+                  • 질문은 12개, 클릭하면
+                  <span class="text-slate-100 font-semibold">바로 다음</span
+                  >으로 넘어갑니다.
+                </li>
+                <li>• 결과는 상위 2개 유형과 전체 분포(%)로 보여줘요.</li>
+              </ul>
+              <button
+                id="startBtn"
+                class="tap mt-5 w-full rounded-2xl bg-white text-slate-900 font-bold py-3 hover:bg-slate-100"
+                data-i18n="startButton"
+              >
+                테스트 시작하기
+              </button>
+              <p class="mt-3 text-xs text-slate-400" data-i18n="startNote">
+                참고: 백분율은 "대략적인 경향"입니다. 자아는 상황에 따라
+                활성화가 달라질 수 있어요.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quiz -->
+          <div id="viewQuiz" class="hidden fade-in">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-400" data-i18n="questionLabel">질문</div>
+                <h2
+                  id="qTitle"
+                  class="text-lg sm:text-xl font-extrabold mt-1 leading-snug"
+                >
+                  -
+                </h2>
+              </div>
+              <button
+                id="backBtn"
+                class="tap shrink-0 rounded-2xl bg-white/10 border border-white/10 px-3 py-2 text-xs text-slate-200 hover:bg-white/15"
+                data-i18n="backButton"
+              >
+                ← 뒤로
+              </button>
+            </div>
+
+            <div id="optionsWrap" class="mt-5 grid grid-cols-1 gap-3"></div>
+
+            <div
+              class="mt-5 flex items-center justify-between text-xs text-slate-400"
+            >
+              <span id="hintText" data-i18n="quizHint">선택하면 자동으로 다음으로 이동합니다.</span>
+              <button id="resetBtn" class="tap underline hover:text-slate-200" data-i18n="resetButton">
+                처음부터
+              </button>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div id="viewResult" class="hidden fade-in">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-400" data-i18n="resultLabel">결과</div>
+                <h2
+                  id="resultTitle"
+                  class="text-xl sm:text-2xl font-extrabold mt-1 leading-snug"
+                >
+                  -
+                </h2>
+                <p
+                  id="resultSubtitle"
+                  class="text-slate-300 mt-2 leading-relaxed"
+                >
+                  -
+                </p>
+              </div>
+              <button
+                id="restartBtn"
+                class="tap shrink-0 rounded-2xl bg-white text-slate-900 font-bold px-4 py-2 hover:bg-slate-100 text-sm"
+                data-i18n="restartButton"
+              >
+                다시하기
+              </button>
+            </div>
+
+            <!-- Top types -->
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <div class="text-xs text-slate-400" data-i18n="rank1">1위</div>
+                <div class="mt-1 flex items-baseline justify-between">
+                  <div>
+                    <div id="top1Name" class="text-lg font-extrabold">-</div>
+                    <div id="top1Tag" class="text-sm text-slate-300">-</div>
+                  </div>
+                  <div id="top1Pct" class="text-xl font-extrabold tabular-nums">
+                    -
+                  </div>
+                </div>
+                <button
+                  id="readTop1"
+                  class="tap mt-3 w-full rounded-2xl bg-white/10 border border-white/10 py-2 text-sm hover:bg-white/15"
+                  data-i18n="readTop1"
+                >
+                  1위 유형 자세히 보기
+                </button>
+              </div>
+
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <div class="text-xs text-slate-400" data-i18n="rank2">2위</div>
+                <div class="mt-1 flex items-baseline justify-between">
+                  <div>
+                    <div id="top2Name" class="text-lg font-extrabold">-</div>
+                    <div id="top2Tag" class="text-sm text-slate-300">-</div>
+                  </div>
+                  <div id="top2Pct" class="text-xl font-extrabold tabular-nums">
+                    -
+                  </div>
+                </div>
+                <button
+                  id="readTop2"
+                  class="tap mt-3 w-full rounded-2xl bg-white/10 border border-white/10 py-2 text-sm hover:bg-white/15"
+                  data-i18n="readTop2"
+                >
+                  2위 유형도 읽어보기
+                </button>
+              </div>
+            </div>
+
+            <!-- Notice -->
+            <div
+              id="ambiguousBox"
+              class="hidden mt-4 rounded-2xl bg-white/5 border border-white/10 p-4"
+            >
+              <div class="font-bold" data-i18n="ambiguousTitle">주요 유형이 확실하지 않습니다.</div>
+              <p class="text-slate-300 mt-2 leading-relaxed" data-i18n-html="ambiguousText">
+                1위와 2위가 매우 근접합니다. 상황에 따라 두 자아 반응이 번갈아
+                나타날 수 있어요.
+                <span class="text-slate-100 font-semibold"
+                  >2위 유형 설명도 함께 읽어보는 것</span
+                >을 권장합니다.
+              </p>
+            </div>
+
+            <!-- Distribution -->
+            <div class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-extrabold" data-i18n="distributionTitle">전체 분포(%)</h3>
+                <button
+                  id="copyShareBtn"
+                  class="tap rounded-2xl bg-white/10 border border-white/10 px-3 py-2 text-xs hover:bg-white/15"
+                  data-i18n="copyResultButton"
+                >
+                  결과 문구 복사
+                </button>
+              </div>
+              <p class="text-xs text-slate-400 mt-2" data-i18n="distributionNote">
+                참고: %는 "자아 반응 경향"의 대략적인 지표입니다. (고정 성격
+                낙인용이 아님)
+              </p>
+              <div id="distList" class="mt-4 space-y-2"></div>
+            </div>
+
+            <!-- Detail -->
+            <div class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-5">
+              <div class="flex items-center justify-between gap-3">
+                <h3 id="detailTitle" class="font-extrabold" data-i18n="detailTitle">유형 상세</h3>
+                <div class="flex gap-2">
+                  <button
+                    id="prevTypeBtn"
+                    class="tap rounded-2xl bg-white/10 border border-white/10 px-3 py-2 text-xs hover:bg-white/15"
+                    aria-label="이전"
+                  >
+                    ←
+                  </button>
+                  <button
+                    id="nextTypeBtn"
+                    class="tap rounded-2xl bg-white/10 border border-white/10 px-3 py-2 text-xs hover:bg-white/15"
+                    aria-label="다음"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+
+              <div
+                id="detailBody"
+                class="mt-4 text-slate-200 leading-relaxed"
+              ></div>
+
+              <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button
+                  id="jumpTop1"
+                  class="tap rounded-2xl bg-white text-slate-900 font-bold py-3 hover:bg-slate-100"
+                  data-i18n="jumpTop1"
+                >
+                  1위로 이동
+                </button>
+                <button
+                  id="jumpTop2"
+                  class="tap rounded-2xl bg-white/10 border border-white/10 py-3 hover:bg-white/15"
+                  data-i18n="jumpTop2"
+                >
+                  2위로 이동
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="https://funnyfunny.cloud/"
+                target="_blank"
+                rel="noreferrer"
+                class="tap block w-full text-center rounded-2xl bg-amber-400 text-slate-900 font-bold py-3 hover:bg-amber-300"
+                data-i18n="moreTestsLink"
+              >
+                다른 테스트 더 해보기 (퍼니퍼니)
+              </a>
+            </div>
+
+            <footer class="mt-6 text-xs text-slate-500 leading-relaxed" data-i18n="footer">
+              EGO 테스트는 "상황 반응 패턴"을 보여주는 도구입니다. 진단/치료
+              목적이 아닙니다.
+            </footer>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "EGO 테스트 - 당신의 자아는 어떻게 반응하는가",
+          metaDescription: "12문항으로 알아보는 EGO(자아 반응) 테스트. 갈등·스트레스 상황에서 당신의 자아가 어떻게 작동하는지 분석합니다.",
+          badge: "1분 EGO 테스트",
+          title: "EGO 테스트",
+          subtitle: "당신의 자아는 어떻게 반응하는가",
+          description: "이 테스트는 '성격'이 아니라 갈등·스트레스·선택 앞에서 자아가 활성화되는 반응 패턴을 분석합니다.",
+          startTitle: "시작하기 전에",
+          startInstructions: "• 정답은 없어요. <span class=\"text-slate-100 font-semibold\">\"평소 반응\"</span>으로 고르세요.<br>• 질문은 12개, 클릭하면 <span class=\"text-slate-100 font-semibold\">바로 다음</span>으로 넘어갑니다.<br>• 결과는 상위 2개 유형과 전체 분포(%)로 보여줘요.",
+          startButton: "테스트 시작하기",
+          startNote: "참고: 백분율은 \"대략적인 경향\"입니다. 자아는 상황에 따라 활성화가 달라질 수 있어요.",
+          questionLabel: "질문",
+          backButton: "← 뒤로",
+          quizHint: "선택하면 자동으로 다음으로 이동합니다.",
+          resetButton: "처음부터",
+          resultLabel: "결과",
+          restartButton: "다시하기",
+          rank1: "1위",
+          rank2: "2위",
+          readTop1: "1위 유형 자세히 보기",
+          readTop2: "2위 유형도 읽어보기",
+          ambiguousTitle: "주요 유형이 확실하지 않습니다.",
+          ambiguousText: "1위와 2위가 매우 근접합니다. 상황에 따라 두 자아 반응이 번갈아 나타날 수 있어요. <span class=\"text-slate-100 font-semibold\">2위 유형 설명도 함께 읽어보는 것</span>을 권장합니다.",
+          distributionTitle: "전체 분포(%)",
+          detailTitle: "유형 상세",
+          prevType: "← 이전 유형",
+          nextType: "다음 유형 →",
+          jumpTop1: "1위로 이동",
+          jumpTop2: "2위로 이동",
+          moreTestsLink: "다른 테스트 더 해보기 (퍼니퍼니)",
+          footer: "EGO 테스트는 \"상황 반응 패턴\"을 보여주는 도구입니다. 진단/치료 목적이 아닙니다.",
+          copyResultButton: "결과 문구 복사",
+          copyShareText: "결과 문구 복사",
+          copyShareSuccess: "복사 완료!",
+          copyShareFail: "복사에 실패했어요. 브라우저 권한을 확인해 주세요.",
+          progressStart: "시작",
+        },
+        en: {
+          metaTitle: "EGO Test - How Does Your Ego React?",
+          metaDescription: "12-question EGO (ego reaction) test. Analyzes how your ego works in conflict and stress situations.",
+          badge: "1-Minute EGO Test",
+          title: "EGO Test",
+          subtitle: "How Does Your Ego React?",
+          description: "This test analyzes reaction patterns where your ego activates in the face of conflict, stress, and choices—not 'personality'.",
+          startTitle: "Before You Start",
+          startInstructions: "• There are no right answers. Choose based on <span class=\"text-slate-100 font-semibold\">\"your usual reaction\"</span>.<br>• 12 questions, clicking moves to the <span class=\"text-slate-100 font-semibold\">next</span> immediately.<br>• Results show top 2 types and full distribution (%).",
+          startButton: "Start Test",
+          startNote: "Note: Percentages are \"rough tendencies\". Ego activation can vary by situation.",
+          questionLabel: "Question",
+          backButton: "← Back",
+          quizHint: "Clicking automatically moves to the next.",
+          resetButton: "Start Over",
+          resultLabel: "Result",
+          restartButton: "Restart",
+          rank1: "1st",
+          rank2: "2nd",
+          readTop1: "Read 1st Type Details",
+          readTop2: "Read 2nd Type Too",
+          ambiguousTitle: "Main type is uncertain.",
+          ambiguousText: "1st and 2nd are very close. Both ego reactions may alternate depending on the situation. <span class=\"text-slate-100 font-semibold\">Reading the 2nd type description too</span> is recommended.",
+          distributionTitle: "Full Distribution (%)",
+          detailTitle: "Type Details",
+          copyResultButton: "Copy Result Text",
+          prevType: "← Previous Type",
+          nextType: "Next Type →",
+          jumpTop1: "Jump to 1st",
+          jumpTop2: "Jump to 2nd",
+          moreTestsLink: "Try More Tests (FunnyFunny)",
+          footer: "EGO test is a tool showing \"situational reaction patterns\". Not for diagnosis/treatment.",
+          copyResultButton: "Copy Result Text",
+          copyShareText: "Copy Result Text",
+          copyShareSuccess: "Copied!",
+          copyShareFail: "Copy failed. Check browser permissions.",
+          progressStart: "Start",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+      let idx = 0;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.documentElement.lang = currentLang;
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+          el.setAttribute("title", t(el.dataset.i18nTitle));
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          el.setAttribute("aria-label", t(el.dataset.i18nAria));
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+          el.setAttribute("alt", t(el.dataset.i18nAlt));
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+        // Update dynamic content
+        if (typeof idx !== "undefined" && idx !== null) {
+          // Reload data with new language
+          window.TYPES = getTypes();
+          window.RESULT_PAGES = getResultPages();
+          window.QUESTIONS = getQuestions();
+          setProgress();
+          if (idx < window.QUESTIONS.length) {
+            renderQuestion();
+          } else if (idx === window.QUESTIONS.length) {
+            finish();
+          }
+        }
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      /** =========================
+       *  Data
+       *  ========================= */
+      function getTypes() {
+        const isKo = currentLang === "ko";
+        return {
+        E1: {
+          label: isKo ? "E1 통제형" : "E1 Control Type",
+          tag: isKo ? '"틀리면 안 돼"' : '"It must not be wrong"',
+          short: isKo ? "규칙·기준으로 불안을 잡는 자아" : "Ego that manages anxiety through rules and standards",
+        },
+        E2: {
+          label: isKo ? "E2 과잉배려형" : "E2 Over-Caring Type",
+          tag: isKo ? '"필요한 사람이 되어야 해"' : '"I must be needed"',
+          short: isKo ? "관계·헌신으로 가치를 증명하는 자아" : "Ego that proves value through relationships and devotion",
+        },
+        E3: {
+          label: isKo ? "E3 성취과시형" : "E3 Achievement Display Type",
+          tag: isKo ? '"나는 인정받아야 해"' : '"I must be recognized"',
+          short: isKo ? "성과·이미지로 자아를 지키는 자아" : "Ego that protects itself through achievements and image",
+        },
+        E4: {
+          label: isKo ? "E4 결핍몰입형" : "E4 Deficiency Immersion Type",
+          tag: isKo ? '"나는 다르다"' : '"I am different"',
+          short: isKo ? "특별함·의미로 정체성을 세우는 자아" : "Ego that builds identity through uniqueness and meaning",
+        },
+        E5: {
+          label: isKo ? "E5 거리두기형" : "E5 Distancing Type",
+          tag: isKo ? '"에너지를 아껴야 해"' : '"I must save energy"',
+          short: isKo ? "거리·정보로 안전을 확보하는 자아" : "Ego that secures safety through distance and information",
+        },
+        E6: {
+          label: isKo ? "E6 불안경계형" : "E6 Anxiety Guard Type",
+          tag: isKo ? '"위험한 건 아닌가?"' : '"Isn\'t this dangerous?"',
+          short: isKo ? "확실함·검증으로 불안을 관리하는 자아" : "Ego that manages anxiety through certainty and verification",
+        },
+        E7: {
+          label: isKo ? "E7 회피확장형" : "E7 Avoidance Expansion Type",
+          tag: isKo ? '"재미없는 건 피하자"' : '"Let\'s avoid the boring"',
+          short: isKo ? "가능성·자극으로 불편을 회피하는 자아" : "Ego that avoids discomfort through possibilities and stimulation",
+        },
+        E8: {
+          label: isKo ? "E8 압도지배형" : "E8 Overwhelming Dominance Type",
+          tag: isKo ? '"당하지 않겠다"' : '"I won\'t be taken advantage of"',
+          short: isKo ? "힘·직진으로 취약함을 숨기는 자아" : "Ego that hides vulnerability through power and directness",
+        },
+        E9: {
+          label: isKo ? "E9 중재회피형" : "E9 Mediator Avoidant",
+          tag: isKo ? '"평화가 깨지면 안 돼"' : '"Peace must not be broken"',
+          short: isKo ? "조화·완충으로 갈등을 흡수하는 자아" : "Ego that absorbs conflict through harmony and buffering",
+        },
+      };
+      }
+
+      const TYPES = getTypes();
+
+      function getResultPages() {
+        const isKo = currentLang === "ko";
+        return {
+        E1: {
+          title: isKo ? "통제형" : "Control Type",
+          oneLine: isKo
+            ? "당신의 자아는 '기준과 통제'로 세상을 안정시키려 합니다."
+            : "Your ego tries to stabilize the world through 'standards and control'.",
+          core: isKo
+            ? ["실수/무질서를 불편해함", "원칙과 기준이 분명함", "'옳음'을 지키며 자신과 타인을 다잡음"]
+            : ["Uncomfortable with mistakes/disorder", "Clear principles and standards", "Maintains 'rightness' and disciplines self and others"],
+          avoid: isKo ? "틀림, 무질서, 기준이 흐려지는 상황" : "Wrongness, disorder, situations where standards blur",
+          defense: isKo
+            ? "합리화/비판: 불안을 '정정'과 '개선'으로 바꿔버림"
+            : "Rationalization/criticism: Transforms anxiety into 'correction' and 'improvement'",
+          balance: isKo
+            ? "차분한 리더십, 공정함, 문제 해결력, 신뢰를 만드는 사람"
+            : "Calm leadership, fairness, problem-solving ability, someone who builds trust",
+          imbalance: isKo
+            ? "완벽주의, 잦은 짜증/비판, 자기검열, 타인에게도 엄격함"
+            : "Perfectionism, frequent irritation/criticism, self-censorship, strictness toward others",
+          wings: isKo
+            ? "인접 유형은 E9·E2. (E1w9: 더 차분/절제, E1w2: 더 책임/헌신)"
+            : "Adjacent types: E9·E2. (E1w9: more calm/restrained, E1w2: more responsible/devoted)",
+          tip: isKo
+            ? "'지금 충분히 괜찮다'는 체크포인트를 만들어 통제 레벨을 낮춰보세요."
+            : "Create a checkpoint that says 'this is good enough now' to lower your control level.",
+        },
+        E2: {
+          title: isKo ? "과잉배려형" : "Over-Caring Type",
+          oneLine: isKo
+            ? "당신의 자아는 '관계에서의 필요함'으로 존재감을 지키려 합니다."
+            : "Your ego tries to maintain presence through 'being needed in relationships'.",
+          core: isKo
+            ? ["상대의 니즈를 빠르게 감지", "도움/배려로 관계를 단단히 하려 함", "거절을 어려워할 수 있음"]
+            : ["Quickly detects others' needs", "Tries to strengthen relationships through help/care", "May find it hard to refuse"],
+          avoid: isKo ? "거절당함, 쓸모없다고 느껴지는 순간, 관계의 냉각" : "Being rejected, moments of feeling useless, relationship cooling",
+          defense: isKo
+            ? "과잉헌신: 불안을 '내가 더 해주면 돼'로 바꿈"
+            : "Over-devotion: Transforms anxiety into 'I'll do more'",
+          balance: isKo
+            ? "따뜻함, 지지, 팀의 온도를 올리는 사람, 관계 회복 능력"
+            : "Warmth, support, someone who raises team temperature, relationship recovery ability",
+          imbalance: isKo
+            ? "경계 붕괴, 피로 누적, 은근한 서운함/보상심리"
+            : "Boundary collapse, fatigue accumulation, subtle resentment/compensation psychology",
+          wings: isKo
+            ? "인접 유형은 E1·E3. (E2w1: 더 책임감, E2w3: 더 능률/이미지)"
+            : "Adjacent types: E1·E3. (E2w1: more responsibility, E2w3: more efficiency/image)",
+          tip: isKo
+            ? "'도움' 전에 \"지금 이건 내 역할인가?\" 한 번만 물어보면 경계가 생깁니다."
+            : "Before 'helping', ask once 'Is this my role now?' and boundaries will form.",
+        },
+        E3: {
+          title: isKo ? "성취과시형" : "Achievement Display Type",
+          oneLine: isKo
+            ? "당신의 자아는 '성과와 인정'으로 스스로를 안전하게 만듭니다."
+            : "Your ego makes itself safe through 'achievements and recognition'.",
+          core: isKo
+            ? ["목표/성과에 강함", "효율/속도 중심", "타인의 시선을 의식할 수 있음"]
+            : ["Strong in goals/achievements", "Efficiency/speed focused", "May be conscious of others' gaze"],
+          avoid: isKo ? "무가치함, 실패, 남에게 뒤처지는 느낌" : "Worthlessness, failure, feeling left behind by others",
+          defense: isKo
+            ? "이미지 관리: 불안을 '잘하는 모습'으로 덮어버림"
+            : "Image management: Covers anxiety with 'doing well'",
+          balance: isKo
+            ? "추진력, 성과 창출, 조직을 움직이는 에너지"
+            : "Drive, achievement creation, energy that moves organizations",
+          imbalance: isKo
+            ? "공허감, 과로, 비교/평가 중독, '나'보다 '성과'가 앞섬"
+            : "Emptiness, overwork, comparison/evaluation addiction, 'achievement' ahead of 'me'",
+          wings: isKo
+            ? "인접 유형은 E2·E4. (E3w2: 더 사교/배려, E3w4: 더 개성/브랜딩)"
+            : "Adjacent types: E2·E4. (E3w2: more social/caring, E3w4: more personality/branding)",
+          tip: isKo
+            ? "성과 체크와 별개로 '오늘 내 컨디션 점수'를 함께 기록해보세요."
+            : "Separate from achievement checks, also record 'my condition score today'.",
+        },
+        E4: {
+          title: isKo ? "결핍몰입형" : "Deficiency Immersion Type",
+          oneLine: isKo
+            ? "당신의 자아는 '의미와 특별함'으로 정체성을 지키려 합니다."
+            : "Your ego tries to maintain identity through 'meaning and uniqueness'.",
+          core: isKo
+            ? ["감정/의미에 민감", "평범함을 답답해함", "진짜 나를 찾고 싶어함"]
+            : ["Sensitive to emotions/meaning", "Frustrated with ordinariness", "Wants to find the real me"],
+          avoid: isKo ? "진부함, 표면적인 관계, 감정이 무시되는 상황" : "Clichés, superficial relationships, situations where emotions are ignored",
+          defense: isKo
+            ? "몰입/미화: 불안을 '더 깊은 의미' 찾기로 전환"
+            : "Immersion/idealization: Transforms anxiety into finding 'deeper meaning'",
+          balance: isKo
+            ? "창의성, 공감, 섬세한 표현력, 진정성 있는 관계"
+            : "Creativity, empathy, delicate expression, authentic relationships",
+          imbalance: isKo
+            ? "결핍감 증폭, 비교, 감정 롤러코스터, 자기비난"
+            : "Deficiency amplification, comparison, emotional rollercoaster, self-blame",
+          wings: isKo
+            ? "인접 유형은 E3·E5. (E4w3: 더 성취/표현, E4w5: 더 내면/고독)"
+            : "Adjacent types: E3·E5. (E4w3: more achievement/expression, E4w5: more inner/solitude)",
+          tip: isKo
+            ? "감정을 '작품'으로 만들기 전에, 몸을 먼저 안정시키는 루틴(호흡/산책)을 넣어보세요."
+            : "Before making emotions into 'artwork', try adding a routine (breathing/walking) that stabilizes your body first.",
+        },
+        E5: {
+          title: isKo ? "거리두기형" : "Distancing Type",
+          oneLine: isKo
+            ? "당신의 자아는 '거리와 정보'로 안전을 확보합니다."
+            : "Your ego secures safety through 'distance and information'.",
+          core: isKo
+            ? ["에너지 관리에 민감", "관찰/분석을 선호", "감정 표현이 늦을 수 있음"]
+            : ["Sensitive to energy management", "Prefers observation/analysis", "Emotional expression may be delayed"],
+          avoid: isKo ? "과도한 요구, 침범, 감정 소용돌이" : "Excessive demands, intrusion, emotional whirlwind",
+          defense: isKo
+            ? "철수/분석: 불안을 '거리'와 '이해'로 관리"
+            : "Withdrawal/analysis: Manages anxiety through 'distance' and 'understanding'",
+          balance: isKo
+            ? "통찰, 전략, 깊은 집중, 문제를 구조로 풀어냄"
+            : "Insight, strategy, deep focus, solving problems structurally",
+          imbalance: isKo
+            ? "고립, 과생각, 실행 지연, 관계 단절"
+            : "Isolation, overthinking, execution delay, relationship disconnection",
+          wings: isKo
+            ? "인접 유형은 E4·E6. (E5w4: 더 예술/내면, E5w6: 더 신중/검증)"
+            : "Adjacent types: E4·E6. (E5w4: more artistic/inner, E5w6: more cautious/verification)",
+          tip: isKo
+            ? "'준비가 끝나면' 대신 '10%만 해보기'로 실행을 당겨보세요."
+            : "Instead of 'when ready', try pulling execution forward with 'just 10%'.",
+        },
+        E6: {
+          title: isKo ? "불안경계형" : "Anxiety Guard Type",
+          oneLine: isKo
+            ? "당신의 자아는 '검증과 대비'로 위험을 통제합니다."
+            : "Your ego controls danger through 'verification and preparation'.",
+          core: isKo
+            ? ["리스크 감지 능력", "책임감/충성심", "확실한 기준을 찾으려 함"]
+            : ["Risk detection ability", "Responsibility/loyalty", "Tries to find certain standards"],
+          avoid: isKo ? "불확실함, 배신/변수, 예측 불가" : "Uncertainty, betrayal/variables, unpredictability",
+          defense: isKo
+            ? "확인/의심: 불안을 '검증'으로 바꿔버림"
+            : "Confirmation/suspicion: Transforms anxiety into 'verification'",
+          balance: isKo
+            ? "신뢰, 팀을 지키는 사람, 위기 대비력, 현실 감각"
+            : "Trust, someone who protects the team, crisis preparedness, sense of reality",
+          imbalance: isKo
+            ? "걱정 과다, 의심/경계, 결정을 미룸, 불안 루프"
+            : "Excessive worry, suspicion/vigilance, decision delay, anxiety loop",
+          wings: isKo
+            ? "인접 유형은 E5·E7. (E6w5: 더 분석/조심, E6w7: 더 활기/분산)"
+            : "Adjacent types: E5·E7. (E6w5: more analytical/cautious, E6w7: more energetic/dispersed)",
+          tip: isKo
+            ? "불안할수록 '정보 추가'가 아니라 '결정 기준 1개'만 남겨보세요."
+            : "The more anxious, keep only '1 decision criterion' instead of 'adding information'.",
+        },
+        E7: {
+          title: isKo ? "회피확장형" : "Avoidance Expansion Type",
+          oneLine: isKo
+            ? "당신의 자아는 '가능성과 자극'으로 불편을 회피합니다."
+            : "Your ego avoids discomfort through 'possibilities and stimulation'.",
+          core: isKo
+            ? ["재미/새로움에 강함", "기회 포착이 빠름", "답답한 감정을 싫어함"]
+            : ["Strong in fun/newness", "Quick to capture opportunities", "Dislikes frustrating emotions"],
+          avoid: isKo ? "지루함, 제한, 우울/불편 감정에 오래 머무는 것" : "Boredom, restrictions, staying in depressed/uncomfortable emotions too long",
+          defense: isKo
+            ? "전환/분산: 불안을 '다른 즐거움'으로 바꿔버림"
+            : "Switch/distraction: Transforms anxiety into 'other pleasures'",
+          balance: isKo
+            ? "아이디어, 낙관, 분위기 메이커, 확장 능력"
+            : "Ideas, optimism, atmosphere maker, expansion ability",
+          imbalance: isKo
+            ? "과소비/과일정, 산만, 회피, 깊은 관계/프로젝트 유지 어려움"
+            : "Overspending/over-scheduling, distraction, avoidance, difficulty maintaining deep relationships/projects",
+          wings: isKo
+            ? "인접 유형은 E6·E8. (E7w6: 더 사교/불안관리, E7w8: 더 추진/호쾌)"
+            : "Adjacent types: E6·E8. (E7w6: more social/anxiety management, E7w8: more drive/bold)",
+          tip: isKo
+            ? "새 선택지를 열기 전에 '지금 감정 1개'만 이름 붙이면 회피가 줄어듭니다."
+            : "Before opening new options, naming just '1 emotion now' reduces avoidance.",
+        },
+        E8: {
+          title: isKo ? "압도지배형" : "Overwhelming Dominance Type",
+          oneLine: isKo
+            ? "당신의 자아는 '힘과 직진'으로 취약함을 보호합니다."
+            : "Your ego protects vulnerability through 'power and directness'.",
+          core: isKo
+            ? ["정면 돌파", "주도권/정의감", "약함을 드러내기 싫어함"]
+            : ["Direct breakthrough", "Initiative/sense of justice", "Dislikes revealing weakness"],
+          avoid: isKo ? "통제당함, 약자로 보임, 불공정" : "Being controlled, appearing weak, unfairness",
+          defense: isKo
+            ? "공격/지배: 불안을 '힘'으로 덮어버림"
+            : "Attack/dominance: Covers anxiety with 'power'",
+          balance: isKo
+            ? "결단, 보호자 기질, 정의, 리더십"
+            : "Decisiveness, protector nature, justice, leadership",
+          imbalance: isKo
+            ? "과한 압박, 흑백논리, 감정 단절, 상처를 인정하기 어려움"
+            : "Excessive pressure, black-white logic, emotional disconnection, difficulty acknowledging wounds",
+          wings: isKo
+            ? "인접 유형은 E7·E9. (E8w7: 더 활기/확장, E8w9: 더 절제/무게감)"
+            : "Adjacent types: E7·E9. (E8w7: more energetic/expansive, E8w9: more restrained/weighty)",
+          tip: isKo
+            ? "'강하게' 말하기 전에 \"내가 지금 뭘 두려워하지?\" 한 번만 체크해도 관계가 달라집니다."
+            : "Before speaking 'strongly', checking once 'What am I afraid of now?' changes relationships.",
+        },
+        E9: {
+          title: isKo ? "중재회피형" : "Mediator Avoidant",
+          oneLine: isKo
+            ? "당신의 자아는 ‘평화 유지’를 위해 스스로를 뒤로 미루는 방식으로 작동합니다."
+            : "Your ego operates by putting itself back to maintain 'peace'.",
+          core: isKo
+            ? ["갈등을 싫어함", "상대 입장을 잘 봄", "분위기·조화를 우선함"]
+            : ["Dislikes conflict", "Sees others' perspectives well", "Prioritizes atmosphere and harmony"],
+          avoid: isKo ? "대립, 불편한 감정, 선택으로 인한 책임" : "Confrontation, uncomfortable emotions, responsibility from choices",
+          defense: isKo
+            ? "분리/마비: 불편에서 멀어지기 위해 멍/분산/대체물로 빠짐"
+            : "Separation/numbness: Escapes into numbness/distraction/substitutes to distance from discomfort",
+          balance: isKo
+            ? "따뜻함, 수용성, 관점 통합, 조용한 리더십, 중재 능력"
+            : "Warmth, acceptance, perspective integration, quiet leadership, mediation ability",
+          imbalance: isKo
+            ? "미루기, 체념, 수동 공격성, 자존감 저하, 결정 회피"
+            : "Procrastination, resignation, passive aggression, low self-esteem, decision avoidance",
+          wings: isKo
+            ? "인접 유형은 E8·E1. (E9w8: 더 단단/직진, E9w1: 더 이상/정돈)"
+            : "Adjacent types: E8·E1. (E9w8: more solid/direct, E9w1: more ideal/orderly)",
+          tip: isKo
+            ? "'평화'와 '회피'를 구분하는 기준 하나: \"지금 이 선택이 내 욕구를 지우는가?\""
+            : "One criterion to distinguish 'peace' from 'avoidance': 'Does this choice erase my desire right now?'",
+        },
+      };
+      }
+
+      /**
+       * 12 Questions
+       * - 각 옵션은 {E?: 점수} 가중치
+       * - 2점/1점 조합으로 분포를 만들고, 타입 커버리지를 균등하게 배치
+       */
+      function getQuestions() {
+        const isKo = currentLang === "ko";
+        return [
+        {
+          q: isKo ? "갈등이 생겼을 때 나는 보통" : "When conflict arises, I usually",
+          options: [
+            { t: isKo ? "분위기가 깨질까 봐 조용히 넘긴다" : "Quietly let it pass, worried the atmosphere might break", s: { E9: 2, E2: 1 } },
+            { t: isKo ? "상대가 왜 그런지 분석부터 한다" : "Start by analyzing why the other person is like that", s: { E5: 2, E6: 1 } },
+            { t: isKo ? "이 상황을 가볍게 바꿔보려 한다" : "Try to change this situation lightly", s: { E7: 2, E9: 1 } },
+            { t: isKo ? "정면으로 짚고 넘어가야 한다" : "Must address it directly and move on", s: { E8: 2, E1: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "누가 내 일을 지적하면 먼저 드는 감정은" : "When someone criticizes my work, the first emotion I feel is",
+          options: [
+            { t: isKo ? "'맞는 말이야'… 더 완벽히 해야지" : "'They're right'... I need to do it more perfectly", s: { E1: 2, E3: 1 } },
+            { t: isKo ? "'내 진짜 의도를 몰라줘' 서운하다" : "'They don't understand my real intention' I feel hurt", s: { E4: 2, E2: 1 } },
+            { t: isKo ? "'굳이 지금?' 거리 두고 싶다" : "'Why now?' I want to keep distance", s: { E5: 2, E9: 1 } },
+            { t: isKo ? "'나를 건드리네?' 반격 포인트를 찾는다" : "'They're challenging me?' I look for counterattack points", s: { E8: 2, E6: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "중요한 결정을 앞두면 나는" : "When facing an important decision, I",
+          options: [
+            { t: isKo ? "최악의 경우를 먼저 대비한다" : "Prepare for the worst case first", s: { E6: 2, E1: 1 } },
+            { t: isKo ? "가능성을 넓게 열어두고 싶다" : "Want to keep possibilities wide open", s: { E7: 2, E3: 1 } },
+            { t: isKo ? "정답을 찾기 전엔 움직이기 싫다" : "Don't want to move until I find the right answer", s: { E5: 2, E6: 1 } },
+            { t: isKo ? "갈등이 생길까 봐 결정을 미룬다" : "Delay the decision, worried conflict might arise", s: { E9: 2, E2: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "사람들이 나를 어떻게 봤으면 좋겠나" : "How would I like people to see me?",
+          options: [
+            { t: isKo ? "믿을 만하고 올바른 사람" : "Trustworthy and right person", s: { E1: 2, E6: 1 } },
+            { t: isKo ? "따뜻하고 도움이 되는 사람" : "Warm and helpful person", s: { E2: 2, E9: 1 } },
+            { t: isKo ? "능력 있고 성과 내는 사람" : "Capable person who delivers results", s: { E3: 2, E1: 1 } },
+            { t: isKo ? "독특하고 진짜 '나'인 사람" : "Unique and truly 'me' person", s: { E4: 2, E5: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "스트레스를 받으면 나는" : "When I'm stressed, I",
+          options: [
+            { t: isKo ? "일/성과로 밀어붙여 잊는다" : "Push through with work/achievements to forget", s: { E3: 2, E8: 1 } },
+            { t: isKo ? "혼자만의 공간으로 숨고 싶다" : "Want to hide in my own space", s: { E5: 2, E9: 1 } },
+            { t: isKo ? "재밌는 걸 찾아 기분을 전환한다" : "Find something fun to switch my mood", s: { E7: 2, E4: 1 } },
+            { t: isKo ? "사람들 사이를 조용히 정리하고 싶다" : "Want to quietly organize things between people", s: { E9: 2, E2: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "내가 가장 싫어하는 건" : "What I hate most is",
+          options: [
+            { t: isKo ? "기준이 무너지고 대충 넘어가는 것" : "Standards breaking down and things being done carelessly", s: { E1: 2, E6: 1 } },
+            { t: isKo ? "내가 필요 없는 사람처럼 느끼는 것" : "Feeling like I'm not needed", s: { E2: 2, E4: 1 } },
+            { t: isKo ? "통제당하거나 만만하게 보이는 것" : "Being controlled or appearing easy to push around", s: { E8: 2, E3: 1 } },
+            { t: isKo ? "의미 없는 반복과 지루함" : "Meaningless repetition and boredom", s: { E7: 2, E9: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "사람들이 싸울 때 나는" : "When people fight, I",
+          options: [
+            { t: isKo ? "중간에서 분위기를 누그러뜨린다" : "Ease the atmosphere in the middle", s: { E9: 2, E2: 1 } },
+            { t: isKo ? "누가 맞는지 기준을 세우려 한다" : "Try to establish standards for who's right", s: { E1: 2, E6: 1 } },
+            { t: isKo ? "불편해서 자리를 피한다" : "Avoid the situation because it's uncomfortable", s: { E5: 2, E7: 1 } },
+            { t: isKo ? "핵심만 짚고 결론을 내게 한다" : "Point out the core and make them reach a conclusion", s: { E8: 2, E3: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "내가 '나답다'고 느끼는 순간은" : "The moment I feel 'like myself' is when",
+          options: [
+            { t: isKo ? "진짜 감정/의미를 깊게 느낄 때" : "I deeply feel real emotions/meaning", s: { E4: 2, E9: 1 } },
+            { t: isKo ? "유능함을 증명하고 결과가 나올 때" : "I prove competence and results come out", s: { E3: 2, E1: 1 } },
+            { t: isKo ? "새로운 경험이 열리고 확장될 때" : "New experiences open and expand", s: { E7: 2, E8: 1 } },
+            { t: isKo ? "혼자 생각이 정리되고 이해가 생길 때" : "My thoughts organize alone and understanding emerges", s: { E5: 2, E6: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "약속/요청이 들어오면 나는" : "When a promise/request comes in, I",
+          options: [
+            { t: isKo ? "거절하면 마음이 불편해서 일단 받는다" : "Accept it first because refusing feels uncomfortable", s: { E2: 2, E9: 1 } },
+            { t: isKo ? "내 에너지/시간부터 계산한다" : "Calculate my energy/time first", s: { E5: 2, E1: 1 } },
+            { t: isKo ? "일단 오케이 하고 나중에 조정한다" : "Say okay first and adjust later", s: { E7: 2, E3: 1 } },
+            { t: isKo ? "선 넘으면 단호하게 끊는다" : "Cut it off firmly if they cross the line", s: { E8: 2, E6: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "실패했을 때 나는" : "When I fail, I",
+          options: [
+            { t: isKo ? "다음엔 더 잘해 보여주겠다" : "I'll show them I can do better next time", s: { E3: 2, E1: 1 } },
+            { t: isKo ? "내가 별로인 사람 같아져 우울해진다" : "Feel like I'm not much and get depressed", s: { E4: 2, E6: 1 } },
+            { t: isKo ? "왜 실패했는지 냉정히 분석한다" : "Calmly analyze why I failed", s: { E5: 2, E1: 1 } },
+            { t: isKo ? "화가 나서 더 강하게 밀어붙인다" : "Get angry and push harder", s: { E8: 2, E7: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "내가 가장 자주 하는 자기합리화는" : "The self-rationalization I do most often is",
+          options: [
+            { t: isKo ? '"이건 원래 이렇게 해야 맞아."' : '"This is how it should be done originally."', s: { E1: 2, E5: 1 } },
+            { t: isKo ? '"상대도 사정이 있겠지."' : '"The other person probably has their reasons."', s: { E9: 2, E2: 1 } },
+            { t: isKo ? '"지금은 타이밍이 아니야."' : '"The timing isn\'t right now."', s: { E6: 2, E5: 1 } },
+            { t: isKo ? '"어차피 더 좋은 선택지가 있을 거야."' : '"There\'ll be a better option anyway."', s: { E7: 2, E3: 1 } },
+          ],
+        },
+        {
+          q: isKo ? "내가 진짜로 원하는 건" : "What I really want is",
+          options: [
+            { t: isKo ? "평온함과 관계의 조화" : "Peace and harmony in relationships", s: { E9: 2, E2: 1 } },
+            { t: isKo ? "자유와 즐거운 확장" : "Freedom and joyful expansion", s: { E7: 2, E4: 1 } },
+            { t: isKo ? "확실함과 안정" : "Certainty and stability", s: { E6: 2, E1: 1 } },
+            { t: isKo ? "힘과 주도권" : "Power and initiative", s: { E8: 2, E3: 1 } },
+          ],
+        },
+      ];
+      }
+
+      // 근접 판정 임계값(%)
+      const CLOSE_THRESHOLD = 7;
+
+      /** =========================
+       *  State
+       *  ========================= */
+      let answers = []; // each: { optionIndex, scoreObj }
+      let scores = resetScores();
+      let currentDetailType = "E9"; // default
+
+      function resetScores() {
+        return {
+          E1: 0,
+          E2: 0,
+          E3: 0,
+          E4: 0,
+          E5: 0,
+          E6: 0,
+          E7: 0,
+          E8: 0,
+          E9: 0,
+        };
+      }
+
+      /** =========================
+       *  DOM
+       *  ========================= */
+      const viewStart = document.getElementById("viewStart");
+      const viewQuiz = document.getElementById("viewQuiz");
+      const viewResult = document.getElementById("viewResult");
+
+      const startBtn = document.getElementById("startBtn");
+      const backBtn = document.getElementById("backBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const restartBtn = document.getElementById("restartBtn");
+
+      const qTitle = document.getElementById("qTitle");
+      const optionsWrap = document.getElementById("optionsWrap");
+
+      const progressLabel = document.getElementById("progressLabel");
+      const progressRight = document.getElementById("progressRight");
+      const progressBar = document.getElementById("progressBar");
+
+      const resultTitle = document.getElementById("resultTitle");
+      const resultSubtitle = document.getElementById("resultSubtitle");
+
+      const top1Name = document.getElementById("top1Name");
+      const top1Tag = document.getElementById("top1Tag");
+      const top1Pct = document.getElementById("top1Pct");
+
+      const top2Name = document.getElementById("top2Name");
+      const top2Tag = document.getElementById("top2Tag");
+      const top2Pct = document.getElementById("top2Pct");
+
+      const readTop1 = document.getElementById("readTop1");
+      const readTop2 = document.getElementById("readTop2");
+
+      const ambiguousBox = document.getElementById("ambiguousBox");
+      const distList = document.getElementById("distList");
+
+      const detailTitle = document.getElementById("detailTitle");
+      const detailBody = document.getElementById("detailBody");
+      const prevTypeBtn = document.getElementById("prevTypeBtn");
+      const nextTypeBtn = document.getElementById("nextTypeBtn");
+      const jumpTop1 = document.getElementById("jumpTop1");
+      const jumpTop2 = document.getElementById("jumpTop2");
+
+      const copyShareBtn = document.getElementById("copyShareBtn");
+
+      /** =========================
+       *  UI helpers
+       *  ========================= */
+      function setProgress() {
+        const QUESTIONS = getQuestions();
+        const tFunc = window.t || ((key, vars = {}) => key);
+        const total = QUESTIONS.length;
+        const done = Math.min(idx, total);
+        if (progressRight) progressRight.textContent = `${done} / ${total}`;
+        if (progressLabel) progressLabel.textContent = idx === 0 ? tFunc("progressStart") : `Q${idx}`;
+        const pct = Math.round((done / total) * 100);
+        if (progressBar) progressBar.style.width = `${pct}%`;
+      }
+
+      setLang(detectLang(), { updateUrl: false });
+
+      function show(el) {
+        el.classList.remove("hidden");
+      }
+      function hide(el) {
+        el.classList.add("hidden");
+      }
+
+      function btnOption(text) {
+        const btn = document.createElement("button");
+        btn.className =
+          "tap text-left rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 hover:bg-white/10 hover:border-white/20 transition";
+        btn.innerHTML = `
+    <div class="flex items-start gap-3">
+      <div class="mt-0.5 size-5 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-xs">✓</div>
+      <div class="leading-relaxed text-slate-100">${escapeHtml(text)}</div>
+    </div>
+  `;
+        return btn;
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      /** =========================
+       *  Quiz flow
+       *  ========================= */
+      function start() {
+        idx = 0;
+        answers = [];
+        scores = resetScores();
+        if (viewStart) hide(viewStart);
+        if (viewResult) hide(viewResult);
+        if (viewQuiz) show(viewQuiz);
+        renderQuestion();
+      }
+
+      function renderQuestion() {
+        setProgress();
+        const QUESTIONS = getQuestions();
+        if (!qTitle || !optionsWrap) return;
+        const q = QUESTIONS[idx];
+        if (!q) return;
+        qTitle.textContent = q.q;
+        optionsWrap.innerHTML = "";
+
+        q.options.forEach((opt, optIndex) => {
+          const btn = btnOption(opt.t);
+          btn.addEventListener("click", () => {
+            // save answer
+            answers[idx] = { optionIndex: optIndex, scoreObj: opt.s };
+            // add scores
+            for (const k in opt.s) scores[k] += opt.s[k];
+            // next
+            idx++;
+            if (idx >= QUESTIONS.length) {
+              finish();
+            } else {
+              // animate
+              if (viewQuiz) {
+                viewQuiz.classList.remove("fade-in");
+                void viewQuiz.offsetWidth;
+                viewQuiz.classList.add("fade-in");
+              }
+              renderQuestion();
+            }
+          });
+          optionsWrap.appendChild(btn);
+        });
+
+        if (backBtn) {
+          backBtn.disabled = idx === 0;
+          backBtn.classList.toggle("opacity-40", idx === 0);
+          backBtn.classList.toggle("pointer-events-none", idx === 0);
+        }
+      }
+
+      function goBack() {
+        if (idx === 0) return;
+        // remove last answer scores
+        const prevIndex = idx - 1;
+        const prev = answers[prevIndex];
+        if (prev?.scoreObj) {
+          for (const k in prev.scoreObj) scores[k] -= prev.scoreObj[k];
+        }
+        answers.pop();
+        idx--;
+        renderQuestion();
+      }
+
+      function resetAll() {
+        idx = 0;
+        answers = [];
+        scores = resetScores();
+        if (viewQuiz) hide(viewQuiz);
+        if (viewResult) hide(viewResult);
+        if (viewStart) show(viewStart);
+        setProgress();
+      }
+
+      /** =========================
+       *  Result calculation
+       *  ========================= */
+      function computePercents(scoreObj) {
+        // normalize by total points
+        const total = Object.values(scoreObj).reduce((a, b) => a + b, 0) || 1;
+        const perc = {};
+        for (const k in scoreObj) {
+          perc[k] = Math.round((scoreObj[k] / total) * 100);
+        }
+
+        // rounding fix: ensure sum=100
+        let sum = Object.values(perc).reduce((a, b) => a + b, 0);
+        if (sum !== 100) {
+          const entries = Object.keys(perc).sort((a, b) => perc[b] - perc[a]);
+          perc[entries[0]] += 100 - sum;
+        }
+        return perc;
+      }
+
+      function finish() {
+        const TYPES = getTypes();
+        const RESULT_PAGES = getResultPages();
+        const tFunc = window.t || ((key, vars = {}) => key);
+        const perc = computePercents(scores);
+        const sorted = Object.keys(perc).sort((a, b) => perc[b] - perc[a]);
+        const top1 = sorted[0];
+        const top2 = sorted[1];
+
+        const diff = Math.abs(perc[top1] - perc[top2]);
+        const isAmbiguous = diff <= CLOSE_THRESHOLD;
+
+        // Title/subtitle
+        const isKo = currentLang === "ko";
+        if (resultTitle) {
+          resultTitle.textContent = isKo
+            ? `당신의 EGO 유형은 ${TYPES[top1].label} 또는 ${TYPES[top2].label}`
+            : `Your EGO type is ${TYPES[top1].label} or ${TYPES[top2].label}`;
+        }
+        if (resultSubtitle) {
+          resultSubtitle.textContent = isAmbiguous
+            ? (isKo
+                ? "주요 유형이 매우 근접합니다. 상황에 따라 두 자아 반응이 번갈아 나타날 수 있어요."
+                : "Main types are very close. Both ego reactions may alternate depending on the situation.")
+            : (isKo
+                ? "가장 강하게 활성화되는 자아 반응 패턴을 중심으로 설명합니다."
+                : "Explained focusing on the most strongly activated ego reaction pattern.");
+        }
+
+        // Top cards
+        if (top1Name) top1Name.textContent = TYPES[top1].label;
+        if (top1Tag) top1Tag.textContent = TYPES[top1].tag;
+        if (top1Pct) top1Pct.textContent = `${perc[top1]}%`;
+
+        if (top2Name) top2Name.textContent = TYPES[top2].label;
+        if (top2Tag) top2Tag.textContent = TYPES[top2].tag;
+        if (top2Pct) top2Pct.textContent = `${perc[top2]}%`;
+
+        // Ambiguous box
+        if (ambiguousBox) {
+          if (isAmbiguous) show(ambiguousBox);
+          else hide(ambiguousBox);
+        }
+
+        // Distribution list
+        if (distList) {
+          distList.innerHTML = "";
+          sorted.forEach((k) => {
+            const row = document.createElement("div");
+            row.className = "rounded-xl bg-white/5 border border-white/10 p-3";
+            row.innerHTML = `
+      <div class="flex items-center justify-between text-sm">
+        <div class="font-semibold">${escapeHtml(TYPES[k].label)}</div>
+        <div class="tabular-nums font-bold">${perc[k]}%</div>
+      </div>
+      <div class="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
+        <div class="h-full bg-white/60" style="width:${perc[k]}%"></div>
+      </div>
+    `;
+            row.addEventListener("click", () => setDetail(k));
+            distList.appendChild(row);
+          });
+        }
+
+        // default detail: top1
+        currentDetailType = top1;
+        setDetail(top1);
+
+        // buttons
+        if (readTop1) readTop1.onclick = () => setDetail(top1, true);
+        if (readTop2) readTop2.onclick = () => setDetail(top2, true);
+        if (jumpTop1) jumpTop1.onclick = () => setDetail(top1, true);
+        if (jumpTop2) jumpTop2.onclick = () => setDetail(top2, true);
+
+        // share text
+        const shareText = isKo
+          ? `[EGO 테스트 결과]
+1위: ${TYPES[top1].label} (${perc[top1]}%)
+2위: ${TYPES[top2].label} (${perc[top2]}%)
+
+한 줄 요약: ${RESULT_PAGES[top1].oneLine}
+(참고: EGO는 고정 성격이 아니라 상황에서 활성화되는 반응 패턴입니다.)`
+          : `[EGO Test Result]
+1st: ${TYPES[top1].label} (${perc[top1]}%)
+2nd: ${TYPES[top2].label} (${perc[top2]}%)
+
+One-line summary: ${RESULT_PAGES[top1].oneLine}
+(Note: EGO is not a fixed personality but a reaction pattern activated in situations.)`;
+
+        // Use the tFunc function already declared at the top of finish()
+        if (copyShareBtn) {
+          copyShareBtn.onclick = async () => {
+            try {
+              await navigator.clipboard.writeText(shareText);
+              copyShareBtn.textContent = tFunc("copyShareSuccess");
+              setTimeout(
+                () => (copyShareBtn.textContent = tFunc("copyShareText")),
+                1200
+              );
+            } catch (e) {
+              alert(tFunc("copyShareFail"));
+            }
+          };
+        }
+
+        // Show result
+        if (viewQuiz) hide(viewQuiz);
+        if (viewResult) show(viewResult);
+        setProgress();
+      }
+
+      /** =========================
+       *  Detail rendering
+       *  ========================= */
+      function setDetail(typeKey, scrollInto = false) {
+        const TYPES = getTypes();
+        const RESULT_PAGES = getResultPages();
+        const isKo = currentLang === "ko";
+        currentDetailType = typeKey;
+        const d = RESULT_PAGES[typeKey];
+        if (!d || !detailTitle || !detailBody) return;
+        detailTitle.textContent = `${TYPES[typeKey].label} · ${d.title}`;
+
+        detailBody.innerHTML = `
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+      <div class="text-xs text-slate-400">${isKo ? "한 줄 정의" : "One-line Definition"}</div>
+      <div class="mt-1 text-lg font-extrabold">${escapeHtml(d.oneLine)}</div>
+      <div class="mt-2 text-sm text-slate-300">${escapeHtml(
+        TYPES[typeKey].short
+      )}</div>
+    </div>
+
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+        <div class="font-bold">${isKo ? "핵심 특징" : "Core Characteristics"}</div>
+        <ul class="mt-2 space-y-1 text-slate-300">
+          ${d.core.map((x) => `<li>• ${escapeHtml(x)}</li>`).join("")}
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+        <div class="font-bold">${isKo ? "회피 욕구" : "Avoidance Desire"}</div>
+        <p class="mt-2 text-slate-300 leading-relaxed">${escapeHtml(
+          d.avoid
+        )}</p>
+      </div>
+    </div>
+
+    <div class="mt-3 rounded-2xl bg-white/5 border border-white/10 p-4">
+      <div class="font-bold">${isKo ? "방어 기제" : "Defense Mechanism"}</div>
+      <p class="mt-2 text-slate-300 leading-relaxed">${escapeHtml(
+        d.defense
+      )}</p>
+    </div>
+
+    <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+        <div class="font-bold">${isKo ? "균형 상태" : "Balanced State"}</div>
+        <p class="mt-2 text-slate-300 leading-relaxed">${escapeHtml(
+          d.balance
+        )}</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+        <div class="font-bold">${isKo ? "불균형 상태" : "Imbalanced State"}</div>
+        <p class="mt-2 text-slate-300 leading-relaxed">${escapeHtml(
+          d.imbalance
+        )}</p>
+      </div>
+    </div>
+
+    <div class="mt-3 rounded-2xl bg-white/5 border border-white/10 p-4">
+      <div class="font-bold">${isKo ? "날개(인접 유형)" : "Wings (Adjacent Types)"}</div>
+      <p class="mt-2 text-slate-300 leading-relaxed">${escapeHtml(d.wings)}</p>
+      <div class="mt-3 rounded-xl bg-white/5 border border-white/10 p-3 text-slate-200">
+        <div class="text-xs text-slate-400">${isKo ? "현실 팁" : "Practical Tip"}</div>
+        <div class="mt-1 font-semibold">${escapeHtml(d.tip)}</div>
+      </div>
+    </div>
+  `;
+
+        if (scrollInto && detailTitle) {
+          detailTitle.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      function cycleDetail(dir) {
+        const TYPES = getTypes();
+        const keys = Object.keys(TYPES);
+        const i = keys.indexOf(currentDetailType);
+        const next = (i + dir + keys.length) % keys.length;
+        setDetail(keys[next], true);
+      }
+
+      // Initialize global variables
+      window.TYPES = getTypes();
+      window.RESULT_PAGES = getResultPages();
+      window.QUESTIONS = getQuestions();
+
+      /** =========================
+       *  Events
+       *  ========================= */
+      if (startBtn) startBtn.addEventListener("click", start);
+      if (backBtn) backBtn.addEventListener("click", goBack);
+      if (resetBtn) resetBtn.addEventListener("click", resetAll);
+      if (restartBtn) restartBtn.addEventListener("click", resetAll);
+
+      if (prevTypeBtn) prevTypeBtn.addEventListener("click", () => cycleDetail(-1));
+      if (nextTypeBtn) nextTypeBtn.addEventListener("click", () => cycleDetail(1));
+
+      /** init */
+      setProgress();
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

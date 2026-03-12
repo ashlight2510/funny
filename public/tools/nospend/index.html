@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내가 안 산 것들의 총자산 💸</title>
+
+    <!-- SEO / OG -->
+    <meta
+      name="description"
+      content="커피·술·배달·택시·충동쇼핑… 안 샀으면 얼마 모였을까? 한 번에 계산!"
+    />
+    <meta property="og:title" content="내가 안 산 것들의 총자산 💸" />
+    <meta
+      property="og:description"
+      content="안 샀으면 모였을 돈, 바로 계산해서 밈으로 공유!"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Missed+Gains+Calculator"
+    />
+    <meta property="og:image:alt" content="Missed Gains Calculator" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        font-size: 17px;
+      }
+      @media (min-width: 640px) {
+        :root {
+          font-size: 16px;
+        }
+      }
+      .glass {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.7);
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/nospend/" />
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100"
+  ><main class="max-w-3xl mx-auto px-4 py-10">
+      <header class="mb-7">
+        <div class="flex items-center justify-between gap-3">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-sm"
+            data-i18n="badge"
+          >
+            💸 밈 계산기
+          </div>
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+        </div>
+        <h1
+          class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight"
+          data-i18n="title"
+        >
+          내가 안 산 것들의 총자산
+        </h1>
+        <p class="mt-2 text-slate-300" data-i18n="subtitle">
+          “그때 그거만 안 샀어도…”를 숫자로 바꿔드립니다.
+        </p>
+      </header>
+
+      <section
+        class="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-xl"
+      >
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm text-slate-300" data-i18n="startYearLabel">
+              시작 연도
+            </label>
+            <input
+              id="startYear"
+              type="number"
+              min="1990"
+              max="2025"
+              class="mt-2 w-full rounded-2xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-white/20"
+            />
+          </div>
+          <div>
+            <label class="text-sm text-slate-300" data-i18n="endYearLabel">
+              종료 연도 (올해)
+            </label>
+            <input
+              id="endYear"
+              type="number"
+              min="1990"
+              max="2025"
+              class="mt-2 w-full rounded-2xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-white/20"
+            />
+          </div>
+        </div>
+
+        <div class="mt-6 space-y-5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-bold" data-i18n="monthlyTitle">
+              월 평균 지출(안 샀다면)
+            </h2>
+            <button
+              id="resetBtn"
+              class="text-sm px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition"
+              data-i18n="resetButton"
+            >
+              초기화
+            </button>
+          </div>
+
+          <div id="items" class="space-y-4"></div>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <button
+              id="calcBtn"
+              class="flex-1 rounded-2xl bg-white text-slate-950 font-bold py-3 hover:opacity-90 transition"
+              data-i18n="calcButton"
+            >
+              계산하기
+            </button>
+            <button
+              id="randomBtn"
+              class="flex-1 rounded-2xl bg-white/10 border border-white/10 font-semibold py-3 hover:bg-white/15 transition"
+              data-i18n="randomButton"
+            >
+              밈 세팅(랜덤)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="resultWrap" class="mt-6 hidden">
+        <div
+          class="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-xl"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="text-sm text-slate-300" data-i18n="resultLabel">
+                결과
+              </p>
+              <h3 class="mt-1 text-2xl font-extrabold">
+                <span data-i18n="resultTitle">💰 당신이 안 산 인생의 총자산</span>
+              </h3>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-slate-400" data-i18n="totalLabel">합계</p>
+              <p id="total" class="text-2xl font-extrabold"></p>
+            </div>
+          </div>
+
+          <div id="breakdown" class="mt-4 grid sm:grid-cols-2 gap-3"></div>
+
+          <div
+            class="mt-5 rounded-2xl bg-slate-900/50 border border-white/10 p-4"
+          >
+            <p class="text-sm text-slate-300" data-i18n="memeLabel">
+              오늘의 밈 한 줄
+            </p>
+            <p id="memeLine" class="mt-1 font-semibold"></p>
+          </div>
+
+          <div class="mt-5 flex flex-col sm:flex-row gap-3">
+            <button
+              id="shareBtn"
+              class="flex-1 rounded-2xl bg-emerald-400 text-slate-950 font-bold py-3 hover:opacity-90 transition"
+              data-i18n="shareButton"
+            >
+              공유하기(모바일)
+            </button>
+            <button
+              id="copyBtn"
+              class="flex-1 rounded-2xl bg-white/10 border border-white/10 font-semibold py-3 hover:bg-white/15 transition"
+              data-i18n="copyButton"
+            >
+              결과 텍스트 복사
+            </button>
+          </div>
+
+          <div class="mt-6 border-t border-white/10 pt-5">
+            <div class="flex items-center justify-between gap-3">
+              <p class="text-sm text-slate-300" data-i18n="nextLabel">
+                다음 밈으로 더 때리기
+              </p>
+              <button
+                id="toQuizBtn"
+                class="text-sm px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition"
+                data-i18n="nextButton"
+              >
+                💸 비트코인 안 산 죄 계산기 →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-8 text-center text-xs text-slate-500" data-i18n="footer">
+        made for funnyfunny / ashlight ✨
+      </footer>
+    </main>
+
+    <style>
+      .lang-switch {
+        display: inline-flex;
+        gap: 6px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 6px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        letter-spacing: 0.08em;
+      }
+      .lang-switch button.active {
+        background: #38bdf8;
+        color: #0b1120;
+      }
+    </style>
+
+    <script>
+      const NOW_YEAR = 2025;
+      const translations = {
+        ko: {
+          metaTitle: "내가 안 산 것들의 총자산",
+          badge: "💸 밈 계산기",
+          title: "내가 안 산 것들의 총자산",
+          subtitle: "“그때 그거만 안 샀어도…”를 숫자로 바꿔드립니다.",
+          startYearLabel: "시작 연도",
+          endYearLabel: "종료 연도 (올해)",
+          monthlyTitle: "월 평균 지출(안 샀다면)",
+          resetButton: "초기화",
+          calcButton: "계산하기",
+          randomButton: "밈 세팅(랜덤)",
+          resultLabel: "결과",
+          resultTitle: "💰 당신이 안 산 인생의 총자산",
+          totalLabel: "합계",
+          memeLabel: "오늘의 밈 한 줄",
+          shareButton: "공유하기(모바일)",
+          copyButton: "결과 텍스트 복사",
+          nextLabel: "다음 밈으로 더 때리기",
+          nextButton: "💸 비트코인 안 산 죄 계산기 →",
+          footer: "made for funnyfunny / ashlight ✨",
+          monthLabel: "월",
+          breakdownFormula: "월 {monthly} × 12 × {years}년",
+          shareTitle: "💸 내가 안 산 것들의 총자산",
+          sharePeriod: "기간: {start}~{end} ({years}년)",
+          shareLine: "{label} 안 샀으면: +{amount}",
+          shareTotal: "💰 총자산: {amount}",
+          shareMeme: "밈: {line}",
+          copyToast: "복사됨! (붙여넣기 하면 바로 공유 가능)",
+          copyPrompt: "복사해서 공유해줘:",
+          shareToast: "공유용 텍스트+링크 복사됨!",
+          items: [
+            {
+              key: "coffee",
+              label: "☕ 커피",
+              hint: "예: 6,000원 x 20잔",
+              defaultMonthly: 80000,
+            },
+            {
+              key: "alcohol",
+              label: "🍺 술",
+              hint: "예: 주 1~2회",
+              defaultMonthly: 160000,
+            },
+            {
+              key: "delivery",
+              label: "🍔 배달",
+              hint: "예: 주 2~4회",
+              defaultMonthly: 140000,
+            },
+            {
+              key: "taxi",
+              label: "🚕 택시",
+              hint: "예: 새벽 귀가/이동",
+              defaultMonthly: 90000,
+            },
+            {
+              key: "shopping",
+              label: "🛍️ 충동쇼핑",
+              hint: "예: ‘필요해서 샀다’",
+              defaultMonthly: 120000,
+            },
+          ],
+          memes: [
+            "행복은 샀고, 자산은 안 샀다.",
+            "그때 그거 말고… 이거 샀어야 했네.",
+            "돈은 어디로 갔을까? 내 기분 좋은 기억 속으로.",
+            "그래도 그때 맛있었으면 됐다… (아마도)",
+            "지출은 추억이고, 저축은 전설이다.",
+          ],
+        },
+        en: {
+          metaTitle: "Missed Gains Total",
+          badge: "💸 Meme Calculator",
+          title: "Missed Gains Total",
+          subtitle: "Turning “if I never bought that” into actual numbers.",
+          startYearLabel: "Start year",
+          endYearLabel: "End year (this year)",
+          monthlyTitle: "Monthly spend (if you skipped it)",
+          resetButton: "Reset",
+          calcButton: "Calculate",
+          randomButton: "Meme preset (random)",
+          resultLabel: "Result",
+          resultTitle: "💰 Your total missed gains",
+          totalLabel: "Total",
+          memeLabel: "Meme line of the day",
+          shareButton: "Share (mobile)",
+          copyButton: "Copy result text",
+          nextLabel: "Hit me with the next meme",
+          nextButton: "💸 Bitcoin I did not buy →",
+          footer: "made for funnyfunny / ashlight ✨",
+          monthLabel: "Month",
+          breakdownFormula: "{monthly} per month × 12 × {years} years",
+          shareTitle: "💸 Missed gains total",
+          sharePeriod: "Period: {start}–{end} ({years} years)",
+          shareLine: "Skipped {label}: +{amount}",
+          shareTotal: "💰 Total: {amount}",
+          shareMeme: "Meme: {line}",
+          copyToast: "Copied! Paste to share.",
+          copyPrompt: "Copy to share:",
+          shareToast: "Share text + link copied!",
+          items: [
+            {
+              key: "coffee",
+              label: "☕ Coffee",
+              hint: "e.g., 6,000 KRW × 20 cups",
+              defaultMonthly: 80000,
+            },
+            {
+              key: "alcohol",
+              label: "🍺 Drinks",
+              hint: "e.g., 1–2 times per week",
+              defaultMonthly: 160000,
+            },
+            {
+              key: "delivery",
+              label: "🍔 Delivery",
+              hint: "e.g., 2–4 times per week",
+              defaultMonthly: 140000,
+            },
+            {
+              key: "taxi",
+              label: "🚕 Taxi",
+              hint: "e.g., late-night rides",
+              defaultMonthly: 90000,
+            },
+            {
+              key: "shopping",
+              label: "🛍️ Impulse buys",
+              hint: "e.g., “I needed it”",
+              defaultMonthly: 120000,
+            },
+          ],
+          memes: [
+            "I bought happiness, not assets.",
+            "Should have bought that instead of this.",
+            "Where did the money go? Into my good memories.",
+            "At least it was tasty back then… probably.",
+            "Spending is memories; saving is legend.",
+          ],
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function getPack() {
+        return translations[currentLang] || translations.ko;
+      }
+
+      function t(key, vars = {}) {
+        const pack = getPack();
+        const template = pack[key] ?? translations.ko[key] ?? key;
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      const $items = document.getElementById("items");
+      const $startYear = document.getElementById("startYear");
+      const $endYear = document.getElementById("endYear");
+      const $resultWrap = document.getElementById("resultWrap");
+      const $total = document.getElementById("total");
+      const $breakdown = document.getElementById("breakdown");
+      const $memeLine = document.getElementById("memeLine");
+
+      function fmtKRW(n) {
+        const v = Math.max(0, Math.floor(n || 0));
+        const formatted = v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return currentLang === "en" ? `${formatted} KRW` : `${formatted}원`;
+      }
+
+      function clamp(n, a, b) {
+        return Math.max(a, Math.min(b, n));
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem("nospend_state");
+          return raw ? JSON.parse(raw) : null;
+        } catch {
+          return null;
+        }
+      }
+
+      function saveState(state) {
+        try {
+          localStorage.setItem("nospend_state", JSON.stringify(state));
+        } catch {}
+      }
+
+      function buildItems(values = {}) {
+        $items.innerHTML = "";
+        const ITEMS = getPack().items;
+        for (const it of ITEMS) {
+          const value = Number(values[it.key] ?? it.defaultMonthly);
+          const row = document.createElement("div");
+          row.className =
+            "rounded-2xl border border-white/10 bg-slate-900/40 p-4";
+
+          row.innerHTML = `
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="font-bold">${it.label}</div>
+              <div class="text-xs text-slate-400 mt-0.5">${it.hint}</div>
+            </div>
+          <div class="text-right">
+              <div class="text-xs text-slate-400">${t("monthLabel")}</div>
+              <div class="font-extrabold" data-val="${it.key}">${fmtKRW(
+            value
+          )}</div>
+            </div>
+          </div>
+          <input data-range="${
+            it.key
+          }" type="range" min="0" max="600000" step="10000"
+                 class="mt-3 w-full" value="${value}">
+        `;
+          $items.appendChild(row);
+        }
+
+        $items.querySelectorAll("input[data-range]").forEach((inp) => {
+          inp.addEventListener("input", () => {
+            const key = inp.getAttribute("data-range");
+            const val = Number(inp.value);
+            const out = $items.querySelector(`[data-val="${key}"]`);
+            if (out) out.textContent = fmtKRW(val);
+            persist();
+          });
+        });
+      }
+
+      function getValues() {
+        const values = {};
+        $items.querySelectorAll("input[data-range]").forEach((inp) => {
+          values[inp.getAttribute("data-range")] = Number(inp.value);
+        });
+        return values;
+      }
+
+      function persist() {
+        const state = {
+          startYear: Number($startYear.value),
+          endYear: Number($endYear.value),
+          values: getValues(),
+        };
+        saveState(state);
+      }
+
+      function yearsBetween(startY, endY) {
+        const s = clamp(Number(startY), 1990, NOW_YEAR);
+        const e = clamp(Number(endY), 1990, NOW_YEAR);
+        const years = Math.max(0, e - s + 1);
+        return { s, e, years };
+      }
+
+      function calc() {
+        const { s, e, years } = yearsBetween($startYear.value, $endYear.value);
+        $startYear.value = s;
+        $endYear.value = e;
+
+        const values = getValues();
+        const breakdown = [];
+        let sum = 0;
+
+        const ITEMS = getPack().items;
+        for (const it of ITEMS) {
+          const monthly = Number(values[it.key] || 0);
+          const total = monthly * 12 * years;
+          sum += total;
+          breakdown.push({ label: it.label, total, monthly });
+        }
+
+        // render
+        $total.textContent = fmtKRW(sum);
+        $breakdown.innerHTML = breakdown
+          .map(
+            (b) => `
+        <div class="rounded-2xl bg-slate-900/40 border border-white/10 p-4">
+          <div class="flex items-center justify-between">
+            <div class="font-bold">${b.label}</div>
+            <div class="font-extrabold">${fmtKRW(b.total)}</div>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">${t("breakdownFormula", {
+            monthly: fmtKRW(b.monthly),
+            years,
+          })}</div>
+        </div>
+      `
+          )
+          .join("");
+
+        const memes = getPack().memes;
+        $memeLine.textContent = memes[Math.floor(Math.random() * memes.length)];
+
+        $resultWrap.classList.remove("hidden");
+        persist();
+
+        // scroll to result
+        setTimeout(
+          () =>
+            $resultWrap.scrollIntoView({ behavior: "smooth", block: "start" }),
+          60
+        );
+
+        return { s, e, years, sum, breakdown };
+      }
+
+      function buildShareText(payload) {
+        const top3 = [...payload.breakdown]
+          .sort((a, b) => b.total - a.total)
+          .slice(0, 3);
+
+        const lines = [
+          getPack().shareTitle,
+          t("sharePeriod", {
+            start: payload.s,
+            end: payload.e,
+            years: payload.years,
+          }),
+          "",
+          ...top3.map((x) =>
+            t("shareLine", { label: x.label, amount: fmtKRW(x.total) })
+          ),
+          "",
+          t("shareTotal", { amount: fmtKRW(payload.sum) }),
+          t("shareMeme", { line: $memeLine.textContent }),
+        ];
+        return lines.join("\n");
+      }
+
+      // init
+      (function init() {
+        const saved = loadState();
+        $startYear.value = saved?.startYear ?? 2018;
+        $endYear.value = saved?.endYear ?? NOW_YEAR;
+
+        buildItems(saved?.values ?? {});
+        $startYear.addEventListener("input", persist);
+        $endYear.addEventListener("input", persist);
+
+        document.getElementById("calcBtn").addEventListener("click", calc);
+
+        document.getElementById("resetBtn").addEventListener("click", () => {
+          $startYear.value = 2018;
+          $endYear.value = NOW_YEAR;
+          buildItems({});
+          $resultWrap.classList.add("hidden");
+          persist();
+        });
+
+        document.getElementById("randomBtn").addEventListener("click", () => {
+          const rnd = {};
+          for (const it of ITEMS) {
+            // 0~400k 사이, 약간 현실적으로
+            const v = Math.round((Math.random() * 400000) / 10000) * 10000;
+            rnd[it.key] = v;
+          }
+          buildItems(rnd);
+          $resultWrap.classList.add("hidden");
+          persist();
+        });
+
+        document
+          .getElementById("copyBtn")
+          .addEventListener("click", async () => {
+            const payload = calc();
+            const text = buildShareText(payload);
+            try {
+              await navigator.clipboard.writeText(text);
+              alert(getPack().copyToast);
+            } catch {
+              prompt(getPack().copyPrompt, text);
+            }
+          });
+
+        document
+          .getElementById("shareBtn")
+          .addEventListener("click", async () => {
+            const payload = calc();
+            const text = buildShareText(payload);
+            const url = location.href;
+            if (navigator.share) {
+              try {
+              await navigator.share({
+                  title: getPack().title,
+                  text,
+                  url,
+                });
+                return;
+              } catch {}
+            }
+            try {
+              await navigator.clipboard.writeText(text + "\n\n" + url);
+              alert(getPack().shareToast);
+            } catch {
+              prompt(getPack().copyPrompt, text + "\n\n" + url);
+            }
+          });
+
+        // 외부 링크 버튼
+        document.getElementById("toQuizBtn").addEventListener("click", () => {
+          location.href = "https://bit.funnyfunny.cloud/";
+        });
+
+        applyTranslations();
+      })();
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        const saved = loadState();
+        buildItems(saved?.values ?? {});
+        if (!$resultWrap.classList.contains("hidden")) {
+          calc();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-format="fluid"
+     data-ad-layout-key="-6t+ed+2i-1n-4w"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="7300458753"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

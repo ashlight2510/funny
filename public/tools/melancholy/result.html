@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마음 컨디션 체크 결과</title>
+  <meta name="description" content="오늘의 마음 컨디션을 확인하고 기운을 회복하는 방법을 알아보세요." />
+  
+  <!-- OG -->
+  <meta property="og:title" content="마음 컨디션 체크 결과" />
+  <meta property="og:description" content="오늘의 마음 컨디션을 확인하고 기운을 회복하는 방법을 알아보세요." />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Mind+Condition+Check+Result" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://melancholy.funnyfunny.cloud/result.html" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <rect width='100' height='100' rx='20' fill='%230b1220'/>
+    <text x='50' y='62' font-size='52' text-anchor='middle' fill='white'>🌙</text>
+  </svg>">
+  
+  <style>
+    :root{
+      --bg1:#fff8f8;
+      --bg2:#f3f0ff;
+      --card:#ffffff;
+      --text:#1b1b1f;
+      --muted:#666671;
+      --line:#e9e7f3;
+      --accent:#6b6eff;
+      --accent2:#f4c2c2;
+      --shadow: 0 16px 60px rgba(20, 20, 40, .10);
+      --r: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(244,194,194,.55), transparent 60%),
+        radial-gradient(900px 520px at 85% 15%, rgba(107,110,255,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .wrap{
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+    header{
+      text-align:center;
+      margin-bottom:32px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      border-radius: 999px;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:12px;
+      backdrop-filter: blur(10px);
+    }
+    h1{
+      margin:0 0 12px;
+      font-size: 28px;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+    h2{
+      margin:16px 0 0;
+      font-size: 20px;
+      letter-spacing: -0.25px;
+      line-height: 1.4;
+      color:var(--muted);
+      font-weight: 600;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-top: 16px;
+      max-width: 64ch;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: 32px 28px;
+      backdrop-filter: blur(14px);
+      margin-bottom:24px;
+    }
+    .resultSummary{
+      text-align:center;
+      padding:40px 28px;
+    }
+    .severityLabel{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+    .severity-low{ background:rgba(107,110,255,.15); color:#4a4dbf; }
+    .severity-mid{ background:rgba(244,194,194,.35); color:#c86a6a; }
+    .severity-high{ background:rgba(244,194,194,.5); color:#b85454; }
+    .bigMsg{
+      font-size: 24px;
+      line-height: 1.5;
+      letter-spacing: -0.3px;
+      margin: 8px 0 0;
+      font-weight: 700;
+    }
+    .ctaButton{
+      display:inline-block;
+      margin-top:28px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, rgba(107,110,255,.18), rgba(244,194,194,.28));
+      border: 2px solid rgba(107,110,255,.25);
+      border-radius: 18px;
+      color: var(--text);
+      font-weight: 700;
+      font-size:16px;
+      text-decoration:none;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      letter-spacing: -0.1px;
+    }
+    .ctaButton:hover{
+      transform: translateY(-2px);
+      border-color: rgba(107,110,255,.4);
+      box-shadow: 0 4px 12px rgba(107,110,255,.2);
+    }
+    .faqLinks{
+      margin-top:32px;
+      padding-top:32px;
+      border-top:1px solid var(--line);
+    }
+    .faqLinks h3{
+      font-size:16px;
+      font-weight:650;
+      margin-bottom:16px;
+      color:var(--muted);
+    }
+    .faqList{
+      display:grid;
+      gap:12px;
+    }
+    .faqLink{
+      padding:12px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.7);
+      color:var(--text);
+      text-decoration:none;
+      transition: all .2s ease;
+      display:block;
+    }
+    .faqLink:hover{
+      border-color:var(--accent);
+      background:rgba(107,110,255,.08);
+      transform: translateY(-1px);
+    }
+    .adContainer{
+      margin:24px 0;
+      min-height:250px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.4);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:20px;
+    }
+    .footerNote{
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="pill">🌙 마음 컨디션 체크 결과</div>
+      <h1 id="resultTitle">오늘 컨디션은 <span id="severityText"></span>입니다</h1>
+      <h2 id="subQuestion">오늘 중요한 결정을 내려도 괜찮은 날일까요?</h2>
+      <div class="sub" id="resultDesc"></div>
+    </header>
+
+    <div class="card resultSummary">
+      <div id="severityBadge" class="severityLabel"></div>
+      <p class="bigMsg" id="resultMessage"></p>
+      
+      <a href="result/why.html" id="whyLink" class="ctaButton">왜 이 결과가 나왔는지 보기 →</a>
+      
+      <!-- 광고 위치 (버튼 아래) -->
+      <div class="adContainer">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4977995785737556"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <!-- 관련 질문 (FAQ) 2개 -->
+    <div class="faqLinks">
+      <h3>관련 질문</h3>
+      <div class="faqList">
+        <a href="faq/when-condition-changes.html" class="faqLink">내일 결과가 달라질 수 있나요?</a>
+        <a href="faq/how-to-handle-today.html" class="faqLink">오늘은 어떻게 보내는 게 좋나요?</a>
+      </div>
+    </div>
+
+    <div class="footerNote">
+      ※ 이 서비스는 의료 진단/치료 목적이 아닙니다. <br/>
+      만약 매달 반복되고 일상에 큰 지장이 있거나, 자신이 너무 힘들다는 생각이 강해진다면
+      산부인과/정신건강의학과 상담이 큰 도움이 될 수 있어요.
+    </div>
+  </div>
+
+  <script>
+    // URL 파라미터에서 상태 읽기
+    const params = new URLSearchParams(window.location.search);
+    const flow = params.get('flow') || 'mood';
+    const severity = params.get('severity') || 'low';
+    const score = parseInt(params.get('score') || '0', 10);
+
+    const isPms = (flow === 'pms');
+    
+    // 심각도 레이블
+    const severityLabels = {
+      low: '낮음',
+      mid: '중간',
+      high: '높음'
+    };
+
+    // 결과 메시지
+    const resultMessages = {
+      low: '결과는 컨디션과 스트레스의 영향일 가능성이 큽니다. 하지만 오늘은 비교적 안정적으로 보내실 수 있는 날이에요.',
+      mid: '결과는 최근 피로나 컨디션 변화의 신호일 수 있어요. 하지만 오늘 중요한 결정을 내리기 전에 충분히 휴식을 취하는 것을 권해요.',
+      high: '결과는 몸과 마음이 큰 신호를 보내는 중일 수 있어요. 하지만 오늘은 가능한 큰 결정을 미루고, 작은 단위로만 회복하는 것이 좋아요.'
+    };
+
+    // 서브 질문 설명
+    const descriptions = {
+      low: '오늘은 중요한 결정을 내리기에 비교적 안정적인 날입니다. 다만 큰 결정 전에는 항상 충분한 생각의 시간을 가지는 것이 좋아요.',
+      mid: '오늘은 컨디션이 불안정할 수 있어 중요한 결정을 내리기엔 위험할 수 있습니다. 가능하면 결정을 내일로 미루거나, 꼭 해야 한다면 신중하게 고려해주세요.',
+      high: '오늘은 큰 결정을 내리기보다는 안정과 회복에 집중하는 것이 좋습니다. 중요한 일은 충분히 휴식을 취한 뒤 다시 검토해보세요.'
+    };
+
+    // 페이지 업데이트
+    document.getElementById('severityText').textContent = severityLabels[severity];
+    document.getElementById('severityBadge').textContent = `컨디션 ${severityLabels[severity]}`;
+    document.getElementById('severityBadge').className = `severityLabel severity-${severity}`;
+    document.getElementById('resultMessage').textContent = resultMessages[severity];
+    document.getElementById('resultDesc').textContent = descriptions[severity];
+    
+    // why 링크에 상태 전달
+    const whyUrl = new URL('result/why.html', window.location.href);
+    whyUrl.searchParams.set('flow', flow);
+    whyUrl.searchParams.set('severity', severity);
+    whyUrl.searchParams.set('score', score.toString());
+    document.getElementById('whyLink').href = whyUrl.toString();
+
+    // Google AdSense
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4977995785737556"
+     crossorigin="anonymous"></script>
+</body>
+</html>

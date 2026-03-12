@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>셰프 심사위원 | 오늘의 선택 심사</title>
+    <meta
+      name="description"
+      content="요리는 안 합니다. 대신 당신의 선택을 심사합니다. 딸각 테스트 → 결과는 캡처 각."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/chef/" />
+    <!-- ✅ OG / Twitter (og:image dummyimage + text는 영어로 서비스에 맞게) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Chef Judge Test" />
+    <meta
+      property="og:description"
+      content="Tap-to-answer life choices. Get a chef-style verdict and share it."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=Chef+Judge+Test"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chef Judge Test" />
+    <meta
+      name="twitter:description"
+      content="Tap-to-answer life choices. Get a chef-style verdict and share it."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=Chef+Judge+Test"
+    />
+
+    <!-- ✅ 파비콘: 서비스별 텍스트만 바꾸면 자동 생성 -->
+    <link id="favicon" rel="icon" type="image/svg+xml" href="" />
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: rgba(255, 255, 255, 0.06);
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #eef1ff;
+        --muted: rgba(238, 241, 255, 0.74);
+        --a1: rgba(113, 97, 239, 0.92);
+        --a2: rgba(24, 213, 200, 0.9);
+        --danger: #ffb4b4;
+        --r: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+          "Noto Sans KR", sans-serif;
+        background: radial-gradient(
+            1200px 900px at 18% 8%,
+            rgba(113, 97, 239, 0.22),
+            transparent 55%
+          ),
+          radial-gradient(
+            1000px 800px at 82% 10%,
+            rgba(24, 213, 200, 0.18),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        padding: 24px 14px;
+      }
+      .wrap {
+        width: min(900px, 94vw);
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: calc(var(--r) * 1.4);
+        box-shadow: 0 22px 80px rgba(0, 0, 0, 0.38);
+        overflow: hidden;
+      }
+      header {
+        padding: 22px 22px 16px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(
+          120deg,
+          rgba(113, 97, 239, 0.28),
+          rgba(24, 213, 200, 0.14)
+        );
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 22px;
+        letter-spacing: -0.3px;
+      }
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .lang-switch {
+        display: inline-flex;
+        gap: 6px;
+        padding: 4px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 12px;
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: rgba(113, 97, 239, 0.55);
+        color: #fff;
+      }
+      .content {
+        padding: 18px 22px 22px;
+        display: grid;
+        gap: 14px;
+      }
+      .topbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .progress {
+        flex: 1;
+        min-width: 240px;
+        height: 10px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--a1), var(--a2));
+        transition: width 0.35s ease;
+      }
+      .btn {
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 700;
+        transition: background 0.18s ease;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .btn.primary {
+        background: rgba(113, 97, 239, 0.45);
+      }
+      .btn.primary:hover {
+        background: rgba(113, 97, 239, 0.6);
+      }
+      .step {
+        border: 1px solid var(--line);
+        border-radius: calc(var(--r) * 1.2);
+        background: rgba(0, 0, 0, 0.18);
+        padding: 16px;
+        display: none;
+        gap: 12px;
+      }
+      .step.active {
+        display: grid;
+      }
+      .q {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .q .num {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+      .q h2 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: -0.3px;
+      }
+      .q p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 13px;
+      }
+      .choices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      @media (max-width: 640px) {
+        .choices {
+          grid-template-columns: 1fr;
+        }
+      }
+      .choice {
+        padding: 12px 12px;
+        border-radius: var(--r);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+        transition: transform 0.05s ease, background 0.18s ease,
+          border-color 0.18s ease;
+        text-align: left;
+        color: var(--text);
+        font-weight: 750;
+      }
+      .choice:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .choice:active {
+        transform: scale(0.99);
+      }
+      .choice small {
+        display: block;
+        margin-top: 4px;
+        font-weight: 600;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+      .hint {
+        font-size: 12.5px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .warn {
+        display: none;
+        color: var(--danger);
+        font-size: 12.5px;
+        line-height: 1.45;
+      }
+      .result {
+        border: 1px solid var(--line);
+        border-radius: calc(var(--r) * 1.2);
+        background: rgba(0, 0, 0, 0.18);
+        padding: 16px;
+        display: none;
+        gap: 12px;
+      }
+      .result.show {
+        display: grid;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .big {
+        font-size: 36px;
+        font-weight: 950;
+        letter-spacing: -0.9px;
+        line-height: 1.05;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      @media (max-width: 720px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mini {
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 12px;
+      }
+      .mini h3 {
+        margin: 0 0 6px;
+        font-size: 14px;
+      }
+      .mini p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12.8px;
+        line-height: 1.45;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .copybox {
+        font-size: 12.5px;
+        color: var(--muted);
+        line-height: 1.45;
+        border: 1px dashed rgba(255, 255, 255, 0.16);
+        border-radius: 14px;
+        padding: 10px 12px;
+        background: rgba(0, 0, 0, 0.12);
+        user-select: text;
+        word-break: break-word;
+      }
+
+      /* CTA: "다른 서비스 보기" (요구 버튼) */
+      .cta {
+        margin-top: 4px;
+      }
+      .cta a {
+        text-decoration: none;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        border: 1px solid rgba(226, 232, 240, 0.25);
+        background: rgba(226, 232, 240, 0.85);
+        color: #0f172a;
+        padding: 12px 14px;
+        font-weight: 850;
+        transition: background 0.18s ease;
+      }
+      .cta a:hover {
+        background: rgba(226, 232, 240, 0.75);
+      }
+      .cta svg {
+        margin-left: 8px;
+        width: 20px;
+        height: 20px;
+      }
+      footer {
+        margin-top: 10px;
+        color: rgba(238, 241, 255, 0.62);
+        font-size: 12px;
+        line-height: 1.45;
+        padding: 0 6px;
+      }
+      a.link {
+        color: rgba(154, 243, 234, 0.95);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(154, 243, 234, 0.35);
+      }
+      a.link:hover {
+        border-bottom-color: rgba(154, 243, 234, 0.85);
+      }
+    </style>
+      <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+</head>
+
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <header>
+          <div class="topbar" style="margin-bottom: 10px">
+            <div></div>
+            <div class="lang-switch" role="tablist" aria-label="Language switcher">
+              <button type="button" data-lang="ko" class="active">한국어</button>
+              <button type="button" data-lang="en">English</button>
+            </div>
+          </div>
+          <h1 id="serviceTitle" data-i18n="serviceTitle">셰프 심사위원: 오늘의 선택 심사</h1>
+          <p class="sub" data-i18n="serviceSubtitle">
+            요리는 안 합니다. 대신 당신의 선택을 심사합니다. (딸각만 하세요)
+          </p>
+        </header>
+
+        <section class="content">
+          <div class="topbar">
+            <div class="pill" id="stepLabel">STEP 1 / 7</div>
+            <div class="progress" aria-label="progress">
+              <div class="bar" id="bar"></div>
+            </div>
+            <button class="btn" id="restartBtn" type="button" data-i18n="restart">
+              처음부터
+            </button>
+          </div>
+
+          <!-- STEP 1 -->
+          <div class="step active" data-step="1">
+            <div class="q">
+              <div class="num">1</div>
+              <div>
+                <h2>밥 먹기 전, 당신의 “첫 행동”은?</h2>
+                <p>선택하면 바로 다음으로 넘어갑니다.</p>
+              </div>
+            </div>
+            <div class="choices">
+              <button
+                class="choice"
+                type="button"
+                data-key="impulse"
+                data-val="go"
+              >
+                일단 먹고 생각한다 <small>뇌: “나중에 회의하자”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="impulse"
+                data-val="hold"
+              >
+                잠깐 참아본다 <small>뇌: “통제력 테스트 중”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="impulse"
+                data-val="delay"
+              >
+                배고픈 척 안 한다 <small>뇌: “문제는 존재하지 않는다”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="impulse"
+                data-val="plan"
+              >
+                메뉴부터 조사한다 <small>뇌: “데이터가 부족하다”</small>
+              </button>
+            </div>
+            <div class="warn"></div>
+            <div class="row">
+              <span class="hint" data-i18n="hintAutoNext">딸각 1회 = 다음 단계 자동</span>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step" data-step="2">
+            <div class="q">
+              <div class="num">2</div>
+              <div>
+                <h2>메뉴 고를 때 최우선 기준은?</h2>
+                <p>당신의 “선택 기준”이 결과 톤을 정합니다.</p>
+              </div>
+            </div>
+            <div class="choices">
+              <button
+                class="choice"
+                type="button"
+                data-key="priority"
+                data-val="taste"
+              >
+                맛 <small>인생은 짧고, 맛은 길다</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="priority"
+                data-val="price"
+              >
+                가격 <small>가성비는 배신하지 않는다(대체로)</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="priority"
+                data-val="mood"
+              >
+                지금 기분 <small>기분이 메뉴를 고른다</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="priority"
+                data-val="balance"
+              >
+                구성/균형 <small>마음보다 접시가 침착하다</small>
+              </button>
+            </div>
+            <div class="warn"></div>
+            <div class="row">
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step" data-step="3">
+            <div class="q">
+              <div class="num">3</div>
+              <div>
+                <h2>야식 문자가 오면?</h2>
+                <p>여기서 흑/백/회색이 갈립니다.</p>
+              </div>
+            </div>
+            <div class="choices">
+              <button
+                class="choice"
+                type="button"
+                data-key="night"
+                data-val="go"
+              >
+                간다 <small>“이건 사회생활이다”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="night"
+                data-val="nope"
+              >
+                안 간다 <small>“내일 나를 사랑한다”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="night"
+                data-val="half"
+              >
+                고민하다가 적당히 <small>반만 먹는다고 말해놓고…</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="night"
+                data-val="negotiate"
+              >
+                조건 협상 후 간다 <small>“소스는 빼고, 음료는 물”</small>
+              </button>
+            </div>
+            <div class="warn"></div>
+            <div class="row">
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="step" data-step="4">
+            <div class="q">
+              <div class="num">4</div>
+              <div>
+                <h2>식사 후 당신의 “기본 루틴”은?</h2>
+                <p>‘생활 온도’가 결과에 반영됩니다.</p>
+              </div>
+            </div>
+            <div class="choices">
+              <button
+                class="choice"
+                type="button"
+                data-key="after"
+                data-val="sit"
+              >
+                바로 앉는다 <small>“소화는 의자가 한다”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="after"
+                data-val="walk"
+              >
+                조금 걷는다 <small>“10분만… 딱 10분만”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="after"
+                data-val="work"
+              >
+                바로 일/공부 <small>“식곤증과의 혈투”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="after"
+                data-val="clean"
+              >
+                정리/설거지 <small>“주방은 거짓말을 못 한다”</small>
+              </button>
+            </div>
+            <div class="warn"></div>
+            <div class="row">
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 5 -->
+          <div class="step" data-step="5">
+            <div class="q">
+              <div class="num">5</div>
+              <div>
+                <h2>“결정 장애”가 올 때 당신은?</h2>
+                <p>결과 문구의 ‘칼맛’이 달라집니다.</p>
+              </div>
+            </div>
+            <div class="choices">
+              <button
+                class="choice"
+                type="button"
+                data-key="decide"
+                data-val="fast"
+              >
+                3초컷 <small>“선택은 예술”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="decide"
+                data-val="poll"
+              >
+                주변에게 물어본다 <small>“책임 분산은 미덕”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="decide"
+                data-val="scroll"
+              >
+                끝까지 스크롤 <small>“더 좋은 선택이 있을 것 같다”</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="decide"
+                data-val="repeat"
+              >
+                늘 먹던 거 <small>“검증된 루틴은 배신 안 함”</small>
+              </button>
+            </div>
+            <div class="warn"></div>
+            <div class="row">
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 6 -->
+          <div class="step" data-step="6">
+            <div class="q">
+              <div class="num">6</div>
+              <div>
+                <h2>오늘의 “한 줄 자기평가”를 고르세요</h2>
+                <p>결과 카드에 같이 들어갑니다.</p>
+              </div>
+            </div>
+            <div class="choices">
+              <button
+                class="choice"
+                type="button"
+                data-key="self"
+                data-val="honest"
+              >
+                “솔직히… 나 꽤 괜찮음” <small>자신감은 양념이다</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="self"
+                data-val="tired"
+              >
+                “오늘은 그냥 살아남음” <small>버틴 것도 실력</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="self"
+                data-val="chaos"
+              >
+                “정신없었지만 재밌었음” <small>인생은 불맛</small>
+              </button>
+              <button
+                class="choice"
+                type="button"
+                data-key="self"
+                data-val="reset"
+              >
+                “내일은 새 사람” <small>내일의 나: “누구세요?”</small>
+              </button>
+            </div>
+            <div class="warn"></div>
+            <div class="row">
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" id="finishBtn" data-i18n="finish">
+                결과 보기
+              </button>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="result" id="result">
+            <div class="badge" id="badge">🧾 심사표 생성 중…</div>
+            <div class="big" id="headline">—</div>
+            <div class="hint" id="subline">—</div>
+
+            <div class="grid2">
+              <div class="mini">
+                <h3 data-i18n="resultChefLine">셰프 한 줄 평</h3>
+                <p id="verdictLine">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultSummaryTitle">당신의 선택 요약</h3>
+                <p id="summaryLine">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultTipTitle">오늘의 조리 팁(인생용)</h3>
+                <p id="tipLine">—</p>
+              </div>
+              <div class="mini">
+                <h3 data-i18n="resultNextTitle">다음 코스(가볍게)</h3>
+                <p id="nextLine">—</p>
+              </div>
+            </div>
+
+            <div class="copybox" id="copyText" aria-label="share text">—</div>
+
+            <div class="row">
+              <button class="btn" id="copyBtn" type="button" data-i18n="copyResult">
+                결과 문구 복사
+              </button>
+              <button class="btn primary" id="againBtn" type="button" data-i18n="retry">
+                다시 심사받기
+              </button>
+            </div>
+
+            <!-- ✅ 자연스럽게 BMI/식단 테스트로 연결 (링크는 필요에 맞게 바꿔주세요) -->
+            <div class="mini">
+              <h3 data-i18n="bonusTitle">보너스: “내 상태 한 번만 체크”</h3>
+              <p class="hint" data-i18n-html="bonusDesc">
+                숫자 강요는 안 합니다. 관심 있으면 한 번만 가볍게.
+                <br />
+                <a
+                  class="link"
+                  href="https://funnyfunny.cloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >BMI/식단 테스트 쪽으로 이동</a
+                >
+              </p>
+            </div>
+
+            <!-- ✅ 다른 서비스 보기 버튼 (요구 코드 + 결과 하단 배치) -->
+            <div class="mt-4 cta">
+              <a
+                href="https://funnyfunny.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n="ctaMore">더 많은 테스트 해보기</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5H19.5V10.5M11.25 12.75L19.5 4.5M18 13.5V18.75C18 19.9926 16.9926 21 15.75 21H6.75C5.50736 21 4.5 19.9926 4.5 18.75V9.75C4.5 8.50736 5.50736 7.5 6.75 7.5H12"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+
+            <p class="hint" data-i18n="disclaimer">
+              ※ 본 서비스는 실제 인물/프로그램과 무관한 팬 스타일 콘텐츠입니다.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "셰프 심사위원 | 오늘의 선택 심사",
+          metaDescription:
+            "요리는 안 합니다. 대신 당신의 선택을 심사합니다. 딸각 테스트 -> 결과는 캡처 각.",
+          metaOgTitle: "Chef Judge Test",
+          metaOgDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          metaTwitterTitle: "Chef Judge Test",
+          metaTwitterDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          serviceTitle: "셰프 심사위원: 오늘의 선택 심사",
+          serviceSubtitle:
+            "요리는 안 합니다. 대신 당신의 선택을 심사합니다. (딸각만 하세요)",
+          restart: "처음부터",
+          prev: "이전",
+          next: "다음",
+          finish: "결과 보기",
+          hintAutoNext: "딸각 1회 = 다음 단계 자동",
+          resultChefLine: "셰프 한 줄 평",
+          resultSummaryTitle: "당신의 선택 요약",
+          resultTipTitle: "오늘의 조리 팁(인생용)",
+          resultNextTitle: "다음 코스(가볍게)",
+          copyResult: "결과 문구 복사",
+          retry: "다시 심사받기",
+          bonusTitle: "보너스: “내 상태 한 번만 체크”",
+          bonusDesc:
+            '숫자 강요는 안 합니다. 관심 있으면 한 번만 가볍게.<br /><a class="link" href="https://funnyfunny.cloud" target="_blank" rel="noopener noreferrer">BMI/식단 테스트 쪽으로 이동</a>',
+          ctaMore: "더 많은 테스트 해보기",
+          disclaimer:
+            "※ 본 서비스는 실제 인물/프로그램과 무관한 팬 스타일 콘텐츠입니다.",
+          warnSelect: "하나만 딸각 해주세요. (심사위원이 기다립니다)",
+          stepLabel: "STEP {current} / {total}",
+          resultLabel: "RESULT / {total}",
+          badgeLoading: "🧾 심사표 생성 중...",
+          copySuccess: "복사 완료! (이제 캡처 없이도 공유 가능)",
+          copyFail: "복사 실패. 브라우저 권한을 확인해 주세요.",
+          shareTemplate:
+            "[Chef Judge Test]\n{emoji} {name}\n{headline}\n{line}\n- 한줄요약: {summary}\n- 조리팁: {tip}\nchef.funnyfunny.cloud",
+          steps: [
+            null,
+            {
+              title: "밥 먹기 전, 당신의 “첫 행동”은?",
+              desc: "선택하면 바로 다음으로 넘어갑니다.",
+              choices: [
+                {
+                  title: "일단 먹고 생각한다",
+                  hint: "뇌: “나중에 회의하자”",
+                },
+                {
+                  title: "잠깐 참아본다",
+                  hint: "뇌: “통제력 테스트 중”",
+                },
+                {
+                  title: "배고픈 척 안 한다",
+                  hint: "뇌: “문제는 존재하지 않는다”",
+                },
+                {
+                  title: "메뉴부터 조사한다",
+                  hint: "뇌: “데이터가 부족하다”",
+                },
+              ],
+            },
+            {
+              title: "메뉴 고를 때 최우선 기준은?",
+              desc: "당신의 “선택 기준”이 결과 톤을 정합니다.",
+              choices: [
+                { title: "맛", hint: "인생은 짧고, 맛은 길다" },
+                { title: "가격", hint: "가성비는 배신하지 않는다(대체로)" },
+                { title: "지금 기분", hint: "기분이 메뉴를 고른다" },
+                { title: "구성/균형", hint: "마음보다 접시가 침착하다" },
+              ],
+            },
+            {
+              title: "야식 문자가 오면?",
+              desc: "여기서 흑/백/회색이 갈립니다.",
+              choices: [
+                { title: "간다", hint: "“이건 사회생활이다”" },
+                { title: "안 간다", hint: "“내일 나를 사랑한다”" },
+                { title: "고민하다가 적당히", hint: "반만 먹는다고 말해놓고…" },
+                { title: "조건 협상 후 간다", hint: "“소스는 빼고, 음료는 물”" },
+              ],
+            },
+            {
+              title: "식사 후 당신의 “기본 루틴”은?",
+              desc: "‘생활 온도’가 결과에 반영됩니다.",
+              choices: [
+                { title: "바로 앉는다", hint: "“소화는 의자가 한다”" },
+                { title: "조금 걷는다", hint: "“10분만… 딱 10분만”" },
+                { title: "바로 일/공부", hint: "“식곤증과의 혈투”" },
+                { title: "정리/설거지", hint: "“주방은 거짓말을 못 한다”" },
+              ],
+            },
+            {
+              title: "“결정 장애”가 올 때 당신은?",
+              desc: "결과 문구의 ‘칼맛’이 달라집니다.",
+              choices: [
+                { title: "3초컷", hint: "“선택은 예술”" },
+                { title: "주변에게 물어본다", hint: "“책임 분산은 미덕”" },
+                { title: "끝까지 스크롤", hint: "“더 좋은 선택이 있을 것 같다”" },
+                { title: "늘 먹던 거", hint: "“검증된 루틴은 배신 안 함”" },
+              ],
+            },
+            {
+              title: "오늘의 “한 줄 자기평가”를 고르세요",
+              desc: "결과 카드에 같이 들어갑니다.",
+              choices: [
+                { title: "“솔직히… 나 꽤 괜찮음”", hint: "자신감은 양념이다" },
+                { title: "“오늘은 그냥 살아남음”", hint: "버틴 것도 실력" },
+                {
+                  title: "“정신없었지만 재밌었음”",
+                  hint: "인생은 불맛",
+                },
+                { title: "“내일은 새 사람”", hint: "내일의 나: “누구세요?”" },
+              ],
+            },
+          ],
+          results: {
+            meta: {
+              black: { emoji: "🖤", name: "흑 요리사형", en: "Black Chef" },
+              white: { emoji: "🤍", name: "백 요리사형", en: "White Chef" },
+              gray: { emoji: "⚪", name: "회색 요리사형", en: "Gray Chef" },
+            },
+            headlines: {
+              black: "불맛이 먼저 들어가요.",
+              white: "기본기가 맛을 만듭니다.",
+              gray: "현실적인 타협, 그것도 기술입니다.",
+            },
+            sublines: {
+              black: "재미는 확실. 다만 가끔은 ‘조절’이 양념입니다.",
+              white: "무난하게 강한 타입. 지치지 않게 ‘재미’도 조금 넣어주세요.",
+              gray: "안 망하는 선택을 잘합니다. 큰 성과는 ‘한 가지’만 고치면 나옵니다.",
+            },
+            lines: {
+              black: [
+                "결정은 빠른데, 브레이크가 없습니다.",
+                "지금이 중요합니다. 내일은 항상 내일의 문제.",
+                "알면서도 합니다. 그래서 더 세요.",
+                "계획은 있는데, 항상 수정됩니다.",
+                "선택의 기준이 ‘지금 기분’입니다.",
+                "후회는 빠르고, 반복은 더 빠릅니다.",
+                "통제보다 자유를 택했습니다.",
+              ],
+              white: [
+                "크게 실패는 없고, 크게 튀지도 않습니다.",
+                "정답에 가까운 선택을 자주 합니다.",
+                "재미는 줄였고, 안정성은 올렸습니다.",
+                "계획은 잘 지키는 편입니다.",
+                "실수는 드물고, 변화도 적습니다.",
+                "관리라는 단어가 잘 어울립니다.",
+                "조용히 꾸준한 타입.",
+              ],
+              gray: [
+                "이상과 현실 사이에서 잘 타협합니다.",
+                "완벽하진 않지만, 망하지도 않습니다.",
+                "알아서 적당히 합니다.",
+                "필요할 땐 참지만, 너무 참진 않습니다.",
+                "상황 판단이 빠른 편입니다.",
+                "무리 없는 선택을 선호합니다.",
+              ],
+            },
+            summary: {
+              black: "즉시 만족에 강함 + 선택이 빠름 + 가끔은 과감함이 과함이 됨",
+              white: "안정 지향 + 루틴 강함 + 큰 실수는 적지만 재미도 절약함",
+              gray: "타협의 달인 + 현실 감각 좋음 + 한 끗 차이로 더 좋아질 타입",
+            },
+            tips: {
+              black: [
+                "‘한 번만 더’가 나오면, 물 한 컵 먼저. (불 끄기 전에 환기)",
+                "결정이 빨라서 멋진데, 체크포인트 하나만 추가해요: ‘지금도 필요해?’",
+              ],
+              white: [
+                "완벽 루틴에 ‘작은 재미’를 넣어야 오래 갑니다. (소스 한 방울)",
+                "좋은 선택을 계속하려면, 쉬운 보상도 같이 주는 게 이깁니다.",
+              ],
+              gray: [
+                "타협은 능력. 다만 ‘핵심 한 가지’만은 고정하면 급상승합니다.",
+                "적당함을 유지하되, 주 1회만 ‘의식적인 선택’을 해보세요.",
+              ],
+            },
+            next: {
+              black: "이 타입은 ‘숫자 확인’이 은근히 도움 됩니다. (딱 한 번만)",
+              white: "유지형이라 ‘현 상태 점검’이 잘 맞아요. (가볍게)",
+              gray: "방향만 잡으면 됩니다. ‘나한테 맞는 식사 스타일’ 쪽이 잘 맞을 듯",
+            },
+          },
+        },
+        en: {
+          metaTitle: "Chef Judge | Daily Choice Review",
+          metaDescription:
+            "You don't cook here. You get judged. Tap through and capture your chef verdict.",
+          metaOgTitle: "Chef Judge Test",
+          metaOgDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          metaTwitterTitle: "Chef Judge Test",
+          metaTwitterDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          serviceTitle: "Chef Judge: Daily Choice Review",
+          serviceSubtitle:
+            "We don't cook. We judge your choices. (Just tap.)",
+          restart: "Restart",
+          prev: "Back",
+          next: "Next",
+          finish: "See Results",
+          hintAutoNext: "One tap = auto next step",
+          resultChefLine: "Chef Verdict",
+          resultSummaryTitle: "Your Choice Summary",
+          resultTipTitle: "Cooking Tip (for life)",
+          resultNextTitle: "Next Course (light)",
+          copyResult: "Copy Result Text",
+          retry: "Judge Me Again",
+          bonusTitle: 'Bonus: "Check my status once"',
+          bonusDesc:
+            'No number pressure. If you want, just a quick glance.<br /><a class="link" href="https://funnyfunny.cloud" target="_blank" rel="noopener noreferrer">Go to the BMI/Diet test</a>',
+          ctaMore: "Try more tests",
+          disclaimer:
+            "Note: This is fan-style content, unrelated to real people or shows.",
+          warnSelect: "Pick just one. The judge is waiting.",
+          stepLabel: "STEP {current} / {total}",
+          resultLabel: "RESULT / {total}",
+          badgeLoading: "🧾 Generating scorecard...",
+          copySuccess: "Copied! (Now you can share without a screenshot.)",
+          copyFail: "Copy failed. Please check browser permissions.",
+          shareTemplate:
+            "[Chef Judge Test]\n{emoji} {name}\n{headline}\n{line}\n- Summary: {summary}\n- Tip: {tip}\nchef.funnyfunny.cloud",
+          steps: [
+            null,
+            {
+              title: "Before eating, what's your first move?",
+              desc: "Pick one to jump to the next step.",
+              choices: [
+                { title: "Eat first, think later", hint: "Brain: 'Debate later'" },
+                { title: "Hold back for a moment", hint: "Brain: 'Testing control'" },
+                { title: "Pretend I'm not hungry", hint: "Brain: 'Problem solved'" },
+                { title: "Research the menu first", hint: "Brain: 'Need more data'" },
+              ],
+            },
+            {
+              title: "Top priority when choosing a menu?",
+              desc: "Your criteria sets the tone of the result.",
+              choices: [
+                { title: "Taste", hint: "Life is short, flavor is long" },
+                { title: "Price", hint: "Value rarely betrays you (mostly)" },
+                { title: "Current mood", hint: "Mood chooses the menu" },
+                { title: "Balance", hint: "The plate stays calmer than the heart" },
+              ],
+            },
+            {
+              title: "Late-night food invite?",
+              desc: "This is where black/white/gray splits.",
+              choices: [
+                { title: "Go", hint: "'This is social life'" },
+                { title: "Skip", hint: "'I'm loving tomorrow-me'" },
+                { title: "Hesitate then go lightly", hint: "You say 'half only'..." },
+                { title: "Negotiate then go", hint: "'No sauce, water only'" },
+              ],
+            },
+            {
+              title: "Your default routine after eating?",
+              desc: "Your lifestyle temperature shows up in the result.",
+              choices: [
+                { title: "Sit down immediately", hint: "'The chair digests it'" },
+                { title: "Walk a bit", hint: "'Just 10 minutes...'" },
+                { title: "Work/study right away", hint: "'Battle with food coma'" },
+                { title: "Clean up", hint: "'The kitchen doesn't lie'" },
+              ],
+            },
+            {
+              title: "When decision paralysis hits, you...",
+              desc: "This changes the sharpness of your verdict.",
+              choices: [
+                { title: "3-second pick", hint: "'Choice is art'" },
+                { title: "Ask people around", hint: "'Distributed responsibility'" },
+                { title: "Scroll to the end", hint: "'There might be a better one'" },
+                { title: "The usual", hint: "'Proven routines don't betray'" },
+              ],
+            },
+            {
+              title: "Pick your one-line self review today",
+              desc: "This goes on the result card.",
+              choices: [
+                { title: "'Honestly... I'm pretty good'", hint: "Confidence is seasoning" },
+                { title: "'I just survived today'", hint: "Endurance is a skill" },
+                { title: "'Chaotic but fun'", hint: "Life needs some char" },
+                { title: "'New me tomorrow'", hint: "Tomorrow me: 'Who are you?'" },
+              ],
+            },
+          ],
+          results: {
+            meta: {
+              black: { emoji: "🖤", name: "Black Chef", en: "Black Chef" },
+              white: { emoji: "🤍", name: "White Chef", en: "White Chef" },
+              gray: { emoji: "⚪", name: "Gray Chef", en: "Gray Chef" },
+            },
+            headlines: {
+              black: "Smoky flavor hits first.",
+              white: "Basics make the taste.",
+              gray: "Practical compromises are a skill.",
+            },
+            sublines: {
+              black: "Fun is guaranteed. Just add a little control as seasoning.",
+              white: "Strong and steady. Add a touch of fun to avoid burnout.",
+              gray: "You rarely fail. One small change can unlock big results.",
+            },
+            lines: {
+              black: [
+                "Decisions are fast, brakes are missing.",
+                "Today matters most. Tomorrow is tomorrow's problem.",
+                "You know it, you still do it. That's the power.",
+                "Plans exist, but they keep evolving.",
+                "Your criteria is often 'current mood.'",
+                "Regret is fast. Repeats are faster.",
+                "You chose freedom over control.",
+              ],
+              white: [
+                "Few big failures, few big spikes.",
+                "You often pick the closest answer.",
+                "Less fun, more stability.",
+                "You keep your plans pretty well.",
+                "Mistakes are rare, changes are few.",
+                "The word 'management' fits you.",
+                "Quietly consistent type.",
+              ],
+              gray: [
+                "You negotiate between ideals and reality.",
+                "Not perfect, but not a mess either.",
+                "You handle things in moderation.",
+                "You can hold back, but not too much.",
+                "Quick situational judgment.",
+                "You prefer low-risk choices.",
+              ],
+            },
+            summary: {
+              black: "Strong instant gratification + fast choices + boldness sometimes too bold",
+              white: "Stability-focused + strong routines + safe but saves on fun",
+              gray: "Master of compromise + realistic + can level up with one tweak",
+            },
+            tips: {
+              black: [
+                "When 'just one more' shows up, drink a glass of water first.",
+                "Fast decisions look cool. Add one checkpoint: 'Do I need it now?'",
+              ],
+              white: [
+                "Add a small dose of fun to make routines last.",
+                "Reward good choices with easy wins to keep momentum.",
+              ],
+              gray: [
+                "Compromise is a skill. Fix just one core thing to jump ahead.",
+                "Stay balanced, but make one intentional choice each week.",
+              ],
+            },
+            next: {
+              black: "A quick number check helps this type. (Just once.)",
+              white: "You thrive on check-ins. A light status review fits.",
+              gray: "You only need direction. A simple meal-style check helps.",
+            },
+          },
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable[key] ?? translations.ko[key] ?? key;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", t("metaOgTitle"));
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute("content", t("metaOgDescription"));
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute("content", t("metaTwitterTitle"));
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute("content", t("metaTwitterDescription"));
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+
+        applyQuizTranslations();
+        updateStepLabel();
+
+        const badgeEl = document.getElementById("badge");
+        if (badgeEl && !resultEl.classList.contains("show")) {
+          badgeEl.textContent = t("badgeLoading");
+        }
+
+        if (resultEl.classList.contains("show")) {
+          renderResult();
+        }
+      }
+
+      function applyQuizTranslations() {
+        const stepsData = (translations[currentLang] || translations.ko).steps;
+        steps.forEach((stepEl) => {
+          const stepNum = Number(stepEl.dataset.step);
+          const data = stepsData[stepNum];
+          if (!data) return;
+          const h2 = stepEl.querySelector("h2");
+          const p = stepEl.querySelector(".q p");
+          if (h2) h2.textContent = data.title;
+          if (p) p.textContent = data.desc;
+          const choiceButtons = stepEl.querySelectorAll(".choice");
+          choiceButtons.forEach((btn, idx) => {
+            const c = data.choices[idx];
+            if (!c) return;
+            btn.firstChild.textContent = c.title + " ";
+            const small = btn.querySelector("small");
+            if (small) small.textContent = c.hint;
+          });
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      /***********************
+       * 서비스 공통 설정
+       ***********************/
+      const SERVICE_NAME_KO = t("serviceTitle");
+      const SERVICE_OG_TEXT_EN = "Chef Judge Test"; // ✅ OG 이미지 text(영문)
+      const FAVICON_TEXT = "CHEF"; // ✅ 파비콘 글자
+
+      document.getElementById("serviceTitle").textContent = t("serviceTitle");
+
+      // OG 이미지 text 강제 세팅(영문)
+      const og = document.querySelector('meta[property="og:image"]');
+      const tw = document.querySelector('meta[name="twitter:image"]');
+      const ogText = encodeURIComponent(
+        SERVICE_OG_TEXT_EN.trim().replace(/\s+/g, "+")
+      );
+      const ogUrl = `https://dummyimage.com/1200x630/0f172a/ffffff&text=${ogText}`;
+      if (og) og.setAttribute("content", ogUrl);
+      if (tw) tw.setAttribute("content", ogUrl);
+
+      // 파비콘 자동 생성 (data URI)
+      const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="#0f172a"/>
+      <text x="50" y="64" font-size="34" text-anchor="middle" fill="white"
+            font-family="system-ui, -apple-system, Segoe UI, Roboto">${escapeXml(
+              FAVICON_TEXT
+            )}</text>
+    </svg>`;
+      document
+        .getElementById("favicon")
+        .setAttribute(
+          "href",
+          "data:image/svg+xml," + encodeURIComponent(faviconSvg)
+        );
+
+      function escapeXml(s) {
+        return String(s).replace(
+          /[<>&'"]/g,
+          (c) =>
+            ({
+              "<": "&lt;",
+              ">": "&gt;",
+              "&": "&amp;",
+              "'": "&apos;",
+              '"': "&quot;",
+            }[c])
+        );
+      }
+
+      /***********************
+       * 설문 로직 (딸각 → 다음)
+       ***********************/
+      const state = {
+        impulse: null,
+        priority: null,
+        night: null,
+        after: null,
+        decide: null,
+        self: null,
+      };
+
+      const steps = [...document.querySelectorAll(".step")];
+      const resultEl = document.getElementById("result");
+      const stepLabel = document.getElementById("stepLabel");
+      const bar = document.getElementById("bar");
+      const restartBtn = document.getElementById("restartBtn");
+      const finishBtn = document.getElementById("finishBtn");
+      const againBtn = document.getElementById("againBtn");
+      const copyBtn = document.getElementById("copyBtn");
+
+      setLang(detectLang(), { updateUrl: false });
+
+      let current = 1;
+      const LAST_STEP = 6;
+      const TOTAL = 7; // 결과 포함
+
+      function updateStepLabel() {
+        if (resultEl.classList.contains("show")) {
+          stepLabel.textContent = t("resultLabel", { total: TOTAL });
+          return;
+        }
+        stepLabel.textContent = t("stepLabel", {
+          current,
+          total: TOTAL,
+        });
+      }
+
+      function showStep(n) {
+        current = n;
+        steps.forEach((s) =>
+          s.classList.toggle("active", Number(s.dataset.step) === n)
+        );
+        resultEl.classList.remove("show");
+
+        updateStepLabel();
+        const progress = Math.round(((n - 1) / (TOTAL - 1)) * 100);
+        bar.style.width = progress + "%";
+      }
+
+      function showResult() {
+        bar.style.width = "100%";
+        steps.forEach((s) => s.classList.remove("active"));
+        resultEl.classList.add("show");
+        updateStepLabel();
+        renderResult();
+      }
+
+      function warn(stepEl, message) {
+        const w = stepEl.querySelector(".warn");
+        if (!w) return;
+        w.style.display = "block";
+        w.textContent = "⚠️ " + message;
+      }
+      function clearWarn(stepEl) {
+        const w = stepEl.querySelector(".warn");
+        if (!w) return;
+        w.style.display = "none";
+        w.textContent = "";
+      }
+
+      function validateStep(stepEl) {
+        clearWarn(stepEl);
+        const n = Number(stepEl.dataset.step);
+        const needKey = {
+          1: "impulse",
+          2: "priority",
+          3: "night",
+          4: "after",
+          5: "decide",
+          6: "self",
+        }[n];
+
+        if (needKey && !state[needKey]) {
+          warn(stepEl, t("warnSelect"));
+          return false;
+        }
+        return true;
+      }
+
+      function goNext(stepEl) {
+        if (!validateStep(stepEl)) return;
+        const next = Math.min(LAST_STEP, current + 1);
+        showStep(next);
+      }
+
+      document.addEventListener("click", (e) => {
+        const c = e.target.closest(".choice");
+        if (!c) return;
+        const key = c.dataset.key;
+        const val = c.dataset.val;
+        state[key] = val;
+
+        // 자동 다음 (딸각 UX)
+        const stepEl = c.closest(".step");
+        const stepNum = Number(stepEl.dataset.step);
+        if (stepNum < LAST_STEP) {
+          showStep(stepNum + 1);
+        } else {
+          showResult();
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (e.target.matches("[data-prev]")) showStep(Math.max(1, current - 1));
+        if (e.target.matches("[data-next]")) {
+          const stepEl = e.target.closest(".step");
+          goNext(stepEl);
+        }
+      });
+
+      restartBtn.addEventListener("click", resetAll);
+      againBtn.addEventListener("click", resetAll);
+      finishBtn.addEventListener("click", () => {
+        const stepEl = document.querySelector('.step[data-step="6"]');
+        if (!validateStep(stepEl)) return;
+        showResult();
+      });
+
+      function resetAll() {
+        Object.keys(state).forEach((k) => (state[k] = null));
+        showStep(1);
+      }
+
+
+      /***********************
+       * 결과 생성
+       ***********************/
+
+      function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function scoreProfile() {
+        // black: 충동/기분/야식/앉기/스크롤 등
+        // white: 계획/균형/거절/정리/늘먹던 등
+        // gray : 타협/협상/적당히 등
+        let b = 0,
+          w = 0,
+          g = 0;
+
+        // impulse
+        if (state.impulse === "go") b += 2;
+        if (state.impulse === "hold") w += 2;
+        if (state.impulse === "delay") (g += 1), (w += 1);
+        if (state.impulse === "plan") w += 2;
+
+        // priority
+        if (state.priority === "mood") b += 2;
+        if (state.priority === "taste") g += 2;
+        if (state.priority === "price") g += 2;
+        if (state.priority === "balance") w += 2;
+
+        // night
+        if (state.night === "go") b += 2;
+        if (state.night === "nope") w += 2;
+        if (state.night === "half") g += 2;
+        if (state.night === "negotiate") (g += 1), (w += 1);
+
+        // after
+        if (state.after === "sit") (b += 1), (g += 1);
+        if (state.after === "walk") (w += 1), (g += 1);
+        if (state.after === "work") g += 2;
+        if (state.after === "clean") w += 2;
+
+        // decide
+        if (state.decide === "fast") (b += 1), (g += 1);
+        if (state.decide === "poll") g += 2;
+        if (state.decide === "scroll") b += 2;
+        if (state.decide === "repeat") w += 2;
+
+        // self
+        if (state.self === "chaos") b += 2;
+        if (state.self === "honest") g += 2;
+        if (state.self === "tired") g += 2;
+        if (state.self === "reset") (g += 1), (b += 1);
+
+        if (b >= w && b >= g) return "black";
+        if (w >= b && w >= g) return "white";
+        return "gray";
+      }
+
+      function renderResult() {
+        const type = scoreProfile();
+        const resultData =
+          (translations[currentLang] || translations.ko).results;
+        const meta = resultData.meta[type];
+        const line = pick(resultData.lines[type]);
+        const headline = resultData.headlines[type];
+        const sub = resultData.sublines[type];
+        const summary = resultData.summary[type];
+        const tip = pick(resultData.tips[type]);
+        const next = resultData.next[type];
+
+        document.getElementById("badge").textContent =
+          currentLang === "ko"
+            ? `${meta.emoji} ${meta.name} (${meta.en})`
+            : `${meta.emoji} ${meta.name}`;
+        document.getElementById("headline").textContent = headline;
+        document.getElementById("subline").textContent = sub;
+        document.getElementById("verdictLine").textContent = `“${line}”`;
+        document.getElementById("summaryLine").textContent = summary;
+        document.getElementById("tipLine").textContent = tip;
+        document.getElementById("nextLine").textContent = next;
+
+        // 공유용 텍스트
+        const share = t("shareTemplate", {
+          emoji: meta.emoji,
+          name: meta.name,
+          headline,
+          line,
+          summary,
+          tip,
+        });
+        document.getElementById("copyText").textContent = share;
+      }
+
+      /***********************
+       * 복사 기능
+       ***********************/
+      copyBtn.addEventListener("click", async () => {
+        const text = document.getElementById("copyText").textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          alert(t("copySuccess"));
+        } catch {
+          alert(t("copyFail"));
+        }
+      });
+
+      // 시작
+      showStep(1);
+    </script>
+  </body>
+</html>

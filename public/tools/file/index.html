@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>파일 최적화 스튜디오</title>
+
+    <meta
+      name="description"
+      content="이미지 용량을 WebP/JPEG로 즉시 줄이고, 부가기능으로 파일 정보·해시·미리보기를 제공하는 로컬 전용 도구."
+    />
+    <meta
+      name="keywords"
+      content="image optimize, webp converter, jpeg compress, file info, hash checker"
+    />
+    <meta property="og:title" content="File Optimize Studio" />
+    <meta
+      property="og:description"
+      content="Optimize images to WebP/JPEG and inspect files securely in your browser."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=File+Optimize+Studio"
+    />
+    <meta property="og:type" content="website" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23142136'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M20 20h24v24H20z' fill='none' stroke='%23e2e8f0' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M28 20v-4h8v4' fill='none' stroke='%23e2e8f0' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+    .lang-switch {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(15, 23, 42, 0.7);
+      padding: 4px;
+      gap: 4px;
+      font-size: 13px;
+    }
+    .lang-switch button {
+      border-radius: 999px;
+      padding: 6px 12px;
+      color: #cbd5f5;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-switch button.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: #ecfdf3;
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/file/" />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100"><div class="relative overflow-hidden min-h-screen pb-16">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(14,165,233,0.14),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(16,185,129,0.2),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.18),transparent_35%)] pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <main class="relative z-10 max-w-6xl mx-auto px-6 py-12">
+        <div class="flex justify-center md:justify-end mb-6">
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+        </div>
+        <header class="text-center space-y-4">
+          <p
+            class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-slate-200 ring-1 ring-white/10"
+            data-i18n-html="badge"
+          >
+            <span class="text-emerald-300">로컬 전용</span> 이미지 최적화 + 파일
+            정보
+          </p>
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight" data-i18n-html="heroTitle">
+            드래그 한 번으로
+            <span class="text-emerald-300">이미지 용량을 줄이고</span>
+            파일 인사이트까지
+          </h1>
+          <p class="text-slate-300 max-w-2xl mx-auto" data-i18n="heroDescription">
+            주요 기능: WebP/JPEG 재인코딩과 자동 리사이즈로 이미지 최적화.
+            부가기능: 업로드 없이 로컬에서 파일 정보·SHA-256
+            해시·이미지/PDF/텍스트 미리보기 제공.
+          </p>
+        </header>
+
+        <section
+          class="mt-10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-xl"
+        >
+          <div
+            id="dropZone"
+            class="group relative flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-white/20 bg-black/20 px-6 py-10 text-center transition hover:border-emerald-300/60 hover:bg-white/10"
+          >
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-300/40"
+            >
+              📁
+            </div>
+            <div class="space-y-1">
+              <p class="text-lg font-semibold" data-i18n="dropTitle">
+                이미지/파일을 드래그 앤 드롭하세요
+              </p>
+              <p class="text-sm text-slate-300" data-i18n="dropHint">
+                또는 버튼으로 선택 (여러 개 가능, 데이터는 절대 업로드되지
+                않습니다)
+              </p>
+            </div>
+            <input
+              id="fileInput"
+              type="file"
+              multiple
+              class="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+            />
+          </div>
+
+          <div class="mt-6 grid gap-4 md:grid-cols-3">
+            <div class="rounded-lg bg-white/5 p-4 ring-1 ring-white/10">
+              <p class="text-sm text-slate-300" data-i18n="cardPrimaryLabel">주요 기능</p>
+              <p class="font-semibold" data-i18n="cardPrimaryDesc">이미지 WebP/JPEG 최적화 + 리사이즈</p>
+            </div>
+            <div class="rounded-lg bg-white/5 p-4 ring-1 ring-white/10">
+              <p class="text-sm text-slate-300" data-i18n="cardExtraLabel">부가기능</p>
+              <p class="font-semibold" data-i18n="cardExtraDesc">
+                확장자, 크기, MIME, 수정 시각, SHA-256 해시
+              </p>
+            </div>
+            <div class="rounded-lg bg-white/5 p-4 ring-1 ring-white/10">
+              <p class="text-sm text-slate-300" data-i18n="cardPreviewLabel">미리보기</p>
+              <p class="font-semibold" data-i18n="cardPreviewDesc">이미지·PDF·텍스트(+JSON) 빠른 확인</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-10">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-xl font-semibold" data-i18n="sectionTitle">파일 결과 / 최적화</h2>
+            <p class="text-sm text-slate-300" data-i18n="sectionHint">
+              파일을 올리면 최적화 버튼과 정보·해시·미리보기가 함께 표시됩니다.
+            </p>
+          </div>
+          <div id="fileList" class="grid grid-cols-1 gap-6">
+            <div
+              class="rounded-xl border border-white/10 bg-white/5 p-5 text-slate-300"
+              data-i18n="emptyState"
+            >
+              아직 파일이 없습니다. 상단 영역에 파일을 드래그하거나 선택하세요.
+            </div>
+          </div>
+        </section>
+      </main>
+      <div
+        class="relative z-10 flex justify-center pt-8 mt-12 border-t border-gray-800/60"
+      >
+        <a
+          href="https://funnyfunny.cloud/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-medium transition-colors duration-200"
+          data-i18n="viewOtherServices"
+        >
+          다른 서비스 보기
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "파일 최적화 스튜디오",
+          metaDescription:
+            "이미지 용량을 WebP/JPEG로 즉시 줄이고, 부가기능으로 파일 정보·해시·미리보기를 제공하는 로컬 전용 도구.",
+          metaOgTitle: "파일 최적화 스튜디오",
+          metaOgDescription:
+            "로컬에서 WebP/JPEG로 이미지 용량을 최적화하고 파일 정보, 해시, 미리보기를 확인하세요.",
+          badge:
+            '<span class="text-emerald-300">로컬 전용</span> 이미지 최적화 + 파일 정보',
+          heroTitle:
+            '드래그 한 번으로 <span class="text-emerald-300">이미지 용량을 줄이고</span> 파일 인사이트까지',
+          heroDescription:
+            "주요 기능: WebP/JPEG 재인코딩과 자동 리사이즈로 이미지 최적화. 부가기능: 업로드 없이 로컬에서 파일 정보·SHA-256 해시·이미지/PDF/텍스트 미리보기 제공.",
+          dropTitle: "이미지/파일을 드래그 앤 드롭하세요",
+          dropHint:
+            "또는 버튼으로 선택 (여러 개 가능, 데이터는 절대 업로드되지 않습니다)",
+          cardPrimaryLabel: "주요 기능",
+          cardPrimaryDesc: "이미지 WebP/JPEG 최적화 + 리사이즈",
+          cardExtraLabel: "부가기능",
+          cardExtraDesc: "확장자, 크기, MIME, 수정 시각, SHA-256 해시",
+          cardPreviewLabel: "미리보기",
+          cardPreviewDesc: "이미지·PDF·텍스트(+JSON) 빠른 확인",
+          sectionTitle: "파일 결과 / 최적화",
+          sectionHint:
+            "파일을 올리면 최적화 버튼과 정보·해시·미리보기가 함께 표시됩니다.",
+          emptyState:
+            "아직 파일이 없습니다. 상단 영역에 파일을 드래그하거나 선택하세요.",
+          viewOtherServices: "다른 서비스 보기",
+          processing: "처리 중",
+          processingHint: "해시와 미리보기를 계산하는 중입니다…",
+          unknownMime: "알 수 없음",
+          previewUnsupported: "미리보기가 지원되지 않는 형식입니다.",
+          fileLabel: "파일",
+          noExtension: "확장자 없음",
+          sizeLabel: "크기",
+          modifiedLabel: "수정 시각",
+          previewLabel: "미리보기",
+          previewText: "텍스트",
+          previewImage: "이미지",
+          previewPdf: "PDF",
+          previewNone: "지원 안 함",
+          imageOptimizeLabel: "이미지 최적화",
+          imageOptimizeHint: "포맷과 품질을 선택한 뒤 용량을 줄이세요.",
+          formatLabel: "포맷",
+          qualityLabel: "품질",
+          optimizeBtn: "최적화",
+          downloadBtn: "다운로드",
+          currentSize: "현재 크기: {size}",
+          createdInfo:
+            "생성 시각은 브라우저에서 제공하지 않아 표시할 수 없습니다. 수정 시각은 파일의 메타데이터를 따릅니다.",
+          previewBlockLabel: "미리보기",
+          lossless: "무손실",
+          processingError: "처리 중 오류가 발생했습니다: {message}",
+          optimizeFail: "최적화에 실패했습니다.",
+          optimizeStatus: "최적화 중… ({formatLabel}{qualityLabel})",
+          formatNotSupported: "이 포맷 변환을 지원하지 않습니다.",
+          sizeIncrease: "증가됨 (품질 유지)",
+          savingsText: "↓ {size} ({percent}%)",
+          estimatedSize: "예상 크기: {size} ({saveText})",
+          runOptimizeFirst: "먼저 최적화를 실행해주세요.",
+        },
+        en: {
+          metaTitle: "File Optimize Studio",
+          metaDescription:
+            "Reduce image size to WebP/JPEG and inspect files locally with metadata, hashes, and previews.",
+          metaOgTitle: "File Optimize Studio",
+          metaOgDescription:
+            "Optimize images to WebP/JPEG and inspect file info, hashes, and previews locally.",
+          badge:
+            '<span class="text-emerald-300">Local-only</span> Image optimization + file insights',
+          heroTitle:
+            'Reduce <span class="text-emerald-300">image size</span> in one drag and get file insights',
+          heroDescription:
+            "Core: optimize images with WebP/JPEG re-encoding and auto-resize. Extras: local-only file info, SHA-256 hash, and image/PDF/text previews.",
+          dropTitle: "Drag & drop images/files",
+          dropHint:
+            "Or pick with the button (multiple files supported, nothing is uploaded)",
+          cardPrimaryLabel: "Core",
+          cardPrimaryDesc: "WebP/JPEG optimization + resizing",
+          cardExtraLabel: "Extras",
+          cardExtraDesc: "Extension, size, MIME, modified time, SHA-256 hash",
+          cardPreviewLabel: "Preview",
+          cardPreviewDesc: "Quick view for images, PDFs, and text (+JSON)",
+          sectionTitle: "File results / optimization",
+          sectionHint:
+            "Upload files to see optimize buttons plus info, hashes, and previews.",
+          emptyState:
+            "No files yet. Drag or select files from the area above.",
+          viewOtherServices: "See other services",
+          processing: "Processing",
+          processingHint: "Calculating hashes and previews…",
+          unknownMime: "Unknown",
+          previewUnsupported: "Preview is not available for this format.",
+          fileLabel: "File",
+          noExtension: "No extension",
+          sizeLabel: "Size",
+          modifiedLabel: "Modified",
+          previewLabel: "Preview",
+          previewText: "Text",
+          previewImage: "Image",
+          previewPdf: "PDF",
+          previewNone: "Not supported",
+          imageOptimizeLabel: "Image optimization",
+          imageOptimizeHint: "Choose format and quality, then reduce size.",
+          formatLabel: "Format",
+          qualityLabel: "Quality",
+          optimizeBtn: "Optimize",
+          downloadBtn: "Download",
+          currentSize: "Current size: {size}",
+          createdInfo:
+            "Created time is not provided by the browser. Modified time comes from file metadata.",
+          previewBlockLabel: "Preview",
+          lossless: "Lossless",
+          processingError: "Processing error: {message}",
+          optimizeFail: "Optimization failed.",
+          optimizeStatus: "Optimizing… ({formatLabel}{qualityLabel})",
+          formatNotSupported: "This format conversion is not supported.",
+          sizeIncrease: "Increased (kept quality)",
+          savingsText: "↓ {size} ({percent}%)",
+          estimatedSize: "Estimated size: {size} ({saveText})",
+          runOptimizeFirst: "Run optimization first.",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable[key] ?? translations.ko[key] ?? key;
+        if (typeof template === "function") {
+          return template(vars);
+        }
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", t("metaOgTitle"));
+        const ogDesc = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        if (ogDesc) ogDesc.setAttribute("content", t("metaOgDescription"));
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      const fileList = document.getElementById("fileList");
+
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("border-emerald-300");
+      });
+
+      dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("border-emerald-300");
+      });
+
+      dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("border-emerald-300");
+        if (e.dataTransfer.files?.length) {
+          handleFiles(e.dataTransfer.files);
+        }
+      });
+
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files?.length) {
+          handleFiles(e.target.files);
+        }
+      });
+
+      function formatBytes(bytes) {
+        if (bytes === 0) return "0 B";
+        const k = 1024;
+        const sizes = ["B", "KB", "MB", "GB", "TB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        const num = bytes / Math.pow(k, i);
+        return `${num.toFixed(num >= 10 || i === 0 ? 0 : 1)} ${sizes[i]}`;
+      }
+
+      function bufferToHex(buffer) {
+        const bytes = new Uint8Array(buffer);
+        return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join(
+          ""
+        );
+      }
+
+      async function computeSHA256(buffer) {
+        const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
+        return bufferToHex(hashBuffer);
+      }
+
+      function detectPreviewKind(mime, ext) {
+        const textExt = [
+          "txt",
+          "md",
+          "json",
+          "js",
+          "ts",
+          "css",
+          "html",
+          "xml",
+          "csv",
+          "yml",
+          "yaml",
+          "log",
+        ];
+        if (mime.startsWith("image/")) return "image";
+        if (mime === "application/pdf" || ext === "pdf") return "pdf";
+        if (mime.startsWith("text/") || textExt.includes(ext)) return "text";
+        return "none";
+      }
+
+      async function parseText(buffer) {
+        const decoder = new TextDecoder("utf-8");
+        const text = decoder.decode(buffer);
+        const limit = 2000;
+        const trimmed = text.length > limit ? `${text.slice(0, limit)}…` : text;
+        return trimmed;
+      }
+
+      function createPlaceholder(file) {
+        const card = document.createElement("article");
+        card.className =
+          "relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 shadow-lg";
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="text-sm text-slate-300">${t("processing")}</p>
+              <h3 class="text-lg font-semibold break-all">${file.name}</h3>
+            </div>
+            <div class="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center">
+              <span class="h-5 w-5 border-2 border-emerald-300/70 border-t-transparent rounded-full animate-spin"></span>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-slate-300">${t("processingHint")}</p>
+        `;
+        return card;
+      }
+
+      async function renderFile(file) {
+        const buffer = await file.arrayBuffer();
+        const ext = file.name.includes(".")
+          ? file.name.split(".").pop().toLowerCase()
+          : "—";
+        const mime = file.type || t("unknownMime");
+        const previewType = detectPreviewKind(mime, ext);
+        const hash = await computeSHA256(buffer);
+        let previewContent = "";
+
+        if (previewType === "text") {
+          const text = await parseText(buffer);
+          previewContent = `<pre class="h-full max-h-80 overflow-auto rounded-lg bg-black/60 p-4 text-xs leading-5 text-slate-200 whitespace-pre-wrap">${text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")}</pre>`;
+        } else if (previewType === "image") {
+          const url = URL.createObjectURL(file);
+          previewContent = `<div class="h-full overflow-hidden rounded-lg border border-white/10 bg-black/40">
+              <img src="${url}" alt="${file.name}" class="h-full max-h-80 w-full object-contain bg-black/20" onload="URL.revokeObjectURL('${url}')"/>
+            </div>`;
+        } else if (previewType === "pdf") {
+          const url = URL.createObjectURL(file);
+          previewContent = `<div class="h-full overflow-hidden rounded-lg border border-white/10 bg-black/40">
+              <embed src="${url}" type="application/pdf" class="h-72 w-full" />
+            </div>`;
+        } else {
+          previewContent = `<div class="h-full rounded-lg border border-dashed border-white/10 bg-black/30 p-4 text-sm text-slate-300 flex items-center justify-center text-center">
+            ${t("previewUnsupported")}
+          </div>`;
+        }
+
+        const lastModified = new Date(file.lastModified).toLocaleString(
+          currentLang === "en" ? "en-US" : "ko-KR"
+        );
+
+        const card = document.createElement("article");
+        card.className =
+          "relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 shadow-lg";
+
+        card.innerHTML = `
+          <div class="flex flex-col gap-5 md:flex-row md:gap-6">
+            <div class="flex-1 min-w-0 space-y-3">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-emerald-300">${t("fileLabel")}</p>
+                  <h3 class="text-lg font-semibold break-all">${file.name}</h3>
+                </div>
+                <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-400/40">
+                  ${ext === "—" ? t("noExtension") : ext.toUpperCase()}
+                </span>
+              </div>
+              <dl class="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                  <dt class="text-slate-400">${t("sizeLabel")}</dt>
+                  <dd class="font-semibold">${formatBytes(file.size)}</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-400">MIME</dt>
+                  <dd class="font-semibold break-all">${mime}</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-400">${t("modifiedLabel")}</dt>
+                  <dd class="font-semibold">${lastModified}</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-400">${t("previewLabel")}</dt>
+                  <dd class="font-semibold">
+                    ${
+                      previewType === "text"
+                        ? t("previewText")
+                        : previewType === "image"
+                        ? t("previewImage")
+                        : previewType === "pdf"
+                        ? t("previewPdf")
+                        : t("previewNone")
+                    }
+                  </dd>
+                </div>
+              </dl>
+              <div class="rounded-lg bg-black/50 p-3 text-xs font-mono text-emerald-200 break-all ring-1 ring-white/5">
+                <p class="text-slate-400 mb-1">SHA-256</p>
+                <p class="leading-5">${hash}</p>
+              </div>
+              ${
+                previewType === "image"
+                  ? `
+                  <div class="rounded-lg border border-white/10 bg-white/5 p-3 space-y-3">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-xs uppercase tracking-wide text-slate-400">${t(
+                          "imageOptimizeLabel"
+                        )}</p>
+                        <p class="text-sm text-slate-200">${t(
+                          "imageOptimizeHint"
+                        )}</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3 text-sm">
+                      <label class="flex items-center gap-2 rounded-md bg-black/30 px-3 py-2 ring-1 ring-white/5">
+                        <span class="text-slate-300">${t("formatLabel")}</span>
+                        <select class="opt-format bg-transparent text-white focus:outline-none">
+                          <option value="image/webp">WebP</option>
+                          <option value="image/jpeg">JPEG</option>
+                          <option value="image/png">PNG</option>
+                        </select>
+                      </label>
+                      <label class="quality-wrap flex items-center gap-2 rounded-md bg-black/30 px-3 py-2 ring-1 ring-white/5">
+                        <span class="text-slate-300">${t("qualityLabel")}</span>
+                        <input type="range" min="65" max="95" value="82" class="opt-quality accent-emerald-400" />
+                        <span class="quality-value text-emerald-200 font-semibold">82%</span>
+                      </label>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                      <button class="optimize-btn rounded-full bg-emerald-500/20 px-4 py-2 text-sm font-semibold text-emerald-200 ring-1 ring-emerald-400/40 hover:bg-emerald-500/30">
+                        ${t("optimizeBtn")}
+                      </button>
+                      <button class="download-btn rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 opacity-50 cursor-not-allowed" disabled>
+                        ${t("downloadBtn")}
+                      </button>
+                    </div>
+                    <p class="optimize-status text-xs text-slate-300">${t(
+                      "currentSize",
+                      { size: formatBytes(file.size) }
+                    )}</p>
+                  </div>
+                `
+                  : ""
+              }
+              <p class="text-xs text-slate-400">
+                ${t("createdInfo")}
+              </p>
+            </div>
+            <div class="md:w-5/12 lg:w-4/12 space-y-2">
+              <p class="text-xs uppercase tracking-wide text-slate-400">${t(
+                "previewBlockLabel"
+              )}</p>
+              ${previewContent}
+            </div>
+          </div>
+        `;
+
+        if (previewType === "image") {
+          const btn = card.querySelector(".optimize-btn");
+          const statusEl = card.querySelector(".optimize-status");
+          const formatSelect = card.querySelector(".opt-format");
+          const qualityInput = card.querySelector(".opt-quality");
+          const qualityValue = card.querySelector(".quality-value");
+          const qualityWrap = card.querySelector(".quality-wrap");
+          const downloadBtn = card.querySelector(".download-btn");
+
+          qualityInput.addEventListener("input", () => {
+            qualityValue.textContent = `${qualityInput.value}%`;
+          });
+
+          formatSelect.addEventListener("change", () => {
+            const isPng = formatSelect.value === "image/png";
+            qualityInput.disabled = isPng;
+            qualityWrap.classList.toggle("opacity-60", isPng);
+            qualityValue.textContent = isPng
+              ? t("lossless")
+              : `${qualityInput.value}%`;
+          });
+
+          btn.addEventListener("click", () =>
+            optimizeImage(
+              file,
+              statusEl,
+              formatSelect,
+              qualityInput,
+              downloadBtn
+            )
+          );
+
+          downloadBtn.addEventListener("click", () =>
+            downloadOptimized(file, downloadBtn)
+          );
+        }
+
+        return card;
+      }
+
+      function clearEmptyState() {
+        if (fileList.children.length === 1) {
+          fileList.innerHTML = "";
+        }
+      }
+
+      async function handleFiles(files) {
+        const fileArray = Array.from(files);
+        if (!fileArray.length) return;
+        clearEmptyState();
+
+        for (const file of fileArray) {
+          const placeholder = createPlaceholder(file);
+          fileList.appendChild(placeholder);
+          try {
+            const card = await renderFile(file);
+            placeholder.replaceWith(card);
+          } catch (err) {
+            placeholder.innerHTML = `
+              <div class="text-red-200">${t("processingError", {
+                message: err?.message || err,
+              })}</div>
+            `;
+          }
+        }
+      }
+
+      function toBlobAsync(canvas, type, quality) {
+        return new Promise((resolve, reject) => {
+          canvas.toBlob(
+            (blob) => {
+              if (!blob) {
+                reject(new Error(t("optimizeFail")));
+                return;
+              }
+              resolve(blob);
+            },
+            type,
+            quality
+          );
+        });
+      }
+
+      function toggleDownloadButton(btn, enabled) {
+        btn.disabled = !enabled;
+        btn.classList.toggle("opacity-50", !enabled);
+        btn.classList.toggle("cursor-not-allowed", !enabled);
+      }
+
+      function cleanupDownloadUrl(btn) {
+        if (btn.dataset.href) {
+          URL.revokeObjectURL(btn.dataset.href);
+          delete btn.dataset.href;
+        }
+      }
+
+      async function optimizeImage(
+        file,
+        statusEl,
+        formatSelect,
+        qualityInput,
+        downloadBtn
+      ) {
+        const MAX_DIMENSION = 2560;
+        const format = formatSelect.value;
+        const quality =
+          format === "image/png" ? 1 : Number(qualityInput.value) / 100;
+        const formatLabel =
+          format === "image/webp"
+            ? "WebP"
+            : format === "image/png"
+            ? "PNG"
+            : "JPEG";
+        const qualityLabel =
+          format === "image/png"
+            ? ` ${t("lossless")}`
+            : ` ${qualityInput.value}%`;
+        statusEl.textContent = t("optimizeStatus", {
+          formatLabel,
+          qualityLabel,
+        });
+        toggleDownloadButton(downloadBtn, false);
+
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+
+        const loaded = new Promise((resolve, reject) => {
+          img.onload = () => resolve();
+          img.onerror = reject;
+        });
+        img.src = url;
+        await loaded;
+
+        const scale =
+          Math.max(img.width, img.height) > MAX_DIMENSION
+            ? MAX_DIMENSION / Math.max(img.width, img.height)
+            : 1;
+
+        const width = Math.round(img.width * scale);
+        const height = Math.round(img.height * scale);
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+
+        let blob;
+        try {
+          blob = await toBlobAsync(canvas, format, quality);
+        } catch (err) {
+          statusEl.textContent = t("formatNotSupported");
+          URL.revokeObjectURL(url);
+          return;
+        }
+        URL.revokeObjectURL(url);
+
+        const savings = file.size - blob.size;
+        const percent = ((savings / file.size) * 100).toFixed(1);
+        const saveText =
+          savings > 0
+            ? t("savingsText", { size: formatBytes(savings), percent })
+            : t("sizeIncrease");
+
+        statusEl.textContent = t("estimatedSize", {
+          size: formatBytes(blob.size),
+          saveText,
+        });
+
+        const baseName = file.name.includes(".")
+          ? file.name.slice(0, file.name.lastIndexOf("."))
+          : file.name;
+        const ext =
+          blob.type === "image/webp"
+            ? "webp"
+            : blob.type === "image/png"
+            ? "png"
+            : "jpg";
+
+        cleanupDownloadUrl(downloadBtn);
+        downloadBtn.dataset.href = URL.createObjectURL(blob);
+        downloadBtn.dataset.ext = ext;
+        downloadBtn.dataset.base = baseName;
+        toggleDownloadButton(downloadBtn, true);
+      }
+
+      function downloadOptimized(file, downloadBtn) {
+        const href = downloadBtn.dataset.href;
+        if (!href) {
+          alert(t("runOptimizeFirst"));
+          return;
+        }
+        const ext = downloadBtn.dataset.ext || "webp";
+        const baseName =
+          downloadBtn.dataset.base ||
+          (file.name.includes(".")
+            ? file.name.slice(0, file.name.lastIndexOf("."))
+            : file.name);
+        const link = document.createElement("a");
+        link.href = href;
+        link.download = `${baseName}-optimized.${ext}`;
+        link.click();
+      }
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>하루 생산성 체크 테스트</title>
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230f172a'/%3E%3Ctext x='50' y='62' font-size='52' text-anchor='middle' fill='white'%3E🧠%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- SEO / OG -->
+    <meta
+      name="description"
+      content="1분 만에 오늘의 집중·에너지·의사결정 상태를 체크하고 추천 행동 3가지를 받아보세요."
+    />
+    <meta property="og:title" content="하루 생산성 체크 테스트" />
+    <meta
+      property="og:description"
+      content="오늘 내 뇌·에너지·집중 상태는? 1분 체크로 바로 진단"
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0f172a/ffffff&text=Daily+Productivity+Check"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      .fade-in {
+        animation: fadeIn 0.22s ease-out both;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lang-switch button.active {
+      background: #0f172a;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.4);
+    }
+    .lang-switch button:not(.active):hover {
+      background: rgba(15, 23, 42, 0.1);
+      color: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/product/" />
+  </head>
+
+  <body class="bg-slate-50 text-slate-900">
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button type="button" data-lang="ko" class="active">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <main class="min-h-screen px-4 py-8 sm:py-10">
+      <div class="mx-auto max-w-xl">
+        <header class="mb-6">
+          <p class="text-sm text-slate-500" data-i18n="headerBadge">1분 체크</p>
+          <h1 class="text-2xl font-extrabold tracking-tight" data-i18n="title">
+            하루 생산성 체크 테스트
+          </h1>
+          <p class="mt-2 text-sm text-slate-600" data-i18n="subtitle">
+            오늘 내 집중/에너지/의사결정 상태를 빠르게 확인해요.
+          </p>
+        </header>
+
+        <!-- Card -->
+        <section
+          class="rounded-3xl bg-white p-5 shadow-sm border border-slate-200"
+        >
+          <div class="flex items-center justify-between gap-3">
+            <div class="text-xs text-slate-500">
+              <span id="stepText">1</span> / <span id="totalText">8</span>
+            </div>
+            <button
+              id="resetBtn"
+              class="text-xs font-semibold text-slate-500 hover:text-slate-900"
+              data-i18n="resetBtn"
+            >
+              초기화
+            </button>
+          </div>
+
+          <div
+            class="mt-3 h-2 w-full rounded-full bg-slate-100 overflow-hidden"
+          >
+            <div
+              id="progBar"
+              class="h-full rounded-full bg-slate-900 transition-all"
+              style="width: 12.5%"
+            ></div>
+          </div>
+
+          <div id="qWrap" class="fade-in mt-5">
+            <h2 id="qTitle" class="text-lg font-extrabold leading-snug"></h2>
+            <p id="qHint" class="mt-2 text-sm text-slate-500"></p>
+
+            <div id="opts" class="mt-4 space-y-2">
+              <!-- injected -->
+            </div>
+
+            <div class="mt-5 flex items-center justify-between">
+              <button
+                id="backBtn"
+                class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold shadow-sm hover:shadow disabled:opacity-40 disabled:hover:shadow-none"
+                disabled
+              >
+                <span data-i18n="backBtn">이전</span>
+              </button>
+
+              <div class="text-xs text-slate-500" data-i18n="scoreHint">⭕3 / ◯2 / △1 / ✕0</div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="mt-8 text-center text-xs text-slate-400">
+          <p data-i18n="footerNote">
+            결과는 참고용이며, 컨디션·수면·스트레스에 따라 달라질 수 있어요.
+          </p>
+
+          <!-- ✅ 하단 공통 버튼 (기본셋) -->
+          <button
+            id="more-tests-btn"
+            type="button"
+            data-url="https://funnyfunny.cloud/"
+            class="w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-4"
+            data-i18n="moreTestsBtn"
+          >
+            더 많은 테스트 해보기
+          </button>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          metaTitle: "하루 생산성 체크 테스트",
+          metaDescription: "1분 만에 오늘의 집중·에너지·의사결정 상태를 체크하고 추천 행동 3가지를 받아보세요.",
+          headerBadge: "1분 체크",
+          title: "하루 생산성 체크 테스트",
+          subtitle: "오늘 내 집중/에너지/의사결정 상태를 빠르게 확인해요.",
+          resetBtn: "초기화",
+          backBtn: "이전",
+          scoreHint: "⭕3 / ◯2 / △1 / ✕0",
+          footerNote: "결과는 참고용이며, 컨디션·수면·스트레스에 따라 달라질 수 있어요.",
+          moreTestsBtn: "더 많은 테스트 해보기",
+        },
+        en: {
+          metaTitle: "Daily Productivity Check Test",
+          metaDescription: "Check your focus·energy·decision-making state in 1 minute and receive 3 recommended actions.",
+          headerBadge: "1-min Check",
+          title: "Daily Productivity Check Test",
+          subtitle: "Quickly check your focus/energy/decision-making state today.",
+          resetBtn: "Reset",
+          backBtn: "Previous",
+          scoreHint: "⭕3 / ◯2 / △1 / ✕0",
+          footerNote: "Results are for reference only and may vary depending on condition·sleep·stress.",
+          moreTestsBtn: "Explore More Tests",
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        let template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") return template;
+        Object.keys(vars).forEach((k) => {
+          template = template.replace(new RegExp(`\\{${k}\\}`, "g"), vars[k]);
+        });
+        return template;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) descMeta.setAttribute("content", t("metaDescription"));
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = supportedLangs.includes(lang) ? lang : defaultLang;
+        currentLang = nextLang;
+        window.currentLang = currentLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        // Always update questions when language changes
+        if (typeof window.render === "function") {
+          window.render();
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      // Make t() function and currentLang globally available
+      window.t = t;
+      window.currentLang = currentLang;
+      window.setLang = setLang;
+
+      const QUESTIONS_BASE = [
+        {
+          title: "오늘 해야 할 일을 떠올리면?",
+          titleEn: "When you think about what you need to do today?",
+          hint: "지금 ‘오늘 기준’으로 답해줘.",
+          hintEn: "Answer based on 'today' right now.",
+          options: [
+            { label: "⭕ 바로 손이 간다", labelEn: "⭕ I can start right away", score: 3 },
+            { label: "◯ 미루고 싶지만 하긴 한다", labelEn: "◯ I want to delay but I'll do it", score: 2 },
+            { label: "△ 생각만 해도 피곤하다", labelEn: "△ Just thinking about it makes me tired", score: 1 },
+            { label: "✕ 아예 시작할 마음이 없다", labelEn: "✕ I don't feel like starting at all", score: 0 },
+          ],
+        },
+        {
+          title: "오늘 집중이 끊기는 주된 이유는?",
+          titleEn: "What is the main reason your focus breaks today?",
+          hint: "가장 큰 원인 1개만 고르기.",
+          hintEn: "Choose only 1 main cause.",
+          options: [
+            { label: "⭕ 외부 방해 거의 없음", labelEn: "⭕ Almost no external distractions", score: 3 },
+            { label: "◯ 알림·SNS", labelEn: "◯ Notifications·SNS", score: 2 },
+            { label: "△ 피로·졸림", labelEn: "△ Fatigue·drowsiness", score: 1 },
+            { label: "✕ 잡생각이 멈추지 않음", labelEn: "✕ Random thoughts won't stop", score: 0 },
+          ],
+        },
+        {
+          title: "오늘 가장 많이 한 행동은?",
+          titleEn: "What did you do most today?",
+          hint: "오늘 실제로 가장 많이 한 것.",
+          hintEn: "What you actually did the most today.",
+          options: [
+            { label: "⭕ 핵심 업무", labelEn: "⭕ Core work", score: 3 },
+            { label: "◯ 정리·보조 업무", labelEn: "◯ Organizing·auxiliary work", score: 2 },
+            { label: "△ 의미 없는 웹서핑", labelEn: "△ Meaningless web surfing", score: 1 },
+            { label: "✕ 해야 할 걸 피하는 행동", labelEn: "✕ Avoiding what I should do", score: 0 },
+          ],
+        },
+        {
+          title: "오늘 에너지 레벨은?",
+          titleEn: "What is your energy level today?",
+          hint: "하루 전체 체감 기준.",
+          hintEn: "Based on how you felt throughout the day.",
+          options: [
+            { label: "⭕ 여유 있음", labelEn: "⭕ Plenty of energy", score: 3 },
+            { label: "◯ 보통", labelEn: "◯ Normal", score: 2 },
+            { label: "△ 빨리 소진됨", labelEn: "△ Depletes quickly", score: 1 },
+            { label: "✕ 이미 방전 상태", labelEn: "✕ Already depleted", score: 0 },
+          ],
+        },
+        {
+          title: "오늘 결정을 내리는 게 어땠나?",
+          titleEn: "How was making decisions today?",
+          hint: "사소한 결정 포함.",
+          hintEn: "Including minor decisions.",
+          options: [
+            { label: "⭕ 빠르고 명확", labelEn: "⭕ Fast and clear", score: 3 },
+            { label: "◯ 고민은 있었음", labelEn: "◯ Had some hesitation", score: 2 },
+            { label: "△ 사소한 것도 오래 고민", labelEn: "△ Thought a lot even about small things", score: 1 },
+            { label: "✕ 결정 자체를 피함", labelEn: "✕ Avoided making decisions", score: 0 },
+          ],
+        },
+        {
+          title: "오늘 생산성을 방해한 가장 큰 요소는?",
+          titleEn: "What was the biggest factor hindering your productivity today?",
+          hint: "가장 크게 체감된 1개.",
+          hintEn: "The one you felt the most.",
+          options: [
+            { label: "⭕ 없음", labelEn: "⭕ None", score: 3 },
+            { label: "◯ 일정 과다", labelEn: "◯ Too many schedules", score: 2 },
+            { label: "△ 감정 소모", labelEn: "△ Emotional drain", score: 1 },
+            { label: "✕ 수면·컨디션 문제", labelEn: "✕ Sleep·condition issues", score: 0 },
+          ],
+        },
+        {
+          title: "지금 이 테스트를 하는 이유는?",
+          titleEn: "Why are you taking this test now?",
+          hint: "오늘의 ‘심리 상태’에 가까운 답.",
+          hintEn: "Answer closest to today's 'psychological state'.",
+          options: [
+            { label: "⭕ 오늘 점검용", labelEn: "⭕ To check today", score: 3 },
+            { label: "◯ 생산성 회복용", labelEn: "◯ To recover productivity", score: 2 },
+            { label: "△ 죄책감 해소용", labelEn: "△ To relieve guilt", score: 1 },
+            { label: "✕ 아무것도 하기 싫어서", labelEn: "✕ Because I don't want to do anything", score: 0 },
+          ],
+        },
+        {
+          title: "오늘 하루를 한 문장으로 표현하면?",
+          titleEn: "How would you express today in one sentence?",
+          hint: "가장 가까운 느낌.",
+          hintEn: "The feeling that's closest.",
+          options: [
+            { label: "⭕ 잘 굴러갔다", labelEn: "⭕ Went well", score: 3 },
+            { label: "◯ 그럭저럭", labelEn: "◯ So-so", score: 2 },
+            { label: "△ 비효율적이었다", labelEn: "△ Was inefficient", score: 1 },
+            { label: "✕ 삭제하고 싶다", labelEn: "✕ Want to delete it", score: 0 },
+          ],
+        },
+      ];
+
+      function getQuestions() {
+        const isEnglish = window.currentLang === "en";
+        return QUESTIONS_BASE.map(q => ({
+          ...q,
+          title: isEnglish ? q.titleEn : q.title,
+          hint: isEnglish ? q.hintEn : q.hint,
+          options: q.options.map(opt => ({
+            ...opt,
+            label: isEnglish ? opt.labelEn : opt.label
+          }))
+        }));
+      }
+
+      window.getQuestions = getQuestions;
+
+      const KEY = "prod_answers_v1";
+
+      const els = {
+        stepText: document.getElementById("stepText"),
+        totalText: document.getElementById("totalText"),
+        progBar: document.getElementById("progBar"),
+        qWrap: document.getElementById("qWrap"),
+        qTitle: document.getElementById("qTitle"),
+        qHint: document.getElementById("qHint"),
+        opts: document.getElementById("opts"),
+        backBtn: document.getElementById("backBtn"),
+        resetBtn: document.getElementById("resetBtn"),
+      };
+
+      let state = loadState();
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(KEY);
+          if (!raw) return { idx: 0, scores: [] };
+          const parsed = JSON.parse(raw);
+          if (
+            !parsed ||
+            typeof parsed.idx !== "number" ||
+            !Array.isArray(parsed.scores)
+          ) {
+            return { idx: 0, scores: [] };
+          }
+          return parsed;
+        } catch {
+          return { idx: 0, scores: [] };
+        }
+      }
+
+      function saveState() {
+        localStorage.setItem(KEY, JSON.stringify(state));
+      }
+
+      function resetAll() {
+        state = { idx: 0, scores: [] };
+        localStorage.removeItem(KEY);
+        localStorage.removeItem("prod_score");
+        render();
+      }
+
+      function render() {
+        const QUESTIONS = getQuestions();
+        const total = QUESTIONS.length;
+        const idx = state.idx;
+
+        els.totalText.textContent = total;
+        els.stepText.textContent = Math.min(idx + 1, total);
+
+        const pct = Math.round((idx / total) * 100);
+        els.progBar.style.width = Math.max(8, pct) + "%";
+
+        els.backBtn.disabled = idx === 0;
+
+        const q = QUESTIONS[idx];
+        els.qTitle.textContent = q.title;
+        els.qHint.textContent = q.hint || "";
+
+        els.opts.innerHTML = q.options
+          .map((opt, i) => {
+            return `
+          <button
+            type="button"
+            data-score="${opt.score}"
+            class="w-full text-left rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-semibold shadow-sm hover:shadow transition active:scale-[0.99]">
+            ${escapeHtml(opt.label)}
+          </button>
+        `;
+          })
+          .join("");
+
+        // re-attach
+        els.opts.querySelectorAll("button[data-score]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const score = parseInt(btn.dataset.score, 10) || 0;
+            answer(score);
+          });
+        });
+
+        els.qWrap.classList.remove("fade-in");
+        void els.qWrap.offsetWidth;
+        els.qWrap.classList.add("fade-in");
+      }
+
+      function answer(score) {
+        state.scores[state.idx] = score;
+        state.idx += 1;
+        saveState();
+
+        const QUESTIONS = getQuestions();
+        if (state.idx >= QUESTIONS.length) {
+          const total = state.scores.reduce((a, b) => a + (b || 0), 0);
+          localStorage.setItem("prod_score", String(total));
+          location.href = `./result.html?score=${total}`;
+          return;
+        }
+        render();
+      }
+
+      function back() {
+        if (state.idx <= 0) return;
+        state.idx -= 1;
+        saveState();
+        render();
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      // Make render globally available for i18n
+      window.render = render;
+
+      // Set up language switching
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      // Initialize language and render
+      setLang(detectLang(), { updateUrl: false });
+
+      // events
+      els.backBtn.addEventListener("click", back);
+      els.resetBtn.addEventListener("click", resetAll);
+
+      // ✅ 하단 공통 버튼
+      document
+        .getElementById("more-tests-btn")
+        ?.addEventListener("click", (e) => {
+          const url = e.currentTarget.dataset.url;
+          if (url) window.open(url, "_blank", "noopener,noreferrer");
+        });
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

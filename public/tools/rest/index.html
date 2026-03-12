@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>이 정도면 쉬어야 할까?</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="지금 상태 기준으로 쉬어야 할지 계산해봅니다. 수면·피로·집중도 기반 참고용 체크."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/rest/" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Should I Rest Now?" />
+    <meta
+      property="og:description"
+      content="Check if you should take a break based on your current condition."
+    />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Should+I+Rest+Now"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://funnyfunny.cloud/rest-check/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Should I Rest Now?" />
+    <meta
+      name="twitter:description"
+      content="Simple condition-based rest check."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Should+I+Rest+Now"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' fill='white'%3ER%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+     crossorigin="anonymous"></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  <style>
+    .adsense-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .adsbygoogle {
+      display: block;
+      margin: 16px auto;
+        text-align: center;
+}
+  </style>
+  <style>
+    .lang-switch {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+    }
+    .lang-switch button.active {
+      background: #10b981;
+      color: #0b1120;
+    }
+  </style>
+</head>
+
+  <body
+    class="min-h-screen bg-gradient-to-br from-purple-400 via-pink-400 to-rose-300 text-white"
+  >
+    <main class="max-w-2xl mx-auto px-4 py-10">
+      <header class="text-center mb-8 space-y-3">
+        <div class="flex justify-end mb-4">
+          <div class="lang-switch" role="tablist" aria-label="Language switcher">
+            <button type="button" data-lang="ko" class="active">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-3xl md:text-4xl font-extrabold" data-i18n="heroTitle">
+            이 정도면 쉬어야 할까?
+          </h1>
+          <p class="mt-2 text-white/90" data-i18n="heroSubtitle">
+            짧은 설문으로 지금 쉬어도 좋을지 가볍게 확인해보세요
+          </p>
+        </div>
+      </header>
+
+      <!-- Start Screen -->
+      <section id="startScreen" class="rounded-3xl bg-white shadow-2xl p-8 md:p-10 text-center">
+        <div class="mb-6">
+          <p class="text-gray-700 text-lg mb-2" data-i18n="surveyIntro">
+            5개의 간단한 설문에 답해주세요
+          </p>
+          <span class="inline-block text-sm px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 font-semibold"
+            data-i18n="surveyTime">약 30초</span
+          >
+        </div>
+        <button
+          onclick="startSurvey()"
+          class="w-full px-6 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+        data-i18n="startButton">시작하기</button>
+      </section>
+
+      <!-- Survey (Step by Step) -->
+      <section id="surveySection" class="hidden">
+        <!-- Progress Bar -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-white font-semibold" id="progressText">
+              질문 1 / 5
+            </span>
+            <span class="text-white font-semibold" id="progressPercent">
+              20%
+            </span>
+          </div>
+          <div class="w-full bg-white/30 rounded-full h-3">
+            <div
+              id="progressBar"
+              class="bg-white rounded-full h-3 transition-all duration-300"
+              style="width: 20%"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10">
+          <div id="questionCard"></div>
+        </div>
+      </section>
+
+      <!-- Result -->
+      <section
+        id="result"
+        class="hidden mt-6 rounded-3xl bg-white shadow-2xl p-8 md:p-10"
+      >
+        <div class="text-center">
+          <p class="text-sm text-gray-600 mb-2" data-i18n="resultLabel">휴식 필요도</p>
+          <p id="score" class="text-5xl font-extrabold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4"></p>
+          <p id="comment" class="text-gray-700 leading-relaxed text-lg"></p>
+        </div>
+        <button
+          onclick="resetSurvey()"
+          class="w-full mt-6 px-6 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+          data-i18n="retryButton">다시 하기</button>
+      </section>
+
+      <!-- Other services -->
+      <div class="flex justify-center pt-8 mt-12">
+        <a
+          href="https://funnyfunny.cloud/"
+          target="_blank"
+          class="px-6 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-xl font-semibold transition-all duration-200"
+        data-i18n="viewMore">다른 서비스 보기</a>
+      </div>
+    </main>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "이 정도면 쉬어야 할까?",
+          heroTitle: "이 정도면 쉬어야 할까?",
+          heroSubtitle:
+            "짧은 설문으로 지금 쉬어도 좋을지 가볍게 확인해보세요",
+          surveyIntro: "5개의 간단한 설문에 답해주세요",
+          surveyTime: "약 30초",
+          startButton: "시작하기",
+          resultButton: "결과 보기",
+          resultLabel: "휴식 필요도",
+          retryButton: "다시 하기",
+          viewMore: "다른 서비스 보기",
+          requiredLabel: "선택 필수",
+          alertAll: "모든 문항에 답해주세요.",
+          resultLow:
+            "지금은 계속해도 괜찮아 보입니다. 10~15분 스트레칭 정도만 챙겨보세요.",
+          resultMid:
+            "짧은 휴식을 권장합니다. 15~25분 걸으면서 눈과 몸을 풀어주세요.",
+          resultHigh:
+            "지금 쉬는 편이 전체 효율에 유리합니다. 30분 이상 확실히 쉬고 리셋하세요.",
+          questions: [
+            {
+              id: "q1",
+              text: "몸이 무겁고 눈이 쉽게 피로해진다",
+              note: "자꾸 자세가 무너지고 눈이 시리다면 체크",
+            },
+            {
+              id: "q2",
+              text: "같은 작업을 90분 이상 붙잡고 있다",
+              note: "타이머 없이 몰입했다면 더 쉬기 쉬움",
+            },
+            {
+              id: "q3",
+              text: "사소한 실수를 반복하거나 되돌리며 일한다",
+              note: "타자 실수, 덮어쓰기 등",
+            },
+            {
+              id: "q4",
+              text: "지금 하는 일은 조금 미뤄도 큰 문제 없다",
+              note: "마감 여유가 있다면 휴식 적합",
+            },
+            {
+              id: "q5",
+              text: "마감이 정말 코앞이라 멈추기 어렵다",
+              note: "마감 급할수록 휴식 점수는 깎입니다",
+              reverse: true,
+            },
+          ],
+          scale: [
+            { label: "전혀 아니다", value: 1 },
+            { label: "조금 아니다", value: 2 },
+            { label: "보통", value: 3 },
+            { label: "조금 그렇다", value: 4 },
+            { label: "매우 그렇다", value: 5 },
+          ],
+        },
+        en: {
+          metaTitle: "Should I Rest Now?",
+          heroTitle: "Should I Rest Now?",
+          heroSubtitle: "A quick check to see if a break is a good idea.",
+          surveyIntro: "Answer 5 quick questions",
+          surveyTime: "About 30 seconds",
+          startButton: "Start",
+          resultButton: "See result",
+          resultLabel: "Rest need",
+          retryButton: "Try again",
+          viewMore: "View other services",
+          requiredLabel: "Required",
+          alertAll: "Please answer every question.",
+          resultLow:
+            "You seem fine to keep going. Take a 10–15 minute stretch break.",
+          resultMid:
+            "A short break is recommended. Walk 15–25 minutes and relax your eyes.",
+          resultHigh:
+            "Resting now will help overall efficiency. Take 30+ minutes to reset.",
+          questions: [
+            {
+              id: "q1",
+              text: "Your body feels heavy and your eyes get tired easily",
+              note: "If your posture collapses and your eyes sting, check this",
+            },
+            {
+              id: "q2",
+              text: "You have been on the same task for 90+ minutes",
+              note: "Easy to overrun without a timer",
+            },
+            {
+              id: "q3",
+              text: "You repeat small mistakes or keep undoing work",
+              note: "Typos, overwrites, and rework",
+            },
+            {
+              id: "q4",
+              text: "Delaying this task slightly will not cause major issues",
+              note: "If the deadline has room, rest is a good idea",
+            },
+            {
+              id: "q5",
+              text: "The deadline is so close that stopping feels hard",
+              note: "Urgent deadlines reduce the rest score",
+              reverse: true,
+            },
+          ],
+          scale: [
+            { label: "Not at all", value: 1 },
+            { label: "Not really", value: 2 },
+            { label: "Neutral", value: 3 },
+            { label: "Somewhat", value: 4 },
+            { label: "Very much", value: 5 },
+          ],
+        },
+      };
+
+      const defaultLang = "ko";
+      const supportedLangs = ["ko", "en"];
+      let currentLang = defaultLang;
+      let currentStep = 0;
+      let answers = {};
+
+      function getPack() {
+        return translations[currentLang] || translations.ko;
+      }
+
+      function t(key) {
+        const pack = getPack();
+        return pack[key] ?? translations.ko[key] ?? key;
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+      }
+
+      function getQuestions() {
+        return getPack().questions;
+      }
+
+      function getScale() {
+        return getPack().scale;
+      }
+
+      function startSurvey() {
+        currentStep = 0;
+        answers = {};
+        document.getElementById("startScreen").classList.add("hidden");
+        document.getElementById("surveySection").classList.remove("hidden");
+        document.getElementById("result").classList.add("hidden");
+        renderCurrentQuestion();
+      }
+
+      function resetSurvey() {
+        currentStep = 0;
+        answers = {};
+        document.getElementById("startScreen").classList.remove("hidden");
+        document.getElementById("surveySection").classList.add("hidden");
+        document.getElementById("result").classList.add("hidden");
+      }
+
+      function updateProgress() {
+        const questions = getQuestions();
+        const total = questions.length;
+        const current = currentStep + 1;
+        const percent = Math.round((current / total) * 100);
+        
+        document.getElementById("progressText").textContent = 
+          currentLang === "ko" 
+            ? `질문 ${current} / ${total}`
+            : `Question ${current} / ${total}`;
+        document.getElementById("progressPercent").textContent = `${percent}%`;
+        document.getElementById("progressBar").style.width = `${percent}%`;
+      }
+
+      function renderCurrentQuestion() {
+        const questions = getQuestions();
+        if (currentStep >= questions.length) {
+          calc();
+          return;
+        }
+
+        updateProgress();
+        
+        const question = questions[currentStep];
+        const scale = getScale();
+        const container = document.getElementById("questionCard");
+        
+        container.innerHTML = `
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">
+            ${question.text}
+          </h2>
+          <p class="text-center text-gray-600 mb-6 text-sm">${question.note}</p>
+          <div class="space-y-3">
+            ${scale
+              .map(
+                (s) => `
+                <button
+                  onclick="selectAnswer(${s.value})"
+                  class="w-full p-5 text-left bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-2xl border-2 border-transparent hover:border-purple-300 transition-all duration-200 transform hover:scale-102 hover:shadow-lg ${
+                    answers[question.id] === String(s.value) ? "border-purple-400 bg-gradient-to-r from-purple-100 to-pink-100" : ""
+                  }"
+                >
+                  <span class="text-lg text-gray-800 font-medium">
+                    ${s.label}
+                  </span>
+                </button>
+              `
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function selectAnswer(value) {
+        const questions = getQuestions();
+        const question = questions[currentStep];
+        answers[question.id] = String(value);
+        
+        // Move to next question after a short delay
+        setTimeout(() => {
+          currentStep++;
+          if (currentStep < questions.length) {
+            renderCurrentQuestion();
+          } else {
+            calc();
+          }
+        }, 300);
+      }
+
+      function calc({ silent = false } = {}) {
+        const questions = getQuestions();
+        let score = 0;
+        let answered = 0;
+
+        questions.forEach((q) => {
+          const answer = answers[q.id];
+          if (!answer) return;
+
+          let value = parseInt(answer, 10);
+          if (q.reverse) value = 6 - value;
+
+          score += value;
+          answered += 1;
+        });
+
+        if (answered !== questions.length) {
+          if (!silent) alert(t("alertAll"));
+          return null;
+        }
+
+        const percent = Math.round(
+          (score / (questions.length * 5)) * 100
+        );
+
+        let msg = "";
+        if (percent < 35) {
+          msg = t("resultLow");
+        } else if (percent < 65) {
+          msg = t("resultMid");
+        } else {
+          msg = t("resultHigh");
+        }
+
+        // result.html로 리다이렉트
+        const params = new URLSearchParams({
+          score: percent.toString(),
+          comment: msg,
+          level: percent < 35 ? 'low' : (percent < 65 ? 'mid' : 'high')
+        });
+        window.location.href = `result.html?${params.toString()}`;
+        return percent;
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        updateProgress();
+        if (document.getElementById("surveySection") && !document.getElementById("surveySection").classList.contains("hidden")) {
+          renderCurrentQuestion();
+        }
+        if (!document.getElementById("result").classList.contains("hidden")) {
+          calc({ silent: true });
+        }
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (supportedLangs.includes(paramLang)) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (supportedLangs.includes(stored)) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+    </script>
+  
+<ins class="adsbygoogle"
+     style="display:block; text-align:center"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+</body>
+</html>

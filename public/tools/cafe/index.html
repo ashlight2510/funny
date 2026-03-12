@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카페 지출 총자산 역전 계산기</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: radial-gradient(circle at top, #2b2b2b 0, #050505 55%);
+        color: #f7f7f7;
+        text-align: center;
+      }
+      h1 {
+        font-size: 26px;
+        margin: 10px 0 4px;
+      }
+      .subtitle {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 16px;
+      }
+      .card {
+        max-width: 480px;
+        margin: 16px auto;
+        background: rgba(15, 15, 15, 0.95);
+        border-radius: 18px;
+        padding: 20px 18px 22px;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+      }
+      label {
+        display: block;
+        text-align: left;
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+      input {
+        width: 100%;
+        padding: 11px 12px;
+        border-radius: 10px;
+        border: 1px solid #333;
+        font-size: 15px;
+        background: #111;
+        color: #f7f7f7;
+        outline: none;
+      }
+      input:focus {
+        border-color: #ffb347;
+        box-shadow: 0 0 0 1px rgba(255, 179, 71, 0.4);
+      }
+      .hint {
+        font-size: 11px;
+        opacity: 0.6;
+        margin-top: 2px;
+        text-align: left;
+      }
+      button {
+        width: 100%;
+        margin-top: 16px;
+        padding: 13px 14px;
+        border-radius: 12px;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #ffb347, #ff7e5f);
+        color: #111;
+        cursor: pointer;
+        transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+          filter 0.1s;
+        box-shadow: 0 10px 20px rgba(255, 126, 95, 0.4);
+      }
+      button:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        box-shadow: 0 14px 24px rgba(255, 126, 95, 0.55);
+      }
+      button:active {
+        transform: translateY(0);
+        box-shadow: 0 6px 14px rgba(255, 126, 95, 0.35);
+      }
+
+      #result {
+        margin-top: 20px;
+        padding: 14px 14px 6px;
+        background: #101010;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: none;
+        text-align: left;
+        font-size: 14px;
+      }
+      #result h2 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        margin-bottom: 8px;
+      }
+      .big-number {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffd86b;
+        margin: 4px 0 6px;
+      }
+      .sub-number {
+        font-size: 13px;
+        opacity: 0.86;
+        margin-bottom: 4px;
+      }
+      .divider {
+        margin: 10px 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+      }
+      .meme {
+        margin-top: 10px;
+        font-size: 13px;
+        opacity: 0.8;
+        font-style: italic;
+      }
+      .compare-list {
+        margin: 6px 0 4px;
+        padding-left: 16px;
+      }
+      .compare-list li {
+        margin-bottom: 2px;
+      }
+      .copy-btn {
+        width: 100%;
+        margin-top: 12px;
+        padding: 11px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 14px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.1);
+        color: #f7f7f7;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: background 0.2s ease;
+      }
+      .copy-btn:hover {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .copy-btn:active {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .small-note {
+        margin-top: 8px;
+        font-size: 11px;
+        opacity: 0.55;
+      }
+      footer {
+        margin-top: 26px;
+        font-size: 11px;
+        opacity: 0.4;
+      }
+      .lang-switch {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: inline-flex;
+        gap: 0;
+        padding: 3px;
+        border-radius: 999px;
+        background: rgba(15, 15, 15, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(247, 247, 247, 0.6);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 44px;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+      .lang-switch button.active {
+        background: linear-gradient(135deg, #ffb347, #ff7e5f);
+        color: #111;
+        box-shadow: 0 2px 8px rgba(255, 179, 71, 0.4);
+      }
+      .lang-switch button:not(.active):hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(247, 247, 247, 0.9);
+      }
+
+      /* 반응형 디자인 */
+      @media (max-width: 640px) {
+        body {
+          padding: 12px;
+        }
+        h1 {
+          font-size: 22px;
+        }
+        .subtitle {
+          font-size: 13px;
+        }
+        .card {
+          padding: 16px 14px 18px;
+        }
+        input {
+          font-size: 14px;
+          padding: 10px 11px;
+        }
+        button {
+          font-size: 15px;
+          padding: 12px 13px;
+        }
+        #result {
+          padding: 12px 12px 6px;
+          font-size: 13px;
+        }
+        #result h2 {
+          font-size: 16px;
+        }
+        .big-number {
+          font-size: 18px;
+        }
+      }
+    </style>
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/1f2937/f9fafb&text=Coffee+Spending+vs+Wealth+Calculator"
+    />
+    <meta
+      property="og:image:alt"
+      content="Coffee Spending vs Wealth Calculator"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%98%95%EF%B8%8F%3C/text%3E%3C/svg%3E"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+    <!-- responsive-base -->
+    <style>
+      /* responsive-base */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+      table {
+        width: 100%;
+      }
+      pre,
+      code {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+    <style>
+      .adsense-block {
+        margin: 16px 0;
+        display: flex;
+        justify-content: center;
+      }
+      .adsbygoogle {
+        display: block;
+        margin: 16px auto;
+        text-align: center;
+      }
+    </style>
+      <link rel="canonical" href="https://funnyfunny.cloud/tools/cafe/" />
+  </head>
+  <body>
+    <div class="lang-switch" role="tablist" aria-label="Language switcher">
+      <button type="button" data-lang="ko" class="active">KR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <h1 data-i18n="title">💸 카페 지출 총자산 역전 계산기</h1>
+    <div class="subtitle" data-i18n="subtitle">
+      "그 작은 기쁨이라도 뺏지 마세요…" 라고 말하기 전에 한 번만 눌러보기
+    </div>
+
+    <div class="card">
+      <label for="cupsPerDay" data-i18n="labelCups"
+        >하루 평균 커피 개수 ☕</label
+      >
+      <input
+        type="number"
+        id="cupsPerDay"
+        placeholder="예: 2"
+        min="0"
+        step="0.1"
+        data-i18n-placeholder="placeholderCups"
+      />
+      <div class="hint" data-i18n="hintCups">
+        아이스 아메리카노, 라떼, 디카페인 다 포함해서 대략 몇 잔인지
+      </div>
+
+      <label for="pricePerCup" data-i18n="labelPrice"
+        >한 잔당 평균 가격 (원)</label
+      >
+      <input
+        type="number"
+        id="pricePerCup"
+        placeholder="예: 4500"
+        min="0"
+        step="100"
+        data-i18n-placeholder="placeholderPrice"
+      />
+      <div class="hint" data-i18n="hintPrice">
+        브랜드 카페/편의점/프랜차이즈 섞어서 체감 평균가
+      </div>
+
+      <label for="age" data-i18n="labelAge">현재 나이</label>
+      <input
+        type="number"
+        id="age"
+        placeholder="예: 27"
+        min="10"
+        max="80"
+        data-i18n-placeholder="placeholderAge"
+      />
+      <div class="hint" data-i18n="hintAge">
+        20살부터 이 패턴이었다고 가정해서 계산해요
+      </div>
+
+      <button onclick="calculate()" data-i18n="btnCalculate">계산하기</button>
+
+      <div id="result">
+        <div class="pill" data-i18n="resultPill">☕ 카페 지출 리포트</div>
+        <h2 id="headline"></h2>
+
+        <div id="summaryBlock">
+          <div class="big-number" id="totalTo30"></div>
+          <div class="sub-number" id="breakdown"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div id="compareBlock">
+          <div style="margin-bottom: 4px" data-i18n="compareTitle">
+            이 돈이면 이 정도가 가능합니다:
+          </div>
+          <ul class="compare-list" id="compareList"></ul>
+        </div>
+
+        <div class="meme" id="memeLine"></div>
+
+        <button class="copy-btn" onclick="copyResult()" data-i18n="btnCopy">
+          📋 결과 문구 복사하기
+        </button>
+
+        <div class="small-note" data-i18n="note">
+          * 아주 대략적인 계산이에요. 인생을 후회하라고 만든 게 아니라, 그냥 한
+          번 웃어보라고 만든 장난감입니다.
+        </div>
+      </div>
+    </div>
+
+    <footer data-i18n="footer">© 2025 카페 지출 총자산 역전 연구소</footer>
+
+    <script>
+      const translations = {
+        ko: {
+          metaTitle: "카페 지출 총자산 역전 계산기",
+          title: "💸 카페 지출 총자산 역전 계산기",
+          subtitle:
+            '"그 작은 기쁨이라도 뺏지 마세요…" 라고 말하기 전에 한 번만 눌러보기',
+          labelCups: "하루 평균 커피 개수 ☕",
+          placeholderCups: "예: 2",
+          hintCups:
+            "아이스 아메리카노, 라떼, 디카페인 다 포함해서 대략 몇 잔인지",
+          labelPrice: "한 잔당 평균 가격 (원)",
+          placeholderPrice: "예: 4500",
+          hintPrice: "브랜드 카페/편의점/프랜차이즈 섞어서 체감 평균가",
+          labelAge: "현재 나이",
+          placeholderAge: "예: 27",
+          hintAge: "20살부터 이 패턴이었다고 가정해서 계산해요",
+          btnCalculate: "계산하기",
+          resultPill: "☕ 카페 지출 리포트",
+          compareTitle: "이 돈이면 이 정도가 가능합니다:",
+          btnCopy: "📋 결과 문구 복사하기",
+          note: "* 아주 대략적인 계산이에요. 인생을 후회하라고 만든 게 아니라, 그냥 한 번 웃어보라고 만든 장난감입니다.",
+          moreTestsButton: "더 많은 테스트 해보기",
+          footer: "© 2025 카페 지출 총자산 역전 연구소",
+          alertInputRequired:
+            "하루 커피 개수, 잔당 가격, 현재 나이를 모두 입력해주세요!",
+          headlineFuture: "{age}살까지 커피로 태울 예정 금액",
+          headlinePresent: "{age}살까지 커피로 태운 금액",
+          headlinePast: "20살부터 30살까지 커피로 태웠을 금액",
+          breakdownSoFar: "지금까지 대략 {amount}",
+          breakdownFuture: "앞으로 {amount}",
+          breakdownAssumption:
+            "계산 가정: 20살부터 30살까지 같은 패턴으로 마신다고 가정했어요.",
+          breakdownYearly: " (연간 약 {amount} 수준)",
+          compareChicken: "치킨 약 {count}마리",
+          compareMacbook: "맥북 프로 약 {count}대",
+          compareTaxi: "택시 기본요금 약 {count}번",
+          compareTrip: "해외 왕복 항공권(체감) 약 {count}번",
+          compareNone: "아직은… 귀여운 수준이에요. 마음 편히 마셔도 됩니다.",
+          meme1:
+            "그 작은 기쁨이라도 뺏지 마세요… 하지만 가끔은 텀블러를 들어보는 것도…?",
+          meme2: "인생은 짧고 카페인은 달지만, 통장도 같이 말라가고 있습니다.",
+          meme3: "오늘도 당신의 행복과 총자산은 서로 반비례 중입니다.",
+          meme4: "그래도 이 돈으로 행복을 샀다면… 뭐, 나쁜 거래는 아니었죠?",
+          meme5: "커피 한 잔의 여유, 통장 한 줄의 눈물.",
+          copyTitle: "💸 카페 지출 총자산 역전 계산기 결과",
+          copyLink: "(나도 해보기 👉 {url})",
+          alertCopySuccess: "결과 문구가 클립보드에 복사되었습니다!",
+          alertCopyFail: "복사에 실패했어요. 직접 드래그해서 복사해주세요!",
+        },
+        en: {
+          metaTitle: "Coffee Spending vs Wealth Calculator",
+          title: "💸 Coffee Spending vs Wealth Calculator",
+          subtitle:
+            'Click once before saying "don\'t take away that little joy..."',
+          labelCups: "Average cups per day ☕",
+          placeholderCups: "e.g. 2",
+          hintCups:
+            "Include iced americano, latte, decaf - roughly how many cups",
+          labelPrice: "Average price per cup (KRW)",
+          placeholderPrice: "e.g. 4500",
+          hintPrice:
+            "Average feeling price mixing brand cafes/convenience stores/franchises",
+          labelAge: "Current age",
+          placeholderAge: "e.g. 27",
+          hintAge: "Calculated assuming this pattern since age 20",
+          btnCalculate: "Calculate",
+          resultPill: "☕ Coffee Spending Report",
+          compareTitle: "With this money, you could get:",
+          btnCopy: "📋 Copy Result",
+          note: "* Very rough calculation. Not made to make you regret life, just a toy to have a laugh.",
+          moreTestsButton: "Explore more tests",
+          footer: "© 2025 Coffee Spending vs Wealth Research Lab",
+          alertInputRequired:
+            "Please enter cups per day, price per cup, and current age!",
+          headlineFuture: "Expected amount to spend on coffee until age {age}",
+          headlinePresent: "Amount spent on coffee until age {age}",
+          headlinePast: "Amount spent on coffee from age 20 to 30",
+          breakdownSoFar: "So far roughly {amount}",
+          breakdownFuture: "Going forward {amount}",
+          breakdownAssumption:
+            "Calculation assumption: Assuming you drank with the same pattern from age 20 to 30.",
+          breakdownYearly: " (About {amount} per year)",
+          compareChicken: "About {count} chickens",
+          compareMacbook: "About {count} MacBook Pros",
+          compareTaxi: "About {count} taxi base fares",
+          compareTrip: "About {count} round-trip flights (feeling)",
+          compareNone:
+            "Still... it's at a cute level. You can drink comfortably.",
+          meme1:
+            "Don't take away that little joy... but sometimes trying a tumbler...?",
+          meme2:
+            "Life is short and caffeine is sweet, but the bank account is drying up too.",
+          meme3:
+            "Today your happiness and total assets are inversely proportional.",
+          meme4:
+            "But if you bought happiness with this money... well, it wasn't a bad deal?",
+          meme5:
+            "The leisure of a cup of coffee, a line of tears in the bank account.",
+          copyTitle: "💸 Coffee Spending vs Wealth Calculator Result",
+          copyLink: "(Try it yourself 👉 {url})",
+          alertCopySuccess: "Result copied to clipboard!",
+          alertCopyFail: "Copy failed. Please select and copy manually!",
+        },
+      };
+
+      function registerDynamicTextElement(el, key, fallbackText) {
+        if (!el || !key) return;
+        el.dataset.i18n = key;
+      }
+
+      const defaultLang = "ko";
+      let currentLang = defaultLang;
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable?.[key] ?? translations.ko?.[key] ?? key;
+        if (typeof template !== "string") {
+          return template;
+        }
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        document.documentElement.lang = currentLang;
+        
+        // Update meta description if exists
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute("content", t("subtitle"));
+        }
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.placeholder = t(el.dataset.i18nPlaceholder);
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : defaultLang;
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+        
+        // 결과가 이미 표시되어 있다면 다시 계산하여 번역 적용
+        const resultBox = document.getElementById("result");
+        if (resultBox && resultBox.style.display !== "none") {
+          const cups = parseFloat(document.getElementById("cupsPerDay").value);
+          const price = parseFloat(document.getElementById("pricePerCup").value);
+          const age = parseInt(document.getElementById("age").value, 10);
+          if (cups && price && age) {
+            calculate();
+          }
+        }
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (translations[paramLang]) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (translations[stored]) return stored;
+        const browserLang =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language;
+        if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
+          return "ko";
+        }
+        return defaultLang;
+      }
+
+      window.__cafeI18n = {
+        registerDynamicElement: registerDynamicTextElement,
+        applyTranslations,
+        setLang,
+        detectLang,
+        getCurrentLang: () => currentLang,
+      };
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
+      setLang(detectLang(), { updateUrl: false });
+    </script>
+
+    <script>
+      function formatKRW(num) {
+        const locale = currentLang === "en" ? "en-US" : "ko-KR";
+        const currency = currentLang === "en" ? "KRW" : "원";
+        if (currentLang === "en") {
+          return num.toLocaleString("en-US") + " KRW";
+        }
+        return num.toLocaleString("ko-KR") + "원";
+      }
+
+      function calculate() {
+        const cups = parseFloat(document.getElementById("cupsPerDay").value);
+        const price = parseFloat(document.getElementById("pricePerCup").value);
+        const age = parseInt(document.getElementById("age").value, 10);
+
+        if (!cups || !price || !age) {
+          alert(t("alertInputRequired"));
+          return;
+        }
+
+        const startAge = 20;
+        const targetAge = 30;
+
+        // 연 기준
+        const dailySpend = cups * price;
+        const yearlySpend = dailySpend * 365;
+
+        // 현재 나이 기준으로 20~30살 사이 커피 지출 추정
+        const yearsSoFar = Math.max(0, Math.min(age, targetAge) - startAge);
+        const yearsFuture =
+          age < targetAge
+            ? Math.max(0, targetAge - Math.max(age, startAge))
+            : 0;
+        const totalYears = Math.max(
+          0,
+          Math.min(targetAge, Math.max(age, targetAge)) - startAge
+        );
+
+        const spentSoFar = yearlySpend * yearsSoFar;
+        const willSpend = yearlySpend * yearsFuture;
+        const totalTo30 = yearlySpend * totalYears;
+
+        const headlineEl = document.getElementById("headline");
+        const totalTo30El = document.getElementById("totalTo30");
+        const breakdownEl = document.getElementById("breakdown");
+        const compareListEl = document.getElementById("compareList");
+        const memeLineEl = document.getElementById("memeLine");
+        const resultBox = document.getElementById("result");
+
+        // 헤드라인
+        if (age < targetAge) {
+          headlineEl.innerText = t("headlineFuture", { age: targetAge });
+        } else if (age === targetAge) {
+          headlineEl.innerText = t("headlinePresent", { age: targetAge });
+        } else {
+          headlineEl.innerText = t("headlinePast");
+        }
+
+        totalTo30El.innerText = formatKRW(Math.round(totalTo30));
+
+        let breakdownText = "";
+        if (yearsSoFar > 0) {
+          breakdownText += t("breakdownSoFar", {
+            amount: formatKRW(Math.round(spentSoFar)),
+          });
+        }
+        if (yearsFuture > 0) {
+          if (breakdownText) breakdownText += " + ";
+          breakdownText += t("breakdownFuture", {
+            amount: formatKRW(Math.round(willSpend)),
+          });
+        }
+        if (!breakdownText) {
+          breakdownText = t("breakdownAssumption");
+        }
+        breakdownText += t("breakdownYearly", {
+          amount: formatKRW(Math.round(yearlySpend)),
+        });
+        breakdownEl.innerText = breakdownText;
+
+        // 비교 항목 (치킨, 맥북, 택시, 여행 등)
+        compareListEl.innerHTML = "";
+        const chickenPrice = 20000;
+        const macbookPrice = 2000000;
+        const taxiPrice = 10000;
+        const tripPrice = 800000;
+
+        const chickens = Math.floor(totalTo30 / chickenPrice);
+        const macbooks = Math.floor(totalTo30 / macbookPrice);
+        const taxis = Math.floor(totalTo30 / taxiPrice);
+        const trips = Math.floor(totalTo30 / tripPrice);
+
+        const locale = currentLang === "en" ? "en-US" : "ko-KR";
+        if (chickens > 0) {
+          const li = document.createElement("li");
+          li.textContent = t("compareChicken", {
+            count: chickens.toLocaleString(locale),
+          });
+          compareListEl.appendChild(li);
+        }
+        if (macbooks > 0) {
+          const li = document.createElement("li");
+          li.textContent = t("compareMacbook", {
+            count: macbooks.toLocaleString(locale),
+          });
+          compareListEl.appendChild(li);
+        }
+        if (taxis > 0) {
+          const li = document.createElement("li");
+          li.textContent = t("compareTaxi", {
+            count: taxis.toLocaleString(locale),
+          });
+          compareListEl.appendChild(li);
+        }
+        if (trips > 0) {
+          const li = document.createElement("li");
+          li.textContent = t("compareTrip", {
+            count: trips.toLocaleString(locale),
+          });
+          compareListEl.appendChild(li);
+        }
+        if (!compareListEl.children.length) {
+          const li = document.createElement("li");
+          li.textContent = t("compareNone");
+          compareListEl.appendChild(li);
+        }
+
+        // 밈 문구
+        const memeKeys = ["meme1", "meme2", "meme3", "meme4", "meme5"];
+        const randomKey = memeKeys[Math.floor(Math.random() * memeKeys.length)];
+        memeLineEl.innerText = t(randomKey);
+
+        resultBox.style.display = "block";
+      }
+
+      function copyResult() {
+        const headline = document.getElementById("headline").innerText;
+        const total = document.getElementById("totalTo30").innerText;
+        const breakdown = document.getElementById("breakdown").innerText;
+        const meme = document.getElementById("memeLine").innerText;
+
+        const text =
+          `${t("copyTitle")}\n\n` +
+          `${headline}\n➡ ${total}\n${breakdown}\n\n` +
+          `${meme}\n\n${t("copyLink", { url: window.location.href })}`;
+
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            alert(t("alertCopySuccess"));
+          })
+          .catch(() => {
+            alert(t("alertCopyFail"));
+          });
+      }
+    </script>
+    <script>
+      (function () {
+        "use strict";
+        const targetUrl = "https://funnyfunny.cloud/";
+        function addMoreTestsButton() {
+          if (document.getElementById("more-tests-btn")) return;
+          const moreBtn = document.createElement("button");
+          moreBtn.id = "more-tests-btn";
+          moreBtn.type = "button";
+          moreBtn.dataset.url = targetUrl;
+          moreBtn.textContent = "더 많은 테스트 해보기";
+          if (window.__cafeI18n?.registerDynamicElement) {
+            window.__cafeI18n.registerDynamicElement(
+              moreBtn,
+              "moreTestsButton",
+              "더 많은 테스트 해보기"
+            );
+          } else {
+            moreBtn.dataset.i18n = "moreTestsButton";
+          }
+          moreBtn.className =
+            "w-full py-4 bg-white border border-purple-100 text-purple-700 font-semibold rounded-xl hover:bg-purple-50 hover:border-purple-200 transition-all duration-200 mt-3";
+          moreBtn.addEventListener("click", function () {
+            window.open(targetUrl, "_blank", "noopener");
+          });
+          const shareButton = document.querySelector(
+            'button#share-btn, button#shareBtn, button[id*="share"]'
+          );
+          if (shareButton) {
+            shareButton.insertAdjacentElement("afterend", moreBtn);
+          } else if (document.body) {
+            document.body.appendChild(moreBtn);
+          }
+          window.__cafeI18n?.applyTranslations();
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", addMoreTestsButton);
+        } else {
+          addMoreTestsButton();
+        }
+      })();
+    </script>
+
+    <ins
+      class="adsbygoogle"
+      style="display: block; text-align: center"
+      data-ad-client="ca-pub-1204894220949193"
+      data-ad-slot="5145068706"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </body>
+</html>

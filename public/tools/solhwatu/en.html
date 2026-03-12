@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hwatu Solitaire | 화투 솔리테어</title>
+
+  <!-- OG -->
+  <meta property="og:title" content="Hwatu Solitaire" />
+  <meta property="og:description" content="A card stacking game using Hwatu cards instead of playing cards" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Hwatu+Solitaire" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <rect width='100' height='100' rx='20' fill='%230b1220'/>
+    <text x='50' y='62' font-size='52' text-anchor='middle' fill='white'>🎴</text>
+  </svg>">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#101a2b;
+      --paper:#ffffff;
+      --muted:#9ca3af;
+      --line:rgba(255,255,255,0.12);
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+      --cardW: 92px;      /* 모바일 기본 */
+      --cardH: 145px;     /* 이미지 비율 229:362 기준 */
+      --gap: 10px;
+      --fan: 24px;        /* 카드 겹침(세로) */
+      --radius: 14px;
+      --red:#ef4444;
+      --blue:#60a5fa;
+      --gold:#fbbf24;
+    }
+    @media (min-width: 420px){
+      :root{ --cardW: 104px; --cardH: 164px; --fan: 26px; }
+    }
+    @media (min-width: 900px){
+      :root{ --cardW: 116px; --cardH: 183px; --fan: 28px; }
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+      background: radial-gradient(1200px 700px at 30% 0%, #14213a 0%, #0b1220 55%, #070b14 100%);
+      color:#fff;
+      min-height:100vh;
+      overscroll-behavior:none;
+    }
+    header{
+      padding:18px 14px 10px;
+      text-align:center;
+    }
+    header h1{
+      margin:0;
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-0.3px;
+    }
+    header p{
+      margin:8px 0 0;
+      color:rgba(255,255,255,0.78);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    main{ max-width:1200px; margin:0 auto; padding:12px 12px 22px; }
+
+    .topbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      margin:10px 0 12px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,0.06);
+      color:#fff;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .pill b{ color:#fff; }
+    .controls{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    button{
+      border:none;
+      cursor:pointer;
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:800;
+      letter-spacing:-0.2px;
+      font-size:13px;
+      background:#fff;
+      color:#0b1220;
+    }
+    button.secondary{
+      background:rgba(255,255,255,0.10);
+      color:#fff;
+      border:1px solid var(--line);
+    }
+    button:active{ transform: translateY(1px); }
+
+    .board{
+      background: rgba(255,255,255,0.06);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+    }
+
+    /* areas */
+    .row1{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:12px;
+    }
+    .leftStack{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .rightFoundation{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pile{
+      width: var(--cardW);
+      height: var(--cardH);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px dashed rgba(255,255,255,0.18);
+      position: relative;
+    }
+    .pile .pileHint{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(255,255,255,0.28);
+      font-size:12px;
+      text-align:center;
+      padding:8px;
+    }
+    .pile.dropTarget{
+      outline: 2px solid rgba(251,191,36,0.9);
+      outline-offset: 3px;
+      border-style: solid;
+      border-color: rgba(251,191,36,0.55);
+    }
+
+    .tableau{
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: var(--gap);
+    }
+    @media (max-width: 380px){
+      .tableau{ gap:8px; }
+    }
+
+    .col{
+      min-height: calc(var(--cardH) + 7*var(--fan));
+      border-radius:14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: visible;
+      padding:6px 6px 10px;
+      touch-action: none;
+    }
+
+    .card{
+      width: var(--cardW);
+      height: var(--cardH);
+      border-radius: 12px;
+      background:#fff;
+      position:absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+      overflow:hidden;
+      user-select:none;
+      -webkit-user-select:none;
+      touch-action:none; /* 모바일 드래그용 */
+    }
+
+    .card.faceDown{
+      background: linear-gradient(135deg, #0b1220 0%, #111827 60%, #0b1220 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .card.faceDown .label, .card.faceDown img{ display:none; }
+    .card.faceDown::after{
+      content:"🎴";
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:38px;
+      opacity:0.9;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      background:#fff;
+      border-radius: 12px;
+    }
+
+    .label{
+      position:absolute;
+      top:6px;
+      left:6px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:3px 7px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.72);
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:-0.2px;
+      z-index:3;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .label .m{ font-weight:900; }
+    .label.red{ box-shadow: 0 0 0 1px rgba(239,68,68,0.35) inset; }
+    .label.blue{ box-shadow: 0 0 0 1px rgba(96,165,250,0.35) inset; }
+
+    .selected{
+      outline: 3px solid rgba(251,191,36,0.95);
+      outline-offset: 3px;
+      box-shadow: 0 18px 34px rgba(251,191,36,0.18);
+    }
+
+    /* floating drag stack */
+    .dragLayer{
+      position: fixed;
+      left:0; top:0;
+      width: 100vw; height: 100vh;
+      pointer-events:none;
+      z-index:9999;
+    }
+    .dragGhost{
+      position:absolute;
+      pointer-events:none;
+      transform: translate(-50%, -10px);
+    }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.78);
+      color:#fff;
+      border: 1px solid rgba(255,255,255,0.14);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:13px;
+      z-index: 99999;
+      display:none;
+      max-width: 92vw;
+      text-align:center;
+    }
+
+    footer{
+      text-align:center;
+      padding:14px 12px 22px;
+      color:rgba(255,255,255,0.62);
+      font-size:13px;
+    }
+    footer a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:900;
+    }
+
+    /* Accessibility */
+    .srOnly{
+      position:absolute;
+      left:-9999px;
+      width:1px; height:1px;
+      overflow:hidden;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>🎴 Hwatu Solitaire</h1>
+  <p>
+    <b>12→1</b> descending + <b>color alternate</b> + <b>no consecutive icons</b>.<br/>
+    Mobile also supports <b>tap (select) → tap (place)</b>.
+  </p>
+</header>
+
+<main>
+  <div class="topbar">
+    <div class="pill">🎯 Goal: <b>Move all cards to foundation (4 piles)</b></div>
+    <div class="controls">
+      <button class="secondary" id="hintBtn">Hint</button>
+      <button class="secondary" id="undoBtn">Undo</button>
+      <button id="newBtn">New Game</button>
+      <a href="index.html" style="text-decoration:none;">
+        <button class="secondary" type="button">🇰🇷 한국어</button>
+      </a>
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" style="text-decoration:none;">
+        <button class="secondary" type="button">View Other Services</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="row1">
+      <div class="leftStack">
+        <div class="pile" id="stockPile" data-pile="stock">
+          <div class="pileHint">Deck<br/>Tap</div>
+        </div>
+        <div class="pile" id="wastePile" data-pile="waste">
+          <div class="pileHint">Discard</div>
+        </div>
+      </div>
+
+      <div class="rightFoundation" aria-label="Foundation">
+        <div class="pile" data-pile="foundation" data-index="0"><div class="pileHint">Foundation 1<br/>Start from 12</div></div>
+        <div class="pile" data-pile="foundation" data-index="1"><div class="pileHint">Foundation 2<br/>Start from 12</div></div>
+        <div class="pile" data-pile="foundation" data-index="2"><div class="pileHint">Foundation 3<br/>Start from 12</div></div>
+        <div class="pile" data-pile="foundation" data-index="3"><div class="pileHint">Foundation 4<br/>Start from 12</div></div>
+      </div>
+    </div>
+
+    <div class="tableau" id="tableau" aria-label="Tableau">
+      <!-- columns injected -->
+    </div>
+  </div>
+</main>
+
+<div class="dragLayer" id="dragLayer"></div>
+<div class="toast" id="toast"></div>
+
+<footer>
+  © funnyfunny.cloud · <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a>
+</footer>
+
+<ins class="adsbygoogle"
+     style="display:block; text-align:center; margin:20px auto; max-width:900px;"
+     data-ad-client="ca-pub-1204894220949193"
+     data-ad-slot="5145068706"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+/* =========================================================
+   화투 솔리테어 v1
+   - 중앙: 화투 이미지
+   - 좌상단: 월 아이콘 + 월 숫자(게임용 정보)
+   - 모바일: 드래그 + 탭(선택→놓기)
+   - 이미지 경로: ./assets/cards/{month}-{n}.png  (n=1..4)
+========================================================= */
+
+/* ---------- Utilities ---------- */
+const $ = (q, el=document)=>el.querySelector(q);
+const $$ = (q, el=document)=>Array.from(el.querySelectorAll(q));
+const toastEl = $('#toast');
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.style.display='block';
+  clearTimeout(toastEl._t);
+  toastEl._t = setTimeout(()=>toastEl.style.display='none', 1300);
+}
+function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+/* ---------- Month meta (icon) ---------- */
+const monthMeta = [
+  {m:1,  icon:'🎍', name:'January'},
+  {m:2,  icon:'🌸', name:'February'},
+  {m:3,  icon:'🌸', name:'March'},
+  {m:4,  icon:'🍇', name:'April'},
+  {m:5,  icon:'🌿', name:'May'},
+  {m:6,  icon:'🌺', name:'June'},
+  {m:7,  icon:'🍃', name:'July'},
+  {m:8,  icon:'🌕', name:'August'},
+  {m:9,  icon:'🌼', name:'September'},
+  {m:10, icon:'🍁', name:'October'},
+  {m:11, icon:'🌲', name:'November'},
+  {m:12, icon:'🌧️', name:'December'}
+];
+const metaByMonth = Object.fromEntries(monthMeta.map(x=>[x.m, x]));
+
+/* ---------- Color grouping (red/blue) ----------
+   트럼프 빨강/검정 역할 (단순하게 2그룹)
+*/
+const RED_MONTHS = new Set([1,3,6,10,12]);   // 임의 그룹(게임 밸런스용)
+const BLUE_MONTHS = new Set([2,4,5,7,8,9,11]);
+function colorOfMonth(m){
+  return RED_MONTHS.has(m) ? 'red' : 'blue';
+}
+
+/* ---------- Game state ---------- */
+let state = null;         // {stock:[], waste:[], tableau:[[]..], foundation:[[]..]}
+let undoStack = [];       // snapshots
+let selected = null;      // {from:{type, idx, pos}, cards:[...]} for tap-to-move
+let dragging = null;      // pointer drag info
+
+/* ---------- Card model ----------
+   {id, month, icon, color, img, faceUp}
+*/
+function buildDeck(){
+  const cards = [];
+  let id = 1;
+  for(let m=1;m<=12;m++){
+    for(let i=1;i<=4;i++){
+      cards.push({
+        id: id++,
+        month: m,
+        icon: metaByMonth[m].icon,
+        color: colorOfMonth(m),     // 'red'|'blue'
+        img: `./assets/cards/${m}-${i}.png`,
+        faceUp: false
+      });
+    }
+  }
+  return cards;
+}
+
+/* ---------- Rule checks ---------- */
+function canPlaceOn(topCard, movingFirst){
+  // empty target: only month 12
+  if(!topCard){
+    return movingFirst.month === 12;
+  }
+  // Descending: targetTop.month should be moving.month + 1
+  if(topCard.month !== movingFirst.month + 1) return false;
+  // Color alternate
+  if(topCard.color === movingFirst.color) return false;
+  // Icon not consecutive
+  if(topCard.icon === movingFirst.icon) return false;
+  return true;
+}
+function isValidStack(stack){
+  // stack internal must also follow the same rule
+  for(let i=0;i<stack.length-1;i++){
+    const a = stack[i];     // upper
+    const b = stack[i+1];   // below
+    // In tableau, cards are stacked downward; when moving, we preserve order:
+    // a should be able to place on b? Actually visually, b is below a.
+    // Our rule uses canPlaceOn(top, movingFirst). For internal, b is below, so
+    // a is placed on b => b is topCard, a is movingFirst (when building down).
+    // That means b.month == a.month + 1, colors alternate, icon not same.
+    if(b.month !== a.month + 1) return false;
+    if(b.color === a.color) return false;
+    if(b.icon === a.icon) return false;
+  }
+  return true;
+}
+
+/* ---------- Snapshot for undo ---------- */
+function snapshot(){
+  return JSON.parse(JSON.stringify(state));
+}
+function pushUndo(){
+  undoStack.push(snapshot());
+  if(undoStack.length > 50) undoStack.shift();
+}
+
+/* ---------- Setup / Deal ----------
+   Tableau: 6 columns
+   Deal pattern: col0 1 card, col1 2 cards, ... col5 6 cards (top faceUp)
+*/
+function newGame(){
+  undoStack = [];
+  selected = null;
+  dragging = null;
+
+  const deck = shuffle(buildDeck());
+  const tableau = Array.from({length:6}, ()=>[]);
+  let ptr = 0;
+  for(let c=0;c<6;c++){
+    for(let r=0;r<=c;r++){
+      const card = deck[ptr++];
+      card.faceUp = (r===c);
+      tableau[c].push(card);
+    }
+  }
+  const stock = deck.slice(ptr);
+  stock.forEach(c=>c.faceUp=false);
+
+  state = {
+    stock,
+    waste: [],
+    tableau,
+    foundation: [[],[],[],[]]
+  };
+  renderAll();
+  toast('New game started!');
+}
+
+/* ---------- Rendering ---------- */
+const tableauEl = $('#tableau');
+function ensureColumns(){
+  tableauEl.innerHTML = '';
+  for(let i=0;i<6;i++){
+    const col = document.createElement('div');
+    col.className = 'col';
+    col.dataset.pile = 'tableau';
+    col.dataset.index = String(i);
+    tableauEl.appendChild(col);
+  }
+}
+ensureColumns();
+
+function createCardEl(card){
+  const el = document.createElement('div');
+  el.className = 'card' + (card.faceUp ? '' : ' faceDown');
+  el.dataset.cardId = String(card.id);
+
+  if(card.faceUp){
+    const label = document.createElement('div');
+    label.className = `label ${card.color}`;
+    label.innerHTML = `<span>${card.icon}</span><span class="m">${card.month}</span>`;
+    el.appendChild(label);
+
+    const img = document.createElement('img');
+    img.alt = `Hwatu ${monthMeta[card.month-1].name}`;
+    img.src = card.img;
+    img.onerror = ()=>{ img.style.display='none'; };
+    el.appendChild(img);
+  }
+
+  // Pointer events for drag (only if faceUp)
+  el.addEventListener('pointerdown', (e)=>onCardPointerDown(e, card.id));
+  // Tap selection (mobile-friendly): pointerup without move handled in pointer logic
+  return el;
+}
+
+function renderTableau(){
+  const cols = $$('.col', tableauEl);
+  cols.forEach((colEl, idx)=>{
+    colEl.innerHTML = '';
+    const pile = state.tableau[idx];
+    pile.forEach((card, pos)=>{
+      const el = createCardEl(card);
+      el.style.top = (pos * parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fan'))) + 'px';
+      // Wider hit box on mobile: extend width via transform already centered
+      // zIndex ensure proper layering
+      el.style.zIndex = String(10 + pos);
+      colEl.appendChild(el);
+    });
+  });
+}
+
+function renderPileSimple(pileEl, cards){
+  // For stock/waste/foundation: show top card only
+  // clear children but keep hint (first child)
+  const hint = pileEl.querySelector('.pileHint');
+  pileEl.innerHTML = '';
+  if(hint) pileEl.appendChild(hint);
+
+  if(cards.length === 0) return;
+
+  const top = cards[cards.length-1];
+  const el = createCardEl(top);
+  el.style.position='absolute';
+  el.style.left='50%';
+  el.style.top='0px';
+  el.style.transform='translateX(-50%)';
+  el.style.zIndex='30';
+  pileEl.style.position='relative';
+  pileEl.appendChild(el);
+}
+
+function renderAll(){
+  renderTableau();
+  renderPileSimple($('#stockPile'), state.stock);
+  renderPileSimple($('#wastePile'), state.waste);
+  $$('.rightFoundation .pile').forEach((p,i)=>{
+    renderPileSimple(p, state.foundation[i]);
+  });
+
+  updateHintText();
+  checkWin();
+}
+
+function updateHintText(){
+  const stockHint = $('#stockPile .pileHint');
+  if(stockHint) stockHint.innerHTML = `Deck<br/>Tap<br/><span style="opacity:.7">${state.stock.length} cards</span>`;
+  const wasteHint = $('#wastePile .pileHint');
+  if(wasteHint && state.waste.length===0) wasteHint.innerHTML = 'Discard';
+}
+
+/* ---------- Stock tap ---------- */
+$('#stockPile').addEventListener('click', ()=>{
+  if(state.stock.length === 0){
+    // recycle waste back to stock
+    if(state.waste.length === 0){
+      toast('No more cards to draw');
+      return;
+    }
+    pushUndo();
+    // move waste to stock reversed, faceDown
+    const recycled = state.waste.splice(0).reverse();
+    recycled.forEach(c=>c.faceUp=false);
+    state.stock = recycled;
+    toast('Discarded cards returned to deck');
+    renderAll();
+    return;
+  }
+  pushUndo();
+  const card = state.stock.pop();
+  card.faceUp = true;
+  state.waste.push(card);
+  renderAll();
+});
+
+/* ---------- Pile click for tap-to-move ---------- */
+document.addEventListener('click', (e)=>{
+  const pileEl = e.target.closest('.pile, .col');
+  if(!pileEl) return;
+  if(!selected) return;
+
+  // if click happened on a card itself, let card handler decide
+  if(e.target.closest('.card')) return;
+
+  const to = parsePile(pileEl);
+  attemptMoveSelectedTo(to);
+});
+
+function parsePile(el){
+  const t = el.dataset.pile;
+  if(t === 'tableau') return {type:'tableau', index: Number(el.dataset.index)};
+  if(t === 'foundation') return {type:'foundation', index: Number(el.dataset.index)};
+  if(t === 'waste') return {type:'waste'};
+  if(t === 'stock') return {type:'stock'};
+  return null;
+}
+
+/* ---------- Selecting a card (tap) ----------
+   - If user taps a faceUp card without dragging, we select it (and its stack)
+   - Then tap a destination pile to move.
+*/
+function clearSelection(){
+  selected = null;
+  $$('.card').forEach(el=>el.classList.remove('selected'));
+}
+function markSelection(ids){
+  $$('.card').forEach(el=>{
+    if(ids.includes(Number(el.dataset.cardId))) el.classList.add('selected');
+    else el.classList.remove('selected');
+  });
+}
+
+function selectFromCardId(cardId){
+  const loc = findCard(cardId);
+  if(!loc) return;
+
+  const {from, pos} = loc;
+  const pile = getPile(from);
+  const card = pile[pos];
+  if(!card || !card.faceUp) return;
+
+  // if in tableau, select stack from pos to end
+  let stack = [card];
+  if(from.type === 'tableau'){
+    stack = pile.slice(pos);
+    if(!stack.every(c=>c.faceUp)) return;
+    // internal validity for moving a stack
+    if(!isValidStack(stack)) {
+      // still allow selecting single top card if stack invalid
+      stack = [pile[pile.length-1]];
+    }
+  }
+  // waste/foundation: only top card selectable
+  if(from.type === 'waste' || from.type === 'foundation'){
+    if(pos !== pile.length-1) return;
+    stack = [pile[pile.length-1]];
+  }
+
+  selected = { from, pos, cards: stack.map(c=>c.id) };
+  markSelection(selected.cards);
+}
+
+/* ---------- Move attempt (tap or drag drop) ---------- */
+function getPile(ref){
+  if(ref.type === 'tableau') return state.tableau[ref.index];
+  if(ref.type === 'foundation') return state.foundation[ref.index];
+  if(ref.type === 'waste') return state.waste;
+  if(ref.type === 'stock') return state.stock;
+  return null;
+}
+function getCardById(id){
+  // cards exist uniquely; find in piles
+  const loc = findCard(id);
+  if(!loc) return null;
+  return getPile(loc.from)[loc.pos];
+}
+function findCard(cardId){
+  // search tableau
+  for(let i=0;i<state.tableau.length;i++){
+    const pile = state.tableau[i];
+    for(let p=0;p<pile.length;p++){
+      if(pile[p].id === cardId) return {from:{type:'tableau', index:i}, pos:p};
+    }
+  }
+  // stock (faceDown) not movable
+  for(let p=0;p<state.waste.length;p++){
+    if(state.waste[p].id === cardId) return {from:{type:'waste'}, pos:p};
+  }
+  for(let i=0;i<state.foundation.length;i++){
+    const pile = state.foundation[i];
+    for(let p=0;p<pile.length;p++){
+      if(pile[p].id === cardId) return {from:{type:'foundation', index:i}, pos:p};
+    }
+  }
+  // stock rarely needed
+  return null;
+}
+
+function attemptMove(from, fromPos, movingCount, to){
+  if(!to) return false;
+  // prevent moving to same place
+  if(to.type === from.type && to.index === from.index) return false;
+
+  const src = getPile(from);
+  if(!src) return false;
+
+  const moving = src.slice(fromPos, fromPos + movingCount);
+  if(moving.length === 0) return false;
+  if(!moving.every(c=>c.faceUp)) return false;
+
+  // only allow moving stacks from tableau; from waste/foundation only one card
+  if((from.type === 'waste' || from.type === 'foundation') && moving.length !== 1) return false;
+
+  // validate internal stack if moving multiple
+  if(moving.length > 1 && !isValidStack(moving)) return false;
+
+  // target pile rules
+  let target = null;
+  if(to.type === 'tableau'){
+    target = state.tableau[to.index];
+  } else if(to.type === 'foundation'){
+    target = state.foundation[to.index];
+  } else {
+    return false;
+  }
+
+  const top = target.length ? target[target.length-1] : null;
+  const first = moving[0];
+
+  // foundation/tableau share same rule
+  if(!canPlaceOn(top, first)) return false;
+
+  pushUndo();
+
+  // remove from src
+  src.splice(fromPos, moving.length);
+  // add to target
+  target.push(...moving);
+
+  // flip new top in tableau if needed
+  if(from.type === 'tableau'){
+    const col = state.tableau[from.index];
+    if(col.length && !col[col.length-1].faceUp){
+      col[col.length-1].faceUp = true;
+    }
+  }
+
+  clearSelection();
+  renderAll();
+  return true;
+}
+
+function attemptMoveSelectedTo(to){
+  if(!selected) return false;
+  // selected.cards is ids; find fromPos for first id
+  const firstId = selected.cards[0];
+  const loc = findCard(firstId);
+  if(!loc) return false;
+
+  // if from tableau and selected is not exactly slice from loc.pos to end, adjust
+  const from = loc.from;
+  const fromPos = loc.pos;
+  const src = getPile(from);
+  let count = 1;
+
+  if(from.type === 'tableau'){
+    // if the selected cards represent a stack starting at fromPos
+    const slice = src.slice(fromPos).map(c=>c.id);
+    const isStack = selected.cards.every((id, idx)=>slice[idx]===id);
+    count = isStack ? selected.cards.length : 1;
+  }
+
+  const ok = attemptMove(from, fromPos, count, to);
+  if(!ok) toast("Can't place here (12→1, color alternate, no consecutive icons)");
+  return ok;
+}
+
+/* ---------- Drag & Drop (Pointer) ---------- */
+const dragLayer = $('#dragLayer');
+
+function onCardPointerDown(e, cardId){
+  // Only left click / primary touch
+  if(e.button !== undefined && e.button !== 0) return;
+
+  const loc = findCard(cardId);
+  if(!loc) return;
+  const {from, pos} = loc;
+  const pile = getPile(from);
+  const card = pile[pos];
+  if(!card || !card.faceUp) return;
+
+  // Determine move stack
+  let moving = [card];
+  if(from.type === 'tableau'){
+    moving = pile.slice(pos);
+    if(!moving.every(c=>c.faceUp)) return;
+    if(!isValidStack(moving)) {
+      // if invalid, allow only top card
+      moving = [pile[pile.length-1]];
+    }
+  } else {
+    // waste/foundation: only top
+    if(pos !== pile.length-1) return;
+    moving = [pile[pos]];
+  }
+
+  // Prepare potential tap selection
+  const startX = e.clientX;
+  const startY = e.clientY;
+  let moved = false;
+
+  // Create drag ghost (stack)
+  const ghost = document.createElement('div');
+  ghost.className = 'dragGhost';
+  ghost.style.left = startX + 'px';
+  ghost.style.top = startY + 'px';
+
+  // build stacked visuals
+  moving.forEach((c, idx)=>{
+    const el = document.createElement('div');
+    el.className = 'card';
+    el.style.position='absolute';
+    el.style.left='50%';
+    el.style.top = (idx * parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fan'))) + 'px';
+    el.style.transform='translateX(-50%)';
+    el.style.width = getComputedStyle(document.documentElement).getPropertyValue('--cardW');
+    el.style.height = getComputedStyle(document.documentElement).getPropertyValue('--cardH');
+    el.style.borderRadius='12px';
+    el.style.overflow='hidden';
+    el.style.boxShadow='0 12px 26px rgba(0,0,0,0.35)';
+    el.style.background='#fff';
+
+    const label = document.createElement('div');
+    label.className = `label ${c.color}`;
+    label.innerHTML = `<span>${c.icon}</span><span class="m">${c.month}</span>`;
+    el.appendChild(label);
+
+    const img = document.createElement('img');
+    img.src = c.img;
+    img.alt = '';
+    img.style.width='100%';
+    img.style.height='100%';
+    img.style.objectFit='contain';
+    el.appendChild(img);
+
+    ghost.appendChild(el);
+  });
+
+  dragging = {
+    cardId,
+    from,
+    fromPos: (from.type === 'tableau')
+      ? findCard(moving[0].id).pos
+      : pos,
+    movingCount: moving.length,
+    startX, startY,
+    offsetX: 0,
+    offsetY: 0,
+    moved: false,
+    ghost,
+    element: e.currentTarget
+  };
+
+  // Capture pointer to allow smooth move
+  e.currentTarget.setPointerCapture(e.pointerId);
+
+  function onMove(ev){
+    if(!dragging) return;
+    const dx = ev.clientX - startX;
+    const dy = ev.clientY - startY;
+
+    // treat small movement as tap
+    if(!moved && (Math.abs(dx) > 6 || Math.abs(dy) > 6)){
+      moved = true;
+      dragging.moved = true;
+      // show ghost only when actually dragging
+      if(!dragLayer.contains(ghost)) dragLayer.appendChild(ghost);
+    }
+    if(moved){
+      ghost.style.left = ev.clientX + 'px';
+      ghost.style.top = ev.clientY + 'px';
+      highlightDropTarget(ev.clientX, ev.clientY);
+      ev.preventDefault();
+    }
+  }
+
+  function onUp(ev){
+    if(dragging && dragging.element){
+      dragging.element.releasePointerCapture(ev.pointerId);
+    }
+
+    document.removeEventListener('pointermove', onMove, {passive:false});
+    document.removeEventListener('pointerup', onUp);
+
+    // if not moved => tap select
+    if(!moved){
+      // Get cardId from dragging if available
+      const currentCardId = dragging ? dragging.cardId : cardId;
+      // Toggle selection if tapping same stack
+      if(selected && selected.cards && selected.cards[0] === currentCardId){
+        clearSelection();
+      } else {
+        selectFromCardId(currentCardId);
+      }
+      return;
+    }
+
+    // drop attempt
+    const to = detectDropTarget(ev.clientX, ev.clientY);
+    clearDropHighlights();
+    if(dragLayer.contains(ghost)) dragLayer.removeChild(ghost);
+
+    const ok = attemptMove(dragging.from, dragging.fromPos, dragging.movingCount, to);
+    if(!ok) toast("Can't place here (12→1, color alternate, no consecutive icons)");
+    dragging = null;
+  }
+
+  document.addEventListener('pointermove', onMove, {passive:false});
+  document.addEventListener('pointerup', onUp, {passive:true});
+}
+
+function clearDropHighlights(){
+  $$('.pile, .col').forEach(el=>el.classList.remove('dropTarget'));
+}
+function highlightDropTarget(x,y){
+  clearDropHighlights();
+  const targetEl = pickDropElement(x,y);
+  if(targetEl) targetEl.classList.add('dropTarget');
+}
+function pickDropElement(x,y){
+  const els = document.elementsFromPoint(x,y);
+  for(const el of els){
+    if(el.classList && (el.classList.contains('pile') || el.classList.contains('col'))){
+      const p = parsePile(el);
+      if(!p) continue;
+      if(p.type === 'tableau' || p.type === 'foundation'){
+        return el;
+      }
+    }
+  }
+  return null;
+}
+function detectDropTarget(x,y){
+  const el = pickDropElement(x,y);
+  if(!el) return null;
+  return parsePile(el);
+}
+
+/* ---------- Hint ----------
+   아주 가벼운 힌트: 가능한 이동이 있으면 첫 번째를 알려줌.
+*/
+function findAnyMove(){
+  // candidates: tableau top stacks + waste top
+  const sources = [];
+
+  // tableau: each faceUp card can be start of a valid stack (we try from each position)
+  state.tableau.forEach((col, ci)=>{
+    for(let p=0;p<col.length;p++){
+      if(!col[p].faceUp) continue;
+      const stack = col.slice(p);
+      if(!stack.every(c=>c.faceUp)) continue;
+      if(stack.length > 1 && !isValidStack(stack)) continue;
+      sources.push({from:{type:'tableau', index:ci}, pos:p, count:stack.length, first:stack[0]});
+    }
+  });
+
+  if(state.waste.length){
+    const wTop = state.waste[state.waste.length-1];
+    sources.push({from:{type:'waste'}, pos: state.waste.length-1, count:1, first:wTop});
+  }
+
+  const targets = [];
+  for(let i=0;i<6;i++) targets.push({type:'tableau', index:i});
+  for(let i=0;i<4;i++) targets.push({type:'foundation', index:i});
+
+  for(const s of sources){
+    for(const t of targets){
+      // quick rule check: only first card considered; real move will validate
+      const tgtPile = (t.type==='tableau') ? state.tableau[t.index] : state.foundation[t.index];
+      const top = tgtPile.length ? tgtPile[tgtPile.length-1] : null;
+      if(canPlaceOn(top, s.first)){
+        return {s, t};
+      }
+    }
+  }
+  return null;
+}
+
+$('#hintBtn').addEventListener('click', ()=>{
+  const mv = findAnyMove();
+  if(!mv){
+    toast('No moves available. Tap deck or start new game!');
+    return;
+  }
+  const {s, t} = mv;
+  const fromText = s.from.type==='tableau' ? `Tableau column ${s.from.index+1}` : 'Discard';
+  const toText = t.type==='tableau' ? `Tableau column ${t.index+1}` : `Foundation ${t.index+1}`;
+  toast(`Hint: ${fromText} → ${toText}`);
+});
+
+/* ---------- Undo ---------- */
+$('#undoBtn').addEventListener('click', ()=>{
+  if(undoStack.length === 0){
+    toast('No history to undo');
+    return;
+  }
+  state = undoStack.pop();
+  clearSelection();
+  renderAll();
+    toast('Undone');
+});
+
+/* ---------- New ---------- */
+$('#newBtn').addEventListener('click', ()=>newGame());
+
+/* ---------- Tap on waste/foundation piles to select top card ----------
+   (모바일 편의: 카드가 작아도 탭으로 선택 가능)
+*/
+$('#wastePile').addEventListener('click', ()=>{
+  if(state.waste.length === 0) return;
+  const top = state.waste[state.waste.length-1];
+  selectFromCardId(top.id);
+});
+$$('.rightFoundation .pile').forEach((pEl, idx)=>{
+  pEl.addEventListener('click', ()=>{
+    const pile = state.foundation[idx];
+    if(!pile.length) return;
+    selectFromCardId(pile[pile.length-1].id);
+  });
+});
+
+/* ---------- Win check ---------- */
+function checkWin(){
+  const totalInFound = state.foundation.reduce((a,p)=>a+p.length, 0);
+  if(totalInFound === 48){
+    toast('🎉 Clear! All cards rescued');
+  }
+}
+
+/* ---------- Start ---------- */
+newGame();
+</script>
+</body>
+</html>

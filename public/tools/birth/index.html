@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>나이 계산기 | 만·연·세는 나이 (birth.funnyfunny.cloud)</title>
+    <meta
+      name="description"
+      content="생년월일만 입력하면 만 나이(만), 연 나이(년 나이), 세는 나이를 한 번에 계산합니다. 기준일 변경, 다음 생일 D-day, 링크 공유/복사 지원."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#f0f4ff" />
+
+    <!-- Favicon: 캘린더·생일 테마 -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea'/%3E%3Cstop offset='100%25' style='stop-color:%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Crect x='18' y='22' width='64' height='50' rx='6' fill='rgba(255,255,255,0.95)'/%3E%3Ctext x='50' y='58' font-size='28' fill='%23667eea' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700'%3E29%3C/text%3E%3Ccircle cx='50' cy='78' r='8' fill='rgba(255,255,255,0.9)'/%3E%3C/svg%3E"
+      type="image/svg+xml"
+    />
+
+    <!-- Open Graph (다른 페이지와 비슷하게) -->
+    <meta property="og:title" content="나이 계산기 | 만·연·세는 나이" />
+    <meta
+      property="og:description"
+      content="생년월일만 입력하면 만 나이/연 나이/세는 나이를 한 번에. 다음 생일 D-day, 링크 공유/복사 지원."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://birth.funnyfunny.cloud/" />
+    <meta
+      property="og:image"
+      content="https://dummyimage.com/1200x630/f0f4ff/4a5568&amp;text=Birth+Age+Calculator"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="나이 계산기 — 만·연·세는 나이" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      :root {
+        --bg: #f0f4ff;
+        --card: #ffffff;
+        --text: #1a202c;
+        --muted: #64748b;
+        --line: #e2e8f0;
+        --accent: #6366f1;
+        --accent2: #818cf8;
+        --good: #059669;
+        --warn: #d97706;
+        --bad: #dc2626;
+        --radius: 16px;
+        --shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.06);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(160deg, #eef2ff 0%, #f0f4ff 35%, #faf5ff 100%);
+        color: var(--text);
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          Segoe UI,
+          sans-serif;
+        line-height: 1.5;
+        padding: 24px 16px 48px;
+      }
+      .wrap {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .title {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: var(--text);
+        margin: 0 0 8px;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .hint {
+        margin-top: 6px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--line);
+        padding: 28px 24px;
+        margin-bottom: 20px;
+      }
+
+      /* 생년월일 한 칸 — 깔끔하게 */
+      .input-area {
+        margin-bottom: 20px;
+      }
+      .input-area label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .input-area input[type="date"] {
+        width: 100%;
+        padding: 16px 18px;
+        font-size: 18px;
+        border-radius: 14px;
+        border: 2px solid var(--line);
+        background: #fafafa;
+        color: var(--text);
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .input-area input[type="date"]:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+        background: #fff;
+      }
+
+      .base-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .base-row b {
+        color: var(--text);
+        font-weight: 700;
+      }
+      .base-row a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .base-row a:hover {
+        text-decoration: underline;
+      }
+
+      .opt-toggle {
+        margin-top: 16px;
+      }
+      .opt-toggle summary {
+        cursor: pointer;
+        font-size: 13px;
+        color: var(--accent);
+        font-weight: 600;
+        list-style: none;
+      }
+      .opt-toggle summary::-webkit-details-marker {
+        display: none;
+      }
+      .opt-inner {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+      }
+      .opt-inner .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .opt-inner label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .opt-inner input,
+      .opt-inner select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: #fafafa;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      button {
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+      button:active {
+        transform: translateY(1px);
+      }
+      button.primary {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+      }
+      button.primary:hover {
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      }
+      button.secondary {
+        background: #f1f5f9;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+      button.secondary:hover {
+        background: #e2e8f0;
+      }
+
+      .result-area {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+      .result-main {
+        text-align: center;
+        padding: 20px 16px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+        border: 1px solid rgba(99, 102, 241, 0.15);
+        margin-bottom: 16px;
+      }
+      .result-main .k {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .result-main .v {
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: var(--accent);
+      }
+      .result-sub {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .mini {
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: #fafafa;
+      }
+      .mini .k {
+        font-size: 11px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      .mini .v {
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+      .ok { color: var(--good); }
+      .warn { color: var(--warn); }
+      .bad { color: var(--bad); }
+
+      .info {
+        margin-top: 14px;
+        display: grid;
+        gap: 8px;
+      }
+      .infoLine {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: #f8fafc;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .infoLine b {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .toast {
+        margin-top: 10px;
+        font-size: 13px;
+        color: var(--muted);
+        min-height: 18px;
+      }
+      .toast.ok { color: var(--good); }
+      .toast.warn { color: var(--warn); }
+      .toast.bad { color: var(--bad); }
+
+      /* 탭: 나이↔출생년도, FAQ */
+      .tabs-bar {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+      .tab {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fafafa;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .tab.active {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .panel {
+        display: none;
+      }
+      .panel.on {
+        display: block;
+      }
+
+      details.faq {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px 14px;
+        background: #fafafa;
+        margin-top: 10px;
+      }
+      details.faq summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--text);
+        list-style: none;
+      }
+      details.faq summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-content {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      }
+      footer {
+        margin-top: 24px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .lang-switch {
+        display: inline-flex;
+        gap: 6px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 4px;
+        margin-bottom: 14px;
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        color: var(--muted);
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: rgba(99, 102, 241, 0.12);
+        color: #1f2937;
+        font-weight: 700;
+      }
+      .adsense-block {
+        margin: 18px 0 0;
+        display: flex;
+        justify-content: center;
+      }
+      .adsbygoogle {
+        display: block;
+        text-align: center;
+        min-height: 100px;
+      }
+      .more-services {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 18px auto 0;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        background: #fff;
+        transition: transform 0.15s, box-shadow 0.15s;
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.08);
+      }
+      .more-services:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(99, 102, 241, 0.12);
+      }
+    </style>
+      <link rel="canonical" href="https://funnyfunny.cloud/tools/birth/" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+          <button type="button" class="lang-btn" data-lang="en">English</button>
+        </div>
+        <h1 class="title" data-i18n="title">나이 계산기</h1>
+        <p class="sub" data-i18n="subtitle">
+          생년월일만 입력하면 만·연·세는 나이를 한 번에 계산해요
+        </p>
+      </header>
+
+      <main class="card">
+        <div class="tabs-bar" role="tablist" aria-label="기능 탭">
+          <button type="button" class="tab active" data-tab="calc" role="tab" aria-selected="true" data-i18n="tabCalc">나이 계산</button>
+          <button type="button" class="tab" data-tab="reverse" role="tab" aria-selected="false" data-i18n="tabReverse">나이 ↔ 출생년도</button>
+        </div>
+
+        <!-- 탭: 나이 계산 -->
+        <div id="tab-calc" class="panel on">
+          <div class="input-area">
+            <label for="birth" data-i18n="labelBirth">생년월일</label>
+            <input id="birth" type="date" aria-label="생년월일" />
+            <div class="hint" data-i18n="dateHint">형식: YYYY-MM-DD</div>
+          </div>
+          <div class="base-row">
+            <span><span data-i18n="labelBaseDate">기준일</span> <b id="pillBase">-</b></span>
+            <a href="#" id="linkBaseToggle" data-i18n="toggleBase">기준일 변경</a>
+          </div>
+          <div id="baseCollapse" class="opt-toggle" style="display: none;">
+            <details>
+              <summary data-i18n="summaryBaseOptions">기준일·옵션</summary>
+              <div class="opt-inner">
+                <div class="row">
+                  <div>
+                    <label for="base" data-i18n="labelBaseDate">기준일</label>
+                    <input id="base" type="date" />
+                    <div class="hint" data-i18n="dateHint">형식: YYYY-MM-DD</div>
+                  </div>
+                  <div>
+                    <label for="leapPolicy" data-i18n="labelLeapPolicy">2/29 생일(비윤년)</label>
+                    <select id="leapPolicy">
+                      <option value="0228" data-i18n="optLeap0228">2/28로</option>
+                      <option value="0301" data-i18n="optLeap0301">3/1로</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div>
+                    <label for="displayMode" data-i18n="labelDisplay">표시</label>
+                    <select id="displayMode">
+                      <option value="all" data-i18n="optDisplayAll">만/연/세는 모두</option>
+                      <option value="fullOnly" data-i18n="optDisplayFull">만 나이 우선</option>
+                    </select>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div class="btns">
+            <button class="primary" id="btnCalc" type="button" data-i18n="btnCalc">계산하기</button>
+            <button class="secondary" id="btnToday" type="button" data-i18n="btnToday">오늘 기준</button>
+            <button class="secondary" id="btnReset" type="button" data-i18n="btnReset">초기화</button>
+            <button class="secondary" id="btnCopy" type="button" data-i18n="btnCopy">결과 복사</button>
+            <button class="secondary" id="btnShare" type="button" data-i18n="btnShare">링크 복사</button>
+          </div>
+
+          <div class="result-area" id="resultArea">
+            <div class="result-main">
+              <div class="k" data-i18n="labelFullAge">만 나이</div>
+              <div class="v" id="fullAge">-</div>
+            </div>
+            <div class="result-sub">
+              <div class="mini" id="yearBox">
+                <div class="k" data-i18n="labelYearAge">연 나이</div>
+                <div class="v" id="yearAge">-</div>
+              </div>
+              <div class="mini" id="koreanBox">
+                <div class="k" data-i18n="labelKoreanAge">세는 나이</div>
+                <div class="v" id="koreanAge">-</div>
+              </div>
+            </div>
+            <div class="info" id="infoArea">
+              <div class="infoLine">
+                <span data-i18n="labelPassed">생일 지남</span>
+                <b id="passed">-</b>
+              </div>
+              <div class="infoLine">
+                <span data-i18n="labelNextBirthday">다음 생일</span>
+                <b id="nextBd">-</b>
+              </div>
+              <div class="infoLine">
+                <span data-i18n="labelDday">다음 생일까지</span>
+                <b id="dday">-</b>
+              </div>
+              <div class="infoLine">
+                <span data-i18n="labelPlusOne">만 나이 +1 되는 날</span>
+                <b id="plus1">-</b>
+              </div>
+            </div>
+          </div>
+          <div class="toast" id="toast"></div>
+        </div>
+
+        <!-- 탭: 나이 ↔ 출생년도 -->
+        <div id="tab-reverse" class="panel">
+          <div class="opt-inner" style="border: none; padding: 0;">
+            <div class="row" style="margin-bottom: 12px;">
+              <div>
+                <label for="revBase" data-i18n="labelBaseDate">기준일</label>
+                <input id="revBase" type="date" />
+                <div class="hint" data-i18n="dateHint">형식: YYYY-MM-DD</div>
+              </div>
+              <div>
+                <label for="revType" data-i18n="labelAgeType">나이 종류</label>
+                <select id="revType">
+                  <option value="year" data-i18n="labelYearAge">연 나이</option>
+                  <option value="korean" data-i18n="labelKoreanAge">세는 나이</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="revAge" data-i18n="labelAge">나이</label>
+                <input id="revAge" type="number" min="0" placeholder="예: 30" data-i18n-placeholder="placeholderAge" />
+              </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="btns">
+            <button class="primary" id="btnReverse" type="button" data-i18n="btnReverse">출생년도 계산</button>
+            <button class="secondary" id="btnReverseCopy" type="button" data-i18n="btnCopy">결과 복사</button>
+          </div>
+          <div class="result-main" style="margin-top: 16px;">
+            <div class="k" data-i18n="labelResult">결과</div>
+            <div class="v" id="revOut">-</div>
+            <div class="faq-content" id="revOutSub"></div>
+          </div>
+          <div class="toast" id="toast2"></div>
+        </div>
+      </main>
+
+      <section class="card">
+        <details class="faq" open>
+          <summary data-i18n="faq1Title">만 나이 / 연 나이 / 세는 나이 차이</summary>
+          <div class="faq-content" data-i18n-html="faq1Body">
+            <b>만 나이</b>는 생일 기준으로 1살씩 올라갑니다.<br />
+            <b>연 나이</b>는 “기준연도 − 출생연도”이고, <b>세는 나이</b>는 “기준연도 − 출생연도 + 1”입니다.
+          </div>
+        </details>
+        <details class="faq">
+          <summary data-i18n="faq2Title">2/29 생일은?</summary>
+          <div class="faq-content" data-i18n="faq2Body">비윤년에는 옵션으로 2/28 또는 3/1로 보정해 계산합니다.</div>
+        </details>
+        <details class="faq">
+          <summary data-i18n="faq3Title">공유 링크</summary>
+          <div class="faq-content" data-i18n="faq3Body">생년월일·기준일·옵션이 URL에 들어가서, 링크만 열면 그대로 복원됩니다.</div>
+        </details>
+        <div class="adsense-block">
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1204894220949193"
+            data-ad-slot="5145068706"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+        <a
+          class="more-services"
+          href="https://funnyfunny.cloud/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n="ctaMore"
+        >
+          다른 서비스 보기
+        </a>
+        <footer>© funnyfunny.cloud · birth.funnyfunny.cloud</footer>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        const i18n = {
+          ko: {
+            documentTitle: "나이 계산기 | 만·연·세는 나이 (birth.funnyfunny.cloud)",
+            title: "나이 계산기",
+            subtitle: "생년월일만 입력하면 만·연·세는 나이를 한 번에 계산해요",
+            tabCalc: "나이 계산",
+            tabReverse: "나이 ↔ 출생년도",
+            labelBirth: "생년월일",
+            labelBaseDate: "기준일",
+            toggleBase: "기준일 변경",
+            summaryBaseOptions: "기준일·옵션",
+            labelLeapPolicy: "2/29 생일(비윤년)",
+            optLeap0228: "2/28로",
+            optLeap0301: "3/1로",
+            labelDisplay: "표시",
+            optDisplayAll: "만/연/세는 모두",
+            optDisplayFull: "만 나이 우선",
+            btnCalc: "계산하기",
+            btnToday: "오늘 기준",
+            btnReset: "초기화",
+            btnCopy: "결과 복사",
+            btnShare: "링크 복사",
+            labelFullAge: "만 나이",
+            labelYearAge: "연 나이",
+            labelKoreanAge: "세는 나이",
+            labelPassed: "생일 지남",
+            labelNextBirthday: "다음 생일",
+            labelDday: "다음 생일까지",
+            labelPlusOne: "만 나이 +1 되는 날",
+            labelAgeType: "나이 종류",
+            labelAge: "나이",
+            placeholderAge: "예: 30",
+            btnReverse: "출생년도 계산",
+            labelResult: "결과",
+            dateHint: "형식: YYYY-MM-DD",
+            faq1Title: "만 나이 / 연 나이 / 세는 나이 차이",
+            faq1Body:
+              "<b>만 나이</b>는 생일 기준으로 1살씩 올라갑니다.<br /><b>연 나이</b>는 “기준연도 − 출생연도”이고, <b>세는 나이</b>는 “기준연도 − 출생연도 + 1”입니다.",
+            faq2Title: "2/29 생일은?",
+            faq2Body: "비윤년에는 옵션으로 2/28 또는 3/1로 보정해 계산합니다.",
+            faq3Title: "공유 링크",
+            faq3Body:
+              "생년월일·기준일·옵션이 URL에 들어가서, 링크만 열면 그대로 복원됩니다.",
+            ctaMore: "다른 서비스 보기",
+          },
+          en: {
+            documentTitle: "Age Calculator | Full, Calendar & Korean Age",
+            title: "Age Calculator",
+            subtitle:
+              "Enter your birth date to calculate full age, calendar age, and Korean age at once.",
+            tabCalc: "Calculate Age",
+            tabReverse: "Age ↔ Birth Year",
+            labelBirth: "Birth date",
+            labelBaseDate: "Base date",
+            toggleBase: "Change base date",
+            summaryBaseOptions: "Base date · Options",
+            labelLeapPolicy: "Feb 29 birthday (non‑leap year)",
+            optLeap0228: "Use Feb 28",
+            optLeap0301: "Use Mar 1",
+            labelDisplay: "Display",
+            optDisplayAll: "Show full/calendar/Korean",
+            optDisplayFull: "Full age first",
+            btnCalc: "Calculate",
+            btnToday: "Use today",
+            btnReset: "Reset",
+            btnCopy: "Copy result",
+            btnShare: "Copy link",
+            labelFullAge: "Full age",
+            labelYearAge: "Calendar age",
+            labelKoreanAge: "Korean age",
+            labelPassed: "Birthday passed",
+            labelNextBirthday: "Next birthday",
+            labelDday: "Days until birthday",
+            labelPlusOne: "Full age +1 date",
+            labelAgeType: "Age type",
+            labelAge: "Age",
+            placeholderAge: "e.g., 30",
+            btnReverse: "Calculate birth year",
+            labelResult: "Result",
+            dateHint: "Format: YYYY-MM-DD",
+            faq1Title: "Full vs calendar vs Korean age",
+            faq1Body:
+              "<b>Full age</b> increases on your birthday.<br /><b>Calendar age</b> is “base year − birth year”, and <b>Korean age</b> is “base year − birth year + 1”.",
+            faq2Title: "What about Feb 29 birthdays?",
+            faq2Body:
+              "In non‑leap years, you can adjust to Feb 28 or Mar 1 in the options.",
+            faq3Title: "Shareable link",
+            faq3Body:
+              "Birth date, base date, and options are stored in the URL so the page restores from the link.",
+            ctaMore: "Browse more services",
+          },
+        };
+
+        let currentLang = "ko";
+
+        function t(key) {
+          return (i18n[currentLang] && i18n[currentLang][key]) || key;
+        }
+
+        function applyTranslations() {
+          document.title = t("documentTitle");
+          document.documentElement.lang = currentLang;
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            if (key) el.textContent = t(key);
+          });
+          document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-html");
+            if (key) el.innerHTML = t(key);
+          });
+          document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-placeholder");
+            if (key) el.setAttribute("placeholder", t(key));
+          });
+        }
+
+        function setLanguage(lang, persist) {
+          if (!i18n[lang]) return;
+          currentLang = lang;
+          if (persist) {
+            localStorage.setItem("lang", lang);
+          }
+          document.querySelectorAll("input[type='date']").forEach((input) => {
+            input.setAttribute("lang", lang);
+          });
+          document.querySelectorAll(".lang-btn").forEach((btn) => {
+            const active = btn.dataset.lang === lang;
+            btn.classList.toggle("active", active);
+            btn.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          applyTranslations();
+        }
+
+        const $ = (id) => document.getElementById(id);
+        const storedLang = localStorage.getItem("lang");
+        const urlLang = new URLSearchParams(window.location.search).get("lang");
+        const browserLang = navigator.language?.toLowerCase().startsWith("en") ? "en" : "ko";
+        setLanguage(urlLang || storedLang || browserLang, false);
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.addEventListener("click", () => setLanguage(btn.dataset.lang, true));
+        });
+
+        function pad2(n) {
+          return String(n).padStart(2, "0");
+        }
+        function formatYMD(d) {
+          return (
+            d.getFullYear() +
+            "-" +
+            pad2(d.getMonth() + 1) +
+            "-" +
+            pad2(d.getDate())
+          );
+        }
+        /** URL/입력에서 들어온 생년월일을 항상 YYYY-MM-DD(4자리 연도)로 정규화.
+         *  - 6자리 YYMMDD(예: 900115) → 1990-01-15
+         *  - 8자리 YYYYMMDD(예: 19900115) → 1990-01-15
+         *  - YYYY-MM-DD는 그대로 반환. */
+        function normalizeToYMD(raw) {
+          if (!raw || typeof raw !== "string") return "";
+          const s = raw.trim().replace(/-/g, "");
+          if (/^\d{6}$/.test(s)) {
+            const yy = parseInt(s.slice(0, 2), 10);
+            const m = s.slice(2, 4);
+            const d = s.slice(4, 6);
+            const y = yy >= 0 && yy <= 30 ? 2000 + yy : 1900 + yy;
+            return y + "-" + m + "-" + d;
+          }
+          if (/^\d{8}$/.test(s)) {
+            return s.slice(0, 4) + "-" + s.slice(4, 6) + "-" + s.slice(6, 8);
+          }
+          return raw;
+        }
+
+        function parseLocalDate(ymd) {
+          if (!ymd || typeof ymd !== "string") return null;
+          const normalized = normalizeToYMD(ymd);
+          const parts = normalized.split("-").map(Number);
+          if (parts.length !== 3) return null;
+          const [y, m, d] = parts;
+          if (!y || !m || !d) return null;
+          const dt = new Date(y, m - 1, d);
+          if (
+            dt.getFullYear() !== y ||
+            dt.getMonth() !== m - 1 ||
+            dt.getDate() !== d
+          )
+            return null;
+          return dt;
+        }
+        function stripTime(d) {
+          return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        }
+        function daysBetween(a, b) {
+          const aa = stripTime(a).getTime();
+          const bb = stripTime(b).getTime();
+          return Math.round((bb - aa) / (1000 * 60 * 60 * 24));
+        }
+        function compareMonthDay(base, birth) {
+          const bm = base.getMonth() + 1,
+            bd = base.getDate();
+          const mm = birth.getMonth() + 1,
+            md = birth.getDate();
+          if (bm !== mm) return bm < mm ? -1 : 1;
+          if (bd !== md) return bd < md ? -1 : 1;
+          return 0;
+        }
+        function isLeapYear(y) {
+          return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+        }
+        function normalizeBirthdayInYear(birth, year, leapPolicy) {
+          const m = birth.getMonth();
+          const d = birth.getDate();
+          if (m === 1 && d === 29 && !isLeapYear(year)) {
+            if (leapPolicy === "0301") return new Date(year, 2, 1);
+            return new Date(year, 1, 28);
+          }
+          return new Date(year, m, d);
+        }
+        function calcAges(birth, base) {
+          const by = birth.getFullYear();
+          const y = base.getFullYear();
+          const yearAge = y - by;
+          const koreanAge = y - by + 1;
+          let fullAge = y - by;
+          const mdCmp = compareMonthDay(base, birth);
+          if (mdCmp === -1) fullAge -= 1;
+          const birthdayPassed = mdCmp >= 0;
+          return { fullAge, yearAge, koreanAge, birthdayPassed };
+        }
+        function nextBirthday(birth, base, leapPolicy) {
+          const y = base.getFullYear();
+          let nb = normalizeBirthdayInYear(birth, y, leapPolicy);
+          if (daysBetween(base, nb) < 0) {
+            nb = normalizeBirthdayInYear(birth, y + 1, leapPolicy);
+          }
+          return nb;
+        }
+        function setToast(el, msg, type) {
+          el.textContent = msg || "";
+          el.className = "toast " + (type || "");
+          if (msg) {
+            clearTimeout(el._t);
+            el._t = setTimeout(() => {
+              el.textContent = "";
+              el.className = "toast";
+            }, 2400);
+          }
+        }
+        async function copyText(text) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (e) {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand("copy");
+              document.body.removeChild(ta);
+              return true;
+            } catch (err) {
+              document.body.removeChild(ta);
+              return false;
+            }
+          }
+        }
+
+        const params = new URLSearchParams(location.search);
+        const today = formatYMD(new Date());
+        const initBirthRaw = params.get("b") || "";
+        const initBirth = normalizeToYMD(initBirthRaw) || initBirthRaw;
+        const initBase = params.get("d") || today;
+        const initLP = params.get("lp") || "0228";
+        const initDM = params.get("dm") || "all";
+        const initTab = params.get("tab") || "calc";
+
+        $("birth").value = initBirth;
+        $("base").value = initBase;
+        $("revBase").value = initBase;
+        $("leapPolicy").value = initLP;
+        $("displayMode").value = initDM;
+        $("pillBase").textContent = initBase;
+
+        const tabs = document.querySelectorAll(".tab");
+        function setTab(name) {
+          tabs.forEach((t) => {
+            const active = t.dataset.tab === name;
+            t.classList.toggle("active", active);
+            t.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          $("tab-calc").classList.toggle("on", name === "calc");
+          $("tab-reverse").classList.toggle("on", name === "reverse");
+          const u = new URL(location.href);
+          u.searchParams.set("tab", name);
+          history.replaceState(null, "", u.toString());
+        }
+        tabs.forEach((t) => {
+          t.addEventListener("click", () => setTab(t.dataset.tab));
+        });
+        setTab(initTab);
+
+        $("linkBaseToggle").addEventListener("click", (e) => {
+          e.preventDefault();
+          const el = $("baseCollapse");
+          el.style.display = el.style.display === "none" ? "block" : "none";
+        });
+
+        function applyDisplayMode() {
+          const dm = $("displayMode").value;
+          const showAll = dm === "all";
+          $("yearBox").style.display = showAll ? "" : "none";
+          $("koreanBox").style.display = showAll ? "" : "none";
+        }
+
+        function updateURLFromInputs() {
+          const u = new URL(location.href);
+          const b = $("birth").value;
+          const d = $("base").value;
+          const lp = $("leapPolicy").value;
+          const dm = $("displayMode").value;
+          if (b) u.searchParams.set("b", b);
+          else u.searchParams.delete("b");
+          if (d) u.searchParams.set("d", d);
+          else u.searchParams.delete("d");
+          u.searchParams.set("lp", lp);
+          u.searchParams.set("dm", dm);
+          history.replaceState(null, "", u.toString());
+        }
+
+        function renderEmpty() {
+          $("fullAge").textContent = "-";
+          $("yearAge").textContent = "-";
+          $("koreanAge").textContent = "-";
+          $("passed").textContent = "-";
+          $("nextBd").textContent = "-";
+          $("dday").textContent = "-";
+          $("plus1").textContent = "-";
+        }
+
+        function doCalc() {
+          applyDisplayMode();
+          updateURLFromInputs();
+          const toast = $("toast");
+          const birth = parseLocalDate($("birth").value);
+          const base = parseLocalDate($("base").value);
+          const lp = $("leapPolicy").value;
+          $("pillBase").textContent = $("base").value || today;
+
+          if (!birth || !base) {
+            renderEmpty();
+            setToast(toast, "생년월일과 기준일을 입력해 주세요.", "warn");
+            return;
+          }
+          if (birth.getTime() > base.getTime()) {
+            renderEmpty();
+            setToast(toast, "출생일이 기준일보다 이후입니다.", "bad");
+            return;
+          }
+
+          const ages = calcAges(birth, base);
+          const nb = nextBirthday(birth, base, lp);
+          const dday = daysBetween(base, nb);
+
+          $("fullAge").innerHTML = `만 ${ages.fullAge}세`;
+          $("yearAge").textContent = `${ages.yearAge}세`;
+          $("koreanAge").textContent = `${ages.koreanAge}세`;
+          $("passed").innerHTML = ages.birthdayPassed
+            ? `<span class="ok">예</span> <span class="mono" style="color:var(--muted)">(${formatYMD(base)})</span>`
+            : `<span class="warn">아니오</span> <span class="mono" style="color:var(--muted)">(${formatYMD(base)})</span>`;
+          $("nextBd").textContent = formatYMD(nb);
+          $("dday").textContent = `${dday}일`;
+          $("plus1").textContent = formatYMD(nb);
+          setToast(toast, "계산 완료.", "ok");
+        }
+
+        function doReverse() {
+          const toast = $("toast2");
+          const base = parseLocalDate($("revBase").value);
+          const type = $("revType").value;
+          const ageN = Number($("revAge").value);
+          if (!base) {
+            setToast(toast, "기준일을 입력해 주세요.", "warn");
+            return;
+          }
+          if (!Number.isFinite(ageN) || ageN < 0) {
+            setToast(toast, "나이를 올바르게 입력해 주세요.", "warn");
+            return;
+          }
+          const y = base.getFullYear();
+          let birthYear, label;
+          if (type === "year") {
+            birthYear = y - ageN;
+            label = "연 나이";
+          } else {
+            birthYear = y - (ageN - 1);
+            label = "세는 나이";
+          }
+          $("revOut").textContent = `${label} ${ageN}세 → ${birthYear}년생`;
+          $("revOutSub").innerHTML = `기준일 <span class="mono">${formatYMD(base)}</span> 기준 역산`;
+          setToast(toast, "출생년도 계산 완료.", "ok");
+        }
+
+        $("btnCalc").addEventListener("click", doCalc);
+        $("btnToday").addEventListener("click", () => {
+          $("base").value = today;
+          $("revBase").value = today;
+          $("pillBase").textContent = today;
+          doCalc();
+        });
+        $("btnReset").addEventListener("click", () => {
+          $("birth").value = "";
+          $("base").value = today;
+          $("revBase").value = today;
+          $("leapPolicy").value = "0228";
+          $("displayMode").value = "all";
+          $("revType").value = "year";
+          $("revAge").value = "";
+          $("revOut").textContent = "-";
+          $("revOutSub").textContent = "";
+          renderEmpty();
+          updateURLFromInputs();
+          setToast($("toast"), "초기화되었습니다.", "ok");
+        });
+        $("btnCopy").addEventListener("click", async () => {
+          const b = $("birth").value;
+          const d = $("base").value;
+          if (!b || !d) {
+            setToast($("toast"), "먼저 생년월일을 입력하고 계산해 주세요.", "warn");
+            return;
+          }
+          doCalc();
+          const line = `기준일 ${d} | 생년월일 ${b} | ${$("fullAge").textContent} / 연 ${$("yearAge").textContent} / 세는 ${$("koreanAge").textContent} | 다음 생일 ${$("nextBd").textContent} (D-${$("dday").textContent})`;
+          const ok = await copyText(line);
+          setToast($("toast"), ok ? "복사되었습니다." : "복사 실패.", ok ? "ok" : "bad");
+        });
+        $("btnShare").addEventListener("click", async () => {
+          updateURLFromInputs();
+          const ok = await copyText(location.href);
+          setToast($("toast"), ok ? "링크가 복사되었습니다." : "복사 실패.", ok ? "ok" : "bad");
+        });
+        $("btnReverse").addEventListener("click", doReverse);
+        $("btnReverseCopy").addEventListener("click", async () => {
+          const txt = $("revOut").textContent;
+          if (!txt || txt === "-") {
+            setToast($("toast2"), "먼저 출생년도 계산을 실행해 주세요.", "warn");
+            return;
+          }
+          const ok = await copyText(txt);
+          setToast($("toast2"), ok ? "복사되었습니다." : "복사 실패.", ok ? "ok" : "bad");
+        });
+
+        ["birth", "base", "leapPolicy", "displayMode"].forEach((id) => {
+          const el = $(id);
+          if (el) el.addEventListener("change", () => {
+            $("pillBase").textContent = $("base").value || today;
+            applyDisplayMode();
+            updateURLFromInputs();
+          });
+        });
+
+        applyDisplayMode();
+        if (initBirth) {
+          doCalc();
+        } else {
+          renderEmpty();
+        }
+      })();
+    </script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </body>
+</html>
