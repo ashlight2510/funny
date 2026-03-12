@@ -18,6 +18,8 @@ export const metadata = {
     "사교육비 시뮬레이션",
     "실수령액 계산",
     "4대보험 공제",
+    "출퇴근 비용 계산",
+    "카페 지출 역전",
   ],
   alternates: { canonical: "/calculators/" },
   openGraph: {

@@ -14,8 +14,10 @@ export const metadata = {
   keywords: [
     "FunnyFunny",
     "FunnyFunny Cloud",
+    "무료 실수령액 계산",
     "실수령액 계산",
     "4대보험 공제",
+    "급여명세서 보는법",
     "Should I rest now?",
     "rest check",
     "sleep helper",

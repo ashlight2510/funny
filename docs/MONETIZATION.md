@@ -123,10 +123,10 @@
 
 유입·수익이 나올 가능성이 높은 URL. Amplitude에서 유입 URL 순위 확인 시 참고.
 
-| 구분 | URL 예시 |
-|------|----------|
-| 진입 | `/`, `/calculators/`, `/tests/`, `/guide/` |
-| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/tax-calculator-how/`, `/guide/paystub-read-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` |
-| 고가치 도구 | `/tools/tax/`, `/tools/n/`, `/tools/rest/`, `/tools/bmi/`, `/tools/money/`, `/tools/cafe/`, `/tools/space/`, `/tools/commute/` |
+| 구분 | URL 예시 | 메타 보강 키워드(선택) |
+|------|----------|------------------------|
+| 진입 | `/`, `/calculators/`, `/tests/`, `/guide/` | 무료 실수령액·휴식 체크 / 출퇴근·카페 / 쉬어도 될까·자산 방탄 / 급여명세서·연말정산 |
+| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/tax-calculator-how/`, `/guide/paystub-read-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` | 이미 반영됨. 유입 상위만 title/desc 1개씩 추가 검토 |
+| 고가치 도구 | `/tools/tax/`, `/tools/n/`, `/tools/rest/`, `/tools/bmi/`, `/tools/money/`, `/tools/cafe/`, `/tools/space/`, `/tools/commute/` | sync-meta·audit-meta로 점검 후 부족 시 보강 |
 
 → 상위 10~20개 URL 메타·CTA·광고 노출만 다듬어도 수익에 도움됨. (자세한 GSC 절차는 `docs/SEARCH_CONSOLE.md` 참고.)

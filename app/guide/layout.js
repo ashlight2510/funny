@@ -29,6 +29,8 @@ export const metadata = {
     "BMI 계산 방법",
     "실수령액 계산 방법",
     "4대보험 공제 방법",
+    "급여명세서 보는법",
+    "연말정산 계산",
   ],
   alternates: { canonical: "/guide/" },
   openGraph: {
