@@ -113,6 +113,16 @@ export default function CalculatorsPage() {
             테스트 모음
           </a>
         </p>
+        <p className="mt-2 text-sm text-slate-500">
+          자주 찾는 가이드:{" "}
+          <a href="/guide/nbang-calculator-how/" className="text-sky-600 hover:underline">N빵 계산기</a>
+          {" · "}
+          <a href="/guide/year-end-tax-simple/" className="text-sky-600 hover:underline">연말정산·세금</a>
+          {" · "}
+          <a href="/guide/pyeong-calculator-how/" className="text-sky-600 hover:underline">평수 계산기</a>
+          {" · "}
+          <a href="/guide/dday-calculator-how/" className="text-sky-600 hover:underline">D-day 계산기</a>
+        </p>
       </main>
       <FooterSimple />
     </div>

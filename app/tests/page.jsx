@@ -113,6 +113,16 @@ export default function TestsPage() {
             계산기 모음
           </a>
         </p>
+        <p className="mt-2 text-sm text-slate-500">
+          자주 찾는 가이드:{" "}
+          <a href="/guide/rest-check-how/" className="text-sky-600 hover:underline">휴식 체크</a>
+          {" · "}
+          <a href="/guide/bmi-calculator-how/" className="text-sky-600 hover:underline">BMI 계산</a>
+          {" · "}
+          <a href="/guide/asset-shield-index/" className="text-sky-600 hover:underline">자산 방탄 지수</a>
+          {" · "}
+          <a href="/guide/daily-productivity-check/" className="text-sky-600 hover:underline">생산성 체크</a>
+        </p>
       </main>
       <FooterSimple />
     </div>
