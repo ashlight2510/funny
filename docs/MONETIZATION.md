@@ -1,5 +1,18 @@
 # 월 수익 올리기 체크리스트 (월천만원 목표)
 
+## 현황 요약
+
+| 구분 | 상태 | 비고 |
+|------|------|------|
+| **문서·도구** | ✅ 정리됨 | WEEKLY, SEO-checklist, DEPLOY_CHECK, check-deploy, list-priority-urls, audit-meta CI |
+| **기술 SEO** | ✅ 적용됨 | sitemap, robots, canonical, trailing slash, 구조화 데이터, 도구 메타 점검 |
+| **고가치 가이드·메타** | ✅ 반영됨 | 실수령액·4대보험·tax-calculator-how 등, 진입·가이드 인덱스 키워드 |
+| **이번 주 할 일 (실행)** | ⬜ 직접 진행 | Amplitude 유입 URL 확인, GSC Sitemap 제출·색인 요청, 상위 5개 페이지 메타 보강 |
+
+→ **문서/기술 준비는 된 상태.** 이제 **실제 SEO 실행**(GSC 제출, Amplitude 확인, 상위 페이지 메타 다듬기)을 하는 게 효과 큼.
+
+---
+
 ## 이번 주 할 일 (3가지)
 
 - [ ] **Amplitude** → 유입 URL 상위 10개 확인 후 이 문서 "상위 페이지 후보"와 비교.
