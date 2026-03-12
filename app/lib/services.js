@@ -1478,3 +1478,28 @@ export function getToolSlugs(lang = "en") {
 export function getToolPath(slug) {
   return `${TOOL_PATH_BASE}/tools/${slug}/`;
 }
+
+/** 계산기·변환·시뮬레이션 도구 슬러그 (랜딩 페이지용) */
+const CALCULATOR_SLUGS = [
+  "n", "tax", "space", "bit", "house", "commute", "birth", "day", "edu",
+  "nospend", "cafe", "drink", "waste", "year", "lotto", "average", "life",
+  "miracle", "baby",
+];
+
+/** 테스트·체크·진단 도구 슬러그 (랜딩 페이지용) */
+const TEST_SLUGS = [
+  "money", "coffee", "beauty", "cosmetics", "ego", "human", "alcohol", "lazy",
+  "mental", "product", "rest", "dailycheck", "melancholy", "energy", "drain",
+  "senseyear", "hairloss", "bmi", "specific", "invest", "next", "winter",
+  "today", "todo", "dream", "fortune", "heal", "need", "mind", "temple",
+];
+
+export function getCalculators(lang = "en") {
+  const services = getAllServices(lang);
+  return services.filter((s) => CALCULATOR_SLUGS.includes(hrefToSlug(s.href)));
+}
+
+export function getTests(lang = "en") {
+  const services = getAllServices(lang);
+  return services.filter((s) => TEST_SLUGS.includes(hrefToSlug(s.href)));
+}

@@ -45,11 +45,13 @@ export const metadata = {
   ],
   alternates: {
     canonical: "/",
+    languages: { "ko": "https://funnyfunny.cloud/", "en": "https://funnyfunny.cloud/" },
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://funnyfunny.cloud",
+    locale: "ko_KR",
+    alternateLocale: "en_US",
+    url: "https://funnyfunny.cloud/",
     siteName: "FunnyFunny Cloud",
     title: "FunnyFunny Cloud — Services that make your day smarter",
     description:
@@ -96,7 +98,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1204894220949193" />
         <meta

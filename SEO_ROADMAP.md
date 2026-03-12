@@ -16,6 +16,20 @@
 - **trailing slash**: 링크·사이트맵·구조화 데이터 URL 일관되게 `/` 로 끝나도록 통일
 - **404 리다이렉트**: `/tools/xxx` → `/tools/xxx/` 로 이동해 디렉터리 인덱스 활용
 
+### 1.1 고도화 적용 (전 페이지 구글 노출 극대화)
+
+- **가이드 페이지**: canonical·og:url을 `https://funnyfunny.cloud/guide/{slug}/` 로 통일(trailing slash), `openGraph.locale`(ko_KR)·alternateLocale(en_US), `robots` 명시
+- **정책 페이지**(privacy, terms, copyright, policy): `alternates.canonical`·og:url trailing slash 통일, description 보강, `robots: { index, follow }`
+- **메인·레이아웃**: `alternates.canonical`·`openGraph.url` trailing slash, `openGraph.locale: ko_KR`·alternateLocale, `alternates.languages`(ko/en), `<html lang="ko">` 기본
+- **가이드 구조화 데이터**: BreadcrumbList(Home → Guides → 가이드명) JSON-LD 추가 → SERP 브레드크럼 노출 가능
+- **사이트맵**: Next 규격에 맞게 `lastModified`·`changeFrequency` 사용으로 빌드 시 올바른 `<lastmod>`·`<changefreq>` 출력
+
+### 1.2 롱테일·랜딩·도구→가이드 링크 (적용 완료)
+
+- **금융·세금·건강 도구 메타**: money, tax, house, bit, specific, invest, health, hairloss, bmi, edu, nospend 등에 롱테일 문구 반영 (title 50~60자, description 150~160자, "무료 OOO" 키워드)
+- **카테고리 랜딩**: `/calculators/`(계산기 모음), `/tests/`(테스트 모음) 추가 — 사이트맵·푸터 링크 포함
+- **도구 푸터 "사용 가이드"**: rest, product, video, dailycheck, money, bit, house, tax, specific, hairloss, cafe, health, bmi, invest, edu, nospend 등에 `https://funnyfunny.cloud/guide/{guide-slug}/` 링크 추가
+
 ---
 
 ## 2. 단기 (1–2주): 즉시 효과
@@ -29,8 +43,8 @@
 → 이미 대부분 도구에 적용돼 있으면, **누락된 도구만** 점검·보완.
 
 ### 2.2 가이드–도구 내부 링크
-- 가이드 페이지 하단에 “이 도구 사용하기” → `/tools/{slug}/` 링크
-- 도구 페이지 또는 푸터에 “사용 가이드” → `/guide/{guide-slug}/` 링크 (해당 가이드가 있으면)
+- **가이드 → 도구**: 가이드 CTA가 같은 도메인 `/tools/{slug}/` 로 연결됨 (GuidePageClient·가이드 인덱스).
+- **도구 → 가이드**: 푸터 "사용 가이드" → `https://funnyfunny.cloud/guide/{guide-slug}/` 적용 예: rest, product.
 - **효과**: 크롤 효율 + 체류 시간 + 키워드 연관성
 
 ### 2.3 Google Search Console
@@ -82,9 +96,13 @@
 ## 5. 체크리스트 (배포 전)
 
 - [ ] `yarn build` 후 `out/robots.txt`, `out/sitemap.xml` 존재
+- [ ] `out/sitemap.xml` 에 `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>` 포함 여부 확인
 - [ ] `out/tools/{slug}/index.html` 에 canonical·og:url 이 `https://funnyfunny.cloud/tools/{slug}/`
 - [ ] 메인 페이지 HTML에 ItemList(All Tools), WebApplication, FAQPage 등 구조화 데이터 포함
-- [ ] GSC에 sitemap 제출 후 “제출됨” 상태 확인
+- [ ] 가이드 페이지에 FAQPage + BreadcrumbList JSON-LD 포함
+- [ ] 모든 앱 페이지(/, /guide/*, /privacy/, /terms/, /copyright/, /policy/) canonical·og:url trailing slash 일치
+- [ ] GSC에 sitemap 제출: `https://funnyfunny.cloud/sitemap.xml` → “제출됨” 상태 확인
+- [ ] GSC “URL 검사”로 메인·인기 도구·가이드 색인 요청
 
 ---
 

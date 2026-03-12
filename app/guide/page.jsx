@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FooterSimple } from "../components/FooterSimple";
 import { HeaderSimple } from "../components/HeaderSimple";
 import { guides } from "./guides";
-import { getSeoGuides } from "../lib/services";
+import { getSeoGuides, hrefToSlug, getToolPath } from "../lib/services";
 
 const guidePageCopy = {
   ko: {
@@ -78,7 +78,7 @@ export default function GuideIndexPage() {
             {seoGuides.map((guide) => (
               <a
                 key={guide.slug}
-                href={`/guide/${guide.slug}`}
+                href={`/guide/${guide.slug}/`}
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-semibold text-slate-700 hover:border-blue-400 hover:text-blue-700 transition"
               >
                 <span>{guide.emoji}</span>
@@ -118,19 +118,25 @@ export default function GuideIndexPage() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                   <a
-                    href={`/guide/${guide.slug}`}
+                    href={`/guide/${guide.slug}/`}
                     className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold shadow-md hover:-translate-y-0.5 transition"
                   >
                     {t("readGuide")}
                   </a>
-                  <a
-                    href={fullGuide.serviceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
-                  >
-                    {t("openService")}
-                  </a>
+                  {(() => {
+                    const toolPath = getToolPath(hrefToSlug(fullGuide.serviceUrl));
+                    const openHref = toolPath || fullGuide.serviceUrl;
+                    const isExternal = !toolPath;
+                    return (
+                      <a
+                        href={openHref}
+                        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+                      >
+                        {t("openService")}
+                      </a>
+                    );
+                  })()}
                 </div>
               </article>
             );

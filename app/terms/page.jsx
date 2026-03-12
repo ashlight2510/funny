@@ -2,20 +2,25 @@
 import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
+const BASE = 'https://funnyfunny.cloud';
+
 export const metadata = {
   title: 'Terms of Service — FunnyFunny Cloud',
-  description: 'FunnyFunny Cloud terms of service',
+  description: 'FunnyFunny Cloud terms of service. Use of calculators, tests, and utility tools.',
+  alternates: { canonical: '/terms/' },
   openGraph: {
     type: 'website',
-    url: 'https://funnyfunny.cloud/terms',
+    url: `${BASE}/terms/`,
     title: 'Terms of Service — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud terms of service'
+    description: 'FunnyFunny Cloud terms of service.',
+    siteName: 'FunnyFunny Cloud',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Terms of Service — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud terms of service'
-  }
+    description: 'FunnyFunny Cloud terms of service.',
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {

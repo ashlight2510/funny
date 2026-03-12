@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FooterSimple } from "../../components/FooterSimple";
 import { HeaderSimple } from "../../components/HeaderSimple";
 import { guides, getGuide } from "../guides";
-import { getSeoGuides } from "../../lib/services";
+import { getSeoGuides, hrefToSlug, getToolPath } from "../../lib/services";
 import { pageCopy } from "../../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../../lib/i18n";
 
@@ -43,6 +43,12 @@ export function GuidePageClient({ guide }) {
   const guideCtaLabel = translatedGuide.ctaLabel;
   const guideDisclaimer = translatedGuide.disclaimer || null;
 
+  // SEO: 같은 도메인 /tools/{slug}/ 로 연결해 크롤·링크 균형 유지
+  const toolSlug = hrefToSlug(guide.serviceUrl);
+  const toolPath = toolSlug ? getToolPath(toolSlug) : null;
+  const ctaHref = toolPath || guide.serviceUrl;
+  const ctaExternal = !toolPath;
+
   // 언어별로 변환된 다른 가이드들
   const otherGuides = guides
     .filter(({ slug }) => slug !== guide.slug)
@@ -70,6 +76,16 @@ export function GuidePageClient({ guide }) {
         text: item.answer,
       },
     })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "FunnyFunny Cloud", item: "https://funnyfunny.cloud/" },
+      { "@type": "ListItem", position: 2, name: "Guides", item: "https://funnyfunny.cloud/guide/" },
+      { "@type": "ListItem", position: 3, name: guideTitle, item: `https://funnyfunny.cloud/guide/${guide.slug}/` },
+    ],
   };
 
   return (
@@ -103,9 +119,8 @@ export function GuidePageClient({ guide }) {
           </div>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <a
-              href={guide.serviceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ctaHref}
+              {...(ctaExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold shadow-md hover:-translate-y-0.5 hover:shadow-lg transition"
             >
               {guideCtaLabel}
@@ -222,6 +237,12 @@ export function GuidePageClient({ guide }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
         }}
       />
     </div>

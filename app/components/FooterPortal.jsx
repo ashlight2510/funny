@@ -71,9 +71,31 @@ export function FooterPortal({ t }) {
           </div>
 
           <div className="text-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+              <a
+                href="/guide/"
+                className="text-sm text-sky-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
+              >
+                가이드
+              </a>
+              <span className="text-white/40">·</span>
+              <a
+                href="/calculators/"
+                className="text-sm text-sky-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
+              >
+                계산기 모음
+              </a>
+              <span className="text-white/40">·</span>
+              <a
+                href="/tests/"
+                className="text-sm text-sky-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
+              >
+                테스트 모음
+              </a>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
               <a
-                href="/privacy"
+                href="/privacy/"
                 className="text-sm text-slate-200 hover:text-white hover:underline transition-colors px-3 py-1 rounded-md hover:bg-white/10"
               >
                 {getText("footerLinkPrivacy", "Privacy Policy")}

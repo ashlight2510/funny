@@ -2,20 +2,25 @@
 import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
+const BASE = 'https://funnyfunny.cloud';
+
 export const metadata = {
   title: 'Copyright Notice — FunnyFunny Cloud',
-  description: 'FunnyFunny Cloud copyright notice',
+  description: 'FunnyFunny Cloud copyright notice and intellectual property policy.',
+  alternates: { canonical: '/copyright/' },
   openGraph: {
     type: 'website',
-    url: 'https://funnyfunny.cloud/copyright',
+    url: `${BASE}/copyright/`,
     title: 'Copyright Notice — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud copyright notice'
+    description: 'FunnyFunny Cloud copyright notice.',
+    siteName: 'FunnyFunny Cloud',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Copyright Notice — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud copyright notice'
-  }
+    description: 'FunnyFunny Cloud copyright notice.',
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function CopyrightPage() {

@@ -1,20 +1,25 @@
 import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
+const BASE = 'https://funnyfunny.cloud';
+
 export const metadata = {
   title: 'Operations Policy — FunnyFunny Cloud',
-  description: 'Operations policy and community guidelines for FunnyFunny Cloud',
+  description: 'Operations policy and community guidelines for FunnyFunny Cloud.',
+  alternates: { canonical: '/policy/' },
   openGraph: {
     type: 'website',
-    url: 'https://funnyfunny.cloud/policy',
+    url: `${BASE}/policy/`,
     title: 'Operations Policy — FunnyFunny Cloud',
-    description: 'Operations policy and community guidelines for FunnyFunny Cloud'
+    description: 'Operations policy and community guidelines for FunnyFunny Cloud.',
+    siteName: 'FunnyFunny Cloud',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Operations Policy — FunnyFunny Cloud',
-    description: 'Operations policy and community guidelines for FunnyFunny Cloud'
-  }
+    description: 'Operations policy and community guidelines for FunnyFunny Cloud.',
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function PolicyPage() {

@@ -2,20 +2,25 @@
 import { HeaderSimple } from '../components/HeaderSimple';
 import { FooterSimple } from '../components/FooterSimple';
 
+const BASE = 'https://funnyfunny.cloud';
+
 export const metadata = {
   title: 'Privacy Policy — FunnyFunny Cloud',
-  description: 'FunnyFunny Cloud privacy policy',
+  description: 'FunnyFunny Cloud privacy policy. How we handle personal information, cookies, and your rights.',
+  alternates: { canonical: '/privacy/' },
   openGraph: {
     type: 'website',
-    url: 'https://funnyfunny.cloud/privacy',
+    url: `${BASE}/privacy/`,
     title: 'Privacy Policy — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud privacy policy'
+    description: 'FunnyFunny Cloud privacy policy. How we handle personal information, cookies, and your rights.',
+    siteName: 'FunnyFunny Cloud',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Privacy Policy — FunnyFunny Cloud',
-    description: 'FunnyFunny Cloud privacy policy'
-  }
+    description: 'FunnyFunny Cloud privacy policy.',
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {

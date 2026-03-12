@@ -3,7 +3,10 @@ import { HomeContent } from "./components/HomeContent";
 export const metadata = {
   title: "FunnyFunny Cloud — Services that make your day smarter",
   description:
-    "FunnyFunny Cloud helps you review everyday spending, time, and habits with simple tests and calculators.",
+    "FunnyFunny Cloud helps you review everyday spending, time, and habits with simple tests and calculators. Free tests, calculators, and utility tools for productivity, finance, and lifestyle.",
+  alternates: { canonical: "/" },
+  openGraph: { url: "https://funnyfunny.cloud/" },
+  robots: { index: true, follow: true, googleBot: { "max-image-preview": "large" } },
   keywords: [
     "FunnyFunny",
     "FunnyFunny Cloud",
