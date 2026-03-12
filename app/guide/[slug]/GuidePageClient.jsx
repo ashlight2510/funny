@@ -223,6 +223,9 @@ export function GuidePageClient({ guide }) {
             >
               👎
             </button>
+            {feedbackSent && (
+              <span className="ml-2 text-sm text-slate-500">의견 감사합니다.</span>
+            )}
           </div>
         </section>
 
@@ -246,12 +249,12 @@ export function GuidePageClient({ guide }) {
 
         <div
           className="flex justify-center my-8 min-h-[100px]"
-          style={{ minWidth: 250 }}
+          style={{ minWidth: 250, minHeight: 90 }}
           aria-hidden="true"
         >
           <ins
             className="adsbygoogle"
-            style={{ display: "block" }}
+            style={{ display: "block", minHeight: 90 }}
             data-ad-client="ca-pub-1204894220949193"
             data-ad-slot="7300458753"
             data-ad-format="auto"

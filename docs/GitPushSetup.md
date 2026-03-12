@@ -2,6 +2,7 @@
 
 - **메타 audit**: `npm run audit-meta` — 도구별 og:title·description·title/desc 길이 점검. 실패 시 exit 1.
 - **배포 전 점검**: `npm run check-deploy` — audit-meta + out/robots.txt·sitemap.xml·out/tools/ 검사 (yarn build 후 실행).
+- **도구 공유 버튼**: `node scripts/add-share-to-tools.mjs` — 도구 페이지에 "링크 복사" 추가 (이미 적용됨, 새 도구 추가 후 필요 시 재실행).
 - **메타 동기화**: `npm run sync-meta` — services.js 기준으로 도구 HTML 메타 덮어쓰기 (title 10자·description 50자 미만 시 접미어 보강).
 - **Lighthouse**: `npm run lighthouse` — https://funnyfunny.cloud 성능·접근성·권장사항·SEO 점검, `lighthouse-report.html` 생성 (gitignore됨).
 - **우선순위 URL 목록**: `npm run list-priority-urls` — GSC URL 검사·Amplitude 확인용 URL 한 줄씩 출력.

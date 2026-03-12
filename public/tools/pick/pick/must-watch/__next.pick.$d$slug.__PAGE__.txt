@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+3:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"d49ezBC_39FqxbPc34UMh","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"max-w-6xl mx-auto px-4 py-10","children":[["$","h1",null,{"className":"text-2xl font-bold mb-2","children":"페이지를 찾을 수 없습니다."}],["$","$L2",null,{"href":"/","className":"text-blue-600 underline","children":"홈으로 돌아가기"}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null

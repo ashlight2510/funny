@@ -46,11 +46,23 @@ function parseGuideToToolMap(content) {
   return map;
 }
 
-const FOOTER_TEMPLATE = (guideSlug) =>
-  `<div style="text-align:center;margin:16px 0;font-size:14px;"><a href="https://funnyfunny.cloud/guide/${guideSlug}/">사용 가이드</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>\n`;
+/** 상위 도구에 노출할 추가 가이드 (메인과 다른 가이드만; slug → [{ slug, label }]) */
+const EXTRA_GUIDE_LINKS = {
+  tax: [{ slug: "paystub-read-how", label: "급여명세서" }],
+};
 
-function injectFooter(html, guideSlug) {
-  const footer = FOOTER_TEMPLATE(guideSlug);
+function buildFooter(guideSlug, toolSlug) {
+  const base = `<a href="https://funnyfunny.cloud/guide/${guideSlug}/">사용 가이드</a>`;
+  const extras = EXTRA_GUIDE_LINKS[toolSlug];
+  const extraLinks = extras
+    ? extras.map((e) => `<a href="https://funnyfunny.cloud/guide/${e.slug}/">${e.label}</a>`).join(" · ")
+    : "";
+  const middle = extraLinks ? ` · ${extraLinks}` : "";
+  return `<div style="text-align:center;margin:16px 0;font-size:14px;">${base}${middle} · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>\n`;
+}
+
+function injectFooter(html, guideSlug, toolSlug) {
+  const footer = buildFooter(guideSlug, toolSlug || "");
   if (html.includes("사용 가이드") || html.includes(`guide/${guideSlug}`)) {
     return null;
   }
@@ -85,7 +97,7 @@ function main() {
       continue;
     }
     const html = fs.readFileSync(indexPath, "utf8");
-    const newHtml = injectFooter(html, guideSlug);
+    const newHtml = injectFooter(html, guideSlug, toolSlug);
     if (newHtml === null) {
       skipped++;
       continue;

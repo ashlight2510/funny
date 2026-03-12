@@ -19,7 +19,8 @@
 | `list-priority-urls` | GSC·Amplitude용 우선순위 URL 목록 한 줄씩 출력 |
 | `add-og-meta.mjs` | OG 없는 도구에 메타 일괄 추가 (직접 실행) |
 | `add-missing-description.mjs` | description 없는 도구에만 description 추가 (직접 실행) |
-| `add-guide-links.mjs` | 가이드 있는 도구 푸터에 "사용 가이드" 링크 추가 (직접 실행) |
+| `add-guide-links.mjs` | 가이드 있는 도구 푸터에 "사용 가이드"(·추가 가이드) 링크 추가 (직접 실행) |
+| `add-share-to-tools.mjs` | 도구 index.html에 "링크 복사" 공유 버튼 추가 (직접 실행, --dry-run 지원) |
 
 ## 다음 액션
 1. GSC에서 Sitemap 제출·상위 URL 색인 요청 (`npm run list-priority-urls` 로 URL 복사)
