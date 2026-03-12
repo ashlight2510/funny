@@ -65,18 +65,37 @@ export function GuidePageClient({ guide }) {
       };
     });
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: guideFaq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
+  const faqJsonLd =
+    Array.isArray(guideFaq) && guideFaq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: guideFaq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
+  const howToJsonLd =
+    Array.isArray(guideSections) && guideSections.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: guideTitle,
+          description: guideDesc,
+          step: guideSections.map((s, i) => ({
+            "@type": "HowToStep",
+            position: i + 1,
+            name: s.heading,
+            text: (s.body || []).join(" ").slice(0, 500),
+          })),
+        }
+      : null;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -233,12 +252,18 @@ export function GuidePageClient({ guide }) {
         </section>
       </main>
       <FooterSimple />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd),
-        }}
-      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
+      {howToJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
