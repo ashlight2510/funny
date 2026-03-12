@@ -141,6 +141,14 @@ export function GuidePageClient({ guide }) {
               href={ctaHref}
               {...(ctaExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold shadow-md hover:-translate-y-0.5 hover:shadow-lg transition"
+              onClick={() => {
+                try {
+                  window.amplitude?.track?.("guide_cta_click", {
+                    guide_slug: guide.slug,
+                    cta_url: ctaHref,
+                  });
+                } catch (_) {}
+              }}
             >
               {guideCtaLabel}
             </a>

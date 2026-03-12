@@ -31,13 +31,29 @@ export const metadata = {
 
 const FEATURED_TEST_SLUGS = ["rest", "product", "money", "bmi", "dailycheck", "senseyear"];
 
+const itemListJsonLd = (items) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "무료 테스트·체크 모음",
+  description: "자산·커피·생산성·마음·휴식 등 무료 테스트·진단·체크 목록",
+  numberOfItems: items.length,
+  itemListElement: items.map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: t.title,
+    url: `${BASE}/tools/${hrefToSlug(t.href)}/`,
+  })),
+});
+
 export default function TestsPage() {
   const tools = getTests("ko");
   const featured = tools.filter((t) =>
     FEATURED_TEST_SLUGS.includes(hrefToSlug(t.href))
   );
+  const jsonLd = itemListJsonLd(tools);
   return (
     <div className="bg-slate-50 text-slate-900 min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">

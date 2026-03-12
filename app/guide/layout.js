@@ -1,4 +1,20 @@
+import { guides } from "./guides";
+
 const BASE = "https://funnyfunny.cloud";
+
+const guideListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "FunnyFunny Cloud 가이드 모음",
+  description: "계산기·테스트·도구 사용법 가이드 목록",
+  numberOfItems: guides.length,
+  itemListElement: guides.slice(0, 150).map((g, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: g.title,
+    url: `${BASE}/guide/${g.slug}/`,
+  })),
+};
 
 export const metadata = {
   title: "사용 가이드 모음 | 계산기·테스트·도구 사용법",
@@ -25,5 +41,13 @@ export const metadata = {
 };
 
 export default function GuideLayout({ children }) {
-  return children;
+  return (
+    <>
+      {children}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(guideListJsonLd) }}
+      />
+    </>
+  );
 }

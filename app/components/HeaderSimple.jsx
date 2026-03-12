@@ -20,6 +20,8 @@ export function HeaderSimple({ lang, onLangChange, t }) {
                 key={code}
                 type="button"
                 onClick={() => onLangChange(code)}
+                aria-label={label}
+                aria-pressed={lang === code}
                 className={`px-2 py-1 rounded-full transition ${
                   lang === code
                     ? "bg-slate-900 text-white font-semibold"
@@ -37,7 +39,7 @@ export function HeaderSimple({ lang, onLangChange, t }) {
           <a href="/" className="text-xl font-bold">
             FunnyFunny Cloud
           </a>
-          <nav className="space-x-4 text-sm hidden sm:flex">
+          <nav className="space-x-4 text-sm hidden sm:flex" aria-label="주 메뉴">
             <a href="/" className="hover:text-blue-600">
               {t ? t("homeLabel") || "Home" : "Home"}
             </a>

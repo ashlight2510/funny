@@ -100,6 +100,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <head>
+        <link rel="preconnect" href="https://cdn.amplitude.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <meta name="google-adsense-account" content="ca-pub-1204894220949193" />
         <meta
           property="og:image"
@@ -199,6 +202,18 @@ export default function RootLayout({ children }) {
           autocapture: { elementInteractions: true }
         });
         window.__ffAmplitudeInitialized = true;
+        if (typeof window.onerror === 'function') {
+          var orig = window.onerror;
+          window.onerror = function(msg, url, line, col, err) {
+            try { window.amplitude?.track?.('client_error', { message: msg, filename: url, lineno: line, colno: col }); } catch (_) {}
+            return orig ? orig(msg, url, line, col, err) : false;
+          };
+        } else {
+          window.onerror = function(msg, url, line, col) {
+            try { window.amplitude?.track?.('client_error', { message: msg, filename: url, lineno: line, colno: col }); } catch (_) {}
+            return false;
+          };
+        }
       } catch (error) {
         console.error('Amplitude init failed', error);
       }
