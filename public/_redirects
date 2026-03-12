@@ -1,0 +1,2 @@
+# /tools/xxx (끝에 슬래시 없음) -> /tools/xxx/ 301 (Netlify 등)
+/tools/*  /tools/:splat/  301

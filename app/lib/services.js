@@ -1476,5 +1476,5 @@ export function getToolSlugs(lang = "en") {
 }
 
 export function getToolPath(slug) {
-  return `${TOOL_PATH_BASE}/tools/${slug}`;
+  return `${TOOL_PATH_BASE}/tools/${slug}/`;
 }
