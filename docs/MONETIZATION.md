@@ -3,10 +3,27 @@
 ## 이번 주 할 일 (3가지)
 
 - [ ] **Amplitude** → 유입 URL 상위 10개 확인 후 이 문서 "상위 페이지 후보"와 비교.
-- [ ] **Google Search Console** → Sitemap 제출(`https://funnyfunny.cloud/sitemap.xml`), 상위 5개 URL 검사·색인 요청. (`node scripts/list-priority-urls.mjs` 로 URL 목록 출력 가능.)
+- [ ] **Google Search Console** → Sitemap 제출(`https://funnyfunny.cloud/sitemap.xml`), 상위 5개 URL 검사·색인 요청. (`npm run list-priority-urls` 로 URL 목록 출력 가능.)
 - [ ] **상위 5개 페이지** → 메타(title/description)에 검색 키워드 1개씩 자연스럽게 보강. (진입 4페이지 + 가이드 인덱스에 실수령액·4대보험·휴식 체크 등 키워드 반영 완료.)
 
 **다음 주**: Amplitude에서 `guide_helpful`(👍/👎)·`guide_cta_click` 비율 확인 → 만족도·전환 높은 가이드에 광고·내부 링크 우선 배치 검토.
+
+### 이번 주 할 일 — 직접 진행 가이드
+
+**1. Amplitude 유입 URL 확인**
+
+1. [Amplitude](https://analytics.amplitude.com) 로그인 → 해당 프로젝트 선택.
+2. **Analytics** → **Events** 또는 **User Composition** 등에서 **페이지/URL 기준** 보고서 선택.
+3. 이벤트 `page_view`(또는 메인 페이지뷰 이벤트) 기준으로 **속성: URL 또는 path** 로 그룹핑.
+4. 상위 10개 URL·path 확인 후 아래 "상위 페이지 후보" 표와 비교 → 유입 많은데 메타·CTA가 약한 페이지부터 보강.
+
+**2. GSC Sitemap 제출·색인 요청**
+
+1. [Google Search Console](https://search.google.com/search-console) → 속성 `https://funnyfunny.cloud` 선택.
+2. **Sitemaps** 메뉴 → "새 사이트맵 추가"에 `sitemap.xml` 입력 후 제출. (전체 URL은 `https://funnyfunny.cloud/sitemap.xml`)
+3. 상위 URL 색인 요청: **URL 검사** 상단에 아래에서 복사한 URL 붙여넣기 → "색인 생성 요청".  
+   터미널에서 `npm run list-priority-urls` 실행하면 GSC·Amplitude용 우선 URL이 한 줄씩 출력됨. 상위 5~10개만 해도 됨.
+4. 자세한 절차·확인 항목: `docs/SEARCH_CONSOLE.md` 참고.
 
 ---
 
@@ -40,16 +57,22 @@
 
 - **메인**: layout에 1블록 (유동). 상단/중간 노출 확인.
 - **도구**: 각 툴 index.html에 AdSense 있는지 확인. **결과 페이지**(rest/result, money/result 등)에도 있으면 페이지뷰당 노출 증가.
-- **가이드**: funnyfunny.cloud 도메인 가이드 페이지는 현재 광고 없음. 메인·도구에서 이득이 나오면, 가이드 하단에 1블록 추가 검토(정책 확인 후).
+- **가이드**: layout 하단 1블록 + 본문 중간 1블록 적용됨 (GuidePageClient.jsx, §3.1 참고).
 
-### 3.1 광고 배치 현황 (참고)
+### 3.1 가이드 페이지 광고 1블록 (정책 확인 후 검토)
+
+- **정책 요약**: AdSense는 본문 근처 배치 허용. 단, "클릭 유도 문구·화살표·애니메이션 금지", "콘텐츠와 광고 구분 가능해야 함", "다운로드·재생 버튼 옆 배치 금지" 등 준수 필요. ([Ad placement policies](https://support.google.com/adsense/answer/1346295))
+- **권장 위치**: 가이드 본문 **섹션 1~2 다음**(본문 중간) 또는 **CTA 버튼 위** 1블록. layout에 이미 하단 1블록이 있으므로, 가이드 전용 추가분은 "본문 중간" 1블록만 두는 구성 권장.
+- **적용 완료**: `GuidePageClient.jsx`에 본문 섹션 직후·disclaimer 전 1블록 추가(슬롯 7300458753). 배치 후 육안으로 "콘텐츠 가리지 않음·클릭 유도 없음" 확인 권장.
+
+### 3.2 광고 배치 현황 (참고)
 
 | 위치 | 슬롯 | 비고 |
 |------|------|------|
 | 메인 (layout) | 1블록 fluid | body 중간 |
 | 도구 (일부) | 7300458753 / 5145068706 / 6458150379 등 | tax, bmi, rest, money, alcohol, bit, time, house, run, tet, video, audio, cook, average, today, next, file, mental, music, joke, snaptrail, dailycheck, ego, drain, miracle 등 |
 | 도구 결과페이지 | rest/result, money/result, ego/result, dailycheck/result, drain/result, miracle/result 등 | 본문 중간 adContainer |
-| 가이드 (funnyfunny.cloud) | 없음 | 정책 확인 후 검토 |
+| 가이드 (funnyfunny.cloud) | layout 하단 1블록 + 본문 중간 1블록 | 슬롯 7300458753 (위 3.1 참고) |
 
 ## 4. 제휴·추가 수익 (선택)
 
@@ -75,6 +98,8 @@
 
 ## 7. 다음 액션 (주간 체크)
 
+한눈에 보기: [WEEKLY.md](./WEEKLY.md)
+
 1. **Amplitude** → 이벤트 `page_view` 또는 유입 URL 상위 10개 확인. (필요 시 User Path로 가이드→도구 전환 구간 확인.)
 2. **상위 URL** 해당 페이지 메타(title/description)에 검색 키워드 1~2개 자연스럽게 보강.
 3. **Google Search Console** → Sitemap 제출: `https://funnyfunny.cloud/sitemap.xml` 등록·색인 요청.
@@ -87,7 +112,7 @@
 | 구분 | URL 예시 |
 |------|----------|
 | 진입 | `/`, `/calculators/`, `/tests/`, `/guide/` |
-| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` |
+| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/tax-calculator-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` |
 | 고가치 도구 | `/tools/tax/`, `/tools/n/`, `/tools/rest/`, `/tools/bmi/`, `/tools/money/`, `/tools/cafe/`, `/tools/space/`, `/tools/commute/` |
 
 → 상위 10~20개 URL 메타·CTA·광고 노출만 다듬어도 수익에 도움됨. (자세한 GSC 절차는 `docs/SEARCH_CONSOLE.md` 참고.)

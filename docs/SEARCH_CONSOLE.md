@@ -19,6 +19,7 @@
 - `https://funnyfunny.cloud/guide/four-insurance-deduction-how/`
 - `https://funnyfunny.cloud/guide/nbang-calculator-how/`
 - `https://funnyfunny.cloud/guide/year-end-tax-simple/`
+- `https://funnyfunny.cloud/guide/tax-calculator-how/`
 - `https://funnyfunny.cloud/tools/tax/`
 - `https://funnyfunny.cloud/tools/n/`
 - `https://funnyfunny.cloud/tools/rest/`

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FooterSimple } from "../../components/FooterSimple";
 import { HeaderSimple } from "../../components/HeaderSimple";
 import { guides, getGuide } from "../guides";
@@ -12,6 +12,7 @@ export function GuidePageClient({ guide }) {
   const [lang, setLang] = useState(defaultLang);
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
+  const guideAdRef = useRef(false);
 
   const translationPack = pageCopy[lang] || pageCopy[defaultLang];
   const fallbackPack = pageCopy[defaultLang];
@@ -28,6 +29,15 @@ export function GuidePageClient({ guide }) {
     document.documentElement.lang = lang;
     window.localStorage?.setItem("preferredLang", lang);
   }, [lang]);
+
+  // 가이드 본문 중간 광고 1블록 (layout 스크립트가 큐를 처리할 때 채움)
+  useEffect(() => {
+    if (guideAdRef.current || typeof window === "undefined") return;
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      guideAdRef.current = true;
+    } catch (_) {}
+  }, []);
 
   const t = (key, vars = {}) =>
     formatTemplate(translationPack[key] ?? fallbackPack[key] ?? key, vars);
@@ -233,6 +243,21 @@ export function GuidePageClient({ guide }) {
             </article>
           ))}
         </section>
+
+        <div
+          className="flex justify-center my-8 min-h-[100px]"
+          style={{ minWidth: 250 }}
+          aria-hidden="true"
+        >
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-client="ca-pub-1204894220949193"
+            data-ad-slot="7300458753"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        </div>
 
         {guideDisclaimer && (
           <section className="bg-amber-50 text-amber-900 border border-amber-200 rounded-3xl p-5 sm:p-6 shadow-sm">

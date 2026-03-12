@@ -95,8 +95,9 @@
 
 ## 5. 체크리스트 (배포 전)
 
-- [ ] `yarn build` 후 `out/robots.txt`, `out/sitemap.xml` 존재
-- [ ] `out/sitemap.xml` 에 `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>` 포함 여부 확인
+- [ ] `yarn build` 후 `npm run check-deploy` 실행 — 도구 메타(audit-meta) + out/robots.txt·sitemap.xml·sitemap 내 `<loc>`·`<lastmod>`·out/tools/ 개수 자동 점검.
+- [ ] (또는 수동) `out/robots.txt`, `out/sitemap.xml` 존재
+- [ ] (또는 수동) `out/sitemap.xml` 에 `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>` 포함 여부 확인
 - [ ] `out/tools/{slug}/index.html` 에 canonical·og:url 이 `https://funnyfunny.cloud/tools/{slug}/`
 - [ ] 메인 페이지 HTML에 ItemList(All Tools), WebApplication, FAQPage 등 구조화 데이터 포함
 - [ ] 가이드 페이지에 FAQPage + BreadcrumbList JSON-LD 포함
@@ -110,3 +111,4 @@
 
 - **수익**: 월 천만 원은 트래픽 규모·RPM에 따라 다름. 방문자 수·페이지뷰 목표를 세우고, 광고 단가·전환율을 추적해 조정.
 - **100개 서비스**: 검색 노출 기회가 100배가 되는 건 아니지만, 롱테일·니치 검색에서 합산 트래픽이 커질 수 있음. 품질(체류 시간, 이탈률)을 유지하는 것이 중요.
+- **주간 루틴**: 이번 주 할 일·배포 전 한눈에 보기 → [docs/WEEKLY.md](docs/WEEKLY.md)

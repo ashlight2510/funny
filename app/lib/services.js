@@ -57,6 +57,12 @@ export function getSeoGuides(lang = "en") {
       desc: isKo ? "직장인/프리랜서/개인사업자의 세금·보험·경비를 추정하고 월 실수령액과 세금 납부 시기를 확인하세요." : "Estimate taxes, insurance, and expenses for employees, freelancers, and self-employed. Check monthly take-home pay and tax payment schedule.",
     },
     {
+      slug: "tax-calculator-how",
+      emoji: "🧾",
+      title: isKo ? "세금 계산기 사용법 — 연말정산·실수령액 계산기" : "Tax Calculator How-To — Year-End Tax & Take-Home Pay",
+      desc: isKo ? "연말정산·실수령액·4대보험 공제를 무료 세금 계산기로 확인하는 입력 방법과 결과 보는 법." : "How to use the free tax calculator for year-end tax, take-home pay, and 4 major insurance deductions.",
+    },
+    {
       slug: "inlaw-translator",
       emoji: "💬",
       title: isKo ? "고부번역기 가이드" : "In-Law Translator Guide",

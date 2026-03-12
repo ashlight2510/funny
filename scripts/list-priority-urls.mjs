@@ -16,6 +16,7 @@ const PRIORITY_PATHS = [
   "/guide/four-insurance-deduction-how/",
   "/guide/nbang-calculator-how/",
   "/guide/year-end-tax-simple/",
+  "/guide/tax-calculator-how/",
   "/guide/rest-check-how/",
   "/guide/bmi-calculator-how/",
   "/guide/asset-shield-index/",

@@ -14,6 +14,7 @@
 | 스크립트 | 설명 |
 |----------|------|
 | `audit-meta` | 도구 메타 점검(og:title, description, 길이). 실패 시 exit 1 |
+| `check-deploy` | 배포 전 점검: audit-meta + out/robots.txt·sitemap.xml·out/tools/ (yarn build 후 실행) |
 | `sync-meta` | 도구 HTML 메타를 services.js 기준으로 덮어쓰기(길이 보강 포함) |
 | `list-priority-urls` | GSC·Amplitude용 우선순위 URL 목록 한 줄씩 출력 |
 | `add-og-meta.mjs` | OG 없는 도구에 메타 일괄 추가 (직접 실행) |
@@ -23,6 +24,6 @@
 ## 다음 액션
 1. GSC에서 Sitemap 제출·상위 URL 색인 요청 (`npm run list-priority-urls` 로 URL 복사)
 2. Amplitude에서 유입 URL 상위 확인 후 [MONETIZATION.md](./MONETIZATION.md) 상위 페이지 후보와 비교
-3. 새 도구·가이드 추가 시 `add-guide-links.mjs`·`sync-meta` 실행 후 `audit-meta`로 점검
+3. 새 도구·가이드 추가 시 `add-guide-links.mjs`·`sync-meta` 실행 후 `audit-meta`로 점검. 배포 직전: `yarn build && npm run check-deploy` 권장.
 
 **CI**: `main` 푸시 시 `.github/workflows/audit-meta.yml`에서 `audit-meta` 자동 실행. 배포 전 로컬에서도 `npm run audit-meta` 실행 권장.

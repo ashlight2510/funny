@@ -75,6 +75,7 @@ AdSense 승인을 위한 필수 요소가 모두 포함되어 있습니다:
 2. 프로덕션 빌드: `yarn build`
 3. 정적 배포 산출물: `yarn export` → `out/` 생성 (GitHub Pages/정적 호스팅에 업로드)
 4. 페이지 경로: `/` (메인), `/privacy`, `/terms`, `/policy`, `/copyright`
+5. **배포 전 점검**: `yarn build` 후 `npm run check-deploy` (도구 메타 + out/ 산출물 검사). 자세한 절차는 [DEPLOY_CHECK.md](DEPLOY_CHECK.md)·[docs/SEO-checklist.md](docs/SEO-checklist.md) 참고.
 
 ## 📝 향후 개선 사항
 
@@ -87,11 +88,14 @@ AdSense 승인을 위한 필수 요소가 모두 포함되어 있습니다:
 
 | 문서 | 설명 |
 |------|------|
+| [docs/WEEKLY.md](docs/WEEKLY.md) | 주간·배포 루틴 요약 (이번 주 3가지, 다음 주, 배포 전) |
 | [docs/SEO-checklist.md](docs/SEO-checklist.md) | 사이트맵·메타·스크립트·CI·다음 액션 |
 | [docs/MONETIZATION.md](docs/MONETIZATION.md) | 월 수익 체크리스트·고가치 키워드·광고·상위 페이지 후보 |
 | [docs/ANALYTICS.md](docs/ANALYTICS.md) | Amplitude 이벤트·전환 퍼널 |
 | [docs/SEARCH_CONSOLE.md](docs/SEARCH_CONSOLE.md) | Google Search Console·Sitemap·URL 검사 절차 |
 | [docs/GitPushSetup.md](docs/GitPushSetup.md) | Git 푸시 설정(토큰)·스크립트 요약 |
+| [DEPLOY_CHECK.md](DEPLOY_CHECK.md) | /tools/ 404 점검·빌드·배포 폴더·trailing slash |
+| [SEO_ROADMAP.md](SEO_ROADMAP.md) | SEO 로드맵·배포 전 체크리스트(§5) |
 
 ## 📄 라이선스
 

@@ -35,7 +35,12 @@ ls out/tools/vocal/    # index.html 있어야 함
 - `copy-tools.mjs`는 "부모에서 복사 가능한 게 5개 미만"이면 **public/tools를 비우지 않고** 커밋된 내용을 그대로 씀.
 - 따라서 **CI로 배포하려면 `public/tools/`를 반드시 커밋**해 두어야 함. (이미 527개 파일 커밋된 상태면 OK.)
 
-## 6. 여전히 404일 때
+## 6. 배포 전 SEO·산출물 점검 (선택)
+
+- **한 번에**: `yarn build` 후 `npm run check-deploy` — 도구 메타 점검(audit-meta) + out/robots.txt·sitemap.xml·out/tools/ 존재·sitemap 내용 검사.
+- 사이트맵·canonical·구조화 데이터 등 전체 체크리스트: [SEO_ROADMAP.md](SEO_ROADMAP.md) §5 참고.
+
+## 7. 여전히 404일 때
 
 1. 배포 플랫폼에서 “빌드 산출물 디렉터리”가 `out` (또는 그 내용)인지 확인.
 2. 배포 로그에서 `out/tools/` 가 업로드되는지 확인.
