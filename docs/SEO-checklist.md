@@ -24,6 +24,6 @@
 ## 다음 액션
 1. GSC에서 Sitemap 제출·상위 URL 색인 요청 (`npm run list-priority-urls` 로 URL 복사)
 2. Amplitude에서 유입 URL 상위 확인 후 [MONETIZATION.md](./MONETIZATION.md) 상위 페이지 후보와 비교
-3. 새 도구·가이드 추가 시 `add-guide-links.mjs`·`sync-meta` 실행 후 `audit-meta`로 점검. 배포 직전: `yarn build && npm run check-deploy` 권장.
+3. **새 도구** 추가 시: `add-guide-links.mjs`·`sync-meta` 실행 후 `audit-meta`로 점검. **새 가이드** 추가 시: `app/guide/guides.js`에 가이드 추가 → `app/lib/services.js`의 `getSeoGuides`에 slug·title·desc 추가(가이드 인덱스 노출용) → (선택) `scripts/list-priority-urls.mjs`에 `/guide/{slug}/` 추가. 배포 직전: `yarn build && npm run check-deploy` 권장.
 
 **CI**: `main` 푸시 시 `.github/workflows/audit-meta.yml`에서 `audit-meta` 자동 실행. 배포 전 로컬에서도 `npm run audit-meta` 실행 권장.
