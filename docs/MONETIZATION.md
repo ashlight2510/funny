@@ -69,3 +69,15 @@
 2. **상위 URL** 해당 페이지 메타(title/description)에 검색 키워드 1~2개 자연스럽게 보강.
 3. **Google Search Console** → Sitemap 제출: `https://funnyfunny.cloud/sitemap.xml` 등록·색인 요청.
 4. **광고** → 상위 페이지에서 AdSense 블록이 가리지 않게·클릭 유도 문구 없이 노출되는지 육안 점검.
+
+### 상위 페이지 후보 (Amplitude·GSC 확인용)
+
+유입·수익이 나올 가능성이 높은 URL. Amplitude에서 유입 URL 순위 확인 시 참고.
+
+| 구분 | URL 예시 |
+|------|----------|
+| 진입 | `/`, `/calculators/`, `/tests/`, `/guide/` |
+| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` |
+| 고가치 도구 | `/tools/tax/`, `/tools/n/`, `/tools/rest/`, `/tools/bmi/`, `/tools/money/`, `/tools/cafe/`, `/tools/space/`, `/tools/commute/` |
+
+→ 상위 10~20개 URL 메타·CTA·광고 노출만 다듬어도 수익에 도움됨. (자세한 GSC 절차는 `docs/SEARCH_CONSOLE.md` 참고.)
