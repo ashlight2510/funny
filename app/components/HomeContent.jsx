@@ -1223,6 +1223,14 @@ export function HomeContent() {
               📚 {t("viewAllGuides")}
             </a>
           </div>
+          <p className="mt-3 text-center text-sm text-slate-500">
+            {t("popularGuidesLabel")}:{" "}
+            <a href="/guide/take-home-pay-how/" className="text-sky-600 hover:underline">실수령액</a>
+            {" · "}
+            <a href="/guide/four-insurance-deduction-how/" className="text-sky-600 hover:underline">4대보험 공제</a>
+            {" · "}
+            <a href="/guide/nbang-calculator-how/" className="text-sky-600 hover:underline">N빵 계산기</a>
+          </p>
         </section>
       </main>
 
