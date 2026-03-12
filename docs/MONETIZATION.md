@@ -4,7 +4,7 @@
 
 - [ ] **Amplitude** → 유입 URL 상위 10개 확인 후 이 문서 "상위 페이지 후보"와 비교.
 - [ ] **Google Search Console** → Sitemap 제출(`https://funnyfunny.cloud/sitemap.xml`), 상위 5개 URL 검사·색인 요청. (`node scripts/list-priority-urls.mjs` 로 URL 목록 출력 가능.)
-- [ ] **상위 5개 페이지** → 메타(title/description)에 검색 키워드 1개씩 자연스럽게 보강.
+- [ ] **상위 5개 페이지** → 메타(title/description)에 검색 키워드 1개씩 자연스럽게 보강. (진입 4페이지 + 가이드 인덱스에 실수령액·4대보험·휴식 체크 등 키워드 반영 완료.)
 
 ---
 

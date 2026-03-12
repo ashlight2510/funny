@@ -14,6 +14,8 @@ export const metadata = {
   keywords: [
     "FunnyFunny",
     "FunnyFunny Cloud",
+    "실수령액 계산",
+    "4대보험 공제",
     "Should I rest now?",
     "rest check",
     "sleep helper",

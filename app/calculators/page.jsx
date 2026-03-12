@@ -17,6 +17,7 @@ export const metadata = {
     "연말정산 계산",
     "사교육비 시뮬레이션",
     "실수령액 계산",
+    "4대보험 공제",
   ],
   alternates: { canonical: "/calculators/" },
   openGraph: {
