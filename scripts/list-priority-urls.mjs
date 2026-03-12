@@ -40,6 +40,12 @@ const PRIORITY_PATHS = [
   "/guide/charcount-how/",
   "/guide/qrcode-how/",
   "/guide/datecalc-how/",
+  "/tools/loancalc/",
+  "/tools/electric/",
+  "/tools/platformfee/",
+  "/guide/loancalc-how/",
+  "/guide/electric-how/",
+  "/guide/platformfee-how/",
 ];
 
 function main() {

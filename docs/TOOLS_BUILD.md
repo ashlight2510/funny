@@ -1,6 +1,13 @@
 # 도구 100개 빌드·복사 요약
 
-**현재**: 104개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+**현재**: 107개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+
+**수익·금융 관련 정적 도구 (3개)**  
+| slug | 설명 |
+|------|------|
+| loancalc | 대출 이자·상환 계산 (원리금 균등·원금 균등). 가이드: loancalc-how |
+| electric | 전기요금 계산 (kWh·누진제). 가이드: electric-how |
+| platformfee | 크몽·숨고 수수료·실수령 계산. 가이드: platformfee-how |
 
 **추가 정적 도구 (3개)**  
 | slug | 설명 |

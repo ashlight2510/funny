@@ -177,6 +177,24 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "두 날짜 차이, 며칠째, D-day 계산 방법." : "How to calculate date difference, nth day, and D-day.",
   },
   {
+    slug: "loancalc-how",
+    emoji: "💰",
+    title: isKo ? "대출 이자·상환 계산기 사용법" : "Loan Calculator How-To",
+    desc: isKo ? "대출원금·이자율·기간으로 월 상환액·총 이자 계산 방법." : "How to calculate monthly payment and total interest.",
+  },
+  {
+    slug: "electric-how",
+    emoji: "⚡",
+    title: isKo ? "전기요금 계산기 사용법" : "Electricity Bill Calculator How-To",
+    desc: isKo ? "kWh 사용량으로 전기요금 예상 계산 방법." : "How to estimate electricity bill from kWh.",
+  },
+  {
+    slug: "platformfee-how",
+    emoji: "📊",
+    title: isKo ? "크몽·숨고 수수료 계산기 사용법" : "Platform Fee Calculator How-To",
+    desc: isKo ? "플랫폼 수수료·실수령액 계산 방법." : "How to calculate platform fee and net earnings.",
+  },
+  {
     slug: "today-well-done",
     emoji: "🌱",
     title: isKo ? "오늘, 잘했어 가이드" : "Today, Well Done Guide",
@@ -1315,6 +1333,39 @@ export function getAllServices(lang = "en") {
         : ["date difference", "days between", "D-day", "countdown"],
     },
     {
+      href: "https://loancalc.funnyfunny.cloud",
+      icon: "💰",
+      title: isKo ? "대출 이자·상환 계산기" : "Loan Repayment Calculator",
+      desc: isKo
+        ? "대출원금·이자율·기간으로 월 상환액·총 이자 계산. 원리금 균등·원금 균등."
+        : "Calculate monthly payment and total interest. Equal payment or equal principal.",
+      tags: isKo
+        ? ["대출", "이자", "상환", "원리금균등", "주담대"]
+        : ["loan", "interest", "repayment", "mortgage"],
+    },
+    {
+      href: "https://electric.funnyfunny.cloud",
+      icon: "⚡",
+      title: isKo ? "전기요금 계산기" : "Electricity Bill Calculator",
+      desc: isKo
+        ? "사용량(kWh)으로 한달 전기요금 예상. 주택용 누진제 기준."
+        : "Estimate monthly electricity bill from kWh. Residential tiered rate.",
+      tags: isKo
+        ? ["전기요금", "전기세", "kWh", "누진제"]
+        : ["electricity", "utility", "bill", "kWh"],
+    },
+    {
+      href: "https://platformfee.funnyfunny.cloud",
+      icon: "📊",
+      title: isKo ? "크몽·숨고 수수료 계산기" : "Platform Fee Calculator",
+      desc: isKo
+        ? "크몽·숨고 매출 기준 플랫폼 수수료·실수령액 계산."
+        : "Calculate platform fee and net earnings for Kmong/Ssobo.",
+      tags: isKo
+        ? ["크몽", "숨고", "수수료", "프리랜서", "실수령"]
+        : ["kmong", "ssobo", "platform fee", "freelancer"],
+    },
+    {
       href: "https://time.funnyfunny.cloud",
       icon: "⏰",
       title: isKo ? "예매는타이밍" : "Time Checker",
@@ -1563,7 +1614,7 @@ export function getToolPath(slug) {
 const CALCULATOR_SLUGS = [
   "n", "tax", "space", "bit", "house", "commute", "birth", "day", "edu",
   "nospend", "cafe", "drink", "waste", "year", "lotto", "average", "life",
-  "miracle", "baby",
+  "miracle", "baby", "loancalc", "electric", "platformfee",
 ];
 
 /** 테스트·체크·진단 도구 슬러그 (랜딩 페이지용) */
