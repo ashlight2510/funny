@@ -34,6 +34,12 @@ const PRIORITY_PATHS = [
   "/tools/commute/",
   "/tools/imtranslate/",
   "/guide/image-translate-how/",
+  "/tools/charcount/",
+  "/tools/qrcode/",
+  "/tools/datecalc/",
+  "/guide/charcount-how/",
+  "/guide/qrcode-how/",
+  "/guide/datecalc-how/",
 ];
 
 function main() {

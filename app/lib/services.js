@@ -159,6 +159,24 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "이미지 OCR 후 한·영 번역하는 방법. 스크린샷·메뉴판·문서 사진에 적합." : "How to extract text from images (OCR) and translate between Korean and English.",
   },
   {
+    slug: "charcount-how",
+    emoji: "📝",
+    title: isKo ? "글자 수 세기 사용법" : "Character Counter How-To",
+    desc: isKo ? "자기소개서·논문·과제용 글자 수, 단어 수, 바이트 집계와 목표 글자 수 설정." : "How to count characters, words, bytes and set a character goal.",
+  },
+  {
+    slug: "qrcode-how",
+    emoji: "📱",
+    title: isKo ? "QR 코드 만들기 사용법" : "QR Code Generator How-To",
+    desc: isKo ? "URL·텍스트로 QR 코드 생성하고 이미지로 저장하는 방법." : "How to generate QR codes from URL or text and download.",
+  },
+  {
+    slug: "datecalc-how",
+    emoji: "📅",
+    title: isKo ? "날짜 차이·며칠째·D-day 사용법" : "Date Calculator How-To",
+    desc: isKo ? "두 날짜 차이, 며칠째, D-day 계산 방법." : "How to calculate date difference, nth day, and D-day.",
+  },
+  {
     slug: "today-well-done",
     emoji: "🌱",
     title: isKo ? "오늘, 잘했어 가이드" : "Today, Well Done Guide",
@@ -1262,6 +1280,39 @@ export function getAllServices(lang = "en") {
       tags: isKo
         ? ["이미지", "OCR", "번역", "한영"]
         : ["image", "OCR", "translate", "Korean", "English"],
+    },
+    {
+      href: "https://charcount.funnyfunny.cloud",
+      icon: "📝",
+      title: isKo ? "글자 수 세기" : "Character & Word Counter",
+      desc: isKo
+        ? "자기소개서·논문·과제용 글자 수, 단어 수, 바이트 실시간 집계. 공백 포함/제외, 목표 글자 수."
+        : "Real-time character, word, and byte count. Include/exclude spaces, set a goal.",
+      tags: isKo
+        ? ["글자 수", "단어 수", "자소서", "논문", "과제"]
+        : ["character count", "word count", "byte", "essay"],
+    },
+    {
+      href: "https://qrcode.funnyfunny.cloud",
+      icon: "📱",
+      title: isKo ? "QR 코드 만들기" : "QR Code Generator",
+      desc: isKo
+        ? "URL·텍스트로 QR 코드를 무료로 생성하고 이미지로 저장."
+        : "Generate QR codes from URL or text and download as image.",
+      tags: isKo
+        ? ["QR코드", "qr 만들기", "qr 생성"]
+        : ["QR code", "generator", "create"],
+    },
+    {
+      href: "https://datecalc.funnyfunny.cloud",
+      icon: "📅",
+      title: isKo ? "날짜 차이·며칠째·D-day" : "Date Difference & D-day",
+      desc: isKo
+        ? "두 날짜 차이, 기념일 며칠째, 목표일까지 D-day 계산."
+        : "Calculate days between two dates, nth day from start, and D-day to target.",
+      tags: isKo
+        ? ["날짜 차이", "며칠째", "D-day", "기념일"]
+        : ["date difference", "days between", "D-day", "countdown"],
     },
     {
       href: "https://time.funnyfunny.cloud",

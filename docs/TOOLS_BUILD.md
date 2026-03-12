@@ -1,6 +1,13 @@
 # 도구 100개 빌드·복사 요약
 
-**현재**: 101개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+**현재**: 104개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+
+**추가 정적 도구 (3개)**  
+| slug | 설명 |
+|------|------|
+| charcount | 글자 수·단어 수·바이트 세기. 공백 포함/제외, 목표 글자 수. 가이드: charcount-how |
+| qrcode | QR 코드 생성(URL·텍스트 → PNG 다운로드). 가이드: qrcode-how |
+| datecalc | 날짜 차이, 며칠째, D-day 계산. 가이드: datecalc-how. day(D-day 계산기)와 보완 |
 
 **이미지 번역기 (imtranslate)**  
 - 정적 HTML 도구. `public/tools/imtranslate/index.html` 단일 파일. OCR(Tesseract.js) + 번역(MyMemory API). 가이드: `image-translate-how`.

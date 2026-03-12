@@ -93,6 +93,15 @@
       .upload-zone input { display: none; }
       .upload-zone .icon { font-size: 40px; margin-bottom: 8px; }
       .upload-zone .hint { color: var(--muted); font-size: 13px; }
+      .upload-zone:focus { outline: none; }
+      .clip-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .clip-hint { color: var(--muted); font-size: 13px; }
       .preview-wrap {
         margin-top: 12px;
         max-height: 240px;
@@ -225,15 +234,20 @@
         </div>
       </header>
 
-      <section class="upload-zone" id="uploadZone">
+      <section class="upload-zone" id="uploadZone" tabindex="0">
         <input type="file" id="fileInput" accept="image/*" />
         <div class="icon">📷</div>
-        <div>이미지를 넣어 주세요 (드래그 또는 클릭)</div>
-        <div class="hint">스크린샷, 메뉴판, 문서 사진 등 (JPG, PNG, WebP)</div>
+        <div>이미지를 넣어 주세요 (드래그·클릭·붙여넣기)</div>
+        <div class="hint">스크린샷, 메뉴판, 문서 사진 등. Ctrl+V(⌘V)로 클립보드 이미지 붙여넣기 가능</div>
         <div class="preview-wrap" id="previewWrap" style="display:none;">
           <img id="previewImg" alt="미리보기" />
         </div>
       </section>
+
+      <div class="clip-row">
+        <button type="button" class="btn btn-ghost" id="btnClipboardTranslate">클립보드 텍스트 번역</button>
+        <span class="clip-hint">복사한 글을 클립보드에서 가져와 바로 번역합니다.</span>
+      </div>
 
       <div class="lang-row">
         <label>
@@ -251,6 +265,7 @@
           </select>
         </label>
         <button type="button" class="btn btn-primary" id="btnRun">OCR + 번역</button>
+        <button type="button" class="btn btn-ghost" id="btnTextOnly">원문 칸 텍스트만 번역</button>
       </div>
 
       <div id="status" class="status" style="display:none;"></div>
@@ -258,7 +273,7 @@
       <div class="two-col" id="resultArea" style="display:none;">
         <div class="panel">
           <h3>추출된 텍스트 (원문)</h3>
-          <textarea id="textSource" placeholder="이미지를 넣고 'OCR + 번역'을 누르면 여기에 표시됩니다." readonly></textarea>
+          <textarea id="textSource" placeholder="이미지 OCR 결과 또는 붙여넣은 텍스트가 여기 표시됩니다. 직접 입력·수정 후 '원문 칸 텍스트만 번역'으로 번역할 수 있어요."></textarea>
           <div class="copy-row">
             <button type="button" class="btn btn-ghost" id="copySource">원문 복사</button>
           </div>
@@ -303,6 +318,8 @@
         var copyTranslated = document.getElementById("copyTranslated");
         var btnShare = document.getElementById("btnShare");
         var shareToast = document.getElementById("tool-share-toast");
+        var btnClipboardTranslate = document.getElementById("btnClipboardTranslate");
+        var btnTextOnly = document.getElementById("btnTextOnly");
 
         var currentFile = null;
 
@@ -330,6 +347,69 @@
         fileInput.addEventListener("change", function () {
           var f = fileInput.files[0];
           if (f) setFile(f);
+        });
+
+        document.addEventListener("paste", function (e) {
+          var items = e.clipboardData && e.clipboardData.items;
+          if (!items) return;
+          for (var i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf("image") !== -1) {
+              e.preventDefault();
+              var file = items[i].getAsFile();
+              if (file) setFile(file);
+              return;
+            }
+          }
+        });
+
+        btnClipboardTranslate.addEventListener("click", function () {
+          if (!navigator.clipboard || !navigator.clipboard.readText) {
+            showStatus("이 브라우저에서는 클립보드 읽기가 제한될 수 있어요.", "error");
+            return;
+          }
+          navigator.clipboard.readText().then(function (text) {
+            text = (text || "").trim();
+            if (!text) {
+              showStatus("클립보드에 텍스트가 없어요. 복사한 뒤 다시 시도해 주세요.", "error");
+              return;
+            }
+            resultArea.style.display = "block";
+            textSource.value = text;
+            textTranslated.value = "";
+            btnClipboardTranslate.disabled = true;
+            showStatus("번역 중…", "loading");
+            translateText(text, fromLang.value, toLang.value, function (err, translated) {
+              btnClipboardTranslate.disabled = false;
+              if (err) {
+                showStatus("번역 중 오류가 났어요. 나중에 다시 시도해 주세요.", "error");
+                return;
+              }
+              textTranslated.value = translated;
+              showStatus("클립보드 텍스트 번역이 완료되었습니다.", "done");
+            });
+          }).catch(function () {
+            showStatus("클립보드 접근이 거부되었어요. 브라우저에서 클립보드 권한을 허용해 주세요.", "error");
+          });
+        });
+
+        btnTextOnly.addEventListener("click", function () {
+          var text = (textSource.value || "").trim();
+          if (!text) {
+            showStatus("원문 칸에 텍스트를 넣어 주세요. 이미지로 OCR하거나 클립보드 번역으로 채운 뒤 사용할 수 있어요.", "error");
+            return;
+          }
+          resultArea.style.display = "block";
+          btnTextOnly.disabled = true;
+          showStatus("번역 중…", "loading");
+          translateText(text, fromLang.value, toLang.value, function (err, translated) {
+            btnTextOnly.disabled = false;
+            if (err) {
+              showStatus("번역 중 오류가 났어요.", "error");
+              return;
+            }
+            textTranslated.value = translated;
+            showStatus("번역이 완료되었습니다.", "done");
+          });
         });
 
         function setFile(file) {

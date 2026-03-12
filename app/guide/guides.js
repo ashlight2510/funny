@@ -1523,6 +1523,66 @@ const rawGuides = [
     disclaimer: "번역 품질은 API에 따라 다를 수 있으며, 전문 번역을 대체하지 않습니다.",
   },
   {
+    slug: "charcount-how",
+    title: "글자 수 세기 사용법 — 공백 포함·제외, 단어 수, 바이트",
+    subtitle: "자기소개서·논문·과제용 글자 수, 단어 수, 바이트를 실시간으로 세고 목표 글자 수를 설정하는 방법.",
+    category: "유틸",
+    heroEmoji: "📝",
+    serviceUrl: "https://charcount.funnyfunny.cloud",
+    ctaLabel: "글자 수 세기 열기",
+    metaDescription:
+      "글자 수 세기 사용법을 정리했습니다. 공백 포함/제외, 단어 수, 바이트(UTF-8), 줄 수 집계와 목표 글자 수 진행률 확인 방법을 안내합니다.",
+    keywords: ["글자 수 세기", "단어 수 세기", "자기소개서 글자 수", "논문 글자 수", "바이트"],
+    sections: [
+      { heading: "어디에 쓰나요?", body: ["자기소개서·논문·과제·블로그 글의 글자 수·단어 수를 셀 때 사용합니다. 공백 포함/제외를 선택할 수 있고, UTF-8 바이트 수로 문자 제한을 확인할 수 있습니다."] },
+      { heading: "사용 방법", body: ["텍스트를 입력하거나 붙여넣으면 실시간으로 글자 수·단어 수·바이트·줄 수가 집계됩니다. 목표 글자 수를 입력하면 진행률이 표시됩니다."] },
+    ],
+    faq: [
+      { question: "무료인가요?", answer: "네. 브라우저에서 무료로 사용할 수 있습니다." },
+      { question: "데이터가 저장되나요?", answer: "아니요. 입력한 텍스트는 서버로 전송되지 않으며, 페이지를 벗어나면 사라집니다." },
+    ],
+  },
+  {
+    slug: "qrcode-how",
+    title: "QR 코드 만들기 사용법",
+    subtitle: "URL·텍스트로 QR 코드를 무료로 생성하고 이미지로 저장하는 방법.",
+    category: "유틸",
+    heroEmoji: "📱",
+    serviceUrl: "https://qrcode.funnyfunny.cloud",
+    ctaLabel: "QR 코드 만들기 열기",
+    metaDescription:
+      "QR 코드 만들기 사용법을 정리했습니다. 링크나 텍스트를 입력해 QR 코드를 생성하고 PNG 이미지로 저장하는 절차를 안내합니다.",
+    keywords: ["QR 코드 만들기", "qr코드 생성", "qr 생성기"],
+    sections: [
+      { heading: "어디에 쓰나요?", body: ["명함·전단·웹페이지에 넣을 QR 코드를 만들 때 사용합니다. URL, 연락처, 짧은 문구 등을 넣을 수 있습니다."] },
+      { heading: "사용 방법", body: ["내용 입력란에 링크나 텍스트를 넣고 'QR 코드 생성'을 누르면 이미지가 나타납니다. '이미지로 저장'으로 PNG를 다운로드할 수 있습니다."] },
+    ],
+    faq: [
+      { question: "무료인가요?", answer: "네. 무료로 생성·다운로드할 수 있습니다." },
+      { question: "어떤 내용을 넣을 수 있나요?", answer: "URL, 전화번호, 이메일, 짧은 문구 등 텍스트 형태라면 대부분 넣을 수 있습니다. 너무 길면 QR 패턴이 복잡해질 수 있습니다." },
+    ],
+  },
+  {
+    slug: "datecalc-how",
+    title: "날짜 차이·며칠째·D-day 사용법",
+    subtitle: "두 날짜 사이 며칠인지, 오늘은 며칠째인지, 목표일까지 D-day를 계산하는 방법.",
+    category: "유틸",
+    heroEmoji: "📅",
+    serviceUrl: "https://datecalc.funnyfunny.cloud",
+    ctaLabel: "날짜 계산기 열기",
+    metaDescription:
+      "날짜 차이, 며칠째, D-day 계산 사용법을 정리했습니다. 두 날짜 차이, 기념일 며칠째, 목표일까지 남은 날을 계산하는 절차를 안내합니다.",
+    keywords: ["날짜 차이", "며칠째", "D-day", "날짜 계산", "기념일 계산"],
+    sections: [
+      { heading: "무엇을 하나요?", body: ["두 날짜 사이 며칠인지(날짜 차이), 시작일로부터 오늘은 며칠째인지, 목표일까지 며칠 남았는지(D-day)를 계산합니다."] },
+      { heading: "사용 방법", body: ["날짜 차이: 시작일·종료일을 선택하면 일 수가 나옵니다. 며칠째: 시작일만 선택하면 오늘 기준 N일째가 나옵니다. D-day: 목표일을 선택하면 D-N 또는 D-Day가 표시됩니다."] },
+    ],
+    faq: [
+      { question: "무료인가요?", answer: "네. 무료로 사용할 수 있습니다." },
+      { question: "D-day 계산기와 다른가요?", answer: "이 도구는 날짜 차이·며칠째·D-day를 한 화면에서 빠르게 계산합니다. 목표일 관리·알림·공유 이미지가 필요하면 같은 사이트의 D-day 계산기를 이용하세요." },
+    ],
+  },
+  {
     slug: "winter-ruin-top1",
     title: "This Winter's #1 Wrecker",
     subtitle:
