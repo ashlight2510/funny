@@ -73,7 +73,7 @@ AdSense 승인을 위한 필수 요소가 모두 포함되어 있습니다:
 
 1. 개발 서버: `yarn dev` (http://localhost:3000)
 2. 프로덕션 빌드: `yarn build`
-3. 정적 배포 산출물: `yarn export` → `out/` 생성 (GitHub Pages/정적 호스팅에 업로드)
+3. 정적 배포 산출물: `yarn build` → `out/` 생성 (GitHub Pages/정적 호스팅에 `out/` 내용 업로드. `output: 'export'`로 빌드 시 out/ 출력)
 4. 페이지 경로: `/` (메인), `/privacy`, `/terms`, `/policy`, `/copyright`
 5. **배포 전 점검**: `yarn build` 후 `npm run check-deploy` (도구 메타 + out/ 산출물 검사). 자세한 절차는 [DEPLOY_CHECK.md](DEPLOY_CHECK.md)·[docs/SEO-checklist.md](docs/SEO-checklist.md) 참고.
 
