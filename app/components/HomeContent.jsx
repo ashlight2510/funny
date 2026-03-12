@@ -9,7 +9,7 @@ import {
   seoApplications,
   getSeoFaq,
 } from "../lib/constants";
-import { getAllServices, getSeoGuides } from "../lib/services";
+import { getAllServices, getSeoGuides, hrefToSlug, getToolPath } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
 
@@ -36,6 +36,12 @@ export function HomeContent() {
     formatTemplate(translationPack[key] ?? fallbackPack[key] ?? key, vars);
   const handleLangChange = (nextLang) => {
     setLang(pageCopy[nextLang] ? nextLang : defaultLang);
+  };
+
+  // SEO path: link to funnyfunny.cloud/tools/{slug} when available
+  const toToolHref = (href) => {
+    const slug = hrefToSlug(href);
+    return slug ? getToolPath(slug) : href;
   };
 
   // Helper function to get translated service name by href
@@ -349,7 +355,7 @@ export function HomeContent() {
                         ({ href, icon, title, desc, tags }) => (
                           <a
                             key={href}
-                            href={href}
+                            href={toToolHref(href)}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`${title} - ${desc}`}
@@ -450,7 +456,7 @@ export function HomeContent() {
 
               <div className="mt-3 flex sm:hidden items-center gap-2">
                 <a
-                  href="https://flow.funnyfunny.cloud/"
+                  href={toToolHref("https://flow.funnyfunny.cloud/")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
@@ -714,7 +720,7 @@ export function HomeContent() {
                 return utils.map(({ href, title, desc, detail }) => (
                   <a
                     key={href}
-                    href={href}
+                    href={toToolHref(href)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
@@ -737,7 +743,7 @@ export function HomeContent() {
                 {t("flowBoardDesc")}
               </p>
               <a
-                href="https://flow.funnyfunny.cloud/"
+                href={toToolHref("https://flow.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:shadow-md transition"
@@ -874,7 +880,7 @@ export function HomeContent() {
                           <a
                             key={href}
                             className="block hover:text-blue-600"
-                            href={href}
+                            href={toToolHref(href)}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -924,7 +930,7 @@ export function HomeContent() {
                   return (
                     <a
                       key={href}
-                      href={href}
+                      href={toToolHref(href)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
@@ -947,7 +953,7 @@ export function HomeContent() {
             </h3>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <a
-                href="https://run.funnyfunny.cloud"
+                href={toToolHref("https://run.funnyfunny.cloud")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Run — dino runner-style leaderboard game"
@@ -969,7 +975,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://charm.funnyfunny.cloud/"
+                href={toToolHref("https://charm.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Cham Cham Cham! (NEON ARCADE) - switch lanes to dodge missiles"
@@ -991,7 +997,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://downy.funnyfunny.cloud/"
+                href={toToolHref("https://downy.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Downy (NEON STAIRS) - switch lanes to climb stairs, fall and it's over"
@@ -1013,7 +1019,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://neox.funnyfunny.cloud/"
+                href={toToolHref("https://neox.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="NEOX - neon arcade shooter, dodge barrages and climb score"
@@ -1035,7 +1041,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://tet.funnyfunny.cloud/"
+                href={toToolHref("https://tet.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="One Round Tetris - single (AI) and 2-player modes"
@@ -1057,7 +1063,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://solhwatu.funnyfunny.cloud"
+                href={toToolHref("https://solhwatu.funnyfunny.cloud")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Hwatu Solitaire - card stacking game using Hwatu cards"
@@ -1079,7 +1085,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="https://random.funnyfunny.cloud/"
+                href={toToolHref("https://random.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Neon Pinball Random Picker - the rolling ball picks for you"
@@ -1101,7 +1107,7 @@ export function HomeContent() {
                 </p>
               </a>
               <a
-                href="http://sudoku.funnyfunny.cloud/"
+                href={toToolHref("http://sudoku.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Sudoku Web Game - classic sudoku with selectable difficulty"
@@ -1139,7 +1145,7 @@ export function HomeContent() {
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
                 <a
-                  href="https://winter.funnyfunny.cloud"
+                  href={toToolHref("https://winter.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
@@ -1147,7 +1153,7 @@ export function HomeContent() {
                   {getServiceTitle("https://winter.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://year.funnyfunny.cloud"
+                  href={toToolHref("https://year.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
@@ -1155,7 +1161,7 @@ export function HomeContent() {
                   {getServiceTitle("https://year.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://bit.funnyfunny.cloud"
+                  href={toToolHref("https://bit.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1163,7 +1169,7 @@ export function HomeContent() {
                   {getServiceTitle("https://bit.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://pick.funnyfunny.cloud"
+                  href={toToolHref("https://pick.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1171,7 +1177,7 @@ export function HomeContent() {
                   {getServiceTitle("https://pick.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://drain.funnyfunny.cloud"
+                  href={toToolHref("https://drain.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1179,7 +1185,7 @@ export function HomeContent() {
                   {getServiceTitle("https://drain.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://rest.funnyfunny.cloud"
+                  href={toToolHref("https://rest.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1187,7 +1193,7 @@ export function HomeContent() {
                   {getServiceTitle("https://rest.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://coffee.funnyfunny.cloud"
+                  href={toToolHref("https://coffee.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1195,7 +1201,7 @@ export function HomeContent() {
                   {getServiceTitle("https://coffee.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://hand.funnyfunny.cloud"
+                  href={toToolHref("https://hand.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1203,7 +1209,7 @@ export function HomeContent() {
                   {getServiceTitle("https://hand.funnyfunny.cloud")}
                 </a>
                 <a
-                  href="https://mind.funnyfunny.cloud"
+                  href={toToolHref("https://mind.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
@@ -1300,7 +1306,7 @@ export function HomeContent() {
                 {filteredServices.map(({ href, icon, title, desc }) => (
                   <a
                     key={href}
-                    href={href}
+                    href={toToolHref(href)}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${title} - ${desc}`}

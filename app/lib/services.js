@@ -1444,3 +1444,37 @@ export function getAllServices(lang = "en") {
     },
   ];
 }
+
+/** Path 이식 SEO: subdomain href → path slug (1:1). 예외는 HREF_TO_SLUG로. */
+const HREF_TO_SLUG = {
+  "http://heic.funnyfunny.cloud/": "heic",
+  "http://sudoku.funnyfunny.cloud/": "sudoku",
+};
+
+export const TOOL_PATH_BASE = "https://funnyfunny.cloud";
+
+export function hrefToSlug(href) {
+  const normalized = href.replace(/\/$/, "") + "/";
+  if (HREF_TO_SLUG[normalized]) return HREF_TO_SLUG[normalized];
+  try {
+    const host = new URL(href).hostname;
+    const sub = host.split(".")[0];
+    return sub || "";
+  } catch {
+    return "";
+  }
+}
+
+export function getToolSlugs(lang = "en") {
+  const services = getAllServices(lang);
+  const slugs = [
+    ...new Set(
+      services.map((s) => hrefToSlug(s.href)).filter(Boolean)
+    ),
+  ];
+  return slugs.sort();
+}
+
+export function getToolPath(slug) {
+  return `${TOOL_PATH_BASE}/tools/${slug}`;
+}
