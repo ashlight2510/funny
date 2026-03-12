@@ -63,6 +63,12 @@ export function getSeoGuides(lang = "en") {
       desc: isKo ? "연말정산·실수령액·4대보험 공제를 무료 세금 계산기로 확인하는 입력 방법과 결과 보는 법." : "How to use the free tax calculator for year-end tax, take-home pay, and 4 major insurance deductions.",
     },
     {
+      slug: "paystub-read-how",
+      emoji: "📋",
+      title: isKo ? "급여명세서 보는 법 — 항목별 의미·실수령액" : "How to Read a Paystub — Items & Take-Home Pay",
+      desc: isKo ? "급여명세서 항목 의미와 실수령액 확인 방법. 세금·4대보험 계산기로 맞춰 보기." : "Paystub items explained and how to verify take-home pay with the tax calculator.",
+    },
+    {
       slug: "inlaw-translator",
       emoji: "💬",
       title: isKo ? "고부번역기 가이드" : "In-Law Translator Guide",

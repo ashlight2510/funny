@@ -63,6 +63,7 @@
 | 출퇴근 비용, 교통비 계산 | 라이프 | commute, commute-cost-time |
 | 카페 지출 역전, 커피값 | 절약 | cafe, cafe-cost |
 | 4대보험 공제, 건강보험 공제 | 금융·급여 | tax, take-home-pay-how, four-insurance-deduction-how |
+| 급여명세서 보는법, 급여명세서 읽는법 | 금융·급여 | paystub-read-how, take-home-pay-how |
 
 → 이 키워드로 **롱테일 가이드** 추가·보강하고, 메타 title/description에 자연스럽게 넣기.
 
@@ -125,7 +126,7 @@
 | 구분 | URL 예시 |
 |------|----------|
 | 진입 | `/`, `/calculators/`, `/tests/`, `/guide/` |
-| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/tax-calculator-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` |
+| 고가치 가이드 | `/guide/take-home-pay-how/`, `/guide/four-insurance-deduction-how/`, `/guide/tax-calculator-how/`, `/guide/paystub-read-how/`, `/guide/nbang-calculator-how/`, `/guide/year-end-tax-simple/`, `/guide/rest-check-how/`, `/guide/bmi-calculator-how/`, `/guide/asset-shield-index/`, `/guide/nospend-wealth/` |
 | 고가치 도구 | `/tools/tax/`, `/tools/n/`, `/tools/rest/`, `/tools/bmi/`, `/tools/money/`, `/tools/cafe/`, `/tools/space/`, `/tools/commute/` |
 
 → 상위 10~20개 URL 메타·CTA·광고 노출만 다듬어도 수익에 도움됨. (자세한 GSC 절차는 `docs/SEARCH_CONSOLE.md` 참고.)
