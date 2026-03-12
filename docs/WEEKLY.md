@@ -4,11 +4,18 @@
 
 ## 이번 주 할 일 (3가지)
 
+**실행 순서 (체크하며 진행)**
+
+- [ ] **1. GSC Sitemap** — [Search Console](https://search.google.com/search-console) → Sitemaps → `sitemap.xml` 제출
+- [ ] **2. GSC URL 검사** — 터미널에서 `npm run list-priority-urls` 실행 → 출력 URL 복사 → URL 검사에 붙여넣기 → 색인 생성 요청 (상위 5~10개)
+- [ ] **3. Amplitude** — 유입 URL 상위 10개 확인 후 [MONETIZATION.md](./MONETIZATION.md) "상위 페이지 후보"와 비교
+- [ ] **4. 상위 5개 메타 보강** — 유입 많은 페이지부터 title/description에 검색 키워드 1개씩 자연스럽게 추가
+
 | 순서 | 할 일 | 참고 |
 |------|--------|------|
-| 1 | **Amplitude** — 유입 URL 상위 10개 확인 후 [MONETIZATION.md](./MONETIZATION.md) "상위 페이지 후보"와 비교 | [MONETIZATION.md §이번 주 할 일 — 직접 진행 가이드](./MONETIZATION.md) |
-| 2 | **GSC** — Sitemap 제출(`sitemap.xml`), 상위 5~10개 URL 검사·색인 요청 | `npm run list-priority-urls` 로 URL 복사, [SEARCH_CONSOLE.md](./SEARCH_CONSOLE.md) |
-| 3 | **상위 5개 페이지** — 메타(title/description)에 검색 키워드 1개씩 자연스럽게 보강 | [MONETIZATION.md](./MONETIZATION.md) 상위 페이지 후보 표 |
+| 1 | **Amplitude** — 유입 URL 상위 10개 확인 후 "상위 페이지 후보"와 비교 | [MONETIZATION.md §직접 진행 가이드](./MONETIZATION.md) |
+| 2 | **GSC** — Sitemap 제출, 상위 5~10개 URL 검사·색인 요청 | `npm run list-priority-urls`, [SEARCH_CONSOLE.md](./SEARCH_CONSOLE.md) |
+| 3 | **상위 5개 페이지** — 메타에 키워드 1개씩 보강 | [MONETIZATION.md](./MONETIZATION.md) 상위 페이지 후보 표 |
 
 ## 다음 주
 
