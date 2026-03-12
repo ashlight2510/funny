@@ -46,6 +46,12 @@ const PRIORITY_PATHS = [
   "/guide/loancalc-how/",
   "/guide/electric-how/",
   "/guide/platformfee-how/",
+  "/tools/severance/",
+  "/tools/vat/",
+  "/tools/gas/",
+  "/guide/severance-how/",
+  "/guide/vat-how/",
+  "/guide/gas-how/",
 ];
 
 function main() {

@@ -195,6 +195,24 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "플랫폼 수수료·실수령액 계산 방법." : "How to calculate platform fee and net earnings.",
   },
   {
+    slug: "severance-how",
+    emoji: "🏦",
+    title: isKo ? "퇴직금 계산기 사용법" : "Severance Calculator How-To",
+    desc: isKo ? "평균임금·근속연수로 퇴직금 예상 계산 방법." : "How to estimate severance from wage and tenure.",
+  },
+  {
+    slug: "vat-how",
+    emoji: "🧾",
+    title: isKo ? "부가세 계산기 사용법" : "VAT Calculator How-To",
+    desc: isKo ? "공급가·부가세·합계 변환 방법." : "How to convert supply price, VAT, and total.",
+  },
+  {
+    slug: "gas-how",
+    emoji: "🔥",
+    title: isKo ? "가스요금 계산기 사용법" : "Gas Bill Calculator How-To",
+    desc: isKo ? "㎥ 사용량으로 가스요금 예상 계산 방법." : "How to estimate gas bill from usage.",
+  },
+  {
     slug: "today-well-done",
     emoji: "🌱",
     title: isKo ? "오늘, 잘했어 가이드" : "Today, Well Done Guide",
@@ -1366,6 +1384,39 @@ export function getAllServices(lang = "en") {
         : ["kmong", "ssobo", "platform fee", "freelancer"],
     },
     {
+      href: "https://severance.funnyfunny.cloud",
+      icon: "🏦",
+      title: isKo ? "퇴직금 계산기" : "Severance Pay Calculator",
+      desc: isKo
+        ? "평균임금·근속연수로 예상 퇴직금 계산. 1년당 30일분."
+        : "Estimate severance from average wage and years of service.",
+      tags: isKo
+        ? ["퇴직금", "퇴직금 계산", "평균임금", "근속연수"]
+        : ["severance", "retirement", "average wage"],
+    },
+    {
+      href: "https://vat.funnyfunny.cloud",
+      icon: "🧾",
+      title: isKo ? "부가세 계산기" : "VAT Calculator",
+      desc: isKo
+        ? "공급가·부가세·합계 변환. 일반 10%, 간이 1.5%."
+        : "Convert supply price, VAT, and total. 10% or 1.5% simplified.",
+      tags: isKo
+        ? ["부가세", "VAT", "공급가", "세액", "간이과세"]
+        : ["VAT", "tax", "supply price", "Korea"],
+    },
+    {
+      href: "https://gas.funnyfunny.cloud",
+      icon: "🔥",
+      title: isKo ? "가스요금 계산기" : "Gas Bill Calculator",
+      desc: isKo
+        ? "사용량(㎥)으로 한달 가스요금 예상. 주택용 도시가스."
+        : "Estimate monthly gas bill from m³ usage. Residential.",
+      tags: isKo
+        ? ["가스요금", "가스비", "도시가스", "㎥"]
+        : ["gas", "utility", "bill", "city gas"],
+    },
+    {
       href: "https://time.funnyfunny.cloud",
       icon: "⏰",
       title: isKo ? "예매는타이밍" : "Time Checker",
@@ -1614,7 +1665,7 @@ export function getToolPath(slug) {
 const CALCULATOR_SLUGS = [
   "n", "tax", "space", "bit", "house", "commute", "birth", "day", "edu",
   "nospend", "cafe", "drink", "waste", "year", "lotto", "average", "life",
-  "miracle", "baby", "loancalc", "electric", "platformfee",
+  "miracle", "baby", "loancalc", "electric", "platformfee", "severance", "vat", "gas",
 ];
 
 /** 테스트·체크·진단 도구 슬러그 (랜딩 페이지용) */
