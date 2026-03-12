@@ -45,9 +45,9 @@ Google Tag Manager에서 다음 태그를 설정하세요:
 
 - 현재: `contact@funnyfunny.cloud`
 
-### sitemap.xml 업데이트
+### sitemap.xml
 
-새 서비스를 추가하거나 변경 시 `sitemap.xml`의 `<lastmod>` 날짜를 업데이트하세요.
+Next.js `app/sitemap.js`가 빌드 시 자동 생성. 새 가이드·도구 추가 시 서비스 데이터 반영되면 sitemap에 포함됨. GSC 제출: `https://funnyfunny.cloud/sitemap.xml` (자세한 절차는 `docs/SEARCH_CONSOLE.md` 참고).
 
 ## 🎨 디자인 특징
 
@@ -82,6 +82,16 @@ AdSense 승인을 위한 필수 요소가 모두 포함되어 있습니다:
 - [ ] 검색 기능 추가
 - [ ] 인기 서비스 정렬 기능
 - [ ] 다크 모드 지원
+
+## 📚 문서 (docs/)
+
+| 문서 | 설명 |
+|------|------|
+| [docs/SEO-checklist.md](docs/SEO-checklist.md) | 사이트맵·메타·스크립트·CI·다음 액션 |
+| [docs/MONETIZATION.md](docs/MONETIZATION.md) | 월 수익 체크리스트·고가치 키워드·광고·상위 페이지 후보 |
+| [docs/ANALYTICS.md](docs/ANALYTICS.md) | Amplitude 이벤트·전환 퍼널 |
+| [docs/SEARCH_CONSOLE.md](docs/SEARCH_CONSOLE.md) | Google Search Console·Sitemap·URL 검사 절차 |
+| [docs/GitPushSetup.md](docs/GitPushSetup.md) | Git 푸시 설정(토큰)·스크립트 요약 |
 
 ## 📄 라이선스
 
