@@ -11,6 +11,8 @@
 - [ ] **3. Amplitude** — 유입 URL 상위 10개 확인 후 [MONETIZATION.md](./MONETIZATION.md) "상위 페이지 후보"와 비교
 - [ ] **4. 상위 5개 메타 보강** — 유입 많은 페이지부터 title/description에 검색 키워드 1개씩 자연스럽게 추가
 
+→ 위 4개 체크 완료 시 이번 주 SEO 실행 목표 달성.
+
 | 순서 | 할 일 | 참고 |
 |------|--------|------|
 | 1 | **Amplitude** — 유입 URL 상위 10개 확인 후 "상위 페이지 후보"와 비교 | [MONETIZATION.md §직접 진행 가이드](./MONETIZATION.md) |
