@@ -198,13 +198,30 @@ export function HomeContent() {
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
+      name: "All Tools",
+      numberOfItems: allServices.length,
+      itemListOrder: "http://schema.org/ItemListOrderAscending",
+      itemListElement: allServices.map((service, index) => {
+        const url = toToolHref(service.href);
+        return {
+          "@type": "ListItem",
+          position: index + 1,
+          name: service.title,
+          url: url.startsWith("http") ? url : `https://funnyfunny.cloud${url}`,
+          description: service.desc,
+        };
+      }),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
       name: "Guides",
       itemListOrder: "http://schema.org/ItemListOrderAscending",
       itemListElement: seoGuides.map((guide, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: guide.title,
-        url: `https://funnyfunny.cloud/guide/${guide.slug}`,
+        url: `https://funnyfunny.cloud/guide/${guide.slug}/`,
         description: guide.desc,
       })),
     },

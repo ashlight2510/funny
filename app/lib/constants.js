@@ -92,45 +92,45 @@ export const seoTopItems = [
   },
   {
     name: "Meta Kit — SEO · OG · Favicon",
-    url: "https://funnyfunny.cloud/tools/meta",
+    url: "https://funnyfunny.cloud/tools/meta/",
     description:
       "Generate meta tags, OG/Twitter cards, and favicons in one place, plus OG image text ready to copy.",
   },
   {
     name: "Image Merge & PDF Converter",
-    url: "https://funnyfunny.cloud/tools/image",
+    url: "https://funnyfunny.cloud/tools/image/",
     description:
       "Upload multiple images, reorder by drag, and save as a single image or PDF.",
   },
   {
     name: "Image Text Extractor",
-    url: "https://funnyfunny.cloud/tools/ocr",
+    url: "https://funnyfunny.cloud/tools/ocr/",
     description: "OCR that extracts text from photos automatically.",
   },
   {
     name: "Time Checker",
-    url: "https://funnyfunny.cloud/tools/time",
+    url: "https://funnyfunny.cloud/tools/time/",
     description:
       "Accurate server time, time zone conversion, and quick time calculations.",
   },
   {
     name: "Current Weather",
-    url: "https://funnyfunny.cloud/tools/weather",
+    url: "https://funnyfunny.cloud/tools/weather/",
     description: "Local weather, feels-like temperature, dust, and UV info.",
   },
   {
     name: "IT News Today",
-    url: "https://funnyfunny.cloud/tools/news",
+    url: "https://funnyfunny.cloud/tools/news/",
     description: "Quick summaries of domestic and global IT news.",
   },
   {
     name: "Simple Audio Editor",
-    url: "https://funnyfunny.cloud/tools/audio",
+    url: "https://funnyfunny.cloud/tools/audio/",
     description: "Edit audio directly in the browser.",
   },
   {
     name: "EmojiCon Studio",
-    url: "https://funnyfunny.cloud/tools/emojicon",
+    url: "https://funnyfunny.cloud/tools/emojicon/",
     description: "Create icons and favicons from a single emoji.",
   },
 ];
