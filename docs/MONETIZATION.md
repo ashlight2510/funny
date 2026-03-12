@@ -6,6 +6,8 @@
 - [ ] **Google Search Console** → Sitemap 제출(`https://funnyfunny.cloud/sitemap.xml`), 상위 5개 URL 검사·색인 요청. (`node scripts/list-priority-urls.mjs` 로 URL 목록 출력 가능.)
 - [ ] **상위 5개 페이지** → 메타(title/description)에 검색 키워드 1개씩 자연스럽게 보강. (진입 4페이지 + 가이드 인덱스에 실수령액·4대보험·휴식 체크 등 키워드 반영 완료.)
 
+**다음 주**: Amplitude에서 `guide_helpful`(👍/👎)·`guide_cta_click` 비율 확인 → 만족도·전환 높은 가이드에 광고·내부 링크 우선 배치 검토.
+
 ---
 
 ## 1. 트래픽 = 광고 노출

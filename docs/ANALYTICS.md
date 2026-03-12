@@ -19,7 +19,7 @@
 2. **탐색** → `service_click` (어떤 도구 링크를 눌렀는지)
 3. **전환** → `guide_cta_click` (가이드 읽은 뒤 해당 도구로 이동)
 
-Amplitude에서 `guide_cta_click` 비율을 보면 가이드 → 도구 전환을 추적할 수 있음.
+Amplitude에서 `guide_cta_click` 비율을 보면 가이드 → 도구 전환을 추적할 수 있음. `guide_helpful`(👍/👎) 비율을 보면 어떤 가이드가 만족도가 높은지 파악 가능 → 수익·내부 링크 우선순위 정할 때 참고.
 
 ## 상위 페이지 CTA
 

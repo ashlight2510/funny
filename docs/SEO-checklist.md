@@ -24,3 +24,5 @@
 1. GSC에서 Sitemap 제출·상위 URL 색인 요청 (`npm run list-priority-urls` 로 URL 복사)
 2. Amplitude에서 유입 URL 상위 확인 후 [MONETIZATION.md](./MONETIZATION.md) 상위 페이지 후보와 비교
 3. 새 도구·가이드 추가 시 `add-guide-links.mjs`·`sync-meta` 실행 후 `audit-meta`로 점검
+
+**CI**: `main` 푸시 시 `.github/workflows/audit-meta.yml`에서 `audit-meta` 자동 실행. 배포 전 로컬에서도 `npm run audit-meta` 실행 권장.
