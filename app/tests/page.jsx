@@ -146,6 +146,8 @@ export default function TestsPage() {
           {" · "}
           <a href="/guide/nospend-wealth/" className="text-sky-600 hover:underline">안 산 것 총자산</a>
           {" · "}
+          <a href="/guide/paystub-read-how/" className="text-sky-600 hover:underline">급여명세서</a>
+          {" · "}
           <a href="/guide/coffee-addiction-test/" className="text-sky-600 hover:underline">커피 중독 테스트</a>
         </p>
       </main>
