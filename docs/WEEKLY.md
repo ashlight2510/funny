@@ -18,3 +18,7 @@
 
 - `yarn build && npm run check-deploy` — 도구 메타(audit-meta) + out/robots.txt·sitemap.xml·out/tools/ 검사.
 - 상세: [DEPLOY_CHECK.md](../DEPLOY_CHECK.md), [SEO-checklist.md](./SEO-checklist.md), [SEO_ROADMAP.md](../SEO_ROADMAP.md) §5.
+
+## 콘텐츠 추가 시
+
+- **새 도구**: `add-guide-links.mjs`·`sync-meta` → `audit-meta`. **새 가이드**: guides.js → getSeoGuides(services.js) → (선택) list-priority-urls. 자세한 단계: [SEO-checklist.md](./SEO-checklist.md).
