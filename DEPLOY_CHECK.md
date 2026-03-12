@@ -29,9 +29,16 @@ ls out/tools/vocal/    # index.html 있어야 함
 - `funnyfunny.cloud` 가 **이 repo 빌드 결과**를 서빙하는지 확인.
 - 다른 레포/서브도메인을 가리키면 당연히 404.
 
-## 5. 여전히 404일 때
+## 5. CI에서 funny만 클론해서 배포할 때
+
+- **funny** 레포만 클론하면 부모에 `pdfimg`, `alcohol` 등 서비스 폴더가 없음.
+- `copy-tools.mjs`는 "부모에서 복사 가능한 게 5개 미만"이면 **public/tools를 비우지 않고** 커밋된 내용을 그대로 씀.
+- 따라서 **CI로 배포하려면 `public/tools/`를 반드시 커밋**해 두어야 함. (이미 527개 파일 커밋된 상태면 OK.)
+
+## 6. 여전히 404일 때
 
 1. 배포 플랫폼에서 “빌드 산출물 디렉터리”가 `out` (또는 그 내용)인지 확인.
 2. 배포 로그에서 `out/tools/` 가 업로드되는지 확인.
-3. 브라우저에서 직접 `https://funnyfunny.cloud/tools/vocal/` (끝에 `/`) 호출.
-4. 플랫폼이 “디렉터리 인덱스”(`/tools/vocal/` → `index.html`)를 지원하는지 확인.
+3. 배포 로그에 `copy-tools: only N sources found... Using committed public/tools` 가 뜨는지 확인 (N이 0~4면 정상).
+4. 브라우저에서 직접 `https://funnyfunny.cloud/tools/vocal/` (끝에 `/`) 호출.
+5. 플랫폼이 “디렉터리 인덱스”(`/tools/vocal/` → `index.html`)를 지원하는지 확인.

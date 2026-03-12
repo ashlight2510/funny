@@ -63,6 +63,24 @@ async function main() {
     process.exit(1);
   }
 
+  // CI에서 funny만 클론된 경우 부모에 서비스 디렉터리가 없음 → public/tools 건드리지 않고 커밋된 것 사용
+  let resolvable = 0;
+  for (const slug of slugs) {
+    const sourceDirName = findSourceDir(slug);
+    if (!sourceDirName) continue;
+    const indexHtml = path.join(WEB_ROOT, sourceDirName, "index.html");
+    if (fs.existsSync(indexHtml)) resolvable++;
+  }
+  const useCommitted = resolvable < Math.min(5, Math.floor(slugs.length / 2));
+  if (useCommitted) {
+    console.log(
+      "copy-tools: only",
+      resolvable,
+      "sources found in parent (CI?). Using committed public/tools."
+    );
+    return;
+  }
+
   clearDir(PUBLIC_TOOLS);
 
   let copied = 0;
