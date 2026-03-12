@@ -11,7 +11,8 @@
     "lint": "next lint",
     "audit-meta": "node scripts/audit-tool-meta.mjs",
     "sync-meta": "node scripts/sync-tool-meta-from-services.mjs",
-    "lighthouse": "npx -y lighthouse https://funnyfunny.cloud --output=html --output-path=./lighthouse-report.html --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless=new'"
+    "lighthouse": "npx -y lighthouse https://funnyfunny.cloud --output=html --output-path=./lighthouse-report.html --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless=new'",
+    "list-priority-urls": "node scripts/list-priority-urls.mjs"
   },
   "dependencies": {
     "next": "14.2.4",

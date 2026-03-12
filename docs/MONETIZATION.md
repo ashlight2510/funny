@@ -1,5 +1,13 @@
 # 월 수익 올리기 체크리스트 (월천만원 목표)
 
+## 이번 주 할 일 (3가지)
+
+- [ ] **Amplitude** → 유입 URL 상위 10개 확인 후 이 문서 "상위 페이지 후보"와 비교.
+- [ ] **Google Search Console** → Sitemap 제출(`https://funnyfunny.cloud/sitemap.xml`), 상위 5개 URL 검사·색인 요청. (`node scripts/list-priority-urls.mjs` 로 URL 목록 출력 가능.)
+- [ ] **상위 5개 페이지** → 메타(title/description)에 검색 키워드 1개씩 자연스럽게 보강.
+
+---
+
 ## 1. 트래픽 = 광고 노출
 
 - **수익 공식**: 방문자 수 × 페이지뷰/방문 × RPM(천 노출당 수익) ≈ 월 수익
