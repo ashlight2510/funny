@@ -9,7 +9,7 @@ import {
   seoApplications,
   getSeoFaq,
 } from "../lib/constants";
-import { getAllServices, getSeoGuides, hrefToSlug, getToolPath } from "../lib/services";
+import { getAllServices, getSeoGuides, hrefToSlug, getToolPath, getCalculators, getTests } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
 
@@ -21,8 +21,15 @@ export function HomeContent() {
   const translationPack = pageCopy[lang] || pageCopy[defaultLang];
   const fallbackPack = pageCopy[defaultLang];
   const allServices = getAllServices(lang);
+  const calculators = getCalculators(lang);
+  const tests = getTests(lang);
   const seoGuides = getSeoGuides(lang);
   const seoFaq = getSeoFaq(lang);
+  const featuredCalcSlugs = ["tax", "n", "time", "space", "birth", "cafe"];
+  const featuredTestSlugs = ["rest", "product", "money", "bmi", "dailycheck", "senseyear"];
+  const featuredCalculators = calculators.filter((t) => featuredCalcSlugs.includes(hrefToSlug(t.href)));
+  const featuredTests = tests.filter((t) => featuredTestSlugs.includes(hrefToSlug(t.href)));
+  const featuredTools = [...featuredCalculators.slice(0, 4), ...featuredTests.slice(0, 4)];
 
   useEffect(() => {
     setLang(getInitialLang());
@@ -279,273 +286,175 @@ export function HomeContent() {
   const showSearchResults = normalizedQuery || selectedTag;
 
   return (
-    <div className="relative bg-gradient-to-b from-[#0b1621] via-[#101f2e] to-[#14273b] text-slate-50 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
+    <div className="relative bg-slate-50 text-slate-900 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal lang={lang} onLangChange={handleLangChange} t={t} />
       <main>
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/85 to-sky-950/80"></div>
-          <div className="absolute inset-0 snow-fall opacity-60 mix-blend-screen"></div>
-          <div className="absolute -left-10 -top-10 w-48 h-48 bg-sky-200/25 blur-3xl"></div>
-          <div className="absolute -right-10 bottom-0 w-48 h-48 bg-slate-200/20 blur-3xl"></div>
-
-          <div className="relative mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
-            <div className="w-full text-white">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-sky-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full shadow">
-                <span>{t("heroBadgeMain")}</span>
-                <span className="text-slate-100">{t("heroBadgeSub")}</span>
+        {/* Hero: 전환 중심 헤드라인 + 검색 + 진입점 */}
+        <section className="bg-white border-b border-slate-200 shadow-sm">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-600 bg-sky-50 border border-sky-200 px-3 py-1 rounded-full mb-4">
+              <span>{t("heroBadgeMain")}</span>
+              <span className="text-slate-600">{t("heroBadgeSub")}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {t("heroTitle")}
+            </h2>
+            <p className="mt-2 text-base text-slate-600 max-w-xl">
+              {t("heroSubtitle")}
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              {t("heroServiceCount", { count: allServices.length })}
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
+              <label className="relative flex-1 max-w-md">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+                <input
+                  value={searchQuery}
+                  onChange={(e) => { setSearchQuery(e.target.value); setSelectedTag(""); }}
+                  placeholder={t("searchPlaceholder")}
+                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-100 focus:outline-none"
+                />
+              </label>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="/calculators/"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 text-white text-sm font-semibold shadow-sm hover:bg-sky-700 transition"
+                >
+                  🧮 {t("heroCtaCalculators")}
+                </a>
+                <a
+                  href="/tests/"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-semibold shadow-sm hover:bg-emerald-700 transition"
+                >
+                  🧪 {t("heroCtaTests")}
+                </a>
+                <a
+                  href="/guide/"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold hover:border-sky-300 hover:text-sky-700 transition"
+                >
+                  📚 {t("heroCtaGuides")}
+                </a>
+                <button
+                  data-random-btn
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition"
+                >
+                  🎲 {t("randomButtonSmall")}
+                </button>
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                <div className="flex-1">
-                  <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow">
-                    {t("heroTitle")}
-                  </h2>
-                  <p className="mt-3 text-base text-slate-100/90">
-                    {t("heroSubtitle")}
-                  </p>
-                  <div className="mt-3 text-sm text-slate-200/80">
-                    {t("heroServiceCount", { count: allServices.length })}
-                  </div>
-                </div>
-                <div className="w-full sm:w-80 flex-shrink-0">
-                  <label className="relative w-full">
-                    <span className="absolute left-3 top-[calc(50%+2px)] -translate-y-[46%] text-slate-400 text-sm">
-                      🔍
-                    </span>
-                    <input
-                      value={searchQuery}
-                      onChange={(e) => {
-                        setSearchQuery(e.target.value);
-                        setSelectedTag("");
-                      }}
-                      placeholder={t("searchPlaceholder")}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm text-sm text-white placeholder:text-slate-300 focus:border-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-300/30"
-                    />
-                  </label>
-                </div>
-              </div>
-              {showSearchResults && (
-                <div className="mt-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h3 className="text-lg font-bold text-white">
-                        {t("searchResultsTitle")}
-                      </h3>
-                      <p className="text-sm text-slate-200/80 mt-1">
-                        {selectedTag
-                          ? t("searchTagResults", {
-                              tag: selectedTag,
-                              count: filteredServices.length,
-                            })
-                          : normalizedQuery
-                          ? t("searchQueryResults", {
-                              query: normalizedQuery,
-                              count: filteredServices.length,
-                            })
-                          : t("searchCount", {
-                              count: filteredServices.length,
-                            })}
-                      </p>
-                    </div>
-                    {(normalizedQuery || selectedTag) && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSearchQuery("");
-                          setSelectedTag("");
-                        }}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold hover:bg-white/20 transition"
-                      >
-                        Reset
-                      </button>
-                    )}
-                  </div>
-                  {filteredServices.length === 0 ? (
-                    <div className="p-6 rounded-2xl bg-white/10 border border-white/20 text-center text-sm text-slate-200">
-                      <p>No services match that keyword.</p>
-                      <p className="text-xs text-slate-300/80 mt-1">
-                        Try another keyword or tag.
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                      {filteredServices.map(
-                        ({ href, icon, title, desc, tags }) => (
-                          <a
-                            key={href}
-                            href={toToolHref(href)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${title} - ${desc}`}
-                            data-amp-service={title}
-                            data-amp-section="search"
-                            className="flex items-start gap-3 p-4 rounded-2xl bg-white/95 text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
-                          >
-                            <div className="text-xl">{icon}</div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-lg leading-snug text-slate-900">
-                                {title}
-                              </h4>
-                              <p className="text-sm text-slate-700 mt-1">
-                                {desc}
-                              </p>
-                              {tags && tags.length > 0 && (
-                                <div className="flex flex-wrap gap-1 mt-2">
-                                  {tags.slice(0, 3).map((tag) => (
-                                    <span
-                                      key={tag}
-                                      className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600"
-                                    >
-                                      {tag}
-                                    </span>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          </a>
-                        )
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {allTags.length > 0 && (
-                <div className="mt-4">
-                  <div className="flex flex-wrap gap-2">
-                    {mainTags.map((tag) => (
-                      <button
-                        key={tag}
-                        onClick={() => {
-                          setSelectedTag(selectedTag === tag ? "" : tag);
-                          setSearchQuery("");
-                        }}
-                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition ${
-                          selectedTag === tag
-                            ? "bg-sky-200 text-slate-900 shadow-md"
-                            : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20"
-                        }`}
-                      >
-                        {tag}
-                      </button>
-                    ))}
-                    {tagsExpanded &&
-                      remainingTags.map((tag) => (
-                        <button
-                          key={tag}
-                          onClick={() => {
-                            setSelectedTag(selectedTag === tag ? "" : tag);
-                            setSearchQuery("");
-                          }}
-                          className={`px-3 py-1.5 rounded-full text-xs font-semibold transition ${
-                            selectedTag === tag
-                              ? "bg-sky-200 text-slate-900 shadow-md"
-                              : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20"
-                          }`}
-                        >
-                          {tag}
-                        </button>
-                      ))}
-                  </div>
-                  {remainingTags.length > 0 && (
+            </div>
+            {showSearchResults && (
+              <div className="mt-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-lg font-bold text-slate-900">{t("searchResultsTitle")}</h3>
+                  {(normalizedQuery || selectedTag) && (
                     <button
-                      onClick={() => setTagsExpanded(!tagsExpanded)}
-                      className="mt-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold hover:bg-white/20 transition"
+                      type="button"
+                      onClick={() => { setSearchQuery(""); setSelectedTag(""); }}
+                      className="text-sm font-semibold text-sky-600 hover:text-sky-700"
                     >
-                      {tagsExpanded
-                        ? t("tagsCollapse")
-                        : t("tagsMore", { count: remainingTags.length })}
+                      {t("searchResetButton")}
                     </button>
                   )}
                 </div>
-              )}
-
-              <div className="mt-5 flex flex-col sm:flex-row flex-wrap gap-3 sm:items-center">
-                <button
-                  data-random-btn
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-sky-200 via-cyan-200 to-slate-200 text-slate-900 text-sm font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition whitespace-nowrap"
-                >
-                  <span className="sm:hidden">{t("randomButtonSmall")}</span>
-                  <span className="hidden sm:inline">
-                    {t("randomButtonLarge")}
-                  </span>
-                </button>
+                {filteredServices.length === 0 ? (
+                  <p className="text-sm text-slate-500 py-4">{t("searchNoMatches")}</p>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {filteredServices.slice(0, 9).map(({ href, icon, title, desc }) => (
+                      <a
+                        key={href}
+                        href={toToolHref(href)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-amp-service={title}
+                        data-amp-section="search"
+                        className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-sky-300 hover:shadow-sm transition"
+                      >
+                        <span className="text-xl">{icon}</span>
+                        <div>
+                          <h4 className="font-semibold text-slate-900">{title}</h4>
+                          <p className="text-xs text-slate-600 mt-0.5 line-clamp-2">{desc}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
+            )}
+          </div>
+        </section>
 
-              <div className="mt-3 flex sm:hidden items-center gap-2">
-                <a
-                  href={toToolHref("https://flow.funnyfunny.cloud/")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
-                >
-                  <span>{t("quickFlow")}</span>
-                </a>
-                <a
-                  href="https://funnyfunny.cloud"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-white/90 border border-slate-200 text-sm font-semibold text-slate-900 shadow-sm hover:border-sky-300 hover:text-slate-900 transition"
-                >
-                  <span>{t("quickAshlight")}</span>
-                </a>
-              </div>
-            </div>
-            <div className="mt-16 grid gap-2 sm:grid-cols-3">
+        {/* 인기·시즌 추천 + 카테고리 진입 */}
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-12">
+          <div className="mb-6">
+            <h3 className="text-lg font-bold text-slate-900">{t("featuredTitle")}</h3>
+            <p className="text-sm text-slate-500 mt-0.5">{t("featuredSubtitle")}</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
+            {featuredTools.map(({ href, icon, title, desc }) => (
               <a
-                href="#insight"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
+                key={href}
+                href={toToolHref(href)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-amp-service={title}
+                data-amp-section="featured"
+                className="flex flex-col gap-2 p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-sky-300 hover:shadow-md transition"
               >
-                <span className="text-sm">💡</span>
-                <p className="text-sm text-slate-700">{t("insightCtaTitle")}</p>
+                <span className="text-2xl">{icon}</span>
+                <h4 className="font-semibold text-slate-900 text-sm leading-snug">{title}</h4>
+                <p className="text-xs text-slate-600 line-clamp-2">{desc}</p>
               </a>
-              <a
-                href="#hub"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
-              >
-                <span className="text-sm">🧠</span>
-                <p className="text-sm text-slate-700">{t("hubCtaTitle")}</p>
-              </a>
-              <a
-                href="#utils"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition"
-              >
-                <span className="text-sm">🛠️</span>
-                <p className="text-sm text-slate-700">{t("utilsCtaTitle")}</p>
-              </a>
-            </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <a
-              href="#tests"
-              className="w-full sm:w-auto inline-block text-center flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 shadow hover:border-blue-300 hover:text-blue-700 hover:-translate-y-0.5 transition mt-6"
+              href="/calculators/"
+              className="flex items-center gap-3 p-4 rounded-xl bg-sky-50 border border-sky-200 text-sky-800 font-semibold hover:bg-sky-100 hover:border-sky-300 transition"
             >
-              {t("viewAllServices")}
+              <span className="text-2xl">🧮</span>
+              <span>{t("categoryCalculators")}</span>
+            </a>
+            <a
+              href="/tests/"
+              className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold hover:bg-emerald-100 hover:border-emerald-300 transition"
+            >
+              <span className="text-2xl">🧪</span>
+              <span>{t("categoryTests")}</span>
+            </a>
+            <a
+              href="#utils"
+              className="flex items-center gap-3 p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 font-semibold hover:bg-slate-200 transition"
+            >
+              <span className="text-2xl">🛠️</span>
+              <span>{t("categoryUtils")}</span>
+            </a>
+            <a
+              href="#arcade"
+              className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-semibold hover:bg-amber-100 hover:border-amber-300 transition"
+            >
+              <span className="text-2xl">🎮</span>
+              <span>{t("categoryGames")}</span>
             </a>
           </div>
         </section>
 
-        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 py-8">
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-            <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-slate-100">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                <span className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
-                  {t("adLabel")}
-                </span>
-                <span>{t("recommendedContentLabel")}</span>
-              </div>
-              <span className="text-xs text-slate-400">{t("dableLabel")}</span>
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
+              <span className="text-xs font-semibold text-slate-500">{t("adLabel")} · {t("dableLabel")}</span>
             </div>
-            <div className="p-4 sm:p-5">
-              <div
-                id="dablewidget_6Xgdpy6o_37Jam9xo"
-                data-widget_id-pc="6Xgdpy6o"
-                data-widget_id-mo="37Jam9xo"
-              ></div>
+            <div className="p-4">
+              <div id="dablewidget_6Xgdpy6o_37Jam9xo" data-widget_id-pc="6Xgdpy6o" data-widget_id-mo="37Jam9xo"></div>
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 py-12 sm:py-14 space-y-12">
-          <div id="utils" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">🛠️</span>
-              <h3 className="text-xl font-bold">{t("usefulServicesTitle")}</h3>
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-12 space-y-12 bg-slate-50/50">
+          <div id="utils" className="scroll-mt-24 pt-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🛠️</span>
+              <h3 className="text-lg font-bold text-slate-900">{t("usefulServicesTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {(() => {
@@ -740,7 +649,7 @@ export function HomeContent() {
                     href={toToolHref(href)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                    className="block p-4 rounded-xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
                   >
                     <h4 className="font-bold text-lg">{title}</h4>
                     <p className="text-sm text-gray-600 mt-1">{desc}</p>
@@ -770,10 +679,10 @@ export function HomeContent() {
             </div>
           </details>
 
-          <div id="hub" className="scroll-mt-24 sm:scroll-mt-28">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">🧭</span>
-              <h3 className="text-xl font-bold">{t("hubTitle")}</h3>
+          <div id="hub" className="scroll-mt-24">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🧭</span>
+              <h3 className="text-lg font-bold text-slate-900">{t("hubTitle")}</h3>
             </div>
             {(() => {
               const hubCategories = [
@@ -879,7 +788,7 @@ export function HomeContent() {
                   {hubCategories.map((cat) => (
                     <div
                       key={cat.titleKey}
-                      className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200"
+                      className="p-4 rounded-xl bg-white shadow-sm border border-slate-200"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
@@ -911,10 +820,10 @@ export function HomeContent() {
               );
             })()}
           </div>
-          <div id="insight" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">💡</span>
-              <h3 className="text-xl font-bold">{t("insightCtaTitle")}</h3>
+          <div id="insight" className="scroll-mt-24 pt-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">💡</span>
+              <h3 className="text-lg font-bold text-slate-900">{t("insightCtaTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {(() => {
@@ -950,7 +859,7 @@ export function HomeContent() {
                       href={toToolHref(href)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-5 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition"
+                      className="block p-4 rounded-xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
                     >
                       <h4 className="font-bold text-lg">
                         {icon} {serviceTitle}
@@ -965,8 +874,8 @@ export function HomeContent() {
           </div>
 
           <div id="arcade" className="mt-10 scroll-mt-24">
-            <h3 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700 bg-white/70 px-3 py-1 rounded-full shadow-sm border border-emerald-100">
-              {t("sectionGames")}
+            <h3 className="inline-flex items-center gap-2 text-sm font-bold text-slate-900">
+              🎮 {t("sectionGames")}
             </h3>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <a
@@ -1147,18 +1056,12 @@ export function HomeContent() {
               </a>
             </div>
           </div>
-          <div className="rounded-2xl bg-gradient-to-br from-emerald-900 via-red-800 to-emerald-900 text-white pt-6 pb-6 pl-[54px] pr-[54px] sm:pt-14 sm:pb-14 sm:pl-[70px] sm:pr-[70px] shadow-lg">
+          <div className="rounded-xl bg-slate-900 text-white pt-6 pb-6 px-6 sm:pt-8 sm:pb-8 sm:px-8 shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
-                <p className="text-sm uppercase tracking-[0.2em] text-amber-200">
-                  {t("winterPicks")}
-                </p>
-                <h4 className="mt-1 text-2xl font-bold">
-                  {t("winterPicksTitle")}
-                </h4>
-                <p className="mt-2 text-sm text-emerald-50/90">
-                  {t("winterPicksDesc")}
-                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-300">{t("winterPicks")}</p>
+                <h4 className="mt-1 text-xl font-bold">{t("winterPicksTitle")}</h4>
+                <p className="mt-2 text-sm text-slate-300">{t("winterPicksDesc")}</p>
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
                 <a
@@ -1237,89 +1140,58 @@ export function HomeContent() {
             </div>
           </div>
 
-          <div
-            id="faq"
-            className="rounded-2xl bg-white/95 border border-emerald-200 shadow-lg p-6 sm:p-8 space-y-4 text-slate-900"
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">❓</span>
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-emerald-700">
-                  FAQ
-                </p>
-                <h3 className="text-xl font-bold">{t("faqTitle")}</h3>
-              </div>
+          <div id="faq" className="rounded-xl bg-white border border-slate-200 shadow-sm p-5 sm:p-6 space-y-3 text-slate-900">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">❓</span>
+              <h3 className="text-lg font-bold">{t("faqTitle")}</h3>
             </div>
-            <div className="divide-y divide-emerald-100">
+            <div className="divide-y divide-slate-100">
               {seoFaq.map((item) => (
                 <details key={item.question} className="py-3 group">
-                  <summary className="flex items-center justify-between cursor-pointer">
-                    <span className="text-sm font-semibold text-slate-900 group-hover:text-emerald-700">
-                      {item.question}
-                    </span>
-                    <span className="text-emerald-400 text-lg group-open:rotate-45 transition">
-                      +
-                    </span>
+                  <summary className="flex items-center justify-between cursor-pointer list-none">
+                    <span className="text-sm font-semibold text-slate-900 group-hover:text-sky-600">{item.question}</span>
+                    <span className="text-sky-500 text-lg group-open:rotate-45 transition">+</span>
                   </summary>
-                  <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-                    {item.answer}
-                  </p>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.answer}</p>
                 </details>
               ))}
             </div>
           </div>
 
-          <div id="tests" className="scroll-mt-24 sm:scroll-mt-28 pt-2">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-2xl">🧪</span>
-              <h3 className="text-xl font-bold">{t("allServicesTitle")}</h3>
+          <div id="tests" className="scroll-mt-24 pt-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">🧪</span>
+              <h3 className="text-lg font-bold text-slate-900">{t("allServicesTitle")}</h3>
             </div>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm text-emerald-100">
-                  {allServices.length} {t("servicesReady")}
-                </p>
-                <p className="text-xs text-emerald-100/80">{t("searchHint")}</p>
-              </div>
-              <label className="relative w-full sm:w-80">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
-                  🔍
-                </span>
+              <p className="text-sm text-slate-600">
+                {allServices.length} {t("servicesReady")} · {t("searchHint")}
+              </p>
+              <label className="relative w-full sm:w-72">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
                 <input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t("searchPlaceholder")}
-                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                  className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-100 focus:outline-none"
                 />
               </label>
             </div>
-            <div className="flex items-center justify-between text-xs text-emerald-100/90 mb-3">
-              <span>
-                {normalizedQuery
-                  ? t("searchBottomSummary", {
-                      count: filteredServices.length,
-                    })
-                  : t("searchBottomEmpty")}
-              </span>
-              {normalizedQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200 text-slate-900 shadow-sm hover:border-red-300 hover:text-red-700 transition"
-                >
+            {normalizedQuery && (
+              <div className="flex items-center justify-between text-sm text-slate-600 mb-3">
+                <span>{t("searchBottomSummary", { count: filteredServices.length })}</span>
+                <button type="button" onClick={() => setSearchQuery("")} className="text-sky-600 font-semibold hover:text-sky-700">
                   {t("searchResetButton")}
                 </button>
-              )}
-            </div>
+              </div>
+            )}
             {filteredServices.length === 0 ? (
-              <div className="p-6 rounded-2xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
+              <div className="p-6 rounded-xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
                 <p>{t("searchNoMatches")}</p>
-                <p className="text-xs text-slate-400 mt-1">
-                  {t("searchNoMatchesHint")}
-                </p>
+                <p className="text-xs text-slate-400 mt-1">{t("searchNoMatchesHint")}</p>
               </div>
             ) : (
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {filteredServices.map(({ href, icon, title, desc }) => (
                   <a
                     key={href}
@@ -1329,14 +1201,12 @@ export function HomeContent() {
                     aria-label={`${title} - ${desc}`}
                     data-amp-service={title}
                     data-amp-section="all"
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-white/95 text-slate-900 shadow-sm border border-emerald-200 hover:border-amber-300 hover:shadow-md transition"
+                    className="flex items-start gap-3 p-3 rounded-xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
                   >
-                    <div className="text-xl">{icon}</div>
-                    <div>
-                      <h4 className="font-semibold text-lg leading-snug text-slate-900">
-                        {title}
-                      </h4>
-                      <p className="text-sm text-slate-700">{desc}</p>
+                    <span className="text-xl">{icon}</span>
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-slate-900 leading-snug">{title}</h4>
+                      <p className="text-xs text-slate-600 mt-0.5 line-clamp-2">{desc}</p>
                     </div>
                   </a>
                 ))}
@@ -1345,15 +1215,11 @@ export function HomeContent() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[440px] sm:max-w-5xl px-4 sm:px-6 pb-10 sm:pb-12">
-          <div className="mt-6 sm:mt-8 flex justify-center">
-            <a
-              href="/guide"
-              aria-label={t("viewAllGuides")}
-              data-amp-service={t("viewAllGuides")}
-              data-amp-section="guides"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-slate-200 text-base font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 hover:shadow-md transition"
-            >
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 pb-10">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a href="/calculators/" className="text-sm font-semibold text-sky-600 hover:text-sky-700">🧮 {t("heroCtaCalculators")}</a>
+            <a href="/tests/" className="text-sm font-semibold text-emerald-600 hover:text-emerald-700">🧪 {t("heroCtaTests")}</a>
+            <a href="/guide/" aria-label={t("viewAllGuides")} data-amp-section="guides" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300 hover:text-sky-700 transition">
               📚 {t("viewAllGuides")}
             </a>
           </div>
@@ -1373,31 +1239,16 @@ export function HomeContent() {
 
       <div
         id="quickBar"
-        className="fixed inset-x-0 bottom-3 px-4 sm:px-6 transition transform translate-y-24 opacity-0 pointer-events-none"
+        className="fixed inset-x-0 bottom-3 px-4 sm:px-6 transition transform translate-y-24 opacity-0 pointer-events-none z-40"
       >
-        <div className="mx-auto max-w-[440px] sm:max-w-3xl bg-gradient-to-r from-red-600 via-amber-400 to-emerald-600 text-slate-900 rounded-2xl shadow-2xl flex items-center justify-between px-4 py-3 gap-3">
-          <div className="text-sm font-semibold drop-shadow">
-            {t("quickBarMessage")}
-          </div>
+        <div className="mx-auto max-w-3xl bg-white border border-slate-200 text-slate-800 rounded-xl shadow-lg flex items-center justify-between px-4 py-3 gap-3">
+          <span className="text-sm font-semibold">{t("quickBarMessage")}</span>
           <div className="flex items-center gap-2">
-            <a
-              href="#hub"
-              className="px-3 py-2 rounded-full bg-white/80 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
-            >
-              {t("quickBarHub")}
-            </a>
-            <a
-              href="#arcade"
-              className="px-3 py-2 rounded-full bg-white/80 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
-            >
-              {t("quickBarArcade")}
-            </a>
-            <button
-              data-random-btn
-              className="px-3 py-2 rounded-full bg-white/90 text-slate-900 text-sm font-semibold hover:-translate-y-0.5 transition"
-            >
-              {t("quickBarRandomGift")}
-            </button>
+            <a href="/calculators/" className="px-3 py-2 rounded-lg bg-sky-50 text-sky-700 text-sm font-semibold hover:bg-sky-100 transition">{t("heroCtaCalculators")}</a>
+            <a href="/tests/" className="px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold hover:bg-emerald-100 transition">{t("heroCtaTests")}</a>
+            <a href="#hub" className="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">{t("quickBarHub")}</a>
+            <a href="#arcade" className="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">{t("quickBarArcade")}</a>
+            <button data-random-btn className="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">{t("quickBarRandomGift")}</button>
           </div>
         </div>
       </div>
