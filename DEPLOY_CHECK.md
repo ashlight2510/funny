@@ -40,7 +40,12 @@ ls out/tools/vocal/    # index.html 있어야 함
 - **한 번에**: `yarn build` 후 `npm run check-deploy` — 도구 메타 점검(audit-meta) + out/robots.txt·sitemap.xml·out/tools/ 존재·sitemap 내용 검사.
 - 사이트맵·canonical·구조화 데이터 등 전체 체크리스트: [SEO_ROADMAP.md](SEO_ROADMAP.md) §5 참고.
 
-## 7. 여전히 404일 때
+## 7. 배포 후 확인 (선택)
+
+- 배포 직후 브라우저 또는 curl로 확인: `https://funnyfunny.cloud/sitemap.xml`, `https://funnyfunny.cloud/robots.txt` 가 200으로 응답하는지.
+- 메인·가이드 한 페이지씩 열어서 로딩·광고 노출 정상 여부 육안 확인.
+
+## 8. 여전히 404일 때
 
 1. 배포 플랫폼에서 “빌드 산출물 디렉터리”가 `out` (또는 그 내용)인지 확인.
 2. 배포 로그에서 `out/tools/` 가 업로드되는지 확인.
