@@ -6,6 +6,8 @@
 |--------|------|------|
 | `service_click` | 서비스(도구) 링크 클릭 | `service`, `section`, `href` |
 | `guide_cta_click` | 가이드 페이지에서 "서비스 열기" CTA 클릭 (전환) | `guide_slug`, `cta_url` |
+| `share_click` | 가이드 공유 (링크 복사·트위터) | `method`, `guide_slug` |
+| `guide_helpful` | 가이드 "도움이 되었나요?" 👍/👎 | `guide_slug`, `helpful` (true/false) |
 | `client_error` | 클라이언트 JS 런타임 에러 (window.onerror) | `message`, `filename`, `lineno`, `colno` |
 
 - `section`: `search` | `featured` | `all` | `guides` | `game` 등 노출 구역.

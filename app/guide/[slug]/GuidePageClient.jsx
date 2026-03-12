@@ -10,6 +10,8 @@ import { defaultLang, getInitialLang, formatTemplate } from "../../lib/i18n";
 
 export function GuidePageClient({ guide }) {
   const [lang, setLang] = useState(defaultLang);
+  const [feedbackSent, setFeedbackSent] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
 
   const translationPack = pageCopy[lang] || pageCopy[defaultLang];
   const fallbackPack = pageCopy[defaultLang];
@@ -158,6 +160,59 @@ export function GuidePageClient({ guide }) {
             >
               {t("backToHome")}
             </a>
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+            <span className="text-slate-500">공유:</span>
+            <button
+              type="button"
+              onClick={() => {
+                const url = typeof window !== "undefined" ? window.location.href : "";
+                if (url && navigator.clipboard?.writeText) {
+                  navigator.clipboard.writeText(url);
+                  setShareCopied(true);
+                  setTimeout(() => setShareCopied(false), 2000);
+                  try { window.amplitude?.track?.("share_click", { method: "copy", guide_slug: guide.slug }); } catch (_) {}
+                }
+              }}
+              className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+            >
+              {shareCopied ? "복사됨" : "링크 복사"}
+            </button>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(guideTitle)}&url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : `https://funnyfunny.cloud/guide/${guide.slug}/`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+              onClick={() => { try { window.amplitude?.track?.("share_click", { method: "twitter", guide_slug: guide.slug }); } catch (_) {} }}
+            >
+              트위터
+            </a>
+            <span className="text-slate-400 mx-2">·</span>
+            <span className="text-slate-500">도움이 되었나요?</span>
+            <button
+              type="button"
+              aria-label="도움 됨"
+              disabled={feedbackSent}
+              onClick={() => {
+                setFeedbackSent(true);
+                try { window.amplitude?.track?.("guide_helpful", { guide_slug: guide.slug, helpful: true }); } catch (_) {}
+              }}
+              className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 transition disabled:opacity-50"
+            >
+              👍
+            </button>
+            <button
+              type="button"
+              aria-label="도움 안 됨"
+              disabled={feedbackSent}
+              onClick={() => {
+                setFeedbackSent(true);
+                try { window.amplitude?.track?.("guide_helpful", { guide_slug: guide.slug, helpful: false }); } catch (_) {}
+              }}
+              className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 transition disabled:opacity-50"
+            >
+              👎
+            </button>
           </div>
         </section>
 

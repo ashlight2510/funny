@@ -135,9 +135,19 @@ export default function CalculatorsPage() {
           {" · "}
           <a href="/guide/year-end-tax-simple/" className="text-sky-600 hover:underline">연말정산·세금</a>
           {" · "}
+          <a href="/guide/take-home-pay-how/" className="text-sky-600 hover:underline">실수령액 계산</a>
+          {" · "}
           <a href="/guide/pyeong-calculator-how/" className="text-sky-600 hover:underline">평수 계산기</a>
           {" · "}
           <a href="/guide/dday-calculator-how/" className="text-sky-600 hover:underline">D-day 계산기</a>
+        </p>
+        <p className="mt-1 text-sm text-slate-500">
+          재테크·절약:{" "}
+          <a href="/guide/nospend-wealth/" className="text-sky-600 hover:underline">안 산 것 총자산</a>
+          {" · "}
+          <a href="/guide/edu-hell/" className="text-sky-600 hover:underline">사교육 지옥도</a>
+          {" · "}
+          <a href="/guide/cafe-cost/" className="text-sky-600 hover:underline">카페 지출 역전</a>
         </p>
       </main>
       <FooterSimple />

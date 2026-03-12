@@ -139,6 +139,14 @@ export default function TestsPage() {
           {" · "}
           <a href="/guide/daily-productivity-check/" className="text-sky-600 hover:underline">생산성 체크</a>
         </p>
+        <p className="mt-1 text-sm text-slate-500">
+          재테크:{" "}
+          <a href="/guide/asset-shield-index/" className="text-sky-600 hover:underline">자산 방탄 지수</a>
+          {" · "}
+          <a href="/guide/nospend-wealth/" className="text-sky-600 hover:underline">안 산 것 총자산</a>
+          {" · "}
+          <a href="/guide/coffee-addiction-test/" className="text-sky-600 hover:underline">커피 중독 테스트</a>
+        </p>
       </main>
       <FooterSimple />
     </div>
