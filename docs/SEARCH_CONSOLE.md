@@ -9,7 +9,7 @@
 
 ## 2. URL 검사
 
-상위 유입·고가치 페이지부터 "URL 검사"로 색인 요청:
+상위 유입·고가치 페이지부터 "URL 검사"로 색인 요청. 아래 URL은 `npm run list-priority-urls` 로 한 줄씩 출력되므로, 터미널 출력을 복사해 GSC URL 검사에 붙여넣기하면 편함.
 
 - `https://funnyfunny.cloud/`
 - `https://funnyfunny.cloud/calculators/`
