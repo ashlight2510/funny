@@ -22,6 +22,7 @@
 | 사교육비 계산, 사교육 지옥도 | 교육·가계 | edu, edu-hell |
 | 출퇴근 비용, 교통비 계산 | 라이프 | commute, commute-cost-time |
 | 카페 지출 역전, 커피값 | 절약 | cafe, cafe-cost |
+| 4대보험 공제, 건강보험 공제 | 금융·급여 | tax, take-home-pay-how, four-insurance-deduction-how |
 
 → 이 키워드로 **롱테일 가이드** 추가·보강하고, 메타 title/description에 자연스럽게 넣기.
 
@@ -30,6 +31,15 @@
 - **메인**: layout에 1블록 (유동). 상단/중간 노출 확인.
 - **도구**: 각 툴 index.html에 AdSense 있는지 확인. **결과 페이지**(rest/result, money/result 등)에도 있으면 페이지뷰당 노출 증가.
 - **가이드**: funnyfunny.cloud 도메인 가이드 페이지는 현재 광고 없음. 메인·도구에서 이득이 나오면, 가이드 하단에 1블록 추가 검토(정책 확인 후).
+
+### 3.1 광고 배치 현황 (참고)
+
+| 위치 | 슬롯 | 비고 |
+|------|------|------|
+| 메인 (layout) | 1블록 fluid | body 중간 |
+| 도구 (일부) | 7300458753 / 5145068706 / 6458150379 등 | tax, bmi, rest, money, alcohol, bit, time, house, run, tet, video, audio, cook, average, today, next, file, mental, music, joke, snaptrail, dailycheck, ego, drain, miracle 등 |
+| 도구 결과페이지 | rest/result, money/result, ego/result, dailycheck/result, drain/result, miracle/result 등 | 본문 중간 adContainer |
+| 가이드 (funnyfunny.cloud) | 없음 | 정책 확인 후 검토 |
 
 ## 4. 제휴·추가 수익 (선택)
 

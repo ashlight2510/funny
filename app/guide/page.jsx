@@ -14,6 +14,8 @@ const guidePageCopy = {
       "추측 없이 서비스를 사용하고 싶을 때를 위한 빠르고 실용적인 가이드 라이브러리. 각 페이지는 핵심 흐름, 키워드, FAQ를 요약하여 빠르고 자신 있게 시작할 수 있습니다.",
     readGuide: "가이드 읽기",
     openService: "서비스 열기",
+    ctaCalculators: "인기 계산기 보기",
+    ctaTests: "인기 테스트 보기",
   },
   en: {
     guideHub: "Guide Hub",
@@ -22,6 +24,8 @@ const guidePageCopy = {
       "A quick, practical guide library for when you want to use a service without guessing. Each page summarizes the core flow, keywords, and FAQs so you can get started fast and confidently.",
     readGuide: "Read guide",
     openService: "Open service",
+    ctaCalculators: "Popular calculators",
+    ctaTests: "Popular tests",
   },
 };
 
@@ -85,6 +89,20 @@ export default function GuideIndexPage() {
                 <span>{guide.title}</span>
               </a>
             ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="/calculators/"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-200 text-sm font-semibold text-sky-800 hover:border-sky-400 hover:bg-sky-100 transition"
+            >
+              🧮 {t("ctaCalculators")}
+            </a>
+            <a
+              href="/tests/"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-sm font-semibold text-emerald-800 hover:border-emerald-400 hover:bg-emerald-100 transition"
+            >
+              🧪 {t("ctaTests")}
+            </a>
           </div>
         </section>
 

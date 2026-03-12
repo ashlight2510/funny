@@ -148,6 +148,8 @@ export default function CalculatorsPage() {
           <a href="/guide/edu-hell/" className="text-sky-600 hover:underline">사교육 지옥도</a>
           {" · "}
           <a href="/guide/cafe-cost/" className="text-sky-600 hover:underline">카페 지출 역전</a>
+          {" · "}
+          <a href="/guide/four-insurance-deduction-how/" className="text-sky-600 hover:underline">4대보험 공제</a>
         </p>
       </main>
       <FooterSimple />
