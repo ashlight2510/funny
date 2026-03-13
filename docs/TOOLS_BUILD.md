@@ -1,6 +1,6 @@
 # 도구 100개 빌드·복사 요약
 
-**현재**: 237개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+**현재**: 268개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
 
 **수익·금융 관련 정적 도구 (90개)**  
 | slug | 설명 |
@@ -184,6 +184,41 @@
 
 **이미지 번역기 (imtranslate)**  
 - 정적 HTML 도구. `public/tools/imtranslate/index.html` 단일 파일. OCR(Tesseract.js) + 번역(MyMemory API). 가이드: `image-translate-how`.
+
+**신규 31개 랜덤·유입 도구 (정적 HTML)**  
+| slug | 한 줄 설명 |
+|------|------------|
+| nickname-gen | 랜덤 닉네임 (게임·채팅용) |
+| couple-name | 두 이름 → 커플명 제안 |
+| mbti-random | 16가지 MBTI 중 1개 |
+| lucky-number | 1~99 행운의 숫자 |
+| fortune-cookie | 한줄 메시지 랜덤 |
+| compliment-random | 칭찬 문구 랜덤 |
+| excuse-generator | 재미 변명 한줄 |
+| decision-wheel | 예/아니오/다시 랜덤 |
+| bottle-spin | 방향 랜덤 (진실게임용) |
+| random-date | 올해 안 특정일 랜덤 |
+| tarot-single | 타로 카드+한줄 해석 |
+| horoscope-daily | 별자리별 한줄 운세 |
+| mood-ring | 무드링 색상+기분 |
+| random-advice | 조언 한줄 |
+| would-you-rather | 둘 중 하나 질문 랜덤 |
+| never-have-i | 나는 한번도 문장 랜덤 |
+| this-or-that | A/B 선택 랜덤 |
+| random-challenge | 오늘의 챌린지 1가지 |
+| gratitude-pick | 감사할 것 1가지 |
+| hobby-suggest | 취미 1개 랜덤 |
+| weekend-idea | 주말 할 일 아이디어 1개 |
+| coffee-order | 커피 메뉴 랜덤 |
+| workout-random | 오늘의 운동 종목 1개 |
+| book-suggest | 읽을 책 장르/테마 랜덤 |
+| movie-genre | 볼 영화 장르 랜덤 |
+| korean-name | 한글 이름 랜덤 생성 |
+| team-name-gen | 팀명 랜덤 |
+| slogan-random | 슬로건·캐치프레이즈 한줄 |
+| daily-quote | 오늘의 명언 한줄 |
+| emoji-combo | 이모지 2~3개 랜덤 |
+| first-letter | 알파벳+단어 랜덤 |
 
 **6개 복사·빌드 반영 (완료)**  
 | slug | 출처 | 비고 |
