@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>체크리스트 34 | 유틸·인사이트 | FunnyFunny Cloud</title>
-  <meta name="description" content="유틸·인사이트. 무료로 사용할 수 있습니다." />
+  <title>기다림 한줄 | 인내·기다림 한 줄 | FunnyFunny Cloud</title>
+  <meta name="description" content="인내·기다림 한 줄. 무료로 사용할 수 있습니다." />
   <link rel="canonical" href="https://funnyfunny.cloud/tools/util-333/" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
   <style>
@@ -16,6 +16,7 @@
     .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
     .btn{padding:14px 24px;border-radius:12px;border:none;font-weight:600;font-size:16px;cursor:pointer;background:var(--accent);color:#fff;}
     .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);text-align:center;font-size:18px;line-height:1.6;} .result.show{display:block;}
+    .result-extra{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;}
     .footer-links{max-width:560px;margin:16px auto;padding:0 14px;text-align:center;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
     .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
 
@@ -25,24 +26,13 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 #tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
 
   </style>
-    <meta name="description" content="유틸·인사이트." />
-    <meta property="og:title" content="체크리스트 34" />
-    <meta property="og:description" content="유틸·인사이트." />
-    <meta property="og:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://funnyfunny.cloud/tools/util-333/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="체크리스트 34" />
-    <meta name="twitter:description" content="유틸·인사이트." />
-    <meta name="twitter:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
-
-  </head>
+</head>
 <body>
   <div class="wrap">
-    <header><div class="brand"><div class="brand-badge">🔧</div><div><h1>체크리스트 34</h1><p class="sub">유틸·인사이트</p></div></header>
+    <header><div class="brand"><div class="brand-badge">🔧</div><div><h1>기다림 한줄</h1><p class="sub">인내·기다림 한 줄</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
-      <div class="result" id="result"><span id="out"></span></div>
+      <div class="result" id="result"><span id="out"></span><span id="resultSubline" class="result-extra" style="display:none;"></span></div>
     </div>
   </div>
   <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
@@ -50,9 +40,9 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   <div class="footer-links"><a href="https://funnyfunny.cloud/tools/random/">랜덤</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
   <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
   <script>
-(function(){ var arr=["인사이트 A 333-1","인사이트 B 333-2","인사이트 C 333-3","인사이트 D 333-4"];
-  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out");
-  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; res.classList.add("show"); });
+(function(){ var arr=["결과는 시간이 걸린다.","지금 심은 씨앗이 나중에 열매가 된다.","기다리는 동안 할 수 있는 일을 하자.","인내는 연습으로 늘어난다.","급할수록 천천히.","기다리는 시간도 성장의 시간이다.","지금 안 보여도 진행 중일 수 있다.","한 걸음씩이면 언젠가 도착한다.","기다리며 준비하자.","시간이 해결해 주는 것도 있다."]; var subline="오늘 하루 이 한 줄을 떠올려 보세요.";
+  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), subEl=document.getElementById("resultSubline");
+  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(subEl){ subEl.textContent=subline; subEl.style.display="block"; } res.classList.add("show"); });
 
   document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
 })();

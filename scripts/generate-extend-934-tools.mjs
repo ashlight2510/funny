@@ -23,20 +23,54 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 
 const ACCENTS = ["#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#06b6d4", "#6366f1", "#84cc16", "#ef4444"];
 
+/** 게임 결과 아래 재미·영감 터치라인 (단순 넘기기 방지, 체류·공유 유도) */
+const GAME_TAGLINES = [
+  "오늘의 선택! 맛있게 드세요 🍽️", "운명의 메뉴예요 ✨", "이거로 가시죠!", "고르기 힘들 땐 운에 맡겨보세요.",
+  "오늘은 이걸로 결정!", "뽑기 운이 좋은 날이에요 🎲", "친구랑 같이 뽑아보면 더 재밌어요.", "한 번 더 뽑아볼까요?",
+  "결정 장애 해결! 👍", "오늘의 럭키 아이템 🍀", "이걸로 만족하시겠어요?", "다음엔 뭐가 나올까요?",
+  "선택의 기쁨을 느껴 보세요.", "우연이 준 선물이에요.", "공유해서 친구도 뽑게 해보세요!", "뽑힌 걸 기록해 두면 재밌어요.",
+];
+
+function toolType(slug) {
+  if (slug.startsWith("game-")) return "game";
+  if (slug.startsWith("test-")) return "test";
+  if (slug.startsWith("util-")) return "util";
+  if (slug.startsWith("calc-")) return "calc";
+  return "util";
+}
+
 function escapeJs(arr) {
   return JSON.stringify(arr).replace(/'/g, "\\'");
 }
 
 function buildScript(tool) {
   const arr = escapeJs(tool.data);
-  return `var arr=${arr};
-  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out");
-  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; res.classList.add("show"); });
+  const type = toolType(tool.slug);
+  if (type === "game") {
+    const taglines = escapeJs(GAME_TAGLINES);
+    return `var arr=${arr}; var taglines=${taglines};
+  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), taglineEl=document.getElementById("resultTagline");
+  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(taglineEl){ taglineEl.textContent=taglines[Math.floor(Math.random()*taglines.length)]; taglineEl.style.display="block"; } btn.textContent="한 번 더 뽑기"; res.classList.add("show"); });
 `;
+  }
+  const sublines = { util: "오늘 하루 이 한 줄을 떠올려 보세요.", test: "이 문장으로 오늘을 돌아보는 건 어떨까요?", calc: "참고용으로 활용하시고, 필요 시 전문가와 상담하세요." };
+  const sub = sublines[type] || sublines.util;
+  const subEsc = JSON.stringify(sub);
+  return `var arr=${arr}; var subline=${subEsc};
+  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), subEl=document.getElementById("resultSubline");
+  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(subEl){ subEl.textContent=subline; subEl.style.display="block"; } res.classList.add("show"); });
+`;
+}
+
+function resultExtraHtml(tool) {
+  const type = toolType(tool.slug);
+  if (type === "game") return '<span id="resultTagline" class="result-extra" style="display:none;"></span>';
+  return '<span id="resultSubline" class="result-extra" style="display:none;"></span>';
 }
 
 function buildHtml(tool, accent) {
   const script = buildScript(tool);
+  const extra = resultExtraHtml(tool);
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -55,6 +89,7 @@ function buildHtml(tool, accent) {
     .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
     .btn{padding:14px 24px;border-radius:12px;border:none;font-weight:600;font-size:16px;cursor:pointer;background:var(--accent);color:#fff;}
     .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);text-align:center;font-size:18px;line-height:1.6;} .result.show{display:block;}
+    .result-extra{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;}
     .footer-links{max-width:560px;margin:16px auto;padding:0 14px;text-align:center;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
     .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
 ${SHARE_CSS}
@@ -65,7 +100,7 @@ ${SHARE_CSS}
     <header><div class="brand"><div class="brand-badge">${tool.icon}</div><div><h1>${tool.titleKo}</h1><p class="sub">${tool.descKo}</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
-      <div class="result" id="result"><span id="out"></span></div>
+      <div class="result" id="result"><span id="out"></span>${extra}</div>
     </div>
   </div>
   <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>

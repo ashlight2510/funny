@@ -48,11 +48,12 @@ export default function sitemap() {
   }));
 
   const toolSlugs = getToolSlugsFromFs();
+  const extendedPrefixes = /^(test-|game-|util-|calc-)/;
   const toolUrls = toolSlugs.map((slug) => ({
     url: `${BASE}/tools/${slug}/`,
     lastModified: now,
     changeFrequency: "weekly",
-    priority: 0.9,
+    priority: extendedPrefixes.test(slug) ? 0.6 : 0.9,
   }));
 
   return [...staticPages, ...guideUrls, ...toolUrls];

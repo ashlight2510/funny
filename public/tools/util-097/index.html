@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>목표 체크 10 | 유틸·인사이트 | FunnyFunny Cloud</title>
-  <meta name="description" content="유틸·인사이트. 무료로 사용할 수 있습니다." />
+  <title>휴식 한줄 | 쉬는 법·회복 한 줄 | FunnyFunny Cloud</title>
+  <meta name="description" content="쉬는 법·회복 한 줄. 무료로 사용할 수 있습니다." />
   <link rel="canonical" href="https://funnyfunny.cloud/tools/util-097/" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
   <style>
@@ -16,6 +16,7 @@
     .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
     .btn{padding:14px 24px;border-radius:12px;border:none;font-weight:600;font-size:16px;cursor:pointer;background:var(--accent);color:#fff;}
     .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);text-align:center;font-size:18px;line-height:1.6;} .result.show{display:block;}
+    .result-extra{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;}
     .footer-links{max-width:560px;margin:16px auto;padding:0 14px;text-align:center;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
     .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
 
@@ -25,24 +26,13 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 #tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
 
   </style>
-    <meta name="description" content="유틸·인사이트." />
-    <meta property="og:title" content="목표 체크 10" />
-    <meta property="og:description" content="유틸·인사이트." />
-    <meta property="og:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://funnyfunny.cloud/tools/util-097/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="목표 체크 10" />
-    <meta name="twitter:description" content="유틸·인사이트." />
-    <meta name="twitter:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
-
-  </head>
+</head>
 <body>
   <div class="wrap">
-    <header><div class="brand"><div class="brand-badge">📎</div><div><h1>목표 체크 10</h1><p class="sub">유틸·인사이트</p></div></header>
+    <header><div class="brand"><div class="brand-badge">🔍</div><div><h1>휴식 한줄</h1><p class="sub">쉬는 법·회복 한 줄</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
-      <div class="result" id="result"><span id="out"></span></div>
+      <div class="result" id="result"><span id="out"></span><span id="resultSubline" class="result-extra" style="display:none;"></span></div>
     </div>
   </div>
   <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
@@ -50,9 +40,9 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   <div class="footer-links"><a href="https://funnyfunny.cloud/tools/random/">랜덤</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
   <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
   <script>
-(function(){ var arr=["인사이트 A 97-1","인사이트 B 97-2","인사이트 C 97-3","인사이트 D 97-4","인사이트 E 97-5"];
-  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out");
-  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; res.classList.add("show"); });
+(function(){ var arr=["쉬는 것도 일의 일부다.","5분이라도 눈을 감고 있어 보자.","스트레칭으로 어깨와 목을 풀어 보자.","창밖을 1분만 바라보자.","맛있는 걸 먹으며 쉬어도 된다.","할 일을 잠시 내려놓아도 괜찮다.","숨을 천천히 들이쉬고 내쉬어 보자.","오늘 하루 수고했다고 말해 주자.","내일을 위해 오늘은 일찍 눕자.","휴식 후에 더 잘할 수 있다."]; var subline="오늘 하루 이 한 줄을 떠올려 보세요.";
+  var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), subEl=document.getElementById("resultSubline");
+  btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(subEl){ subEl.textContent=subline; subEl.style.display="block"; } res.classList.add("show"); });
 
   document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
 })();
