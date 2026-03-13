@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>화투로 보는 오늘의 운세 | 화투 운세</title>
+      <title>화투로 보는 오늘의 운세</title>
 
   <!-- OG -->
   <meta property="og:title" content="화투로 보는 오늘의 운세" />
-  <meta property="og:description" content="화투 한 장으로 알아보는 오늘의 운세와 행운" />
+  <meta property="og:description" content="화투 한 장으로 알아보는 오늘의 운세와 행운. 무료로 사용할 수 있습니다. FunnyFunny Cloud에서 제공하는 도구입니다." />
   <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Hwatu+Fortune" />
   
   <!-- Google AdSense -->
@@ -292,8 +292,15 @@
     #shareCanvas{
       display:none;
     }
+#tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; }
+#tool-share-block button, #tool-share-block .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; border: 1px solid var(--border, #334155); background: var(--card, #1e293b); color: var(--text, #f1f5f9); font-weight: 500; }
+#tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
+
   </style>
     <link rel="canonical" href="https://funnyfunny.cloud/tools/hwatu/" />
+    <meta name="description" content="화투 한 장으로 알아보는 오늘의 운세와 행운. 무료로 사용할 수 있습니다. FunnyFunny Cloud에서 제공하는 도구입니다." />
+    <meta property="og:description" content="화투 한 장으로 알아보는 오늘의 운세와 행운." />
+    <meta name="twitter:description" content="화투 한 장으로 알아보는 오늘의 운세와 행운. 무료로 사용할 수 있습니다. FunnyFunny Cloud에서 제공하는 도구입니다." />
   </head>
 
 <body>
@@ -929,6 +936,9 @@ shareImageBtn.addEventListener('click', shareImage);
 flip.addEventListener('click', ()=>{
   doDailyDraw();
 });
-</script>
+</script><div style="text-align:center;margin:16px 0;font-size:14px;"><a href="https://funnyfunny.cloud/guide/hwatu-fortune/">사용 가이드</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div><div id="tool-share-block">
+<button type="button" onclick="var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('tool-share-toast');if(t){t.textContent='복사했어요';t.style.display='block';setTimeout(function(){t.style.display='none';},1500);}});try{if(window.amplitude)window.amplitude.track('share_click',{method:'copy',tool:location.pathname.split('/').filter(Boolean).pop()||''});}catch(e){}">링크 복사</button>
+<span id="tool-share-toast" style="display:none;"></span>
+</div>
 </body>
 </html>

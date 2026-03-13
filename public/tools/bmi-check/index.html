@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BMI 계산기 | 비만도 체크 | FunnyFunny Cloud</title>
+    <meta name="description" content="키와 몸무게를 입력하면 BMI와 판정(저체중·정상·과체중·비만)을 계산합니다. 무료 BMI·비만도 계산기." />
+    <meta property="og:title" content="BMI 계산기 | 비만도 체크 | FunnyFunny Cloud" />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/bmi-check/" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/bmi-check/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #14b8a6; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #0b1220; }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-big { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; }
+      .result-label { font-size: 14px; color: var(--muted); }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { max-width: 560px; margin: 16px auto; padding: 0 14px; text-align: center; font-size: 14px; }
+.footer-links a { color: var(--accent, #818cf8); text-decoration: none; }
+      .footer-links a { color: var(--accent); text-decoration: none; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+#tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; }
+#tool-share-block button, #tool-share-block .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; border: 1px solid var(--border, #334155); background: var(--card, #1e293b); color: var(--text, #f1f5f9); font-weight: 500; }
+#tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
+
+  </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">⚖️</div>
+          <div>
+            <h1>BMI 계산기</h1>
+            <p class="sub">키·몸무게로 BMI와 체중 판정</p>
+          </div>
+        </div>
+      </header>
+      <div class="panel">
+        <h3>신체 정보</h3>
+        <div class="row">
+          <div class="field">
+            <label>키 (cm)</label>
+            <input type="number" id="height" min="1" max="250" step="0.1" value="170" />
+          </div>
+          <div class="field">
+            <label>몸무게 (kg)</label>
+            <input type="number" id="weight" min="1" max="300" step="0.1" value="70" />
+          </div>
+        </div>
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div class="result-label">BMI</div>
+          <div class="result-big" id="bmiVal"></div>
+          <div class="result-label">판정 (WHO 기준)</div>
+          <div class="result-big" id="label"></div>
+          <p class="note">BMI = 체중(kg) ÷ 키(m)². 참고용이며 건강 판단은 의료기관에서 하세요.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/bmi-check-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/unit/">단위 변환기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;"></span>
+    </div>
+    <script>
+      (function(){
+        function label(bmi){
+          if (bmi < 18.5) return "저체중";
+          if (bmi < 25) return "정상";
+          if (bmi < 30) return "과체중";
+          return "비만";
+        }
+        var height = document.getElementById("height");
+        var weight = document.getElementById("weight");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var bmiVal = document.getElementById("bmiVal");
+        var labelEl = document.getElementById("label");
+        btnCalc.addEventListener("click", function(){
+          var h = parseFloat(height.value) / 100;
+          var w = parseFloat(weight.value);
+          if (!h || h <= 0 || !w || w <= 0) { result.classList.remove("show"); return; }
+          var bmi = w / (h * h);
+          bmiVal.textContent = bmi.toFixed(1);
+          labelEl.textContent = label(bmi);
+          result.classList.add("show");
+        });
+        document.getElementById("btnShare").addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ document.getElementById("tool-share-toast").textContent = "복사했어요"; document.getElementById("tool-share-toast").style.display = "inline"; setTimeout(function(){ document.getElementById("tool-share-toast").style.display = "none"; }, 1500); });
+        });
+      })();
+    </script>
+  </body>
+</html>

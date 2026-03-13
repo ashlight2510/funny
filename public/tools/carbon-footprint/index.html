@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>탄소발자국 | 이동·전기 사용 → CO2 추정 | FunnyFunny Cloud</title>
+  <meta name="description" content="자동차 주행거리, 전기 사용량 등을 입력하면 CO2 배출량(kg) 추정치를 계산합니다." />
+  <link rel="canonical" href="https://funnyfunny.cloud/tools/carbon-footprint/" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+  <style>
+    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#15803d;--border:#334155;}
+    *{box-sizing:border-box;} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+    .wrap{max-width:560px;margin:0 auto;padding:18px 14px 80px;}
+    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#166534,#15803d);display:grid;place-items:center;font-size:22px;}
+    h1{margin:0 0 6px;font-size:22px;font-weight:800;} .sub{margin:0;color:var(--muted);font-size:14px;}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
+    .panel h3{margin:0 0 12px;font-size:14px;font-weight:700;color:var(--muted);}
+    .field{margin-bottom:14px;} .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+    .field input,.field select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:#0b1220;color:var(--text);font-size:14px;}
+    .btn{padding:12px 20px;border-radius:12px;border:none;font-weight:600;font-size:14px;cursor:pointer;background:var(--accent);color:#fff;}
+    .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);} .result.show{display:block;}
+    .result-item{display:flex;justify-content:space-between;padding:8px 0;} .result-item .v{font-weight:700;color:var(--accent);}
+    .footer-links { max-width: 560px; margin: 16px auto; padding: 0 14px; text-align: center; font-size: 14px; }
+.footer-links a { color: var(--accent, #818cf8); text-decoration: none; } .footer-links a{color:var(--accent);text-decoration:none;}
+    .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
+#tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; }
+#tool-share-block button, #tool-share-block .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; border: 1px solid var(--border, #334155); background: var(--card, #1e293b); color: var(--text, #f1f5f9); font-weight: 500; }
+#tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
+
+  </style>
+    <meta name="description" content="이동·전기 사용 → CO2 추정 kg." />
+    <meta property="og:title" content="탄소발자국" />
+    <meta property="og:description" content="이동·전기 사용 → CO2 추정 kg." />
+    <meta property="og:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/carbon-footprint/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="탄소발자국" />
+    <meta name="twitter:description" content="이동·전기 사용 → CO2 추정 kg." />
+    <meta name="twitter:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
+
+  </head>
+<body>
+  <div class="wrap">
+    <header><div class="brand"><div class="brand-badge">🌱</div><div><h1>탄소발자국</h1><p class="sub">이동·전기 사용 → CO2 추정 kg</p></div></div></header>
+    <div class="panel">
+      <h3>입력 (추정치)</h3>
+      <div class="field"><label>자동차 주행 (km/월, 휘발유 기준)</label><input type="number" id="km" value="500" /></div>
+      <div class="field"><label>전기 사용 (kWh/월)</label><input type="number" id="kwh" value="300" /></div>
+      <button type="button" class="btn" id="btnCalc">계산하기</button>
+      <div class="result" id="result">
+        <div class="result-item"><span>차량 CO2 (kg/월)</span><span class="v" id="car"></span></div>
+        <div class="result-item"><span>전기 CO2 (kg/월)</span><span class="v" id="elec"></span></div>
+        <div class="result-item"><span>합계 추정 (kg/월)</span><span class="v" id="total"></span></div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;">휘발유 약 2.3kg CO2/L, 연비 10km/L 가정. 전기 0.4kg/kWh(국내 배출계수 참고) 가정.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  <div class="footer-links"><a href="https://funnyfunny.cloud/guide/carbon-footprint-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
+  <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
+  <script>
+(function(){
+  var km=document.getElementById("km"), kwh=document.getElementById("kwh");
+  var btn=document.getElementById("btnCalc"), res=document.getElementById("result");
+  var carEl=document.getElementById("car"), elecEl=document.getElementById("elec"), totalEl=document.getElementById("total");
+  btn.addEventListener("click",function(){
+    var k=parseFloat(km.value)||0, e=parseFloat(kwh.value)||0;
+    var carCo2=k/10*2.3; var elecCo2=e*0.4;
+    carEl.textContent=carCo2.toFixed(1)+" kg"; elecEl.textContent=elecCo2.toFixed(1)+" kg"; totalEl.textContent=(carCo2+elecCo2).toFixed(1)+" kg";
+    res.classList.add("show");
+  });
+  document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
+})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>퇴직금 계산기 | 예상 퇴직금 계산 | FunnyFunny Cloud</title>
+    <meta name="description" content="평균임금·근속연수를 입력하면 예상 퇴직금을 계산합니다. 1년 이상 근무 시 30일분×재직연수. 무료 퇴직금 계산기." />
+    <meta property="og:title" content="퇴직금 계산기 | 예상 퇴직금 계산 | FunnyFunny Cloud" />
+    <meta property="og:description" content="평균임금·근속연수로 예상 퇴직금 계산. 1년당 30일분. 참고용." />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/severance/" />
+    <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Severance+Calculator" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/severance/" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230b1220'/><path d='M20 18h24v4H20zM20 28h20v4H20zM20 38h28v4H20z' fill='none' stroke='%2385a3ff' stroke-width='2'/><circle cx='46' cy='32' r='8' fill='%23059669'/></svg>" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #059669; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #047857 0%, #10b981 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input, .field select { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #fff; }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-big { font-size: 26px; font-weight: 800; color: var(--accent); margin: 12px 0; }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { max-width: 560px; margin: 16px auto; padding: 0 14px; text-align: center; font-size: 14px; }
+.footer-links a { color: var(--accent, #818cf8); text-decoration: none; }
+      .footer-links a { color: #10b981; text-decoration: none; }
+      #tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; }
+#tool-share-block button, #tool-share-block .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; border: 1px solid var(--border, #334155); background: var(--card, #1e293b); color: var(--text, #f1f5f9); font-weight: 500; }
+#tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">🏦</div>
+          <div>
+            <h1>퇴직금 계산기</h1>
+            <p class="sub">평균임금·근속연수로 예상 퇴직금 계산 (1년당 30일분)</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="panel">
+        <h3>입력</h3>
+        <div class="field">
+          <label>퇴직 전 3개월 총 임금 (원)</label>
+          <input type="number" id="wage3m" min="0" step="10000" placeholder="예: 15000000" value="15000000" />
+        </div>
+        <div class="field">
+          <label>위 3개월 일수 (일)</label>
+          <input type="number" id="days3m" min="1" max="92" placeholder="예: 92" value="92" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>근속 연수 (년)</label>
+            <input type="number" id="years" min="0" max="50" value="5" />
+          </div>
+          <div class="field">
+            <label>근속 개월 (0~11)</label>
+            <input type="number" id="months" min="0" max="11" value="0" />
+          </div>
+        </div>
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div>1일 평균임금</div>
+          <div class="result-big" id="dailyWage"></div>
+          <div>예상 퇴직금</div>
+          <div class="result-big" id="severance"></div>
+        </div>
+        <p class="note">퇴직금 = 1일 평균임금 × 30일 × (재직일수÷365). 1년 미만·4주 평균 15시간 미만 등은 대상이 아닐 수 있습니다. 정확한 계산은 고용노동부 퇴직금 계산기를 이용하세요.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/severance-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/tax/">세금 계산기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;"></span>
+    </div>
+
+    <script>
+      (function(){
+        function fmt(n) { return Math.round(n).toLocaleString() + "원"; }
+        var wage3m = document.getElementById("wage3m");
+        var days3m = document.getElementById("days3m");
+        var years = document.getElementById("years");
+        var months = document.getElementById("months");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var dailyWageEl = document.getElementById("dailyWage");
+        var severanceEl = document.getElementById("severance");
+        var btnShare = document.getElementById("btnShare");
+        var shareToast = document.getElementById("tool-share-toast");
+
+        btnCalc.addEventListener("click", function(){
+          var w = parseFloat(wage3m.value) || 0;
+          var d = parseInt(days3m.value, 10) || 90;
+          var y = parseInt(years.value, 10) || 0;
+          var m = parseInt(months.value, 10) || 0;
+          if (w <= 0 || d <= 0) { result.classList.remove("show"); return; }
+          var daily = w / d;
+          var totalDays = y * 365 + m * 30;
+          if (totalDays < 365) { result.classList.remove("show"); return; }
+          var pay = daily * 30 * (totalDays / 365);
+          dailyWageEl.textContent = fmt(daily);
+          severanceEl.textContent = fmt(pay);
+          result.classList.add("show");
+        });
+
+        btnShare.addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ shareToast.textContent = "복사했어요"; shareToast.style.display = "inline"; setTimeout(function(){ shareToast.style.display = "none"; }, 1500); });
+          try { if (window.amplitude) window.amplitude.track("share_click", { method: "copy", tool: "severance" }); } catch(e){}
+        });
+      })();
+    </script>
+  </body>
+</html>

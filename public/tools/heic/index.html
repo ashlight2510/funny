@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>HEIC to JPG 변환기 · 이미지 변환/압축/리사이즈</title>
+    <title>HEIC to JPG 변환기</title>
 
     <!-- 파비콘(메타 안에 SVG 코드) -->
     <link
@@ -13,14 +13,8 @@
     />
 
     <!-- OG -->
-    <meta
-      property="og:title"
-      content="HEIC to JPG · 이미지 변환/압축/리사이즈"
-    />
-    <meta
-      property="og:description"
-      content="HEIC를 JPG로 변환하고 WebP/PNG 변환, 압축, 리사이즈까지 한 번에."
-    />
+    <meta property="og:title" content="HEIC to JPG 변환기" />
+    <meta property="og:description" content="압축, 리사이즈, ZIP 내보내기로 HEIC를 JPG/WebP/PNG로 변환. 무료로 사용할 수 있습니다. FunnyFunny Cloud에서 제공하는 도구입니다." />
     <meta property="og:type" content="website" />
     <!-- OG 이미지: 사용 중인 규칙대로 더미 이미지 텍스트를 서비스에 맞는 영어로 -->
     <meta
@@ -261,7 +255,11 @@
         background: rgba(120, 180, 255, 0.25);
         color: #eaf2ff;
       }
-    </style>
+#tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; }
+#tool-share-block button, #tool-share-block .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; border: 1px solid var(--border, #334155); background: var(--card, #1e293b); color: var(--text, #f1f5f9); font-weight: 500; }
+#tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
+
+  </style>
     <style>
     .adsense-block {
       margin: 16px 0;
@@ -275,6 +273,9 @@
 }
   </style>
     <link rel="canonical" href="https://funnyfunny.cloud/tools/heic/" />
+    <meta name="description" content="압축, 리사이즈, ZIP 내보내기로 HEIC를 JPG/WebP/PNG로 변환. 무료로 사용할 수 있습니다. FunnyFunny Cloud에서 제공하는 도구입니다." />
+    <meta property="og:description" content="압축, 리사이즈, ZIP 내보내기로 HEIC를 JPG/WebP/PNG로 변환." />
+    <meta name="twitter:description" content="압축, 리사이즈, ZIP 내보내기로 HEIC를 JPG/WebP/PNG로 변환. 무료로 사용할 수 있습니다. FunnyFunny Cloud에서 제공하는 도구입니다." />
   </head>
 
   <body>
@@ -890,6 +891,9 @@
       });
 
       setButtons();
-    </script>
-  </body>
+    </script><div style="text-align:center;margin:16px 0;font-size:14px;"><a href="https://funnyfunny.cloud/guide/heic-to-jpg/">사용 가이드</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div><div id="tool-share-block">
+<button type="button" onclick="var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('tool-share-toast');if(t){t.textContent='복사했어요';t.style.display='block';setTimeout(function(){t.style.display='none';},1500);}});try{if(window.amplitude)window.amplitude.track('share_click',{method:'copy',tool:location.pathname.split('/').filter(Boolean).pop()||''});}catch(e){}">링크 복사</button>
+<span id="tool-share-toast" style="display:none;"></span>
+</div>
+</body>
 </html>

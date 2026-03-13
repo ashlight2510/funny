@@ -22,13 +22,6 @@ const IGNORE_DIRS = new Set([
   ".vscode",
 ]);
 
-function clearDir(dir) {
-  if (fs.existsSync(dir)) {
-    fs.rmSync(dir, { recursive: true });
-  }
-  fs.mkdirSync(dir, { recursive: true });
-}
-
 function copyRecursive(src, dest) {
   const stat = fs.statSync(src);
   if (stat.isDirectory()) {
@@ -81,7 +74,8 @@ async function main() {
     return;
   }
 
-  clearDir(PUBLIC_TOOLS);
+  // 덮어쓰기만 함. clearDir 하지 않음 — 커밋된 정적 도구(300개+) 유지, 부모에 있는 빌드만 복사
+  if (!fs.existsSync(PUBLIC_TOOLS)) fs.mkdirSync(PUBLIC_TOOLS, { recursive: true });
 
   let copied = 0;
   let skipped = 0;
