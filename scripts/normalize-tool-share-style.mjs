@@ -16,7 +16,8 @@ const ROOT = path.join(__dirname, "..");
 const TOOLS_DIR = path.join(ROOT, "public", "tools");
 
 const SHARE_BLOCK_CSS = `
-#tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; }
+body:has(#tool-share-block) { flex-wrap: wrap; }
+#tool-share-block { max-width: 560px; margin: 16px auto 24px; padding: 0 14px; text-align: center; font-size: 14px; width: 100%; flex: 0 0 100%; }
 #tool-share-block button, #tool-share-block .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; border: 1px solid var(--border, #334155); background: var(--card, #1e293b); color: var(--text, #f1f5f9); font-weight: 500; }
 #tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
 `;
@@ -31,11 +32,14 @@ function hasShareBlock(html) {
 }
 
 function ensureShareCss(html) {
-  const hasOurCss = /#tool-share-block\s*\{[^}]*max-width:\s*560px/.test(html);
-  if (hasOurCss) return html;
+  const hasNewCss = /#tool-share-block\s*\{[^}]*flex:\s*0\s*0\s*100%/.test(html);
+  if (hasNewCss) return html;
+  if (/body:has\(#tool-share-block\)/.test(html)) {
+    html = html.replace(/body:has\(#tool-share-block\)\s*\{[^}]*\}/g, "");
+  }
   const hasExistingRule = /#tool-share-block\s*\{[^}]*\}/.test(html);
   if (hasExistingRule) {
-    return html.replace(/#tool-share-block\s*\{[^}]*\}/g, SHARE_BLOCK_CSS.trim());
+    return html.replace(/#tool-share-block\s*\{[^}]*\}/g, () => SHARE_BLOCK_CSS.trim());
   }
   return html.replace(/\s*<\/style\s*>/i, SHARE_BLOCK_CSS + "\n  </style>");
 }
