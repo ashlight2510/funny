@@ -1,12 +1,30 @@
-import { getToolSlugs } from "./lib/services";
+import fs from "fs";
+import path from "path";
 import { guides } from "./guide/guides";
 
 const BASE = "https://funnyfunny.cloud";
 
+/** public/tools 하위 index.html 있는 디렉터리만 슬러그로 사용 (배포와 1:1 동기화) */
+function getToolSlugsFromFs() {
+  try {
+    const toolsDir = path.join(process.cwd(), "public", "tools");
+    if (!fs.existsSync(toolsDir)) return [];
+    return fs
+      .readdirSync(toolsDir)
+      .filter((name) => {
+        const dir = path.join(toolsDir, name);
+        return fs.statSync(dir).isDirectory() && fs.existsSync(path.join(dir, "index.html"));
+      })
+      .sort();
+  } catch {
+    return [];
+  }
+}
+
 /**
  * Next.js MetadataRoute.Sitemap — 빌드 시 out/sitemap.xml 생성.
  * GSC 제출: https://funnyfunny.cloud/sitemap.xml
- * 포함: 메인·정책·/guide/·/calculators/·/tests/·모든 가이드·모든 도구(tools/{slug}/)
+ * 포함: 메인·정책·/guide/·/calculators/·/tests/·모든 가이드·모든 도구(public/tools 기준)
  */
 export default function sitemap() {
   const now = new Date();
@@ -28,7 +46,7 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  const toolSlugs = getToolSlugs("en");
+  const toolSlugs = getToolSlugsFromFs();
   const toolUrls = toolSlugs.map((slug) => ({
     url: `${BASE}/tools/${slug}/`,
     lastModified: now,

@@ -1,9 +1,0 @@
-:HL["/_next/static/chunks/e512e29e74a9a72c.css","style"]
-:HL["https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg","image"]
-:HL["https://image.tmdb.org/t/p/w500/mpOQpOKdo2XJnTqRzo1lTmDNsc1.jpg","image"]
-:HL["https://image.tmdb.org/t/p/w500/WGRQ8FpjkDTzivQJ43t94bOuY0.jpg","image"]
-:HL["https://image.tmdb.org/t/p/w500/luhKkdD80qe62fwop6sdrXK9jUT.jpg","image"]
-:HL["https://image.tmdb.org/t/p/w500/4VrmpuhjCtsFNAyW8Cd1fYBKJtf.jpg","image"]
-:HL["https://image.tmdb.org/t/p/w500/1PeuDHoxfvgTaNIrJzM6vKmJarD.jpg","image"]
-:HL["https://image.tmdb.org/t/p/w500/quLA9tkgHFte762gqQaayBslB2T.jpg","image"]
-0:{"buildId":"d49ezBC_39FqxbPc34UMh","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"title","paramType":null,"paramKey":"title","hasRuntimePrefetch":false,"slots":{"children":{"name":"id","paramType":"d","paramKey":"1396","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
