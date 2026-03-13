@@ -1,8 +1,8 @@
 # 도구 100개 빌드·복사 요약
 
-**현재**: 117개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+**현재**: 150개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
 
-**수익·금융 관련 정적 도구 (45개)**  
+**수익·금융 관련 정적 도구 (78개)**  
 | slug | 설명 |
 |------|------|
 | loancalc | 대출 이자·상환 (원리금/원금 균등) |
@@ -50,6 +50,39 @@
 | present-value | 현재가치 (FV·할인율·기간 → PV) |
 | daily-prorated | 일할 (월급·출근일·총 근무일 → 일할 금액) |
 | target-yield | 목표 수익률 (원금·목표·기간 → 필요 연환산 %) |
+| compound-interest | 복리 이자 (원금·연이자·기간 → 만기액) |
+| loan-remaining | 대출 잔액 (N회 상환 후) |
+| break-even | 손익분기점 (고정비·변동비·단가) |
+| cagr | CAGR 연평균 성장률 |
+| roi | ROI 투자 수익률 |
+| subscription-yearly | 구독 연간 비용 |
+| fuel-cost | 주유 비용 (거리·연비·리터당) |
+| emergency-fund | 비상금 목표 (월지출×N개월) |
+| mortgage-monthly | 주담대 월 상환액 |
+| fee-per-use | 이용당 수수료 (연회비÷이용) |
+| doubling-time | 72법칙·배증 기간 |
+| pension-lump | 퇴직연금 일시금 vs 연금 |
+| child-cost | 자녀 양육비 추정 |
+| pet-cost | 반려동물 월 비용 |
+| wedding-cost | 결혼 예산 추정 |
+| business-days | 영업일 (두 날짜 사이, 주말 제외) |
+| countdown | D-day 카운트다운 |
+| week-number | 주차 (해당 날짜 몇 주차) |
+| add-days | 날짜에 일수 더하기 |
+| time-between | 두 시각 사이 경과 시간 |
+| work-hours | 근무시간 (출퇴근) |
+| meeting-cost | 회의 비용 (인원×시간×시급) |
+| age-diff | 나이 차이 (두 생년월일) |
+| protein-goal | 단백질 목표량 (체중·활동 → g) |
+| water-intake | 하루 물 권장량 (체중·활동 → ml) |
+| bmr-only | BMR 기초대사량만 |
+| one-rep-max | 1RM 추정 (무게·반복) |
+| pace-calc | 페이스 (거리·시간 → 분/km) |
+| calorie-burn | 운동 칼로리 소모 (MET·시간·체중) |
+| sleep-debt | 수면 부채 (권장 대비) |
+| bmi-range | BMI 구간 설명 |
+| ideal-weight | 이상 체중 범위 (Broca·BMI) |
+| body-fat-est | 체지방률 추정 (BMI·나이·성별) |
 
 **추가 정적 도구 (3개)**  
 | slug | 설명 |
