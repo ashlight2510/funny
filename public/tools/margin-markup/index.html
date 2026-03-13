@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마진 vs 마크업 | 원가·판가 | FunnyFunny Cloud</title>
+  <meta name="description" content="원가와 판가를 입력하면 마진%·마크업%를 계산합니다." />
+  <link rel="canonical" href="https://funnyfunny.cloud/tools/margin-markup/" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+  <style>
+    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#ca8a04;--border:#334155;}
+    *{box-sizing:border-box;} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+    .wrap{max-width:560px;margin:0 auto;padding:18px 14px 80px;}
+    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#a16207,#ca8a04);display:grid;place-items:center;font-size:22px;}
+    h1{margin:0 0 6px;font-size:22px;font-weight:800;} .sub{margin:0;color:var(--muted);font-size:14px;}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
+    .panel h3{margin:0 0 12px;font-size:14px;font-weight:700;color:var(--muted);}
+    .field{margin-bottom:14px;} .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+    .field input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:#0b1220;color:var(--text);font-size:14px;}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .btn{padding:12px 20px;border-radius:12px;border:none;font-weight:600;font-size:14px;cursor:pointer;background:var(--accent);color:#fff;}
+    .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);} .result.show{display:block;}
+    .result-item{display:flex;justify-content:space-between;padding:8px 0;} .result-item .v{font-weight:700;color:var(--accent);}
+    .note{font-size:12px;color:var(--muted);margin-top:12px;}
+    .footer-links{text-align:center;margin:16px 0;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
+    .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><div class="brand"><div class="brand-badge">📐</div><div><h1>마진 vs 마크업</h1><p class="sub">원가·판가 → 마진%·마크업%</p></div></div></header>
+    <div class="panel">
+      <h3>입력</h3>
+      <div class="row">
+        <div class="field"><label>원가 (원)</label><input type="number" id="cost" value="80000" /></div>
+        <div class="field"><label>판가 (원)</label><input type="number" id="price" value="100000" /></div>
+      </div>
+      <button type="button" class="btn" id="btnCalc">계산하기</button>
+      <div class="result" id="result">
+        <div class="result-item"><span>마진 % (판가 대비)</span><span class="v" id="margin"></span></div>
+        <div class="result-item"><span>마크업 % (원가 대비)</span><span class="v" id="markup"></span></div>
+        <p class="note">마진 = (판가−원가)/판가×100. 마크업 = (판가−원가)/원가×100.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  <div class="footer-links"><a href="https://funnyfunny.cloud/guide/margin-markup-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/break-even/">손익분기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
+  <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span></div>
+  <script>
+(function(){
+  var cost=document.getElementById("cost"), price=document.getElementById("price");
+  var btn=document.getElementById("btnCalc"), res=document.getElementById("result"), marginEl=document.getElementById("margin"), markupEl=document.getElementById("markup");
+  btn.addEventListener("click",function(){
+    var c=parseFloat(cost.value)||0, p=parseFloat(price.value)||0;
+    if(p<=0){ res.classList.remove("show"); return; }
+    var margin=c>=p?0:((p-c)/p)*100; var markup=c<=0?0:((p-c)/c)*100;
+    marginEl.textContent=margin.toFixed(2)+"%"; markupEl.textContent=markup.toFixed(2)+"%"; res.classList.add("show");
+  });
+  document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
+})();
+  </script>
+</body>
+</html>

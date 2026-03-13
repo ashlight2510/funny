@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>독서 예산 | 권당 가격·월 n권 | FunnyFunny Cloud</title>
+  <meta name="description" content="권당 가격과 월 구매 권수를 입력하면 월/연 독서 예산을 계산합니다." />
+  <link rel="canonical" href="https://funnyfunny.cloud/tools/book-budget/" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+  <style>
+    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#713f12;--border:#334155;}
+    *{box-sizing:border-box;} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+    .wrap{max-width:560px;margin:0 auto;padding:18px 14px 80px;}
+    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#78350f,#713f12);display:grid;place-items:center;font-size:22px;}
+    h1{margin:0 0 6px;font-size:22px;font-weight:800;} .sub{margin:0;color:var(--muted);font-size:14px;}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
+    .panel h3{margin:0 0 12px;font-size:14px;font-weight:700;color:var(--muted);}
+    .field{margin-bottom:14px;} .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+    .field input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:#0b1220;color:var(--text);font-size:14px;}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .btn{padding:12px 20px;border-radius:12px;border:none;font-weight:600;font-size:14px;cursor:pointer;background:var(--accent);color:#fff;}
+    .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);} .result.show{display:block;}
+    .result-item{display:flex;justify-content:space-between;padding:8px 0;} .result-item .v{font-weight:700;color:var(--accent);}
+    .footer-links{text-align:center;margin:16px 0;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
+    .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><div class="brand"><div class="brand-badge">📚</div><div><h1>독서 예산</h1><p class="sub">권당 가격·월 n권 → 월/연 예산</p></div></div></header>
+    <div class="panel">
+      <h3>입력</h3>
+      <div class="row">
+        <div class="field"><label>권당 평균 가격 (원)</label><input type="number" id="perBook" min="0" value="15000" /></div>
+        <div class="field"><label>월 구매 권수 (권)</label><input type="number" id="perMonth" min="0" max="30" value="2" /></div>
+      </div>
+      <button type="button" class="btn" id="btnCalc">계산하기</button>
+      <div class="result" id="result">
+        <div class="result-item"><span>월 예산</span><span class="v" id="monthly"></span></div>
+        <div class="result-item"><span>연 예산</span><span class="v" id="yearly"></span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  <div class="footer-links"><a href="https://funnyfunny.cloud/guide/book-budget-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/study-hours/">학습 시간</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
+  <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span></div>
+  <script>
+(function(){
+  function fmt(n){ return Math.round(n).toLocaleString() + "원"; }
+  var perBook=document.getElementById("perBook"), perMonth=document.getElementById("perMonth");
+  var btn=document.getElementById("btnCalc"), res=document.getElementById("result"), mEl=document.getElementById("monthly"), yEl=document.getElementById("yearly");
+  btn.addEventListener("click",function(){
+    var p=parseFloat(perBook.value)||0, m=parseFloat(perMonth.value)||0;
+    mEl.textContent=fmt(p*m); yEl.textContent=fmt(p*m*12); res.classList.add("show");
+  });
+  document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
+})();
+  </script>
+</body>
+</html>

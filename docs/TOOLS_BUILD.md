@@ -1,8 +1,8 @@
 # 도구 100개 빌드·복사 요약
 
-**현재**: 150개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+**현재**: 187개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
 
-**수익·금융 관련 정적 도구 (78개)**  
+**수익·금융 관련 정적 도구 (90개)**  
 | slug | 설명 |
 |------|------|
 | loancalc | 대출 이자·상환 (원리금/원금 균등) |
@@ -83,6 +83,43 @@
 | bmi-range | BMI 구간 설명 |
 | ideal-weight | 이상 체중 범위 (Broca·BMI) |
 | body-fat-est | 체지방률 추정 (BMI·나이·성별) |
+| coffee-yearly | 연간 커피 비용 (잔당·주 횟수) |
+| delivery-yearly | 배달비 모아보기 (1회·월 횟수) |
+| ott-total | OTT 구독 합계 (넷플·디즈니 등) |
+| gym-value | 헬스장 이용당 단가 (월회비÷이용일) |
+| lunch-cost | 월 점심비 (1인당·출근일) |
+| cigarette-cost | 담배 비용 (갑당·일 소비) |
+| alcohol-monthly | 음주 비용 (1회·월 횟수) |
+| snack-cost | 간식 비용 (일 평균·일수) |
+| phone-compare | 요금제 비교 (데이터·통화) |
+| car-depreciation | 차량 감가상각 (구입가·연식·감가율) |
+| book-budget | 독서 예산 (권당·월 n권) |
+| study-hours | 목표 학습시간 (시험일·총 시간) |
+| percent-change | 퍼센트 변화 (이전값·현재값 → 증감 %) |
+| percent-of | A의 B% (전체·비율 % → 해당 금액) |
+| reverse-percent | 역산 퍼센트 (결과값·비율% → 원래 값) |
+| margin-markup | 마진 vs 마크업 (원가·판가 → 마진%·마크업%) |
+| split-percent | 비율 N빵 (총액·비율 A:B:C → 각 금액) |
+| tax-bracket | 세율 구간 보기 (과세소득 → 구간별 세율 참고) |
+| allocation | 자산 배분 (총액·비율% → 항목별 금액) |
+| growth-rate | 성장률 계산 (전기·당기 → 전년대비·전기대비 %) |
+| area-convert | 면적 변환 (㎡·평·sqft·헥타르 상호 변환) |
+| volume-convert | 부피 변환 (L·mL·gal·cc 등 변환) |
+| speed-convert | 속도 변환 (km/h·m/s·mph 변환) |
+| data-size | 데이터 용량 (KB·MB·GB·TB 변환) |
+| timezone-diff | 시간대 차이 (두 도시/UTC offset 차이) |
+| pressure-convert | 압력 변환 (Pa·bar·psi·atm 변환) |
+| energy-convert | 에너지 변환 (kcal·kJ·Wh 변환) |
+| loan-payoff-date | 대출 상환 완료일 (월 상환액·잔액·이자 → 예상 완료일) |
+| solar-payback | 태양광 회수 기간 (설치비·연 절감액 → 회수 년수) |
+| carbon-footprint | 탄소발자국 (이동·전기 사용 → CO2 추정 kg) |
+| habit-streak | 습관 연속 일수 (시작일·오늘 → 연속 일수) |
+| dice | 주사위 뽑기 (n면체·개수 → 랜덤 결과) |
+| marathon-pace | 마라톤 목표 페이스 (목표 시간·거리 → km당 pace) |
+| readability | 글 난이도 (텍스트 입력 → 대략적 독해 수준) |
+| battery-life | 배터리 수명 비용 (기기 가격·예상 사용 년수 → 연 비용) |
+| discount-stack | 할인 중첩 (정가·할인1%·할인2% → 최종가) |
+| rent-ratio | 월세 부담비율 (월소득·월세 → 부담률 %) |
 
 **추가 정적 도구 (3개)**  
 | slug | 설명 |
