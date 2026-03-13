@@ -62,7 +62,7 @@ function buildTests300() {
     const slug = `test-${pad3(i)}`;
     const icon = TEST_ICONS[i % TEST_ICONS.length];
     const titleIdx = (i - 1) % TEST_TITLES.length;
-    const titleKo = `${TEST_TITLES[titleIdx]} ${Math.floor((i - 1) / TEST_TITLES.length) + 1}`.trim();
+    const titleKo = TEST_TITLES[titleIdx];
     const pool = TEST_STATEMENT_POOLS[TEST_TITLE_TO_POOL[titleIdx]];
     const n = 10 + (i % 9);
     const data = Array.from({ length: n }, (_, j) => pool[((i * 5) + j) % pool.length]);
@@ -77,7 +77,7 @@ function buildGames120() {
     const slug = `game-${pad3(i)}`;
     const icon = GAME_ICONS[i % GAME_ICONS.length];
     const titleIdx = (i - 1) % GAME_TITLES.length;
-    const titleKo = `${GAME_TITLES[titleIdx]} ${Math.floor((i - 1) / GAME_TITLES.length) + 1}`.trim();
+    const titleKo = GAME_TITLES[titleIdx];
     const cat = GAME_TITLE_TO_CATEGORY[titleIdx];
     const pool = GAME_OPTIONS_BY_CATEGORY[cat];
     const n = 10 + (i % 9);
