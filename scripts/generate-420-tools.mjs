@@ -20,7 +20,16 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 #tool-share-block #tool-share-toast { display: none; margin-left: 10px; color: var(--muted, #94a3b8); font-size: 13px; }
 `;
 
-const ACCENTS = ["#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#06b6d4", "#6366f1", "#84cc16", "#ef4444"];
+const ACCENTS = [
+  "#8b5cf6",
+  "#ec4899",
+  "#f59e0b",
+  "#10b981",
+  "#06b6d4",
+  "#6366f1",
+  "#84cc16",
+  "#ef4444",
+];
 
 function escapeJs(arr) {
   return JSON.stringify(arr).replace(/'/g, "\\'");
@@ -87,7 +96,11 @@ function main() {
     const accent = ACCENTS[n % ACCENTS.length];
     const dir = path.join(TOOLS_DIR, tool.slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, "index.html"), buildHtml(tool, accent), "utf8");
+    fs.writeFileSync(
+      path.join(dir, "index.html"),
+      buildHtml(tool, accent),
+      "utf8",
+    );
     n++;
     if (n <= 5 || n === 300 || n === 420) console.log("created:", tool.slug);
   }

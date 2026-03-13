@@ -9,7 +9,7 @@ import {
   seoApplications,
   getSeoFaq,
 } from "../lib/constants";
-import { getAllServices, getSeoGuides, hrefToSlug, getToolPath, getCalculators, getTests, getGames } from "../lib/services";
+import { getAllServices, getSeoGuides, hrefToSlug, getToolPath, getCalculators, getTests, getGames, getUtils } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
 
@@ -24,6 +24,7 @@ export function HomeContent() {
   const calculators = getCalculators(lang);
   const tests = getTests(lang);
   const games = getGames(lang);
+  const utils = getUtils(lang);
   const seoGuides = getSeoGuides(lang);
   const seoFaq = getSeoFaq(lang);
   const featuredCalcSlugs = ["tax", "n", "time", "space", "birth", "cafe"];
@@ -424,11 +425,11 @@ export function HomeContent() {
               <span>{t("categoryTests")} ({tests.length})</span>
             </a>
             <a
-              href="#utils"
+              href="/utils/"
               className="flex items-center gap-3 p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 font-semibold hover:bg-slate-200 transition"
             >
               <span className="text-2xl">🛠️</span>
-              <span>{t("categoryUtils")}</span>
+              <span>{t("categoryUtils")} ({utils.length})</span>
             </a>
             <a
               href="/games/"
