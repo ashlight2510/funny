@@ -33,6 +33,7 @@ export default function sitemap() {
     { url: `${BASE}/guide/`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/calculators/`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${BASE}/tests/`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${BASE}/games/`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${BASE}/privacy/`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms/`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/copyright/`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },

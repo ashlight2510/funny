@@ -60,7 +60,7 @@ export default function CalculatorsPage() {
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          무료 계산기 모음
+          무료 계산기 모음 <span className="text-sky-600 font-bold">({tools.length}개)</span>
         </h1>
         <p className="mt-2 text-slate-600">
           세금·N빵·평수·D-day·사교육비·절약 시뮬레이션 등 한눈에.
@@ -97,7 +97,7 @@ export default function CalculatorsPage() {
           </section>
         )}
         <section className="mt-8">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">전체 계산기</h2>
+          <h2 className="text-lg font-bold text-slate-800 mb-3">전체 계산기 ({tools.length}개)</h2>
         <ul className="grid gap-3 sm:grid-cols-2">
           {tools.map((t) => {
             const slug = hrefToSlug(t.href);
@@ -130,6 +130,10 @@ export default function CalculatorsPage() {
           {" · "}
           <a href="/tests/" className="text-sky-600 hover:underline">
             테스트 모음
+          </a>
+          {" · "}
+          <a href="/games/" className="text-sky-600 hover:underline">
+            게임 모음
           </a>
         </p>
         <p className="mt-2 text-sm text-slate-500">

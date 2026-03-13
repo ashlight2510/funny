@@ -15,6 +15,10 @@ export function FooterSimple() {
             Tests
           </a>
           <span>|</span>
+          <a href="/games/" className="hover:text-gray-600">
+            Games
+          </a>
+          <span>|</span>
           <a href="/guide/" className="hover:text-gray-600">
             Guides
           </a>

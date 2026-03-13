@@ -2803,6 +2803,9 @@ const TEST_SLUGS = [
   "today", "todo", "dream", "fortune", "heal", "need", "mind", "temple",
 ];
 
+/** 게임·랜덤 뽑기 도구 슬러그 (coin-flip 이후 = 랜덤/게임 성격) */
+const GAME_SLUGS = CALCULATOR_SLUGS.slice(CALCULATOR_SLUGS.indexOf("coin-flip"));
+
 export function getCalculators(lang = "en") {
   const services = getAllServices(lang);
   return services.filter((s) => CALCULATOR_SLUGS.includes(hrefToSlug(s.href)));
@@ -2811,4 +2814,9 @@ export function getCalculators(lang = "en") {
 export function getTests(lang = "en") {
   const services = getAllServices(lang);
   return services.filter((s) => TEST_SLUGS.includes(hrefToSlug(s.href)));
+}
+
+export function getGames(lang = "en") {
+  const services = getAllServices(lang);
+  return services.filter((s) => GAME_SLUGS.includes(hrefToSlug(s.href)));
 }

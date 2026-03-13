@@ -11,6 +11,7 @@ const PRIORITY_PATHS = [
   "/",
   "/calculators/",
   "/tests/",
+  "/games/",
   "/guide/",
   "/guide/take-home-pay-how/",
   "/guide/four-insurance-deduction-how/",

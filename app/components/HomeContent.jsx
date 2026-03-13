@@ -9,7 +9,7 @@ import {
   seoApplications,
   getSeoFaq,
 } from "../lib/constants";
-import { getAllServices, getSeoGuides, hrefToSlug, getToolPath, getCalculators, getTests } from "../lib/services";
+import { getAllServices, getSeoGuides, hrefToSlug, getToolPath, getCalculators, getTests, getGames } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
 
@@ -23,6 +23,7 @@ export function HomeContent() {
   const allServices = getAllServices(lang);
   const calculators = getCalculators(lang);
   const tests = getTests(lang);
+  const games = getGames(lang);
   const seoGuides = getSeoGuides(lang);
   const seoFaq = getSeoFaq(lang);
   const featuredCalcSlugs = ["tax", "n", "time", "space", "birth", "cafe"];
@@ -413,14 +414,14 @@ export function HomeContent() {
               className="flex items-center gap-3 p-4 rounded-xl bg-sky-50 border border-sky-200 text-sky-800 font-semibold hover:bg-sky-100 hover:border-sky-300 transition"
             >
               <span className="text-2xl">🧮</span>
-              <span>{t("categoryCalculators")}</span>
+              <span>{t("categoryCalculators")} ({calculators.length})</span>
             </a>
             <a
               href="/tests/"
               className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold hover:bg-emerald-100 hover:border-emerald-300 transition"
             >
               <span className="text-2xl">🧪</span>
-              <span>{t("categoryTests")}</span>
+              <span>{t("categoryTests")} ({tests.length})</span>
             </a>
             <a
               href="#utils"
@@ -430,11 +431,11 @@ export function HomeContent() {
               <span>{t("categoryUtils")}</span>
             </a>
             <a
-              href="#arcade"
+              href="/games/"
               className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-semibold hover:bg-amber-100 hover:border-amber-300 transition"
             >
               <span className="text-2xl">🎮</span>
-              <span>{t("categoryGames")}</span>
+              <span>{t("categoryGames")} ({games.length})</span>
             </a>
           </div>
         </section>

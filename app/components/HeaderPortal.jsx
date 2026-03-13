@@ -47,6 +47,9 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                 <a href="/tests/" className="px-3 py-2 text-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
                   🧪 {t ? t("heroCtaTests") : "Tests"}
                 </a>
+                <a href="/games/" className="px-3 py-2 text-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                  🎮 {t ? t("categoryGames") : "Games"}
+                </a>
                 <a href="/guide/" className="px-3 py-2 text-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
                   📚 {t ? t("heroCtaGuides") : "Guides"}
                 </a>
