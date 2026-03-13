@@ -29,7 +29,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 </head>
 <body>
   <div class="wrap">
-    <header><div class="brand"><div class="brand-badge">🛍️</div><div><h1>드라마 추천</h1><p class="sub">랜덤 뽑기</p></div></div></header>
+    <header><div class="brand"><div class="brand-badge">🎬</div><div><h1>드라마 추천</h1><p class="sub">랜덤 뽑기</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
       <div class="result" id="result"><span id="out"></span><span id="resultTagline" class="result-extra" style="display:none;"></span></div>
@@ -40,7 +40,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   <div class="footer-links"><a href="https://funnyfunny.cloud/tools/random/">랜덤</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
   <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
   <script>
-(function(){ var arr=["멜로","SF","판타지","미스터리","힐링","역사","전쟁","음악","뮤지컬","범죄","느와르","서스펜스"]; var taglines=["오늘의 선택! 맛있게 드세요 🍽️","운명의 메뉴예요 ✨","이거로 가시죠!","고르기 힘들 땐 운에 맡겨보세요.","오늘은 이걸로 결정!","뽑기 운이 좋은 날이에요 🎲","친구랑 같이 뽑아보면 더 재밌어요.","한 번 더 뽑아볼까요?","결정 장애 해결! 👍","오늘의 럭키 아이템 🍀","이걸로 만족하시겠어요?","다음엔 뭐가 나올까요?","선택의 기쁨을 느껴 보세요.","우연이 준 선물이에요.","공유해서 친구도 뽑게 해보세요!","뽑힌 걸 기록해 두면 재밌어요."];
+(function(){ var arr=["로맨스","액션","코미디","스릴러","공포","다큐","예능","애니","드라마","영화","멜로","SF","판타지","미스터리","힐링","역사","전쟁","음악","뮤지컬","범죄","느와르","서스펜스","재난","스포츠","가족","청춘","일상","로맨틱코미디","블랙코미디","다크판타지","호러","좀비","재난","재난액션","첩보","탐정","법정","의료","정치","사회","인물","자전거","여행","요리","패션","예술","동물","자연"]; var taglines=["오늘의 선택! 맛있게 드세요 🍽️","운명의 메뉴예요 ✨","이거로 가시죠!","고르기 힘들 땐 운에 맡겨보세요.","오늘은 이걸로 결정!","뽑기 운이 좋은 날이에요 🎲","친구랑 같이 뽑아보면 더 재밌어요.","한 번 더 뽑아볼까요?","결정 장애 해결! 👍","오늘의 럭키 아이템 🍀","이걸로 만족하시겠어요?","다음엔 뭐가 나올까요?","선택의 기쁨을 느껴 보세요.","우연이 준 선물이에요.","공유해서 친구도 뽑게 해보세요!","뽑힌 걸 기록해 두면 재밌어요."];
   var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), taglineEl=document.getElementById("resultTagline");
   btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(taglineEl){ taglineEl.textContent=taglines[Math.floor(Math.random()*taglines.length)]; taglineEl.style.display="block"; } btn.textContent="한 번 더 뽑기"; res.classList.add("show"); });
 

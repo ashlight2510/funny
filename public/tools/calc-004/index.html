@@ -29,7 +29,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 </head>
 <body>
   <div class="wrap">
-    <header><div class="brand"><div class="brand-badge">⏱️</div><div><h1>할인 계산</h1><p class="sub">간단 계산</p></div></header>
+    <header><div class="brand"><div class="brand-badge">💰</div><div><h1>할인 계산</h1><p class="sub">간단 계산</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
       <div class="result" id="result"><span id="out"></span><span id="resultSubline" class="result-extra" style="display:none;"></span></div>
@@ -40,7 +40,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   <div class="footer-links"><a href="https://funnyfunny.cloud/tools/random/">랜덤</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
   <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
   <script>
-(function(){ var arr=["주의가 필요합니다.","권장 범위 내입니다.","개선 여지가 있습니다.","무난한 수준입니다.","꼭 확인해 보세요.","참고용으로 활용하세요.","결과가 기준 범위 안에 있습니다.","수치를 확인해 보시고 결정하세요.","전문가 상담을 권합니다.","정기적으로 다시 확인해 보세요."]; var subline="참고용으로 활용하시고, 필요 시 전문가와 상담하세요.";
+(function(){ var arr=["적정 수준입니다.","참고하시면 좋겠습니다.","추가 검토를 권합니다.","양호한 편입니다.","주의가 필요합니다.","권장 범위 내입니다.","개선 여지가 있습니다.","무난한 수준입니다.","꼭 확인해 보세요.","참고용으로 활용하세요.","결과가 기준 범위 안에 있습니다.","수치를 확인해 보시고 결정하세요.","전문가 상담을 권합니다.","정기적으로 다시 확인해 보세요.","목표에 가까운 편입니다.","조금만 더 신경 쓰면 좋겠습니다.","현재 상태를 유지하시면 됩니다.","참고 자료로만 활용하시고, 최종 판단은 본인이 하세요.","기준을 충족합니다.","조금 신경 쓰시면 좋겠습니다.","평균 범위 안입니다.","개선을 권합니다.","양호한 편이니 유지하세요.","재측정을 권합니다.","주의해서 확인하세요.","참고 수치로 활용하시고, 필요 시 상담하세요.","적정 구간입니다.","범위를 벗어났다면 전문가와 상의하세요.","수치만으로 판단하지 마시고 상황을 보세요."]; var subline="참고용으로 활용하시고, 필요 시 전문가와 상담하세요.";
   var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), subEl=document.getElementById("resultSubline");
   btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(subEl){ subEl.textContent=subline; subEl.style.display="block"; } res.classList.add("show"); });
 

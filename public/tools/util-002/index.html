@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>오늘의 재테크 한줄 | 저축·소비·투자 인사이트 한 줄 뽑기 | FunnyFunny Cloud</title>
-  <meta name="description" content="저축·소비·투자 인사이트 한 줄 뽑기. 무료로 사용할 수 있습니다." />
+  <title>습관 인사이트 | 습관·루틴 한 줄 뽑기 | FunnyFunny Cloud</title>
+  <meta name="description" content="습관·루틴 한 줄 뽑기. 무료로 사용할 수 있습니다." />
   <link rel="canonical" href="https://funnyfunny.cloud/tools/util-002/" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
   <style>
-    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#06b6d4;--border:#334155;}
+    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#10b981;--border:#334155;}
     *{box-sizing:border-box;} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
     .wrap{max-width:560px;margin:0 auto;padding:18px 14px 80px;}
-    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#06b6d499);display:grid;place-items:center;font-size:22px;}
+    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#10b981,#10b98199);display:grid;place-items:center;font-size:22px;}
     h1{margin:0 0 6px;font-size:22px;font-weight:800;} .sub{margin:0;color:var(--muted);font-size:14px;}
     .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
     .btn{padding:14px 24px;border-radius:12px;border:none;font-weight:600;font-size:16px;cursor:pointer;background:var(--accent);color:#fff;}
@@ -29,7 +29,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 </head>
 <body>
   <div class="wrap">
-    <header><div class="brand"><div class="brand-badge">🛠️</div><div><h1>오늘의 재테크 한줄</h1><p class="sub">저축·소비·투자 인사이트 한 줄 뽑기</p></div></header>
+    <header><div class="brand"><div class="brand-badge">💡</div><div><h1>습관 인사이트</h1><p class="sub">습관·루틴 한 줄 뽑기</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
       <div class="result" id="result"><span id="out"></span><span id="resultSubline" class="result-extra" style="display:none;"></span></div>
@@ -40,7 +40,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   <div class="footer-links"><a href="https://funnyfunny.cloud/tools/random/">랜덤</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
   <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
   <script>
-(function(){ var arr=["소비보다 저축을 먼저 생각하면 저절로 남는다.","작은 금액이라도 매달 꼭 넣는 습관이 중요하다.","필요한 것과 갖고 싶은 것을 구분해 보자.","할인에 끌려 사지 말고, 필요할 때 사자.","비상금은 월급의 3~6개월분이면 든든하다.","복리는 시간이 지날수록 기하급수적으로 커진다.","카드 빌링일을 한꺼번에 맞추면 현금 흐름이 보인다.","고정비를 줄이면 여유 자금이 생긴다.","소득 대비 저축률 20%를 목표로 해 보자.","투자 전 \'잃어도 괜찮은 돈\'인지 확인하자.","월급날 저축·투자부터 이체하면 저절로 남는다.","소비 내역을 한 달만 기록해 보자."]; var subline="오늘 하루 이 한 줄을 떠올려 보세요.";
+(function(){ var arr=["아침에 일어나자마자 물 한 잔.","하루 한 가지라도 정리하면 마음이 가벼워진다.","작은 습관이 쌓여 큰 변화가 된다.","21일이면 습관의 싹이 트기 시작한다.","저녁 식사 후 10분만 걸어도 몸이 달라진다.","잠들기 1시간 전에는 화면을 멀리하자.","할 일을 써 두면 머리가 맑아진다.","매일 같은 시간에 하면 습관이 된다.","한 번에 하나의 습관만 바꾸자.","못 지켜도 자책 말고, 다음부터 다시 시작.","습관은 환경을 바꾸면 쉽게 바뀐다.","아침에 가장 먼저 할 일 하나를 정하자."]; var subline="오늘 하루 이 한 줄을 떠올려 보세요.";
   var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), subEl=document.getElementById("resultSubline");
   btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(subEl){ subEl.textContent=subline; subEl.style.display="block"; } res.classList.add("show"); });
 

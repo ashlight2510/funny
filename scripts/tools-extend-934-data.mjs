@@ -1,9 +1,10 @@
 /**
- * 확장 도구 데이터: 계산기 65 + 테스트 170 + 유틸 500 + 게임 199 = 934개
- * - CALC_65: calc-001~065 (계산기)
- * - TEST_170: test-301~470 (테스트)
- * - UTIL_500: util-001~500 (유틸·인사이트, 50개 주제 × 10 슬러그, 실제 한 줄 문장)
- * - GAME_199: game-121~319 (게임)
+ * 통합 확장 도구 데이터: 중복 제거, 데이터 한곳에 몰아서 고도화
+ * - CALC_10: calc-001~010 (계산기 10종, 풀 데이터)
+ * - TEST_40: test-001~040 (테스트 40종, 주제별 풀 데이터)
+ * - UTIL_50: util-001~050 (유틸 50주제, 주제당 풀 데이터)
+ * - GAME_20: game-001~020 (게임 20종, SEO명·풀 옵션)
+ * 합계 120개. 기존 넘버링 서비스(예: 카페메뉴 1~15)는 하나(카페 메뉴 추천)로 통합.
  */
 import { UTIL_THEMES } from "./util-themes-data.mjs";
 const TEST_ICONS = ["🧪", "📋", "💭", "🎯", "📊", "🔍", "💡", "❤️", "🧠", "⚖️", "🌱", "⏰", "😴", "🍽️", "🏃", "😊", "💪", "🌈", "📈", "🤝"];
@@ -12,7 +13,7 @@ const TEST_TITLES = [
   "운동 습관", "기분 진단", "자신감 테스트", "창의성 체크", "시간관리", "소통 스타일", "번아웃 위험도", "일중독 체크",
   "우울감 체크", "불안 수준", "자존감 테스트", "감정조절", "결단력 체크", "리더십 스타일", "팀워크 성향", "갈등해결",
   "재무 성향", "절약 지수", "투자 성향", "생활만족도", "워라밸 체크", "목표의식", "학습 스타일", "집중력 체크",
-  "에너지 레벨", "회복력 테스트", "감사 성향", "낙관성 체크", "호기심 수준", "도전 성향", "인내심 테스트"
+  "에너지 레벨", "회복력 테스트", "감사 성향", "낙관성 체크", "호기심 수준", "도전 성향", "인내심 테스트", "집중력 학습"
 ];
 const TEST_DESC = "간단 체크";
 /** 테스트 제목 인덱스(0~39) → 문항 풀 인덱스(0~7). 주제별 맞춤 문항 사용 */
@@ -35,6 +36,12 @@ const GAME_ICONS = ["🎲", "🎯", "🍿", "🎵", "📖", "🎮", "✈️", "�
 const GAME_TITLES = [
   "간식 룰렛", "영화 장르", "노래 추천", "책 테마", "취미 뽑기", "주말 룰렛", "여행지 뽑기", "음료 룰렛",
   "디저트 룰렛", "운동 뽑기", "드라마 추천", "쇼핑 카테고리", "점심 룰렛", "저녁 메뉴", "카페 메뉴", "과일 뽑기",
+  "색상 뽑기", "숫자 뽑기", "요일 뽑기", "계절 뽑기"
+];
+/** 게임 20종 SEO·검색 친화 서비스명 (통합 후 하나씩) */
+const GAME_TITLES_SEO = [
+  "간식 추천 룰렛", "영화 장르 추천", "노래 추천 뽑기", "책 테마 추천", "취미 추천 뽑기", "주말 룰렛", "여행지 추천 뽑기", "음료 추천 룰렛",
+  "디저트 추천 룰렛", "운동 추천 뽑기", "드라마 추천", "쇼핑 카테고리 추천", "점심 메뉴 추천", "저녁 메뉴 추천", "카페 메뉴 추천", "과일 추천 뽑기",
   "색상 뽑기", "숫자 뽑기", "요일 뽑기", "계절 뽑기"
 ];
 const GAME_DESC = "랜덤 뽑기";
@@ -85,73 +92,61 @@ function pad3(n) {
   return String(n).padStart(3, "0");
 }
 
-function buildCalc65() {
+/** 계산기 10종 통합: 풀 문구 데이터 */
+function buildCalc10() {
   const out = [];
-  const phraseLen = CALC_RESULT_PHRASES.length;
-  for (let i = 1; i <= 65; i++) {
+  for (let i = 1; i <= 10; i++) {
     const slug = `calc-${pad3(i)}`;
-    const icon = CALC_ICONS[i % CALC_ICONS.length];
-    const titleIdx = (i - 1) % CALC_TITLES.length;
-    const titleKo = CALC_TITLES[titleIdx];
-    const n = 6 + (i % 5);
-    const data = Array.from({ length: n }, (_, j) => CALC_RESULT_PHRASES[(i + j) % phraseLen]);
-    out.push({ slug, icon, titleKo, descKo: CALC_DESC, data });
+    const icon = CALC_ICONS[(i - 1) % CALC_ICONS.length];
+    const titleKo = CALC_TITLES[i - 1];
+    out.push({ slug, icon, titleKo, descKo: CALC_DESC, data: [...CALC_RESULT_PHRASES] });
   }
   return out;
 }
 
-function buildTest170() {
+/** 테스트 40종 통합: 주제별 풀 문항 */
+function buildTest40() {
   const out = [];
-  for (let i = 301; i <= 470; i++) {
+  for (let i = 1; i <= 40; i++) {
     const slug = `test-${pad3(i)}`;
-    const icon = TEST_ICONS[i % TEST_ICONS.length];
-    const titleIdx = (i - 1) % TEST_TITLES.length;
+    const titleIdx = i - 1;
+    const icon = TEST_ICONS[titleIdx % TEST_ICONS.length];
     const titleKo = TEST_TITLES[titleIdx];
     const pool = TEST_STATEMENT_POOLS[TEST_TITLE_TO_POOL[titleIdx]];
-    const n = 10 + (i % 9);
-    const data = Array.from({ length: n }, (_, j) => pool[((i * 5) + j) % pool.length]);
-    out.push({ slug, icon, titleKo, descKo: TEST_DESC, data });
+    out.push({ slug, icon, titleKo, descKo: TEST_DESC, data: [...pool] });
   }
   return out;
 }
 
-function buildUtil500() {
+/** 유틸 50주제 통합: 주제당 하나, 풀 문장 */
+function buildUtil50() {
   const out = [];
-  const themesCount = UTIL_THEMES.length; // 50
-  for (let i = 1; i <= 500; i++) {
+  for (let i = 1; i <= 50; i++) {
     const slug = `util-${pad3(i)}`;
-    const themeIndex = Math.floor((i - 1) / 10) % themesCount; // util-001~010 -> 0, util-011~020 -> 1, ...
-    const theme = UTIL_THEMES[themeIndex];
-    const icon = UTIL_ICONS[themeIndex % UTIL_ICONS.length];
-    out.push({
-      slug,
-      icon,
-      titleKo: theme.titleKo,
-      descKo: theme.descKo,
-      data: theme.data,
-    });
+    const theme = UTIL_THEMES[i - 1];
+    const icon = UTIL_ICONS[(i - 1) % UTIL_ICONS.length];
+    out.push({ slug, icon, titleKo: theme.titleKo, descKo: theme.descKo, data: theme.data });
   }
   return out;
 }
 
-function buildGame199() {
+/** 게임 20종 통합: SEO명 + 카테고리 풀 옵션 */
+function buildGame20() {
   const out = [];
-  for (let i = 121; i <= 319; i++) {
+  for (let i = 1; i <= 20; i++) {
     const slug = `game-${pad3(i)}`;
-    const icon = GAME_ICONS[i % GAME_ICONS.length];
-    const titleIdx = (i - 1) % GAME_TITLES.length;
-    const titleKo = GAME_TITLES[titleIdx];
+    const titleIdx = i - 1;
+    const icon = GAME_ICONS[titleIdx % GAME_ICONS.length];
+    const titleKo = GAME_TITLES_SEO[titleIdx];
     const cat = GAME_TITLE_TO_CATEGORY[titleIdx];
     const pool = GAME_OPTIONS_BY_CATEGORY[cat];
-    const n = 10 + (i % 9);
-    const data = Array.from({ length: n }, (_, j) => pool[((i * 5) + j) % pool.length]);
-    out.push({ slug, icon, titleKo, descKo: GAME_DESC, data });
+    out.push({ slug, icon, titleKo, descKo: GAME_DESC, data: [...pool] });
   }
   return out;
 }
 
-export const CALC_65 = buildCalc65();
-export const TEST_170 = buildTest170();
-export const UTIL_500 = buildUtil500();
-export const GAME_199 = buildGame199();
-export const TOOLS_EXTEND_934 = [...CALC_65, ...TEST_170, ...UTIL_500, ...GAME_199];
+export const CALC_10 = buildCalc10();
+export const TEST_40 = buildTest40();
+export const UTIL_50 = buildUtil50();
+export const GAME_20 = buildGame20();
+export const TOOLS_EXTEND_934 = [...CALC_10, ...TEST_40, ...UTIL_50, ...GAME_20];

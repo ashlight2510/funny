@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * tools-extend-934-data.mjs 기반으로 public/tools/{slug}/index.html 934개 생성.
- * 계산기 65 + 테스트 170 + 유틸 500 + 게임 199
+ * 통합 도구 120개 생성 (calc 10 + test 40 + util 50 + game 20).
+ * 생성 후 폐기 슬러그(calc-011~065, test-041~470, util-051~500, game-021~319) 디렉터리 삭제.
  * 사용: node scripts/generate-extend-934-tools.mjs
  */
 import fs from "fs";
@@ -117,6 +117,15 @@ ${SHARE_CSS}
 `;
 }
 
+function deprecatedSlugs() {
+  const slugs = [];
+  for (let i = 11; i <= 65; i++) slugs.push(`calc-${String(i).padStart(3, "0")}`);
+  for (let i = 41; i <= 470; i++) slugs.push(`test-${String(i).padStart(3, "0")}`);
+  for (let i = 51; i <= 500; i++) slugs.push(`util-${String(i).padStart(3, "0")}`);
+  for (let i = 21; i <= 319; i++) slugs.push(`game-${String(i).padStart(3, "0")}`);
+  return new Set(slugs);
+}
+
 function main() {
   let n = 0;
   for (const tool of TOOLS_EXTEND_934) {
@@ -125,9 +134,22 @@ function main() {
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, "index.html"), buildHtml(tool, accent), "utf8");
     n++;
-    if (n <= 3 || n === 65 || n === 235 || n === 735 || n === 934) console.log("created:", tool.slug);
+    if (n <= 3 || n === 10 || n === 50 || n === 100 || n === 120) console.log("created:", tool.slug);
   }
-  console.log("\nDone. Created", n, "tools (65 calc + 170 test + 500 util + 199 game).");
+  const toRemove = deprecatedSlugs();
+  let removed = 0;
+  if (fs.existsSync(TOOLS_DIR)) {
+    for (const name of fs.readdirSync(TOOLS_DIR)) {
+      if (toRemove.has(name)) {
+        const dir = path.join(TOOLS_DIR, name);
+        if (fs.statSync(dir).isDirectory()) {
+          fs.rmSync(dir, { recursive: true });
+          removed++;
+        }
+      }
+    }
+  }
+  console.log("\nDone. Created", n, "tools (10 calc + 40 test + 50 util + 20 game). Removed", removed, "deprecated dirs.");
 }
 
 main();

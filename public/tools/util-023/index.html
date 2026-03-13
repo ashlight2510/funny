@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>생산성 한줄 | 일·공부 생산성 팁 한 줄 | FunnyFunny Cloud</title>
-  <meta name="description" content="일·공부 생산성 팁 한 줄. 무료로 사용할 수 있습니다." />
+  <title>감정 한줄 | 감정·기분 인사이트 한 줄 | FunnyFunny Cloud</title>
+  <meta name="description" content="감정·기분 인사이트 한 줄. 무료로 사용할 수 있습니다." />
   <link rel="canonical" href="https://funnyfunny.cloud/tools/util-023/" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
   <style>
-    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#ec4899;--border:#334155;}
+    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#8b5cf6;--border:#334155;}
     *{box-sizing:border-box;} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
     .wrap{max-width:560px;margin:0 auto;padding:18px 14px 80px;}
-    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#ec4899,#ec489999);display:grid;place-items:center;font-size:22px;}
+    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#8b5cf699);display:grid;place-items:center;font-size:22px;}
     h1{margin:0 0 6px;font-size:22px;font-weight:800;} .sub{margin:0;color:var(--muted);font-size:14px;}
     .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
     .btn{padding:14px 24px;border-radius:12px;border:none;font-weight:600;font-size:16px;cursor:pointer;background:var(--accent);color:#fff;}
@@ -29,7 +29,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 </head>
 <body>
   <div class="wrap">
-    <header><div class="brand"><div class="brand-badge">📌</div><div><h1>생산성 한줄</h1><p class="sub">일·공부 생산성 팁 한 줄</p></div></header>
+    <header><div class="brand"><div class="brand-badge">📌</div><div><h1>감정 한줄</h1><p class="sub">감정·기분 인사이트 한 줄</p></div></header>
     <div class="panel">
       <button type="button" class="btn" id="btnPick">뽑기</button>
       <div class="result" id="result"><span id="out"></span><span id="resultSubline" class="result-extra" style="display:none;"></span></div>
@@ -40,7 +40,7 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   <div class="footer-links"><a href="https://funnyfunny.cloud/tools/random/">랜덤</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
   <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;"></span></div>
   <script>
-(function(){ var arr=["가장 어려운 일을 아침에 먼저 하자.","25분 집중 후 5분 휴식이 효율을 올린다.","할 일 목록은 3개 이하로 줄이자.","이메일은 하루 두 번만 확인해도 된다.","회의는 25분이나 50분으로 끝내 보자.","방해받지 않는 시간대를 지켜라.","시작이 반이다. 2분만 해 보자.","완벽보다 완료가 먼저다.","멀티태스킹보다 한 가지에 집중하자.","끝나는 시간을 정해 두면 집중력이 올라간다.","중요한 일은 캘린더에 블록으로 잡아 두자.","한 번에 한 프로젝트만 진행해 보자."]; var subline="오늘 하루 이 한 줄을 떠올려 보세요.";
+(function(){ var arr=["감정은 느끼는 것만으로도 괜찮다.","화가 나면 이름을 붙여 보자. \'지금 화가 난다.\'","슬플 때는 울어도 된다.","감정은 지나간다. 붙들지 말자.","기분이 안 좋을 때는 몸을 움직여 보자.","감정과 행동은 다르다. 행동은 선택할 수 있다.","오늘 기분을 한 단어로 적어 보자.","누군가에게 말하면 가벼워진다.","감정을 무시하지 말고 인정해 주자.","내일이면 조금 나아질 수 있다."]; var subline="오늘 하루 이 한 줄을 떠올려 보세요.";
   var btn=document.getElementById("btnPick"), res=document.getElementById("result"), out=document.getElementById("out"), subEl=document.getElementById("resultSubline");
   btn.addEventListener("click",function(){ out.textContent=arr[Math.floor(Math.random()*arr.length)]; out.style.color=""; if(subEl){ subEl.textContent=subline; subEl.style.display="block"; } res.classList.add("show"); });
 
