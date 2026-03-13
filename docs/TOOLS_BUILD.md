@@ -1,6 +1,6 @@
 # 도구 100개 빌드·복사 요약
 
-**현재**: 187개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
+**현재**: 237개 모두 `public/tools/{slug}/`에 `index.html` 있음. 공유 버튼 적용됨.
 
 **수익·금융 관련 정적 도구 (90개)**  
 | slug | 설명 |
@@ -120,6 +120,60 @@
 | battery-life | 배터리 수명 비용 (기기 가격·예상 사용 년수 → 연 비용) |
 | discount-stack | 할인 중첩 (정가·할인1%·할인2% → 최종가) |
 | rent-ratio | 월세 부담비율 (월소득·월세 → 부담률 %) |
+
+**게임·랜덤 정적 도구 (50개)**  
+| slug | 한 줄 설명 |
+|------|-----------|
+| coin-flip | 동전 던지기 (앞/뒤 랜덤) |
+| rps | 가위바위보 (랜덤 대결) |
+| random-name | 이름 랜덤 뽑기 (목록에서 1명) |
+| random-number | 숫자 랜덤 (최소~최대) |
+| team-split | 팀 나누기 (이름 → A팀 B팀) |
+| spin-wheel | 돌림판 (항목 → 랜덤 선택) |
+| card-draw | 카드 한 장 (52장에서 1장) |
+| bingo-caller | 빙고 숫자 (1~75 호출) |
+| truth-dare | 진실 또는 도전 (랜덤 제시) |
+| yes-no | 예/아니오 (랜덤) |
+| random-pair | 두 명 매칭 (2명씩 랜덤) |
+| order-random | 순서 랜덤 (이름 → 발표 순서) |
+| lottery-six | 로또 6개 번호 (1~45 중 6개) |
+| word-random | 단어 랜덤 (목록에서 1개) |
+| color-random | 랜덤 색상 (HEX) |
+| penalty-random | 벌칙 랜덤 (목록에서 1개) |
+| random-first | 누가 먼저 (N명 중 1명) |
+| elimination-order | 탈락 순서 (N명 순서 랜덤) |
+| emoji-random | 이모지 랜덤 (카테고리별) |
+| random-line | 한 줄 랜덤 (여러 줄에서 1줄) |
+| countdown-timer | 카운트다운 타이머 (분·초) |
+| stopwatch | 스톱워치 (시작/일시/리셋) |
+| turn-timer | 턴 타이머 (N초 제한) |
+| scoreboard | 스코어보드 (팀별 +/-) |
+| life-counter | 생명 카운터 (HP) |
+| game-timer | 게임 타이머 (플레이어별 N분) |
+| score-keeper | 점수 기록 (2~4인) |
+| timer-bomb | 폭탄 타이머 (랜덤 시간 후 알림) |
+| quick-draw | 빠른 손 (준비 후 GO 랜덤) |
+| reaction-test | 반응 속도 (클릭 ms) |
+| dice-d20 | d20 주사위 (RPG 1d20) |
+| dice-2d6 | 2d6 (두 개 6면체 합) |
+| dice-d100 | d100 (1~100) |
+| dice-fate | 운세 주사위 (긍정/부정/중립) |
+| card-deck | 카드 덱 뽑기 (52장에서 1장) |
+| uno-draw | UNO 드로우 (1~4장) |
+| rps-lizard-spock | 가위바위보 확장 (5가지) |
+| coin-flip-3 | 동전 3번 (3회 던지기) |
+| dice-pool | 다이스 풀 (nD6 5 이상 개수) |
+| card-hand | 카드 5장 (5장 핸드 랜덤) |
+| mafia-role | 마피아 역할 (시민/마피아 배정) |
+| werewolf-role | 늑대인간 역할 (역할 랜덤 배정) |
+| charade-word | 제시어 몸으로 (제시어 랜덤) |
+| pictionary-word | 그림 제시어 (그리기 게임용) |
+| secret-santa | 시크릿 산타 (이름 → 누가 누구에게) |
+| dinner-picker | 오늘 뭐 먹지 (메뉴 랜덤) |
+| movie-picker | 영화 고르기 (목록에서 1편) |
+| song-random | 노래 랜덤 (목록에서 1곡) |
+| tier-picker | 등급 랜덤 (S/A/B/C) |
+| mood-random | 기분 랜덤 (이모지 1개) |
 
 **추가 정적 도구 (3개)**  
 | slug | 설명 |

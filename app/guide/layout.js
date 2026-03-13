@@ -8,7 +8,7 @@ const guideListJsonLd = {
   name: "FunnyFunny Cloud 가이드 모음",
   description: "계산기·테스트·도구 사용법 가이드 목록",
   numberOfItems: guides.length,
-  itemListElement: guides.slice(0, 150).map((g, i) => ({
+  itemListElement: guides.slice(0, 400).map((g, i) => ({
     "@type": "ListItem",
     position: i + 1,
     name: g.title,

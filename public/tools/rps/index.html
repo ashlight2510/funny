@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>가위바위보 | 랜덤 대결 | FunnyFunny Cloud</title>
+  <meta name="description" content="가위·바위·보 중 하나를 고르면 컴퓨터가 랜덤으로 내서 승부를 봅니다." />
+  <link rel="canonical" href="https://funnyfunny.cloud/tools/rps/" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+  <style>
+    :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--accent:#22c55e;--border:#334155;}
+    *{box-sizing:border-box;} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+    .wrap{max-width:560px;margin:0 auto;padding:18px 14px 80px;}
+    .brand{display:flex;align-items:center;gap:12px;} .brand-badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#16a34a,#22c55e);display:grid;place-items:center;font-size:22px;}
+    h1{margin:0 0 6px;font-size:22px;font-weight:800;} .sub{margin:0;color:var(--muted);font-size:14px;}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
+    .choices{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+    .choices button{padding:14px 20px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:16px;}
+    .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);} .result.show{display:block;}
+    .result div{margin:6px 0;} .result .v{font-weight:700;color:var(--accent);}
+    .footer-links{text-align:center;margin:16px 0;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
+    .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><div class="brand"><div class="brand-badge">✊</div><div><h1>가위바위보</h1><p class="sub">랜덤 대결</p></div></div></header>
+    <div class="panel">
+      <p style="color:var(--muted);margin-bottom:12px;">하나를 골라보세요.</p>
+      <div class="choices">
+        <button type="button" data-choice="0">✊ 바위</button>
+        <button type="button" data-choice="1">✌️ 가위</button>
+        <button type="button" data-choice="2">🖐️ 보</button>
+      </div>
+      <div class="result" id="result">
+        <div>나: <span class="v" id="mine"></span></div>
+        <div>컴퓨터: <span class="v" id="cpu"></span></div>
+        <div>결과: <span class="v" id="win"></span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  <div class="footer-links"><a href="https://funnyfunny.cloud/guide/rps-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/coin-flip/">동전 던지기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a></div>
+  <div id="tool-share-block"><button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button><span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span></div>
+  <script>
+(function(){
+  var names=["바위","가위","보"]; var res=document.getElementById("result"), mineEl=document.getElementById("mine"), cpuEl=document.getElementById("cpu"), winEl=document.getElementById("win");
+  document.querySelectorAll(".choices button").forEach(function(btn){ btn.addEventListener("click",function(){ var m=parseInt(btn.dataset.choice,10), c=Math.floor(Math.random()*3); mineEl.textContent=names[m]; cpuEl.textContent=names[c]; var w=(m-c+3)%3; winEl.textContent=w===0?"무승부":w===1?"패":"승"; res.classList.add("show"); }); });
+  document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
+})();
+  </script>
+</body>
+</html>

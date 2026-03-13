@@ -3,7 +3,11 @@ import { guides } from "./guide/guides";
 
 const BASE = "https://funnyfunny.cloud";
 
-/** Next.js MetadataRoute.Sitemap: url, lastModified?, changeFrequency?, priority? */
+/**
+ * Next.js MetadataRoute.Sitemap — 빌드 시 out/sitemap.xml 생성.
+ * GSC 제출: https://funnyfunny.cloud/sitemap.xml
+ * 포함: 메인·정책·/guide/·/calculators/·/tests/·모든 가이드·모든 도구(tools/{slug}/)
+ */
 export default function sitemap() {
   const now = new Date();
   const staticPages = [

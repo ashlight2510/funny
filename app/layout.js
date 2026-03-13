@@ -7,11 +7,16 @@ export const metadata = {
     default: "FunnyFunny Cloud",
     template: "%s | FunnyFunny Cloud",
   },
-  description: "Services that make your day smarter",
+  description: "무료 계산기·테스트·게임·랜덤 도구 모음. 세금·N빵·D-day·실수령액, 휴식 체크·동전 던지기·가위바위보·주사위·타이머 등 일상에 쓸 만한 서비스를 한곳에서.",
   keywords: [
     "FunnyFunny",
     "FunnyFunny Cloud",
-    "FunnyFunny",
+    "무료 계산기",
+    "무료 테스트",
+    "게임 도구",
+    "랜덤 뽑기",
+    "동전 던지기",
+    "가위바위보",
     "tests",
     "productivity tests",
     "calculators",
@@ -53,9 +58,9 @@ export const metadata = {
     alternateLocale: "en_US",
     url: "https://funnyfunny.cloud/",
     siteName: "FunnyFunny Cloud",
-    title: "FunnyFunny Cloud — Services that make your day smarter",
+    title: "FunnyFunny Cloud — 무료 계산기·테스트·게임·랜덤 도구",
     description:
-      "A collection of fun tests, calculators, and utility tools. Explore coffee, finance, health, and personality insights in one place.",
+      "무료 계산기·테스트·게임·랜덤 도구 모음. 세금·N빵·D-day·실수령액, 휴식 체크·동전 던지기·가위바위보·주사위·타이머 등 일상에 쓸 만한 서비스를 한곳에서.",
     images: [
       {
         url: "https://dummyimage.com/1200x630/0f172a/ffffff&text=FunnyFunny+Cloud",
@@ -67,8 +72,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FunnyFunny Cloud — Services that make your day smarter",
-    description: "A collection of fun tests, calculators, and utility tools",
+    title: "FunnyFunny Cloud — 무료 계산기·테스트·게임·랜덤 도구",
+    description: "무료 계산기·테스트·게임·랜덤 도구 모음. 세금·N빵·D-day·실수령액·휴식 체크·동전 던지기·가위바위보 등",
     images: [
       "https://dummyimage.com/1200x630/0f172a/ffffff&text=FunnyFunny+Cloud",
     ],
