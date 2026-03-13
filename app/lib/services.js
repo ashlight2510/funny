@@ -213,6 +213,205 @@ export function getSeoGuides(lang = "en") {
     desc: isKo ? "㎥ 사용량으로 가스요금 예상 계산 방법." : "How to estimate gas bill from usage.",
   },
   {
+    slug: "saving-how",
+    emoji: "🏦",
+    title: isKo ? "예금·적금 이자 계산기 사용법" : "Savings & Deposit Interest Calculator How-To",
+    desc: isKo ? "단리·복리 예금, 월 납입 적금 만기금액 계산 방법." : "How to calculate deposit interest and savings maturity.",
+  },
+  {
+    slug: "exchange-how",
+    emoji: "💱",
+    title: isKo ? "환율 계산기 사용법" : "Exchange Rate Calculator How-To",
+    desc: isKo ? "금액·환율로 원화↔외화 변환 방법." : "How to convert KRW and foreign currency.",
+  },
+  {
+    slug: "unit-how",
+    emoji: "📐",
+    title: isKo ? "단위 변환기 사용법" : "Unit Converter How-To",
+    desc: isKo ? "길이·무게·온도·면적 단위 변환 방법." : "How to convert length, weight, temperature, area.",
+  },
+  {
+    slug: "savings-goal-how",
+    emoji: "🎯",
+    title: isKo ? "목표 저축·월 저축액 계산기 사용법" : "Savings Goal Calculator How-To",
+    desc: isKo ? "목표 금액·기간으로 필요 월 저축액 계산 방법." : "How to calculate monthly savings for a goal.",
+  },
+  {
+    slug: "salary-tax-how",
+    emoji: "🧾",
+    title: isKo ? "간이 세금·실수령 계산기 사용법" : "Simple Tax & Take-Home Calculator How-To",
+    desc: isKo ? "연봉으로 세금·공제 후 실수령 참고 방법." : "How to estimate take-home pay from salary.",
+  },
+  {
+    slug: "yield-how",
+    emoji: "📈",
+    title: isKo ? "수익률 계산기 사용법" : "Yield Calculator How-To",
+    desc: isKo ? "원금·수익·기간으로 연환산 수익률 계산 방법." : "How to calculate annualized yield.",
+  },
+  {
+    slug: "age-now-how",
+    emoji: "🎂",
+    title: isKo ? "만 나이·D-day 계산기 사용법" : "Age & D-day Calculator How-To",
+    desc: isKo ? "생년월일로 만 나이·연 나이·다음 생일 D-day 보는 방법." : "How to get age and next birthday D-day.",
+  },
+  {
+    slug: "discount-how",
+    emoji: "🏷️",
+    title: isKo ? "할인·퍼센트 계산기 사용법" : "Discount Calculator How-To",
+    desc: isKo ? "정가·할인율·할인가 변환 방법." : "How to calculate discount and final price.",
+  },
+  {
+    slug: "bmi-check-how",
+    emoji: "⚖️",
+    title: isKo ? "BMI 계산기 사용법" : "BMI Calculator How-To",
+    desc: isKo ? "키·몸무게로 BMI·체중 판정 보는 방법." : "How to calculate BMI and weight category.",
+  },
+  {
+    slug: "wage-how",
+    emoji: "💵",
+    title: isKo ? "일급·시급 계산기 사용법" : "Wage Calculator How-To",
+    desc: isKo ? "월급·일급·시급 서로 환산 방법." : "How to convert monthly, daily, hourly wage.",
+  },
+  {
+    slug: "dsr-how",
+    emoji: "🏠",
+    title: isKo ? "DSR·대출 한도 계산기 사용법" : "DSR & Loan Limit Calculator How-To",
+    desc: isKo ? "연소득·상환액으로 DSR 기준 대출 한도 참고 방법." : "How to estimate loan limit under DSR.",
+  },
+  {
+    slug: "tip-how",
+    emoji: "💵",
+    title: isKo ? "팁 계산기 사용법" : "Tip Calculator How-To",
+    desc: isKo ? "결제 금액·팁 %로 팁·총액 계산 방법." : "How to calculate tip and total.",
+  },
+  {
+    slug: "annual-leave-how",
+    emoji: "📅",
+    title: isKo ? "연차·휴가 일수 계산기 사용법" : "Annual Leave Calculator How-To",
+    desc: isKo ? "입사일·근속으로 발생 연차 일수 보는 방법." : "How to calculate accrued annual leave.",
+  },
+  {
+    slug: "moving-how",
+    emoji: "📦",
+    title: isKo ? "이사 비용 계산기 사용법" : "Moving Cost Calculator How-To",
+    desc: isKo ? "평수·거리로 이사비 참고하는 방법." : "How to estimate moving cost.",
+  },
+  {
+    slug: "tdee-how",
+    emoji: "🔥",
+    title: isKo ? "BMR·TDEE 계산기 사용법" : "BMR & TDEE Calculator How-To",
+    desc: isKo ? "기초대사량·일일 칼로리 계산 방법." : "How to calculate BMR and TDEE.",
+  },
+  {
+    slug: "rent-how",
+    emoji: "🏠",
+    title: isKo ? "보증금·월세·전세 환산 사용법" : "Rent & Deposit Converter How-To",
+    desc: isKo ? "보증금+월세 ↔ 전세금 환산 방법." : "How to convert deposit+rent and jeonse.",
+  },
+  {
+    slug: "realtor-fee-how",
+    emoji: "🏢",
+    title: isKo ? "부동산 중개수수료 계산기 사용법" : "Realtor Fee Calculator How-To",
+    desc: isKo ? "거래 금액별 중개수수료 상한 보는 방법." : "How to check realtor fee cap.",
+  },
+  {
+    slug: "parking-how",
+    emoji: "🅿️",
+    title: isKo ? "주차 시간·요금 계산기 사용법" : "Parking Fee Calculator How-To",
+    desc: isKo ? "입출차 시간·요금제로 주차비 계산 방법." : "How to calculate parking fee.",
+  },
+  {
+    slug: "standard-weight-how",
+    emoji: "⚖️",
+    title: isKo ? "표준체중·권장 체중 계산기 사용법" : "Standard Weight Calculator How-To",
+    desc: isKo ? "키·성별로 표준체중·권장 체중 범위 보는 방법." : "How to get standard weight and healthy range.",
+  },
+  {
+    slug: "installment-how",
+    emoji: "💳",
+    title: isKo ? "할부 이자·수수료 계산기 사용법" : "Installment Fee Calculator How-To",
+    desc: isKo ? "할부 원금·개월·수수료율로 수수료·월 납부액 계산 방법." : "How to calculate installment fee.",
+  },
+  {
+    slug: "unemployment-how",
+    emoji: "📋",
+    title: isKo ? "실업급여 계산기 사용법" : "Unemployment Benefit Calculator How-To",
+    desc: isKo ? "급여·가입 기간으로 수급 기간·일액 참고 방법." : "How to estimate unemployment benefit.",
+  },
+  {
+    slug: "unit-price-how",
+    emoji: "🧮",
+    title: isKo ? "단가 계산기 사용법" : "Unit Price Calculator How-To",
+    desc: isKo ? "총액·수량·단가 중 두 값으로 나머지 계산 방법." : "How to calculate unit price or total.",
+  },
+  {
+    slug: "parental-leave-how",
+    emoji: "👶",
+    title: isKo ? "출산휴가·육아휴직 급여 계산기 사용법" : "Parental Leave Pay Calculator How-To",
+    desc: isKo ? "월급·휴가 기간으로 급여 참고 방법." : "How to estimate parental leave pay.",
+  },
+  {
+    slug: "pension-monthly-how",
+    emoji: "📊",
+    title: isKo ? "연금·월 수령액 계산기 사용법" : "Pension Monthly Calculator How-To",
+    desc: isKo ? "잔액·이자·기간으로 월 수령액 계산 방법." : "How to calculate monthly pension withdrawal.",
+  },
+  {
+    slug: "compare-how",
+    emoji: "↔️",
+    title: isKo ? "두 값 비교 계산기 사용법" : "Compare Two Values How-To",
+    desc: isKo ? "A vs B 차이·차이 % 계산 방법." : "How to compare two values and get difference %.",
+  },
+  {
+    slug: "tax-refund-how",
+    emoji: "🧾",
+    title: isKo ? "세금 환급·추가납부 계산기 사용법" : "Tax Refund Calculator How-To",
+    desc: isKo ? "산출세액·이미 낸 세금으로 환급/추가납부 보는 방법." : "How to see refund or additional tax.",
+  },
+  {
+    slug: "weekly-rest-how",
+    emoji: "📅",
+    title: isKo ? "주휴수당 계산기 사용법" : "Weekly Rest Pay How-To",
+    desc: isKo ? "주 근로시간·시급으로 주휴수당 계산 방법." : "How to calculate weekly rest pay.",
+  },
+  {
+    slug: "inflation-how",
+    emoji: "📉",
+    title: isKo ? "인플레이션·미래 가치 계산기 사용법" : "Inflation Calculator How-To",
+    desc: isKo ? "현재 금액·인플률로 N년 후 구매력 보는 방법." : "How to see future purchasing power.",
+  },
+  {
+    slug: "leave-balance-how",
+    emoji: "📋",
+    title: isKo ? "연차 잔여 일수 계산기 사용법" : "Leave Balance How-To",
+    desc: isKo ? "연차 발생·사용으로 잔여 일수 보는 방법." : "How to get leave balance.",
+  },
+  {
+    slug: "debt-ratio-how",
+    emoji: "📊",
+    title: isKo ? "부채 비율 계산기 사용법" : "Debt Ratio Calculator How-To",
+    desc: isKo ? "자산·부채로 부채비율·순자산 보는 방법." : "How to calculate debt ratio.",
+  },
+  {
+    slug: "savings-rate-how",
+    emoji: "💰",
+    title: isKo ? "저축률 계산기 사용법" : "Savings Rate How-To",
+    desc: isKo ? "소득·저축으로 저축률 % 보는 방법." : "How to get savings rate %.",
+  },
+  {
+    slug: "real-rate-how",
+    emoji: "📐",
+    title: isKo ? "실질 이자율 계산기 사용법" : "Real Interest Rate How-To",
+    desc: isKo ? "명목 이자·인플레이션으로 실질 이자율 보는 방법." : "How to get real interest rate.",
+  },
+  { slug: "due-date-how", emoji: "📅", title: isKo ? "기준일 ± N일 계산기 가이드" : "Due Date Calculator How-To", desc: isKo ? "기준일에서 N일 전·후 날짜 계산 방법." : "How to get date from base ± N days." },
+  { slug: "interest-simple-how", emoji: "💰", title: isKo ? "단리 이자 계산기 가이드" : "Simple Interest How-To", desc: isKo ? "원금·연이자율·일수로 단리 이자·만기 합계 계산." : "Principal, rate, days → simple interest and maturity." },
+  { slug: "calorie-goal-how", emoji: "🔥", title: isKo ? "칼로리 목표 계산기 가이드" : "Calorie Goal How-To", desc: isKo ? "TDEE와 목표로 일일 칼로리 목표 계산." : "TDEE and goal → daily calorie target." },
+  { slug: "vacation-cost-how", emoji: "✈️", title: isKo ? "여행 비용 계산기 가이드" : "Vacation Cost How-To", desc: isKo ? "여행 일수와 1일 예산으로 총 비용 예상." : "Trip days × daily budget → total cost." },
+  { slug: "present-value-how", emoji: "📐", title: isKo ? "현재가치 계산기 가이드" : "Present Value How-To", desc: isKo ? "미래 금액·할인율로 현재가치(PV) 계산." : "Future amount, discount rate → PV." },
+  { slug: "daily-prorated-how", emoji: "📋", title: isKo ? "일할 계산기 가이드" : "Daily Prorated How-To", desc: isKo ? "월급·출근일·총 근무일로 일할 금액 계산." : "Monthly pay, days worked → prorated pay." },
+  { slug: "target-yield-how", emoji: "📈", title: isKo ? "목표 수익률 계산기 가이드" : "Target Yield How-To", desc: isKo ? "원금·목표 금액·기간으로 필요 연환산 수익률 계산." : "Principal, target, period → required annual yield %." },
+  {
     slug: "today-well-done",
     emoji: "🌱",
     title: isKo ? "오늘, 잘했어 가이드" : "Today, Well Done Guide",
@@ -1417,6 +1616,407 @@ export function getAllServices(lang = "en") {
         : ["gas", "utility", "bill", "city gas"],
     },
     {
+      href: "https://saving.funnyfunny.cloud",
+      icon: "🏦",
+      title: isKo ? "예금·적금 이자 계산기" : "Savings & Deposit Interest Calculator",
+      desc: isKo
+        ? "단리·복리 예금 이자·만기금액, 월 납입 적금 만기금액 계산."
+        : "Simple/compound deposit interest and maturity; monthly savings maturity.",
+      tags: isKo
+        ? ["예금", "적금", "이자", "단리", "복리", "만기"]
+        : ["savings", "deposit", "interest", "compound", "maturity"],
+    },
+    {
+      href: "https://exchange.funnyfunny.cloud",
+      icon: "💱",
+      title: isKo ? "환율 계산기" : "Exchange Rate Calculator",
+      desc: isKo
+        ? "금액·환율로 원화↔외화 변환."
+        : "Convert between KRW and foreign currency with amount and rate.",
+      tags: isKo
+        ? ["환율", "환전", "원화", "외화", "변환"]
+        : ["exchange", "currency", "KRW", "conversion"],
+    },
+    {
+      href: "https://unit.funnyfunny.cloud",
+      icon: "📐",
+      title: isKo ? "단위 변환기" : "Unit Converter",
+      desc: isKo
+        ? "길이·무게·온도·면적 한 페이지에서 변환. cm↔inch, kg↔lb, ㎡↔평."
+        : "Convert length, weight, temperature, area. cm↔inch, kg↔lb, ㎡↔pyeong.",
+      tags: isKo
+        ? ["단위", "변환", "길이", "무게", "온도", "면적", "평"]
+        : ["unit", "converter", "length", "weight", "temperature", "area"],
+    },
+    {
+      href: "https://savings-goal.funnyfunny.cloud",
+      icon: "🎯",
+      title: isKo ? "목표 저축·월 저축액 계산기" : "Savings Goal & Monthly Amount Calculator",
+      desc: isKo
+        ? "목표 금액·기간으로 필요 월 저축액 계산."
+        : "Calculate required monthly savings for a goal amount and period.",
+      tags: isKo
+        ? ["목표 저축", "월 저축액", "저축 계획"]
+        : ["savings goal", "monthly savings", "planning"],
+    },
+    {
+      href: "https://salary-tax.funnyfunny.cloud",
+      icon: "🧾",
+      title: isKo ? "간이 세금·실수령 계산기" : "Simple Tax & Take-Home Calculator",
+      desc: isKo
+        ? "연봉 입력으로 세금·4대보험 공제 후 실수령 참고."
+        : "Estimate take-home pay from annual salary (tax & insurance).",
+      tags: isKo
+        ? ["세금", "실수령", "연봉", "4대보험"]
+        : ["tax", "take-home", "salary", "deduction"],
+    },
+    {
+      href: "https://yield.funnyfunny.cloud",
+      icon: "📈",
+      title: isKo ? "수익률 계산기" : "Yield Calculator",
+      desc: isKo
+        ? "원금·수익·기간으로 단리·복리 연환산 수익률 계산."
+        : "Calculate simple and compound annualized yield from principal and return.",
+      tags: isKo
+        ? ["수익률", "연환산", "투자", "복리"]
+        : ["yield", "return", "investment", "compound"],
+    },
+    {
+      href: "https://age-now.funnyfunny.cloud",
+      icon: "🎂",
+      title: isKo ? "만 나이·D-day 계산기" : "Age & D-day Calculator",
+      desc: isKo
+        ? "생년월일로 만 나이, 연 나이, 다음 생일 D-day."
+        : "Get international age, Korean age, and next birthday D-day from birth date.",
+      tags: isKo
+        ? ["만 나이", "연 나이", "D-day", "생일"]
+        : ["age", "birthday", "D-day", "calculator"],
+    },
+    {
+      href: "https://discount.funnyfunny.cloud",
+      icon: "🏷️",
+      title: isKo ? "할인·퍼센트 계산기" : "Discount & Percent Calculator",
+      desc: isKo
+        ? "정가·할인율 → 할인액·최종가 / 할인가 → 할인율 역산."
+        : "Calculate discount amount and final price, or reverse discount rate from price.",
+      tags: isKo
+        ? ["할인", "퍼센트", "정가", "할인가"]
+        : ["discount", "percent", "sale", "price"],
+    },
+    {
+      href: "https://bmi-check.funnyfunny.cloud",
+      icon: "⚖️",
+      title: isKo ? "BMI 계산기" : "BMI Calculator",
+      desc: isKo
+        ? "키·몸무게로 BMI와 저체중·정상·과체중·비만 판정."
+        : "Calculate BMI and weight category from height and weight.",
+      tags: isKo
+        ? ["BMI", "비만도", "체중", "키"]
+        : ["BMI", "weight", "height", "health"],
+    },
+    {
+      href: "https://wage.funnyfunny.cloud",
+      icon: "💵",
+      title: isKo ? "일급·시급 계산기" : "Daily & Hourly Wage Calculator",
+      desc: isKo
+        ? "월급·일급·시급 중 하나로 나머지 환산."
+        : "Convert between monthly, daily, and hourly wage.",
+      tags: isKo
+        ? ["일급", "시급", "월급", "급여"]
+        : ["wage", "hourly", "monthly", "salary"],
+    },
+    {
+      href: "https://dsr.funnyfunny.cloud",
+      icon: "🏠",
+      title: isKo ? "DSR·대출 한도 계산기" : "DSR & Loan Limit Calculator",
+      desc: isKo
+        ? "연소득·기존 상환액으로 DSR 기준 추가 대출 한도 참고."
+        : "Estimate additional loan capacity under DSR cap from income and existing repayments.",
+      tags: isKo
+        ? ["DSR", "대출 한도", "상환비율", "연소득"]
+        : ["DSR", "loan limit", "debt service ratio", "income"],
+    },
+    {
+      href: "https://tip.funnyfunny.cloud",
+      icon: "💵",
+      title: isKo ? "팁 계산기" : "Tip Calculator",
+      desc: isKo
+        ? "결제 금액·팁 %로 팁 금액·총 결제액 계산."
+        : "Calculate tip amount and total from bill and tip percentage.",
+      tags: isKo
+        ? ["팁", "팁 계산", "해외", "외식"]
+        : ["tip", "gratuity", "travel", "dining"],
+    },
+    {
+      href: "https://annual-leave.funnyfunny.cloud",
+      icon: "📅",
+      title: isKo ? "연차·휴가 일수 계산기" : "Annual Leave Calculator",
+      desc: isKo
+        ? "입사일·근속으로 발생 연차 일수 (근로기준법 기준)."
+        : "Calculate accrued annual leave days from join date and tenure.",
+      tags: isKo
+        ? ["연차", "휴가", "근로기준법", "입사일"]
+        : ["annual leave", "vacation", "tenure", "labor"],
+    },
+    {
+      href: "https://moving.funnyfunny.cloud",
+      icon: "📦",
+      title: isKo ? "이사 비용 계산기" : "Moving Cost Calculator",
+      desc: isKo
+        ? "평수·거리·유형으로 이사비 대략 참고."
+        : "Estimate moving cost from size, distance, and type.",
+      tags: isKo
+        ? ["이사", "이사비", "평수", "거리"]
+        : ["moving", "relocation", "cost", "estimate"],
+    },
+    {
+      href: "https://tdee.funnyfunny.cloud",
+      icon: "🔥",
+      title: isKo ? "BMR·TDEE 계산기" : "BMR & TDEE Calculator",
+      desc: isKo
+        ? "기초대사량·일일 소모 칼로리 (Mifflin-St Jeor)."
+        : "Calculate BMR and daily calorie expenditure (Mifflin-St Jeor).",
+      tags: isKo
+        ? ["BMR", "TDEE", "칼로리", "기초대사량"]
+        : ["BMR", "TDEE", "calorie", "metabolism"],
+    },
+    {
+      href: "https://rent.funnyfunny.cloud",
+      icon: "🏠",
+      title: isKo ? "보증금·월세·전세 환산 계산기" : "Rent & Deposit Converter",
+      desc: isKo
+        ? "보증금+월세 ↔ 전세금 대략 환산."
+        : "Convert between deposit+monthly rent and jeonse (lump-sum deposit).",
+      tags: isKo
+        ? ["보증금", "월세", "전세", "환산"]
+        : ["deposit", "rent", "jeonse", "convert"],
+    },
+    {
+      href: "https://realtor-fee.funnyfunny.cloud",
+      icon: "🏢",
+      title: isKo ? "부동산 중개수수료 계산기" : "Realtor Fee Calculator",
+      desc: isKo
+        ? "거래 금액별 중개수수료 상한 (공인중개사법)."
+        : "Calculate maximum realtor fee by transaction amount (Korea).",
+      tags: isKo
+        ? ["중개수수료", "부동산", "매매", "전세", "월세"]
+        : ["realtor fee", "real estate", "transaction", "Korea"],
+    },
+    {
+      href: "https://parking.funnyfunny.cloud",
+      icon: "🅿️",
+      title: isKo ? "주차 시간·요금 계산기" : "Parking Time & Fee Calculator",
+      desc: isKo
+        ? "입차·출차 시간과 요금제로 주차비 계산."
+        : "Calculate parking fee from in/out time and rate.",
+      tags: isKo
+        ? ["주차", "주차요금", "입출차"]
+        : ["parking", "parking fee", "calculator"],
+    },
+    {
+      href: "https://standard-weight.funnyfunny.cloud",
+      icon: "⚖️",
+      title: isKo ? "표준체중·권장 체중 계산기" : "Standard Weight Calculator",
+      desc: isKo
+        ? "키·성별로 표준체중·BMI 정상 범위(18.5~24.9) kg."
+        : "Calculate standard weight and healthy BMI range from height and gender.",
+      tags: isKo
+        ? ["표준체중", "권장 체중", "BMI", "키"]
+        : ["standard weight", "BMI", "height", "health"],
+    },
+    {
+      href: "https://installment.funnyfunny.cloud",
+      icon: "💳",
+      title: isKo ? "할부 이자·수수료 계산기" : "Installment Fee Calculator",
+      desc: isKo
+        ? "할부 원금·개월·수수료율로 수수료·월 납부액 계산."
+        : "Calculate installment fee and monthly payment from principal, months, and rate.",
+      tags: isKo
+        ? ["할부", "수수료", "카드", "이자"]
+        : ["installment", "fee", "credit card", "interest"],
+    },
+    {
+      href: "https://unemployment.funnyfunny.cloud",
+      icon: "📋",
+      title: isKo ? "실업급여·구직급여 계산기" : "Unemployment Benefit Calculator",
+      desc: isKo
+        ? "퇴직 전 급여·가입 기간으로 수급 기간·일액 참고."
+        : "Estimate unemployment benefit period and daily amount from wage and tenure.",
+      tags: isKo
+        ? ["실업급여", "구직급여", "고용보험"]
+        : ["unemployment", "benefit", "employment insurance"],
+    },
+    {
+      href: "https://unit-price.funnyfunny.cloud",
+      icon: "🧮",
+      title: isKo ? "단가 계산기" : "Unit Price Calculator",
+      desc: isKo
+        ? "총액·수량·단가 중 두 값으로 나머지 계산."
+        : "Calculate total, quantity, or unit price from the other two.",
+      tags: isKo
+        ? ["단가", "총액", "수량", "가격"]
+        : ["unit price", "total", "quantity", "price"],
+    },
+    {
+      href: "https://parental-leave.funnyfunny.cloud",
+      icon: "👶",
+      title: isKo ? "출산휴가·육아휴직 급여 계산기" : "Parental Leave Pay Calculator",
+      desc: isKo
+        ? "월급·휴가 기간으로 출산휴가·육아휴직 급여 참고."
+        : "Estimate parental leave pay from monthly wage and leave period.",
+      tags: isKo
+        ? ["출산휴가", "육아휴직", "급여", "고용보험"]
+        : ["parental leave", "maternity", "pay", "employment"],
+    },
+    {
+      href: "https://pension-monthly.funnyfunny.cloud",
+      icon: "📊",
+      title: isKo ? "연금·월 수령액 계산기" : "Pension Monthly Withdrawal Calculator",
+      desc: isKo
+        ? "연금 잔액·이자·수령 기간으로 월 수령액 계산."
+        : "Calculate monthly pension withdrawal from balance, rate, and period.",
+      tags: isKo
+        ? ["연금", "월 수령", "퇴직연금", "개인연금"]
+        : ["pension", "monthly withdrawal", "retirement", "annuity"],
+    },
+    {
+      href: "https://compare.funnyfunny.cloud",
+      icon: "↔️",
+      title: isKo ? "두 값 비교 계산기" : "Compare Two Values Calculator",
+      desc: isKo
+        ? "A vs B → 차이·차이 % 계산."
+        : "Calculate difference and percentage difference between two values.",
+      tags: isKo
+        ? ["비교", "차이", "퍼센트", "A vs B"]
+        : ["compare", "difference", "percent", "vs"],
+    },
+    {
+      href: "https://tax-refund.funnyfunny.cloud",
+      icon: "🧾",
+      title: isKo ? "세금 환급·추가납부 계산기" : "Tax Refund & Additional Tax Calculator",
+      desc: isKo
+        ? "산출세액 vs 이미 낸 세금 → 환급 또는 추가납부."
+        : "Compare calculated tax vs paid tax to get refund or additional amount.",
+      tags: isKo
+        ? ["세금", "환급", "추가납부", "연말정산"]
+        : ["tax", "refund", "additional tax", "year-end"],
+    },
+    {
+      href: "https://weekly-rest.funnyfunny.cloud",
+      icon: "📅",
+      title: isKo ? "주휴수당 계산기" : "Weekly Rest Pay Calculator",
+      desc: isKo
+        ? "주 15시간 이상 근로 시 1일분 주휴수당 계산."
+        : "Calculate weekly rest pay (1 day) when working 15+ hours per week.",
+      tags: isKo
+        ? ["주휴수당", "근로기준법", "알바", "시급"]
+        : ["weekly rest", "labor", "part-time", "hourly"],
+    },
+    {
+      href: "https://inflation.funnyfunny.cloud",
+      icon: "📉",
+      title: isKo ? "인플레이션·미래 가치 계산기" : "Inflation & Future Value Calculator",
+      desc: isKo
+        ? "현재 금액·인플률·기간 → N년 후 같은 구매력(명목 금액)."
+        : "Current amount, inflation rate, years → future nominal amount for same purchasing power.",
+      tags: isKo
+        ? ["인플레이션", "미래 가치", "구매력"]
+        : ["inflation", "future value", "purchasing power"],
+    },
+    {
+      href: "https://leave-balance.funnyfunny.cloud",
+      icon: "📋",
+      title: isKo ? "연차 잔여 일수 계산기" : "Leave Balance Calculator",
+      desc: isKo
+        ? "올해 연차 일수 − 사용 일수 = 잔여."
+        : "Annual leave balance = total days minus used days.",
+      tags: isKo
+        ? ["연차", "잔여", "휴가"]
+        : ["leave", "balance", "vacation"],
+    },
+    {
+      href: "https://debt-ratio.funnyfunny.cloud",
+      icon: "📊",
+      title: isKo ? "부채 비율 계산기" : "Debt Ratio Calculator",
+      desc: isKo
+        ? "총 자산·총 부채 → 부채비율 %·순자산."
+        : "Total assets and debt → debt ratio % and net worth.",
+      tags: isKo
+        ? ["부채비율", "자산", "부채", "순자산"]
+        : ["debt ratio", "assets", "debt", "net worth"],
+    },
+    {
+      href: "https://savings-rate.funnyfunny.cloud",
+      icon: "💰",
+      title: isKo ? "저축률 계산기" : "Savings Rate Calculator",
+      desc: isKo
+        ? "소득·저축액 → 저축률 %."
+        : "Income and savings → savings rate %.",
+      tags: isKo
+        ? ["저축률", "소득", "저축"]
+        : ["savings rate", "income", "savings"],
+    },
+    {
+      href: "https://real-rate.funnyfunny.cloud",
+      icon: "📐",
+      title: isKo ? "실질 이자율 계산기" : "Real Interest Rate Calculator",
+      desc: isKo
+        ? "명목 이자율 − 인플레이션 ≈ 실질 이자율."
+        : "Nominal rate minus inflation ≈ real interest rate.",
+      tags: isKo
+        ? ["실질 이자율", "명목", "인플레이션"]
+        : ["real rate", "nominal", "inflation"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/due-date/",
+      icon: "📅",
+      title: isKo ? "기준일 ± N일 계산기" : "Due Date Calculator",
+      desc: isKo ? "기준일에서 N일 전·후 날짜 계산." : "Base date ± N days → result date.",
+      tags: isKo ? ["기준일", "D-day", "날짜"] : ["due date", "date", "days"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/interest-simple/",
+      icon: "💰",
+      title: isKo ? "단리 이자 계산기" : "Simple Interest Calculator",
+      desc: isKo ? "원금·연이자율·일수 → 단리 이자·만기 합계." : "Principal, annual rate, days → interest and maturity.",
+      tags: isKo ? ["단리", "이자", "만기"] : ["simple interest", "interest", "maturity"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/calorie-goal/",
+      icon: "🔥",
+      title: isKo ? "칼로리 목표 계산기" : "Calorie Goal Calculator",
+      desc: isKo ? "TDEE·목표(유지/감량/증량) → 일일 칼로리 목표." : "TDEE and goal → daily calorie target.",
+      tags: isKo ? ["칼로리", "TDEE", "다이어트"] : ["calorie", "TDEE", "diet"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/vacation-cost/",
+      icon: "✈️",
+      title: isKo ? "여행 비용 계산기" : "Vacation Cost Calculator",
+      desc: isKo ? "여행 일수 × 1일 예산 → 총 예상 비용." : "Trip days × daily budget → total cost.",
+      tags: isKo ? ["여행", "예산", "비용"] : ["vacation", "budget", "cost"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/present-value/",
+      icon: "📐",
+      title: isKo ? "현재가치 계산기" : "Present Value Calculator",
+      desc: isKo ? "N년 후 금액·할인율 → 현재가치(PV)." : "Future amount, discount rate → PV.",
+      tags: isKo ? ["현재가치", "할인", "투자"] : ["present value", "discount", "investment"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/daily-prorated/",
+      icon: "📋",
+      title: isKo ? "일할 계산기" : "Daily Prorated Calculator",
+      desc: isKo ? "월급·출근일·총 근무일 → 일할 금액." : "Monthly pay, days worked → prorated pay.",
+      tags: isKo ? ["일할", "월급", "급여"] : ["prorated", "salary", "pay"],
+    },
+    {
+      href: "https://funnyfunny.cloud/tools/target-yield/",
+      icon: "📈",
+      title: isKo ? "목표 수익률 계산기" : "Target Yield Calculator",
+      desc: isKo ? "원금·목표 금액·기간 → 필요 연환산 수익률(%)." : "Principal, target, period → required annual yield %.",
+      tags: isKo ? ["목표 수익률", "연환산", "투자"] : ["target yield", "annualized", "investment"],
+    },
+    {
       href: "https://time.funnyfunny.cloud",
       icon: "⏰",
       title: isKo ? "예매는타이밍" : "Time Checker",
@@ -1666,6 +2266,12 @@ const CALCULATOR_SLUGS = [
   "n", "tax", "space", "bit", "house", "commute", "birth", "day", "edu",
   "nospend", "cafe", "drink", "waste", "year", "lotto", "average", "life",
   "miracle", "baby", "loancalc", "electric", "platformfee", "severance", "vat", "gas",
+  "saving", "exchange", "unit", "savings-goal",
+  "salary-tax", "yield", "age-now", "discount", "bmi-check", "wage", "dsr",
+  "tip", "annual-leave", "moving", "tdee", "rent", "realtor-fee", "parking",
+  "standard-weight", "installment", "unemployment", "unit-price", "parental-leave", "pension-monthly", "compare",
+  "tax-refund", "weekly-rest", "inflation", "leave-balance", "debt-ratio", "savings-rate", "real-rate",
+  "due-date", "interest-simple", "calorie-goal", "vacation-cost", "present-value", "daily-prorated", "target-yield",
 ];
 
 /** 테스트·체크·진단 도구 슬러그 (랜딩 페이지용) */

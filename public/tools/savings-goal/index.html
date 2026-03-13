@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>목표 저축·월 저축액 계산기 | 기간별 필요 금액 | FunnyFunny Cloud</title>
+    <meta name="description" content="목표 금액과 기간을 입력하면 필요한 월 저축액을 계산합니다. 목표 저축 달성을 위한 월별 납입액. 무료 저축 목표 계산기." />
+    <meta property="og:title" content="목표 저축·월 저축액 계산기 | FunnyFunny Cloud" />
+    <meta property="og:description" content="목표 금액·기간으로 필요 월 저축액 계산. 무료." />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/savings-goal/" />
+    <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Savings+Goal" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/savings-goal/" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230b1220'/><path d='M32 14v36M22 24h20M24 34h16' stroke='%230ea5e9' stroke-width='2' fill='none' stroke-linecap='round'/></svg>" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #0ea5e9; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .field input:focus { outline: none; border-color: var(--accent); }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #0b1220; }
+      .btn:hover { filter: brightness(1.1); }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-big { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
+      .result-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+      .result-item:last-child { border-bottom: none; }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { text-align: center; margin: 16px 0; font-size: 14px; }
+      .footer-links a { color: var(--accent); text-decoration: none; }
+      #tool-share-block { text-align: center; margin: 8px 0; font-size: 13px; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">🎯</div>
+          <div>
+            <h1>목표 저축·월 저축액 계산기</h1>
+            <p class="sub">목표 금액과 기간으로 필요한 월 저축액 계산</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="panel">
+        <h3>목표 입력</h3>
+        <div class="field">
+          <label>목표 금액 (원)</label>
+          <input type="number" id="goal" min="1" step="10000" placeholder="예: 10000000" value="10000000" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>저축 기간 (개월)</label>
+            <input type="number" id="months" min="1" max="600" placeholder="예: 12" value="12" />
+          </div>
+          <div class="field">
+            <label>연 이자율 (%) — 선택</label>
+            <input type="number" id="rate" min="0" max="20" step="0.01" placeholder="0이면 단순 나눗셈" value="0" />
+          </div>
+        </div>
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div>필요 월 저축액 (세전 기준)</div>
+          <div class="result-big" id="monthlyAmount"></div>
+          <div class="result-item"><span>총 납입 예상</span><span id="totalPaid"></span></div>
+          <div class="result-item"><span>예상 이자 (이자율 적용 시)</span><span id="interest"></span></div>
+          <p class="note">이자율 0%일 때는 목표금액÷기간입니다. 이자율을 넣으면 복리 기준 필요 월 납입액으로 역산합니다. 참고용입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/savings-goal-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/saving/">예금·적금 계산기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span>
+    </div>
+
+    <script>
+      (function(){
+        function fmt(n) { return Math.round(n).toLocaleString() + "원"; }
+        var goal = document.getElementById("goal");
+        var months = document.getElementById("months");
+        var rate = document.getElementById("rate");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var monthlyAmount = document.getElementById("monthlyAmount");
+        var totalPaid = document.getElementById("totalPaid");
+        var interest = document.getElementById("interest");
+        var btnShare = document.getElementById("btnShare");
+        var shareToast = document.getElementById("tool-share-toast");
+
+        btnCalc.addEventListener("click", function(){
+          var g = parseFloat(goal.value) || 0;
+          var n = parseInt(months.value, 10) || 0;
+          var r = (parseFloat(rate.value) || 0) / 100 / 12;
+          if (g <= 0 || n <= 0) { result.classList.remove("show"); return; }
+          var monthly, totalPaidVal, interestVal;
+          if (r <= 0) {
+            monthly = g / n;
+            totalPaidVal = g;
+            interestVal = 0;
+          } else {
+            var fv = g;
+            monthly = fv * (r / (Math.pow(1 + r, n) - 1));
+            totalPaidVal = monthly * n;
+            interestVal = g - totalPaidVal;
+          }
+          monthlyAmount.textContent = fmt(monthly);
+          totalPaid.textContent = fmt(totalPaidVal);
+          interest.textContent = fmt(interestVal);
+          result.classList.add("show");
+        });
+
+        btnShare.addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ shareToast.textContent = "복사했어요"; shareToast.style.display = "inline"; setTimeout(function(){ shareToast.style.display = "none"; }, 1500); });
+          try { if (window.amplitude) window.amplitude.track("share_click", { method: "copy", tool: "savings-goal" }); } catch(e){}
+        });
+      })();
+    </script>
+  </body>
+</html>

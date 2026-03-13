@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DSR·대출 한도 계산기 | 상환비율 기준 | FunnyFunny Cloud</title>
+    <meta name="description" content="연소득과 기존 대출 연간 상환액을 입력하면 DSR 40% 기준 대략적인 추가 대출 한도를 계산합니다. 참고용 무료 계산기." />
+    <meta property="og:title" content="DSR·대출 한도 계산기 | FunnyFunny Cloud" />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/dsr/" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/dsr/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #0d9488; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #fff; }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-item { display: flex; justify-content: space-between; padding: 8px 0; }
+      .result-item .v { font-weight: 700; color: var(--accent); }
+      .result-big { font-size: 22px; font-weight: 800; color: var(--accent); margin: 12px 0; }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { text-align: center; margin: 16px 0; font-size: 14px; }
+      .footer-links a { color: var(--accent); text-decoration: none; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">🏠</div>
+          <div>
+            <h1>DSR·대출 한도 계산기</h1>
+            <p class="sub">연소득·기존 상환액으로 DSR 40% 기준 대략 한도</p>
+          </div>
+        </div>
+      </header>
+      <div class="panel">
+        <h3>소득·상환 정보</h3>
+        <div class="field">
+          <label>연소득 (원) — 세전</label>
+          <input type="number" id="annualIncome" min="0" step="1000000" value="50000000" />
+        </div>
+        <div class="field">
+          <label>기존 대출 연간 상환액 (원)</label>
+          <input type="number" id="existingRepay" min="0" step="100000" value="0" />
+        </div>
+        <div class="field">
+          <label>DSR 상한 (%) — 기본 40</label>
+          <input type="number" id="dsrCap" min="10" max="60" step="1" value="40" />
+        </div>
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div>추가 대출 연간 상환 가능액 (DSR 한도 내)</div>
+          <div class="result-big" id="allowedRepay"></div>
+          <div class="result-item"><span>연소득 대비 DSR 한도 상환액</span><span class="v" id="dsrLimit"></span></div>
+          <p class="note">DSR = (연간 대출 상환액 ÷ 연소득)×100. 금융사·대출 종류에 따라 기준이 다르며 참고용입니다.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/dsr-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/loancalc/">대출 이자 계산기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span>
+    </div>
+    <script>
+      (function(){
+        function fmt(n){ return Math.round(n).toLocaleString() + "원"; }
+        var annualIncome = document.getElementById("annualIncome");
+        var existingRepay = document.getElementById("existingRepay");
+        var dsrCap = document.getElementById("dsrCap");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var allowedRepay = document.getElementById("allowedRepay");
+        var dsrLimit = document.getElementById("dsrLimit");
+        btnCalc.addEventListener("click", function(){
+          var income = parseFloat(annualIncome.value) || 0;
+          var existing = parseFloat(existingRepay.value) || 0;
+          var cap = parseFloat(dsrCap.value) || 40;
+          if (income <= 0) { result.classList.remove("show"); return; }
+          var maxRepayTotal = income * (cap / 100);
+          var allowed = Math.max(0, maxRepayTotal - existing);
+          allowedRepay.textContent = fmt(allowed) + "/년";
+          dsrLimit.textContent = fmt(maxRepayTotal) + " (전체 한도)";
+          result.classList.add("show");
+        });
+        document.getElementById("btnShare").addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ document.getElementById("tool-share-toast").textContent = "복사했어요"; document.getElementById("tool-share-toast").style.display = "inline"; setTimeout(function(){ document.getElementById("tool-share-toast").style.display = "none"; }, 1500); });
+        });
+      })();
+    </script>
+  </body>
+</html>

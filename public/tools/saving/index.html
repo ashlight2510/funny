@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>예금·적금 이자 계산기 | 단리·복리·만기금액 | FunnyFunny Cloud</title>
+    <meta name="description" content="원금, 연이자율, 기간을 입력하면 단리·복리 이자와 만기금액을 계산합니다. 적금은 월 납입액으로 만기금액 계산. 무료 예금 적금 이자 계산기." />
+    <meta property="og:title" content="예금·적금 이자 계산기 | 단리·복리·만기금액 | FunnyFunny Cloud" />
+    <meta property="og:description" content="예금·적금 이자·만기금액 계산. 단리·복리·월 납입 적금. 무료." />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/saving/" />
+    <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Saving+Interest" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/saving/" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230b1220'/><path d='M32 16v32M20 28h24M24 36h16' stroke='%2310b981' stroke-width='2' fill='none' stroke-linecap='round'/></svg>" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #10b981; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #047857 0%, #10b981 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input, .field select { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #0b1220; }
+      .btn:hover { filter: brightness(1.1); }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+      .result-item:last-child { border-bottom: none; }
+      .result-item .v { font-size: 18px; font-weight: 700; color: var(--accent); }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { text-align: center; margin: 16px 0; font-size: 14px; }
+      .footer-links a { color: var(--accent); text-decoration: none; }
+      #tool-share-block { text-align: center; margin: 8px 0; font-size: 13px; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+      .tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+      .tabs button { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 13px; cursor: pointer; }
+      .tabs button.active { background: var(--accent); color: #0b1220; border-color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">🏦</div>
+          <div>
+            <h1>예금·적금 이자 계산기</h1>
+            <p class="sub">단리·복리 예금과 월 납입 적금 만기금액 계산</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="panel">
+        <h3>계산 유형</h3>
+        <div class="tabs">
+          <button type="button" id="tabDeposit" class="active">예금 (단리/복리)</button>
+          <button type="button" id="tabSaving">적금 (월 납입)</button>
+        </div>
+
+        <div id="formDeposit">
+          <div class="field">
+            <label>원금 (원)</label>
+            <input type="number" id="principal" min="1" step="10000" placeholder="예: 10000000" value="10000000" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>연 이자율 (%)</label>
+              <input type="number" id="rate" min="0" max="20" step="0.01" placeholder="예: 3.5" value="3.5" />
+            </div>
+            <div class="field">
+              <label>기간 (개월)</label>
+              <input type="number" id="months" min="1" max="600" placeholder="예: 12" value="12" />
+            </div>
+          </div>
+          <div class="field">
+            <label>이자 방식</label>
+            <select id="interestType">
+              <option value="simple">단리</option>
+              <option value="compound">복리 (월 복리)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="formSaving" style="display:none;">
+          <div class="field">
+            <label>월 납입액 (원)</label>
+            <input type="number" id="monthlyPay" min="1" step="10000" placeholder="예: 500000" value="500000" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>연 이자율 (%)</label>
+              <input type="number" id="rateSaving" min="0" max="20" step="0.01" placeholder="예: 3.5" value="3.5" />
+            </div>
+            <div class="field">
+              <label>납입 개월</label>
+              <input type="number" id="monthsSaving" min="1" max="600" placeholder="예: 12" value="12" />
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div class="result-item"><span>이자 (세전)</span><span class="v" id="interest"></span></div>
+          <div class="result-item"><span>만기금액</span><span class="v" id="maturity"></span></div>
+        </div>
+        <p class="note">참고용입니다. 실제 금리는 금융사 상품에 따라 다르며, 이자소득세 등이 적용될 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/saving-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/loancalc/">대출 계산기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span>
+    </div>
+
+    <script>
+      (function(){
+        function fmt(n) { return Math.round(n).toLocaleString() + "원"; }
+        var tabDeposit = document.getElementById("tabDeposit");
+        var tabSaving = document.getElementById("tabSaving");
+        var formDeposit = document.getElementById("formDeposit");
+        var formSaving = document.getElementById("formSaving");
+        var principal = document.getElementById("principal");
+        var rate = document.getElementById("rate");
+        var months = document.getElementById("months");
+        var interestType = document.getElementById("interestType");
+        var monthlyPay = document.getElementById("monthlyPay");
+        var rateSaving = document.getElementById("rateSaving");
+        var monthsSaving = document.getElementById("monthsSaving");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var interestEl = document.getElementById("interest");
+        var maturityEl = document.getElementById("maturity");
+        var btnShare = document.getElementById("btnShare");
+        var shareToast = document.getElementById("tool-share-toast");
+
+        tabDeposit.addEventListener("click", function(){ tabDeposit.classList.add("active"); tabSaving.classList.remove("active"); formDeposit.style.display = "block"; formSaving.style.display = "none"; result.classList.remove("show"); });
+        tabSaving.addEventListener("click", function(){ tabSaving.classList.add("active"); tabDeposit.classList.remove("active"); formSaving.style.display = "block"; formDeposit.style.display = "none"; result.classList.remove("show"); });
+
+        btnCalc.addEventListener("click", function(){
+          if (formDeposit.style.display !== "none") {
+            var p = parseFloat(principal.value) || 0;
+            var r = (parseFloat(rate.value) || 0) / 100 / 12;
+            var n = parseInt(months.value, 10) || 0;
+            if (p <= 0 || n <= 0) { result.classList.remove("show"); return; }
+            var interest, maturity;
+            if (interestType.value === "simple") {
+              interest = p * r * n;
+              maturity = p + interest;
+            } else {
+              maturity = p * Math.pow(1 + r, n);
+              interest = maturity - p;
+            }
+            interestEl.textContent = fmt(interest);
+            maturityEl.textContent = fmt(maturity);
+          } else {
+            var pmt = parseFloat(monthlyPay.value) || 0;
+            var r = (parseFloat(rateSaving.value) || 0) / 100 / 12;
+            var n = parseInt(monthsSaving.value, 10) || 0;
+            if (pmt <= 0 || n <= 0) { result.classList.remove("show"); return; }
+            var maturity = 0;
+            for (var i = 0; i < n; i++) maturity += pmt * Math.pow(1 + r, n - 1 - i);
+            var totalPaid = pmt * n;
+            var interest = maturity - totalPaid;
+            interestEl.textContent = fmt(interest);
+            maturityEl.textContent = fmt(maturity);
+          }
+          result.classList.add("show");
+        });
+
+        btnShare.addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ shareToast.textContent = "복사했어요"; shareToast.style.display = "inline"; setTimeout(function(){ shareToast.style.display = "none"; }, 1500); });
+          try { if (window.amplitude) window.amplitude.track("share_click", { method: "copy", tool: "saving" }); } catch(e){}
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BMR·TDEE 계산기 | 기초대사량·일일 칼로리 | FunnyFunny Cloud</title>
+    <meta name="description" content="키·몸무게·나이·성별·활동량을 입력하면 BMR(기초대사량)과 TDEE(일일 소모 칼로리)를 계산합니다. 무료 칼로리 계산기." />
+    <meta property="og:title" content="BMR·TDEE 계산기 | FunnyFunny Cloud" />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/tdee/" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/tdee/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #22c55e; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #15803d 0%, #22c55e 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input, .field select { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #0b1220; }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-item { display: flex; justify-content: space-between; padding: 8px 0; }
+      .result-item .v { font-weight: 700; color: var(--accent); }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { text-align: center; margin: 16px 0; font-size: 14px; }
+      .footer-links a { color: var(--accent); text-decoration: none; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">🔥</div>
+          <div>
+            <h1>BMR·TDEE 계산기</h1>
+            <p class="sub">기초대사량·일일 소모 칼로리 (Mifflin-St Jeor)</p>
+          </div>
+        </div>
+      </header>
+      <div class="panel">
+        <h3>신체·활동</h3>
+        <div class="row">
+          <div class="field">
+            <label>키 (cm)</label>
+            <input type="number" id="height" min="1" max="250" step="0.1" value="170" />
+          </div>
+          <div class="field">
+            <label>몸무게 (kg)</label>
+            <input type="number" id="weight" min="1" max="300" step="0.1" value="70" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>나이 (세)</label>
+            <input type="number" id="age" min="10" max="120" value="30" />
+          </div>
+          <div class="field">
+            <label>성별</label>
+            <select id="gender">
+              <option value="m">남성</option>
+              <option value="f">여성</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>활동량</label>
+          <select id="activity">
+            <option value="1.2">거의 없음 (주로 앉음)</option>
+            <option value="1.375">가벼움 (주 1~2회 운동)</option>
+            <option value="1.55">보통 (주 3~5회)</option>
+            <option value="1.725">많음 (주 6~7회)</option>
+            <option value="1.9">매우 많음 (육체 노동·선수)</option>
+          </select>
+        </div>
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div class="result-item"><span>BMR (기초대사량)</span><span class="v" id="bmr"></span></div>
+          <div class="result-item"><span>TDEE (일일 소모 kcal)</span><span class="v" id="tdee"></span></div>
+          <p class="note">Mifflin-St Jeor 식. 참고용이며 개인차가 있습니다. 다이어트·영양은 전문가와 상담하세요.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/tdee-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/bmi-check/">BMI 계산기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span>
+    </div>
+    <script>
+      (function(){
+        var height = document.getElementById("height");
+        var weight = document.getElementById("weight");
+        var age = document.getElementById("age");
+        var gender = document.getElementById("gender");
+        var activity = document.getElementById("activity");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var bmrEl = document.getElementById("bmr");
+        var tdeeEl = document.getElementById("tdee");
+        btnCalc.addEventListener("click", function(){
+          var h = parseFloat(height.value);
+          var w = parseFloat(weight.value);
+          var a = parseFloat(age.value);
+          if (!h || !w || !a) { result.classList.remove("show"); return; }
+          var bmr = (gender.value === "m")
+            ? 10*w + 6.25*h - 5*a + 5
+            : 10*w + 6.25*h - 5*a - 161;
+          bmr = Math.round(bmr);
+          var tdee = Math.round(bmr * parseFloat(activity.value));
+          bmrEl.textContent = bmr + " kcal/일";
+          tdeeEl.textContent = tdee + " kcal/일";
+          result.classList.add("show");
+        });
+        document.getElementById("btnShare").addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ document.getElementById("tool-share-toast").textContent = "복사했어요"; document.getElementById("tool-share-toast").style.display = "inline"; setTimeout(function(){ document.getElementById("tool-share-toast").style.display = "none"; }, 1500); });
+        });
+      })();
+    </script>
+  </body>
+</html>

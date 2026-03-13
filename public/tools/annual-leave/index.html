@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>연차·휴가 일수 계산기 | 근로기준법 | FunnyFunny Cloud</title>
+    <meta name="description" content="입사일·근속 기간을 입력하면 발생 연차 일수를 계산합니다. 1년 미만·1년 이상 구분. 무료 연차 계산기." />
+    <meta property="og:title" content="연차·휴가 일수 계산기 | FunnyFunny Cloud" />
+    <meta property="og:url" content="https://funnyfunny.cloud/tools/annual-leave/" />
+    <link rel="canonical" href="https://funnyfunny.cloud/tools/annual-leave/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+    <style>
+      :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #06b6d4; --border: #334155; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+      .wrap { max-width: 560px; margin: 0 auto; padding: 18px 14px 80px; }
+      header { margin-bottom: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); display: grid; place-items: center; font-size: 22px; }
+      h1 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+      .sub { margin: 0; color: var(--muted); font-size: 14px; }
+      .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .panel h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--muted); }
+      .field { margin-bottom: 14px; }
+      .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+      .field input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); font-size: 14px; }
+      .btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--accent); color: #0b1220; }
+      .result { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+      .result.show { display: block; }
+      .result-item { display: flex; justify-content: space-between; padding: 8px 0; }
+      .result-item .v { font-weight: 700; color: var(--accent); }
+      .note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+      .footer-links { text-align: center; margin: 16px 0; font-size: 14px; }
+      .footer-links a { color: var(--accent); text-decoration: none; }
+      .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-badge">📅</div>
+          <div>
+            <h1>연차·휴가 일수 계산기</h1>
+            <p class="sub">입사일·근속으로 발생 연차 일수 (근로기준법 기준)</p>
+          </div>
+        </div>
+      </header>
+      <div class="panel">
+        <h3>입력</h3>
+        <div class="field">
+          <label>입사일</label>
+          <input type="date" id="joinDate" value="2023-01-01" />
+        </div>
+        <div class="field">
+          <label>기준일 (연차 계산 기준)</label>
+          <input type="date" id="baseDate" />
+        </div>
+        <button type="button" class="btn" id="btnCalc">계산하기</button>
+        <div class="result" id="result">
+          <div class="result-item"><span>근속 기간</span><span class="v" id="tenure"></span></div>
+          <div class="result-item"><span>발생 연차 (일)</span><span class="v" id="days"></span></div>
+          <p class="note">1년 미만: 1개월 개근 시 1일. 1년 이상: 15일 + 2년마다 1일(25일 한도). 실제는 고용노동부·사규 확인.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/guide/annual-leave-how/">사용 가이드</a> · <a href="https://funnyfunny.cloud/tools/severance/">퇴직금 계산기</a> · <a href="https://funnyfunny.cloud/">다른 서비스</a>
+    </div>
+    <div id="tool-share-block">
+      <button type="button" id="btnShare" class="btn btn-ghost">링크 복사</button>
+      <span id="tool-share-toast" style="display:none;margin-left:8px;color:#94a3b8;"></span>
+    </div>
+    <script>
+      (function(){
+        var joinDate = document.getElementById("joinDate");
+        var baseDate = document.getElementById("baseDate");
+        var btnCalc = document.getElementById("btnCalc");
+        var result = document.getElementById("result");
+        var tenureEl = document.getElementById("tenure");
+        var daysEl = document.getElementById("days");
+        if (!baseDate.value) {
+          var t = new Date();
+          baseDate.value = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
+        }
+        btnCalc.addEventListener("click", function(){
+          var j = new Date(joinDate.value);
+          var b = new Date(baseDate.value);
+          if (isNaN(j.getTime()) || isNaN(b.getTime()) || b < j) { result.classList.remove("show"); return; }
+          var months = (b.getFullYear() - j.getFullYear()) * 12 + (b.getMonth() - j.getMonth());
+          if (b.getDate() < j.getDate()) months--;
+          var years = months / 12;
+          var tenureText = Math.floor(months/12) + "년 " + (months % 12) + "개월";
+          var days = 0;
+          if (months < 12) {
+            days = Math.floor(months);
+            if (days < 0) days = 0;
+          } else {
+            days = 15;
+            if (years >= 2) days += Math.min(Math.floor((years - 1) / 2), 10);
+          }
+          tenureEl.textContent = tenureText;
+          daysEl.textContent = days + "일";
+          result.classList.add("show");
+        });
+        document.getElementById("btnShare").addEventListener("click", function(){
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ document.getElementById("tool-share-toast").textContent = "복사했어요"; document.getElementById("tool-share-toast").style.display = "inline"; setTimeout(function(){ document.getElementById("tool-share-toast").style.display = "none"; }, 1500); });
+        });
+      })();
+    </script>
+  </body>
+</html>
