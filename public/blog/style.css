@@ -218,6 +218,9 @@ body {
 .comment-form .submit-row { margin-top: 1rem; }
 .comments-loading, .comments-error { color: var(--muted); font-size: .875rem; margin-bottom: 1rem; }
 .comments-error { color: #c00; }
+.ad-wrap { margin: 2rem 0; text-align: center; }
+.ad-wrap .ad-label { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; }
+.ad-wrap ins { display: block; margin: 0 auto; min-height: 90px; }
 
 .list-pagination-wrap {
   text-align: center;
