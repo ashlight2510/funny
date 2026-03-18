@@ -24,7 +24,6 @@
   </main>
   <footer class="blog-footer">기사 읽어주는 남자 · 정적 블로그</footer>
   <script>
-window.BLOG_API_URL = '';
 (function() {
   var DATA = '../data/';
   var params = new URLSearchParams(location.search);
@@ -60,85 +59,16 @@ window.BLOG_API_URL = '';
         '<div class="article-body">' + item.bodyHtml + '</div>' +
         '</article>' +
         '<div class="ad-wrap"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>' +
-        '<section class="comments-section" id="comments-section" data-article-id="' + esc(item.id) + '">' +
+        '<section class="comments-section">' +
         '<h3>댓글</h3>' +
-        '<p class="comments-loading" id="comments-loading">댓글 불러오는 중…</p>' +
-        '<p class="comments-error" id="comments-error" style="display:none;"></p>' +
-        '<ul class="comments-list" id="comments-list"></ul>' +
-        '<form class="comment-form" id="comment-form" style="display:none;">' +
-        '<div class="form-row"><label for="comment-author">이름 (선택, 기본 익명)</label><input type="text" id="comment-author" placeholder="익명" maxlength="50"></div>' +
-        '<div class="form-row"><label for="comment-text">댓글</label><textarea id="comment-text" placeholder="댓글을 입력하세요." maxlength="2000" required></textarea></div>' +
-        '<div class="submit-row"><button type="submit" class="btn primary">등록</button></div>' +
-        '</form>' +
-        '<p id="comments-no-api" style="display:none; color: var(--muted); font-size: .875rem;">댓글 서버가 설정되지 않았습니다.</p>' +
+        '<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="' + esc(item.id) + '" data-page-url="' + location.href + '" data-page-title="' + esc(item.title) + '"></div>' +
         '</section>';
       try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
-      var api = window.BLOG_API_URL || '';
-      var section = document.getElementById('comments-section');
-      var articleId = section && section.dataset.articleId;
-      var loading = document.getElementById('comments-loading');
-      var errorEl = document.getElementById('comments-error');
-      var listEl = document.getElementById('comments-list');
-      var form = document.getElementById('comment-form');
-      var noApi = document.getElementById('comments-no-api');
-      if (!api) {
-        if (loading) loading.style.display = 'none';
-        if (noApi) noApi.style.display = 'block';
-        return;
-      }
-      function loadComments() {
-        if (!articleId) return;
-        loading.style.display = 'block';
-        errorEl.style.display = 'none';
-        fetch(api + '/api/blog-comments?articleId=' + encodeURIComponent(articleId))
-          .then(function(r) { return r.json(); })
-          .then(function(data) {
-            loading.style.display = 'none';
-            var comments = data.comments || [];
-            listEl.innerHTML = '';
-            comments.forEach(function(c) {
-              var li = document.createElement('li');
-              var d = c.createdAt ? new Date(c.createdAt).toLocaleString('ko-KR') : '';
-              li.innerHTML = '<div class="comment-meta">' + esc(c.author) + ' · ' + esc(d) + '</div><div class="comment-text">' + esc(c.text) + '</div>';
-              listEl.appendChild(li);
-            });
-            if (form) form.style.display = 'block';
-          })
-          .catch(function() {
-            loading.style.display = 'none';
-            errorEl.textContent = '댓글을 불러오지 못했습니다.';
-            errorEl.style.display = 'block';
-            if (form) form.style.display = 'block';
-          });
-      }
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          var author = (document.getElementById('comment-author').value || '').trim() || '익명';
-          var text = (document.getElementById('comment-text').value || '').trim();
-          if (!text) return;
-          var btn = form.querySelector('button[type="submit"]');
-          if (btn) { btn.disabled = true; btn.textContent = '등록 중…'; }
-          fetch(api + '/api/blog-comments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ articleId: articleId, author: author, text: text })
-          })
-            .then(function(r) { return r.json(); })
-            .then(function(data) {
-              if (data.error) throw new Error(data.error);
-              document.getElementById('comment-text').value = '';
-              if (btn) { btn.disabled = false; btn.textContent = '등록'; }
-              loadComments();
-            })
-            .catch(function(err) {
-              if (btn) { btn.disabled = false; btn.textContent = '등록'; }
-              errorEl.textContent = err.message || '등록 실패';
-              errorEl.style.display = 'block';
-            });
-        });
-      }
-      loadComments();
+      var cs = document.createElement('script');
+      cs.src = 'https://cusdis.com/js/cusdis.es.js';
+      cs.async = true;
+      cs.defer = true;
+      document.body.appendChild(cs);
     })
     .catch(function(err) {
       root.innerHTML = '<p class="comments-error">' + esc(err.message || '글을 불러올 수 없습니다.') + '</p><a class="back-link" href="../">← 목록으로</a>';
