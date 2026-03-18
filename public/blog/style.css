@@ -221,6 +221,8 @@ body {
 .ad-wrap { margin: 2rem 0; text-align: center; }
 .ad-wrap .ad-label { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; }
 .ad-wrap ins { display: block; margin: 0 auto; min-height: 90px; }
+#cusdis_thread { max-height: none !important; overflow: visible !important; }
+#cusdis_thread iframe { max-height: none !important; height: auto !important; min-height: 300px; }
 
 .list-pagination-wrap {
   text-align: center;
