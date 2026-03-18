@@ -12,7 +12,7 @@
 <body>
   <header class="blog-header">
     <div class="blog-header-inner">
-      <a href="index.html">기사 읽어주는 남자</a>
+      <a href="./">기사 읽어주는 남자</a>
     </div>
   </header>
   <main class="blog-main">
@@ -23,14 +23,6 @@
         <button type="button" class="btn primary" id="load-more" style="display:none;">더 보기</button>
       </p>
       <p id="list-loading">목록 불러오는 중…</p>
-    </div>
-    <div id="article-view" style="display:none;">
-      <a class="back-link" href="index.html" id="back-link">← 목록으로</a>
-      <article class="article-single">
-        <h1 class="title" id="article-title"></h1>
-        <div class="meta" id="article-meta"></div>
-        <div class="article-body" id="article-body"></div>
-      </article>
     </div>
   </main>
   <footer class="blog-footer">기사 읽어주는 남자 · 정적 블로그</footer>
@@ -47,28 +39,11 @@
     return d.innerHTML;
   }
 
-  function showList() {
-    document.getElementById('list-view').style.display = 'block';
-    document.getElementById('article-view').style.display = 'none';
-  }
-  function showArticle() {
-    document.getElementById('list-view').style.display = 'none';
-    document.getElementById('article-view').style.display = 'block';
-  }
-
   function renderListItem(item) {
     const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
     const excerpt = (item.metaDescription || '').slice(0, 140) + (item.metaDescription && item.metaDescription.length > 140 ? '…' : '');
     const pub = item.sourcePublisher ? ' · ' + esc(item.sourcePublisher) : '';
-    return '<li><a href="index.html?id=' + encodeURIComponent(item.id) + '"><div class="title">' + esc(item.title) + '</div><div class="meta">' + esc(date) + pub + '</div><div class="excerpt">' + esc(excerpt) + '</div></a></li>';
-  }
-
-  function getChunkIndexById(id) {
-    if (!manifest || !manifest.chunks) return -1;
-    for (let i = 0; i < manifest.chunks.length; i++) {
-      if (manifest.chunks[i].ids.indexOf(id) !== -1) return i;
-    }
-    return -1;
+    return '<li><a href="news/?id=' + encodeURIComponent(item.id) + '"><div class="title">' + esc(item.title) + '</div><div class="meta">' + esc(date) + pub + '</div><div class="excerpt">' + esc(excerpt) + '</div></a></li>';
   }
 
   async function loadChunk(index) {
@@ -96,42 +71,13 @@
     }
   }
 
-  async function showArticleById(id) {
-    const chunkIndex = getChunkIndexById(id);
-    if (chunkIndex < 0) {
-      showList();
-      return;
-    }
-    const items = await loadChunk(chunkIndex);
-    const item = items.find(function(x) { return x.id === id; });
-    if (!item) {
-      showList();
-      return;
-    }
-    const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-    let meta = date;
-    if (item.sourcePublisher) meta += ' · ' + item.sourcePublisher;
-    if (item.sourceUrl) meta += ' · <a href="' + esc(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">원문 보기</a>';
-    document.getElementById('article-title').textContent = item.title;
-    document.getElementById('article-meta').innerHTML = meta;
-    document.getElementById('article-body').innerHTML = item.bodyHtml;
-    document.title = item.title + ' | 기사 읽어주는 남자';
-    showArticle();
-  }
-
   async function init() {
-    const id = new URLSearchParams(location.search).get('id');
     const res = await fetch(DATA + 'manifest.json');
     if (!res.ok) {
       document.getElementById('list-loading').textContent = '데이터를 불러올 수 없습니다.';
       return;
     }
     manifest = await res.json();
-    if (id) {
-      await showArticleById(id);
-      return;
-    }
-    showList();
     await loadListChunk(0);
   }
 

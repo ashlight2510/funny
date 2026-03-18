@@ -88,3 +88,18 @@ body {
 .btn.primary { background: var(--accent); color: #fff; }
 .btn.primary:hover { filter: brightness(1.05); }
 #list-loading { color: var(--muted); font-size: .9375rem; }
+.comments-section { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.comments-section h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+.comments-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.comments-list li { padding: .75rem 0; border-bottom: 1px solid var(--border); }
+.comments-list li:last-child { border-bottom: none; }
+.comments-list .comment-meta { color: var(--muted); font-size: .8125rem; margin-bottom: .25rem; }
+.comments-list .comment-text { white-space: pre-wrap; word-break: break-word; }
+.comment-form { margin-top: 1rem; }
+.comment-form label { display: block; margin-bottom: .25rem; font-size: .875rem; color: var(--muted); }
+.comment-form input, .comment-form textarea { width: 100%; max-width: 400px; padding: .5rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: .9375rem; }
+.comment-form textarea { min-height: 80px; resize: vertical; }
+.comment-form .form-row { margin-bottom: .75rem; }
+.comment-form .submit-row { margin-top: 1rem; }
+.comments-loading, .comments-error { color: var(--muted); font-size: .875rem; margin-bottom: 1rem; }
+.comments-error { color: #c00; }
