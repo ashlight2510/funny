@@ -53,6 +53,17 @@
   let allItems = [];
   let currentPage = 0;
 
+  (function() {
+    var el = document.getElementById('article-list');
+    if (el) el.addEventListener('error', function(e) {
+      if (e.target.tagName === 'IMG' && e.target.closest('.list-thumb')) {
+        e.target.style.display = 'none';
+        var s = e.target.previousElementSibling;
+        if (s && s.classList.contains('no-thumb')) s.style.display = 'block';
+      }
+    }, true);
+  })();
+
   function esc(s) {
     if (s == null) return '';
     const d = document.createElement('div');
@@ -62,7 +73,7 @@
 
   function thumbImgHtml(src) {
     if (!src) return '<div class="list-thumb"><span class="no-thumb"></span></div>';
-    return '<div class="list-thumb"><span class="no-thumb" style="display:none"></span><img src="' + esc(src) + '" alt="" loading="lazy" onerror="this.style.display=&quot;none&quot;;if(this.previousElementSibling)this.previousElementSibling.style.display=&quot;block&quot;"></div>';
+    return '<div class="list-thumb"><span class="no-thumb" style="display:none"></span><img src="' + esc(src) + '" alt="" loading="lazy"></div>';
   }
 
   function renderListItem(item) {
