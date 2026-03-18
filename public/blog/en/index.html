@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>기사 읽어주는 남자</title>
+  <title>News Reader Man</title>
   <meta name="google-adsense-account" content="ca-pub-1204894220949193">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,39 +16,39 @@
 <body>
   <header class="blog-header">
     <div class="blog-header-inner" style="display:flex;justify-content:space-between;align-items:center;">
-      <a href="./">기사 읽어주는 남자</a>
-      <a href="/blog/en/" style="font-size:.875rem;padding:.25rem .75rem;border:1px solid var(--border);border-radius:4px;">EN</a>
+      <a href="./">News Reader Man</a>
+      <a href="/blog/" style="font-size:.875rem;padding:.25rem .75rem;border:1px solid var(--border);border-radius:4px;">KO</a>
     </div>
   </header>
   <main class="blog-main">
     <div id="list-view">
-      <p id="list-heading" style="font-size:1rem;margin-bottom:1.25rem;color:var(--muted);">오늘의 이슈와 생활 정보를 쉽게 풀어드립니다</p>
-      <nav class="list-toolbar" aria-label="검색">
+      <p id="list-heading" style="font-size:1rem;margin-bottom:1.25rem;color:var(--muted);">Breaking down today's issues and life tips for you</p>
+      <nav class="list-toolbar" aria-label="Search">
         <div class="search-wrap" role="search">
-          <label for="list-search">검색</label>
-          <input type="search" id="list-search" placeholder="검색어 입력…" aria-label="검색" autocomplete="off">
+          <label for="list-search">Search</label>
+          <input type="search" id="list-search" placeholder="Search…" aria-label="Search" autocomplete="off">
         </div>
         <div>
-          <label for="list-category">카테고리</label>
-          <select id="list-category" aria-label="전체 카테고리">
-            <option value="">전체 카테고리</option>
+          <label for="list-category">Category</label>
+          <select id="list-category" aria-label="All Categories">
+            <option value="">All Categories</option>
           </select>
         </div>
       </nav>
       <div id="search-results" class="search-results" style="display:none;">
-        <h3 id="search-results-heading">검색 결과</h3>
+        <h3 id="search-results-heading">Search Results</h3>
         <p id="search-results-live" aria-live="polite" class="list-view" style="margin:0 0 .5rem;font-size:.875rem;color:var(--muted);"></p>
         <ul id="search-results-list"></ul>
       </div>
-      <ul class="article-list" id="article-list" aria-label="기사 읽어주는 남자">
+      <ul class="article-list" id="article-list" aria-label="News Reader Man">
 
       </ul>
       <div class="list-pagination-wrap">
         <nav id="list-pagination" class="list-pagination" aria-label="Page"></nav>
       </div>
-      <p id="list-loading" style="display:block;">목록 불러오는 중…</p>
+      <p id="list-loading" style="display:block;">Loading articles…</p>
       <div class="ad-wrap">
-        <div class="ad-label">광고</div>
+        <div class="ad-label">Ad</div>
         <ins class="adsbygoogle"
           style="display:block"
           data-ad-client="ca-pub-1204894220949193"
@@ -58,12 +58,12 @@
       </div>
     </div>
   </main>
-  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <footer class="blog-footer">© News Reader Man</footer>
   <script>
 (function() {
   const DATA = 'data/';
   const PER_PAGE = 100;
-  const LANG = 'ko';
+  const LANG = 'en';
   const DATE_LOCALE = LANG === 'en' ? 'en-US' : 'ko-KR';
   const TXT = {
     prev: LANG === 'en' ? '‹ Prev' : '‹ 이전',
