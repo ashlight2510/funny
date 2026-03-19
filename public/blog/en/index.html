@@ -103,12 +103,21 @@
     return '<div class="list-thumb"><span class="no-thumb" style="display:none"></span><img src="' + esc(src) + '" alt="" loading="lazy"></div>';
   }
 
+  function firstImageSrcFromBodyHtml(bodyHtml) {
+    if (!bodyHtml) return '';
+    var html = String(bodyHtml);
+    // bodyHtml에서 src가 있는 첫 번째 <img>의 src만 추출해서 폴백으로 사용한다.
+    var m = html.match(/<img[^>]*\bsrc=["']([^"']+)["'][^>]*>/i);
+    return m && m[1] ? m[1] : '';
+  }
+
   function renderListItem(item) {
     var date = item.createdAt ? new Date(item.createdAt).toLocaleDateString(DATE_LOCALE, { year: 'numeric', month: 'long', day: 'numeric' }) : '';
     var excerpt = (item.metaDescription || '').slice(0, 140) + (item.metaDescription && item.metaDescription.length > 140 ? '…' : '');
     var pub = item.sourcePublisher ? ' · ' + esc(item.sourcePublisher) : '';
     var cat = esc(item.categoryName || TXT.other);
-    var thumb = thumbImgHtml(item.sourceImage);
+    var thumbSrc = item.sourceImage || firstImageSrcFromBodyHtml(item.bodyHtml);
+    var thumb = thumbImgHtml(thumbSrc);
     return '<li data-category="' + cat + '"><a href="news/?id=' + encodeURIComponent(item.id) + '">' + thumb + '<div class="list-body"><div class="title">' + esc(item.title) + '</div><div class="meta">' + esc(date) + pub + '</div><div class="excerpt">' + esc(excerpt) + '</div></div></a></li>';
   }
 
