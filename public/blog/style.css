@@ -25,6 +25,12 @@ body {
   padding: .875rem var(--pad);
 }
 .blog-header-inner { max-width: var(--max); margin: 0 auto; }
+.blog-header-inner.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+}
 .blog-header a {
   color: var(--text);
   text-decoration: none;
@@ -32,6 +38,14 @@ body {
   font-size: 1.25rem;
 }
 .blog-header a:hover { color: var(--accent); }
+.blog-header .lang-toggle {
+  font-size: .875rem;
+  font-weight: 600;
+  padding: .35rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
 .blog-main {
   max-width: var(--max);
   margin: 0 auto;
@@ -147,6 +161,17 @@ body {
   margin: 1rem 0;
 }
 .article-body a { color: var(--accent); }
+.article-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.article-body pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
 .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent); text-decoration: none; font-size: .9375rem; }
 .back-link:hover { text-decoration: underline; }
 .blog-footer {
@@ -279,6 +304,8 @@ body {
 }
 
 @media (max-width: 768px) {
+  .blog-header a { font-size: 1.0625rem; }
+  .blog-header .lang-toggle { font-size: .8125rem; padding: .3rem .65rem; }
   .article-list li { flex-direction: column; }
   .article-list .list-thumb {
     width: 100%;
@@ -292,6 +319,27 @@ body {
 }
 @media (max-width: 480px) {
   :root { --pad: 1rem; }
+  .blog-header { padding: .7rem var(--pad); }
+  .blog-header-inner.header-row { gap: .5rem; }
+  .blog-header a { font-size: .95rem; }
+  .blog-header .lang-toggle { font-size: .75rem; padding: .25rem .55rem; }
   .article-list .list-body { padding: 1rem; }
+  .article-list .title { font-size: 1rem; }
+  .article-list .excerpt { -webkit-line-clamp: 3; font-size: .875rem; }
+  .list-toolbar { gap: .65rem; margin-bottom: 1rem; }
+  .list-toolbar input[type="search"],
+  .list-toolbar select { width: 100%; min-width: 0; }
+  .list-pagination { gap: .35rem; padding: .5rem .25rem; }
+  .list-pagination a, .list-pagination span {
+    min-width: 2.1rem;
+    height: 2.1rem;
+    padding: 0 .45rem;
+    font-size: .84rem;
+    border-radius: 7px;
+  }
+  .article-body { font-size: 1rem; line-height: 1.75; }
+  .article-body h1 { font-size: 1.2rem; }
+  .article-body h2 { font-size: 1.1rem; }
+  .article-body h3 { font-size: 1rem; }
   .article-single .title { font-size: 1.25rem; }
 }
