@@ -62,7 +62,7 @@
   <script>
 (function() {
   const DATA = 'data/';
-  const PER_PAGE = 100;
+  const PER_PAGE = 20;
   const LANG = 'en';
   const DATE_LOCALE = LANG === 'en' ? 'en-US' : 'ko-KR';
   const TXT = {
@@ -106,8 +106,8 @@
   function firstImageSrcFromBodyHtml(bodyHtml) {
     if (!bodyHtml) return '';
     var html = String(bodyHtml);
-    // bodyHtml에서 src가 있는 첫 번째 <img>의 src만 추출해서 폴백으로 사용한다.
-    var m = html.match(/<img[^>]*\bsrc=["']([^"']+)["'][^>]*>/i);
+    // bodyHtml에서 첫 번째 <img src="...">만 추출해서 썸네일 폴백으로 사용한다.
+    var m = html.match(/<img[^>]*src=["']([^"']+)["'][^>]*>/i);
     return m && m[1] ? m[1] : '';
   }
 
@@ -131,19 +131,19 @@
   function buildPagination() {
     var nav = document.getElementById('list-pagination');
     var wrap = nav && nav.closest('.list-pagination-wrap');
-    if (!nav || !manifest || manifest.chunks.length <= 1) {
+    var totalPages = filteredItems ? Math.ceil(filteredItems.length / PER_PAGE) : 0;
+    if (!nav || totalPages <= 1) {
       if (nav) nav.innerHTML = '';
       if (wrap) wrap.style.display = 'none';
       return;
     }
     if (wrap) wrap.style.display = 'block';
-    var total = manifest.chunks.length;
     var html = '';
     if (currentPage > 0) {
       html += '<a href="#" data-page="' + (currentPage - 1) + '">' + TXT.prev + '</a>';
     }
     var from = Math.max(0, currentPage - 2);
-    var to = Math.min(total, currentPage + 3);
+    var to = Math.min(totalPages, currentPage + 3);
     if (from > 0) html += '<span class="gap" aria-hidden="true">…</span>';
     for (var i = from; i < to; i++) {
       if (i === currentPage) {
@@ -152,8 +152,8 @@
         html += '<a href="#" data-page="' + i + '">' + (i + 1) + '</a>';
       }
     }
-    if (to < total) html += '<span class="gap" aria-hidden="true">…</span>';
-    if (currentPage < total - 1) {
+    if (to < totalPages) html += '<span class="gap" aria-hidden="true">…</span>';
+    if (currentPage < totalPages - 1) {
       html += '<a href="#" data-page="' + (currentPage + 1) + '">' + TXT.next + '</a>';
     }
     nav.innerHTML = html;
@@ -166,25 +166,32 @@
     });
   }
 
+  var filteredItems = [];
+
+  function getSelectedCategory() {
+    var el = document.getElementById('list-category');
+    return el ? el.value || '' : '';
+  }
+
   function showPage(index) {
-    if (index < 0 || index >= manifest.chunks.length) return;
+    var totalPages = filteredItems ? Math.ceil(filteredItems.length / PER_PAGE) : 0;
+    if (index < 0 || index >= totalPages) return;
     var listEl = document.getElementById('article-list');
     var start = index * PER_PAGE;
-    var pageItems = allItems.slice(start, start + PER_PAGE);
+    var pageItems = filteredItems.slice(start, start + PER_PAGE);
     listEl.innerHTML = pageItems.map(function(item) { return renderListItem(item); }).join('');
     currentPage = index;
     buildPagination();
-    applyCategoryFilter();
   }
 
   function applyCategoryFilter() {
-    var cat = (document.getElementById('list-category') || {}).value || '';
-    var list = document.getElementById('article-list');
-    if (!list) return;
-    var items = list.querySelectorAll('li');
-    items.forEach(function(li) {
-      var match = !cat || (li.getAttribute('data-category') || '') === cat;
-      li.style.display = match ? '' : 'none';
+    var cat = getSelectedCategory();
+    if (!cat) {
+      filteredItems = allItems.slice();
+      return;
+    }
+    filteredItems = allItems.filter(function(item) {
+      return (item.categoryName || TXT.other) === cat;
     });
   }
 
@@ -203,8 +210,8 @@
       var chunks = await Promise.all(manifest.chunks.map(function(_, i) { return loadChunk(i); }));
       allItems = chunks.reduce(function(acc, arr) { return acc.concat(arr); }, []);
       loadingEl.style.display = 'none';
+      applyCategoryFilter();
       showPage(0);
-      buildPagination();
     } catch (err) {
       loadingEl.textContent = TXT.listError;
     }
@@ -224,14 +231,20 @@
       if (headingEl) headingEl.setAttribute('aria-hidden', 'false');
     var wrap = document.querySelector('.list-pagination-wrap');
     if (wrap) wrap.style.display = '';
+    currentPage = 0;
     applyCategoryFilter();
+    showPage(0);
     return;
     }
     var wrap = document.querySelector('.list-pagination-wrap');
     if (wrap) wrap.style.display = 'none';
     if (!searchIndex) return;
+    var cat = getSelectedCategory();
     var hits = searchIndex.filter(function(item) {
-      return (item.title || '').toLowerCase().indexOf(q) !== -1;
+      var titleHit = (item.title || '').toLowerCase().indexOf(q) !== -1;
+      if (!titleHit) return false;
+      if (!cat) return true;
+      return (item.categoryName || TXT.other) === cat;
     });
     if (resultsEl) {
       resultsEl.style.display = 'block';
@@ -268,7 +281,11 @@
     }).catch(function() {});
 
     var catSel = document.getElementById('list-category');
-    if (catSel) catSel.addEventListener('change', applyCategoryFilter);
+    if (catSel) catSel.addEventListener('change', function() {
+      currentPage = 0;
+      applyCategoryFilter();
+      showPage(0);
+    });
 
     var searchInput = document.getElementById('list-search');
     if (searchInput) {
