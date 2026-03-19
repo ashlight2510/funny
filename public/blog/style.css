@@ -308,13 +308,15 @@ body {
   .blog-header a { font-size: 1.0625rem; }
   .blog-header .lang-toggle { font-size: .8125rem; padding: .3rem .65rem; }
   .article-list li { flex-direction: column; }
+  .article-list a { flex-direction: column; align-items: center; }
   .article-list .list-thumb {
-    height: 160px;
-    min-height: 160px;
+    width: 92%;
+    height: 200px;
+    min-height: 200px;
   }
   .article-list .list-thumb img,
-  .article-list .list-thumb .no-thumb { height: 160px; min-height: 160px; }
-  .article-list .list-body { padding: 1rem 1.25rem; }
+  .article-list .list-thumb .no-thumb { height: 200px; min-height: 200px; }
+  .article-list .list-body { width: 92%; padding: 1rem 1rem; }
   .list-toolbar { flex-direction: column; align-items: stretch; }
   .list-toolbar input[type="search"] { max-width: none; }
 }
