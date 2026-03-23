@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-c:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+c:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 d:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/qNgAcg4gNYbZ9mySLB9ZX4ehZb6.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/i7rka8OksNjM0BXjTmz8zwEDfO1.jpg","image"]
@@ -17,6 +17,6 @@ d:"$Sreact.suspense"
 7:["$","$L2","tv-213402",{"href":"/title/213402","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/1iWzgAU9MMKrS67VnxH4XhDnTUa.jpg","alt":"터무니없는 스킬로 이세계 방랑 밥","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"터무니없는 스킬로 이세계 방랑 밥"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","Netflix"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"아는 사람만 아는 저평가 명작"}]]}]]}]
 8:["$","$L2","tv-131041",{"href":"/title/131041","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/tqiDHyR3YoIq4h0taoodUwp78Uz.jpg","alt":"블루 록","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"블루 록"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","Netflix"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
 9:["$","$L2","tv-10283",{"href":"/title/10283","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/vhnrkTGYPqcB63ALcSJm0WoaKHT.jpg","alt":"아처","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"아처"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","Netflix"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
-a:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+a:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 b:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
 e:null

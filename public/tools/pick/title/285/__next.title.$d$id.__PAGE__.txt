@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-c:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+c:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 d:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/bTotG6tZERQqfKr2TDjwdjW8It4.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/zFah4LNeWw68y7RRGi20CQlGByY.jpg","image"]
@@ -17,6 +17,6 @@ d:"$Sreact.suspense"
 7:["$","$L2","movie-562",{"href":"/title/562","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/9MPaeRkwS12glOQ818SEtnMd3XA.jpg","alt":"다이 하드","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"다이 하드"}],["$","div",null,{"className":"text-xs text-gray-500","children":[77,"점 · ","Disney Plus"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
 8:["$","$L2","movie-177572",{"href":"/title/177572","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/gLabmTVZpNOGa8LEiMvTi9hJPDe.jpg","alt":"빅 히어로","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"빅 히어로"}],["$","div",null,{"className":"text-xs text-gray-500","children":[77,"점 · ","Disney Plus"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
 9:["$","$L2","movie-293660",{"href":"/title/293660","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/k1e0TlvDM4KsiSRyJENVrHxMqtK.jpg","alt":"데드풀","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"데드풀"}],["$","div",null,{"className":"text-xs text-gray-500","children":[77,"점 · ","Disney Plus"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
-a:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+a:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 b:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
 e:null

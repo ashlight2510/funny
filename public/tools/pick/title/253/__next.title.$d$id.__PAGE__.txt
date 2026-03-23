@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-d:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+d:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 e:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/bPsxOpHVpVCX3hFz2fxnF1Vz3Dj.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/q8dWfc4JwQuv3HayIZeO84jAXED.jpg","image"]
@@ -18,6 +18,6 @@ e:"$Sreact.suspense"
 8:["$","$L2","tv-85077",{"href":"/title/85077","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/dqVUFuNrMFWt7uGNWlpo91VKYOI.jpg","alt":"더 초즌: 부름 받은 자","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"더 초즌: 부름 받은 자"}],["$","div",null,{"className":"text-xs text-gray-500","children":[81,"점 · ","Netflix"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"평점과 접근성이 모두 검증된 작품"}]]}]]}]
 9:["$","$L2","tv-77169",{"href":"/title/77169","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/smVIOAVCcoaBTx054SO9SiyDqep.jpg","alt":"코브라 카이","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"코브라 카이"}],["$","div",null,{"className":"text-xs text-gray-500","children":[81,"점 · ","Netflix"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
 a:["$","$L2","tv-37606",{"href":"/title/37606","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/VYnnyA2hyxi3VUPgCA71mMtt69.jpg","alt":"검볼","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"검볼"}],["$","div",null,{"className":"text-xs text-gray-500","children":[81,"점 · ","Netflix"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"평점과 접근성이 모두 검증된 작품"}]]}]]}]
-b:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+b:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 c:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
 f:null

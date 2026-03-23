@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-b:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+b:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 c:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/BOTITv548LYGB4xRD3rHfbwkqm.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/A5hvLZpYcpT2GFA3j8LtI6eINFr.jpg","image"]
@@ -16,6 +16,6 @@ c:"$Sreact.suspense"
 6:["$","$L2","tv-4194",{"href":"/title/4194","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/e1nWfnnCVqxS2LeTO3dwGyAsG2V.jpg","alt":"스타워즈: 클론전쟁","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"스타워즈: 클론전쟁"}],["$","div",null,{"className":"text-xs text-gray-500","children":[79,"점 · ","Disney Plus"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
 7:["$","$L2","tv-456",{"href":"/title/456","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/7HKQieF8YqXgTwBVjWFGWaEKNS7.jpg","alt":"심슨 가족","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"심슨 가족"}],["$","div",null,{"className":"text-xs text-gray-500","children":[78,"점 · ","Disney Plus"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
 8:["$","$L2","tv-1911",{"href":"/title/1911","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/24Mi1oDrdc1zbHju7FVHJA4sgYt.jpg","alt":"본즈","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"본즈"}],["$","div",null,{"className":"text-xs text-gray-500","children":[78,"점 · ","Disney Plus"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
-9:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+9:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 a:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
 d:null

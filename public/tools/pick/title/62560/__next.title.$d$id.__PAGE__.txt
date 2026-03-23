@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-a:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+a:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/kv1nRqgebSsREnd7vdC2pSGjpLo.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/uyuCMmAxNL3z3fyW4xzefT886Yu.jpg","image"]
@@ -15,6 +15,6 @@ b:"$Sreact.suspense"
 5:["$","$L2","tv-71790",{"href":"/title/71790","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/ttzrYMdsKWR8PTRLw7uo4noqaOJ.jpg","alt":"스와트","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"스와트"}],["$","div",null,{"className":"text-xs text-gray-500","children":[77,"점 · ","wavve"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
 6:["$","$L2","tv-2734",{"href":"/title/2734","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/iofokHZoUB4Qhik4PflvJl8TT6a.jpg","alt":"로 앤 오더: 성범죄전담반","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"로 앤 오더: 성범죄전담반"}],["$","div",null,{"className":"text-xs text-gray-500","children":[76,"점 · ","wavve"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
 7:["$","$L2","tv-790",{"href":"/title/790","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/pWVZ6WUSZfqxTOllyiV9mM3jQ4g.jpg","alt":"아가사 크리스티: 명탐정 포와로","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"아가사 크리스티: 명탐정 포와로"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","wavve"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
-8:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+8:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 9:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
 c:null

@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-b:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+b:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 c:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/eLbVVIgIoqBxR0ZnxbCXao4ujFP.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/hbTQy1uBV4xzqHDIbWsMnCcR7J0.jpg","image"]
@@ -16,6 +16,6 @@ c:"$Sreact.suspense"
 6:["$","$L2","movie-315635",{"href":"/title/315635","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/hjki9weYYVABvkpZbX5jBOmKXXv.jpg","alt":"스파이더맨: 홈커밍","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"스파이더맨: 홈커밍"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","wavve"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
 7:["$","$L2","movie-557",{"href":"/title/557","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/4xOhtzXGt0if74dTmS4qtizFelX.jpg","alt":"스파이더맨","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"스파이더맨"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","wavve"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
 8:["$","$L2","movie-603692",{"href":"/title/603692","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/h3LsdSBzhRnBebz4BTpAhh63PD3.jpg","alt":"존 윅 4","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"존 윅 4"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","Watcha"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
-9:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+9:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 a:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
 d:null

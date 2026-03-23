@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[39363,["/_next/static/chunks/159520766b244379.js","/_next/static/chunks/ec1af77bd3e683bd.js"],""]
-a:I[94070,["/_next/static/chunks/fa5aac8dab3c2686.js","/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
+2:I[39363,["/tools/pick/_next/static/chunks/159520766b244379.js","/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js"],""]
+a:I[94070,["/tools/pick/_next/static/chunks/fa5aac8dab3c2686.js","/tools/pick/_next/static/chunks/3d5dbfe9cd755cac.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
 :HL["https://image.tmdb.org/t/p/w500/bxA78rAhpIMrJzEOWY2S1AuwNw8.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/vaXQOBNdQVtxUMN96cR4qQRxmoQ.jpg","image"]
@@ -15,6 +15,6 @@ b:"$Sreact.suspense"
 5:["$","$L2","tv-790",{"href":"/title/790","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/pWVZ6WUSZfqxTOllyiV9mM3jQ4g.jpg","alt":"아가사 크리스티: 명탐정 포와로","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"아가사 크리스티: 명탐정 포와로"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","wavve"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"여러 OTT에서 바로 볼 수 있음"}]]}]]}]
 6:["$","$L2","tv-1104",{"href":"/title/1104","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/yd4BrXPQZvin4XMDlXUP9JgQDUQ.jpg","alt":"매드 맨","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"매드 맨"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","Watcha"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
 7:["$","$L2","tv-33907",{"href":"/title/33907","className":"rounded-lg border overflow-hidden hover:shadow bg-white","children":[["$","div",null,{"className":"aspect-[2/3] bg-gray-100 overflow-hidden","children":["$","img",null,{"src":"https://image.tmdb.org/t/p/w500/ormSVfk9ReYJqF6w2EckwHaG4qJ.jpg","alt":"다운튼 애비","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"p-2","children":[["$","div",null,{"className":"text-sm font-medium truncate","children":"다운튼 애비"}],["$","div",null,{"className":"text-xs text-gray-500","children":[75,"점 · ","Watcha"]}],["$","div",null,{"className":"text-xs text-gray-400 overflow-hidden text-ellipsis","children":"취향 맞으면 꽤 만족도 높은 선택"}]]}]]}]
-8:["$","script","script-0",{"src":"/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
+8:["$","script","script-0",{"src":"/tools/pick/_next/static/chunks/ec1af77bd3e683bd.js","async":true}]
 9:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
 c:null

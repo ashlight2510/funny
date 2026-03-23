@@ -257,6 +257,8 @@ body {
 .ad-wrap { margin: 2rem 0; text-align: center; }
 .ad-wrap .ad-label { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; }
 .ad-wrap ins { display: block; margin: 0 auto; min-height: 90px; }
+.article-ad-top { margin: 0 0 1.25rem; }
+.article-ad-bottom { margin: 2rem 0 1.5rem; }
 #cusdis_thread { max-height: none !important; overflow: visible !important; }
 #cusdis_thread iframe { max-height: none !important; height: auto !important; min-height: 300px; }
 

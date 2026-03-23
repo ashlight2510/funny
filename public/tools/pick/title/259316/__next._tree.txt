@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/e512e29e74a9a72c.css","style"]
+:HL["/tools/pick/_next/static/chunks/e512e29e74a9a72c.css","style"]
 :HL["https://image.tmdb.org/t/p/w500/1HHH1YR2UL5JLkrsbO6gfcg0gna.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/ad9ndytwOckyShSc0A6tx1rZRkW.jpg","image"]
 :HL["https://image.tmdb.org/t/p/w500/uWPnKtu1eutmgBQ2hoWm0Xe8nfN.jpg","image"]

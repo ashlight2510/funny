@@ -32,6 +32,7 @@
   var BACK_TEXT = LANG === 'en' ? '← Back to list' : '← 목록으로';
   var VIEW_SOURCE = LANG === 'en' ? 'View source' : '원문 보기';
   var COMMENTS_TEXT = LANG === 'en' ? 'Comments' : '댓글';
+  var AD_LABEL = LANG === 'en' ? 'Ad' : '광고';
   var NOT_FOUND = LANG === 'en' ? 'Article not found.' : '글을 찾을 수 없습니다.';
   var LOAD_ERROR = LANG === 'en' ? 'Failed to load article.' : '글을 불러올 수 없습니다.';
   var DATE_LOCALE = LANG === 'en' ? 'en-US' : 'ko-KR';
@@ -62,17 +63,21 @@
       if (item.sourceUrl) meta += ' · <a href="' + esc(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + VIEW_SOURCE + '</a>';
       document.title = item.title + ' | ' + SITE_NAME;
       root.innerHTML = '<a class="back-link" href="../">' + BACK_TEXT + '</a>' +
+        '<div class="ad-wrap article-ad-top"><div class="ad-label">' + AD_LABEL + '</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>' +
         '<article class="article-single">' +
         '<h1 class="title">' + esc(item.title) + '</h1>' +
         '<div class="meta">' + meta + '</div>' +
         '<div class="article-body">' + item.bodyHtml + '</div>' +
         '</article>' +
-        '<div class="ad-wrap"><div class="ad-label">Ad</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>' +
+        '<div class="ad-wrap article-ad-bottom"><div class="ad-label">' + AD_LABEL + '</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>' +
         '<section class="comments-section">' +
         '<h3>' + COMMENTS_TEXT + '</h3>' +
         '<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="' + esc(item.id) + '" data-page-url="' + location.href + '" data-page-title="' + esc(item.title) + '"></div>' +
         '</section>';
-      try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch(_) {}
       var cs = document.createElement('script');
       cs.src = 'https://cusdis.com/js/cusdis.es.js';
       cs.async = true;
