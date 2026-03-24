@@ -501,6 +501,134 @@
         color: rgba(255, 255, 255, 0.65);
       }
 
+      .result-cta-row {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .result-cta-btn {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        color: #f4f6fb;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 11px 12px;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .result-cta-btn:hover {
+        border-color: rgba(0, 209, 255, 0.55);
+        box-shadow: 0 12px 26px rgba(0, 209, 255, 0.12);
+      }
+
+      .growth-funnel {
+        max-width: 1400px;
+        margin: 8px auto 28px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .funnel-card {
+        background: #10111c;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      }
+
+      .funnel-card h3 {
+        margin: 0 0 10px;
+        font-size: 17px;
+        line-height: 1.4;
+      }
+
+      .funnel-card p {
+        margin: 0 0 12px;
+        color: rgba(244, 246, 251, 0.82);
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .funnel-card ul {
+        margin: 0 0 14px;
+        padding-left: 18px;
+        color: rgba(244, 246, 251, 0.84);
+      }
+
+      .funnel-card li {
+        margin: 0 0 8px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .funnel-badge {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        color: #fff;
+        background: linear-gradient(135deg, #7f5af0, #00d1ff);
+      }
+
+      .funnel-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .funnel-cta:hover {
+        border-color: rgba(0, 209, 255, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 209, 255, 0.14);
+      }
+
+      .seo-hub {
+        max-width: 1400px;
+        margin: 12px auto 0;
+      }
+
+      .seo-hub-card {
+        background: #10111c;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .seo-hub-card h3 {
+        margin: 0 0 10px;
+      }
+
+      .seo-link-grid {
+        margin: 14px 0 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 14px;
+      }
+
+      .seo-link-grid a {
+        color: #d7ecff;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .seo-link-grid a:hover {
+        text-decoration: underline;
+      }
+
       .form-hint {
         margin-top: 6px;
         font-size: 12px;
@@ -1077,6 +1205,15 @@
           grid-template-columns: 1fr;
         }
 
+        .growth-funnel {
+          grid-template-columns: 1fr;
+        }
+
+        .result-cta-row,
+        .seo-link-grid {
+          grid-template-columns: 1fr;
+        }
+
         .icon-preview-img {
           width: 90vw;
           height: 90vw;
@@ -1491,6 +1628,11 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
             <code>app.json</code> 의 <code>expo.icon</code> 을 해당 경로로
             지정하세요.
           </p>
+          <div class="result-cta-row" aria-label="다음 행동 선택">
+            <button class="result-cta-btn" id="ctaStartApp">🚀 앱 만들기 시작</button>
+            <button class="result-cta-btn" id="ctaBuildWebsite">🌐 웹사이트 만들기</button>
+            <button class="result-cta-btn" id="ctaSaveDesign">💾 디자인 저장하기</button>
+          </div>
         </section>
 
         <section class="preview-panel">
@@ -1618,6 +1760,73 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
         </section>
       </div>
     </div>
+
+    <section class="growth-funnel" aria-label="아이콘 생성 후 실행 퍼널">
+      <article class="funnel-card">
+        <span class="funnel-badge">왜 안 터졌는지</span>
+        <h3>좋은 도구인데, 생성 후 행동이 끊겼습니다</h3>
+        <p>
+          기존 흐름은 <strong>생성 → 다운로드 → 종료</strong>였습니다.
+          이 구조에서는 사용자가 바로 떠나기 때문에 반복 방문, 확장 행동, 수익 전환이 낮아집니다.
+        </p>
+        <ul>
+          <li>다운로드 후 다음 단계 안내가 없음</li>
+          <li>출시/배포 체크리스트가 없어 이탈</li>
+          <li>수익화 선택지가 없어 비즈니스 전환이 안 됨</li>
+        </ul>
+      </article>
+
+      <article class="funnel-card">
+        <span class="funnel-badge">어떻게 터뜨릴지</span>
+        <h3>10분 출시 루틴으로 행동을 이어붙이기</h3>
+        <p>
+          아이콘 생성 직후 바로 출시 행동으로 넘어가게 만듭니다.
+          사용자가 멈추지 않도록 “다음 한 단계”를 고정 제공합니다.
+        </p>
+        <ul>
+          <li>1) 아이콘/스플래시 ZIP 다운로드</li>
+          <li>2) 가이드 페이지에서 플랫폼별 적용</li>
+          <li>3) 스토어 반영 후 재방문해 A/B 아이콘 테스트</li>
+        </ul>
+        <a class="funnel-cta" href="#home" onclick="showPage('guide'); return false;">📚 앱 출시 가이드 바로 열기</a>
+      </article>
+
+      <article class="funnel-card">
+        <span class="funnel-badge">수익 연결</span>
+        <h3>아이콘 생성 도구를 비즈니스 퍼널로 전환</h3>
+        <p>
+          사용자 상태는 “무언가 출시하려는 직전”입니다. 이 시점은 가장 전환율이 높은 구간입니다.
+        </p>
+        <ul>
+          <li><strong>템플릿:</strong> 앱 랜딩/스토어 설명 템플릿 패키지</li>
+          <li><strong>SaaS:</strong> 히스토리 저장, 브랜드 키트, 팀 공유</li>
+          <li><strong>제휴:</strong> 도메인/호스팅/앱빌더 연결</li>
+        </ul>
+        <a class="funnel-cta" href="#faq">💸 수익화 FAQ 확인하기</a>
+      </article>
+    </section>
+
+    <section class="seo-hub" aria-label="아이콘 SEO 가이드 허브">
+      <div class="seo-hub-card">
+        <h3>SEO 확장 가이드 10선 (아이콘 생성 → 배포/수익 연결)</h3>
+        <p style="margin:0;color:rgba(244,246,251,0.78);line-height:1.7;">
+          검색 의도가 강한 키워드를 위한 전용 가이드 페이지입니다.
+          모든 문서는 이 툴로 다시 돌아오도록 설계되어 전환 루프를 만듭니다.
+        </p>
+        <div class="seo-link-grid">
+          <a href="/tools/emojicon/ios-app-icon-size-guide.html">1) iOS App Icon Size Guide</a>
+          <a href="/tools/emojicon/android-app-icon-guide.html">2) Android App Icon Guide</a>
+          <a href="/tools/emojicon/favicon-size-guide.html">3) Favicon Size Guide</a>
+          <a href="/tools/emojicon/how-to-make-app-icon.html">4) How to Make App Icon</a>
+          <a href="/tools/emojicon/app-icon-design-tips.html">5) App Icon Design Tips</a>
+          <a href="/tools/emojicon/app-icon-examples.html">6) App Icon Examples</a>
+          <a href="/tools/emojicon/icon-vs-logo-difference.html">7) Icon vs Logo Difference</a>
+          <a href="/tools/emojicon/startup-branding-guide.html">8) Startup Branding Guide</a>
+          <a href="/tools/emojicon/app-publish-checklist.html">9) App Publish Checklist</a>
+          <a href="/tools/emojicon/app-monetization-guide.html">10) App Monetization Guide</a>
+        </div>
+      </div>
+    </section>
 
     <section class="meta-section" data-i18n-html="metaOverviewSection">
       <div class="meta-card">
@@ -1828,6 +2037,19 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
         스크린을 만드는 방법을 단계별로 안내합니다. iOS, Android, 웹 등 다양한
         플랫폼에 최적화된 아이콘을 빠르게 제작할 수 있습니다.
       </p>
+
+      <h2>0. 왜 이 서비스가 안 터졌고, 어떻게 터뜨릴까</h2>
+      <p>
+        기존에는 <strong>아이콘 생성 → 파일 저장</strong>에서 사용자의 행동이 끝났습니다.
+        그래서 도구 만족도는 높아도 비즈니스 성과(재방문, 제휴 전환, 구매 의도)는
+        낮게 측정됩니다. 해결법은 단순합니다. 결과 직후에
+        <strong>다음 행동(출시/배포/수익화)</strong>을 고정으로 안내해야 합니다.
+      </p>
+      <ul>
+        <li><strong>행동 연장:</strong> 생성 직후 배포 체크리스트 진입</li>
+        <li><strong>반복 유도:</strong> 아이콘 A/B 테스트 루틴 제공</li>
+        <li><strong>수익 연결:</strong> 제휴/템플릿/SaaS 업셀 경로 노출</li>
+      </ul>
 
       <h2>1. 아이콘 제작 기본 가이드</h2>
 
@@ -4826,6 +5048,49 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
         downloadAllButton.addEventListener("click", () =>
           downloadAllAssets(downloadAllButton)
         );
+      }
+
+      function trackCtaClick(name) {
+        try {
+          const key = "emojicon_cta_clicks";
+          const raw = localStorage.getItem(key);
+          const data = raw ? JSON.parse(raw) : {};
+          data[name] = (data[name] || 0) + 1;
+          data.last = new Date().toISOString();
+          localStorage.setItem(key, JSON.stringify(data));
+        } catch (e) {
+          console.warn("cta track failed", e);
+        }
+      }
+
+      const ctaStartApp = document.getElementById("ctaStartApp");
+      if (ctaStartApp) {
+        ctaStartApp.addEventListener("click", () => {
+          trackCtaClick("start_app");
+          showPage("guide");
+        });
+      }
+
+      const ctaBuildWebsite = document.getElementById("ctaBuildWebsite");
+      if (ctaBuildWebsite) {
+        ctaBuildWebsite.addEventListener("click", () => {
+          trackCtaClick("build_website");
+          window.open("/guide/", "_blank", "noopener");
+        });
+      }
+
+      const ctaSaveDesign = document.getElementById("ctaSaveDesign");
+      if (ctaSaveDesign) {
+        ctaSaveDesign.addEventListener("click", async () => {
+          trackCtaClick("save_design");
+          try {
+            await navigator.clipboard.writeText(location.href);
+            alert("현재 디자인 링크를 복사했어요. 북마크해두면 다시 이어서 작업할 수 있습니다.");
+          } catch (error) {
+            console.error(error);
+            alert("링크 복사에 실패했어요. 브라우저 권한을 확인해 주세요.");
+          }
+        });
       }
 
       if (downloadSplashButton) {
