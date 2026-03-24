@@ -68,9 +68,53 @@ function resultExtraHtml(tool) {
   return '<span id="resultSubline" class="result-extra" style="display:none;"></span>';
 }
 
+function buildInsightHtml(tool) {
+  const type = toolType(tool.slug);
+  const relatedPath = type === "calc" ? "/calculators/" : type === "game" ? "/games/" : type === "test" ? "/tests/" : "/tools/random/";
+  return `
+    <section class="content-panel">
+      <h2>${tool.titleKo} 실행 인사이트</h2>
+      <p>
+        도파민은 단순 쾌락이 아니라 행동 반복을 만드는 신호입니다. 그래서 핵심은 강한 자극보다
+        작은 실행을 꾸준히 반복해 보상 예측을 안정화하는 것입니다.
+      </p>
+      <ul>
+        <li><strong>즉시 보상:</strong> 지금 1회 실행하고 결과를 확인하세요.</li>
+        <li><strong>누적 관리:</strong> 주간 단위로 실행 횟수와 패턴을 점검하세요.</li>
+        <li><strong>행동 기준:</strong> 성공 확률이 아니라 누적 실행량을 기준으로 보세요.</li>
+      </ul>
+      <div class="mini-cta">
+        <a href="${BASE}${relatedPath}">관련 서비스 더 보기</a>
+      </div>
+    </section>
+  `;
+}
+
+function buildFaqHtml(tool) {
+  return `
+    <section class="content-panel faq-panel">
+      <h2>${tool.titleKo} FAQ</h2>
+      <details>
+        <summary>${tool.titleKo}는 어떤 용도로 쓰면 좋나요?</summary>
+        <p>빠른 선택, 가벼운 진단, 아이디어 확장처럼 판단 피로를 줄여야 할 때 적합합니다.</p>
+      </details>
+      <details>
+        <summary>결과를 신뢰해도 되나요?</summary>
+        <p>참고용 도구이므로 최종 결정은 본인 상황과 목표에 맞게 판단하는 것을 권장합니다.</p>
+      </details>
+      <details>
+        <summary>실행이 잘 안 될 때 도움이 되나요?</summary>
+        <p>네. 작은 행동 트리거로 사용하면 시작 장벽을 낮추고 루틴 형성에 도움이 됩니다.</p>
+      </details>
+    </section>
+  `;
+}
+
 function buildHtml(tool, accent) {
   const script = buildScript(tool);
   const extra = resultExtraHtml(tool);
+  const insightHtml = buildInsightHtml(tool);
+  const faqHtml = buildFaqHtml(tool);
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -91,6 +135,17 @@ function buildHtml(tool, accent) {
     .btn{padding:14px 24px;border-radius:12px;border:none;font-weight:600;font-size:16px;cursor:pointer;background:var(--accent);color:#fff;}
     .result{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);text-align:center;font-size:18px;line-height:1.6;} .result.show{display:block;}
     .result-extra{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;}
+    .content-panel{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:20px;margin-top:16px;line-height:1.65;}
+    .content-panel h2{margin:0 0 12px;font-size:18px;line-height:1.35;}
+    .content-panel p{margin:0 0 12px;color:#dbe5f3;}
+    .content-panel ul{margin:0 0 12px;padding-left:18px;}
+    .content-panel li{margin:0 0 8px;color:#dbe5f3;}
+    .mini-cta{margin-top:8px;}
+    .mini-cta a{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid var(--border);color:var(--text);text-decoration:none;}
+    .faq-panel details{border-top:1px dashed #3b4a61;padding:10px 0;}
+    .faq-panel details:first-of-type{border-top:none;padding-top:0;}
+    .faq-panel summary{cursor:pointer;font-weight:700;}
+    .faq-panel details p{margin-top:8px;}
     .footer-links{max-width:560px;margin:16px auto;padding:0 14px;text-align:center;font-size:14px;} .footer-links a{color:var(--accent);text-decoration:none;}
     .btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border);}
 ${SHARE_CSS}
@@ -103,6 +158,8 @@ ${SHARE_CSS}
       <button type="button" class="btn" id="btnPick">뽑기</button>
       <div class="result" id="result"><span id="out"></span>${extra}</div>
     </div>
+    ${insightHtml}
+    ${faqHtml}
   </div>
   <div style="text-align:center;margin:16px 0;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
