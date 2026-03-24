@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법 Node.js로 프로젝트를 진행하다 보면, 여러 가지 오류에 부딪히게 되잖아. 특히 초보자일수록 &quot;이게 왜 안 되지?&quot;라는 고민을 자주 하게 되는 것 같아. 그래서 내가 자주 발생하는 오류와 그 해결 ...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mmrygqxzz8ymto/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mmrygqxzz8ymto/">
+  <meta property="og:title" content="Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법">
+  <meta property="og:description" content=" Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법 Node.js로 프로젝트를 진행하다 보면, 여러 가지 오류에 부딪히게 되잖아. 특히 초보자일수록 &quot;이게 왜 안 되지?&quot;라는 고민을 자주 하게 되는 것 같아. 그래서 내가 자주 발생하는 오류와 그 해결 ...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mmrygqxzz8ymto/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mmrygqxzz8ymto/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mmrygqxzz8ymto/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mmrygqxzz8ymto/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법</h1>
+      <div class="meta">2026년 3월 16일</div>
+      <div class="article-body"><h2>Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법</h2>
+<p>Node.js로 프로젝트를 진행하다 보면, 여러 가지 오류에 부딪히게 되잖아. 특히 초보자일수록 &quot;이게 왜 안 되지?&quot;라는 고민을 자주 하게 되는 것 같아. 그래서 내가 자주 발생하는 오류와 그 해결 방법을 정리해 봤어. 이 글을 통해 여러분이 조금이나마 도움이 되길 바라!</p>
+<h2>1. 모듈을 찾을 수 없다는 오류 (Cannot find module)</h2>
+<h3>실수로 모듈을 잊고 설치했을 때</h3>
+<p>첫 번째로 자주 발생하는 오류는 &quot;Cannot find module &#39;xxx&#39;&quot;야. 이게 발생하면 정말 멘붕이 오더라. 내가 처음 Node.js를 시작했을 때, 필요한 모듈을 설치하는 걸 깜빡해서 이 오류에 자주 시달렸어. </p>
+<h4>해결 방법</h4>
+<p>이럴 땐 간단해. 필요한 모듈을 다시 설치해주면 돼. 예를 들어, <code>npm install &lt;모듈명&gt;</code>을 실행하면 되지. 또, 모듈이 설치된 위치가 맞는지도 확인해보는 게 좋더라. </p>
+<p>개인적으로는, 자주 사용하는 모듈은 프로젝트의 <code>package.json</code>에 추가해두면 나중에 설치할 때 편하더라. 이걸 통해 기본적인 의존성을 관리할 수 있어!</p>
+<p><img src="https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg" alt=""></p>
+<h2>2. 포트 충돌 오류 (EADDRINUSE)</h2>
+<h3>이미 사용 중인 포트를 요청할 때</h3>
+<p>두 번째로 많이 겪는 오류는 포트 충돌이야. &quot;EADDRINUSE&quot;라는 메시지를 보면, 이 포트가 이미 다른 프로세스에서 사용 중이라는 뜻이야. 처음에는 당황했었는데, 이 부분에서 주의할 점을 알게 됐어.</p>
+<h4>해결 방법</h4>
+<p>가장 쉬운 방법은 사용 중인 포트를 확인하고, 그 포트를 비활성화하는 거야. <code>lsof -i :&lt;포트번호&gt;</code> 명령어로 어떤 프로세스가 포트를 사용 중인지 확인할 수 있어. 이걸로 프로세스를 종료해주면 해결돼. </p>
+<p>내가 개인적으로는 포트 번호를 자주 바꾸는 편이야. 개발할 때는 3000번, 4000번 등 여러 포트를 사용해 보니 충돌이 줄어들더라. </p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>3. 비동기 코드에서의 오류 (Unhandled Promise Rejection)</h2>
+<h3>비동기 처리를 할 때</h3>
+<p>세 번째 오류는 비동기 처리를 하다가 발생하는 &quot;Unhandled Promise Rejection&quot;이야. 비동기 코드는 너무 편리하지만, 잘못 쓰면 이런 오류가 발생하더라. 처음에는 &quot;왜 갑자기 오류가 나지?&quot; 하면서 황당했어.</p>
+<h4>해결 방법</h4>
+<p>이 오류를 해결하려면, 항상 <code>try...catch</code> 문을 사용해서 예외 처리를 해주면 좋아. 예를 들어, <code>async</code> 함수 내에서 <code>await</code>를 사용할 때는 반드시 예외 처리를 해줘야 해. </p>
+<p>이 부분이 중요하다고 느낀 게, 오류가 발생했을 때 무시하면 나중에 더 큰 문제로 이어질 수 있더라고. 그래서 항상 예외 처리를 해주려고 노력하고 있어.</p>
+<h2>마무리</h2>
+<p>Node.js에서 자주 발생하는 오류는 정말 다양해. 하지만 이러한 오류를 해결하는 방법을 알고 있으면, 개발하는 데 큰 도움이 될 거야. 내가 정리한 내용을 참고해서, 다음엔 이런 오류에 부딪히더라도 당황하지 않길 바라!</p>
+<p>궁금한 점은 댓글로 남겨 주면 좋아. 그럼 다음 프로젝트도 순조롭게 진행되길 바랄게!</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn36lucntar6hk/">파이썬 환경 설정 시 자주 발생하는 오류와 해결책</a></li>
+    <li><a href="../mn2v0o4et10edu/">Docker로 배포할 때 주의해야 할 대표적인 오류와 팁</a></li>
+    <li><a href="../mn0wexfk2jfdx6/">Docker에서 포트 충돌 문제 해결하기</a></li>
+    <li><a href="../mn02t7nfeho2gy/">Docker를 사용한 개발 시 유용한 오류 디버깅 팁</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mmrygqxzz8ymto" data-page-url="https://funnyfunny.cloud/blog/news/mmrygqxzz8ymto/" data-page-title="Node.js 프로젝트에서 자주 발생하는 오류와 그 해결방법"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

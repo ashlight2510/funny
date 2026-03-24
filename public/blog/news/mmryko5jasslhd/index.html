@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼 최근에 개발을 시작하면서 GitHub과 VSCode를 활용해 보려고 했는데, 막상 해 보려니 어떻게 해야 할지 막막했어. 특히 초보자다 보니, 하나하나 따라 하는 게 쉽지 않더라고. 그래서 ...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">
+  <meta property="og:title" content="VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼">
+  <meta property="og:description" content=" VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼 최근에 개발을 시작하면서 GitHub과 VSCode를 활용해 보려고 했는데, 막상 해 보려니 어떻게 해야 할지 막막했어. 특히 초보자다 보니, 하나하나 따라 하는 게 쉽지 않더라고. 그래서 ...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mmryko5jasslhd/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mmryko5jasslhd/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼</h1>
+      <div class="meta">2026년 3월 16일</div>
+      <div class="article-body"><h2>VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼</h2>
+<p>최근에 개발을 시작하면서 GitHub과 VSCode를 활용해 보려고 했는데, 막상 해 보려니 어떻게 해야 할지 막막했어. 특히 초보자다 보니, 하나하나 따라 하는 게 쉽지 않더라고. 그래서 이걸 정리해 봤어. VSCode로 GitHub 리포지토리를 관리하는 방법을 간단하게 소개할게!</p>
+<h2>1. VSCode와 GitHub 연결하기</h2>
+<h3>VSCode 설치와 Git 설정하기</h3>
+<p>먼저, VSCode가 설치되어 있어야 해. 설치는 간단하니까, 공식 웹사이트에서 다운로드받고 설치하면 돼. 그리고 Git도 필요해. Git이 설치되어 있지 않다면 <a target="_blank" rel="noopener noreferrer" href="https://git-scm.com/">여기</a>에서 다운로드해서 설치하면 좋아. 설치 후에는 기본적인 설정을 해줘야 하는데, 명령 프롬프트나 터미널에 다음 명령어를 입력해 보렴.</p>
+<pre><code class="language-bash">git config --global user.name &quot;이름&quot;
+git config --global user.email &quot;이메일&quot;
+</code></pre>
+<p>이렇게 하면 Git이 내 정보를 인식하게 돼. 개인적으로는 이름과 이메일을 제대로 입력하는 게 중요하다고 느꼈어. 나중에 커밋 이력이 남기 때문에, 내가 어떤 작업을 했는지 쉽게 확인할 수 있거든.</p>
+<h3>VSCode에서 GitHub 계정 연결하기</h3>
+<p>이제 VSCode에서 GitHub 계정을 연결해 볼 거야. VSCode를 열고, 왼쪽 사이드바의 소스 제어 아이콘(보통 세 번째 아이콘)을 클릭해. 그럼 &quot;로그인&quot; 버튼이 보일 거야. 클릭해서 GitHub에 로그인하면 VSCode와 GitHub이 연결돼. 이 과정에서 간단하게 인증을 요구할 수 있으니, 로그인 정보를 잘 준비해 두면 좋아.</p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>2. 새로운 리포지토리 만들기</h2>
+<h3>리포지토리 생성하기</h3>
+<p>이제 새로운 리포지토리를 만들어 볼 거야. VSCode에서 &quot;파일&quot; -&gt; &quot;새 폴더&quot;를 선택해서 프로젝트 폴더를 만들어. 그런 다음, 폴더 안에서 오른쪽 클릭을 하고 &quot;내장 터미널 열기&quot;를 선택해. 터미널에서 다음 명령어를 입력해서 리포지토리를 초기화해 보면 돼.</p>
+<pre><code class="language-bash">git init
+</code></pre>
+<p>이렇게 하면 빈 리포지토리가 만들어져. 그 다음, 내 파일을 추가하고 커밋을 하면 되는데, 이때는 다음 명령어를 사용해.</p>
+<pre><code class="language-bash">git add .
+git commit -m &quot;첫 커밋&quot;
+</code></pre>
+<p>내가 해 보니, 커밋 메시지를 잘 작성하는 게 정말 중요하더라. 나중에 작업 이력을 확인할 때 도움이 많이 돼!</p>
+<p><img src="https://images.pexels.com/photos/34803997/pexels-photo-34803997.jpeg" alt=""></p>
+<h2>3. 리포지토리 원격으로 연결하기</h2>
+<h3>GitHub에 리포지토리 업로드하기</h3>
+<p>리포지토리를 GitHub에 올리려면 먼저 GitHub에서 새로운 리포지토리를 생성해야 해. GitHub에 로그인하고 &quot;New&quot; 버튼을 눌러서 리포지토리 이름을 적고 &quot;Create repository&quot;를 클릭해. 그런 다음, 생성한 리포지토리의 URL을 복사해.</p>
+<p>VSCode 터미널로 돌아와서 아래 명령어를 입력해.</p>
+<pre><code class="language-bash">git remote add origin &lt;리포지토리 URL&gt;
+git push -u origin master
+</code></pre>
+<p>이렇게 하면 로컬 리포지토리와 원격 리포지토리가 연결돼. 처음에는 많이 헷갈렸는데, 여러 번 해 보니 금방 익숙해지더라고.</p>
+<h2>4. 변경 사항 관리하기</h2>
+<h3>파일 수정 및 커밋하기</h3>
+<p>이제 파일을 수정해볼 차례야. 코드나 문서를 수정한 후에는 다시 터미널에서 <code>git add .</code>과 <code>git commit -m &quot;수정 내용&quot;</code>을 입력하면 돼. 그 후 <code>git push</code>를 입력하면 변경 사항이 GitHub에 반영되지. </p>
+<p>이 부분이 정말 편리한 것 같아. VSCode에서 모든 걸 할 수 있으니까, 작업 흐름이 한층 더 매끄러워지더라고. 처음에는 실수도 많았지만, 반복하다 보니 이제는 자연스럽게 할 수 있게 됐어.</p>
+<h2>마무리</h2>
+<p>이렇게 VSCode와 GitHub을 이용해 리포지토리를 관리하는 방법을 살펴봤어. 초보자도 충분히 따라 할 수 있을 거라고 생각해. 궁금한 점은 댓글로 남겨 줘! 그리고 이거부터 해 보면 좋겠어. 직접 리포지토리를 만들어보고, 커밋해 보면서 실습해 보는 거야. 그러면 훨씬 더 이해가 잘 될 거야!</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn08dcnho6ypjk/">VSCode에서 디버깅 기능을 활용한 코드 오류 수정법</a></li>
+    <li><a href="../mmzinq1vafuahl/">VSCode에서 테마와 폰트를 설정해 개인화하는 방법</a></li>
+    <li><a href="../mmz03poj1jlefe/">VSCode의 디버깅 기능을 활용한 문제 해결 절차</a></li>
+    <li><a href="../mmykqw7mfqw9j0/">GitHub 리포지토리 효율적으로 관리하는 체크리스트</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mmryko5jasslhd" data-page-url="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/" data-page-title="VSCode로 GitHub 리포지토리 관리하기: 초보자를 위한 튜토리얼"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

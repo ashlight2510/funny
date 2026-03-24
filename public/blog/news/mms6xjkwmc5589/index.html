@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화 개발할 때 노트 정리가 너무 중요하다는 거, 다들 공감하지? 코드 작성할 때마다 아이디어가 떠오르기도 하고, 그걸 적어 두지 않으면 잊어버리기 십상이더라. 그래서 나는 Notion과 VSCode를 연...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mms6xjkwmc5589/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mms6xjkwmc5589/">
+  <meta property="og:title" content="Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화">
+  <meta property="og:description" content=" Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화 개발할 때 노트 정리가 너무 중요하다는 거, 다들 공감하지? 코드 작성할 때마다 아이디어가 떠오르기도 하고, 그걸 적어 두지 않으면 잊어버리기 십상이더라. 그래서 나는 Notion과 VSCode를 연...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mms6xjkwmc5589/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mms6xjkwmc5589/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mms6xjkwmc5589/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mms6xjkwmc5589/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화</h1>
+      <div class="meta">2026년 3월 16일</div>
+      <div class="article-body"><h1>Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화</h1>
+<p>개발할 때 노트 정리가 너무 중요하다는 거, 다들 공감하지? 코드 작성할 때마다 아이디어가 떠오르기도 하고, 그걸 적어 두지 않으면 잊어버리기 십상이더라. 그래서 나는 Notion과 VSCode를 연동해 보려고 했어. 이렇게 해서 노트와 코드를 한 곳에서 관리할 수 있으면 좋겠다는 생각이 들었거든. 그래서 이걸 정리해 봤어.</p>
+<h2>1. Notion API 키 발급받기</h2>
+<h3>Notion API 사용 설정하기</h3>
+<p>먼저, Notion과 VSCode를 연결하기 위해서는 Notion API 키가 필요해. Notion 공식 웹사이트에 가서 API를 활성화해 주면 돼. 내가 처음에 이걸 모르고 삽질한 적이 있는데, 문서에 따라 API 키를 발급받는 게 생각보다 간단하더라. </p>
+<ol>
+<li>Notion의 <a target="_blank" rel="noopener noreferrer" href="https://www.notion.so/my-integrations">개발자 포털</a>에 들어가.</li>
+<li>새 통합을 만들어서 필요한 권한을 설정해.</li>
+<li>API 키를 복사해 두면 돼.</li>
+</ol>
+<p>이렇게 해 보니, 나도 모르게 두근거렸어. 뭔가 새로운 기능을 배우는 기분이랄까?</p>
+<h3>권한 설정</h3>
+<p>API 키를 발급받고 나면, 이 키를 사용할 페이지에 접근할 수 있도록 권한을 설정해 줘야 해. 내가 해 보니 이 부분이 중요했어. 권한을 제대로 설정하지 않으면 VSCode에서 데이터를 불러올 수가 없거든. </p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>2. VSCode에서 Notion 연동하기</h2>
+<h3>VSCode 확장 설치하기</h3>
+<p>다음 단계는 VSCode에서 Notion과 연결할 수 있는 확장을 설치하는 거야. &quot;Notion&quot;을 검색해서 관련된 확장을 찾아보면 돼. 내가 사용한 확장은 &quot;Notion for VS Code&quot;라는 것이었어. 설치가 간편하더라.</p>
+<h3>설정 파일 수정하기</h3>
+<p>확장을 설치한 후에는 설정 파일을 수정해 줘야 해. <code>settings.json</code> 파일을 열고, 아까 복사한 API 키를 여기에 붙여넣으면 돼. 이 과정을 거치고 나니, 시나리오가 점점 현실로 다가오는 느낌이었어.</p>
+<pre><code class="language-json">{
+    &quot;notion.apiKey&quot;: &quot;YOUR_API_KEY&quot;,
+    &quot;notion.databaseId&quot;: &quot;YOUR_DATABASE_ID&quot;
+}
+</code></pre>
+<p>여기서 <code>YOUR_API_KEY</code>와 <code>YOUR_DATABASE_ID</code>는 각각의 정보를 입력해 주면 돼. 이렇게 해 보니, 내가 원하는 내용을 VSCode에서 손쉽게 불러올 수 있었다는 사실이 너무 좋았어.</p>
+<p><img src="https://images.pexels.com/photos/34803997/pexels-photo-34803997.jpeg" alt=""></p>
+<h2>3. 코드 작성과 노트 정리의 조화</h2>
+<h3>코드와 노트의 통합 관리</h3>
+<p>이제 노트와 코드를 연동했으니, 실제로 어떻게 활용할 수 있을까? 내가 해 보니, 코드를 작성하면서 필요한 내용을 바로 Notion에 기록할 수 있어서 정말 편리했어. 예를 들어, 함수에 대한 설명이나 사용 예제를 직접 노트에 남길 수 있더라.</p>
+<h3>프로젝트 관리의 효율성</h3>
+<p>특히 프로젝트를 관리할 때 이 조합이 빛을 발하더라. 코드 작성 도중에 필요한 자료나 링크를 Notion에 정리해 두고, VSCode에서 쉽게 불러와서 참고할 수 있었거든. 이렇게 해 보니, 프로젝트 진행이 훨씬 더 매끄러워졌어.</p>
+<h2>마무리</h2>
+<p>Notion과 VSCode의 연동은 정말 유용한 도구가 될 수 있어. 노트와 코드를 함께 관리할 수 있으니 생산성이 확실히 높아졌다는 걸 느꼈어. 궁금한 점은 댓글로 남겨 주세요. 이거부터 해 보면 좋겠어!</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn08dcnho6ypjk/">VSCode에서 디버깅 기능을 활용한 코드 오류 수정법</a></li>
+    <li><a href="../mmzinq1vafuahl/">VSCode에서 테마와 폰트를 설정해 개인화하는 방법</a></li>
+    <li><a href="../mmz03poj1jlefe/">VSCode의 디버깅 기능을 활용한 문제 해결 절차</a></li>
+    <li><a href="../mmykqw7mfqw9j0/">GitHub 리포지토리 효율적으로 관리하는 체크리스트</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mms6xjkwmc5589" data-page-url="https://funnyfunny.cloud/blog/news/mms6xjkwmc5589/" data-page-title="Notion과 VSCode 연동하기: 노트와 코드의 완벽한 조화"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

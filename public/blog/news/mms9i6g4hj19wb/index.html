@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법 웹 개발을 하다 보면, 특히 Node.js를 Docker에서 사용할 때 오류가 자주 발생하곤 해. 이럴 땐 진짜 머리가 아프지. &quot;도대체 왜 이러지?&quot; 하면서 시간을 허비하는 경우가 많잖아. 그...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mms9i6g4hj19wb/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mms9i6g4hj19wb/">
+  <meta property="og:title" content="Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법">
+  <meta property="og:description" content=" Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법 웹 개발을 하다 보면, 특히 Node.js를 Docker에서 사용할 때 오류가 자주 발생하곤 해. 이럴 땐 진짜 머리가 아프지. &quot;도대체 왜 이러지?&quot; 하면서 시간을 허비하는 경우가 많잖아. 그...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mms9i6g4hj19wb/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mms9i6g4hj19wb/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mms9i6g4hj19wb/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mms9i6g4hj19wb/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법</h1>
+      <div class="meta">2026년 3월 16일</div>
+      <div class="article-body"><h2>Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법</h2>
+<p>웹 개발을 하다 보면, 특히 Node.js를 Docker에서 사용할 때 오류가 자주 발생하곤 해. 이럴 땐 진짜 머리가 아프지. &quot;도대체 왜 이러지?&quot; 하면서 시간을 허비하는 경우가 많잖아. 그래서 이번에는 내가 경험한 Docker에서의 Node.js 오류와 그 해결 방법을 정리해 봤어. 나처럼 고민하고 있는 개발자들에게 도움이 되길 바라!</p>
+<h2>1. 포트 충돌 문제</h2>
+<h3>포트가 이미 사용 중일 때</h3>
+<p>가장 흔한 오류 중 하나는 포트 충돌이야. Docker를 사용할 때 여러 컨테이너가 같은 포트를 사용하려고 하면 당연히 문제가 발생하지. 이럴 때는 어떻게 해야 할까? </p>
+<p>내가 해 봤는데, <code>docker ps</code> 명령어로 현재 실행 중인 컨테이너와 포트를 확인하는 게 좋았어. 그 후에, <code>docker-compose.yml</code> 파일에서 포트를 바꿔 주면 해결되더라. 이 과정이 조금 번거롭긴 하지만, 잘 정리해 두면 다음에 빠르게 대응할 수 있어!</p>
+<p><img src="https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg" alt=""></p>
+<h2>2. 권한 문제 해결하기</h2>
+<h3>파일 권한이 없을 때</h3>
+<p>Node.js 애플리케이션을 Docker로 실행할 때, 가끔 &quot;permission denied&quot;라는 오류를 만날 수 있어. 이럴 땐 파일 권한 문제를 의심해 봐야 해. 특히, 로컬에서 작업한 파일을 Docker 컨테이너로 옮길 때 이 문제가 자주 생기더라.</p>
+<p>내가 이 문제를 해결했던 방법은 파일 권한을 변경하는 거였어. <code>chmod</code> 명령어로 권한을 바꿔주면 되는데, 특정 파일에 대해 <code>chmod 777</code>을 주는 건 피해야 해. 보안상 좋지 않으니까! 대신, 필요한 최소한의 권한을 부여하는 게 안전해.</p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>3. Node.js 버전 불일치</h2>
+<h3>버전이 맞지 않을 때</h3>
+<p>Node.js 버전 때문에 발생하는 오류도 많아. 예를 들어, 내가 개발한 코드가 특정 Node.js 버전에서만 잘 돌아가는데, Docker에서 다른 버전을 사용하고 있으면 문제가 생기더라. </p>
+<p>이럴 땐 <code>Dockerfile</code>에서 Node.js의 버전을 명시해 주는 게 중요해. 개인적으로는 <code>node:14</code> 같은 특정 태그를 사용하는 게 좋았어. 이렇게 하면, 버전 불일치로 인한 문제를 미리 예방할 수 있어!</p>
+<h2>4. 환경 변수 설정</h2>
+<h3>환경 변수가 누락되었을 때</h3>
+<p>환경 변수를 잘못 설정하면, 애플리케이션이 제대로 작동하지 않을 수 있어. 특히 API 키나 데이터베이스 연결 정보 같은 중요한 정보가 포함되어 있거든. </p>
+<p>내가 해 봤던 방법은 <code>.env</code> 파일을 활용하는 거였어. <code>docker-compose.yml</code>에서 환경 변수를 불러와 주면, 코드에서 쉽게 사용할 수 있어. 이 부분이 정말 중요했어. 환경 변수를 잘 관리하면, 코드의 유연성을 높일 수 있거든.</p>
+<h2>5. 캐시 문제 해결하기</h2>
+<h3>캐시가 남아 있을 때</h3>
+<p>마지막으로, Docker 캐시 때문에 발생하는 오류도 있어. 이미지나 컨테이너를 업데이트했는데도 여전히 예전 버전이 실행되는 경우가 있더라. 이럴 땐 <code>docker-compose build --no-cache</code> 명령어를 사용해 보길 추천해. </p>
+<p>내가 이 명령어를 사용해 봤는데, 정말 효과적이었어. 캐시를 깨끗하게 지우고 새로 빌드하니까, 오류가 사라지더라. 한번 해 보면 좋을 것 같아!</p>
+<h2>마무리</h2>
+<p>이렇게 Docker에서 발생하는 Node.js 오류를 해결하는 5가지 방법을 알아봤어. 포트 충돌, 권한 문제, 버전 불일치, 환경 변수 설정, 그리고 캐시 문제까지. 각각의 문제를 해결하는 방법을 잘 기억해 두면, 다음에 비슷한 오류가 생겼을 때 훨씬 수월하게 대처할 수 있을 거야. 궁금한 점은 댓글로 남겨 주세요!</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn36lucntar6hk/">파이썬 환경 설정 시 자주 발생하는 오류와 해결책</a></li>
+    <li><a href="../mn2v0o4et10edu/">Docker로 배포할 때 주의해야 할 대표적인 오류와 팁</a></li>
+    <li><a href="../mn0wexfk2jfdx6/">Docker에서 포트 충돌 문제 해결하기</a></li>
+    <li><a href="../mn02t7nfeho2gy/">Docker를 사용한 개발 시 유용한 오류 디버깅 팁</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mms9i6g4hj19wb" data-page-url="https://funnyfunny.cloud/blog/news/mms9i6g4hj19wb/" data-page-title="Docker에서 발생하는 Node.js 오류: 해결하는 5가지 방법"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

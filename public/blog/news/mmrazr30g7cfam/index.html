@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docker에서 발생하는 일반적인 에러와 해결책 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" Docker에서 발생하는 일반적인 에러와 해결책 Docker를 사용하다 보면 가끔씩 뜻밖의 에러를 만나게 되잖아. “왜 이러지?” 하고 고개를 갸우뚱하게 되는 순간, 나만 겪는 게 아니란 걸 느껴. 그래서 오늘은 Docker에서 자주 발생하는 에러와 그 해결책을...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mmrazr30g7cfam/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mmrazr30g7cfam/">
+  <meta property="og:title" content="Docker에서 발생하는 일반적인 에러와 해결책">
+  <meta property="og:description" content=" Docker에서 발생하는 일반적인 에러와 해결책 Docker를 사용하다 보면 가끔씩 뜻밖의 에러를 만나게 되잖아. “왜 이러지?” 하고 고개를 갸우뚱하게 되는 순간, 나만 겪는 게 아니란 걸 느껴. 그래서 오늘은 Docker에서 자주 발생하는 에러와 그 해결책을...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mmrazr30g7cfam/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mmrazr30g7cfam/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mmrazr30g7cfam/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mmrazr30g7cfam/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Docker에서 발생하는 일반적인 에러와 해결책</h1>
+      <div class="meta">2026년 3월 15일</div>
+      <div class="article-body"><h2>Docker에서 발생하는 일반적인 에러와 해결책</h2>
+<p>Docker를 사용하다 보면 가끔씩 뜻밖의 에러를 만나게 되잖아. “왜 이러지?” 하고 고개를 갸우뚱하게 되는 순간, 나만 겪는 게 아니란 걸 느껴. 그래서 오늘은 Docker에서 자주 발생하는 에러와 그 해결책을 정리해 봤어. 나도 겪어본 일들이라, 이 글이 많은 도움이 될 거라고 생각해!</p>
+<h2>1. &quot;Cannot connect to the Docker daemon&quot;</h2>
+<h3>에러 원인</h3>
+<p>이 에러는 Docker 데몬이 실행되고 있지 않거나, 사용자 권한 문제로 발생해. 처음 Docker를 설치하고 나서, 서비스를 시작하는 걸 깜빡했을 수도 있어.</p>
+<h3>해결 방법</h3>
+<ol>
+<li>Docker 서비스가 실행 중인지 확인해.<pre><code class="language-bash">sudo systemctl start docker
+</code></pre>
+</li>
+<li>사용자 권한을 확인해. Docker 그룹에 사용자를 추가해야 할 수도 있어.<pre><code class="language-bash">sudo usermod -aG docker $USER
+</code></pre>
+이걸 해보니, 나도 이 권한 문제 때문에 한참을 헤맸던 기억이 나. 그룹에 추가한 후엔 로그아웃했다가 다시 로그인해야 하니, 잊지 말고 해 봐.</li>
+</ol>
+<p><img src="https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg" alt=""></p>
+<h2>2. &quot;Image not found&quot;</h2>
+<h3>에러 원인</h3>
+<p>가끔 Docker 이미지를 찾을 수 없다는 에러가 뜰 때가 있어. 이건 보통 이미지 이름을 잘못 입력했거나, 해당 이미지가 로컬에 없을 때 발생해.</p>
+<h3>해결 방법</h3>
+<ol>
+<li>이미지 이름을 정확히 입력했는지 확인해.</li>
+<li>이미지가 없다면, 아래 명령어로 다운로드해.<pre><code class="language-bash">docker pull &lt;image-name&gt;
+</code></pre>
+내가 처음 Docker를 사용할 때, 이미지 이름을 한 글자 틀려서 이 에러를 많이 겪었어. 정확한 이름이 얼마나 중요한지 깨달았지!</li>
+</ol>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>3. &quot;Port is already in use&quot;</h2>
+<h3>에러 원인</h3>
+<p>이 에러는 Docker 컨테이너가 사용할 포트가 이미 다른 프로세스에 의해 사용 중일 때 발생해. 예를 들어, localhost:8080을 사용하려고 하는데, 다른 애플리케이션이 이 포트를 점유하고 있다면 나타나.</p>
+<h3>해결 방법</h3>
+<ol>
+<li>현재 어떤 프로세스가 포트를 사용하고 있는지 확인해.<pre><code class="language-bash">sudo lsof -i :8080
+</code></pre>
+</li>
+<li>필요 없는 프로세스를 종료하거나, Docker 컨테이너의 포트를 변경해.<pre><code class="language-bash">docker run -p 8081:80 &lt;image-name&gt;
+</code></pre>
+나도 이 에러에 당황했던 적이 있었어. 다른 애플리케이션과의 충돌이 이렇게 간단히 해결될 수 있다는 걸 알게 됐지.</li>
+</ol>
+<h2>4. &quot;Permission denied&quot;</h2>
+<h3>에러 원인</h3>
+<p>컨테이너 내에서 파일이나 디렉토리에 접근할 때, 권한 문제로 인해 발생하는 에러야. 주로 호스트 파일 시스템에 마운트한 경우에 발생해.</p>
+<h3>해결 방법</h3>
+<ol>
+<li>파일 권한을 조정해.</li>
+<li>Dockerfile에서 USER 명령어를 사용해 사용자 권한을 조정하는 것도 좋은 방법이야.<pre><code class="language-Dockerfile">USER &lt;username&gt;
+</code></pre>
+개인적으로, 이 부분은 좀 까다로웠어. 권한 문제로 한참을 헤맸거든. 그래서 항상 권한을 확인하는 습관을 들이려 노력하고 있어.</li>
+</ol>
+<h2>마무리</h2>
+<p>이렇게 Docker에서 자주 발생하는 에러와 그 해결책을 정리해 봤어. 처음엔 막막했지만, 이 경험들을 통해 점점 익숙해진 것 같아. 궁금한 점은 댓글로 남겨 주면 좋겠어! 그리고 이 에러들이 발생했을 때, 차근차근 해결해 보면 좋을 거야.</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn36lucntar6hk/">파이썬 환경 설정 시 자주 발생하는 오류와 해결책</a></li>
+    <li><a href="../mn2v0o4et10edu/">Docker로 배포할 때 주의해야 할 대표적인 오류와 팁</a></li>
+    <li><a href="../mn0wexfk2jfdx6/">Docker에서 포트 충돌 문제 해결하기</a></li>
+    <li><a href="../mn02t7nfeho2gy/">Docker를 사용한 개발 시 유용한 오류 디버깅 팁</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mmrazr30g7cfam" data-page-url="https://funnyfunny.cloud/blog/news/mmrazr30g7cfam/" data-page-title="Docker에서 발생하는 일반적인 에러와 해결책"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

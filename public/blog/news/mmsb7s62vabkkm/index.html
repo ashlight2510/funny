@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js에서 발생하는 주요 오류와 해결 방법 정리 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" Node.js에서 발생하는 주요 오류와 해결 방법 정리 Node.js를 사용하다 보면 다양한 오류를 마주하게 되지? 특히, 처음 시작할 때는 뭘 잘못했는지 모르겠는 경우가 많아. 이런 오류들은 정말 머리를 아프게 하더라. 그래서 내가 경험한 주요 오류와 그 해결...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mmsb7s62vabkkm/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mmsb7s62vabkkm/">
+  <meta property="og:title" content="Node.js에서 발생하는 주요 오류와 해결 방법 정리">
+  <meta property="og:description" content=" Node.js에서 발생하는 주요 오류와 해결 방법 정리 Node.js를 사용하다 보면 다양한 오류를 마주하게 되지? 특히, 처음 시작할 때는 뭘 잘못했는지 모르겠는 경우가 많아. 이런 오류들은 정말 머리를 아프게 하더라. 그래서 내가 경험한 주요 오류와 그 해결...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mmsb7s62vabkkm/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mmsb7s62vabkkm/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mmsb7s62vabkkm/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mmsb7s62vabkkm/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Node.js에서 발생하는 주요 오류와 해결 방법 정리</h1>
+      <div class="meta">2026년 3월 16일</div>
+      <div class="article-body"><h2>Node.js에서 발생하는 주요 오류와 해결 방법 정리</h2>
+<p>Node.js를 사용하다 보면 다양한 오류를 마주하게 되지? 특히, 처음 시작할 때는 뭘 잘못했는지 모르겠는 경우가 많아. 이런 오류들은 정말 머리를 아프게 하더라. 그래서 내가 경험한 주요 오류와 그 해결 방법을 정리해 봤어. 이 글이 너에게 도움이 되길 바라!</p>
+<h2>1. 모듈을 찾을 수 없다는 오류 (Cannot find module)</h2>
+<h3>문제 설명</h3>
+<p>아마 이 오류를 한 번쯤은 경험해 봤을 거야. <code>Cannot find module &#39;x&#39;</code>라는 메시지를 보면서 &quot;왜 이렇게 안 되는 거지?&quot; 하고 고민했을 텐데, 이 오류는 주로 설치한 모듈이 없거나 경로가 잘못되었을 때 발생해.</p>
+<h3>해결 방법</h3>
+<p>이런 경우에는 먼저 모듈이 제대로 설치되었는지 확인해 보자. <code>npm install</code> 명령어로 재설치를 해 보면 돼. 예를 들어, <code>npm install express</code>처럼 말이지. 그리고 import할 때 경로를 잘 확인하는 게 중요해. 경로가 틀리면 당연히 모듈을 찾을 수 없으니까. 내가 이걸 체크해 보니, 경로의 대소문자도 신경 써야 하더라!</p>
+<p><img src="https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg" alt=""></p>
+<h2>2. 포트 충돌 오류 (Port already in use)</h2>
+<h3>문제 설명</h3>
+<p>서버를 실행하려고 하면 &quot;Port already in use&quot;라는 오류가 뜨는 경우가 있어. 이럴 땐 &quot;아, 이 포트를 이미 다른 프로그램이 쓰고 있구나&quot; 하고 이해할 수 있어.</p>
+<h3>해결 방법</h3>
+<p>이 오류를 해결하려면 먼저 어떤 프로세스가 포트를 사용 중인지 확인해야 해. <code>lsof -i :포트번호</code> 명령어를 사용하면 해당 포트를 사용 중인 프로세스를 볼 수 있어. 그런 다음, 프로세스를 종료하거나 다른 포트를 사용하면 문제가 해결되더라. 나는 이걸 처음에 몰라서 한참 고생했었어. 포트를 바꾸니까 모든 게 잘 되더라.</p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>3. 비동기 처리 오류 (Unhandled Promise Rejection)</h2>
+<h3>문제 설명</h3>
+<p>비동기 작업을 할 때, Promise가 실패하면 &quot;Unhandled Promise Rejection&quot;이라는 오류가 발생할 수 있어. 이 오류는 코드가 예외를 처리하지 못할 때 나오는 거지.</p>
+<h3>해결 방법</h3>
+<p>이런 경우에는 항상 <code>.catch()</code>를 사용해서 에러를 처리해 주는 게 좋아. 이렇게 해 보면 코드가 더 안정적이게 돼. 예를 들어, 아래와 같이 작성할 수 있어:</p>
+<pre><code class="language-javascript">asyncFunction()
+  .then(result =&gt; {
+    console.log(result);
+  })
+  .catch(error =&gt; {
+    console.error(&#39;Error:&#39;, error);
+  });
+</code></pre>
+<p>내가 이 방법을 적용해 보니, 에러가 발생해도 프로그램이 중단되지 않아서 훨씬 좋았어.</p>
+<h2>4. 메모리 부족 오류 (JavaScript heap out of memory)</h2>
+<h3>문제 설명</h3>
+<p>대용량 데이터를 처리할 때 &quot;JavaScript heap out of memory&quot;라는 오류가 발생할 수 있어. 이 오류는 Node.js의 메모리 제한을 초과했을 때 생기지.</p>
+<h3>해결 방법</h3>
+<p>이럴 땐 Node.js의 메모리 크기를 늘려주면 돼. 서버를 실행할 때 아래와 같이 메모리 한계를 설정해 줄 수 있어:</p>
+<pre><code class="language-bash">node --max-old-space-size=4096 app.js
+</code></pre>
+<p>이렇게 해 보니, 메모리 부족 문제를 해결할 수 있었어. 개인적으로는 이 방법이 정말 유용하더라.</p>
+<h2>마무리</h2>
+<p>Node.js에서 발생하는 주요 오류와 그 해결 방법을 정리해 봤어. 오류를 해결하는 데 도움이 되었으면 좋겠어. 언제나 코드에서 오류가 발생할 수 있으니, 너무 걱정하지 말고 차근차근 해결해 나가면 돼. 궁금한 점은 댓글로 남겨 줘!</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn36lucntar6hk/">파이썬 환경 설정 시 자주 발생하는 오류와 해결책</a></li>
+    <li><a href="../mn2v0o4et10edu/">Docker로 배포할 때 주의해야 할 대표적인 오류와 팁</a></li>
+    <li><a href="../mn0wexfk2jfdx6/">Docker에서 포트 충돌 문제 해결하기</a></li>
+    <li><a href="../mn02t7nfeho2gy/">Docker를 사용한 개발 시 유용한 오류 디버깅 팁</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mmsb7s62vabkkm" data-page-url="https://funnyfunny.cloud/blog/news/mmsb7s62vabkkm/" data-page-title="Node.js에서 발생하는 주요 오류와 해결 방법 정리"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

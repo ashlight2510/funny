@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js 개발자를 위한 주요 에러 및 해결책 모음 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" Node.js 개발자를 위한 주요 에러 및 해결책 모음 개발하다 보면 에러는 피할 수 없는 친구 같은 존재야. 특히 Node.js로 작업할 때는 다양한 에러 메시지와 마주치게 되는데, 이때마다 어떻게 해결해야 할지 막막할 때가 많았어. 그래서 내가 자주 겪었던 ...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mms18zjviwdb49/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mms18zjviwdb49/">
+  <meta property="og:title" content="Node.js 개발자를 위한 주요 에러 및 해결책 모음">
+  <meta property="og:description" content=" Node.js 개발자를 위한 주요 에러 및 해결책 모음 개발하다 보면 에러는 피할 수 없는 친구 같은 존재야. 특히 Node.js로 작업할 때는 다양한 에러 메시지와 마주치게 되는데, 이때마다 어떻게 해결해야 할지 막막할 때가 많았어. 그래서 내가 자주 겪었던 ...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mms18zjviwdb49/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mms18zjviwdb49/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mms18zjviwdb49/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mms18zjviwdb49/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Node.js 개발자를 위한 주요 에러 및 해결책 모음</h1>
+      <div class="meta">2026년 3월 16일</div>
+      <div class="article-body"><h2>Node.js 개발자를 위한 주요 에러 및 해결책 모음</h2>
+<p>개발하다 보면 에러는 피할 수 없는 친구 같은 존재야. 특히 Node.js로 작업할 때는 다양한 에러 메시지와 마주치게 되는데, 이때마다 어떻게 해결해야 할지 막막할 때가 많았어. 그래서 내가 자주 겪었던 주요 에러들과 그 해결책을 정리해 봤어. 혹시 너도 비슷한 고민이 있다면 이 글을 통해 도움이 되었으면 좋겠어!</p>
+<h2>1. &quot;Cannot find module&quot; 에러</h2>
+<h3>에러 설명</h3>
+<p>이 에러는 특정 모듈을 찾지 못할 때 발생해. 보통, <code>require</code> 또는 <code>import</code> 문에서 잘못된 경로를 지정했거나, 해당 모듈이 설치되어 있지 않을 때 나타나.</p>
+<h3>해결 방법</h3>
+<ul>
+<li><strong>모듈 설치 확인</strong>: 먼저, 해당 모듈이 설치되어 있는지 확인해 보자. <code>npm install &lt;모듈명&gt;</code>으로 설치해 주면 돼.</li>
+<li><strong>경로 확인</strong>: 모듈 경로가 정확한지 다시 한 번 체크해 보자. 상대 경로를 사용할 때는 특히 주의해야 해. 내가 경로를 잘못 입력해 놓고 며칠을 고생했던 적이 있어.</li>
+</ul>
+<p>이렇게 해 보니, 대부분의 경우 문제를 쉽게 해결할 수 있었어.</p>
+<p><img src="https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg" alt=""></p>
+<h2>2. &quot;UnhandledPromiseRejectionWarning&quot; 에러</h2>
+<h3>에러 설명</h3>
+<p>비동기 처리에서 프로미스가 reject 되는데, 이를 처리하지 않으면 이 에러가 발생해. Node.js에서는 이러한 경고를 통해 개발자에게 알림을 주는 거지.</p>
+<h3>해결 방법</h3>
+<ul>
+<li><strong>catch 사용하기</strong>: 프로미스를 사용할 때는 항상 <code>.catch()</code>로 에러를 처리해 줘야 해. 예를 들어,</li>
+</ul>
+<pre><code class="language-javascript">someAsyncFunction()
+  .then(result =&gt; {
+    // 결과 처리
+  })
+  .catch(err =&gt; {
+    console.error(&quot;에러 발생:&quot;, err);
+  });
+</code></pre>
+<p>이렇게 해 보니, 에러를 제대로 처리할 수 있어서 더 안정적인 코드를 만들 수 있었어.</p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>3. &quot;ECONNREFUSED&quot; 에러</h2>
+<h3>에러 설명</h3>
+<p>이 에러는 서버에 연결할 수 없을 때 발생해. 보통, 서버가 실행되고 있지 않거나 잘못된 포트를 사용하고 있을 때 나타나.</p>
+<h3>해결 방법</h3>
+<ul>
+<li><strong>서버 상태 확인</strong>: 서버가 정상적으로 실행되고 있는지 확인해 보자. <code>localhost:포트번호</code>로 접속해 보면 돼.</li>
+<li><strong>포트 확인</strong>: 프론트엔드에서 요청할 포트가 맞는지도 체크해 보자. 내가 예전에 포트를 잘못 지정해서 이런 에러를 겪었던 적이 있었어.</li>
+</ul>
+<p>이렇게 점검하다 보니, 연결 문제를 쉽게 해결할 수 있었어.</p>
+<h2>마무리</h2>
+<p>오늘은 Node.js에서 자주 발생하는 주요 에러와 그 해결책을 정리해 봤어. 에러는 개발 과정에서 피할 수 없는 부분이지만, 그 해결 방법을 알면 훨씬 수월하게 작업할 수 있을 거야. 궁금한 점이나 다른 에러에 대한 질문이 있다면 댓글로 남겨 줘! 이거부터 해 보면 좋겠어.</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn36lucntar6hk/">파이썬 환경 설정 시 자주 발생하는 오류와 해결책</a></li>
+    <li><a href="../mn2v0o4et10edu/">Docker로 배포할 때 주의해야 할 대표적인 오류와 팁</a></li>
+    <li><a href="../mn0wexfk2jfdx6/">Docker에서 포트 충돌 문제 해결하기</a></li>
+    <li><a href="../mn02t7nfeho2gy/">Docker를 사용한 개발 시 유용한 오류 디버깅 팁</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mms18zjviwdb49" data-page-url="https://funnyfunny.cloud/blog/news/mms18zjviwdb49/" data-page-title="Node.js 개발자를 위한 주요 에러 및 해결책 모음"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

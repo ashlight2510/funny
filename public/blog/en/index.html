@@ -128,7 +128,7 @@
     var cat = esc(item.categoryName || TXT.other);
     var thumbSrc = item.sourceImage || firstImageSrcFromBodyHtml(item.bodyHtml);
     var thumb = thumbImgHtml(thumbSrc);
-    return '<li data-category="' + cat + '"><a href="news/?id=' + encodeURIComponent(item.id) + '">' + thumb + '<div class="list-body"><div class="title">' + esc(item.title) + '</div><div class="meta">' + esc(date) + pub + '</div><div class="excerpt">' + esc(excerpt) + '</div></div></a></li>';
+    return '<li data-category="' + cat + '"><a href="news/' + encodeURIComponent(item.id) + '/">' + thumb + '<div class="list-body"><div class="title">' + esc(item.title) + '</div><div class="meta">' + esc(date) + pub + '</div><div class="excerpt">' + esc(excerpt) + '</div></div></a></li>';
   }
 
   async function loadChunk(index) {
@@ -264,7 +264,7 @@
         hits.slice(0, 50).forEach(function(item) {
           var li = document.createElement('li');
           var a = document.createElement('a');
-          a.href = 'news/?id=' + encodeURIComponent(item.id);
+          a.href = 'news/' + encodeURIComponent(item.id) + '/';
           a.textContent = item.title;
           li.appendChild(a);
           list.appendChild(li);

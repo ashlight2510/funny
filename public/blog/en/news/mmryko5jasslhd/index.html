@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Managing GitHub Repositories with VSCode: A Beginner's Tutorial | News Reader Man</title>
+  <meta name="description" content="Managing GitHub repositories with VSCode: A beginner's tutorial for those starting development and feeling overwhelmed by the process.">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/en/news/mmryko5jasslhd/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/en/news/mmryko5jasslhd/">
+  <meta property="og:title" content="Managing GitHub Repositories with VSCode: A Beginner's Tutorial">
+  <meta property="og:description" content="Managing GitHub repositories with VSCode: A beginner's tutorial for those starting development and feeling overwhelmed by the process.">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mmryko5jasslhd/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">News Reader Man</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/news/mmryko5jasslhd/">KO</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← Back to list</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">Ad</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">Managing GitHub Repositories with VSCode: A Beginner's Tutorial</h1>
+      <div class="meta">March 16, 2026</div>
+      <div class="article-body"><h2>Managing GitHub Repositories with VSCode: A Beginner&#39;s Tutorial</h2>
+<p>Recently, I started developing and wanted to try using GitHub and VSCode, but I found myself at a loss about how to get started. Being a beginner, it wasn&#39;t easy to follow along step by step. So, I decided to organize my thoughts. I&#39;ll briefly introduce how to manage GitHub repositories using VSCode!</p>
+<h2>1. Connecting VSCode to GitHub</h2>
+<h3>Installing VSCode and Setting Up Git</h3>
+<p>First, you need to have VSCode installed. The installation is straightforward, so you can download it from the official website and install it. You&#39;ll also need Git. If Git is not installed, you can download it <a target="_blank" rel="noopener noreferrer" href="https://git-scm.com/">here</a> and install it. After installation, you need to do some basic setup by entering the following commands in the command prompt or terminal.</p>
+<pre><code class="language-bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;Your Email&quot;
+</code></pre>
+<p>This way, Git will recognize your information. Personally, I felt it was important to enter my name and email correctly. Since commit history is recorded, it helps to easily check what work I have done later.</p>
+<h3>Connecting Your GitHub Account in VSCode</h3>
+<p>Now, let&#39;s connect your GitHub account in VSCode. Open VSCode and click on the source control icon in the left sidebar (usually the third icon). You should see a &quot;Login&quot; button. Click it to log in to GitHub, and VSCode will be connected to GitHub. During this process, you might be asked for simple authentication, so it&#39;s good to have your login information ready.</p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>2. Creating a New Repository</h2>
+<h3>Creating a Repository</h3>
+<p>Now, let&#39;s create a new repository. In VSCode, select &quot;File&quot; -&gt; &quot;New Folder&quot; to create a project folder. Then, right-click inside the folder and select &quot;Open Integrated Terminal.&quot; In the terminal, enter the following command to initialize the repository.</p>
+<pre><code class="language-bash">git init
+</code></pre>
+<p>This will create an empty repository. Next, you can add your files and commit them using the following commands.</p>
+<pre><code class="language-bash">git add .
+git commit -m &quot;First commit&quot;
+</code></pre>
+<p>From my experience, writing good commit messages is really important. It helps a lot when checking the work history later!</p>
+<p><img src="https://images.pexels.com/photos/34803997/pexels-photo-34803997.jpeg" alt=""></p>
+<h2>3. Connecting the Repository Remotely</h2>
+<h3>Uploading the Repository to GitHub</h3>
+<p>To upload the repository to GitHub, you first need to create a new repository on GitHub. Log in to GitHub, click the &quot;New&quot; button, enter the repository name, and click &quot;Create repository.&quot; Then, copy the URL of the created repository.</p>
+<p>Return to the VSCode terminal and enter the following commands.</p>
+<pre><code class="language-bash">git remote add origin &lt;repository URL&gt;
+git push -u origin master
+</code></pre>
+<p>This will connect your local repository with the remote repository. At first, I found it quite confusing, but after trying it several times, I quickly got used to it.</p>
+<h2>4. Managing Changes</h2>
+<h3>Modifying Files and Committing</h3>
+<p>Now it&#39;s time to modify files. After editing your code or documents, you can enter <code>git add .</code> and <code>git commit -m &quot;Modification details&quot;</code> in the terminal. Then, entering <code>git push</code> will reflect the changes on GitHub.</p>
+<p>I find this part really convenient. Since you can do everything in VSCode, the workflow becomes much smoother. Initially, I made many mistakes, but after repeating the process, I can now do it naturally.</p>
+<h2>Conclusion</h2>
+<p>This is how we explored managing repositories using VSCode and GitHub. I believe beginners can definitely follow along. If you have any questions, feel free to leave a comment! And I recommend starting with this: create your own repository and practice committing. You&#39;ll understand it much better!</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">Ad</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="More posts">
+  <h2>More posts</h2>
+  <ul class="article-related-list">
+    <li><a href="../mmv5myfv70leev/">Managing Personal Blog Content with Obsidian</a></li>
+    <li><a href="../mmupdh9jemf9li/">Useful Tricks and Tips for Using Markdown in Obsidian</a></li>
+    <li><a href="../mmuoal2bvuxs6t/">Improving Code Reviews with GitHub's Latest Features</a></li>
+    <li><a href="../mmuec0c9j2najn/">5 Tips for Efficient Cursor Movement in VSCode</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>Comments</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mmryko5jasslhd" data-page-url="https://funnyfunny.cloud/blog/en/news/mmryko5jasslhd/" data-page-title="Managing GitHub Repositories with VSCode: A Beginner's Tutorial"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© News Reader Man</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>

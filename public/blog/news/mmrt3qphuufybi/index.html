@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>npm install 중 발생하는 일반적인 오류와 해결 방법 | 기사 읽어주는 남자</title>
+  <meta name="description" content=" npm install 중 발생하는 일반적인 오류와 해결 방법 프로그램 개발하면서 npm install 할 때, 여러 가지 오류에 부딪히곤 하지? 뭘 잘못했는지 도대체 모르겠고, 인터넷에서 찾아보면 뚱딴지 같은 해결책만 나오고… 정말 답답하더라. 그래서 내가 겪었...">
+  <meta name="google-adsense-account" content="ca-pub-1204894220949193">
+  <link rel="canonical" href="https://funnyfunny.cloud/blog/news/mmrt3qphuufybi/">
+  <meta property="og:url" content="https://funnyfunny.cloud/blog/news/mmrt3qphuufybi/">
+  <meta property="og:title" content="npm install 중 발생하는 일반적인 오류와 해결 방법">
+  <meta property="og:description" content=" npm install 중 발생하는 일반적인 오류와 해결 방법 프로그램 개발하면서 npm install 할 때, 여러 가지 오류에 부딪히곤 하지? 뭘 잘못했는지 도대체 모르겠고, 인터넷에서 찾아보면 뚱딴지 같은 해결책만 나오고… 정말 답답하더라. 그래서 내가 겪었...">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="ko" href="https://funnyfunny.cloud/blog/news/mmrt3qphuufybi/">
+  <link rel="alternate" hreflang="en" href="https://funnyfunny.cloud/blog/en/news/mmrt3qphuufybi/">
+  <link rel="alternate" hreflang="x-default" href="https://funnyfunny.cloud/blog/news/mmrt3qphuufybi/">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="blog-header-inner header-row">
+      <a href="../../">기사 읽어주는 남자</a>
+      <a class="lang-toggle" href="https://funnyfunny.cloud/blog/en/news/mmrt3qphuufybi/">EN</a>
+    </div>
+  </header>
+  <main class="blog-main">
+    <a class="back-link" href="../">← 목록으로</a>
+    <div class="ad-wrap article-ad-top"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <article class="article-single">
+      <h1 class="title">npm install 중 발생하는 일반적인 오류와 해결 방법</h1>
+      <div class="meta">2026년 3월 15일</div>
+      <div class="article-body"><h2>npm install 중 발생하는 일반적인 오류와 해결 방법</h2>
+<p>프로그램 개발하면서 npm install 할 때, 여러 가지 오류에 부딪히곤 하지? 뭘 잘못했는지 도대체 모르겠고, 인터넷에서 찾아보면 뚱딴지 같은 해결책만 나오고… 정말 답답하더라. 그래서 내가 겪었던 일반적인 오류와 그 해결 방법을 정리해 봤어. 이 글을 읽고 나면, 조금이라도 도움이 될 거라고 생각해!</p>
+<h2>1. <code>ERR! code E404</code> 오류</h2>
+<h3>이게 뭔가요?</h3>
+<p>이 오류는 npm에서 의존성을 찾지 못할 때 발생해. 예를 들어, 패키지가 레지스트리에 없거나 잘못된 경로를 입력했을 때 생기지. 나도 처음에 이 오류를 보고 정말 당황했어. &quot;이 패키지가 없다니, 대체 뭘 잘못한 거지?&quot;라는 생각이 절로 들더라.</p>
+<h3>해결 방법</h3>
+<p>이럴 땐 아래와 같은 방법을 시도해보면 좋겠어:</p>
+<ul>
+<li>패키지 이름을 다시 확인해 보자. 오타가 있을 수 있어.</li>
+<li>npm 레지스트리를 변경해 보자. 공식 레지스트리 외에 다른 것을 사용하고 있다면, 다시 원래대로 돌려놓는 것도 방법이야.</li>
+</ul>
+<p>내가 이 방법을 써봤더니, 의존성이 제대로 설치되더라고. 그래서 항상 패키지 이름을 두 번 확인하는 습관이 생겼어!</p>
+<p><img src="https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg" alt=""></p>
+<h2>2. <code>ERR! code EACCES</code> 오류</h2>
+<h3>왜 이럴까?</h3>
+<p>이 오류는 권한 문제로 발생해. 보통 npm을 설치할 때 admin 권한이 없어서 생기더라. 나는 처음에 이 오류를 보고 &quot;내가 뭘 잘못했지?&quot; 하고 고민했어. 이럴 땐 조금만 더 신경 쓰면 돼.</p>
+<h3>해결 방법</h3>
+<p>이 오류를 해결하려면 아래 방법을 시도해봐:</p>
+<ul>
+<li>npm 명령어 앞에 <code>sudo</code>를 붙여서 실행해. (단, 이 방법은 macOS/Linux에서만 가능해)</li>
+<li>또는 npm을 로컬 사용자 디렉토리에 설치하도록 설정해 보자. 이걸 위해선 <code>npm config set prefix ~/.npm-global</code> 명령어를 사용해.</li>
+</ul>
+<p>내가 <code>sudo</code>를 사용해봤더니, 바로 해결됐어. 하지만 권한 문제는 항상 조심해야 해. 잘못하면 다른 파일에까지 영향을 줄 수 있으니까!</p>
+<p><img src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg" alt=""></p>
+<h2>3. <code>npm ERR! missing script: start</code> 오류</h2>
+<h3>이게 왜 발생했지?</h3>
+<p>이 오류는 보통 package.json 파일에 start 스크립트가 없을 때 발생해. 처음에 내가 이 오류를 만났을 때는 &quot;이런 게 있나?&quot; 하고 많이 당황했어. 그냥 npm start를 입력했는데, 이런 메시지가 나와서 멘붕이더라.</p>
+<h3>해결 방법</h3>
+<p>이 오류는 간단하게 해결할 수 있어:</p>
+<ul>
+<li>package.json 파일을 열어보자. scripts 섹션에 <code>&quot;start&quot;: &quot;node app.js&quot;</code> 같은 코드를 추가해 주면 돼. 여기에 app.js는 너의 메인 파일이야.</li>
+</ul>
+<p>이 방법을 해봤더니, 스크립트가 잘 실행되더라. 그래서 이제는 항상 내가 필요한 스크립트가 있는지 확인하고 시작해.</p>
+<h2>마무리</h2>
+<p>npm install 중에 발생하는 오류는 정말 다양하지만, 대부분의 경우 해결방법이 간단해. 이 글에서 언급한 오류들을 참고해서 문제를 해결해 보길 바라. 궁금한 점은 댓글로 남겨 주세요! 다음 번엔 npm의 다른 유용한 팁을 다뤄볼게.</p>
+</div>
+    </article>
+    <div class="ad-wrap article-ad-bottom"><div class="ad-label">광고</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<section class="article-related" aria-label="다른 글">
+  <h2>다른 글</h2>
+  <ul class="article-related-list">
+    <li><a href="../mn36lucntar6hk/">파이썬 환경 설정 시 자주 발생하는 오류와 해결책</a></li>
+    <li><a href="../mn2v0o4et10edu/">Docker로 배포할 때 주의해야 할 대표적인 오류와 팁</a></li>
+    <li><a href="../mn0wexfk2jfdx6/">Docker에서 포트 충돌 문제 해결하기</a></li>
+    <li><a href="../mn02t7nfeho2gy/">Docker를 사용한 개발 시 유용한 오류 디버깅 팁</a></li>
+  </ul>
+</section>
+    <section class="comments-section">
+      <h3>댓글</h3>
+      <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="5e64ec13-3f15-49fd-95e6-c998212a5f75" data-page-id="mmrt3qphuufybi" data-page-url="https://funnyfunny.cloud/blog/news/mmrt3qphuufybi/" data-page-title="npm install 중 발생하는 일반적인 오류와 해결 방법"></div>
+    </section>
+  </main>
+  <footer class="blog-footer">© 기사 읽어주는 남자</footer>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); (adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
+    var cs = document.createElement('script'); cs.src = 'https://cusdis.com/js/cusdis.es.js'; cs.async = true; document.body.appendChild(cs);
+  </script>
+</body>
+</html>
