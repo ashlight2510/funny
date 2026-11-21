@@ -65,17 +65,17 @@ export default function GuideIndexPage() {
   const t = (key) => translationPack[key] || key;
 
   return (
-    <div className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <HeaderSimple />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10">
-        <section className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
-          <p className="text-xs uppercase tracking-[0.2em] text-blue-700 font-semibold">
+        <section className="ticket-panel p-6 sm:p-8 !overflow-visible">
+          <p className="text-xs uppercase tracking-[0.2em] text-[var(--coral-deep)] font-semibold">
             {t("guideHub")}
           </p>
-          <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold leading-tight">
+          <h1 className="mt-2 font-play text-3xl sm:text-4xl leading-tight">
             {t("guideCollection")}
           </h1>
-          <p className="mt-3 text-base sm:text-lg text-slate-700 leading-relaxed">
+          <p className="mt-3 text-base sm:text-lg text-[var(--ink-2)] leading-relaxed">
             {t("guideDescription")}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -83,7 +83,7 @@ export default function GuideIndexPage() {
               <a
                 key={guide.slug}
                 href={`/guide/${guide.slug}/`}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-semibold text-slate-700 hover:border-blue-400 hover:text-blue-700 transition"
+                className="chip-tag inline-flex items-center gap-2 !px-3 !py-2 text-sm font-semibold"
               >
                 <span>{guide.emoji}</span>
                 <span>{guide.title}</span>
@@ -93,13 +93,13 @@ export default function GuideIndexPage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href="/calculators/"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-200 text-sm font-semibold text-sky-800 hover:border-sky-400 hover:bg-sky-100 transition"
+              className="btn-paper text-sm !px-4 !py-2.5"
             >
               🧮 {t("ctaCalculators")}
             </a>
             <a
               href="/tests/"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-sm font-semibold text-emerald-800 hover:border-emerald-400 hover:bg-emerald-100 transition"
+              className="btn-paper text-sm !px-4 !py-2.5"
             >
               🧪 {t("ctaTests")}
             </a>
@@ -114,21 +114,21 @@ export default function GuideIndexPage() {
             return (
               <article
                 key={guide.slug}
-                className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col gap-3"
+                className="paper-card p-6 flex flex-col gap-3"
               >
-                <div className="flex items-center gap-2 text-xs font-semibold text-blue-700 uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-2 text-xs font-semibold text-[var(--coral-deep)] uppercase tracking-[0.2em]">
                   <span>{guide.emoji}</span>
                   <span>{fullGuide.category}</span>
                 </div>
-                <h2 className="text-xl font-bold leading-snug">{guide.title}</h2>
-                <p className="text-sm text-slate-700 leading-relaxed">
+                <h2 className="font-play text-xl leading-snug">{guide.title}</h2>
+                <p className="text-sm text-[var(--ink-2)] leading-relaxed">
                   {guide.desc}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {fullGuide.keywords.slice(0, 3).map((keyword) => (
                     <span
                       key={keyword}
-                      className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold border border-slate-200"
+                      className="chip-tag !px-2.5 !py-1 text-xs font-semibold"
                     >
                       #{keyword}
                     </span>
@@ -137,7 +137,7 @@ export default function GuideIndexPage() {
                 <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                   <a
                     href={`/guide/${guide.slug}/`}
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold shadow-md hover:-translate-y-0.5 transition"
+                    className="btn-coral text-sm !px-4 !py-2.5"
                   >
                     {t("readGuide")}
                   </a>
@@ -149,7 +149,7 @@ export default function GuideIndexPage() {
                       <a
                         href={openHref}
                         {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+                        className="btn-paper text-sm !px-4 !py-2.5"
                       >
                         {t("openService")}
                       </a>

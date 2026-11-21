@@ -25,16 +25,16 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
+        <h1 className="font-play text-3xl sm:text-4xl mb-8">Privacy Policy</h1>
 
-        <div className="bg-white rounded-lg shadow p-8 space-y-6 text-sm leading-relaxed">
-          <p className="text-gray-600">Last updated: January 1, 2024</p>
+        <div className="ticket-panel p-6 sm:p-8 space-y-6 text-sm leading-relaxed !overflow-visible">
+          <p className="text-[var(--muted-on-paper)]">Last updated: January 1, 2024</p>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">1. Purpose of Processing</h2>
+            <h2 className="font-play text-xl mb-4">1. Purpose of Processing</h2>
             <p className="mb-4">
               FunnyFunny Cloud (“the site”) processes personal information for
               the purposes below. We do not use information for purposes other
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">2. Retention Period</h2>
+            <h2 className="font-play text-xl mb-4">2. Retention Period</h2>
             <p className="mb-4">
               We retain personal information only for the period required by
               law or agreed to by the data subject at the time of collection.
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">3. Items Collected</h2>
+            <h2 className="font-play text-xl mb-4">3. Items Collected</h2>
             <p className="mb-4">We process the following information:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Automatically collected info: IP address, cookies, visit time, usage logs, device info</li>
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">4. Sharing with Third Parties</h2>
+            <h2 className="font-play text-xl mb-4">4. Sharing with Third Parties</h2>
             <p className="mb-4">
               We do not share personal information with third parties unless:
             </p>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">5. Outsourcing</h2>
+            <h2 className="font-play text-xl mb-4">5. Outsourcing</h2>
             <p className="mb-4">
               We outsource certain processing tasks to the following services:
             </p>
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">6. Your Rights</h2>
+            <h2 className="font-play text-xl mb-4">6. Your Rights</h2>
             <p className="mb-4">You may exercise the following rights:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Access your personal information</li>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">7. Destruction of Data</h2>
+            <h2 className="font-play text-xl mb-4">7. Destruction of Data</h2>
             <p className="mb-4">
               We destroy personal information without delay once retention
               periods end or the purpose of processing is fulfilled.
@@ -124,7 +124,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">8. Cookies</h2>
+            <h2 className="font-play text-xl mb-4">8. Cookies</h2>
             <p className="mb-4">
               We use cookies to provide personalized services. Cookies are
               small text files stored in your browser when you visit a site.
@@ -142,18 +142,18 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">9. Privacy Officer</h2>
+            <h2 className="font-play text-xl mb-4">9. Privacy Officer</h2>
             <p className="mb-4">
               We designate a privacy officer to handle privacy-related
               inquiries, complaints, and remedies as follows:
             </p>
-            <div className="bg-gray-50 p-4 rounded mt-4">
+            <div className="bg-[var(--paper)] border-2 border-[var(--ink)] rounded-[12px] p-4 mt-4">
               <p>
                 <strong>Privacy Officer</strong>
               </p>
               <p>
                 Email:{' '}
-                <a href="mailto:ashlight2510@gmail.com" className="text-blue-600 hover:underline">
+                <a href="mailto:ashlight2510@gmail.com" className="link-coral">
                   ashlight2510@gmail.com
                 </a>
               </p>
@@ -165,7 +165,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">10. Policy Updates</h2>
+            <h2 className="font-play text-xl mb-4">10. Policy Updates</h2>
             <p>
               This policy is effective as of January 1, 2024. We will announce
               material changes at least seven days before they take effect.
@@ -174,7 +174,7 @@ export default function PrivacyPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <a href="/" className="text-blue-600 hover:underline">
+          <a href="/" className="link-coral">
             ← Back to home
           </a>
         </div>

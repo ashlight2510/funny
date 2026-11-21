@@ -55,23 +55,23 @@ export default function CalculatorsPage() {
   );
   const jsonLd = itemListJsonLd(tools);
   return (
-    <div className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          무료 계산기 모음 <span className="text-sky-600 font-bold">({tools.length}개)</span>
+        <h1 className="font-play text-3xl sm:text-4xl">
+          무료 계산기 모음 <span className="text-[var(--coral-deep)] font-bold">({tools.length}개)</span>
         </h1>
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-[var(--muted-on-paper)]">
           세금·N빵·평수·D-day·사교육비·절약 시뮬레이션 등 한눈에.
         </p>
-        <p className="mt-4 text-slate-600 text-sm max-w-2xl">
+        <p className="mt-4 text-[var(--muted-on-paper)] text-sm max-w-2xl">
           연말정산·실수령액 계산, N빵 1인당 비용, 평수·제곱미터 변환, D-day·나이·사교육비 시뮬레이션, 
           안 산 것 총자산·출퇴근 비용 계산 등 회사원·프리랜서·일상에 쓸 수 있는 무료 계산기만 모았습니다.
         </p>
         {featured.length > 0 && (
           <section className="mt-8">
-            <h2 className="text-lg font-bold text-slate-800 mb-3">
+            <h2 className="font-play text-xl text-[var(--ink)] mb-3">
               인기·시즌 추천 계산기
             </h2>
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -82,11 +82,11 @@ export default function CalculatorsPage() {
                   <li key={slug}>
                     <a
                       href={path}
-                      className="block rounded-xl bg-white border border-sky-200 p-4 hover:border-sky-400 hover:shadow-md transition"
+                      className="tool-card block p-4"
                     >
                       <span className="text-lg mr-2">{t.icon}</span>
-                      <span className="font-semibold text-slate-800">{t.title}</span>
-                      <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                      <span className="font-play text-[var(--ink)]">{t.title}</span>
+                      <p className="mt-1 text-sm text-[var(--muted-on-paper)] line-clamp-2">
                         {t.desc}
                       </p>
                     </a>
@@ -97,7 +97,7 @@ export default function CalculatorsPage() {
           </section>
         )}
         <section className="mt-8">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">전체 계산기 ({tools.length}개)</h2>
+          <h2 className="font-play text-xl text-[var(--ink)] mb-3">전체 계산기 ({tools.length}개)</h2>
         <ul className="grid gap-3 sm:grid-cols-2">
           {tools.map((t) => {
             const slug = hrefToSlug(t.href);
@@ -106,11 +106,11 @@ export default function CalculatorsPage() {
               <li key={slug}>
                 <a
                   href={path}
-                  className="block rounded-xl bg-white border border-slate-200 p-4 hover:border-sky-300 hover:shadow-md transition"
+                  className="tool-card block p-4"
                 >
                   <span className="text-lg mr-2">{t.icon}</span>
-                  <span className="font-semibold text-slate-800">{t.title}</span>
-                  <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                  <span className="font-play text-[var(--ink)]">{t.title}</span>
+                  <p className="mt-1 text-sm text-[var(--muted-on-paper)] line-clamp-2">
                     {t.desc}
                   </p>
                 </a>
@@ -119,46 +119,46 @@ export default function CalculatorsPage() {
           })}
         </ul>
         </section>
-        <p className="mt-8 text-sm text-slate-500">
-          <a href="/" className="text-sky-600 hover:underline">
+        <p className="mt-8 text-sm text-[var(--muted-on-paper)]">
+          <a href="/" className="link-coral">
             ← 홈으로
           </a>
           {" · "}
-          <a href="/guide/" className="text-sky-600 hover:underline">
+          <a href="/guide/" className="link-coral">
             가이드
           </a>
           {" · "}
-          <a href="/tests/" className="text-sky-600 hover:underline">
+          <a href="/tests/" className="link-coral">
             테스트 모음
           </a>
           {" · "}
-          <a href="/games/" className="text-sky-600 hover:underline">
+          <a href="/games/" className="link-coral">
             게임 모음
           </a>
         </p>
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-[var(--muted-on-paper)]">
           자주 찾는 가이드:{" "}
-          <a href="/guide/nbang-calculator-how/" className="text-sky-600 hover:underline">N빵 계산기</a>
+          <a href="/guide/nbang-calculator-how/" className="link-coral">N빵 계산기</a>
           {" · "}
-          <a href="/guide/year-end-tax-simple/" className="text-sky-600 hover:underline">연말정산·세금</a>
+          <a href="/guide/year-end-tax-simple/" className="link-coral">연말정산·세금</a>
           {" · "}
-          <a href="/guide/take-home-pay-how/" className="text-sky-600 hover:underline">실수령액 계산</a>
+          <a href="/guide/take-home-pay-how/" className="link-coral">실수령액 계산</a>
           {" · "}
-          <a href="/guide/pyeong-calculator-how/" className="text-sky-600 hover:underline">평수 계산기</a>
+          <a href="/guide/pyeong-calculator-how/" className="link-coral">평수 계산기</a>
           {" · "}
-          <a href="/guide/dday-calculator-how/" className="text-sky-600 hover:underline">D-day 계산기</a>
+          <a href="/guide/dday-calculator-how/" className="link-coral">D-day 계산기</a>
         </p>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-[var(--muted-on-paper)]">
           재테크·절약:{" "}
-          <a href="/guide/nospend-wealth/" className="text-sky-600 hover:underline">안 산 것 총자산</a>
+          <a href="/guide/nospend-wealth/" className="link-coral">안 산 것 총자산</a>
           {" · "}
-          <a href="/guide/edu-hell/" className="text-sky-600 hover:underline">사교육 지옥도</a>
+          <a href="/guide/edu-hell/" className="link-coral">사교육 지옥도</a>
           {" · "}
-          <a href="/guide/cafe-cost/" className="text-sky-600 hover:underline">카페 지출 역전</a>
+          <a href="/guide/cafe-cost/" className="link-coral">카페 지출 역전</a>
           {" · "}
-          <a href="/guide/four-insurance-deduction-how/" className="text-sky-600 hover:underline">4대보험 공제</a>
+          <a href="/guide/four-insurance-deduction-how/" className="link-coral">4대보험 공제</a>
           {" · "}
-          <a href="/guide/paystub-read-how/" className="text-sky-600 hover:underline">급여명세서 보는 법</a>
+          <a href="/guide/paystub-read-how/" className="link-coral">급여명세서 보는 법</a>
         </p>
       </main>
       <FooterSimple />

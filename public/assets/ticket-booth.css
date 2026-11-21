@@ -1,0 +1,83 @@
+/* FunnyFunny Ticket Booth chrome for static /tools/* pages */
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Outfit:wght@500;700;800&display=swap");
+
+:root{
+  --ink:#0e2230; --ink-2:#17384a; --ink-3:#0a1a26;
+  --paper:#fff6de; --paper-2:#fffdf6;
+  --coral:#ff4b33; --coral-deep:#d93622;
+  --sun:#ffb81c; --mint:#16b892; --sky:#2aa9e0;
+  --muted-on-paper:#6b6252;
+  --font-display:"Black Han Sans","Jua",sans-serif;
+  --font-play:"Jua","Gowun Dodum",sans-serif;
+  --font-body:"Gowun Dodum","Jua",sans-serif;
+  --font-latin:"Outfit","Jua",sans-serif;
+  /* Remap common tool theme vars */
+  --bg:var(--paper-2);
+  --card:var(--paper);
+  --text:var(--ink);
+  --muted:var(--muted-on-paper);
+  --primary:var(--ink);
+  --accent:var(--coral);
+  --accent-hover:var(--coral-deep);
+  --line:rgba(14,34,48,.18);
+  --ok:var(--mint);
+  --warning:var(--sun);
+  --shadow:transparent;
+}
+
+html{scroll-behavior:smooth}
+body{
+  margin:0 !important;
+  font-family:var(--font-body) !important;
+  color:var(--ink) !important;
+  background-color:var(--paper-2) !important;
+  background-image:radial-gradient(rgba(14,34,48,.055) 1.2px, transparent 1.3px) !important;
+  background-size:26px 26px !important;
+  min-height:100vh;
+}
+
+/* Chrome */
+.ff-awning{
+  height:14px; border-bottom:2px solid rgba(0,0,0,.35);
+  background:repeating-linear-gradient(90deg,
+    var(--coral) 0 44px, var(--paper-2) 44px 88px,
+    var(--sun) 88px 132px, var(--paper-2) 132px 176px,
+    var(--mint) 176px 220px, var(--paper-2) 220px 264px);
+}
+.ff-chrome{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 16px; background:var(--ink-3); color:var(--paper);
+  background-image:
+    radial-gradient(rgba(255,246,222,.13) 1.4px, transparent 1.5px),
+    linear-gradient(155deg,#0a1a26 0%,#123140 52%,#0d2737 100%);
+  background-size:26px 26px,100% 100%;
+  border-bottom:2px solid var(--ink);
+  font-family:var(--font-latin);
+}
+.ff-chrome a{color:var(--paper); text-decoration:none}
+.ff-chrome .ff-brand{
+  font-weight:800; letter-spacing:.12em; font-size:12px; text-transform:uppercase;
+}
+.ff-chrome .ff-brand span{color:var(--sun)}
+.ff-chrome .ff-links{display:flex; gap:10px; flex-wrap:wrap; font-size:12px}
+.ff-chrome .ff-links a{
+  border:1.5px solid rgba(255,246,222,.35); border-radius:999px; padding:5px 10px;
+}
+.ff-chrome .ff-links a:hover{border-color:var(--sun); color:var(--sun)}
+.ff-foot{
+  margin-top:40px; padding:20px 16px 36px; text-align:center;
+  font-family:var(--font-body); font-size:13px; color:var(--muted-on-paper);
+}
+.ff-foot a{color:var(--coral); font-weight:700; text-decoration:none}
+.ff-foot a:hover{text-decoration:underline}
+
+/* Soft-nudge common panels toward ticket look when they use generic classes */
+.card, .panel, .box, .wrap > .card, [class*="card"], [class*="panel"]{
+  /* don't force — only nudge borders when tools already use cards */
+}
+button, .btn, [type="submit"], .primary{
+  /* leave tool buttons; accent remap handles most */
+}
+a:focus-visible, button:focus-visible, input:focus-visible{
+  outline:3px solid var(--sun); outline-offset:2px;
+}

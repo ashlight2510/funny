@@ -43,8 +43,21 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
     <meta name="twitter:description" content="㎡·평·sqft·헥타르 변환." />
     <meta name="twitter:image" content="https://dummyimage.com/1200x630/0f172a/94a3b8&text=FunnyFunny+Cloud" />
 
-  </head>
+    <link rel="stylesheet" href="/assets/ticket-booth.css" data-ff-ticket-chrome="1" />
+</head>
 <body>
+<!-- ff-ticket-chrome -->
+<div class="ff-awning" data-ff-ticket-chrome="1"></div>
+<div class="ff-chrome" data-ff-ticket-chrome="1">
+  <a class="ff-brand" href="https://funnyfunny.cloud/">FUNNYFUNNY <span>CLOUD</span></a>
+  <div class="ff-links">
+    <a href="https://funnyfunny.cloud/calculators/">계산기</a>
+    <a href="https://funnyfunny.cloud/tests/">테스트</a>
+    <a href="https://funnyfunny.cloud/tools/arcade/">뽑기통</a>
+    <a href="https://funnyfunny.cloud/">홈</a>
+  </div>
+</div>
+
   <div class="wrap">
     <header><div class="brand"><div class="brand-badge">📐</div><div><h1>면적 변환</h1><p class="sub">㎡·평·sqft·헥타르 상호 변환</p></div></div></header>
     <div class="panel">
@@ -81,5 +94,6 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
   document.getElementById("btnShare").addEventListener("click",function(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){ var t=document.getElementById("tool-share-toast"); t.textContent="복사했어요"; t.style.display="inline"; setTimeout(function(){ t.style.display="none"; },1500); }); });
 })();
   </script>
+<div class="ff-foot" data-ff-ticket-chrome="1"><a href="https://funnyfunny.cloud/">← FunnyFunny Cloud</a> · <a href="https://funnyfunny.cloud/tools/arcade/">뽑기통</a></div>
 </body>
 </html>

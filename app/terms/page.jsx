@@ -25,16 +25,16 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-8">Terms of Service</h1>
+        <h1 className="font-play text-3xl sm:text-4xl mb-8">Terms of Service</h1>
 
-        <div className="bg-white rounded-lg shadow p-8 space-y-6 text-sm leading-relaxed">
-          <p className="text-gray-600">Last updated: January 1, 2024</p>
+        <div className="ticket-panel p-6 sm:p-8 space-y-6 text-sm leading-relaxed !overflow-visible">
+          <p className="text-[var(--muted-on-paper)]">Last updated: January 1, 2024</p>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 1 (Purpose)</h2>
+            <h2 className="font-play text-xl mb-4">Article 1 (Purpose)</h2>
             <p>
               These Terms govern the conditions, procedures, rights, duties,
               and responsibilities between FunnyFunny Cloud (“the site”) and
@@ -43,7 +43,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 2 (Definitions)</h2>
+            <h2 className="font-play text-xl mb-4">Article 2 (Definitions)</h2>
             <p className="mb-4">Key terms are defined as follows:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>“Services” include all calculators, tests, utilities, and related offerings on the site.</li>
@@ -53,7 +53,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 3 (Posting and Amendments)</h2>
+            <h2 className="font-play text-xl mb-4">Article 3 (Posting and Amendments)</h2>
             <p className="mb-4">
               These Terms are posted on the initial service screen for easy access.
             </p>
@@ -65,7 +65,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 4 (Provision and Changes)</h2>
+            <h2 className="font-play text-xl mb-4">Article 4 (Provision and Changes)</h2>
             <p className="mb-4">The site provides services such as:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Various calculators and tests</li>
@@ -79,7 +79,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 5 (Service Suspension)</h2>
+            <h2 className="font-play text-xl mb-4">Article 5 (Service Suspension)</h2>
             <p className="mb-4">We may suspend service in cases such as:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Maintenance or construction of service facilities</li>
@@ -90,7 +90,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 6 (User Obligations)</h2>
+            <h2 className="font-play text-xl mb-4">Article 6 (User Obligations)</h2>
             <p className="mb-4">Users must not:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Register false information or make false changes</li>
@@ -104,7 +104,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 7 (Copyright and Use)</h2>
+            <h2 className="font-play text-xl mb-4">Article 7 (Copyright and Use)</h2>
             <p className="mb-4">
               Copyright and other intellectual property rights for site-created
               works belong to the site.
@@ -121,7 +121,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 8 (Disclaimer)</h2>
+            <h2 className="font-play text-xl mb-4">Article 8 (Disclaimer)</h2>
             <p className="mb-4">
               We are not liable for failure to provide services due to force
               majeure or similar circumstances.
@@ -140,7 +140,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 9 (Dispute Resolution)</h2>
+            <h2 className="font-play text-xl mb-4">Article 9 (Dispute Resolution)</h2>
             <p className="mb-4">
               Lawsuits related to disputes between the site and users will be
               filed in the court of the user’s address at the time of filing,
@@ -152,13 +152,13 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Article 10 (Miscellaneous)</h2>
+            <h2 className="font-play text-xl mb-4">Article 10 (Miscellaneous)</h2>
             <p>Matters not covered herein follow applicable laws or customary practices.</p>
           </section>
         </div>
 
         <div className="mt-8 text-center">
-          <a href="/" className="text-blue-600 hover:underline">
+          <a href="/" className="link-coral">
             ← Back to home
           </a>
         </div>

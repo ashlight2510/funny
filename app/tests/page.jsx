@@ -54,23 +54,23 @@ export default function TestsPage() {
   );
   const jsonLd = itemListJsonLd(tools);
   return (
-    <div className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          무료 테스트·체크 모음 <span className="text-emerald-600 font-bold">({tools.length}개)</span>
+        <h1 className="font-play text-3xl sm:text-4xl">
+          무료 테스트·체크 모음 <span className="text-[var(--mint)] font-bold">({tools.length}개)</span>
         </h1>
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-[var(--muted-on-paper)]">
           자산·커피·생산성·마음·휴식·탈모 등 한눈에.
         </p>
-        <p className="mt-4 text-slate-600 text-sm max-w-2xl">
+        <p className="mt-4 text-[var(--muted-on-paper)] text-sm max-w-2xl">
           자산 방탄 지수, 커피·생산성·휴식 체크, EGO·마음 컨디션, 탈모 로드맵, BMI·다이어트, 
           연말 감각년도 등 무료로 할 수 있는 심리테스트·진단·체크만 모았습니다.
         </p>
         {featured.length > 0 && (
           <section className="mt-8">
-            <h2 className="text-lg font-bold text-slate-800 mb-3">
+            <h2 className="font-play text-xl text-[var(--ink)] mb-3">
               인기·시즌 추천 테스트
             </h2>
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -81,11 +81,11 @@ export default function TestsPage() {
                   <li key={slug}>
                     <a
                       href={path}
-                      className="block rounded-xl bg-white border border-sky-200 p-4 hover:border-sky-400 hover:shadow-md transition"
+                      className="tool-card block p-4"
                     >
                       <span className="text-lg mr-2">{t.icon}</span>
-                      <span className="font-semibold text-slate-800">{t.title}</span>
-                      <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                      <span className="font-play text-[var(--ink)]">{t.title}</span>
+                      <p className="mt-1 text-sm text-[var(--muted-on-paper)] line-clamp-2">
                         {t.desc}
                       </p>
                     </a>
@@ -96,7 +96,7 @@ export default function TestsPage() {
           </section>
         )}
         <section className="mt-8">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">전체 테스트·체크 ({tools.length}개)</h2>
+          <h2 className="font-play text-xl text-[var(--ink)] mb-3">전체 테스트·체크 ({tools.length}개)</h2>
         <ul className="grid gap-3 sm:grid-cols-2">
           {tools.map((t) => {
             const slug = hrefToSlug(t.href);
@@ -105,11 +105,11 @@ export default function TestsPage() {
               <li key={slug}>
                 <a
                   href={path}
-                  className="block rounded-xl bg-white border border-slate-200 p-4 hover:border-sky-300 hover:shadow-md transition"
+                  className="tool-card block p-4"
                 >
                   <span className="text-lg mr-2">{t.icon}</span>
-                  <span className="font-semibold text-slate-800">{t.title}</span>
-                  <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                  <span className="font-play text-[var(--ink)]">{t.title}</span>
+                  <p className="mt-1 text-sm text-[var(--muted-on-paper)] line-clamp-2">
                     {t.desc}
                   </p>
                 </a>
@@ -118,42 +118,42 @@ export default function TestsPage() {
           })}
         </ul>
         </section>
-        <p className="mt-8 text-sm text-slate-500">
-          <a href="/" className="text-sky-600 hover:underline">
+        <p className="mt-8 text-sm text-[var(--muted-on-paper)]">
+          <a href="/" className="link-coral">
             ← 홈으로
           </a>
           {" · "}
-          <a href="/guide/" className="text-sky-600 hover:underline">
+          <a href="/guide/" className="link-coral">
             가이드
           </a>
           {" · "}
-          <a href="/calculators/" className="text-sky-600 hover:underline">
+          <a href="/calculators/" className="link-coral">
             계산기 모음
           </a>
           {" · "}
-          <a href="/games/" className="text-sky-600 hover:underline">
+          <a href="/games/" className="link-coral">
             게임 모음
           </a>
         </p>
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-[var(--muted-on-paper)]">
           자주 찾는 가이드:{" "}
-          <a href="/guide/rest-check-how/" className="text-sky-600 hover:underline">휴식 체크</a>
+          <a href="/guide/rest-check-how/" className="link-coral">휴식 체크</a>
           {" · "}
-          <a href="/guide/bmi-calculator-how/" className="text-sky-600 hover:underline">BMI 계산</a>
+          <a href="/guide/bmi-calculator-how/" className="link-coral">BMI 계산</a>
           {" · "}
-          <a href="/guide/asset-shield-index/" className="text-sky-600 hover:underline">자산 방탄 지수</a>
+          <a href="/guide/asset-shield-index/" className="link-coral">자산 방탄 지수</a>
           {" · "}
-          <a href="/guide/daily-productivity-check/" className="text-sky-600 hover:underline">생산성 체크</a>
+          <a href="/guide/daily-productivity-check/" className="link-coral">생산성 체크</a>
         </p>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-[var(--muted-on-paper)]">
           재테크:{" "}
-          <a href="/guide/asset-shield-index/" className="text-sky-600 hover:underline">자산 방탄 지수</a>
+          <a href="/guide/asset-shield-index/" className="link-coral">자산 방탄 지수</a>
           {" · "}
-          <a href="/guide/nospend-wealth/" className="text-sky-600 hover:underline">안 산 것 총자산</a>
+          <a href="/guide/nospend-wealth/" className="link-coral">안 산 것 총자산</a>
           {" · "}
-          <a href="/guide/paystub-read-how/" className="text-sky-600 hover:underline">급여명세서</a>
+          <a href="/guide/paystub-read-how/" className="link-coral">급여명세서</a>
           {" · "}
-          <a href="/guide/coffee-addiction-test/" className="text-sky-600 hover:underline">커피 중독 테스트</a>
+          <a href="/guide/coffee-addiction-test/" className="link-coral">커피 중독 테스트</a>
         </p>
       </main>
       <FooterSimple />

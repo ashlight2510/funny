@@ -2,35 +2,193 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* ── Candy Ticket Booth · FunnyFunny Cloud PAVILION ─────────────
+   Same DNA as /tools/arcade/ (loud booth), home is calmer pavilion:
+   paper ground, ink header/footer, one hard shadow, halftone on ink.
+   ink #0e2230 · paper #fff6de · coral #ff4b33 · sun #ffb81c
+   mint #16b892 · sky #2aa9e0 — no slate, no purple, no gradients. */
+:root{
+  --ink:#0e2230; --ink-2:#17384a; --ink-3:#0a1a26;
+  --paper:#fff6de; --paper-2:#fffdf6;
+  --coral:#ff4b33; --coral-deep:#d93622;
+  --sun:#ffb81c; --mint:#16b892; --sky:#2aa9e0;
+  --muted-on-ink:rgba(255,246,222,.72);
+  --muted-on-paper:#6b6252;
+  --font-display:"Black Han Sans","Jua",sans-serif;
+  --font-play:"Jua","Gowun Dodum",sans-serif;
+  --font-body:"Gowun Dodum","Jua",sans-serif;
+  --font-latin:"Outfit","Jua",sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:var(--font-body); color:var(--ink);
+  background:var(--paper-2);
+}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{
+  outline:3px solid var(--sun); outline-offset:2px;
+}
+::selection{background:var(--sun); color:var(--ink)}
+
+/* fonts */
+.font-display{font-family:var(--font-display); font-weight:400}
+.font-play{font-family:var(--font-play); font-weight:400}
+.font-body{font-family:var(--font-body)}
+.font-latin{font-family:var(--font-latin)}
+
+/* striped awning */
+.awning{
+  height:16px; border-bottom:2px solid rgba(0,0,0,.35);
+  background:repeating-linear-gradient(90deg,var(--coral) 0 44px,var(--paper-2) 44px 88px,var(--sun) 88px 132px,var(--paper-2) 132px 176px,var(--mint) 176px 220px,var(--paper-2) 220px 264px);
+}
+.awning-sm{
+  height:26px; border-bottom:2px solid var(--ink);
+  background:repeating-linear-gradient(90deg,var(--coral) 0 32px,var(--paper-2) 32px 64px,var(--sun) 64px 96px,var(--paper-2) 96px 128px,var(--mint) 128px 160px,var(--paper-2) 160px 192px);
 }
 
-/* 접근성: 키보드 포커스 링크·버튼 */
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid #0ea5e9;
-  outline-offset: 2px;
+/* ink ground with halftone dots (header / footer / dark bands) */
+.ink-bg{
+  color:var(--paper); background-color:var(--ink-3);
+  background-image:
+    radial-gradient(rgba(255,246,222,.13) 1.4px, transparent 1.5px),
+    radial-gradient(rgba(255,184,28,.10) 1.4px, transparent 1.5px),
+    linear-gradient(155deg,#0a1a26 0%,#123140 52%,#0d2737 100%);
+  background-size:26px 26px,26px 26px,100% 100%;
+  background-position:0 0,13px 13px,0 0;
+  animation:ff-drift 28s linear infinite;
+}
+.ink-panel{
+  color:var(--paper); background-color:var(--ink);
+  background-image:radial-gradient(rgba(255,246,222,.12) 1.4px, transparent 1.5px);
+  background-size:26px 26px;
+  border:2px solid var(--ink); border-radius:20px;
+  box-shadow:12px 12px 0 var(--coral);
+}
+@keyframes ff-drift{from{background-position:0 0,13px 13px,0 0}to{background-position:26px 52px,39px 65px,0 0}}
+
+/* calmer pavilion ground for home / listing pages */
+.pavilion-bg{
+  background-color:var(--paper-2);
+  background-image:radial-gradient(rgba(14,34,48,.055) 1.2px, transparent 1.3px);
+  background-size:26px 26px;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 30%), radial-gradient(circle at 80% 0%, rgba(255, 221, 170, 0.12), transparent 32%), linear-gradient(180deg, #0b1612 0%, #10241c 40%, #16332a 100%);
-  color: #0f172a;
+/* ticket / paper surfaces — ONE hard offset shadow only */
+.ticket-panel{
+  background:var(--paper); color:var(--ink);
+  border:2px solid var(--ink); border-radius:20px; overflow:hidden;
+  box-shadow:12px 12px 0 var(--coral);
 }
-
-.snow-fall {
-  background-image: radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), transparent 50%), radial-gradient(2px 2px at 0px 50px, rgba(255, 255, 255, 0.7), transparent 50%), radial-gradient(3px 3px at 80px 10px, rgba(255, 255, 255, 0.9), transparent 60%);
-  background-size: 200px 200px, 180px 180px, 240px 240px;
-  animation: snowFall 24s linear infinite;
+.paper-card{
+  background:var(--paper-2); color:var(--ink);
+  border:2px solid var(--ink); border-radius:16px;
+  box-shadow:6px 6px 0 var(--ink);
+  transition:transform .14s ease, box-shadow .14s ease;
 }
+.paper-card:hover{transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--ink)}
+.tool-card{
+  display:block; background:var(--paper-2); color:var(--ink);
+  border:2px solid var(--ink); border-radius:16px;
+  box-shadow:5px 5px 0 var(--ink);
+  transition:transform .14s ease, box-shadow .14s ease;
+}
+.tool-card:hover{transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--coral)}
+.tool-card:active{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink)}
 
-@keyframes snowFall {
-  0% {
-    background-position: 0 0, 0 0, 0 0;
-  }
-  100% {
-    background-position: 0 600px, 0 540px, 0 720px;
-  }
+/* buttons */
+.btn-coral{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  font-family:var(--font-play); color:#fff; background:var(--coral);
+  border:2px solid var(--ink); border-radius:14px; padding:.8rem 1.25rem;
+  box-shadow:4px 4px 0 var(--ink); cursor:pointer; text-decoration:none;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.btn-coral:hover{background:var(--coral-deep); transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--ink)}
+.btn-coral:active{transform:translate(3px,3px); box-shadow:1px 1px 0 var(--ink)}
+.btn-ink{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  font-family:var(--font-play); color:var(--paper); background:var(--ink);
+  border:2px solid var(--ink); border-radius:14px; padding:.8rem 1.25rem;
+  box-shadow:4px 4px 0 var(--coral); cursor:pointer; text-decoration:none;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn-ink:hover{transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--coral)}
+.btn-paper{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  font-family:var(--font-play); color:var(--ink); background:var(--paper-2);
+  border:2px solid var(--ink); border-radius:14px; padding:.7rem 1.1rem;
+  box-shadow:4px 4px 0 var(--ink); cursor:pointer; text-decoration:none;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn-paper:hover{transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--ink); background:var(--paper)}
+.btn-paper:active{transform:translate(3px,3px); box-shadow:1px 1px 0 var(--ink)}
+
+/* nav / chips / inputs */
+.ticket-nav-link{
+  font-family:var(--font-play); color:var(--paper); text-decoration:none;
+  padding:.45rem .7rem; border-radius:10px; border:1.5px solid transparent;
+  transition:border-color .12s ease, color .12s ease, transform .12s ease; white-space:nowrap;
+}
+.ticket-nav-link:hover{color:var(--sun); border-color:rgba(255,246,222,.35); transform:translateY(-1px)}
+.chip-tag{
+  appearance:none; cursor:pointer; padding:.45rem .8rem;
+  font-family:var(--font-body); font-size:.85rem; color:var(--ink);
+  background:var(--paper-2); border:1.5px solid var(--ink); border-radius:10px;
+  transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+.chip-tag:hover{transform:translateY(-1px); border-color:var(--ink)}
+.chip-tag[data-active="true"]{background:var(--sun); box-shadow:3px 3px 0 var(--coral); animation:ff-pop .25s ease both}
+.ticket-input{
+  width:100%; padding:.9rem 1rem .9rem 2.6rem; font-family:var(--font-body); font-size:1rem;
+  color:var(--ink); background:var(--paper-2); border:2px solid var(--ink); border-radius:14px;
+  box-shadow:4px 4px 0 var(--ink);
+}
+.ticket-input::placeholder{color:#9a8f78}
+.ticket-input:focus{outline:3px solid var(--sun); outline-offset:2px}
+
+/* hero gate (4 entrances) */
+.gate-card{
+  display:flex; flex-direction:column; gap:.35rem; text-decoration:none;
+  background:var(--paper-2); color:var(--ink); border:2px solid var(--ink); border-radius:16px;
+  padding:1rem; box-shadow:6px 6px 0 var(--ink);
+  transition:transform .14s ease, box-shadow .14s ease;
+}
+.gate-card:hover{transform:translate(-2px,-3px); box-shadow:8px 9px 0 var(--gate,var(--coral))}
+.gate-card:hover .gate-ico{animation:ff-wiggle .4s ease both}
+.gate-ico{
+  display:grid; place-items:center; width:52px; height:52px; font-size:26px;
+  background:var(--gate,var(--sun)); border:2px solid var(--ink); border-radius:14px; transform:rotate(-3deg);
+}
+@keyframes ff-wiggle{0%{transform:rotate(-3deg)}40%{transform:rotate(4deg) scale(1.06)}100%{transform:rotate(-3deg)}}
+
+/* section headings */
+.section-eyebrow{
+  display:flex; align-items:center; gap:.75rem; margin:0;
+  font-family:var(--font-latin); font-weight:700; letter-spacing:.24em; font-size:.72rem; color:var(--coral-deep);
+}
+.section-eyebrow::before{content:""; width:34px; height:2px; background:var(--coral)}
+.section-title{font-family:var(--font-play); font-weight:400; color:var(--ink); line-height:1.25}
+.perf{position:relative; border-top:2px dashed rgba(14,34,48,.35)}
+.link-sun{font-family:var(--font-play); color:var(--sun); text-decoration:none}
+.link-sun:hover{text-decoration:underline; text-underline-offset:4px}
+.link-coral{color:var(--coral-deep); text-decoration:none; font-weight:700}
+.link-coral:hover{text-decoration:underline; text-underline-offset:4px}
+
+/* motions (home: halftone drift + ticket float + rise-in) */
+@keyframes ff-pop{from{transform:scale(.92)}to{transform:scale(1)}}
+@keyframes ff-float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-7px) rotate(.4deg)}}
+@keyframes ff-rise{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+.ff-float{animation:ff-float 5s ease-in-out infinite}
+.ff-rise{animation:ff-rise .55s ease both}
+.ff-rise-1{animation-delay:.06s}.ff-rise-2{animation-delay:.14s}.ff-rise-3{animation-delay:.22s}
+
+/* legacy snow (kept for any tool markup that references it) */
+.snow-fall{
+  background-image:radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,.8), transparent 50%),radial-gradient(2px 2px at 0px 50px, rgba(255,255,255,.7), transparent 50%),radial-gradient(3px 3px at 80px 10px, rgba(255,255,255,.9), transparent 60%);
+  background-size:200px 200px,180px 180px,240px 240px; animation:snowFall 24s linear infinite;
+}
+@keyframes snowFall{0%{background-position:0 0,0 0,0 0}100%{background-position:0 600px,0 540px,0 720px}}
+
+@media (prefers-reduced-motion:reduce){
+  .ink-bg,.ff-float,.ff-rise,.gate-card:hover .gate-ico,.chip-tag[data-active="true"]{animation:none}
+  html{scroll-behavior:auto}
 }

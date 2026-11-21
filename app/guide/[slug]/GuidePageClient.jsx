@@ -120,29 +120,29 @@ export function GuidePageClient({ guide }) {
   };
 
   return (
-    <div className="bg-slate-50 text-slate-900 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <HeaderSimple lang={lang} onLangChange={handleLangChange} t={t} />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12">
-        <section className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-8">
-          <div className="flex items-center gap-3 text-sm text-slate-600">
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-100">
+        <section className="ticket-panel p-6 sm:p-8 !overflow-visible">
+          <div className="flex items-center gap-3 text-sm text-[var(--muted-on-paper)]">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-[8px] bg-[var(--sun)] text-[var(--ink)] font-play border-2 border-[var(--ink)]">
               <span>{guide.heroEmoji}</span>
               <span>{guideCategory}</span>
             </span>
-            <span className="text-slate-300">/</span>
-            <span className="text-slate-600">{t("guidesLabel")}</span>
+            <span className="text-[var(--muted-on-paper)]">/</span>
+            <span className="text-[var(--muted-on-paper)]">{t("guidesLabel")}</span>
           </div>
-          <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold leading-tight">
+          <h1 className="mt-4 font-play text-3xl sm:text-4xl leading-tight">
             {guideTitle}
           </h1>
-          <p className="mt-3 text-base sm:text-lg text-slate-700 leading-relaxed">
+          <p className="mt-3 text-base sm:text-lg text-[var(--ink-2)] leading-relaxed">
             {guideDesc}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {guide.keywords.slice(0, 4).map((keyword) => (
               <span
                 key={keyword}
-                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold border border-slate-200"
+                className="chip-tag !px-3 !py-1.5 text-xs font-semibold"
               >
                 #{keyword}
               </span>
@@ -152,7 +152,7 @@ export function GuidePageClient({ guide }) {
             <a
               href={ctaHref}
               {...(ctaExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold shadow-md hover:-translate-y-0.5 hover:shadow-lg transition"
+              className="btn-coral !px-5 !py-3"
               onClick={() => {
                 try {
                   window.amplitude?.track?.("guide_cta_click", {
@@ -166,13 +166,13 @@ export function GuidePageClient({ guide }) {
             </a>
             <a
               href="/"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-800 font-semibold shadow-sm hover:border-blue-400 hover:text-blue-700 transition"
+              className="btn-paper !px-5 !py-3"
             >
               {t("backToHome")}
             </a>
           </div>
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
-            <span className="text-slate-500">공유:</span>
+            <span className="text-[var(--muted-on-paper)]">공유:</span>
             <button
               type="button"
               onClick={() => {
@@ -184,7 +184,7 @@ export function GuidePageClient({ guide }) {
                   try { window.amplitude?.track?.("share_click", { method: "copy", guide_slug: guide.slug }); } catch (_) {}
                 }
               }}
-              className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+              className="chip-tag !px-3 !py-1.5 text-sm"
             >
               {shareCopied ? "복사됨" : "링크 복사"}
             </button>
@@ -192,13 +192,13 @@ export function GuidePageClient({ guide }) {
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(guideTitle)}&url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : `https://funnyfunny.cloud/guide/${guide.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+              className="chip-tag !px-3 !py-1.5 text-sm"
               onClick={() => { try { window.amplitude?.track?.("share_click", { method: "twitter", guide_slug: guide.slug }); } catch (_) {} }}
             >
               트위터
             </a>
-            <span className="text-slate-400 mx-2">·</span>
-            <span className="text-slate-500">도움이 되었나요?</span>
+            <span className="text-[var(--muted-on-paper)] mx-2">·</span>
+            <span className="text-[var(--muted-on-paper)]">도움이 되었나요?</span>
             <button
               type="button"
               aria-label="도움 됨"
@@ -207,7 +207,7 @@ export function GuidePageClient({ guide }) {
                 setFeedbackSent(true);
                 try { window.amplitude?.track?.("guide_helpful", { guide_slug: guide.slug, helpful: true }); } catch (_) {}
               }}
-              className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 transition disabled:opacity-50"
+              className="chip-tag !px-2 !py-1 disabled:opacity-50"
             >
               👍
             </button>
@@ -219,12 +219,12 @@ export function GuidePageClient({ guide }) {
                 setFeedbackSent(true);
                 try { window.amplitude?.track?.("guide_helpful", { guide_slug: guide.slug, helpful: false }); } catch (_) {}
               }}
-              className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 transition disabled:opacity-50"
+              className="chip-tag !px-2 !py-1 disabled:opacity-50"
             >
               👎
             </button>
             {feedbackSent && (
-              <span className="ml-2 text-sm text-slate-500">의견 감사합니다.</span>
+              <span className="ml-2 text-sm text-[var(--muted-on-paper)]">의견 감사합니다.</span>
             )}
           </div>
         </section>
@@ -233,12 +233,12 @@ export function GuidePageClient({ guide }) {
           {guideSections.map((section) => (
             <article
               key={section.heading}
-              className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-7"
+              className="paper-card p-6 sm:p-7"
             >
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+              <h2 className="text-xl sm:text-2xl font-bold text-[var(--ink)]">
                 {section.heading}
               </h2>
-              <div className="mt-3 space-y-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+              <div className="mt-3 space-y-3 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed">
                 {section.body.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -263,7 +263,7 @@ export function GuidePageClient({ guide }) {
         </div>
 
         {guideDisclaimer && (
-          <section className="bg-amber-50 text-amber-900 border border-amber-200 rounded-3xl p-5 sm:p-6 shadow-sm">
+          <section className="rounded-[16px] border-2 border-[var(--ink)] bg-[var(--sun)]/25 p-5 sm:p-6 shadow-[6px_6px_0_var(--ink)] text-[var(--ink)]">
             <p className="text-sm font-semibold">{t("notice")}</p>
             <p className="mt-1 text-sm sm:text-base leading-relaxed">
               {guideDisclaimer}
@@ -273,29 +273,29 @@ export function GuidePageClient({ guide }) {
 
         <section
           id="faq"
-          className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 space-y-4"
+          className="paper-card p-6 sm:p-8 space-y-4"
         >
           <div className="flex items-center gap-2">
             <span className="text-2xl">❓</span>
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-blue-600">
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--coral-deep)]">
                 FAQ
               </p>
-              <h3 className="text-xl font-bold">{t("faqTitle")}</h3>
+              <h3 className="font-play text-xl">{t("faqTitle")}</h3>
             </div>
           </div>
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-[var(--ink)]/10">
             {guideFaq.map((item) => (
               <details key={item.question} className="py-3 group">
                 <summary className="flex items-center justify-between cursor-pointer">
-                  <span className="text-sm font-semibold text-slate-800 group-hover:text-blue-700">
+                  <span className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--coral-deep)]">
                     {item.question}
                   </span>
-                  <span className="text-slate-400 text-lg group-open:rotate-45 transition">
+                  <span className="text-[var(--muted-on-paper)] text-lg group-open:rotate-45 transition">
                     +
                   </span>
                 </summary>
-                <p className="mt-2 text-sm text-slate-700 leading-relaxed">
+                <p className="mt-2 text-sm text-[var(--ink-2)] leading-relaxed">
                   {item.answer}
                 </p>
               </details>
@@ -303,19 +303,19 @@ export function GuidePageClient({ guide }) {
           </div>
         </section>
 
-        <section className="bg-slate-900 text-white rounded-3xl p-6 sm:p-7 shadow-lg">
+        <section className="ink-panel p-6 sm:p-7">
           <div className="flex items-center justify-between gap-3 mb-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-blue-200">
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-on-ink)]">
                 {t("readMore")}
               </p>
-              <h4 className="text-xl font-bold mt-1">
+              <h4 className="font-play text-xl mt-1">
                 {t("exploreOtherGuides")}
               </h4>
             </div>
             <a
               href="/"
-              className="hidden sm:inline-flex px-3 py-2 rounded-full bg-white/10 border border-white/20 text-xs font-semibold hover:bg-white/20 transition"
+              className="btn-paper hidden sm:inline-flex !px-3 !py-2 text-xs"
             >
               {t("funnyfunnyHome")}
             </a>
@@ -325,16 +325,16 @@ export function GuidePageClient({ guide }) {
               <a
                 key={item.slug}
                 href={`/guide/${item.slug}`}
-                className="block rounded-2xl bg-white/5 border border-white/10 p-4 hover:bg-white/10 transition"
+                className="block rounded-2xl bg-[var(--paper-2)]/5 border border-white/10 p-4 hover:bg-[var(--paper-2)]/10 transition"
               >
-                <div className="flex items-center gap-2 text-sm text-blue-100">
+                <div className="flex items-center gap-2 text-sm text-[var(--muted-on-ink)]">
                   <span>{item.heroEmoji}</span>
                   <span className="uppercase tracking-[0.2em]">
                     {item.category}
                   </span>
                 </div>
                 <p className="mt-2 font-semibold">{item.title}</p>
-                <p className="mt-1 text-xs text-blue-100/80">
+                <p className="mt-1 text-xs text-[var(--muted-on-ink)]/80">
                   {item.metaDescription}
                 </p>
               </a>

@@ -1,45 +1,24 @@
 export function FooterSimple() {
+  const links = [
+    ["/", "Home"], ["/calculators/", "Calculators"], ["/tests/", "Tests"],
+    ["/games/", "Games"], ["/utils/", "Utils"], ["/guide/", "Guides"],
+    ["/privacy/", "Privacy Policy"], ["/terms/", "Terms of Service"],
+    ["/copyright/", "Copyright Notice"], ["/policy/", "Operations Policy"],
+  ];
   return (
-    <footer className="bg-white border-t mt-20 py-8">
-      <div className="max-w-5xl mx-auto px-4 text-center text-xs text-gray-400">
-        <div className="space-x-4 mb-4">
-          <a href="/" className="hover:text-gray-600">
-            Home
-          </a>
-          <span>|</span>
-          <a href="/calculators/" className="hover:text-gray-600">
-            Calculators
-          </a>
-          <span>|</span>
-          <a href="/tests/" className="hover:text-gray-600">
-            Tests
-          </a>
-          <span>|</span>
-          <a href="/games/" className="hover:text-gray-600">
-            Games
-          </a>
-          <span>|</span>
-          <a href="/guide/" className="hover:text-gray-600">
-            Guides
-          </a>
-          <span>|</span>
-          <a href="/privacy/" className="hover:text-gray-600">
-            Privacy Policy
-          </a>
-          <span>|</span>
-          <a href="/terms/" className="hover:text-gray-600">
-            Terms of Service
-          </a>
-          <span>|</span>
-          <a href="/copyright/" className="hover:text-gray-600">
-            Copyright Notice
-          </a>
-          <span>|</span>
-          <a href="/policy/" className="hover:text-gray-600">
-            Operations Policy
-          </a>
-        </div>
-        <p>© FunnyFunny Cloud by AshLight</p>
+    <footer className="ink-bg mt-16">
+      <div className="awning" aria-hidden="true" />
+      <div className="max-w-5xl mx-auto px-4 py-10 text-center">
+        <p className="font-latin text-[13px] font-extrabold tracking-[0.14em] text-[var(--paper)]">FUNNYFUNNY <span className="text-[var(--sun)]">CLOUD</span></p>
+        <nav className="mt-4 flex flex-wrap justify-center gap-x-1 gap-y-2 text-[15px]" aria-label="푸터 메뉴">
+          {links.map(([href, label], i) => (
+            <span key={href} className="flex items-center gap-1">
+              {i > 0 && <span aria-hidden="true" className="text-[var(--paper)]/30 mx-1">·</span>}
+              <a href={href} className="link-sun">{label}</a>
+            </span>
+          ))}
+        </nav>
+        <p className="mt-5 text-sm text-[var(--muted-on-ink)]">© FunnyFunny Cloud by AshLight</p>
       </div>
     </footer>
   );

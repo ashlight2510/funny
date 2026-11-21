@@ -252,8 +252,21 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 
   </style>
     <link rel="canonical" href="https://funnyfunny.cloud/tools/mr/" />
-  </head>
+    <link rel="stylesheet" href="/assets/ticket-booth.css" data-ff-ticket-chrome="1" />
+</head>
 <body>
+<!-- ff-ticket-chrome -->
+<div class="ff-awning" data-ff-ticket-chrome="1"></div>
+<div class="ff-chrome" data-ff-ticket-chrome="1">
+  <a class="ff-brand" href="https://funnyfunny.cloud/">FUNNYFUNNY <span>CLOUD</span></a>
+  <div class="ff-links">
+    <a href="https://funnyfunny.cloud/calculators/">계산기</a>
+    <a href="https://funnyfunny.cloud/tests/">테스트</a>
+    <a href="https://funnyfunny.cloud/tools/arcade/">뽑기통</a>
+    <a href="https://funnyfunny.cloud/">홈</a>
+  </div>
+</div>
+
   <div class="page">
     <header>
       <div class="lang-switch">
@@ -660,5 +673,6 @@ body:has(#tool-share-block) { flex-wrap: wrap; }
 <button type="button" onclick="var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u).then(function(){var t=document.getElementById('tool-share-toast');if(t){t.textContent='복사했어요';t.style.display='block';setTimeout(function(){t.style.display='none';},1500);}});try{if(window.amplitude)window.amplitude.track('share_click',{method:'copy',tool:location.pathname.split('/').filter(Boolean).pop()||''});}catch(e){}">링크 복사</button>
 <span id="tool-share-toast" style="display:none;"></span>
 </div>
+<div class="ff-foot" data-ff-ticket-chrome="1"><a href="https://funnyfunny.cloud/">← FunnyFunny Cloud</a> · <a href="https://funnyfunny.cloud/tools/arcade/">뽑기통</a></div>
 </body>
 </html>

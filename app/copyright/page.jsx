@@ -25,16 +25,16 @@ export const metadata = {
 
 export default function CopyrightPage() {
   return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen">
+    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-8">Copyright Notice</h1>
+        <h1 className="font-play text-3xl sm:text-4xl mb-8">Copyright Notice</h1>
 
-        <div className="bg-white rounded-lg shadow p-8 space-y-6 text-sm leading-relaxed">
-          <p className="text-gray-600">Last updated: January 1, 2024</p>
+        <div className="ticket-panel p-6 sm:p-8 space-y-6 text-sm leading-relaxed !overflow-visible">
+          <p className="text-[var(--muted-on-paper)]">Last updated: January 1, 2024</p>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">1. Copyright Ownership</h2>
+            <h2 className="font-play text-xl mb-4">1. Copyright Ownership</h2>
             <p className="mb-4">
               All content, designs, logos, images, text, and software code on
               funnyfunny.cloud (“the site”) are the intellectual property of
@@ -44,7 +44,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">2. Permitted Use</h2>
+            <h2 className="font-play text-xl mb-4">2. Permitted Use</h2>
             <p className="mb-4">You may use site content only if:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>It is for personal, non-commercial use</li>
@@ -54,7 +54,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">3. Prohibited Actions</h2>
+            <h2 className="font-play text-xl mb-4">3. Prohibited Actions</h2>
             <p className="mb-4">The following actions are strictly prohibited:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Unauthorized reproduction, distribution, or transmission</li>
@@ -66,7 +66,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">4. Third-Party Content</h2>
+            <h2 className="font-play text-xl mb-4">4. Third-Party Content</h2>
             <p className="mb-4">
               Some images, icons, and fonts are provided by third parties and
               remain the property of their respective owners. We use such
@@ -75,7 +75,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">5. User-Generated Content</h2>
+            <h2 className="font-play text-xl mb-4">5. User-Generated Content</h2>
             <p className="mb-4">
               Users retain copyright to content they create or post. By posting,
               users grant the site a non-exclusive license to use the content
@@ -84,7 +84,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">6. Copyright Infringement Reports</h2>
+            <h2 className="font-play text-xl mb-4">6. Copyright Infringement Reports</h2>
             <p className="mb-4">
               If you believe your copyright is infringed, contact us with the
               following information:
@@ -95,13 +95,13 @@ export default function CopyrightPage() {
               <li>Copyright owner information</li>
               <li>Contact information</li>
             </ul>
-            <div className="bg-gray-50 p-4 rounded mt-4">
+            <div className="bg-[var(--paper)] border-2 border-[var(--ink)] rounded-[12px] p-4 mt-4">
               <p>
                 <strong>Copyright report contact</strong>
               </p>
               <p>
                 Email:{' '}
-                <a href="mailto:ashlight2510@gmail.com" className="text-blue-600 hover:underline">
+                <a href="mailto:ashlight2510@gmail.com" className="link-coral">
                   ashlight2510@gmail.com
                 </a>
               </p>
@@ -109,7 +109,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">7. Disclaimer</h2>
+            <h2 className="font-play text-xl mb-4">7. Disclaimer</h2>
             <p>
               The site is not liable for damages arising from use of its
               content. Users are responsible for complying with relevant laws
@@ -119,7 +119,7 @@ export default function CopyrightPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <a href="/" className="text-blue-600 hover:underline">
+          <a href="/" className="link-coral">
             ← Back to home
           </a>
         </div>

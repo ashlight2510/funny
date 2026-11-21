@@ -47,13 +47,19 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  const toolSlugs = getToolSlugsFromFs();
-  const extendedPrefixes = /^(test-|game-|util-|calc-)/;
+  const arcadeSlugs = new Set(
+    JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "scripts", "arcade-slugs.json"), "utf8")
+    )
+  );
+  const toolSlugs = getToolSlugsFromFs().filter(
+    (slug) => slug === "arcade" || (slug !== "random" && !arcadeSlugs.has(slug))
+  );
   const toolUrls = toolSlugs.map((slug) => ({
     url: `${BASE}/tools/${slug}/`,
     lastModified: now,
     changeFrequency: "weekly",
-    priority: extendedPrefixes.test(slug) ? 0.6 : 0.9,
+    priority: slug === "arcade" ? 0.9 : 0.85,
   }));
 
   return [...staticPages, ...guideUrls, ...toolUrls];

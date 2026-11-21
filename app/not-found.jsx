@@ -14,25 +14,27 @@ export default function NotFound() {
   }, []);
 
   return (
-    <div
-      style={{
-        fontFamily: "system-ui, sans-serif",
-        height: "100vh",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "1rem",
-      }}
-    >
-      <h1 style={{ display: "inline-block", margin: 0, paddingRight: 20, fontSize: 24, fontWeight: 500 }}>
-        404
-      </h1>
-      <p style={{ margin: "0.5rem 0" }}>This page could not be found.</p>
-      <a href="/" style={{ color: "#22c55e", marginTop: 8 }}>
-        Go to FunnyFunny Cloud
-      </a>
+    <div className="ink-bg min-h-screen flex flex-col">
+      <div className="awning" aria-hidden="true" />
+      <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center">
+        <p className="font-latin text-xs font-bold tracking-[0.24em] text-[var(--sun)]">FUNNYFUNNY CLOUD · NO TICKET</p>
+        <h1 className="font-display mt-4 text-[clamp(4rem,18vw,8rem)] leading-none text-[var(--paper)]">
+          4<span className="text-[var(--sun)]" style={{ textShadow: "5px 5px 0 var(--coral)" }}>0</span>4
+        </h1>
+        <p className="font-play mt-4 text-2xl text-[var(--paper)]">이 티켓은 없는 자리예요.</p>
+        <p className="mt-2 text-[15px] text-[var(--muted-on-ink)]">This page could not be found.</p>
+        <div className="ticket-panel mt-8 w-full max-w-sm text-left">
+          <div className="awning-sm" aria-hidden="true" />
+          <div className="p-5">
+            <p className="font-latin text-[11px] font-bold tracking-[0.18em] text-[var(--muted-on-paper)]">PICK TICKET · GO ELSEWHERE</p>
+            <div className="mt-4 flex flex-col gap-2">
+              <a href="/" className="btn-coral w-full">🎟️ FunnyFunny Cloud 홈으로</a>
+              <a href="/games/" className="btn-paper w-full">🎰 뽑기통 가기</a>
+              <a href="/calculators/" className="btn-paper w-full">🧮 계산기 모음</a>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

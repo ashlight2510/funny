@@ -288,109 +288,89 @@ export function HomeContent() {
   const showSearchResults = normalizedQuery || selectedTag;
 
   return (
-    <div className="relative bg-slate-50 text-slate-900 text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
+    <div className="pavilion-bg relative text-[var(--ink)] text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
       <HeaderPortal lang={lang} onLangChange={handleLangChange} t={t} />
       <main>
-        {/* Hero: 전환 중심 헤드라인 + 검색 + 진입점 */}
-        <section className="bg-white border-b border-slate-200 shadow-sm">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-600 bg-sky-50 border border-sky-200 px-3 py-1 rounded-full mb-4">
-              <span>{t("heroBadgeMain")}</span>
-              <span className="text-slate-600">{t("heroBadgeSub")}</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              {t("heroTitle")}
-            </h2>
-            <p className="mt-2 text-base text-slate-600 max-w-xl">
-              {t("heroSubtitle")}
-            </p>
-            <p className="mt-1 text-sm text-slate-500">
-              {t("heroServiceCount", { count: allServices.length })}
-            </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
-              <label className="relative flex-1 max-w-md">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
-                <input
-                  value={searchQuery}
-                  onChange={(e) => { setSearchQuery(e.target.value); setSelectedTag(""); }}
-                  placeholder={t("searchPlaceholder")}
-                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-100 focus:outline-none"
-                />
-              </label>
-              <div className="flex flex-wrap gap-2">
-                <a
-                  href="/calculators/"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 text-white text-sm font-semibold shadow-sm hover:bg-sky-700 transition"
-                >
-                  🧮 {t("heroCtaCalculators")}
-                </a>
-                <a
-                  href="/tests/"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-semibold shadow-sm hover:bg-emerald-700 transition"
-                >
-                  🧪 {t("heroCtaTests")}
-                </a>
-                <a
-                  href="/guide/"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold hover:border-sky-300 hover:text-sky-700 transition"
-                >
-                  📚 {t("heroCtaGuides")}
-                </a>
-                <button
-                  data-random-btn
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition"
-                >
-                  🎲 {t("randomButtonSmall")}
-                </button>
-              </div>
-            </div>
-            {showSearchResults && (
-              <div className="mt-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-bold text-slate-900">{t("searchResultsTitle")}</h3>
-                  {(normalizedQuery || selectedTag) && (
-                    <button
-                      type="button"
-                      onClick={() => { setSearchQuery(""); setSelectedTag(""); }}
-                      className="text-sm font-semibold text-sky-600 hover:text-sky-700"
-                    >
-                      {t("searchResetButton")}
-                    </button>
-                  )}
-                </div>
-                {filteredServices.length === 0 ? (
-                  <p className="text-sm text-slate-500 py-4">{t("searchNoMatches")}</p>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {filteredServices.slice(0, 9).map(({ href, icon, title, desc }) => (
-                      <a
-                        key={href}
-                        href={toToolHref(href)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-amp-service={title}
-                        data-amp-section="search"
-                        className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-sky-300 hover:shadow-sm transition"
-                      >
-                        <span className="text-xl">{icon}</span>
-                        <div>
-                          <h4 className="font-semibold text-slate-900">{title}</h4>
-                          <p className="text-xs text-slate-600 mt-0.5 line-clamp-2">{desc}</p>
-                        </div>
-                      </a>
-                    ))}
+        {/* Hero — calmer PAVILION: brand, ONE headline, ONE line, search + 4 gates */}
+        <section className="border-b-2 border-[var(--ink)] bg-[var(--paper)]">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
+              <div className="ff-rise">
+                <p className="section-eyebrow">{t("pavilionEyebrow")}</p>
+                <p className="font-display mt-4 text-[clamp(2.6rem,7vw,4.8rem)] leading-[.95] text-[var(--ink)]">
+                  FunnyFunny<br /><span className="text-[var(--coral-deep)]" style={{ textShadow: "4px 4px 0 var(--sun)" }}>Cloud</span>
+                </p>
+                <h2 className="font-play mt-5 text-[clamp(1.5rem,3.2vw,2.2rem)] leading-snug text-[var(--ink)]">{t("heroTitle")}</h2>
+                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[var(--muted-on-paper)]">{t("heroSubtitle")}</p>
+                <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-on-paper)]">
+                  <span className="inline-block rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--sun)] px-2 py-0.5 font-play text-[13px] text-[var(--ink)]">{t("heroBadgeMain")} · {t("heroBadgeSub")}</span>
+                  <span>{t("heroServiceCount", { count: allServices.length })}</span>
+                </p>
+                <label className="relative mt-6 block max-w-xl">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm" aria-hidden="true">🔍</span>
+                  <input value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value); setSelectedTag(""); }} placeholder={t("searchPlaceholder")} className="ticket-input" aria-label={t("searchPlaceholder")} />
+                </label>
+                {showSearchResults && (
+                  <div className="mt-6 max-w-xl">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="font-play text-lg text-[var(--ink)]">{t("searchResultsTitle")}</h3>
+                      {(normalizedQuery || selectedTag) && (
+                        <button type="button" onClick={() => { setSearchQuery(""); setSelectedTag(""); }} className="link-coral text-sm">{t("searchResetButton")}</button>
+                      )}
+                    </div>
+                    {filteredServices.length === 0 ? (
+                      <p className="text-sm text-[var(--muted-on-paper)] py-4">{t("searchNoMatches")}</p>
+                    ) : (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {filteredServices.slice(0, 9).map(({ href, icon, title, desc }) => (
+                          <a key={href} href={toToolHref(href)} target="_blank" rel="noopener noreferrer" data-amp-service={title} data-amp-section="search" className="tool-card flex items-start gap-3 p-3">
+                            <span className="text-xl">{icon}</span>
+                            <span><span className="block font-bold text-[var(--ink)]">{title}</span><span className="block text-xs text-[var(--muted-on-paper)] mt-0.5 line-clamp-2">{desc}</span></span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-            )}
+              {/* Ticket visual — floating pick ticket (motion 2) */}
+              <div className="ff-rise ff-rise-2 hidden sm:block" aria-hidden="true">
+                <div className="ticket-panel ff-float max-w-md ml-auto rotate-[-1deg]">
+                  <div className="awning-sm" />
+                  <div className="p-6">
+                    <div className="flex items-baseline justify-between font-latin text-[11px] font-bold tracking-[0.18em] text-[var(--muted-on-paper)]"><span>ADMIT ONE · PAVILION</span><span className="text-[var(--coral-deep)]">funnyfunny.cloud</span></div>
+                    <p className="font-play mt-4 text-2xl leading-snug">오늘 필요한 도구를<br />티켓 한 장으로.</p>
+                    <div className="perf mt-5 pt-4 flex flex-wrap gap-2 text-[13px]">
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--sun)] px-2 py-1 font-play">🧮 계산기</span>
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper-2)] px-2 py-1 font-play">🧪 테스트</span>
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper-2)] px-2 py-1 font-play">🎰 뽑기통</span>
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--mint)] px-2 py-1 font-play text-white">📚 가이드</span>
+                    </div>
+                    <p className="mt-4 text-[13px] text-[var(--muted-on-paper)]">로그인 없이, 무료로 바로 시작하세요.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* 4 gates */}
+            <h3 className="sr-only">{t("gatesTitle")}</h3>
+            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 ff-rise ff-rise-3">
+              <a href="/calculators/" className="gate-card" style={{ "--gate": "var(--coral)" }}><span className="gate-ico" style={{ background: "var(--sun)" }}>🧮</span><span className="font-play text-lg leading-tight">{t("heroCtaCalculators")} <span aria-hidden="true">→</span></span><span className="text-[13px] leading-snug text-[var(--muted-on-paper)]">{t("gateCalculatorsDesc")} · {calculators.length}</span></a>
+              <a href="/tests/" className="gate-card" style={{ "--gate": "var(--mint)" }}><span className="gate-ico" style={{ background: "var(--mint)" }}>🧪</span><span className="font-play text-lg leading-tight">{t("heroCtaTests")} <span aria-hidden="true">→</span></span><span className="text-[13px] leading-snug text-[var(--muted-on-paper)]">{t("gateTestsDesc")} · {tests.length}</span></a>
+              <a href="/games/" className="gate-card" style={{ "--gate": "var(--sun)" }}><span className="gate-ico" style={{ background: "var(--coral)" }}>🎰</span><span className="font-play text-lg leading-tight">{t("gateArcadeTitle")} <span aria-hidden="true">→</span></span><span className="text-[13px] leading-snug text-[var(--muted-on-paper)]">{t("gateArcadeDesc")} · {games.length}</span></a>
+              <a href="/guide/" className="gate-card" style={{ "--gate": "var(--sky)" }}><span className="gate-ico" style={{ background: "var(--sky)" }}>📚</span><span className="font-play text-lg leading-tight">{t("heroCtaGuides")} <span aria-hidden="true">→</span></span><span className="text-[13px] leading-snug text-[var(--muted-on-paper)]">{t("gateGuidesDesc")} · {seoGuides.length}</span></a>
+            </div>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <button data-random-btn className="btn-coral text-[15px]">🎲 {t("randomButtonSmall")}</button>
+              <span className="text-sm text-[var(--muted-on-paper)]">{t("quickBarMessage")}</span>
+            </div>
           </div>
         </section>
 
         {/* 인기·시즌 추천 + 카테고리 진입 */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-12">
           <div className="mb-6">
-            <h3 className="text-lg font-bold text-slate-900">{t("featuredTitle")}</h3>
-            <p className="text-sm text-slate-500 mt-0.5">{t("featuredSubtitle")}</p>
+            <h3 className="font-play text-xl text-[var(--ink)]">{t("featuredTitle")}</h3>
+            <p className="text-sm text-[var(--muted-on-paper)] mt-0.5">{t("featuredSubtitle")}</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
             {featuredTools.map(({ href, icon, title, desc }) => (
@@ -401,50 +381,20 @@ export function HomeContent() {
                 rel="noopener noreferrer"
                 data-amp-service={title}
                 data-amp-section="featured"
-                className="flex flex-col gap-2 p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-sky-300 hover:shadow-md transition"
+                className="tool-card flex flex-col gap-2 p-4"
               >
                 <span className="text-2xl">{icon}</span>
-                <h4 className="font-semibold text-slate-900 text-sm leading-snug">{title}</h4>
-                <p className="text-xs text-slate-600 line-clamp-2">{desc}</p>
+                <h4 className="font-semibold text-[var(--ink)] text-sm leading-snug">{title}</h4>
+                <p className="text-xs text-[var(--muted-on-paper)] line-clamp-2">{desc}</p>
               </a>
             ))}
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <a
-              href="/calculators/"
-              className="flex items-center gap-3 p-4 rounded-xl bg-sky-50 border border-sky-200 text-sky-800 font-semibold hover:bg-sky-100 hover:border-sky-300 transition"
-            >
-              <span className="text-2xl">🧮</span>
-              <span>{t("categoryCalculators")} ({calculators.length})</span>
-            </a>
-            <a
-              href="/tests/"
-              className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold hover:bg-emerald-100 hover:border-emerald-300 transition"
-            >
-              <span className="text-2xl">🧪</span>
-              <span>{t("categoryTests")} ({tests.length})</span>
-            </a>
-            <a
-              href="/utils/"
-              className="flex items-center gap-3 p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 font-semibold hover:bg-slate-200 transition"
-            >
-              <span className="text-2xl">🛠️</span>
-              <span>{t("categoryUtils")} ({utils.length})</span>
-            </a>
-            <a
-              href="/games/"
-              className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-semibold hover:bg-amber-100 hover:border-amber-300 transition"
-            >
-              <span className="text-2xl">🎮</span>
-              <span>{t("categoryGames")} ({games.length})</span>
-            </a>
-          </div>
-        </section>
+</section>
 
         <section className="mx-auto max-w-5xl px-4 sm:px-6 py-8">
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
-              <span className="text-xs font-semibold text-slate-500">{t("adLabel")} · {t("dableLabel")}</span>
+          <div className="paper-card overflow-hidden !rounded-[16px]">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--ink)]/10">
+              <span className="text-xs font-semibold text-[var(--muted-on-paper)]">{t("adLabel")} · {t("dableLabel")}</span>
             </div>
             <div className="p-4">
               <div id="dablewidget_6Xgdpy6o_37Jam9xo" data-widget_id-pc="6Xgdpy6o" data-widget_id-mo="37Jam9xo"></div>
@@ -452,11 +402,11 @@ export function HomeContent() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-12 space-y-12 bg-slate-50/50">
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-12 space-y-12 bg-transparent">
           <div id="utils" className="scroll-mt-24 pt-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-xl">🛠️</span>
-              <h3 className="text-lg font-bold text-slate-900">{t("usefulServicesTitle")}</h3>
+              <h3 className="font-play text-xl text-[var(--ink)]">{t("usefulServicesTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {(() => {
@@ -651,30 +601,30 @@ export function HomeContent() {
                     href={toToolHref(href)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-4 rounded-xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
+                    className="tool-card block p-4"
                   >
                     <h4 className="font-bold text-lg">{title}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                    <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                    <p className="text-sm text-[var(--muted-on-paper)] mt-1">{desc}</p>
+                    <p className="text-xs text-[var(--muted-on-paper)] mt-2">{detail}</p>
                   </a>
                 ));
               })()}
             </div>
           </div>
-          <details className="sm:hidden rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200">
-            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-slate-900">
+          <details className="sm:hidden rounded-2xl bg-[var(--paper-2)] text-[var(--ink)] shadow-sm border border-[var(--ink)]">
+            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-[var(--ink)]">
               <span className="font-semibold">{t("communityBoard")}</span>
-              <span className="text-sm text-blue-600">{t("openLabel")}</span>
+              <span className="text-sm text-[var(--coral-deep)]">{t("openLabel")}</span>
             </summary>
             <div className="px-4 pb-4">
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-[var(--muted-on-paper)] mb-2">
                 {t("flowBoardDesc")}
               </p>
               <a
                 href={toToolHref("https://flow.funnyfunny.cloud/")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:shadow-md transition"
+                className="btn-coral !px-3 !py-2 text-sm"
               >
                 {t("openFLOW")}
               </a>
@@ -684,7 +634,7 @@ export function HomeContent() {
           <div id="hub" className="scroll-mt-24">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-xl">🧭</span>
-              <h3 className="text-lg font-bold text-slate-900">{t("hubTitle")}</h3>
+              <h3 className="font-play text-xl text-[var(--ink)]">{t("hubTitle")}</h3>
             </div>
             {(() => {
               const hubCategories = [
@@ -790,24 +740,24 @@ export function HomeContent() {
                   {hubCategories.map((cat) => (
                     <div
                       key={cat.titleKey}
-                      className="p-4 rounded-xl bg-white shadow-sm border border-slate-200"
+                      className="paper-card p-4"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
                           <span className="text-xl">{cat.icon}</span>
-                          <h4 className="font-semibold text-slate-900">
+                          <h4 className="font-semibold text-[var(--ink)]">
                             {t(cat.titleKey)}
                           </h4>
                         </div>
-                        <span className="text-xs text-slate-600">
+                        <span className="text-xs text-[var(--muted-on-paper)]">
                           {t(cat.badgeKey)}
                         </span>
                       </div>
-                      <div className="space-y-2 text-sm text-slate-700">
+                      <div className="space-y-2 text-sm text-[var(--ink-2)]">
                         {cat.items.map(([href, emoji]) => (
                           <a
                             key={href}
-                            className="block hover:text-blue-600"
+                            className="block hover:text-[var(--coral-deep)]"
                             href={toToolHref(href)}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -825,7 +775,7 @@ export function HomeContent() {
           <div id="insight" className="scroll-mt-24 pt-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-xl">💡</span>
-              <h3 className="text-lg font-bold text-slate-900">{t("insightCtaTitle")}</h3>
+              <h3 className="font-play text-xl text-[var(--ink)]">{t("insightCtaTitle")}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {(() => {
@@ -861,13 +811,13 @@ export function HomeContent() {
                       href={toToolHref(href)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-4 rounded-xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
+                      className="tool-card block p-4"
                     >
                       <h4 className="font-bold text-lg">
                         {icon} {serviceTitle}
                       </h4>
-                      <p className="text-sm text-gray-600 mt-1">{desc}</p>
-                      <p className="text-xs text-gray-500 mt-2">{detail}</p>
+                      <p className="text-sm text-[var(--muted-on-paper)] mt-1">{desc}</p>
+                      <p className="text-xs text-[var(--muted-on-paper)] mt-2">{detail}</p>
                     </a>
                   );
                 });
@@ -876,10 +826,53 @@ export function HomeContent() {
           </div>
 
           <div id="arcade" className="mt-10 scroll-mt-24">
-            <h3 className="inline-flex items-center gap-2 text-sm font-bold text-slate-900">
+            <h3 className="inline-flex items-center gap-2 text-sm font-bold text-[var(--ink)]">
               🎮 {t("sectionGames")}
             </h3>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
+
+              <a
+                href={toToolHref("https://funnyfunny.cloud/tools/arcade/")}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="뽑기통 — 랜덤 뽑기 통합"
+                data-amp-service="Arcade"
+                data-amp-section="game"
+                className="group overflow-hidden p-5 pt-0 rounded-[20px] bg-[#FFF6DE] text-[#0E2230] border-2 border-[#0E2230] shadow-[12px_12px_0_var(--coral)] hover:-translate-y-0.5 transition sm:col-span-2"
+              >
+                <div
+                  aria-hidden="true"
+                  className="-mx-5 mb-4 h-[26px] border-b-2 border-[#0E2230]"
+                  style={{
+                    background:
+                      "repeating-linear-gradient(90deg,#FF4B33 0 32px,#FFFDF6 32px 64px,#FFB81C 64px 96px,#FFFDF6 96px 128px,#16B892 128px 160px,#FFFDF6 160px 192px)",
+                  }}
+                />
+                <div className="flex items-center justify-between mb-2">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl border-2 border-[#0E2230] bg-[#FFB81C] text-[22px] -rotate-3">
+                    🎰
+                  </span>
+                  <span
+                    className="text-[11px] font-bold tracking-[0.18em] text-[#6B6252]"
+                    style={{ fontFamily: "'Outfit','Jua',sans-serif" }}
+                  >
+                    PICK TICKET · PICK ARCADE
+                  </span>
+                </div>
+                <h4
+                  className="font-bold text-[26px] leading-snug"
+                  style={{ fontFamily: "'Jua','Gowun Dodum',sans-serif" }}
+                >
+                  {getServiceTitle("https://funnyfunny.cloud/tools/arcade/")}
+                  <span aria-hidden="true" className="text-[#D93622]"> →</span>
+                </h4>
+                <p className="text-sm text-[#6B6252] mt-1">
+                  {lang === "ko"
+                    ? "고민은 넣고, 답은 뽑고 — 음식·주사위·운세·닉네임 등 랜덤 뽑기를 한곳에서."
+                    : "Food, dice, fortune, nicknames — all in one place."}
+                </p>
+              </a>
+
               <a
                 href={toToolHref("https://run.funnyfunny.cloud")}
                 target="_blank"
@@ -887,18 +880,18 @@ export function HomeContent() {
                 aria-label="Run — dino runner-style leaderboard game"
                 data-amp-service="Run"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🦖</span>
-                  <span className="text-xs font-semibold text-emerald-600">
+                  <span className="text-xs font-semibold text-[var(--mint)]">
                     {t("gameLeaderboard")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://run.funnyfunny.cloud")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameRunDesc")}
                 </p>
               </a>
@@ -909,18 +902,18 @@ export function HomeContent() {
                 aria-label="Cham Cham Cham! (NEON ARCADE) - switch lanes to dodge missiles"
                 data-amp-service="Cham Cham Cham! (NEON ARCADE)"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🛸</span>
-                  <span className="text-xs font-semibold text-purple-600">
+                  <span className="text-xs font-semibold text-[var(--coral-deep)]">
                     {t("gameNeonArcade")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://charm.funnyfunny.cloud/")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameCharmDesc")}
                 </p>
               </a>
@@ -931,18 +924,18 @@ export function HomeContent() {
                 aria-label="Downy (NEON STAIRS) - switch lanes to climb stairs, fall and it's over"
                 data-amp-service="Downy (NEON STAIRS)"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🪜</span>
-                  <span className="text-xs font-semibold text-blue-600">
+                  <span className="text-xs font-semibold text-[var(--coral-deep)]">
                     {t("gameNeonStairs")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://downy.funnyfunny.cloud/")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameDownyDesc")}
                 </p>
               </a>
@@ -953,18 +946,18 @@ export function HomeContent() {
                 aria-label="NEOX - neon arcade shooter, dodge barrages and climb score"
                 data-amp-service="NEOX"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🚀</span>
-                  <span className="text-xs font-semibold text-cyan-600">
+                  <span className="text-xs font-semibold text-[var(--sky)]">
                     {t("gameNeox")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://neox.funnyfunny.cloud/")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameNeoxDesc")}
                 </p>
               </a>
@@ -975,18 +968,18 @@ export function HomeContent() {
                 aria-label="One Round Tetris - single (AI) and 2-player modes"
                 data-amp-service="One Round Tetris"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🧱</span>
-                  <span className="text-xs font-semibold text-orange-600">
+                  <span className="text-xs font-semibold text-[var(--coral-deep)]">
                     {t("game2Player")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://tet.funnyfunny.cloud/")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameTetrisDesc")}
                 </p>
               </a>
@@ -997,18 +990,18 @@ export function HomeContent() {
                 aria-label="Hwatu Solitaire - card stacking game using Hwatu cards"
                 data-amp-service="Hwatu Solitaire"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🎴</span>
-                  <span className="text-xs font-semibold text-indigo-600">
+                  <span className="text-xs font-semibold text-[var(--coral-deep)]">
                     {t("gameSolitaire")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://solhwatu.funnyfunny.cloud")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameSolitaireDesc")}
                 </p>
               </a>
@@ -1019,18 +1012,18 @@ export function HomeContent() {
                 aria-label="Neon Pinball Random Picker - the rolling ball picks for you"
                 data-amp-service="Neon Pinball Random Picker"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🎱</span>
-                  <span className="text-xs font-semibold text-amber-600">
+                  <span className="text-xs font-semibold text-[var(--coral-deep)]">
                     {t("gameNeonPinball")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("https://random.funnyfunny.cloud/")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gamePinballDesc")}
                 </p>
               </a>
@@ -1041,36 +1034,36 @@ export function HomeContent() {
                 aria-label="Sudoku Web Game - classic sudoku with selectable difficulty"
                 data-amp-service="Sudoku Web Game"
                 data-amp-section="game"
-                className="group p-5 rounded-2xl bg-white/90 text-slate-900 border border-slate-200 shadow-sm hover:shadow-md transition"
+                className="tool-card group p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl">🧩</span>
-                  <span className="text-xs font-semibold text-slate-600">
+                  <span className="text-xs font-semibold text-[var(--muted-on-paper)]">
                     {t("gameSudoku")}
                   </span>
                 </div>
                 <h4 className="font-bold text-lg leading-snug">
                   {getServiceTitle("http://sudoku.funnyfunny.cloud/")}
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-[var(--muted-on-paper)] mt-1">
                   {t("gameSudokuDesc")}
                 </p>
               </a>
             </div>
           </div>
-          <div className="rounded-xl bg-slate-900 text-white pt-6 pb-6 px-6 sm:pt-8 sm:pb-8 sm:px-8 shadow-lg">
+          <div className="ink-panel pt-6 pb-6 px-6 sm:pt-8 sm:pb-8 sm:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-300">{t("winterPicks")}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-[var(--muted-on-ink)]">{t("winterPicks")}</p>
                 <h4 className="mt-1 text-xl font-bold">{t("winterPicksTitle")}</h4>
-                <p className="mt-2 text-sm text-slate-300">{t("winterPicksDesc")}</p>
+                <p className="mt-2 text-sm text-[var(--muted-on-ink)]">{t("winterPicksDesc")}</p>
               </div>
               <div className="flex flex-wrap gap-2 sm:gap-3 sm:max-w-2xl">
                 <a
                   href={toToolHref("https://winter.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
+                  className="btn-paper !rounded-[12px] px-4 sm:px-5 py-2 text-sm whitespace-nowrap"
                 >
                   {getServiceTitle("https://winter.funnyfunny.cloud")}
                 </a>
@@ -1078,7 +1071,7 @@ export function HomeContent() {
                   href={toToolHref("https://year.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-slate-900 font-semibold text-sm shadow hover:-translate-y-0.5 transition whitespace-nowrap"
+                  className="btn-paper !rounded-[12px] px-4 sm:px-5 py-2 text-sm whitespace-nowrap"
                 >
                   {getServiceTitle("https://year.funnyfunny.cloud")}
                 </a>
@@ -1086,7 +1079,7 @@ export function HomeContent() {
                   href={toToolHref("https://bit.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://bit.funnyfunny.cloud")}
                 </a>
@@ -1094,7 +1087,7 @@ export function HomeContent() {
                   href={toToolHref("https://pick.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://pick.funnyfunny.cloud")}
                 </a>
@@ -1102,7 +1095,7 @@ export function HomeContent() {
                   href={toToolHref("https://drain.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://drain.funnyfunny.cloud")}
                 </a>
@@ -1110,7 +1103,7 @@ export function HomeContent() {
                   href={toToolHref("https://rest.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://rest.funnyfunny.cloud")}
                 </a>
@@ -1118,7 +1111,7 @@ export function HomeContent() {
                   href={toToolHref("https://coffee.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://coffee.funnyfunny.cloud")}
                 </a>
@@ -1126,7 +1119,7 @@ export function HomeContent() {
                   href={toToolHref("https://hand.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://hand.funnyfunny.cloud")}
                 </a>
@@ -1134,7 +1127,7 @@ export function HomeContent() {
                   href={toToolHref("https://mind.funnyfunny.cloud")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 border border-white/30 text-white font-semibold text-sm hover:bg-white/20 transition whitespace-nowrap"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[12px] bg-[var(--ink-2)] border-[1.5px] border-[var(--paper)]/30 text-[var(--paper)] font-play text-sm hover:border-[var(--sun)] hover:text-[var(--sun)] transition whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5"
                 >
                   {getServiceTitle("https://mind.funnyfunny.cloud")}
                 </a>
@@ -1142,19 +1135,19 @@ export function HomeContent() {
             </div>
           </div>
 
-          <div id="faq" className="rounded-xl bg-white border border-slate-200 shadow-sm p-5 sm:p-6 space-y-3 text-slate-900">
+          <div id="faq" className="paper-card p-5 sm:p-6 space-y-3">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xl">❓</span>
-              <h3 className="text-lg font-bold">{t("faqTitle")}</h3>
+              <h3 className="font-play text-xl">{t("faqTitle")}</h3>
             </div>
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-[var(--ink)]/10">
               {seoFaq.map((item) => (
                 <details key={item.question} className="py-3 group">
                   <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <span className="text-sm font-semibold text-slate-900 group-hover:text-sky-600">{item.question}</span>
-                    <span className="text-sky-500 text-lg group-open:rotate-45 transition">+</span>
+                    <span className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--coral-deep)]">{item.question}</span>
+                    <span className="text-[var(--coral)] text-lg group-open:rotate-45 transition">+</span>
                   </summary>
-                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.answer}</p>
+                  <p className="mt-2 text-sm text-[var(--muted-on-paper)] leading-relaxed">{item.answer}</p>
                 </details>
               ))}
             </div>
@@ -1163,34 +1156,42 @@ export function HomeContent() {
           <div id="tests" className="scroll-mt-24 pt-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-xl">🧪</span>
-              <h3 className="text-lg font-bold text-slate-900">{t("allServicesTitle")}</h3>
+              <h3 className="font-play text-xl text-[var(--ink)]">{t("allServicesTitle")}</h3>
             </div>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-[var(--muted-on-paper)]">
                 {allServices.length} {t("servicesReady")} · {t("searchHint")}
               </p>
               <label className="relative w-full sm:w-72">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted-on-paper)] text-sm">🔍</span>
                 <input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t("searchPlaceholder")}
-                  className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-100 focus:outline-none"
+                  className="ticket-input !py-2 text-sm"
                 />
               </label>
             </div>
+            <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label="tags">
+              {(tagsExpanded ? allTags : mainTags).map((tag) => (
+                <button key={tag} type="button" data-active={selectedTag === tag} onClick={() => setSelectedTag(selectedTag === tag ? "" : tag)} className="chip-tag">#{tag}</button>
+              ))}
+              {remainingTags.length > 0 && (
+                <button type="button" onClick={() => setTagsExpanded(!tagsExpanded)} className="chip-tag font-play">{tagsExpanded ? t("tagsCollapse") : t("tagsMore", { count: remainingTags.length })}</button>
+              )}
+            </div>
             {normalizedQuery && (
-              <div className="flex items-center justify-between text-sm text-slate-600 mb-3">
+              <div className="flex items-center justify-between text-sm text-[var(--muted-on-paper)] mb-3">
                 <span>{t("searchBottomSummary", { count: filteredServices.length })}</span>
-                <button type="button" onClick={() => setSearchQuery("")} className="text-sky-600 font-semibold hover:text-sky-700">
+                <button type="button" onClick={() => setSearchQuery("")} className="text-[var(--coral-deep)] font-semibold hover:text-[var(--coral-deep)]">
                   {t("searchResetButton")}
                 </button>
               </div>
             )}
             {filteredServices.length === 0 ? (
-              <div className="p-6 rounded-xl bg-white border border-dashed border-slate-200 text-center text-sm text-slate-600">
+              <div className="paper-card p-6 text-center text-sm text-[var(--muted-on-paper)]">
                 <p>{t("searchNoMatches")}</p>
-                <p className="text-xs text-slate-400 mt-1">{t("searchNoMatchesHint")}</p>
+                <p className="text-xs text-[var(--muted-on-paper)] mt-1">{t("searchNoMatchesHint")}</p>
               </div>
             ) : (
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -1203,12 +1204,12 @@ export function HomeContent() {
                     aria-label={`${title} - ${desc}`}
                     data-amp-service={title}
                     data-amp-section="all"
-                    className="flex items-start gap-3 p-3 rounded-xl bg-white text-slate-900 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition"
+                    className="tool-card flex items-start gap-3 p-3"
                   >
                     <span className="text-xl">{icon}</span>
                     <div className="min-w-0">
-                      <h4 className="font-semibold text-slate-900 leading-snug">{title}</h4>
-                      <p className="text-xs text-slate-600 mt-0.5 line-clamp-2">{desc}</p>
+                      <h4 className="font-semibold text-[var(--ink)] leading-snug">{title}</h4>
+                      <p className="text-xs text-[var(--muted-on-paper)] mt-0.5 line-clamp-2">{desc}</p>
                     </div>
                   </a>
                 ))}
@@ -1219,21 +1220,21 @@ export function HomeContent() {
 
         <section className="mx-auto max-w-5xl px-4 sm:px-6 pb-10">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <a href="/calculators/" className="text-sm font-semibold text-sky-600 hover:text-sky-700">🧮 {t("heroCtaCalculators")}</a>
-            <a href="/tests/" className="text-sm font-semibold text-emerald-600 hover:text-emerald-700">🧪 {t("heroCtaTests")}</a>
-            <a href="/guide/" aria-label={t("viewAllGuides")} data-amp-section="guides" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300 hover:text-sky-700 transition">
+            <a href="/calculators/" className="text-sm font-semibold text-[var(--coral-deep)] hover:text-[var(--coral-deep)]">🧮 {t("heroCtaCalculators")}</a>
+            <a href="/tests/" className="text-sm font-semibold text-[var(--mint)] hover:text-[var(--mint)]">🧪 {t("heroCtaTests")}</a>
+            <a href="/guide/" aria-label={t("viewAllGuides")} data-amp-section="guides" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--paper-2)] border border-[var(--ink)] text-sm font-semibold text-[var(--ink)] shadow-sm hover:border-[var(--ink)] hover:text-[var(--coral-deep)] transition">
               📚 {t("viewAllGuides")}
             </a>
           </div>
-          <p className="mt-3 text-center text-sm text-slate-500">
+          <p className="mt-3 text-center text-sm text-[var(--muted-on-paper)]">
             {t("popularGuidesLabel")}:{" "}
-            <a href="/guide/take-home-pay-how/" className="text-sky-600 hover:underline">실수령액</a>
+            <a href="/guide/take-home-pay-how/" className="text-[var(--coral-deep)] hover:underline">실수령액</a>
             {" · "}
-            <a href="/guide/four-insurance-deduction-how/" className="text-sky-600 hover:underline">4대보험 공제</a>
+            <a href="/guide/four-insurance-deduction-how/" className="text-[var(--coral-deep)] hover:underline">4대보험 공제</a>
             {" · "}
-            <a href="/guide/nbang-calculator-how/" className="text-sky-600 hover:underline">N빵 계산기</a>
+            <a href="/guide/nbang-calculator-how/" className="text-[var(--coral-deep)] hover:underline">N빵 계산기</a>
             {" · "}
-            <a href="/guide/paystub-read-how/" className="text-sky-600 hover:underline">급여명세서</a>
+            <a href="/guide/paystub-read-how/" className="text-[var(--coral-deep)] hover:underline">급여명세서</a>
           </p>
         </section>
       </main>
@@ -1244,7 +1245,7 @@ export function HomeContent() {
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label={t("topButtonLabel")}
-        className="hidden md:flex fixed bottom-6 right-6 w-12 h-12 items-center justify-center rounded-full bg-slate-700/90 text-white shadow-lg hover:bg-slate-600 hover:shadow-xl transition z-50"
+        className="btn-coral hidden md:flex fixed bottom-6 right-6 w-12 h-12 !rounded-full items-center justify-center z-50 !p-0"
       >
         ↑
       </button>
@@ -1253,14 +1254,14 @@ export function HomeContent() {
         id="quickBar"
         className="fixed inset-x-0 bottom-3 px-4 sm:px-6 transition transform translate-y-24 opacity-0 pointer-events-none z-40"
       >
-        <div className="mx-auto max-w-3xl bg-white border border-slate-200 text-slate-800 rounded-xl shadow-lg flex items-center justify-between px-4 py-3 gap-3">
+        <div className="mx-auto max-w-3xl bg-[var(--paper-2)] border border-[var(--ink)] text-[var(--ink)] rounded-xl shadow-lg flex items-center justify-between px-4 py-3 gap-3">
           <span className="text-sm font-semibold">{t("quickBarMessage")}</span>
           <div className="flex items-center gap-2">
-            <a href="/calculators/" className="px-3 py-2 rounded-lg bg-sky-50 text-sky-700 text-sm font-semibold hover:bg-sky-100 transition">{t("heroCtaCalculators")}</a>
-            <a href="/tests/" className="px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold hover:bg-emerald-100 transition">{t("heroCtaTests")}</a>
-            <a href="#hub" className="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">{t("quickBarHub")}</a>
-            <a href="#arcade" className="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">{t("quickBarArcade")}</a>
-            <button data-random-btn className="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">{t("quickBarRandomGift")}</button>
+            <a href="/calculators/" className="btn-paper !px-3 !py-2 text-sm">{t("heroCtaCalculators")}</a>
+            <a href="/tests/" className="px-3 py-2 rounded-lg bg-[var(--paper)] text-[var(--mint)] text-sm font-semibold hover:bg-[var(--paper)] transition">{t("heroCtaTests")}</a>
+            <a href="#hub" className="btn-paper !px-3 !py-2 text-sm">{t("quickBarHub")}</a>
+            <a href="#arcade" className="btn-paper !px-3 !py-2 text-sm">{t("quickBarArcade")}</a>
+            <button data-random-btn className="btn-paper !px-3 !py-2 text-sm">{t("quickBarRandomGift")}</button>
           </div>
         </div>
       </div>

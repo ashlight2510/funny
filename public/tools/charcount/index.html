@@ -50,8 +50,21 @@
       .btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 13px; cursor: pointer; }
       .btn:hover { background: #334155; }
     </style>
-  </head>
+    <link rel="stylesheet" href="/assets/ticket-booth.css" data-ff-ticket-chrome="1" />
+</head>
   <body>
+<!-- ff-ticket-chrome -->
+<div class="ff-awning" data-ff-ticket-chrome="1"></div>
+<div class="ff-chrome" data-ff-ticket-chrome="1">
+  <a class="ff-brand" href="https://funnyfunny.cloud/">FUNNYFUNNY <span>CLOUD</span></a>
+  <div class="ff-links">
+    <a href="https://funnyfunny.cloud/calculators/">계산기</a>
+    <a href="https://funnyfunny.cloud/tests/">테스트</a>
+    <a href="https://funnyfunny.cloud/tools/arcade/">뽑기통</a>
+    <a href="https://funnyfunny.cloud/">홈</a>
+  </div>
+</div>
+
     <div class="wrap">
       <header>
         <div class="brand">
@@ -159,5 +172,6 @@
         update();
       })();
     </script>
-  </body>
+  <div class="ff-foot" data-ff-ticket-chrome="1"><a href="https://funnyfunny.cloud/">← FunnyFunny Cloud</a> · <a href="https://funnyfunny.cloud/tools/arcade/">뽑기통</a></div>
+</body>
 </html>

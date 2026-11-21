@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>뽑기통 | 랜덤·게임 모음 | FunnyFunny Cloud</title>
+  <meta name="description" content="오늘 뭐 먹지, 주사위, 운세, 닉네임 등 랜덤 뽑기를 한곳에서. 모드를 고르고 한 번 뽑으세요." />
+  <link rel="canonical" href="https://funnyfunny.cloud/tools/arcade/" />
+  <meta name="robots" content="index,follow" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1204894220949193" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Candy Ticket Booth ───────────────────────────────
+       Deep petrol ink + ticket paper + coral / sun / mint.
+       No purple. One hard offset shadow, halftone dots,
+       a striped booth awning — printed-ticket energy. */
+    :root{
+      --ink:#0e2230;
+      --ink-2:#17384a;
+      --ink-3:#0a1a26;
+      --paper:#fff6de;
+      --paper-2:#fffdf6;
+      --coral:#ff4b33;
+      --coral-deep:#d93622;
+      --sun:#ffb81c;
+      --mint:#16b892;
+      --sky:#2aa9e0;
+      --muted-on-ink:rgba(255,246,222,.72);
+      --muted-on-paper:#6b6252;
+      --font-display:"Black Han Sans","Jua",sans-serif;
+      --font-play:"Jua","Gowun Dodum",sans-serif;
+      --font-body:"Gowun Dodum","Jua",sans-serif;
+      --font-latin:"Outfit","Jua",sans-serif;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:var(--font-body);
+      color:var(--paper);
+      min-height:100vh;
+      background-color:var(--ink-3);
+      background-image:
+        radial-gradient(rgba(255,246,222,.13) 1.4px, transparent 1.5px),
+        radial-gradient(rgba(255,184,28,.10) 1.4px, transparent 1.5px),
+        linear-gradient(155deg,#0a1a26 0%,#123140 52%,#0d2737 100%);
+      background-size:26px 26px,26px 26px,100% 100%;
+      background-position:0 0,13px 13px,0 0;
+      animation:dotDrift 28s linear infinite;
+    }
+    @keyframes dotDrift{
+      from{background-position:0 0,13px 13px,0 0;}
+      to{background-position:26px 52px,39px 65px,0 0;}
+    }
+    a:focus-visible,button:focus-visible,input:focus-visible{
+      outline:3px solid var(--sun);
+      outline-offset:2px;
+    }
+    /* Booth awning — integrated top stripe, not a floating badge */
+    .awning{
+      height:16px;
+      background:repeating-linear-gradient(90deg,
+        var(--coral) 0 44px, var(--paper-2) 44px 88px,
+        var(--sun) 88px 132px, var(--paper-2) 132px 176px,
+        var(--mint) 176px 220px, var(--paper-2) 220px 264px);
+      border-bottom:2px solid rgba(0,0,0,.35);
+    }
+    .wrap{max-width:1120px;margin:0 auto;padding:0 20px 72px;}
+
+    /* Top bar */
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:18px 0 6px;
+    }
+    .wordmark{
+      font-family:var(--font-latin);font-weight:800;letter-spacing:.14em;
+      font-size:13px;color:var(--paper);text-decoration:none;white-space:nowrap;
+    }
+    .wordmark b{color:var(--sun);font-weight:800;}
+    .topbar nav{display:flex;align-items:center;gap:18px;font-size:13.5px;}
+    .topbar nav span{color:var(--muted-on-ink);}
+    .topbar nav a{color:var(--sun);text-decoration:none;font-family:var(--font-play);font-size:15px;}
+    .topbar nav a:hover{text-decoration:underline;text-underline-offset:4px;}
+    @media (max-width:560px){ .topbar nav span{display:none;} }
+
+    /* Hero — brand left, ticket right, one composition */
+    .hero{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+      padding:30px 0 34px;
+    }
+    .eyebrow{
+      display:flex;align-items:center;gap:12px;
+      font-family:var(--font-latin);font-weight:700;letter-spacing:.24em;
+      font-size:12px;color:var(--sun);margin:0 0 14px;
+    }
+    .eyebrow::before{content:"";width:34px;height:2px;background:var(--coral);}
+    h1.brand{
+      margin:0;
+      font-family:var(--font-display);font-weight:400;
+      font-size:clamp(4.8rem,11.5vw,9rem);
+      line-height:.92;letter-spacing:.01em;color:var(--paper);
+    }
+    h1.brand .tong{color:var(--sun);text-shadow:5px 5px 0 var(--coral);}
+    .headline{
+      margin:20px 0 0;font-family:var(--font-play);font-weight:400;
+      font-size:clamp(1.65rem,3.4vw,2.35rem);line-height:1.25;color:var(--paper);
+    }
+    .headline em{font-style:normal;color:var(--sun);}
+    .support{
+      margin:12px 0 0;max-width:30rem;
+      font-size:16.5px;line-height:1.65;color:var(--muted-on-ink);
+    }
+    .quick{margin:22px 0 0;font-size:14.5px;color:var(--muted-on-ink);line-height:2;}
+    .quick strong{font-family:var(--font-play);font-weight:400;color:var(--paper);margin-right:6px;}
+    .quick button{
+      appearance:none;background:none;border:none;padding:0;cursor:pointer;
+      font:inherit;color:var(--paper);
+      text-decoration:underline;text-decoration-color:var(--coral);
+      text-decoration-thickness:2px;text-underline-offset:5px;
+    }
+    .quick button:hover{color:var(--sun);}
+    .quick i{font-style:normal;color:rgba(255,246,222,.35);margin:0 7px;}
+
+    /* Pick ticket — the dominant visual plane */
+    .ticket{
+      background:var(--paper);color:var(--ink);
+      border:2px solid var(--ink);border-radius:20px;overflow:hidden;
+      box-shadow:12px 12px 0 var(--coral);
+    }
+    .ticket-awning{
+      height:30px;
+      background:repeating-linear-gradient(90deg,
+        var(--coral) 0 32px, var(--paper-2) 32px 64px,
+        var(--sun) 64px 96px, var(--paper-2) 96px 128px,
+        var(--mint) 128px 160px, var(--paper-2) 160px 192px);
+      border-bottom:2px solid var(--ink);
+    }
+    .ticket-body{padding:24px 26px 26px;}
+    .ticket-meta{
+      display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+      font-family:var(--font-latin);font-weight:700;letter-spacing:.18em;
+      font-size:11px;color:var(--muted-on-paper);margin-bottom:16px;
+    }
+    .ticket-meta output{
+      letter-spacing:.04em;color:var(--coral-deep);text-transform:lowercase;
+      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:55%;
+    }
+    .mode-head{display:flex;align-items:center;gap:14px;}
+    .mode-head .ico{
+      flex:none;width:56px;height:56px;display:grid;place-items:center;
+      font-size:29px;background:var(--sun);
+      border:2px solid var(--ink);border-radius:14px;transform:rotate(-3deg);
+    }
+    .mode-head h2{margin:0;font-family:var(--font-play);font-weight:400;font-size:25px;line-height:1.2;}
+    .mode-head p{margin:3px 0 0;color:var(--muted-on-paper);font-size:14px;}
+    .mode-swap{animation:modeSwap .38s ease both;}
+    @keyframes modeSwap{
+      from{opacity:0;transform:translateY(8px);}
+      to{opacity:1;transform:none;}
+    }
+    .perf{
+      position:relative;margin:20px -26px 0;
+      border-top:2px dashed rgba(14,34,48,.35);
+    }
+    .perf::before,.perf::after{
+      content:"";position:absolute;top:-11px;width:22px;height:22px;border-radius:50%;
+      background:var(--ink-3);border:2px solid var(--ink);
+    }
+    .perf::before{left:-13px;}
+    .perf::after{right:-13px;}
+    .stage{
+      position:relative;overflow:hidden;
+      margin-top:20px;min-height:158px;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      padding:22px 18px;
+      background:var(--paper-2);
+      border:2px dashed rgba(14,34,48,.4);border-radius:14px;
+    }
+    .stage .placeholder{
+      font-family:var(--font-play);font-size:19px;color:var(--muted-on-paper);line-height:1.5;
+    }
+    .result{display:none;position:relative;z-index:1;}
+    .result.show{display:block;}
+    .result span{
+      display:inline-block;
+      font-family:var(--font-display);font-weight:400;
+      font-size:clamp(1.7rem,4.6vw,2.5rem);line-height:1.3;color:var(--ink);
+      word-break:keep-all;overflow-wrap:anywhere;
+    }
+    .result.show span{animation:stampIn .45s cubic-bezier(.2,1.6,.4,1) both;}
+    @keyframes stampIn{
+      0%{opacity:0;transform:scale(1.7) rotate(-5deg);}
+      60%{opacity:1;transform:scale(.94) rotate(1deg);}
+      100%{opacity:1;transform:scale(1) rotate(-1.2deg);}
+    }
+    .confetti{
+      position:absolute;left:50%;top:50%;z-index:2;pointer-events:none;
+      width:9px;height:13px;border-radius:2px;
+      animation:burst .85s ease-out both;
+    }
+    @keyframes burst{
+      from{opacity:1;transform:translate(-50%,-50%) rotate(0);}
+      to{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r));}
+    }
+    .btn{
+      margin-top:20px;width:100%;
+      padding:16px 24px;cursor:pointer;
+      font-family:var(--font-play);font-size:22px;color:#fff;
+      background:var(--coral);
+      border:2px solid var(--ink);border-radius:14px;
+      box-shadow:4px 4px 0 var(--ink);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .btn:hover:not(:disabled){background:var(--coral-deep);transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink);}
+    .btn:active:not(:disabled){transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink);}
+    .btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;}
+    .ticket-foot{
+      margin:14px 0 0;text-align:center;
+      font-size:13px;line-height:1.55;color:var(--muted-on-paper);
+    }
+
+    /* Mode picker */
+    .booth{padding:10px 0 0;}
+    .booth-head{
+      display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+      flex-wrap:wrap;margin-bottom:14px;
+    }
+    .booth-head h2{margin:0;font-family:var(--font-play);font-weight:400;font-size:27px;color:var(--paper);}
+    .booth-head h2 span{color:var(--sun);}
+    .count{
+      margin:0;font-family:var(--font-latin);font-weight:700;
+      letter-spacing:.14em;font-size:12px;color:var(--sun);
+    }
+    .search{
+      width:100%;padding:15px 18px;margin-bottom:14px;
+      font-family:var(--font-body);font-size:16px;color:var(--ink);
+      background:var(--paper);
+      border:2px solid var(--ink);border-radius:14px;
+      box-shadow:4px 4px 0 rgba(0,0,0,.35);
+    }
+    .search::placeholder{color:#9a8f78;}
+    .chips{
+      display:flex;flex-wrap:wrap;gap:8px;
+      max-height:224px;overflow:auto;padding:4px 2px 10px;
+      scrollbar-width:thin;scrollbar-color:var(--sun) transparent;
+    }
+    .chip{
+      appearance:none;cursor:pointer;
+      padding:8px 13px;
+      font-family:var(--font-body);font-size:13.5px;line-height:1.3;color:var(--paper);
+      background:var(--ink-2);
+      border:1.5px solid rgba(255,246,222,.28);border-radius:10px;
+      transition:transform .12s ease,border-color .12s ease,background .12s ease;
+    }
+    .chip:hover{border-color:var(--sun);transform:translateY(-1px);}
+    .chip.active{
+      background:var(--sun);color:var(--ink);border-color:var(--ink);
+      box-shadow:3px 3px 0 var(--coral);
+      animation:chipPop .25s ease both;
+    }
+    @keyframes chipPop{ from{transform:scale(.92);} to{transform:scale(1);} }
+    .empty{margin:0;padding:10px 2px;color:var(--muted-on-ink);font-size:14.5px;}
+
+    /* Ad + footer */
+    .ad{margin:34px 0 0;text-align:center;}
+    .ad small{
+      display:block;margin-bottom:6px;
+      font-family:var(--font-latin);font-weight:700;letter-spacing:.2em;
+      font-size:10px;color:rgba(255,246,222,.4);
+    }
+    .footer-links{
+      margin-top:30px;padding-top:18px;text-align:center;
+      border-top:1px solid rgba(255,246,222,.16);
+      font-size:14px;color:var(--muted-on-ink);line-height:1.8;
+    }
+    .footer-links a{color:var(--sun);text-decoration:none;font-family:var(--font-play);font-size:15px;}
+    .footer-links a:hover{text-decoration:underline;text-underline-offset:4px;}
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;gap:30px;padding-top:22px;}
+      h1.brand{font-size:clamp(4.2rem,22vw,6.5rem);}
+      .ticket{box-shadow:8px 8px 0 var(--coral);}
+      .support{max-width:none;}
+    }
+    @media (max-width:480px){
+      .wrap{padding:0 16px 56px;}
+      .ticket-body{padding:20px 18px 22px;}
+      .perf{margin:18px -18px 0;}
+      .stage{min-height:138px;}
+      .btn{font-size:20px;}
+    }
+    @media (prefers-reduced-motion:reduce){
+      body,.result.show span,.chip.active,.mode-swap{animation:none;}
+      html{scroll-behavior:auto;}
+    }
+  </style>
+</head>
+<body>
+  <div class="awning" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="wordmark" href="https://funnyfunny.cloud/">FUNNYFUNNY <b>CLOUD</b></a>
+      <nav aria-label="보조 메뉴">
+        <span>로그인 없이, 무료로 바로 뽑기</span>
+        <a href="https://funnyfunny.cloud/">다른 서비스 →</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div>
+        <p class="eyebrow">PICK ARCADE · FUNNYFUNNY CLOUD</p>
+        <h1 class="brand">뽑기<span class="tong">통</span></h1>
+        <p class="headline">고민은 넣고, <em>답은 뽑고.</em></p>
+        <p class="support">오늘 뭐 먹지부터 주사위·운세·닉네임까지 — 모드 하나 고르면, 망설임 없이 딱 하나를 뽑아드려요.</p>
+        <p class="quick">
+          <strong>자주 뽑는 것</strong>
+          <button type="button" data-quick="random-food">오늘 뭐 먹지</button><i>·</i><button type="button" data-quick="coin-flip">동전 던지기</button><i>·</i><button type="button" data-quick="fortune-cookie">포춘 쿠키</button><i>·</i><button type="button" data-quick="nickname-gen">닉네임</button>
+        </p>
+      </div>
+
+      <section class="ticket" aria-label="뽑기 패널">
+        <div class="ticket-awning" aria-hidden="true"></div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span>PICK TICKET</span>
+            <output id="ticketNo">?m=—</output>
+          </div>
+          <div class="mode-head" id="modeHead">
+            <div class="ico" id="modeIcon">🎲</div>
+            <div>
+              <h2 id="modeTitle">모드를 선택하세요</h2>
+              <p id="modeSub">위에서 고르거나 검색하세요</p>
+            </div>
+          </div>
+          <div class="perf" aria-hidden="true"></div>
+          <div class="stage" id="stage">
+            <p class="placeholder" id="placeholder">모드를 고르고<br />아래 버튼을 눌러보세요</p>
+            <div class="result" id="result" aria-live="polite"><span id="out"></span></div>
+          </div>
+          <button type="button" class="btn" id="btnPick" disabled>뽑기</button>
+          <p class="ticket-foot">버튼을 누르면 지금 선택한 모드에서<br />무작위로 딱 하나를 뽑아요.</p>
+        </div>
+      </section>
+    </header>
+
+    <main class="booth">
+      <div class="booth-head">
+        <h2>모드 <span>고르기</span></h2>
+        <p class="count" id="count"></p>
+      </div>
+      <input class="search" id="search" type="search" placeholder="모드 검색 (예: 음식, 주사위, 운세)" autocomplete="off" aria-label="모드 검색" />
+      <div class="chips" id="chips"></div>
+      <p class="empty" id="empty" hidden>찾는 모드가 없어요. 다른 단어로 검색해 보세요.</p>
+    </main>
+
+    <div class="ad">
+      <small>AD</small>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1204894220949193" data-ad-slot="7300458753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+    <div class="footer-links">
+      <a href="https://funnyfunny.cloud/">다른 서비스 보러 가기 →</a><br />
+      FunnyFunny Cloud — 매일 쓰는 작은 도구들
+    </div>
+  </div>
+
+  <script>
+(function(){
+  var modes = [];
+  var current = null;
+  var picking = false;
+  var chipsEl = document.getElementById('chips');
+  var searchEl = document.getElementById('search');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  var btn = document.getElementById('btnPick');
+  var result = document.getElementById('result');
+  var out = document.getElementById('out');
+  var stage = document.getElementById('stage');
+  var placeholder = document.getElementById('placeholder');
+  var modeHead = document.getElementById('modeHead');
+  var ticketNo = document.getElementById('ticketNo');
+
+  function qsMode(){
+    try { return new URLSearchParams(location.search).get('m') || ''; }
+    catch(e){ return ''; }
+  }
+
+  function setUrl(slug){
+    var u = new URL(location.href);
+    if (slug) u.searchParams.set('m', slug); else u.searchParams.delete('m');
+    history.replaceState(null, '', u.pathname + u.search + u.hash);
+  }
+
+  function selectMode(mode, push){
+    current = mode;
+    document.getElementById('modeIcon').textContent = mode.icon || '🎲';
+    document.getElementById('modeTitle').textContent = mode.title || mode.slug;
+    document.getElementById('modeSub').textContent = mode.sub || mode.slug;
+    ticketNo.textContent = '?m=' + mode.slug;
+    btn.disabled = !(mode.items && mode.items.length) || picking;
+    btn.textContent = '뽑기';
+    result.classList.remove('show');
+    out.textContent = '';
+    placeholder.style.display = '';
+    /* Motion 1 — mode select: ticket head settles in */
+    modeHead.classList.remove('mode-swap');
+    void modeHead.offsetWidth;
+    modeHead.classList.add('mode-swap');
+    Array.prototype.forEach.call(chipsEl.querySelectorAll('.chip'), function(el){
+      el.classList.toggle('active', el.dataset.slug === mode.slug);
+    });
+    if (push !== false) setUrl(mode.slug);
+  }
+
+  function renderChips(filter){
+    var q = (filter || '').trim().toLowerCase();
+    var list = modes.filter(function(m){
+      if (!q) return true;
+      return (m.title||'').toLowerCase().indexOf(q) >= 0
+        || (m.sub||'').toLowerCase().indexOf(q) >= 0
+        || (m.slug||'').toLowerCase().indexOf(q) >= 0;
+    });
+    countEl.textContent = list.length + ' / ' + modes.length + ' MODES';
+    emptyEl.hidden = list.length > 0;
+    chipsEl.innerHTML = '';
+    list.forEach(function(m){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (current && current.slug === m.slug ? ' active' : '');
+      b.dataset.slug = m.slug;
+      b.textContent = (m.icon ? m.icon + ' ' : '') + (m.title || m.slug);
+      b.addEventListener('click', function(){ selectMode(m); });
+      chipsEl.appendChild(b);
+    });
+  }
+
+  function burst(){
+    var colors = ['#ff4b33','#ffb81c','#16b892','#2aa9e0'];
+    for (var i = 0; i < 16; i++){
+      var s = document.createElement('span');
+      s.className = 'confetti';
+      s.style.background = colors[i % colors.length];
+      s.style.setProperty('--x', (Math.random()*260 - 130) + 'px');
+      s.style.setProperty('--y', (Math.random()*170 - 110) + 'px');
+      s.style.setProperty('--r', (Math.random()*340 - 170) + 'deg');
+      stage.appendChild(s);
+      (function(el){ setTimeout(function(){ el.remove(); }, 900); })(s);
+    }
+  }
+
+  /* Motion 2 — pick: brief shuffle, then a stamped reveal + confetti */
+  btn.addEventListener('click', function(){
+    if (!current || !current.items || !current.items.length || picking) return;
+    var items = current.items;
+    var finalItem = items[Math.floor(Math.random() * items.length)];
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    placeholder.style.display = 'none';
+    result.classList.add('show');
+
+    if (reduce || items.length < 2){
+      out.textContent = finalItem;
+      result.classList.remove('show');
+      void result.offsetWidth;
+      result.classList.add('show');
+      burst();
+      btn.textContent = '다시 뽑기';
+      return;
+    }
+
+    picking = true;
+    btn.disabled = true;
+    btn.textContent = '뽑는 중…';
+    var shuffle = setInterval(function(){
+      out.textContent = items[Math.floor(Math.random() * items.length)];
+    }, 70);
+
+    setTimeout(function(){
+      clearInterval(shuffle);
+      picking = false;
+      out.textContent = finalItem;
+      result.classList.remove('show');
+      void result.offsetWidth;
+      result.classList.add('show');
+      burst();
+      btn.disabled = false;
+      btn.textContent = '다시 뽑기';
+    }, 650);
+  });
+
+  searchEl.addEventListener('input', function(){ renderChips(searchEl.value); });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-quick]'), function(el){
+    el.addEventListener('click', function(){
+      var found = modes.find(function(m){ return m.slug === el.dataset.quick; });
+      if (!found) return;
+      selectMode(found);
+      document.querySelector('.ticket').scrollIntoView({ behavior:'smooth', block:'center' });
+    });
+  });
+
+  fetch('./modes.json').then(function(r){ return r.json(); }).then(function(data){
+    modes = data.modes || [];
+    renderChips('');
+    var want = qsMode();
+    var found = modes.find(function(m){ return m.slug === want; });
+    if (found) selectMode(found, false);
+    else if (modes[0]) selectMode(modes.find(function(m){ return m.slug === 'random-food'; }) || modes[0], !want);
+  }).catch(function(){
+    countEl.textContent = '모드를 불러오지 못했습니다.';
+  });
+})();
+  </script>
+</body>
+</html>
