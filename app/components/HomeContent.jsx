@@ -306,7 +306,22 @@ export function HomeContent() {
                   <span className="inline-block rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--sun)] px-2 py-0.5 font-play text-[13px] text-[var(--ink)]">{t("heroBadgeMain")} · {t("heroBadgeSub")}</span>
                   <span>{t("heroServiceCount", { count: allServices.length })}</span>
                 </p>
-                <label className="relative mt-6 block max-w-xl">
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://trip.funnyfunny.cloud/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-amp-service="풍경너머"
+                    data-amp-section="flagship"
+                    className="btn-coral text-[15px]"
+                  >
+                    🗺️ {t("flagshipCta")}
+                  </a>
+                  <button data-random-btn className="rounded-[10px] border-[1.5px] border-[var(--ink)] bg-[var(--paper)] px-4 py-2.5 font-play text-[15px] text-[var(--ink)] shadow-[2px_2px_0_var(--ink)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0_var(--ink)] transition-transform">
+                    🎲 {t("randomButtonSmall")}
+                  </button>
+                </div>
+                <label className="relative mt-4 block max-w-xl">
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm" aria-hidden="true">🔍</span>
                   <input value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value); setSelectedTag(""); }} placeholder={t("searchPlaceholder")} className="ticket-input" aria-label={t("searchPlaceholder")} />
                 </label>
@@ -333,22 +348,32 @@ export function HomeContent() {
                   </div>
                 )}
               </div>
-              {/* Ticket visual — floating pick ticket (motion 2) */}
-              <div className="ff-rise ff-rise-2 hidden sm:block" aria-hidden="true">
-                <div className="ticket-panel ff-float max-w-md ml-auto rotate-[-1deg]">
+              {/* Flagship — 풍경너머 */}
+              <div className="ff-rise ff-rise-2">
+                <a
+                  href="https://trip.funnyfunny.cloud/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-amp-service="풍경너머"
+                  data-amp-section="flagship-panel"
+                  className="ticket-panel ff-float block max-w-md ml-auto rotate-[-1deg] no-underline text-inherit hover:rotate-0 transition-transform"
+                >
                   <div className="awning-sm" />
                   <div className="p-6">
-                    <div className="flex items-baseline justify-between font-latin text-[11px] font-bold tracking-[0.18em] text-[var(--muted-on-paper)]"><span>ADMIT ONE · PAVILION</span><span className="text-[var(--coral-deep)]">funnyfunny.cloud</span></div>
-                    <p className="font-play mt-4 text-2xl leading-snug">오늘 필요한 도구를<br />티켓 한 장으로.</p>
-                    <div className="perf mt-5 pt-4 flex flex-wrap gap-2 text-[13px]">
-                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--sun)] px-2 py-1 font-play">🧮 계산기</span>
-                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper-2)] px-2 py-1 font-play">🧪 테스트</span>
-                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper-2)] px-2 py-1 font-play">🎰 뽑기통</span>
-                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--mint)] px-2 py-1 font-play text-white">📚 가이드</span>
+                    <div className="flex items-baseline justify-between font-latin text-[11px] font-bold tracking-[0.18em] text-[var(--muted-on-paper)]">
+                      <span>{t("flagshipTag")}</span>
+                      <span className="rounded-[6px] border-[1.5px] border-[var(--ink)] bg-[var(--sun)] px-1.5 py-0.5 text-[10px] tracking-wider text-[var(--ink)]">{t("flagshipEyebrow")}</span>
                     </div>
-                    <p className="mt-4 text-[13px] text-[var(--muted-on-paper)]">로그인 없이, 무료로 바로 시작하세요.</p>
+                    <p className="font-display mt-4 text-[clamp(2rem,4vw,2.75rem)] leading-[.95] text-[var(--ink)]">{t("flagshipTitle")}</p>
+                    <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted-on-paper)]">{t("flagshipSubtitle")}</p>
+                    <div className="perf mt-5 pt-4 flex flex-wrap gap-2 text-[13px]">
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper-2)] px-2 py-1 font-play">🗺️ 지도</span>
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper-2)] px-2 py-1 font-play">⭐ 후기</span>
+                      <span className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--mint)] px-2 py-1 font-play text-white">📷 거리뷰</span>
+                    </div>
+                    <p className="mt-5 font-play text-[15px] text-[var(--coral-deep)]">{t("flagshipCta")} →</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
             {/* 4 gates */}
@@ -359,10 +384,7 @@ export function HomeContent() {
               <a href="/games/" className="gate-card" style={{ "--gate": "var(--sun)" }}><span className="gate-ico" style={{ background: "var(--coral)" }}>🎰</span><span className="font-play text-lg leading-tight">{t("gateArcadeTitle")} <span aria-hidden="true">→</span></span><span className="text-[13px] leading-snug text-[var(--muted-on-paper)]">{t("gateArcadeDesc")} · {games.length}</span></a>
               <a href="/guide/" className="gate-card" style={{ "--gate": "var(--sky)" }}><span className="gate-ico" style={{ background: "var(--sky)" }}>📚</span><span className="font-play text-lg leading-tight">{t("heroCtaGuides")} <span aria-hidden="true">→</span></span><span className="text-[13px] leading-snug text-[var(--muted-on-paper)]">{t("gateGuidesDesc")} · {seoGuides.length}</span></a>
             </div>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <button data-random-btn className="btn-coral text-[15px]">🎲 {t("randomButtonSmall")}</button>
-              <span className="text-sm text-[var(--muted-on-paper)]">{t("quickBarMessage")}</span>
-            </div>
+            <p className="mt-5 text-sm text-[var(--muted-on-paper)]">{t("quickBarMessage")}</p>
           </div>
         </section>
 
