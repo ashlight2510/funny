@@ -5,6 +5,7 @@ import { FooterSimple } from "../components/FooterSimple";
 import { HeaderSimple } from "../components/HeaderSimple";
 import { guides } from "./guides";
 import { getSeoGuides, hrefToSlug, getToolPath } from "../lib/services";
+import { defaultLang, getInitialLang } from "../lib/i18n";
 
 const guidePageCopy = {
   ko: {
@@ -28,27 +29,6 @@ const guidePageCopy = {
     ctaTests: "Popular tests",
   },
 };
-
-const defaultLang = "en";
-
-function getInitialLang() {
-  if (typeof window === "undefined") return defaultLang;
-  const stored = window.localStorage?.getItem("preferredLang");
-  if (stored && guidePageCopy[stored]) {
-    return stored;
-  }
-  const hasNavigator = typeof navigator !== "undefined";
-  if (hasNavigator) {
-    const browserLang =
-      navigator.languages && navigator.languages.length
-        ? navigator.languages[0]
-        : navigator.language;
-    if (browserLang && browserLang.toLowerCase().startsWith("ko")) {
-      return "ko";
-    }
-  }
-  return defaultLang;
-}
 
 export default function GuideIndexPage() {
   const [lang, setLang] = useState(defaultLang);
