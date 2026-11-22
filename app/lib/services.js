@@ -1,4 +1,4 @@
-import { ENABLE_FLOW } from "./features";
+import { ENABLE_FLOW } from "./features.js";
 
 const FLOW_HREF = "https://flow.funnyfunny.cloud/";
 
