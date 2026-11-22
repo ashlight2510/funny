@@ -383,6 +383,8 @@ export function HomeContent() {
                 </a>
                 <div className="mt-3 flex flex-wrap justify-end gap-2">
                   {[
+                    { href: "https://trip.funnyfunny.cloud/explore/gangneung-trip/", label: t("flagshipChipGangneungTrip") },
+                    { href: "https://trip.funnyfunny.cloud/explore/jeju-trip/", label: t("flagshipChipJejuTrip") },
                     { href: "https://trip.funnyfunny.cloud/explore/gangneung-cafe/", label: t("flagshipChipGangneung") },
                     { href: "https://trip.funnyfunny.cloud/explore/jeju-beach/", label: t("flagshipChipJeju") },
                     { href: "https://trip.funnyfunny.cloud/explore/seoul-cafe/", label: t("flagshipChipSeoul") },
