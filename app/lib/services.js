@@ -1443,15 +1443,15 @@ export function getAllServices(lang = "en") {
       tags: isKo ? ["에너지", "피로", "누수"] : ["energy", "fatigue", "leak"],
     },
     {
-      href: "https://trip.funnyfunny.cloud",
+      href: "https://trip.funnyfunny.cloud/explore/",
       icon: "🗺️",
       title: isKo ? "풍경너머" : "Beyond the View",
       desc: isKo
-        ? "여행 전 지도·후기·로드뷰로 먼저 가보기."
-        : "Preview trips with map, reviews, and street view.",
+        ? "강릉·제주·서울 등 테마별 후기 지도로 먼저 가보기."
+        : "Themed review maps for Gangneung, Jeju, Seoul, and more.",
       tags: isKo
-        ? ["여행", "지도", "로드뷰"]
-        : ["travel", "map", "streetview"],
+        ? ["여행", "지도", "로드뷰", "강릉카페", "제주여행", "서울카페"]
+        : ["travel", "map", "streetview", "cafes", "beaches"],
     },
     {
       href: "https://funnyfunny.cloud/tools/arcade/",

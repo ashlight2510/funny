@@ -315,7 +315,7 @@ export function HomeContent() {
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <a
-                    href="https://trip.funnyfunny.cloud/"
+                    href="https://trip.funnyfunny.cloud/explore/"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-amp-service="풍경너머"
@@ -356,14 +356,14 @@ export function HomeContent() {
                 )}
               </div>
               {/* Flagship — 풍경너머 */}
-              <div className="ff-rise ff-rise-2">
+              <div className="ff-rise ff-rise-2 ml-auto max-w-md">
                 <a
-                  href="https://trip.funnyfunny.cloud/"
+                  href="https://trip.funnyfunny.cloud/explore/"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-amp-service="풍경너머"
                   data-amp-section="flagship-panel"
-                  className="ticket-panel ff-float block max-w-md ml-auto rotate-[-1deg] no-underline text-inherit hover:rotate-0 transition-transform"
+                  className="ticket-panel ff-float block rotate-[-1deg] no-underline text-inherit hover:rotate-0 transition-transform"
                 >
                   <div className="awning-sm" />
                   <div className="p-6">
@@ -381,6 +381,26 @@ export function HomeContent() {
                     <p className="mt-5 font-play text-[15px] text-[var(--coral-deep)]">{t("flagshipCta")} →</p>
                   </div>
                 </a>
+                <div className="mt-3 flex flex-wrap justify-end gap-2">
+                  {[
+                    { href: "https://trip.funnyfunny.cloud/explore/gangneung-cafe/", label: t("flagshipChipGangneung") },
+                    { href: "https://trip.funnyfunny.cloud/explore/jeju-beach/", label: t("flagshipChipJeju") },
+                    { href: "https://trip.funnyfunny.cloud/explore/seoul-cafe/", label: t("flagshipChipSeoul") },
+                    { href: "https://trip.funnyfunny.cloud/explore/jeonju-hanok/", label: t("flagshipChipJeonju") },
+                  ].map((chip) => (
+                    <a
+                      key={chip.href}
+                      href={chip.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-amp-service="풍경너머"
+                      data-amp-section="flagship-theme"
+                      className="rounded-[8px] border-[1.5px] border-[var(--ink)] bg-[var(--paper)] px-2.5 py-1 font-play text-[12px] text-[var(--ink)] shadow-[2px_2px_0_var(--ink)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0_var(--ink)] transition-transform"
+                    >
+                      {chip.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
             {/* 4 gates */}
