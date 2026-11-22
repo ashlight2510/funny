@@ -120,7 +120,7 @@ export function GuidePageClient({ guide }) {
   };
 
   return (
-    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
+    <div className="pavilion-bg flex min-h-dvh flex-col text-[var(--ink)]">
       <HeaderSimple lang={lang} onLangChange={handleLangChange} t={t} />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12">
         <section className="ticket-panel p-6 sm:p-8 !overflow-visible">

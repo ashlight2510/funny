@@ -24,7 +24,7 @@ export const metadata = {
 
 export default function PolicyPage() {
   return (
-    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
+    <div className="pavilion-bg flex min-h-dvh flex-col text-[var(--ink)]">
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 py-10">
         <h1 className="font-play text-3xl sm:text-4xl mb-8">Operations Policy</h1>

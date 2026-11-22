@@ -288,9 +288,9 @@ export function HomeContent() {
   const showSearchResults = normalizedQuery || selectedTag;
 
   return (
-    <div className="pavilion-bg relative text-[var(--ink)] text-[15.5px] sm:text-[16px] leading-relaxed min-h-screen">
+    <div className="pavilion-bg relative flex min-h-dvh flex-col text-[var(--ink)] text-[15.5px] sm:text-[16px] leading-relaxed">
       <HeaderPortal lang={lang} onLangChange={handleLangChange} t={t} />
-      <main>
+      <main className="flex-1">
         {/* Hero — calmer PAVILION: brand, ONE headline, ONE line, search + 4 gates */}
         <section className="border-b-2 border-[var(--ink)] bg-[var(--paper)]">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16">

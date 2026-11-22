@@ -55,7 +55,7 @@ export default function CalculatorsPage() {
   );
   const jsonLd = itemListJsonLd(tools);
   return (
-    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
+    <div className="pavilion-bg flex min-h-dvh flex-col text-[var(--ink)]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeaderSimple />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">

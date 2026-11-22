@@ -38,7 +38,7 @@ export default function UtilsPage() {
   const tools = getUtils("ko");
   const jsonLd = itemListJsonLd(tools);
   return (
-    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
+    <div className="pavilion-bg flex min-h-dvh flex-col text-[var(--ink)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

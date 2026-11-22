@@ -45,7 +45,7 @@ export default function GuideIndexPage() {
   const t = (key) => translationPack[key] || key;
 
   return (
-    <div className="pavilion-bg text-[var(--ink)] min-h-screen">
+    <div className="pavilion-bg flex min-h-dvh flex-col text-[var(--ink)]">
       <HeaderSimple />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10">
         <section className="ticket-panel p-6 sm:p-8 !overflow-visible">
