@@ -1,7 +1,20 @@
+import { ENABLE_FLOW } from "./features";
+
+const FLOW_HREF = "https://flow.funnyfunny.cloud/";
+
+function withoutHiddenHubItems(list) {
+  if (ENABLE_FLOW) return list;
+  return list.filter((item) => {
+    if (item?.href === FLOW_HREF || item?.href === "http://flow.funnyfunny.cloud/") return false;
+    if (item?.slug === "flow-community") return false;
+    return true;
+  });
+}
+
 export function getSeoGuides(lang = "en") {
   const isKo = lang === "ko";
   
-  return [
+  return withoutHiddenHubItems([
   {
     slug: "meta-kit",
     emoji: "🧰",
@@ -1069,13 +1082,13 @@ export function getSeoGuides(lang = "en") {
     title: isKo ? "탈모 개선 로드맵 가이드" : "Hairloss Improvement Roadmap Guide",
     desc: isKo ? "설문으로 상태를 확인하고 오늘부터 바꿀 행동 TOP 3를 확인하세요." : "Check your status with a quick survey and get the top 3 actions to start today.",
   },
-  ];
+  ]);
 }
 
 export function getAllServices(lang = "en") {
   const isKo = lang === "ko";
 
-  return [
+  return withoutHiddenHubItems([
     {
       href: "https://today.funnyfunny.cloud",
       icon: "🌱",
@@ -2746,7 +2759,7 @@ export function getAllServices(lang = "en") {
         ? ["스도쿠", "퍼즐", "게임", "두뇌"]
         : ["sudoku", "puzzle", "game", "brain"],
     },
-  ];
+  ]);
 }
 
 /** Path 이식 SEO: subdomain href → path slug (1:1). 예외는 HREF_TO_SLUG로. */

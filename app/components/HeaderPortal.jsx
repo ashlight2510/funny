@@ -1,3 +1,5 @@
+import { ENABLE_FLOW } from "../lib/features";
+
 export function HeaderPortal({ lang, onLangChange, t }) {
   const languages = [
     { code: "ko", label: t ? t("langKorean") : "한국어" },
@@ -39,7 +41,9 @@ export function HeaderPortal({ lang, onLangChange, t }) {
                 {nav.map(([href, icon, label]) => (
                   <a key={href} href={href} className="ticket-nav-link">{icon} {label}</a>
                 ))}
-                <a href="https://flow.funnyfunny.cloud/" target="_blank" rel="noopener noreferrer" className="ticket-nav-link">{t ? t("quickFlow") : "FLOW"}</a>
+                {ENABLE_FLOW && (
+                  <a href="https://flow.funnyfunny.cloud/" target="_blank" rel="noopener noreferrer" className="ticket-nav-link">{t ? t("quickFlow") : "FLOW"}</a>
+                )}
               </nav>
               <button data-random-btn className="btn-coral !px-4 !py-2 text-[15px] whitespace-nowrap">
                 <span className="sm:hidden">{t ? t("ctaPrimarySmall") : "Random"}</span>

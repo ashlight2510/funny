@@ -1,3 +1,5 @@
+import { ENABLE_FLOW } from "../lib/features";
+
 export function HeaderSimple({ lang, onLangChange, t }) {
   const languages = lang && onLangChange
     ? [
@@ -37,7 +39,9 @@ export function HeaderSimple({ lang, onLangChange, t }) {
             {nav.map(([href, label]) => (
               <a key={href} href={href} className="ticket-nav-link">{label}</a>
             ))}
-            <a href="https://flow.funnyfunny.cloud/" target="_blank" rel="noopener noreferrer" className="ticket-nav-link">FLOW</a>
+            {ENABLE_FLOW && (
+              <a href="https://flow.funnyfunny.cloud/" target="_blank" rel="noopener noreferrer" className="ticket-nav-link">FLOW</a>
+            )}
           </nav>
         </div>
       </header>

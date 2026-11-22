@@ -1,9 +1,9 @@
 export function FooterPortal({ t }) {
   const getText = (key, fallback) => (t ? t(key) : fallback);
   return (
-    <footer className="ink-bg mt-10">
+    <footer className="ink-bg mt-8">
       <div className="awning" aria-hidden="true" />
-      <div className="w-full px-4 pt-12 pb-10 sm:pb-12">
+      <div className="w-full px-4 pt-10 pb-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10 pb-10 border-b border-[var(--paper)]/15">
             <p className="font-latin text-[13px] font-extrabold tracking-[0.14em]">FUNNYFUNNY <span className="text-[var(--sun)]">CLOUD</span></p>

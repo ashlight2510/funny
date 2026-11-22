@@ -22,9 +22,12 @@
 html{scroll-behavior:smooth; background:var(--ink-3)}
 body{
   margin:0; font-family:var(--font-body); color:var(--ink);
-  /* Ink under the footer so overscroll / short pages never flash paper-white */
+  /* Ink under the footer so overscroll never flashes paper-white */
   background:var(--ink-3); min-height:100dvh;
 }
+/* Page shell ends at the ink footer — no trailing gap after children */
+body > div.pavilion-bg:last-of-type,
+body > div.ink-bg:last-of-type{margin-bottom:0}
 a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{
   outline:3px solid var(--sun); outline-offset:2px;
 }

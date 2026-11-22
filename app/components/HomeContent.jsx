@@ -12,12 +12,14 @@ import {
 import { getAllServices, getSeoGuides, hrefToSlug, getToolPath, getCalculators, getTests, getGames, getUtils } from "../lib/services";
 import { pageCopy } from "../lib/translations";
 import { defaultLang, getInitialLang, formatTemplate } from "../lib/i18n";
+import { ENABLE_FLOW } from "../lib/features";
 
 export function HomeContent() {
   const [lang, setLang] = useState(defaultLang);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
   const [tagsExpanded, setTagsExpanded] = useState(false);
+  const [showTopBtn, setShowTopBtn] = useState(false);
   const translationPack = pageCopy[lang] || pageCopy[defaultLang];
   const fallbackPack = pageCopy[defaultLang];
   const allServices = getAllServices(lang);
@@ -103,10 +105,14 @@ export function HomeContent() {
 
   useEffect(() => {
     const quickBar = document.getElementById("quickBar");
-    if (!quickBar) return;
 
     const onScroll = () => {
-      const shouldShow = window.scrollY > 220;
+      const y = window.scrollY;
+      // Top button: after ~1 viewport of scroll (not at the very top).
+      setShowTopBtn(y > window.innerHeight * 0.85);
+
+      if (!quickBar) return;
+      const shouldShow = y > 220;
       quickBar.style.transform = shouldShow
         ? "translateY(0)"
         : "translateY(24px)";
@@ -114,7 +120,8 @@ export function HomeContent() {
       quickBar.style.pointerEvents = shouldShow ? "auto" : "none";
     };
 
-    window.addEventListener("scroll", onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -434,16 +441,20 @@ export function HomeContent() {
               {(() => {
                 const isKo = lang === "ko";
                 const utils = [
-                  {
-                    href: "https://flow.funnyfunny.cloud/",
-                    title: isKo ? "🧵 FLOW Community" : "🧵 FLOW Community",
-                    desc: isKo
-                      ? "스레드 + 포럼 느낌의 게시판"
-                      : "A board with thread + forum vibes",
-                    detail: isKo
-                      ? "익명 게시, 실시간 반응, 주제별 스레드로 빠르게 대화 시작"
-                      : "Anonymous posting, live reactions, and topic threads to start chatting fast",
-                  },
+                  ...(ENABLE_FLOW
+                    ? [
+                        {
+                          href: "https://flow.funnyfunny.cloud/",
+                          title: isKo ? "🧵 FLOW Community" : "🧵 FLOW Community",
+                          desc: isKo
+                            ? "스레드 + 포럼 느낌의 게시판"
+                            : "A board with thread + forum vibes",
+                          detail: isKo
+                            ? "익명 게시, 실시간 반응, 주제별 스레드로 빠르게 대화 시작"
+                            : "Anonymous posting, live reactions, and topic threads to start chatting fast",
+                        },
+                      ]
+                    : []),
                   {
                     href: "https://video.funnyfunny.cloud",
                     title: isKo ? "🎬 AutoCut Studio" : "🎬 AutoCut Studio",
@@ -633,25 +644,27 @@ export function HomeContent() {
               })()}
             </div>
           </div>
-          <details className="sm:hidden rounded-2xl bg-[var(--paper-2)] text-[var(--ink)] shadow-sm border border-[var(--ink)]">
-            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-[var(--ink)]">
-              <span className="font-semibold">{t("communityBoard")}</span>
-              <span className="text-sm text-[var(--coral-deep)]">{t("openLabel")}</span>
-            </summary>
-            <div className="px-4 pb-4">
-              <p className="text-sm text-[var(--muted-on-paper)] mb-2">
-                {t("flowBoardDesc")}
-              </p>
-              <a
-                href={toToolHref("https://flow.funnyfunny.cloud/")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-coral !px-3 !py-2 text-sm"
-              >
-                {t("openFLOW")}
-              </a>
-            </div>
-          </details>
+          {ENABLE_FLOW && (
+            <details className="sm:hidden rounded-2xl bg-[var(--paper-2)] text-[var(--ink)] shadow-sm border border-[var(--ink)]">
+              <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-[var(--ink)]">
+                <span className="font-semibold">{t("communityBoard")}</span>
+                <span className="text-sm text-[var(--coral-deep)]">{t("openLabel")}</span>
+              </summary>
+              <div className="px-4 pb-4">
+                <p className="text-sm text-[var(--muted-on-paper)] mb-2">
+                  {t("flowBoardDesc")}
+                </p>
+                <a
+                  href={toToolHref("https://flow.funnyfunny.cloud/")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-coral !px-3 !py-2 text-sm"
+                >
+                  {t("openFLOW")}
+                </a>
+              </div>
+            </details>
+          )}
 
           <div id="hub" className="scroll-mt-24">
             <div className="flex items-center gap-2 mb-4">
@@ -660,6 +673,30 @@ export function HomeContent() {
             </div>
             {(() => {
               const hubCategories = [
+                {
+                  icon: "🎉",
+                  titleKey: "sectionFun",
+                  badgeKey: "label1MinChill",
+                  items: [
+                    ["https://heal.funnyfunny.cloud", "💌"],
+                    ["https://fortune.funnyfunny.cloud", "🔮"],
+                    ["https://need.funnyfunny.cloud/", "🧭"],
+                    ["https://wisdom.funnyfunny.cloud", "📜"],
+                    ["https://temple.funnyfunny.cloud/", "🛕"],
+                    ["https://hwatu.funnyfunny.cloud", "🎴"],
+                    ["https://joke.funnyfunny.cloud", "🤣"],
+                    ["https://mind.funnyfunny.cloud", "🧠"],
+                    ["https://soccer.funnyfunny.cloud", "⚽"],
+                    ["https://balance.funnyfunny.cloud/", "⚖️"],
+                    ["https://random.funnyfunny.cloud/", "🎱"],
+                    ["https://pick.funnyfunny.cloud", "🍿"],
+                    ["https://beat.funnyfunny.cloud", "🥁"],
+                    ["https://maldives.funnyfunny.cloud", "🏝️"],
+                    ["https://hand.funnyfunny.cloud/", "✋"],
+                    ["https://snaptrail.funnyfunny.cloud", "📍"],
+                    ["https://xmas.funnyfunny.cloud/", "🎁"],
+                  ],
+                },
                 {
                   icon: "🧠",
                   titleKey: "sectionPsychology",
@@ -730,30 +767,6 @@ export function HomeContent() {
                     ["https://weather.funnyfunny.cloud", "🌤️"],
                     ["https://baby.funnyfunny.cloud/", "👶"],
                     ["https://miracle.funnyfunny.cloud/", "🌍"],
-                  ],
-                },
-                {
-                  icon: "🎉",
-                  titleKey: "sectionFun",
-                  badgeKey: "label1MinChill",
-                  items: [
-                    ["https://heal.funnyfunny.cloud", "💌"],
-                    ["https://fortune.funnyfunny.cloud", "🔮"],
-                    ["https://need.funnyfunny.cloud/", "🧭"],
-                    ["https://wisdom.funnyfunny.cloud", "📜"],
-                    ["https://temple.funnyfunny.cloud/", "🛕"],
-                    ["https://hwatu.funnyfunny.cloud", "🎴"],
-                    ["https://joke.funnyfunny.cloud", "🤣"],
-                    ["https://mind.funnyfunny.cloud", "🧠"],
-                    ["https://soccer.funnyfunny.cloud", "⚽"],
-                    ["https://balance.funnyfunny.cloud/", "⚖️"],
-                    ["https://random.funnyfunny.cloud/", "🎱"],
-                    ["https://pick.funnyfunny.cloud", "🍿"],
-                    ["https://beat.funnyfunny.cloud", "🥁"],
-                    ["https://maldives.funnyfunny.cloud", "🏝️"],
-                    ["https://hand.funnyfunny.cloud/", "✋"],
-                    ["https://snaptrail.funnyfunny.cloud", "📍"],
-                    ["https://xmas.funnyfunny.cloud/", "🎁"],
                   ],
                 },
               ];
@@ -1240,7 +1253,7 @@ export function HomeContent() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 sm:px-6 pb-10">
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 pb-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a href="/calculators/" className="text-sm font-semibold text-[var(--coral-deep)] hover:text-[var(--coral-deep)]">🧮 {t("heroCtaCalculators")}</a>
             <a href="/tests/" className="text-sm font-semibold text-[var(--mint)] hover:text-[var(--mint)]">🧪 {t("heroCtaTests")}</a>
@@ -1267,7 +1280,13 @@ export function HomeContent() {
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label={t("topButtonLabel")}
-        className="btn-coral hidden md:flex fixed bottom-6 right-6 w-12 h-12 !rounded-full items-center justify-center z-50 !p-0"
+        aria-hidden={!showTopBtn}
+        tabIndex={showTopBtn ? 0 : -1}
+        className={`btn-coral fixed bottom-6 right-6 z-50 hidden h-12 w-12 !rounded-full !p-0 items-center justify-center transition duration-200 md:flex ${
+          showTopBtn
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "translate-y-3 opacity-0 pointer-events-none"
+        }`}
       >
         ↑
       </button>
