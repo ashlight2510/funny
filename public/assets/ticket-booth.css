@@ -6,12 +6,12 @@
   --paper:#fff6de; --paper-2:#fffdf6;
   --coral:#ff4b33; --coral-deep:#d93622;
   --sun:#ffb81c; --mint:#16b892; --sky:#2aa9e0;
-  --muted-on-paper:#6b6252;
+  --muted-on-paper:#4f4638;
   --font-display:"Black Han Sans","Jua",sans-serif;
   --font-play:"Jua","Gowun Dodum",sans-serif;
   --font-body:"Gowun Dodum","Jua",sans-serif;
   --font-latin:"Outfit","Jua",sans-serif;
-  /* Remap common tool theme vars */
+  /* Remap common tool theme vars (dark-tool → ticket paper) */
   --bg:var(--paper-2);
   --card:var(--paper);
   --text:var(--ink);
@@ -19,13 +19,20 @@
   --primary:var(--ink);
   --accent:var(--coral);
   --accent-hover:var(--coral-deep);
+  --border:rgba(14,34,48,.28);
   --line:rgba(14,34,48,.18);
+  --chip:rgba(14,34,48,.08);
   --ok:var(--mint);
   --warning:var(--sun);
   --shadow:transparent;
+  --field-bg:#fffdf8;
+  --field-text:var(--ink);
 }
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  color-scheme:light;
+}
 body{
   margin:0 !important;
   font-family:var(--font-body) !important;
@@ -34,6 +41,7 @@ body{
   background-image:radial-gradient(rgba(14,34,48,.055) 1.2px, transparent 1.3px) !important;
   background-size:26px 26px !important;
   min-height:100vh;
+  color-scheme:light;
 }
 
 /* Chrome */
@@ -72,12 +80,83 @@ body{
 .ff-foot a:hover{text-decoration:underline}
 
 /* Soft-nudge common panels toward ticket look when they use generic classes */
-.card, .panel, .box, .wrap > .card, [class*="card"], [class*="panel"]{
-  /* don't force — only nudge borders when tools already use cards */
+.card, .panel, .box, .wrap > .card{
+  color:var(--ink);
 }
-button, .btn, [type="submit"], .primary{
-  /* leave tool buttons; accent remap handles most */
+/* Secondary copy was tuned for dark UI; keep it readable on paper */
+.sub, .muted, .hint, .desc, .note,
+.panel h3, .card h3,
+.field > label, .row > label, .field label{
+  color:var(--muted-on-paper);
 }
-a:focus-visible, button:focus-visible, input:focus-visible{
+
+/*
+  Tools were authored for dark UI (hardcoded #0b1220 fields + var(--text)).
+  After paper remaps, --text becomes ink while field bg stays near-black → unreadable.
+  Force light, high-contrast form controls across all /tools/* pages.
+*/
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="image"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="color"]),
+select,
+textarea{
+  background:var(--field-bg) !important;
+  background-color:var(--field-bg) !important;
+  color:var(--field-text) !important;
+  border-color:var(--border) !important;
+  color-scheme:light;
+  caret-color:var(--ink);
+}
+input::placeholder,
+textarea::placeholder{
+  color:var(--muted-on-paper) !important;
+  opacity:1;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+  color:var(--muted-on-paper) !important;
+}
+select option,
+select optgroup{
+  background:var(--field-bg);
+  color:var(--field-text);
+}
+/* Native date/time calendar glyphs stay visible on light fields */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator,
+input[type="week"]::-webkit-calendar-picker-indicator{
+  opacity:.75;
+  cursor:pointer;
+  filter:none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill{
+  -webkit-text-fill-color:var(--field-text) !important;
+  box-shadow:0 0 0 1000px var(--field-bg) inset !important;
+  transition:background-color 99999s ease-out;
+}
+
+/* Ghost / secondary buttons that relied on dark card+text vars */
+.btn-ghost,
+.btn.ghost,
+button.ghost{
+  color:var(--ink) !important;
+  border-color:var(--border) !important;
+}
+#tool-share-block button,
+#tool-share-block .btn{
+  background:var(--paper) !important;
+  color:var(--ink) !important;
+  border:1.5px solid var(--ink) !important;
+}
+#tool-share-block button:hover,
+#tool-share-block .btn:hover{
+  background:var(--sun) !important;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
   outline:3px solid var(--sun); outline-offset:2px;
 }
